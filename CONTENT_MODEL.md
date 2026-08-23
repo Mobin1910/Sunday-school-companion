@@ -402,6 +402,14 @@ to do                 requires
 
 Thirteen presentations. Four models. **One field to write.**
 
+## What Version 1 actually builds
+
+Five: `multiple-choice`, `match`, `sequence`, `arrange-words`, `reveal`. One per model, plus a second Ordering for verse practice. `drag` follows once `match` is solid.
+
+The other presentations below are **documented vocabulary, not work in progress**. They describe how the library grows, and each is cheap to add on the day a chapter genuinely wants it. Ten chapters do not need thirteen ways to interact.
+
+Two are deliberately *not* on the Version 1 list for pedagogical reasons rather than effort: `true-false` and `fill-blank` are the most text-dependent presentations in the library, and a child who cannot yet read fluently should not meet them first.
+
 ## You only ever write the presentation
 
 ```json
@@ -560,7 +568,7 @@ Written in the correct order. The player shuffles. No positions, no indices, no 
 
 **Nothing in Discovery is ever wrong.** No correct answers, no hints, no completion requirement. This is the model for slowing a child down inside a picture, and it is the one that most often belongs in a story card.
 
-**`reveal`** — tap things and something happens.
+**`reveal`** — tap things and something happens. In Version 1 the items appear as tappable picture cards beneath the illustration rather than as hotspots inside it; in-scene geometry is deferred (see `ARCHITECTURE.md`).
 
 ```json
 {

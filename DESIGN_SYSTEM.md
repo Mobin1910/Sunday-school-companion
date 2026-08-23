@@ -32,25 +32,9 @@ Non-negotiable. These exceed WCAG in the places that matter for six-year-olds.
 
 # Copy Rules
 
-Text supports the picture. It never carries the story alone.
+Copy limits and voice guidance live in **`CONTENT_MODEL.md`** under *Writing Guidelines*, alongside the rest of the authoring handbook, and are enforced by content validation.
 
-| Rule | Limit |
-|---|---|
-| Words per story caption | ≤ 15 |
-| Sentences per card | ≤ 2 |
-| Words per sentence | ≤ 10 |
-| Words per instruction | ≤ 8 |
-| Syllables | Prefer one and two |
-
-Voice:
-
-- Present tense, active voice.
-- Concrete nouns over abstract ones.
-- Never use shame, guilt, or judgement.
-- Encouragement is specific — "you put them all in order" beats "great job."
-- No exclamation-mark inflation. Warmth comes from word choice, not punctuation.
-
-Every word must survive the question: *would a six-year-old say this?*
+They are not repeated here. One set of numbers, one home.
 
 ---
 
@@ -66,7 +50,9 @@ Rules:
 - No pure black text — use a deep warm brown or ink.
 - Interactive elements share one consistent accent across the whole app, so a child learns "this colour means I can touch it."
 
-*Palette tokens to be defined alongside the first illustrated chapter — colour should be derived from the artwork, not chosen before it exists.*
+**Provisional tokens ship first.** Colour should be derived from the artwork, and the artwork does not exist yet — but nothing can be built without *some* palette. So Version 1 starts with a deliberately provisional set (warm neutral ground, one ink, one interactive accent, one success accent) and replaces it once the first chapter is illustrated.
+
+Naming tokens by role rather than by hue — `--ground`, `--ink`, `--touchable` — means that replacement is a values change, not a refactor.
 
 ---
 

@@ -65,7 +65,7 @@
   ],
 
   "activity": {
-    "type": "arrange-story",
+    "type": "sequence",
     "prompt": "What happened first?",
     "items": [
       "stephen-serving",
@@ -88,10 +88,13 @@
       ]
     },
     {
-      "type": "true-false",
-      "statement": "Stephen forgave the people who were unkind.",
-      "answer": true,
-      "hint": "Think about what he prayed at the end."
+      "type": "multiple-choice",
+      "prompt": "What did Stephen pray?",
+      "hint": "He was thinking about the people who were unkind.",
+      "options": [
+        { "picture": "praying-hands", "label": "Please forgive them", "correct": true },
+        { "picture": "storm-cloud", "label": "Please punish them" }
+      ]
     }
   ],
 

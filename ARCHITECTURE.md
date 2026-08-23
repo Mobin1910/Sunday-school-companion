@@ -19,7 +19,7 @@ If this document ever contradicts the constitution, the constitution wins.
 - Framer Motion
 - Progressive Web App
 - JSON content files in-repo
-- IndexedDB for progress
+- localStorage for progress
 - GitHub + Vercel
 
 **No backend. No authentication. No runtime API calls.**
@@ -49,10 +49,11 @@ content/*.story.json
 Rules:
 
 - One JSON file per chapter, authored by hand, reviewed in pull requests.
-- Content is validated against a versioned Zod schema at build time.
+- Content is validated against a Zod schema at build time.
 - **Invalid content fails the build.** A broken chapter never reaches a child.
 - Content is imported as a typed module — never fetched at runtime.
 - Adding a chapter is a content-only change. Zero code changes. This is the acceptance test for content/UI separation.
+- Missing pictures resolve to a visible placeholder in development, so writing is never blocked on drawing.
 - Text is never baked into illustrations.
 
 ## Chapter shape
@@ -76,11 +77,9 @@ Cards carry no `type` field — the section supplies it. Every card is rendered 
 
 **`CONTENT_MODEL.md` is the normative specification** for the schema, card types, interaction shapes, and validation rules. This section is a summary; where the two differ, `CONTENT_MODEL.md` wins.
 
-## Schema versioning
+## Schema changes
 
-- The schema carries a version number.
-- Content files declare the schema version they target.
-- A version bump requires a migration for existing content, applied in the same pull request.
+With ten chapters and one author, a schema change is a find-and-replace across ten files, done in the pull request that changes the schema. No version field, no codemods, no compatibility layer. Revisit if the library outgrows what one person can edit in an afternoon.
 
 ---
 
@@ -138,31 +137,30 @@ src/interactions/
 │   ├── schema.ts
 │   ├── Selection.tsx            ← model logic: what "correct" means, hint timing
 │   └── presentations/
-│       ├── Tap.tsx
-│       ├── MultipleChoice.tsx
-│       ├── TrueFalse.tsx
-│       ├── FillBlank.tsx
-│       └── FindPicture.tsx
-├── pairing/          (Match, Connect, Drag)
-├── ordering/         (Sequence, ArrangeStory, ArrangeWords)
-└── discovery/        (Reveal, HiddenObject)
+│       └── MultipleChoice.tsx
+├── pairing/          (Match — Drag late, Connect not in V1)
+├── ordering/         (Sequence, ArrangeWords)
+└── discovery/        (Reveal)
 ```
+
+**Version 1 builds five presentations**, not thirteen: `multiple-choice`, `match`, `sequence`, `arrange-words`, `reveal` — one per model, plus a second Ordering for verse practice. `drag` follows once `match` is solid, and can slip without blocking launch.
+
+The remaining presentations are documented vocabulary in `CONTENT_MODEL.md`, not work in progress. Ten chapters do not need thirteen ways to interact, and the registry makes each one cheap on the day a chapter genuinely wants it.
 
 Each model exports one module:
 
 ```ts
 interface InteractionModel<T> {
-  schema: ZodSchema<T>;                              // validates content at build
-  presentations: Record<string, Component<T>>;       // the visual variants
+  schema: ZodSchema<T>;                          // validates content at build
+  presentations: Record<string, Component<T>>;   // the visual variants
   defaultPresentation: string;
-  degrade(presentation: string, env: Environment): string;
 }
 ```
 
 Four properties worth noting:
 
 - **The schema ships with the model.** Content validation and rendering cannot drift apart, because adding a model without a schema is a type error.
-- **`degrade` is part of the contract**, not scattered logic. The drag → match fallback lives in `pairing/`, where it belongs, and every model must state how it degrades.
+- **Degradation is not in the contract.** Only Pairing degrades, so the drag → match fallback lives inside `pairing/` as that model's own business. Adding it to all four models would be symmetry for its own sake.
 - **The registry is a static object**, statically imported. Tree-shakeable, fully typed, no runtime resolution — which matters for the bundle budget and the offline story.
 - **Model logic and presentation are separate layers.** `Selection.tsx` decides what correct means and when the hint appears; `MultipleChoice.tsx` decides how it looks. A new presentation inherits all the behaviour for free.
 
@@ -179,9 +177,9 @@ The second case is intentionally not free. Four models is a considered ceiling, 
 
 ## Build order
 
-Selection → Ordering → Pairing (match, connect) → Pairing (drag) → Discovery.
+Selection → Ordering → Discovery → Pairing (match) → Pairing (drag).
 
-Selection first because it is simplest and unblocks quizzes. Drag late because it is the hardest to make reliable on low-end Android — and by then its `match` fallback already exists and is tested, so drag ships with its safety net already built.
+Selection first because it is simplest and unblocks quizzes. Drag last because it is the hardest to make reliable on low-end Android — and by then its `match` fallback already exists and is tested, so drag ships with its safety net already built.
 
 ## Degradation
 
@@ -196,11 +194,13 @@ Never authored. The player derives the presentation from the environment:
 
 Because `match` and `drag` share one content shape, degradation is a presentation swap with no data transformation.
 
-## Hotspot geometry
+## Hotspot geometry — deferred
 
-In-scene presentations (`tap`, `reveal`, `hidden-object`) need to know where things are in an illustration. **That geometry lives with the artwork, not in the content file** — the illustrator exports a companion SVG with named regions, and content refers to the names.
+In-scene presentations (tapping things *inside* an illustration) need to know where those things are. The clean answer is a companion SVG exported by the illustrator with named regions, since position is appearance and appearance never belongs in content.
 
-Position is appearance, and appearance never belongs in content. This also means re-cropping or redrawing a scene never touches the chapter file.
+**Version 1 does not build this.** It puts an entire art-tooling pipeline on the critical path and would block development on the illustrator's toolchain. In Version 1, `reveal` presents its items as tappable picture cards beneath the illustration — simpler, no geometry, still delightful.
+
+Revisit when a chapter genuinely needs a hidden-object scene.
 
 ---
 
@@ -217,7 +217,7 @@ Reference device: **Moto G-class Android, 4GB RAM, mid-tier CPU, 4G.** Test on r
 | Per-illustration weight | < 150 KB |
 | Total precached assets | < 40 MB |
 
-Budgets are enforced in CI. A pull request that exceeds a budget fails.
+Measured by hand on the reference device before each release. CI enforcement is worth building once there is a team to protect the budget from — not for one author and ten chapters.
 
 ## Motion cost
 
@@ -258,11 +258,11 @@ Constraints:
 
 # Progress & Persistence
 
-- Stored in **IndexedDB**, not localStorage. localStorage is evictable within days on iOS for non-installed sites and throws in private mode.
-- Progress records are versioned with a migration path from day one.
-- All reads and writes are wrapped — a storage failure degrades the experience, never breaks it.
-- **Content is never locked behind progress.** Losing progress is disappointing, never devastating.
-- Chapters resume at the exact card the child left on.
+- Stored in **localStorage**. Progress is a few KB; IndexedDB's async surface is not worth its cost at this size.
+- The record is a chapter slug and a card index. Nothing else. No hashes, no timestamps, no attempt counts.
+- If the index is out of range because a chapter was edited, clamp to the last card. That is the entire migration strategy for Version 1.
+- All reads and writes are wrapped in try/catch — localStorage throws in private mode and can be evicted on iOS. A storage failure degrades the experience, never breaks it.
+- **Content is never locked behind progress.** Losing progress is disappointing, never devastating — which is what makes localStorage sufficient.
 
 ---
 
