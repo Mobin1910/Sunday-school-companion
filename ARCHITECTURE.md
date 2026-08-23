@@ -54,20 +54,21 @@ Rules:
 
 ## Chapter shape
 
-A chapter is metadata plus an ordered list of typed cards. Steps are groupings of cards, not separate systems.
+A chapter is metadata plus a flat, ordered list of typed cards. Journey steps are derived from card type, not stored.
 
 ```
 Chapter
-├── id, title, story reference, cover art
-└── steps[]
-      └── cards[]
-            ├── type: story | game | quiz | verse | celebration
-            ├── art
-            ├── caption
-            └── interaction?  (tap | match | sequence | drag)
+├── schema, title, reference
+└── cards[]
+      ├── type: cover | story | game | quiz | verse | practice | celebration
+      ├── art
+      ├── caption
+      └── interaction?  (tap | pair | sequence)
 ```
 
 Every card type is rendered by the same Chapter Player through a card renderer. Adding a card type means adding a renderer, not an engine.
+
+**`CONTENT_MODEL.md` is the normative specification** for the schema, card types, interaction shapes, and validation rules. This section is a summary; where the two differ, `CONTENT_MODEL.md` wins.
 
 ## Schema versioning
 
@@ -89,6 +90,8 @@ Four engines, shared by all card types that need interaction:
 | Drag & Drop | Hardest on low-end Android. **Must have a tap fallback path.** |
 
 Build order: Tap → Match → Sequence → Drag & Drop.
+
+Match and Drag & Drop consume the **same content shape** (`pair` — see `CONTENT_MODEL.md`), differing only by input modality. This makes the tap fallback structurally guaranteed rather than a rule to remember: a drag interaction without a tap fallback is not expressible.
 
 Memory, hidden object, sorting, reveal, and pairing are **configurations** of these engines, never new engines.
 
