@@ -1,4 +1,5 @@
 import Picture from "@/components/Picture";
+import type { Art } from "@/content";
 
 /**
  * The front door of the chapter.
@@ -8,21 +9,19 @@ import Picture from "@/components/Picture";
  * learns one gesture and it never changes.
  */
 export default function CoverCard({
-  slug,
-  picture,
+  art,
   title,
 }: {
-  slug: string;
-  picture: string;
+  art: Art;
   title: string;
 }) {
   return (
     <>
-      <div className="w-full max-w-md">
-        <Picture chapter={slug} name={picture} alt={title} />
+      <div className="w-full max-w-md px-6">
+        <Picture art={art} alt={title} />
       </div>
 
-      <h1 className="breathe text-center text-5xl leading-tight text-balance">
+      <h1 className="breathe px-6 text-center text-5xl leading-tight text-balance">
         {title}
       </h1>
     </>

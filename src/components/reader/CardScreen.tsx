@@ -2,6 +2,7 @@ import type { Card } from "@/content";
 
 import CelebrationCard from "./CelebrationCard";
 import CoverCard from "./CoverCard";
+import QuizCard from "./QuizCard";
 import StoryCard from "./StoryCard";
 import VerseCard from "./VerseCard";
 
@@ -14,34 +15,34 @@ import VerseCard from "./VerseCard";
  */
 export default function CardScreen({
   card,
-  slug,
   title,
 }: {
   card: Card;
-  slug: string;
   title: string;
 }) {
   return (
-    <div className="flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center gap-10 px-6">
-      {render(card, slug, title)}
+    <div className="flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center gap-10 py-4">
+      {render(card, title)}
     </div>
   );
 }
 
-function render(card: Card, slug: string, title: string) {
+function render(card: Card, title: string) {
   switch (card.kind) {
     case "cover":
-      return <CoverCard slug={slug} picture={card.picture} title={title} />;
+      return <CoverCard art={card.art} title={title} />;
 
     case "story":
       return (
         <StoryCard
-          slug={slug}
-          picture={card.picture}
+          art={card.art}
           {...(card.text !== undefined && { text: card.text })}
           {...(card.alt !== undefined && { alt: card.alt })}
         />
       );
+
+    case "quiz":
+      return <QuizCard interaction={card.interaction} />;
 
     case "verse":
       return <VerseCard text={card.text} reference={card.reference} />;
@@ -49,15 +50,14 @@ function render(card: Card, slug: string, title: string) {
     case "celebration":
       return (
         <CelebrationCard
-          slug={slug}
-          {...(card.picture !== undefined && { picture: card.picture })}
+          {...(card.art !== undefined && { art: card.art })}
           message={card.message}
         />
       );
 
-    // Interaction cards are not readable yet. They arrive with their
-    // interactions in Milestones 4 to 6, and until then the reader does not
-    // show them at all — see isReadable in the chapter page.
+    // Activity and practice are not readable yet. Their interactions arrive
+    // in Milestones 5 and 6, and until then the reader does not show them at
+    // all — see READABLE in the chapter page.
     default:
       return null;
   }

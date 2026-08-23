@@ -1,9 +1,6 @@
-import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
-
-import type { Card } from "./cards";
+import { drawnPictures } from "./art";
+import type { Art, Card, PlayInteraction, PlayItem } from "./cards";
 import type { LoadedChapter } from "./load";
-import type { Interaction, Item } from "./schema";
 
 /**
  * Checks that depend on how finished a chapter is.
@@ -23,8 +20,6 @@ export type Advisory = {
   message: string;
 };
 
-const PICTURE_EXTENSIONS = ["avif", "webp", "png", "jpg", "svg"];
-
 const LIMITS = {
   storyWords: 15,
   storySentences: 2,
@@ -39,7 +34,7 @@ const words = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
 const sentences = (text: string) =>
   text.split(/[.!?]+/).filter((part) => part.trim().length > 0).length;
 
-function itemsOf(interaction: Interaction): Item[] {
+function itemsOf(interaction: PlayInteraction): PlayItem[] {
   switch (interaction.type) {
     case "multiple-choice":
       return interaction.options;
@@ -53,22 +48,20 @@ function itemsOf(interaction: Interaction): Item[] {
   }
 }
 
-function picturesOf(card: Card): string[] {
-  const fromInteraction = (interaction: Interaction) => [
-    ...("picture" in interaction && interaction.picture
-      ? [interaction.picture]
-      : []),
+function artOf(card: Card): Art[] {
+  const fromInteraction = (interaction: PlayInteraction): Art[] => [
+    ...("art" in interaction && interaction.art ? [interaction.art] : []),
     ...itemsOf(interaction)
-      .map((item) => item.picture)
-      .filter((name) => name !== undefined),
+      .map((item) => item.art)
+      .filter((art) => art !== undefined),
   ];
 
   switch (card.kind) {
     case "cover":
-      return [card.picture];
+      return [card.art];
     case "story":
       return [
-        card.picture,
+        card.art,
         ...(card.interaction ? fromInteraction(card.interaction) : []),
       ];
     case "activity":
@@ -76,24 +69,10 @@ function picturesOf(card: Card): string[] {
     case "practice":
       return fromInteraction(card.interaction);
     case "verse":
+      return [];
     case "celebration":
-      return card.picture ? [card.picture] : [];
+      return card.art ? [card.art] : [];
   }
-}
-
-function pictureExists(slug: string, name: string): boolean {
-  return PICTURE_EXTENSIONS.some((extension) =>
-    existsSync(join(process.cwd(), "public", "art", slug, `${name}.${extension}`)),
-  );
-}
-
-function drawnPictures(slug: string): string[] {
-  const dir = join(process.cwd(), "public", "art", slug);
-  if (!existsSync(dir)) return [];
-
-  return readdirSync(dir)
-    .filter((file) => PICTURE_EXTENSIONS.some((ext) => file.endsWith(`.${ext}`)))
-    .map((file) => file.slice(0, file.lastIndexOf(".")));
 }
 
 function copyAdvisories(cards: Card[]): { where: string; message: string }[] {
@@ -136,8 +115,7 @@ function copyAdvisories(cards: Card[]): { where: string; message: string }[] {
       tooLong(at, card.message, LIMITS.celebrationWords, "celebration");
     }
 
-    const interaction =
-      "interaction" in card ? card.interaction : undefined;
+    const interaction = "interaction" in card ? card.interaction : undefined;
 
     if (interaction) {
       if (interaction.prompt) {
@@ -158,14 +136,16 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
   const level = chapter.shipping ? "error" : "warning";
   const advisories: Advisory[] = [];
 
-  const referenced = new Set(chapter.cards.flatMap(picturesOf));
+  const referenced = new Map(
+    chapter.cards.flatMap(artOf).map((art) => [art.name, art]),
+  );
 
   // Reported as one line rather than one per picture. A chapter written before
   // it is drawn is missing everything, and twenty identical warnings bury the
   // one thing you actually need to read.
-  const missing = [...referenced].filter(
-    (name) => !pictureExists(chapter.slug, name),
-  );
+  const missing = [...referenced.values()]
+    .filter((art) => art.src === null)
+    .map((art) => art.name);
 
   if (missing.length > 0) {
     advisories.push({

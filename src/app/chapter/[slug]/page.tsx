@@ -7,14 +7,15 @@ import { getChapters, type Card } from "@/content";
 /**
  * A chapter, read cover to celebration.
  *
- * Interaction cards are not shown yet. A card that asks a child to put the
- * story in order, with no way to do it, is worse than no card at all — so
- * until Milestones 4 to 6 give them their interactions, they are simply not
+ * Activity and practice are not shown yet. A card that asks a child to put
+ * the story in order, with no way to do it, is worse than no card at all — so
+ * until Milestones 5 and 6 give them their interactions, they are simply not
  * part of the read. Every page a child reaches is a whole page.
  */
 const READABLE = new Set<Card["kind"]>([
   "cover",
   "story",
+  "quiz",
   "verse",
   "celebration",
 ]);
@@ -38,12 +39,7 @@ export default async function ChapterPage({
   return (
     <ChapterReader>
       {pages.map((card, index) => (
-        <CardScreen
-          key={index}
-          card={card}
-          slug={chapter.slug}
-          title={chapter.title}
-        />
+        <CardScreen key={index} card={card} title={chapter.title} />
       ))}
     </ChapterReader>
   );

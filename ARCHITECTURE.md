@@ -217,18 +217,23 @@ The remaining presentations are documented vocabulary in `CONTENT_MODEL.md`, not
 Each model exports one module:
 
 ```ts
-interface InteractionModel<T> {
-  schema: ZodSchema<T>;                          // validates content at build
-  presentations: Record<string, Component<T>>;   // the visual variants
-  defaultPresentation: string;
-  assist: /* signature settled in Milestone 4 */;
-}
+type ModelProps<T> = {
+  interaction: T;
+  rung: number;      // 0 alone · 1 a word · 2 a clue · 3 together
+  locked: boolean;
+  onMiss: () => void;
+  onArrive: () => void;
+};
 ```
 
-Five properties worth noting:
+Settled by building Selection, and simpler than what was planned. **Assistance turned out not to be a function a model exposes — it is how a model renders at a given rung.** There is no `assist()` and no registry object: a model is a component, the rung is a required prop, and a model cannot be written without deciding what it looks like at each one.
 
-- **The schema ships with the model.** Content validation and rendering cannot drift apart, because adding a model without a schema is a type error.
-- **Assistance is in the contract**, because every model needs it and the constitution says a model without it is unfinished. Putting it in the type means a new model cannot be added without answering how it helps a stuck child. Its exact signature is deliberately left open until Selection is built — designing it against zero implementations is how contracts end up wrong.
+Which presentation gets which model is a typed switch rather than a lookup table, because a switch narrows the interaction type as it goes — each model receives exactly the shape it handles, checked by the compiler rather than asserted.
+
+Three properties worth noting:
+
+- **Schemas live in `content/schema.ts`, not in the model.** They validate at build time, before any model exists, so keeping them beside the components would have split content validation across five files for no gain.
+- **A model reports two things: that did not work, and we are there.** Never how many times. `onMiss` and `onArrive` take no arguments, so a model cannot leak a count even by accident.
 - **Degradation is not in the contract.** Only Pairing degrades, so the drag → match fallback lives inside `pairing/` as that model's own business. Adding it to all four models would be symmetry for its own sake — the opposite call to assistance, and for the opposite reason.
 - **The registry is a static object**, statically imported. Tree-shakeable, fully typed, no runtime resolution — which matters for the bundle budget and the offline story.
 - **Model logic and presentation are separate layers.** `Selection.tsx` decides what correct means and when the hint appears; `MultipleChoice.tsx` decides how it looks. A new presentation inherits all the behaviour for free.

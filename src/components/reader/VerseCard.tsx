@@ -12,7 +12,7 @@ export default function VerseCard({
   reference: string;
 }) {
   return (
-    <div className="breathe flex max-w-sm flex-col items-center gap-6 text-center">
+    <div className="breathe flex max-w-sm flex-col px-6 items-center gap-6 text-center">
       <p className="text-3xl leading-relaxed text-balance">{text}</p>
       <p className="text-lg text-ink-soft">{reference}</p>
     </div>

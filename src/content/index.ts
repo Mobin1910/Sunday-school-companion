@@ -40,4 +40,4 @@ export function getChapters(): LoadedChapter[] {
 }
 
 export type { LoadedChapter };
-export type { Card } from "./cards";
+export type { Art, Card, PlayInteraction, PlayItem } from "./cards";

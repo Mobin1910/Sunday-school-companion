@@ -1,4 +1,4 @@
-import type { Chapter, Interaction } from "./schema";
+import type { Chapter, Interaction, Item } from "./schema";
 
 /**
  * The runtime shape of a chapter: one flat, ordered list of cards.
@@ -10,52 +10,160 @@ import type { Chapter, Interaction } from "./schema";
  *
  * The discriminator is `kind` rather than `type`, because `type` already means
  * something in content — it names an interaction's presentation.
+ *
+ * These types are written out rather than derived from the content schema.
+ * They differ in two ways that matter: pictures are already resolved to files,
+ * and author notes are gone. Notes are for whoever edits the chapter and have
+ * no business being downloaded by a child.
  */
+
+/** A picture, already resolved to a file, or known to be undrawn. */
+export type Art = { name: string; src: string | null };
+
+export type PlayItem = {
+  art?: Art;
+  label?: string;
+  correct?: true;
+};
+
+export type PlayInteraction =
+  | {
+      type: "multiple-choice";
+      prompt: string;
+      hint: string;
+      options: PlayItem[];
+      art?: Art;
+    }
+  | {
+      type: "match";
+      prompt: string;
+      pairs: { from: PlayItem; to: PlayItem }[];
+      hint?: string;
+    }
+  | { type: "sequence"; prompt: string; items: PlayItem[]; hint?: string }
+  | { type: "arrange-words"; prompt: string; words: string[]; hint?: string }
+  | { type: "reveal"; prompt?: string; items: PlayItem[] };
+
 export type Card =
-  | { kind: "cover"; picture: string }
+  | { kind: "cover"; art: Art }
   | {
       kind: "story";
-      picture: string;
+      art: Art;
       text?: string;
       alt?: string;
-      interaction?: Interaction;
+      interaction?: PlayInteraction;
     }
-  | { kind: "activity"; interaction: Interaction }
-  | { kind: "quiz"; interaction: Interaction }
+  | { kind: "activity"; interaction: PlayInteraction }
+  | { kind: "quiz"; interaction: PlayInteraction }
   | {
       kind: "verse";
       text: string;
       reference: string;
       translation: string;
       attribution?: string;
-      picture?: string;
     }
-  | { kind: "practice"; interaction: Interaction }
-  | { kind: "celebration"; message: string; picture?: string };
+  | { kind: "practice"; interaction: PlayInteraction }
+  | { kind: "celebration"; message: string; art?: Art };
+
+type Resolve = (name: string) => string | null;
+
+const toArt = (name: string, resolve: Resolve): Art => ({
+  name,
+  src: resolve(name),
+});
+
+function toItem(item: Item, resolve: Resolve): PlayItem {
+  return {
+    ...(item.picture !== undefined && { art: toArt(item.picture, resolve) }),
+    ...(item.label !== undefined && { label: item.label }),
+    ...(item.correct !== undefined && { correct: item.correct }),
+  };
+}
+
+function toInteraction(
+  interaction: Interaction,
+  resolve: Resolve,
+): PlayInteraction {
+  const item = (i: Item) => toItem(i, resolve);
+
+  switch (interaction.type) {
+    case "multiple-choice":
+      return {
+        type: "multiple-choice",
+        prompt: interaction.prompt,
+        hint: interaction.hint,
+        options: interaction.options.map(item),
+        ...(interaction.picture !== undefined && {
+          art: toArt(interaction.picture, resolve),
+        }),
+      };
+
+    case "match":
+      return {
+        type: "match",
+        prompt: interaction.prompt,
+        pairs: interaction.pairs.map((p) => ({
+          from: item(p.from),
+          to: item(p.to),
+        })),
+        ...(interaction.hint !== undefined && { hint: interaction.hint }),
+      };
+
+    case "sequence":
+      return {
+        type: "sequence",
+        prompt: interaction.prompt,
+        items: interaction.items.map(item),
+        ...(interaction.hint !== undefined && { hint: interaction.hint }),
+      };
+
+    case "arrange-words":
+      return {
+        type: "arrange-words",
+        prompt: interaction.prompt,
+        words: interaction.words,
+        ...(interaction.hint !== undefined && { hint: interaction.hint }),
+      };
+
+    case "reveal":
+      return {
+        type: "reveal",
+        ...(interaction.prompt !== undefined && { prompt: interaction.prompt }),
+        items: interaction.items.map(item),
+      };
+  }
+}
 
 /**
  * The journey order is fixed by the constitution, so it is expressed once,
  * here, and never re-declared in a chapter file.
  */
-export function toCards(chapter: Chapter): Card[] {
-  const cards: Card[] = [{ kind: "cover", picture: chapter.cover.picture }];
+export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
+  const cards: Card[] = [
+    { kind: "cover", art: toArt(chapter.cover.picture, resolve) },
+  ];
 
   for (const card of chapter.story) {
     cards.push({
       kind: "story",
-      picture: card.picture,
+      art: toArt(card.picture, resolve),
       ...(card.text !== undefined && { text: card.text }),
       ...(card.alt !== undefined && { alt: card.alt }),
-      ...(card.interaction !== undefined && { interaction: card.interaction }),
+      ...(card.interaction !== undefined && {
+        interaction: toInteraction(card.interaction, resolve),
+      }),
     });
   }
 
   if (chapter.activity) {
-    cards.push({ kind: "activity", interaction: chapter.activity });
+    cards.push({
+      kind: "activity",
+      interaction: toInteraction(chapter.activity, resolve),
+    });
   }
 
   for (const interaction of chapter.quiz ?? []) {
-    cards.push({ kind: "quiz", interaction });
+    cards.push({ kind: "quiz", interaction: toInteraction(interaction, resolve) });
   }
 
   if (chapter.verse) {
@@ -67,13 +175,13 @@ export function toCards(chapter: Chapter): Card[] {
       ...(chapter.verse.attribution !== undefined && {
         attribution: chapter.verse.attribution,
       }),
-      ...(chapter.verse.picture !== undefined && {
-        picture: chapter.verse.picture,
-      }),
     });
 
     if (chapter.verse.practice) {
-      cards.push({ kind: "practice", interaction: chapter.verse.practice });
+      cards.push({
+        kind: "practice",
+        interaction: toInteraction(chapter.verse.practice, resolve),
+      });
     }
   }
 
@@ -81,7 +189,7 @@ export function toCards(chapter: Chapter): Card[] {
     kind: "celebration",
     message: chapter.celebration.message,
     ...(chapter.celebration.picture !== undefined && {
-      picture: chapter.celebration.picture,
+      art: toArt(chapter.celebration.picture, resolve),
     }),
   });
 

@@ -1,4 +1,5 @@
 import Picture from "@/components/Picture";
+import type { Art } from "@/content";
 
 /**
  * The warm ending.
@@ -7,23 +8,21 @@ import Picture from "@/components/Picture";
  * nothing is worth nothing. Nothing here counts, scores or compares.
  */
 export default function CelebrationCard({
-  slug,
-  picture,
+  art,
   message,
 }: {
-  slug: string;
-  picture?: string;
+  art?: Art;
   message: string;
 }) {
   return (
     <>
-      {picture ? (
-        <div className="w-full max-w-md">
-          <Picture chapter={slug} name={picture} />
+      {art ? (
+        <div className="w-full max-w-md px-6">
+          <Picture art={art} />
         </div>
       ) : null}
 
-      <p className="breathe max-w-sm text-center text-3xl leading-relaxed text-balance text-joy">
+      <p className="breathe max-w-sm px-6 text-center text-3xl leading-relaxed text-balance text-joy">
         {message}
       </p>
     </>

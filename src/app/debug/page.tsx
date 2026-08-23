@@ -11,9 +11,9 @@ import { getChapters, type Card } from "@/content";
 function summarise(card: Card): string {
   switch (card.kind) {
     case "cover":
-      return card.picture;
+      return card.art.name;
     case "story":
-      return card.text ?? `(wordless) ${card.picture}`;
+      return card.text ?? `(wordless) ${card.art.name}`;
     case "activity":
     case "quiz":
     case "practice":

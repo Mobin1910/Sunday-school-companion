@@ -1,4 +1,5 @@
 import Picture from "@/components/Picture";
+import type { Art } from "@/content";
 
 /**
  * A page of the story.
@@ -8,20 +9,18 @@ import Picture from "@/components/Picture";
  * Nothing else is on screen.
  */
 export default function StoryCard({
-  slug,
-  picture,
+  art,
   text,
   alt,
 }: {
-  slug: string;
-  picture: string;
+  art: Art;
   text?: string;
   alt?: string;
 }) {
   return (
     <>
-      <div className="w-full max-w-md">
-        <Picture chapter={slug} name={picture} {...(alt ? { alt } : {})} />
+      <div className="w-full max-w-md px-6">
+        <Picture art={art} {...(alt ? { alt } : {})} />
       </div>
 
       {text ? (
