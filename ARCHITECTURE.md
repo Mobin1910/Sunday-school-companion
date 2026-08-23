@@ -40,7 +40,7 @@ content/*.story.json
    typed content module
         │
         ▼
-   section flattening   (cover + story + game + quiz + verse + celebration → one card sequence)
+   section flattening   (cover + story + activity + quiz + verse + celebration → one card sequence)
         │
         ▼
     Chapter Player
@@ -64,9 +64,9 @@ Chapter
 ├── title, reference
 ├── cover        { picture }
 ├── story        [ { picture, text?, interaction? } … ]
-├── game         { type, prompt, … }
-├── quiz         [ { question, hint, answers } … ]
-├── verse        { text, reference, translation, practice? }
+├── activity     Interaction
+├── quiz         [ Interaction … ]
+├── verse        { text, reference, translation, practice?: Interaction }
 └── celebration  { message, picture? }
 ```
 
@@ -84,24 +84,123 @@ Cards carry no `type` field — the section supplies it. Every card is rendered 
 
 ---
 
-# Interaction Engines
+# The Interaction Player
 
-Four engines, shared by all card types that need interaction:
+## Standalone, beneath the Chapter Player
 
-| Engine | Notes |
+**Recommendation: a separate component, not part of the Chapter Player.**
+
+The two own genuinely different things:
+
+| | Owns |
 |---|---|
-| Tap | Simplest, most reliable. Default choice. |
-| Match | No colour-only matching (see `DESIGN_SYSTEM.md`). |
-| Sequence | Ordering and retelling. |
-| Drag & Drop | Hardest on low-end Android. **Must have a tap fallback path.** |
+| **Chapter Player** | The journey — card order, progress, resume, transitions, persistence, the way forward |
+| **Interaction Player** | One interaction's life — attempt, hint, encouragement, completion, degradation |
 
-Build order: Tap → Match → Sequence → Drag & Drop.
+Four reasons to split them:
 
-Match and Drag & Drop consume the **same content shape** (`pairs` — see `CONTENT_MODEL.md`), differing only by input modality. This makes the tap fallback structurally guaranteed rather than a rule to remember: a drag interaction without a tap fallback is not expressible.
+1. **The requirement is only enforceable if it's separate.** "The Interaction Player must not know which section it is rendering" is a promise you can keep by giving it a prop interface that cannot express a section. Inside the Chapter Player, that knowledge is always one variable away.
+2. **It appears in four places from day one.** Story, activity, quiz, memory verse. This is not a speculative abstraction — the reuse is known, not guessed.
+3. **It holds the hardest logic.** Interactions carry nearly all the stateful behaviour in the product. Testing them without constructing a chapter is worth a lot.
+4. **It keeps the Chapter Player small.** The journey logic stays readable because the mechanics live elsewhere.
 
-Degradation is never authored. The player selects the input modality from screen size, motion preference, and repeated difficulty.
+This is a deliberate exception to "abstraction is earned, not assumed." The rule guards against *guessing* at reuse; here the reuse is a stated requirement before a line is written.
 
-Memory, hidden object, sorting, reveal, and pairing are **configurations** of these engines, never new engines.
+**It is a component, not a framework.** No dynamic loading, no runtime plugin discovery, no dependency injection.
+
+## The contract
+
+```tsx
+<InteractionPlayer
+  interaction={interaction}
+  onComplete={() => void}
+/>
+```
+
+That is the whole surface. Two props.
+
+What is deliberately **not** in it:
+
+- **No section prop.** The player cannot know where it is, so it cannot behave differently.
+- **No score, no result, no attempt count in `onComplete`.** It reports that the child finished, never how.
+- **No `onSkip`.** Skipping belongs to the Chapter Player, which owns the way forward. The Interaction Player does not know it can be skipped.
+- **No `onFail`.** There is no failure.
+
+**Attempt count is internal state that never leaves the component.** It drives the hint and nothing else — not a callback, not a store, not persistence. The Kindness Rules become an architectural property: a number that never escapes cannot be displayed, stored, or aggregated later by someone who did not read this document.
+
+## Registry architecture
+
+```
+src/interactions/
+├── registry.ts          ← the only shared file that changes for a new model
+├── types.ts             ← Item, Pair, InteractionBase, Environment
+├── selection/
+│   ├── schema.ts
+│   ├── Selection.tsx            ← model logic: what "correct" means, hint timing
+│   └── presentations/
+│       ├── Tap.tsx
+│       ├── MultipleChoice.tsx
+│       ├── TrueFalse.tsx
+│       ├── FillBlank.tsx
+│       └── FindPicture.tsx
+├── pairing/          (Match, Connect, Drag)
+├── ordering/         (Sequence, ArrangeStory, ArrangeWords)
+└── discovery/        (Reveal, HiddenObject)
+```
+
+Each model exports one module:
+
+```ts
+interface InteractionModel<T> {
+  schema: ZodSchema<T>;                              // validates content at build
+  presentations: Record<string, Component<T>>;       // the visual variants
+  defaultPresentation: string;
+  degrade(presentation: string, env: Environment): string;
+}
+```
+
+Four properties worth noting:
+
+- **The schema ships with the model.** Content validation and rendering cannot drift apart, because adding a model without a schema is a type error.
+- **`degrade` is part of the contract**, not scattered logic. The drag → match fallback lives in `pairing/`, where it belongs, and every model must state how it degrades.
+- **The registry is a static object**, statically imported. Tree-shakeable, fully typed, no runtime resolution — which matters for the bundle budget and the offline story.
+- **Model logic and presentation are separate layers.** `Selection.tsx` decides what correct means and when the hint appears; `MultipleChoice.tsx` decides how it looks. A new presentation inherits all the behaviour for free.
+
+## Cost of extending
+
+| Change | Cost |
+|---|---|
+| **New presentation** of an existing model | One file in that model's `presentations/`, one line in its map. **Nothing else in the system changes.** |
+| **New interaction model** | New folder, one line in `registry.ts`, one arm on the content union, a migration if it changes existing content. |
+
+The first case is the common one, and it is deliberately near-free — of the fourteen presentations in Version 1, all fourteen are variants of four models. Most future "new interaction" requests are new clothes, not new thinking.
+
+The second case is intentionally not free. Four models is a considered ceiling, and a fifth needs an argument about what kind of thinking it enables that the others cannot.
+
+## Build order
+
+Selection → Ordering → Pairing (match, connect) → Pairing (drag) → Discovery.
+
+Selection first because it is simplest and unblocks quizzes. Drag late because it is the hardest to make reliable on low-end Android — and by then its `match` fallback already exists and is tested, so drag ships with its safety net already built.
+
+## Degradation
+
+Never authored. The player derives the presentation from the environment:
+
+| Condition | Effect |
+|---|---|
+| Small screen | `drag` → `match` |
+| `prefers-reduced-motion` | `drag` → `match`; transitions become cross-fades |
+| Two unsuccessful attempts | `drag` → `match`, silently |
+| Long pause | Gentle pulse on a correct target. Nothing is removed |
+
+Because `match` and `drag` share one content shape, degradation is a presentation swap with no data transformation.
+
+## Hotspot geometry
+
+In-scene presentations (`tap`, `reveal`, `hidden-object`) need to know where things are in an illustration. **That geometry lives with the artwork, not in the content file** — the illustrator exports a companion SVG with named regions, and content refers to the names.
+
+Position is appearance, and appearance never belongs in content. This also means re-cropping or redrawing a scene never touches the chapter file.
 
 ---
 

@@ -1,6 +1,6 @@
 # Tiny Disciples — Content Model
 
-> **Version:** 2.0
+> **Version:** 2.1
 > **Status:** Draft — pending review
 > **Schema version:** 1
 > **Governed by:** `PRODUCT_CONSTITUTION.md`
@@ -57,7 +57,7 @@ I'd refine it into this — **named sections that mirror the constitutional jour
 
   "cover":       { … },
   "story":       [ … ],
-  "game":        { … },
+  "activity":    { … },
   "quiz":        [ … ],
   "verse":       { … },
   "celebration": { … }
@@ -231,36 +231,38 @@ Not a separate card. That distinction is the whole product.
   "picture": "sharing-bread",
   "text": "Every day he shared food with people who were hungry.",
   "interaction": {
-    "type": "tap",
+    "type": "reveal",
     "prompt": "Who else is hungry?",
     "items": ["old-woman", "small-boy", "tired-man"]
   }
 }
 ```
 
-The child does not leave the story to play. They reach into the picture they are already looking at. Full shapes are in *Interactions* below.
+The child does not leave the story to play. They reach into the picture they are already looking at. Any of the thirteen presentations may sit here — see *The Interaction Library* below.
 
 ---
 
-## Game
+## Activity
 
 **Purpose.** One longer interaction that consolidates the whole story, after it has been told.
 
 ```json
-"game": {
-  "type": "sequence",
+"activity": {
+  "type": "arrange-story",
   "prompt": "What happened first?",
   "items": ["stephen-serving", "stephen-teaching", "stephen-looks-up", "friends-remember"],
   "hint": "Stephen was helping people at the very beginning."
 }
 ```
 
-**Required.** `type`, `prompt`, plus the fields that type needs
+**The activity section holds one interaction — any interaction.** It is not a game slot and there is no such thing as an "activity type." Choose whichever interaction best consolidates this particular story.
+
+**Required.** Whatever the chosen presentation requires
 **Optional.** `hint`, `picture`, `note`
 
-**Behaviour.** Same four families as story interactions, given a full screen and more pieces. Retelling — sequencing the story — is the strongest default, because it rehearses the narrative rather than testing recall of a detail.
+**Behaviour.** The same interaction library used in story cards, given a full screen and more pieces. Retelling — `arrange-story` — is the strongest default, because it rehearses the narrative rather than testing recall of a detail.
 
-**UX.** Reuse pictures the child has already seen. Recognition is the point; new artwork here would make it a test.
+**UX.** Reuse pictures the child has already seen. Recognition is the point; new artwork here would turn consolidation into a test.
 
 **Accessibility.** Every piece is distinguishable without colour. Labels are optional but help emerging readers anchor what they're looking at.
 
@@ -270,26 +272,33 @@ The child does not leave the story to play. They reach into the picture they are
 
 **Purpose.** A gentle "did you notice?" — never an examination.
 
+**A quiz entry *is* an interaction.** There is no quiz-specific schema, because a quiz was only ever a Selection wearing a costume.
+
 ```json
-{
-  "question": "How did Stephen help people?",
-  "hint": "It was something you can eat.",
-  "answers": [
-    { "picture": "bread-basket", "label": "He shared food", "correct": true },
-    { "picture": "gold-coins", "label": "He gave them gold" },
-    { "picture": "scroll", "label": "He wrote them letters" }
-  ]
-}
+"quiz": [
+  {
+    "type": "multiple-choice",
+    "prompt": "How did Stephen help people?",
+    "hint": "It was something you can eat.",
+    "options": [
+      { "picture": "bread-basket", "label": "He shared food", "correct": true },
+      { "picture": "gold-coins", "label": "He gave them gold" },
+      { "picture": "scroll", "label": "He wrote them letters" }
+    ]
+  }
+]
 ```
 
-**Required.** `question`, `hint`, `answers` (2–3, exactly one `correct`)
+This is what makes the section flexible: if ordering the story reinforces the lesson better than a question would, put an `arrange-story` here instead. The section names a *moment*, never a format.
+
+**Required.** `hint` — plus whatever the presentation requires
 **Optional.** `picture`, `note`
 
-**`hint` is required, not optional.** The Kindness Rules promise a hint on the second try. Making the field mandatory means a chapter that breaks that promise cannot be written. See *Quiz Philosophy* below.
+**`hint` is required for any interaction with a correct answer.** The Kindness Rules promise a hint on the second try; making the field mandatory means a chapter that breaks that promise cannot be written.
 
-**UX.** Picture answers are the default. A six-year-old who cannot read fluently must still be able to answer confidently. Two answers is often better than three.
+**UX.** Picture options are the default. A six-year-old who cannot read fluently must still be able to answer confidently. Two options is often better than three. One or two questions per chapter — three is already a test.
 
-**Accessibility.** Answers are never distinguished by colour. Each is a full-width target meeting the 56px minimum with room to spare.
+**Accessibility.** Options are never distinguished by colour. Each is a target meeting the 56px minimum with room to spare.
 
 ---
 
@@ -367,21 +376,68 @@ The child does not leave the story to play. They reach into the picture they are
 
 ---
 
-# Interactions
+# The Interaction Library
 
-Four families. Every one appears inside a story card or as the game — never as a standalone thing the child is sent away to do.
+This is the heart of the model. Interactions are **reusable learning mechanics**, not games. They belong to the lesson, not to a section, and the same one may appear in a story card, the activity, the quiz, or memory verse practice.
 
-## Tap
+The question is never "which quiz should we build?" It is **"which interaction best reinforces this part of the lesson?"**
 
-Two uses, distinguished only by whether anything is marked `correct`.
+## Three layers
 
-**Explore** — nothing correct, nothing to get wrong:
+Choose top-down, and the presentation last:
 
-```json
-{ "type": "tap", "prompt": "Who else is hungry?", "items": ["old-woman", "small-boy"] }
+```
+Learning Goal   →   Interaction Model   →   Presentation
+what the child       what kind of             how it looks
+should be able        thinking that            and feels
+to do                 requires
 ```
 
-**Find** — one or more correct:
+| Learning Goal | Interaction Model | Presentations |
+|---|---|---|
+| **Recall** — remember what happened | **Selection** | Tap · Multiple Choice · True/False · Fill in the Blank · Find the Picture |
+| **Association** — see what belongs together | **Pairing** | Match · Connect · Drag & Drop |
+| **Sequencing** — understand what follows what | **Ordering** | Sequence · Arrange Story · Arrange Words |
+| **Observation** — notice and attend | **Discovery** | Reveal · Hidden Object |
+
+Thirteen presentations. Four models. **One field to write.**
+
+## You only ever write the presentation
+
+```json
+"interaction": { "type": "multiple-choice", … }
+```
+
+The model is derived from the presentation — `multiple-choice` is always Selection — so writing both would be saying the same thing twice.
+
+**The learning goal is not in the file either.** It is how you *decide*, not something the app needs, and a field that nothing reads is a field you would fill in a hundred times for nothing. It lives in this table, where it does its work at the moment you are choosing.
+
+## Choosing well
+
+| If this moment should… | Reach for |
+|---|---|
+| Check the child noticed something | `multiple-choice`, `find-picture` |
+| Confirm one simple fact without options | `true-false` |
+| Reinforce the words of the verse | `fill-blank`, `arrange-words` |
+| Show that two things belong together | `match`, `connect` |
+| Make the child physically place something | `drag` |
+| Rehearse the whole story | `arrange-story` |
+| Slow a child down inside a picture | `reveal`, `hidden-object` |
+| Add a beat without asking anything | `reveal` |
+
+When two would work, choose the gentler one.
+
+---
+
+# The Four Models
+
+## Selection
+
+*Recall. Pick the one that's right.*
+
+Exactly one option is correct. `hint` is required.
+
+**`tap`** — touch the right thing inside the illustration.
 
 ```json
 {
@@ -392,9 +448,61 @@ Two uses, distinguished only by whether anything is marked `correct`.
 }
 ```
 
-## Match and Drag & Drop
+**`multiple-choice`** — pick from option cards.
 
-These are the same data. They differ only in how the child's hand moves.
+```json
+{
+  "type": "multiple-choice",
+  "prompt": "How did Stephen help people?",
+  "hint": "It was something you can eat.",
+  "options": [
+    { "picture": "bread-basket", "label": "He shared food", "correct": true },
+    { "picture": "gold-coins", "label": "He gave them gold" }
+  ]
+}
+```
+
+**`find-picture`** — the same thing with pictures only, laid out as a grid. Honestly a layout variant of `multiple-choice`, kept separate because it is worth naming what you mean.
+
+```json
+{
+  "type": "find-picture",
+  "prompt": "Which one is Stephen?",
+  "hint": "He is carrying the basket.",
+  "options": [{ "picture": "stephen", "correct": true }, "soldier", "merchant"]
+}
+```
+
+**`true-false`** — one statement, two answers. Authoring sugar: write the statement and whether it's true.
+
+```json
+{
+  "type": "true-false",
+  "statement": "Stephen shared food with hungry people.",
+  "answer": true,
+  "hint": "Think about the baskets he carried."
+}
+```
+
+**`fill-blank`** — a sentence with a gap.
+
+```json
+{
+  "type": "fill-blank",
+  "sentence": "Be kind to one ___.",
+  "answer": "another",
+  "others": ["day", "friend"],
+  "hint": "The verse says it twice."
+}
+```
+
+`answer` is the word itself, not a pointer to one — no cross-reference, nothing to mark. The player shuffles `answer` in with `others`.
+
+## Pairing
+
+*Association. These go with those.*
+
+All three share `pairs`, written already paired. The player separates and shuffles.
 
 ```json
 {
@@ -407,35 +515,113 @@ These are the same data. They differ only in how the child's hand moves.
 }
 ```
 
-```json
-{ "type": "drag", "prompt": "Put the bread in the basket", "pairs": [ … ] }
-```
+**`match`** — tap one, tap its partner.
+**`connect`** — draw a line between them.
+**`drag`** — carry one onto the other.
 
-Written already paired. The app separates and shuffles them.
+Identical data. Only the hand moves differently.
 
-**Because the two share one shape, a drag interaction without a tap fallback cannot be written.** Your rule stops being something a developer must remember and becomes a property of the format. `"type": "drag"` requests the drag presentation; everything about the content is identical to `match`, so falling back is free.
+**Because all three share one shape, a drag interaction without a tap fallback cannot be written.** The rule stops being something a developer must remember and becomes a property of the format.
 
-## Sequence
+## Ordering
+
+*Sequencing. What comes first?*
+
+Written in the correct order. The player shuffles. No positions, no indices, no `correctOrder`.
+
+**`sequence`** — put pictures in order.
 
 ```json
 {
   "type": "sequence",
   "prompt": "What happened first?",
-  "items": ["stephen-serving", "stephen-teaching", "friends-remember"],
-  "hint": "Stephen was helping people at the very beginning."
+  "items": ["sunrise", "midday", "sunset"],
+  "hint": "Start when the sun comes up."
 }
 ```
 
-Written in the correct order. The app shuffles. No positions, no indices, no `correctOrder`.
+**`arrange-story`** — the same mechanic using the chapter's own story pictures, on larger cards. Named separately because retelling the story is a different pedagogical act from ordering three objects, and because it is the strongest default for the activity section.
 
-## How Interactions Degrade
+**`arrange-words`** — put phrases back together.
+
+```json
+{
+  "type": "arrange-words",
+  "prompt": "Put the words back together",
+  "words": ["Be kind", "to one another,", "forgiving", "one another."]
+}
+```
+
+`words` rather than `items` because the string shorthand means "a picture" everywhere else. Split at breath points, not by word count.
+
+## Discovery
+
+*Observation. Look closer.*
+
+**Nothing in Discovery is ever wrong.** No correct answers, no hints, no completion requirement. This is the model for slowing a child down inside a picture, and it is the one that most often belongs in a story card.
+
+**`reveal`** — tap things and something happens.
+
+```json
+{
+  "type": "reveal",
+  "prompt": "Who else is hungry?",
+  "items": ["old-woman", "small-boy", "tired-man"]
+}
+```
+
+**`hidden-object`** — find things tucked into the scene. Every item is findable; none is a mistake.
+
+```json
+{
+  "type": "hidden-object",
+  "prompt": "Can you find three loaves?",
+  "items": ["loaf-1", "loaf-2", "loaf-3"]
+}
+```
+
+Discovery never gates progress. A child who taps nothing and moves on has lost nothing.
+
+---
+
+# Shared Vocabulary
+
+Three collection fields across all thirteen presentations:
+
+| Field | Used by | Contains |
+|---|---|---|
+| `items` | Selection (`tap`), Ordering, Discovery | Pictures, in a scene or as cards |
+| `options` | Selection (`multiple-choice`, `find-picture`) | The things to choose between |
+| `pairs` | Pairing | `{ from, to }`, written already paired |
+| `words` | `arrange-words` | Phrases, not pictures |
+
+Plus `prompt` (≤ 8 words), `hint` (required wherever something is correct), and `note`.
+
+`true-false` and `fill-blank` use presentation-specific sugar — `statement`/`answer`, `sentence`/`answer`/`others` — because forcing them into `options` would make the common case worse to write. **The model unifies the runtime; a presentation may offer sugar that normalises to it.** Same principle as sections flattening into cards: optimise the authored form, normalise in one place.
+
+---
+
+# Where Interactions May Appear
+
+| Section | Allowed | Why |
+|---|---|---|
+| Story card | Yes | A beat inside the narrative. Never required to continue. |
+| Activity | Yes | The consolidating interaction. |
+| Quiz | Yes | Each quiz entry *is* an interaction. |
+| Memory verse practice | Yes | Assembly with the answer in reach. |
+| Cover | **No** | The cover is a door, not a task. |
+| Celebration | **No** | The celebration is a gift. Never ask a child to perform for it. |
+
+---
+
+# How Interactions Degrade
 
 Degradation is automatic and never authored. You describe what the interaction *is*; the player decides how it can be performed.
 
 | Condition | What happens |
 |---|---|
-| Small screen | `drag` presents as `match` — tap one, tap the other |
-| Reduced motion | `drag` presents as `match`; transitions become cross-fades |
+| Small screen | `drag` and `connect` present as `match` |
+| Reduced motion | `drag` and `connect` present as `match`; transitions cross-fade |
 | Repeated difficulty | After two unsuccessful attempts, drag switches to tapping, silently |
 | Long pause | The correct target gains a gentle pulse. Nothing is ever taken away |
 | Storage unavailable | The interaction still plays; only the remembering is lost |
@@ -626,7 +812,7 @@ Text sits in consistent, generous space, never overlapping the focal point, and 
 - **Continuity of direction.** Characters move consistently left-to-right through a chapter; reversing direction reads as going back.
 - **Draw the interactive thing to look touchable.** If a card asks the child to tap the bread, the bread is lit, separated, and slightly larger than realism wants.
 - **Scale carries feeling.** Goliath is large because the panel makes him large, not because a caption says so.
-- **Reuse in the game.** Recognition is the mechanic; the game should be a reunion, not a fresh test.
+- **Reuse in the activity.** Recognition is the mechanic; the activity should be a reunion, not a fresh test.
 
 ## Tablet
 
@@ -642,7 +828,7 @@ Every rule fails the build. A broken chapter must never reach a child.
 
 **Pictures** — every `picture` resolves to a file in the chapter's art folder; every art file is referenced by at least one card (catches orphans and misspellings in both directions).
 
-**Correctness** — quiz has 2–3 answers with exactly one `correct`; quiz `hint` present and non-empty; a `tap` with any correct item has a `hint`; `pairs` has at least two; `sequence` has at least three items; every item has a picture or a label.
+**Correctness** — Selection has 2–3 options with exactly one `correct`; every interaction with a correct answer has a non-empty `hint`; `pairs` has at least two; ordering has at least three items; every item has a picture or a label; Discovery has no `correct` and no `hint` (nothing there is ever wrong).
 
 **Kindness** — no field named `score`, `points`, `stars`, `time`, `timeout`, or `attempts` exists anywhere in the schema, so they cannot be introduced by accident.
 
@@ -713,6 +899,6 @@ The structure itself held up. Nothing about writing the chapter felt like fillin
 # Open Questions
 
 - **Chapter length.** Stephen has 11 story cards and feels right. Two or three more chapters will confirm whether 8–14 is the true range.
-- **Two games.** `game` is a single object. If a chapter ever wants two, that is a small schema change — worth waiting for a real case.
+- **Two activities.** `activity` is a single interaction. If a chapter ever wants two, that is a small schema change — worth waiting for a real case.
 - **Grouping the shelf.** `library.json` is a flat list, which is right for ten chapters and wrong for forty. Add groups when the home screen needs them.
 - **The verse translation.** Every chapter says `PLACEHOLDER`, and validation blocks release until they don't. Still needs deciding before launch, not before development.

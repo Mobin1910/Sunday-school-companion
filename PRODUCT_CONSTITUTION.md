@@ -1,6 +1,6 @@
 # Tiny Disciples — Product Constitution
 
-> **Version:** 2.0
+> **Version:** 2.1
 > **Status:** Living Document
 > **Repository:** `tiny-disciples`
 
@@ -8,7 +8,7 @@
 
 # Purpose
 
-**Tiny Disciples** exists to become the most delightful way for children aged **6–7** to revisit Bible stories after Sunday School through comics, interactive storytelling, games, quizzes, and memory verses.
+**Tiny Disciples** exists to become the most delightful way for children aged **6–7** to revisit Bible stories after Sunday School through comics, interactive storytelling, activities, quizzes, and memory verses.
 
 This is **not** a Bible encyclopedia or a church management platform.
 
@@ -157,11 +157,15 @@ Used consistently in code, content, and conversation. No synonyms.
 |---|---|
 | **Story** | The biblical narrative itself (e.g. David and Goliath) |
 | **Chapter** | One complete playable unit built around a Story |
-| **Step** | A stage of the chapter journey (Cover, Interactive Story, Game, Quiz, Memory Verse, Celebration) |
+| **Step** | A stage of the chapter journey (Cover, Interactive Story, Activity, Quiz, Memory Verse, Celebration) |
 | **Card** | A single screen within a Step — the atomic unit the Chapter Player renders |
-| **Engine** | A reusable interaction primitive (Tap, Match, Sequence, Drag & Drop) |
+| **Learning Goal** | What a moment should help the child do — recall, association, sequencing, observation |
+| **Interaction Model** | The kind of thinking an interaction requires — Selection, Pairing, Ordering, Discovery |
+| **Presentation** | How an interaction model looks and behaves on screen — Match, Drag & Drop, Reveal, and so on |
 
 "Lesson" is not a term in this project. Use **Chapter**.
+
+"Game" and "Engine" are not terms in this project. Use **Activity** for the journey step and **Interaction** for the mechanic.
 
 ---
 
@@ -240,7 +244,7 @@ Home
 │      └── Chapter
 │             ├── Cover
 │             ├── Interactive Story
-│             ├── Game
+│             ├── Activity
 │             ├── Quiz
 │             ├── Memory Verse
 │             └── Celebration
@@ -373,26 +377,44 @@ The architecture must not make narration difficult to add later — but Version 
 
 ---
 
-# Game Philosophy
+# Interaction Philosophy
 
-Games exist to reinforce learning.
+**Tiny Disciples is not a collection of games. It is a collection of meaningful interactions that reinforce learning.**
 
-The goal is **not** many different games. It is a small number of highly reusable interaction engines that power a wide variety of chapter-specific experiences.
+The question is never "which game should we build here?" It is **"which interaction best reinforces this part of the lesson?"**
 
-Version 1 implements four engines:
+## Three layers
 
-- **Tap**
-- **Match**
-- **Sequence**
-- **Drag & Drop**
+Every interaction is chosen top-down:
 
-Familiar formats — memory, hidden object, sorting, reveal, pairing — are built as **variations on these engines**, never as separate systems.
+| Layer | Question it answers |
+|---|---|
+| **Learning Goal** | What should this moment help the child do? |
+| **Interaction Model** | What kind of thinking does that require? |
+| **Presentation** | How does it look and feel on screen? |
 
-Rules:
+Choosing a learning goal first is what keeps this pedagogical rather than mechanical. The presentation is the last decision, not the first.
 
-- Every game must directly support its chapter's story.
-- Every Drag & Drop interaction must have a tap-based path to completion, for small screens and imprecise fingers.
-- New engines may be added later, but Version 1 stays intentionally focused.
+## Four interaction models
+
+Version 1 supports four, and only four:
+
+| Model | Learning goal it serves | Presentations |
+|---|---|---|
+| **Selection** | Recall — remembering what happened | Tap, Multiple Choice, True/False, Fill in the Blank, Find the Picture |
+| **Pairing** | Association — seeing what belongs together | Match, Connect, Drag & Drop |
+| **Ordering** | Sequencing — understanding what follows what | Sequence, Arrange Story, Arrange Words |
+| **Discovery** | Observation — noticing and attending | Reveal, Hidden Object |
+
+New **presentations** may be added freely; they are new clothes on an existing model. New **models** are rare, deliberate, and require an argument.
+
+## Rules
+
+- Every interaction must directly support its chapter's story.
+- The same model may appear anywhere — story, activity, quiz, or memory verse. Interactions belong to the lesson, not to a section.
+- Every Drag & Drop must have a tap-based path to completion.
+- No interaction may be required to move forward.
+- No interaction records, reports, or reveals how many attempts a child took.
 
 ---
 
@@ -400,16 +422,20 @@ Rules:
 
 Build reusable systems instead of pages.
 
-The application is built around **one Chapter Player that renders a sequence of typed cards.**
+The application is built around **two players**.
 
-Story, game, quiz, memory verse, and celebration are **card types**, not separate engines. They share navigation, progress, transitions, and persistence.
+**The Chapter Player** renders a sequence of typed cards. Story, activity, quiz, memory verse, and celebration are **card types**, not separate engines. It owns the journey: order, progress, transitions, resume.
+
+**The Interaction Player** renders one interaction, and knows nothing about where it sits. It owns a single interaction's life: attempt, hint, encouragement, completion. It cannot be told which section it is in, because it is never given that information.
+
+That separation is the point. The chapter owns rhythm; the interaction owns mechanics; neither reaches into the other.
 
 Core systems:
 
 - App Shell
 - Chapter Player
-- Card Renderers (story, game, quiz, verse, celebration)
-- Interaction Engines (tap, match, sequence, drag & drop)
+- Card Renderers (story, activity, quiz, verse, celebration)
+- Interaction Player (selection, pairing, ordering, discovery)
 - Progress & Persistence
 - Navigation
 - Buttons & Cards
@@ -512,6 +538,15 @@ This is a living document, but it changes deliberately.
 ---
 
 # Changelog
+
+## 2.1
+
+- Replaced *Game Philosophy* with *Interaction Philosophy*: Tiny Disciples is not a collection of games, it is a collection of meaningful interactions that reinforce learning.
+- Introduced the three-layer model — **Learning Goal → Interaction Model → Presentation** — so interactions are chosen pedagogically rather than mechanically.
+- Replaced four interaction *engines* with four interaction **models** (Selection, Pairing, Ordering, Discovery) and thirteen presentations across them.
+- Replaced the Game Engine with the **Interaction Player**, a standalone renderer that knows nothing about which section it is rendering.
+- Renamed the journey step **Game → Activity**. The journey order is unchanged.
+- Retired "Game" and "Engine" as project vocabulary.
 
 ## 2.0
 

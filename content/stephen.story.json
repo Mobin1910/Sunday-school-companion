@@ -16,10 +16,10 @@
       "picture": "sharing-bread",
       "text": "Every day he shared food with people who were hungry.",
       "interaction": {
-        "type": "tap",
+        "type": "reveal",
         "prompt": "Who else is hungry?",
         "items": ["old-woman", "small-boy", "tired-man"],
-        "note": "Explore only — nothing is wrong here. Each tap gives a smile and a small thank-you animation."
+        "note": "Discovery — nothing here is wrong and nothing is required. Each tap gives a smile and a small thank-you animation."
       }
     },
     {
@@ -64,8 +64,8 @@
     }
   ],
 
-  "game": {
-    "type": "sequence",
+  "activity": {
+    "type": "arrange-story",
     "prompt": "What happened first?",
     "items": [
       "stephen-serving",
@@ -78,21 +78,20 @@
 
   "quiz": [
     {
-      "question": "How did Stephen help people?",
+      "type": "multiple-choice",
+      "prompt": "How did Stephen help people?",
       "hint": "It was something you can eat.",
-      "answers": [
+      "options": [
         { "picture": "bread-basket", "label": "He shared food", "correct": true },
         { "picture": "gold-coins", "label": "He gave them gold" },
         { "picture": "scroll", "label": "He wrote them letters" }
       ]
     },
     {
-      "question": "What did Stephen pray?",
-      "hint": "He was thinking about the people who were unkind.",
-      "answers": [
-        { "picture": "praying-hands", "label": "Please forgive them", "correct": true },
-        { "picture": "storm-cloud", "label": "Please punish them" }
-      ]
+      "type": "true-false",
+      "statement": "Stephen forgave the people who were unkind.",
+      "answer": true,
+      "hint": "Think about what he prayed at the end."
     }
   ],
 
@@ -102,7 +101,7 @@
     "translation": "PLACEHOLDER",
     "picture": "verse-background",
     "practice": {
-      "type": "sequence",
+      "type": "arrange-words",
       "prompt": "Put the words back together",
       "words": [
         "Be kind",
