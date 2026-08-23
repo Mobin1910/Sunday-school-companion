@@ -1,52 +1,36 @@
-import Picture from "@/components/Picture";
+import Link from "next/link";
+
+import { getChapters } from "@/content";
 
 /**
- * Milestone 1 scaffold.
+ * A temporary way in.
  *
- * This is not the home screen — that arrives in Milestone 8. It exists so the
- * provisional palette can be judged on a real device, and so the placeholder
- * system can be seen working before any chapter renders.
+ * The home screen — a shelf of covers a child can read by picture alone —
+ * is Milestone 8. This is a plain list so there is something to click, and
+ * it is deliberately undesigned so that nothing here has to be unbuilt later.
  */
-
-const SWATCHES = [
-  { role: "ground", className: "bg-ground" },
-  { role: "ground-raised", className: "bg-ground-raised" },
-  { role: "ink", className: "bg-ink" },
-  { role: "ink-soft", className: "bg-ink-soft" },
-  { role: "touchable", className: "bg-touchable" },
-  { role: "joy", className: "bg-joy" },
-  { role: "edge", className: "bg-edge" },
-];
-
 export default function Page() {
+  const chapters = getChapters();
+
   return (
-    <main className="mx-auto max-w-xl px-6 py-12">
+    <main className="mx-auto max-w-xl px-6 py-16">
       <h1 className="text-4xl">Tiny Disciples</h1>
       <p className="mt-3 text-lg text-ink-soft">
         Bible stories to read again at home.
       </p>
 
-      <section className="mt-12">
-        <h2 className="text-2xl">Pictures not drawn yet</h2>
-        <div className="mt-4 grid gap-4">
-          <Picture chapter="stephen" name="stephen-serving" />
-          <Picture chapter="stephen" name="sharing-bread" />
-        </div>
-      </section>
-
-      <section className="mt-12">
-        <h2 className="text-2xl">Provisional colours</h2>
-        <ul className="mt-4 grid grid-cols-2 gap-3">
-          {SWATCHES.map(({ role, className }) => (
-            <li key={role} className="flex items-center gap-3">
-              <span
-                className={`size-12 shrink-0 rounded-full border border-edge ${className}`}
-              />
-              <span className="text-base text-ink-soft">{role}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ul className="mt-10 flex flex-col gap-3">
+        {chapters.map((chapter) => (
+          <li key={chapter.slug}>
+            <Link
+              href={`/chapter/${chapter.slug}`}
+              className="flex min-h-16 items-center rounded-card bg-ground-raised px-6 text-xl"
+            >
+              {chapter.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

@@ -40,6 +40,53 @@ body {
 }
 
 /*
+  The scrolling track of a chapter.
+
+  A scrollbar across the bottom of a storybook would break the illusion
+  entirely, and there is nothing for it to tell a child that the page dots
+  do not already say.
+*/
+.reader-track {
+  scrollbar-width: none;
+}
+
+.reader-track::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+  A page settling.
+
+  The illustration is already in place when a page arrives; only the words
+  rise into it, a beat later. That beat is the whole effect — it gives the
+  picture a moment alone before the reading starts.
+*/
+@keyframes breathe {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-active="true"] .breathe {
+  animation: breathe 500ms cubic-bezier(0.2, 0.7, 0.3, 1) 120ms both;
+}
+
+/*
+  Held back only once the reader is actually running. If its JavaScript never
+  arrives, the pages still turn — scroll-snap is native — and every word stays
+  visible. A story that cannot be read is a worse failure than one that
+  arrives without its polish.
+*/
+[data-enhanced="true"] [data-active="false"] .breathe {
+  opacity: 0;
+}
+
+/*
   Calm over clutter, and calm for children who need stillness.
   Nothing becomes unusable — motion simply stops.
 */
