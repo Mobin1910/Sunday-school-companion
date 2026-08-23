@@ -1,6 +1,6 @@
 # Tiny Disciples — Product Constitution
 
-> **Version:** 2.1
+> **Version:** 2.2
 > **Status:** Living Document
 > **Repository:** `tiny-disciples`
 
@@ -236,6 +236,51 @@ Getting it wrong should feel like part of the play, not the end of it.
 
 ---
 
+# The Assistance Ladder
+
+**No child should ever be stuck.**
+
+Every interaction model must answer one question: *how do we help a child who does not know what to do next?* Assistance is not a feature that some interactions have. It is part of what an interaction **is**, and a model that has not answered this question is not finished.
+
+## How help arrives
+
+Help arrives in rungs, and it only ever climbs.
+
+| Rung | What happens |
+|---|---|
+| **Alone** | The child explores. Nothing is offered. |
+| **A word** | A gentle sentence, in the chapter's own voice. |
+| **A clue** | Something changes on screen — the field narrows, or the right place draws the eye. |
+| **Together** | The answer is shown, and the child still performs it themselves. |
+
+Different models climb differently. A pairing puzzle cannot narrow its field the way a question can. But every model climbs.
+
+## Rules
+
+- **Two things call for help: a try that did not work, and stillness.** A child who does not know what to do usually does nothing at all, so time alone is enough to bring help. If the ladder only answered wrong answers, the most stuck children would get the least help.
+
+- **Time may only ever add help. It may never take an opportunity away.** This is what separates assistance from a countdown, and the distinction is absolute. Nothing expires, nothing advances without the child, nothing is lost by taking longer. There are still no timers in this product.
+
+- **Help never retreats.** Once a hint has been given it stays. Taking help back would punish a child for pausing.
+
+- **The ladder is never visible as a ladder.** No counter, no "hint 2 of 4", no record that help was needed. The child should experience the app quietly becoming more helpful, never a measurement of their struggle.
+
+- **The last rung shows, it does not do.** Reveal the answer, then let the child place it, tap it, or say it. An interaction that completes itself leaves a child watching someone else succeed.
+
+- **Arriving with help is arriving.** There is no distinction anywhere in the product — on screen, in storage, or in a child's mind — between a first try and a fourth.
+
+- **The way forward is always open anyway.** No interaction may be required to continue, so a child is never trapped by one. The ladder is generosity offered to a child who wants to succeed, not a lock they must pick.
+
+- **Help is never only visual.** A clue that depends on colour, or on motion a child has asked to stop, is not a clue for everyone.
+
+## Being generous, but not too soon
+
+Help offered too early steals the moment a child was about to have. Help offered too late leaves them defeated. When in doubt, wait longer than feels comfortable — six-year-olds think slowly, and slow thinking is not struggling.
+
+The timings that govern this are in `ARCHITECTURE.md`, and they are guesses until we have watched real children meet them.
+
+---
+
 # Information Architecture
 
 ```
@@ -416,6 +461,7 @@ New **presentations** may be added freely; they are new clothes on an existing m
 - Every Drag & Drop must have a tap-based path to completion.
 - No interaction may be required to move forward.
 - No interaction records, reports, or reveals how many attempts a child took.
+- **Every model implements the Assistance Ladder.** A model that cannot say how it helps a stuck child is not finished, whatever else it does.
 
 ---
 
@@ -539,6 +585,14 @@ This is a living document, but it changes deliberately.
 ---
 
 # Changelog
+
+## 2.2
+
+- Added **The Assistance Ladder**: no child should ever be stuck, and every interaction model must say how it helps one who is.
+- Established that **stillness calls for help as loudly as a wrong answer** — a stuck child usually does nothing rather than something wrong.
+- Drew the line between assistance and pressure: time may only ever add help, never take an opportunity away.
+- Established that the final rung **shows the answer but never performs it**, so the child's success stays their own.
+- Added the ladder as a requirement of every interaction model, not an optional feature.
 
 ## 2.1
 

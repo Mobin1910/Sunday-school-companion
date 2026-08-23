@@ -603,7 +603,17 @@ Three collection fields across all thirteen presentations:
 | `pairs` | Pairing | `{ from, to }`, written already paired |
 | `words` | `arrange-words` | Phrases, not pictures |
 
-Plus `prompt` (≤ 8 words), `hint` (required wherever something is correct), and `note`.
+Plus `prompt` (≤ 10 words), `hint` (required wherever something is correct), and `note`.
+
+## One hint is all you write
+
+The app helps a stuck child in stages — a gentle sentence, then a clue, then the answer shown but not performed. That is the Assistance Ladder in `PRODUCT_CONSTITUTION.md`, and it is part of every interaction.
+
+**You write one sentence.** The `hint` field is the first stage. Every stage after it is worked out from the content you have already written: which option to withdraw, which item to single out, where the sequence begins. There is no list of hints to write, no levels to fill in, and no chapter where you have to imagine four different ways of being stuck.
+
+Write the hint you would say if a child looked up at you — the smallest nudge that would get them moving, not the answer.
+
+If an interaction seems to need more than one sentence of help, that is a signal the interaction is too hard for six, and the fix is a simpler interaction rather than more hints.
 
 `true-false` and `fill-blank` use presentation-specific sugar — `statement`/`answer`, `sentence`/`answer`/`others` — because forcing them into `options` would make the common case worse to write. **The model unifies the runtime; a presentation may offer sugar that normalises to it.** Same principle as sections flattening into cards: optimise the authored form, normalise in one place.
 
@@ -686,12 +696,13 @@ The measure of success is a child saying the words along with the screen — whi
 | Words per card | 15 max, 10 is better |
 | Sentences per card | 2 max |
 | Words per sentence | 10 max |
-| Prompt | 8 words |
-| Question | 10 words |
+| Prompt | 10 words |
 | Answer or item label | 5 words |
 | Celebration message | 15 words |
 
-These are enforced by validation. Warnings while you draft, errors in CI — so writing is never interrupted, and nothing over-long ships.
+Prompt and question used to have separate limits. Once a quiz became an interaction there was only one field, and the Interaction Player deliberately cannot know it is in a quiz — so there is one field and one limit.
+
+These are enforced by validation. A chapter still being written gets warnings; a chapter listed in `library.json` gets errors. So drafting is never interrupted, and nothing over-long ships.
 
 ## Vocabulary
 

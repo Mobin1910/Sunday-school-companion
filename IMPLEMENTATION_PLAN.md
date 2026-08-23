@@ -108,12 +108,16 @@ The roadmap for Version 1: one Sunday School class, ten chapters, children aged 
 - `<InteractionPlayer interaction onComplete />` — exactly those two props.
 - The registry, with one model in it.
 - Selection model plus the `multiple-choice` presentation with picture options.
-- The kindness behaviours: wrong answers soften and stay, the hint appears on the second attempt, nothing turns red, nothing is removed, no score exists anywhere.
+- The kindness behaviours: wrong answers soften and stay, nothing turns red, nothing is removed, no score exists anywhere.
+- **The full Assistance Ladder for Selection**, and the shared timing constants that drive it. This is the milestone that settles the `assist` signature for every model that follows, so it is designed here and copied there.
 
 **Acceptance criteria**
 - Both of Stephen's quiz cards play.
 - Answering wrongly three times reaches the right answer with more help each time and no negative signal at any point.
-- Grepping the codebase for `score`, `points`, `attempts` outside the Selection component's internals returns nothing.
+- **A child who touches nothing is helped anyway** — the ladder climbs on stillness, not only on wrong answers.
+- The final rung reveals the answer but never taps it; `onComplete` is only ever called by the child.
+- Leaving the card and returning does not find the answer already given away.
+- Grepping the codebase for `score`, `points`, `attempts` outside the Selection component's internals returns nothing. The same is true of the rung.
 - The Interaction Player receives no prop that could tell it which section it is in.
 
 **Dependencies.** Milestone 3.

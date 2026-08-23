@@ -127,6 +127,53 @@ What is deliberately **not** in it:
 
 **Attempt count is internal state that never leaves the component.** It drives the hint and nothing else — not a callback, not a store, not persistence. The Kindness Rules become an architectural property: a number that never escapes cannot be displayed, stored, or aggregated later by someone who did not read this document.
 
+## Assistance
+
+The Assistance Ladder (see `PRODUCT_CONSTITUTION.md`) is part of the model contract, not something layered on afterwards.
+
+### Where the state lives
+
+The rung is **internal state of the Interaction Player, exactly like the attempt count.** It never appears in a prop, a callback, a store, or storage. `onComplete()` takes no arguments and never will, so nothing downstream can know — or later display — that a child needed help.
+
+This is the same guarantee as the attempt count, and for the same reason: a number that cannot escape cannot become a score.
+
+### What advances a rung
+
+Whichever comes first:
+
+| Trigger | Threshold |
+|---|---|
+| An action that did not work | Second one |
+| No interaction at all | 20 seconds |
+| Each rung after the first | Another attempt, or another 15 seconds |
+
+These numbers are guesses. They are the first thing to tune from play-testing, and they should be easy to change in one place — a single `ASSISTANCE` constant, not values scattered through four models.
+
+Two constraints on the timers:
+
+- They only ever **add**. No timer removes an option, advances a card, or ends anything. Assistance timers are the sole exception to "no timers", and they earn it by only ever being generous.
+- They **pause when the card is not on screen**. A child who wanders off and comes back should not return to the answer already revealed.
+
+### How each model climbs
+
+Every model implements the same four rungs. What changes is what a clue can be.
+
+**Selection** — *Alone* · a word · **narrow the field**: one wrong option quietly withdraws, leaving fewer to choose between · **together**: the correct option draws the eye, and the child still taps it.
+
+**Pairing** — *Alone* · a word · **narrow the field**: one item is picked out as the place to start, turning "match everything" into "find this one's partner" · **together**: that item's partner is drawn out too, and the child still makes the join.
+
+**Ordering** — *Alone* · a word · **narrow the field**: the first position is settled, so the sequence has a beginning · **together**: the next correct piece lifts slightly, and the child still places it.
+
+**Discovery** — nothing here can be wrong, so the ladder is not about correctness. It is about noticing: after stillness, one thing not yet found draws attention; after more, the rest do too. **There is no reveal rung, because there is nothing to reveal**, and Discovery never gates anything.
+
+### Rules the implementation must hold
+
+- Help never retreats. A rung once reached stays reached for as long as the card is open.
+- Withdrawing a wrong option is a removal, not a disabling. Nothing is left on screen greyed out — `DESIGN_SYSTEM.md` says disabled states do not exist.
+- The final rung reveals but never completes. No model may call `onComplete()` on the child's behalf.
+- Every clue has a non-visual equivalent, and every clue that moves has a still version under `prefers-reduced-motion`.
+- No clue relies on colour alone.
+
 ## Registry architecture
 
 ```
@@ -154,13 +201,15 @@ interface InteractionModel<T> {
   schema: ZodSchema<T>;                          // validates content at build
   presentations: Record<string, Component<T>>;   // the visual variants
   defaultPresentation: string;
+  assist: /* signature settled in Milestone 4 */;
 }
 ```
 
-Four properties worth noting:
+Five properties worth noting:
 
 - **The schema ships with the model.** Content validation and rendering cannot drift apart, because adding a model without a schema is a type error.
-- **Degradation is not in the contract.** Only Pairing degrades, so the drag → match fallback lives inside `pairing/` as that model's own business. Adding it to all four models would be symmetry for its own sake.
+- **Assistance is in the contract**, because every model needs it and the constitution says a model without it is unfinished. Putting it in the type means a new model cannot be added without answering how it helps a stuck child. Its exact signature is deliberately left open until Selection is built — designing it against zero implementations is how contracts end up wrong.
+- **Degradation is not in the contract.** Only Pairing degrades, so the drag → match fallback lives inside `pairing/` as that model's own business. Adding it to all four models would be symmetry for its own sake — the opposite call to assistance, and for the opposite reason.
 - **The registry is a static object**, statically imported. Tree-shakeable, fully typed, no runtime resolution — which matters for the bundle budget and the offline story.
 - **Model logic and presentation are separate layers.** `Selection.tsx` decides what correct means and when the hint appears; `MultipleChoice.tsx` decides how it looks. A new presentation inherits all the behaviour for free.
 
