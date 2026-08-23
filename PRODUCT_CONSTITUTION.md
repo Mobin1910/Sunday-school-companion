@@ -1,6 +1,6 @@
 # Tiny Disciples — Product Constitution
 
-> **Version:** 2.2
+> **Version:** 2.3
 > **Status:** Living Document
 > **Repository:** `tiny-disciples`
 
@@ -242,18 +242,78 @@ Getting it wrong should feel like part of the play, not the end of it.
 
 Every interaction model must answer one question: *how do we help a child who does not know what to do next?* Assistance is not a feature that some interactions have. It is part of what an interaction **is**, and a model that has not answered this question is not finished.
 
+## Recovery comes before help
+
+**Before the app helps a child, it notices them.**
+
+Recovery is the bridge between a try that did not work and the help that follows. Its job is to protect confidence, not to correct behaviour, and it always comes first:
+
+> a try that did not work → **Recovery** → the ladder
+
+Without it, help arrives as a verdict. With it, help arrives as company.
+
+**Recovery is mostly not words.** This product is visually led and has no narration, so a child who cannot yet read fluently would never receive a written kindness — and those are exactly the children who need it most. Recovery is carried by warmth and motion first; words reinforce it for those who can read them.
+
+So Recovery has two forms:
+
+- **Silent Recovery**, on a first try that did not work. The choice settles gently back, the card warms for a moment, and nothing is said. A teacher usually says nothing the first time. Silence is not coldness — it is a mistake being treated as unremarkable.
+- **Spoken Recovery**, from the second onwards. A short line arrives before the help does.
+
+### What Recovery may never do
+
+- **Never name the outcome.** "Almost", "Good try", "Not quite" and "Oops" all tell a child something failed, however warmly. Recovery does not mention the attempt.
+- **Never praise the person.** "You're so clever" and "You're doing great" attach a label a child then has to protect, and children protect labels by avoiding hard things. Recovery speaks about effort and about what happens next.
+- **Never repeat itself.** The same phrase every time stops meaning anything, and worse, it becomes a tally — a child who hears it five times has been told five times. In a product with no scores, nothing may keep count out loud.
+- **Never outshine success.** Recovery is always quieter, smaller and shorter than arriving. If encouragement ever feels as good as getting there, we have given a child a reason to be wrong.
+- **Never say "but".**
+
+### What Recovery is for
+
+It is recognition that a child is learning, not applause for being wrong. The three things it may do are name the effort, join the child, or move forward — and as the ladder climbs it moves from *noticing* toward *company*, never toward louder praise.
+
 ## How help arrives
 
-Help arrives in rungs, and it only ever climbs.
+Help arrives in rungs, and it only ever climbs. Recovery precedes every rung after the first.
 
 | Rung | What happens |
 |---|---|
-| **Alone** | The child explores. Nothing is offered. |
-| **A word** | A gentle sentence, in the chapter's own voice. |
-| **A clue** | Something changes on screen — the field narrows, or the right place draws the eye. |
-| **Together** | The answer is shown, and the child still performs it themselves. |
+| **Alone** | The child explores. Nothing is offered. A first miss gets silent Recovery. |
+| **A word** | Recovery, then a gentle sentence in the chapter's own voice. |
+| **A clue** | Recovery, then something changes on screen — the field narrows, or the right place draws the eye. |
+| **Together** | Recovery, then the answer is shown, and the child still performs it themselves. |
+
+**Two voices are speaking.** Recovery is the product's voice — the same patient teacher in every chapter, written once, never authored per chapter. The hint is the story's voice, written by the chapter's author about this particular moment.
+
+**Stillness gets Recovery too, in its own register.** A child who has not acted has not failed at anything, so nothing may imply they have. Not "Need help?" — which asks a child to admit something — but "Let's look together", offered as though it were the plan all along.
 
 Different models climb differently. A pairing puzzle cannot narrow its field the way a question can. But every model climbs.
+
+## What the ladder is really doing
+
+A patient teacher who sees a child struggling does not deliver progressively more information. They lean in. They go quiet. They move a distracting thing off the table. They rest a finger near the right place.
+
+Almost none of that is telling. It is **attention and company**. The ladder should feel like someone sitting closer, not like a machine releasing more of the answer.
+
+From which follows the rule that governs all the others:
+
+> **Help changes the task, never the child.**
+
+The screen quietly becomes easier. The child is never told they need help, never told they were wrong, and never told anything about themselves at all.
+
+## What each model's help is for
+
+The four ladders share a promise — help always comes, it always climbs, it never judges. They do not share a purpose, and flattening them into one shape would lose the thing that matters.
+
+| Model | What being stuck feels like | What help is for |
+|---|---|---|
+| **Selection** | *"I might get this wrong."* | Taking the fear out of choosing |
+| **Pairing** | *"There's too much here."* | Shrinking the world to one thing |
+| **Ordering** | *"I don't know where to start."* | Giving the story a beginning so it can carry |
+| **Discovery** | *"Is there anything here?"* | Inviting, never assisting |
+
+**Ordering always helps from the front.** Settle the beginning, never reveal the end. A story with a beginning is far less frightening than a pile of pieces.
+
+**Discovery's ladder goes quiet.** Nothing there can be wrong, so its help is an invitation rather than assistance — and an invitation repeated forever becomes nagging. It offers, it offers once more, and then it lets the child be. This is the only place in the product where help retreats, and it retreats because continuing would stop being kind.
 
 ## Rules
 
@@ -585,6 +645,19 @@ This is a living document, but it changes deliberately.
 ---
 
 # Changelog
+
+## 2.3
+
+- Added **Recovery**: before the app helps a child, it notices them. A try that did not work is met with acknowledgement before any assistance arrives.
+- Established that **Recovery is mostly not words** — a visually led product with no narration cannot deliver kindness in text to children who cannot yet read it.
+- Split Recovery into **silent** (a first miss, motion only) and **spoken** (from the second onwards).
+- Ruled out language that names the outcome ("Almost", "Good try") or praises the person ("You're doing great") in favour of naming effort, joining the child, or moving forward.
+- Established that **Recovery may never repeat**, because a repeating phrase becomes a tally of mistakes in a product that has no scores.
+- Established that **Recovery must always feel quieter than success**, so that encouragement never becomes a reason to be wrong.
+- Named the two voices: Recovery is the product's, the hint is the story's.
+- Added *What the ladder is really doing* — help changes the task, never the child.
+- Gave each interaction model its own purpose for help: Selection removes fear, Pairing removes overwhelm, Ordering restores momentum, Discovery invites.
+- Established that **Ordering always helps from the front**, and that **Discovery's ladder goes quiet** rather than nagging.
 
 ## 2.2
 

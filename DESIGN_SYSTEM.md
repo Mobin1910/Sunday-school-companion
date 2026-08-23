@@ -94,6 +94,87 @@ Rules:
 
 ---
 
+# Recovery
+
+The product's own voice, spoken in every chapter by the same patient teacher. Written once here, never authored per chapter — chapter authors write hints, not encouragement.
+
+Principles are in `PRODUCT_CONSTITUTION.md`. This is the library and how it moves.
+
+## The library
+
+Three pools, matched to how the ladder climbs: from *noticing* a child, to *joining* them, to *moving on together*. Never toward louder praise.
+
+**Noticing** — first spoken Recovery. Names the effort, never the outcome.
+
+- You're thinking
+- Good thinking
+- You're working it out
+- Nice thinking
+- You're figuring it out
+
+**Joining** — as the ladder climbs. The child stops being alone with it.
+
+- Let's look together
+- Let's find it together
+- We can look again
+- Let's have another look
+
+**Moving on** — alongside a clue or the reveal. Forward-facing, never backward.
+
+- Let's try another way
+- Here's something that helps
+- Let's look at this one
+- Try this one
+
+**Beginning** — for stillness, not for a mistake. A child who has done nothing has failed at nothing, so nothing may imply otherwise.
+
+- Let's start together
+- I'll help you begin
+- Shall we look?
+- Let's begin here
+
+## Choosing a line
+
+- Draw from the pool matched to the rung.
+- Never repeat a line within one interaction.
+- Shuffle each pool and draw without replacement across a chapter, so a phrase only returns once the others have been used.
+- Maximum five words. These are read at a glance or not at all.
+- No exclamation marks. Warmth comes from the words, and an exclamation mark makes a small kindness shout.
+
+## How Recovery moves
+
+**Recovery settles. Success blooms.** That contrast is the whole grammar, and it must survive every future change — if the two ever feel alike, arriving stops meaning anything.
+
+| Moment | Motion | Duration |
+|---|---|---|
+| The tap itself | Depress and lift — acknowledged, never evaluated | 150 ms |
+| A choice that did not stay | Settles back where it came from. Ease-out, no bounce | 250 ms |
+| The card | Warms almost imperceptibly, then returns | 1000 ms |
+| Recovery words | Fade in, rise 8px, hold, fade out | 400 ms in |
+| The remaining choices | One shared, tiny breath — 1 → 1.02 → 1 | 600 ms |
+| Success, for contrast | Rises and opens outward, larger and longer than any of the above | — |
+
+**Never:** shake, flash, red, cross marks, bounce, or a pop. A bounce reads as an error sound made visible. Red is a verdict.
+
+Under `prefers-reduced-motion`, settling and warming become simple cross-fades. The words still arrive; only the movement stops.
+
+## Timing
+
+Help must never be causally adjacent to the mistake. A hint that appears the instant a wrong answer is tapped reads as a response *to that answer*. A beat of silence first, and it reads as company.
+
+```
+tap acknowledged        150 ms
+choice settles back     250 ms
+quiet                   600 ms   ← this pause is the whole effect
+Recovery arrives        400 ms
+quiet                   800 ms
+the ladder's help
+```
+
+Roughly two seconds from mistake to hint. That is what a person feels like. Anything faster is a machine reacting.
+
+---
+
 # Illustration
 
 - One coherent hand-drawn style across all chapters — visible texture, imperfect line, warm palette.

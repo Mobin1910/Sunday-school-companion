@@ -137,6 +137,16 @@ The rung is **internal state of the Interaction Player, exactly like the attempt
 
 This is the same guarantee as the attempt count, and for the same reason: a number that cannot escape cannot become a score.
 
+### Recovery
+
+Recovery precedes every rung after the first (see `PRODUCT_CONSTITUTION.md`; the phrase library and its motion are in `DESIGN_SYSTEM.md`).
+
+- It lives in **one shared module**, not in the four models. It is the product's voice and must sound identical everywhere; four copies would drift into four teachers.
+- Phrase selection is **draw-without-replacement from a shuffled pool per rung**, with the used set held for the length of a chapter. A phrase only returns once its pool is exhausted. This is not decoration: a line that repeats becomes a tally of mistakes, and nothing in this product may keep count out loud.
+- The shuffle is seeded per session, not per card, so a child does not meet the same line twice in a row across two interactions.
+- **A first miss gets silent Recovery** — motion only, no words. Words begin at the second.
+- Recovery's own state, like the rung and the attempt count, never leaves the Interaction Player.
+
 ### What advances a rung
 
 Whichever comes first:
