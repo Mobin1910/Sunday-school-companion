@@ -1,0 +1,120 @@
+{
+  "title": "Stephen",
+  "reference": "Acts 6–7",
+
+  "cover": {
+    "picture": "cover",
+    "note": "Stephen mid-smile, carrying a basket of bread. Warm morning light. He should look like someone you would want to sit next to."
+  },
+
+  "story": [
+    {
+      "picture": "stephen-serving",
+      "text": "Stephen loved to help people."
+    },
+    {
+      "picture": "sharing-bread",
+      "text": "Every day he shared food with people who were hungry.",
+      "interaction": {
+        "type": "tap",
+        "prompt": "Who else is hungry?",
+        "items": ["old-woman", "small-boy", "tired-man"],
+        "note": "Explore only — nothing is wrong here. Each tap gives a smile and a small thank-you animation."
+      }
+    },
+    {
+      "picture": "stephen-teaching",
+      "text": "Stephen told everyone the good news about Jesus."
+    },
+    {
+      "picture": "stephen-glowing",
+      "text": "When Stephen spoke, his face shone like an angel."
+    },
+    {
+      "picture": "crowd-turning",
+      "text": "But some people did not want to listen."
+    },
+    {
+      "picture": "unkind-words",
+      "text": "They said unkind things that were not true."
+    },
+    {
+      "picture": "stephen-looks-up",
+      "text": "Stephen was not afraid. He looked up and saw heaven.",
+      "note": "This is the turning point. Light from above, Stephen calm, the crowd small and out of focus at the edges. We never show the stoning."
+    },
+    {
+      "picture": "stephen-praying",
+      "text": "He prayed, “Jesus, please forgive them.”",
+      "note": "Stephen's forgiveness is the heart of this chapter. Give this card the most space."
+    },
+    {
+      "picture": "open-sky",
+      "text": "Then Stephen went home to be with Jesus.",
+      "note": "Aftermath, not event. Empty warm sky, one basket of bread left on the ground. Nothing frightening on screen."
+    },
+    {
+      "picture": "friends-remember",
+      "text": "His friends were sad. But they remembered how kind he was."
+    },
+    {
+      "picture": "sharing-bread-again",
+      "text": "So they kept helping people, just like Stephen did.",
+      "note": "The chapter must not end on grief. This card resolves it — kindness continues."
+    }
+  ],
+
+  "game": {
+    "type": "sequence",
+    "prompt": "What happened first?",
+    "items": [
+      "stephen-serving",
+      "stephen-teaching",
+      "stephen-looks-up",
+      "friends-remember"
+    ],
+    "hint": "Stephen was helping people at the very beginning."
+  },
+
+  "quiz": [
+    {
+      "question": "How did Stephen help people?",
+      "hint": "It was something you can eat.",
+      "answers": [
+        { "picture": "bread-basket", "label": "He shared food", "correct": true },
+        { "picture": "gold-coins", "label": "He gave them gold" },
+        { "picture": "scroll", "label": "He wrote them letters" }
+      ]
+    },
+    {
+      "question": "What did Stephen pray?",
+      "hint": "He was thinking about the people who were unkind.",
+      "answers": [
+        { "picture": "praying-hands", "label": "Please forgive them", "correct": true },
+        { "picture": "storm-cloud", "label": "Please punish them" }
+      ]
+    }
+  ],
+
+  "verse": {
+    "text": "Be kind to one another, forgiving one another.",
+    "reference": "Ephesians 4:32",
+    "translation": "PLACEHOLDER",
+    "picture": "verse-background",
+    "practice": {
+      "type": "sequence",
+      "prompt": "Put the words back together",
+      "words": [
+        "Be kind",
+        "to one another,",
+        "forgiving",
+        "one another."
+      ]
+    }
+  },
+
+  "celebration": {
+    "picture": "celebration",
+    "message": "You learned how Stephen stayed kind, even when it was hard."
+  }
+}

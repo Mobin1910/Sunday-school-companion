@@ -31,13 +31,16 @@ The application is fully static. Every network request at runtime is for the app
 # Content Pipeline
 
 ```
-content/chapters/*.json
+content/*.story.json
         │
         ▼
   schema validation  ──── fails ────▶ build fails
         │
         ▼
    typed content module
+        │
+        ▼
+   section flattening   (cover + story + game + quiz + verse + celebration → one card sequence)
         │
         ▼
     Chapter Player
@@ -54,19 +57,22 @@ Rules:
 
 ## Chapter shape
 
-A chapter is metadata plus a flat, ordered list of typed cards. Journey steps are derived from card type, not stored.
+A chapter file is authored as **named sections mirroring the journey**, not as one flat array. The player flattens them into a single card sequence at load.
 
 ```
 Chapter
-├── schema, title, reference
-└── cards[]
-      ├── type: cover | story | game | quiz | verse | practice | celebration
-      ├── art
-      ├── caption
-      └── interaction?  (tap | pair | sequence)
+├── title, reference
+├── cover        { picture }
+├── story        [ { picture, text?, interaction? } … ]
+├── game         { type, prompt, … }
+├── quiz         [ { question, hint, answers } … ]
+├── verse        { text, reference, translation, practice? }
+└── celebration  { message, picture? }
 ```
 
-Every card type is rendered by the same Chapter Player through a card renderer. Adding a card type means adding a renderer, not an engine.
+**The authored format and the runtime format differ deliberately.** Sections optimise for the human writing and reviewing the file; flattening gives the player one uniform loop with no special cases. That normalisation happens in exactly one place, at load.
+
+Cards carry no `type` field — the section supplies it. Every card is rendered by the same Chapter Player through a card renderer. Adding a card kind means adding a renderer, not an engine.
 
 **`CONTENT_MODEL.md` is the normative specification** for the schema, card types, interaction shapes, and validation rules. This section is a summary; where the two differ, `CONTENT_MODEL.md` wins.
 
@@ -91,7 +97,9 @@ Four engines, shared by all card types that need interaction:
 
 Build order: Tap → Match → Sequence → Drag & Drop.
 
-Match and Drag & Drop consume the **same content shape** (`pair` — see `CONTENT_MODEL.md`), differing only by input modality. This makes the tap fallback structurally guaranteed rather than a rule to remember: a drag interaction without a tap fallback is not expressible.
+Match and Drag & Drop consume the **same content shape** (`pairs` — see `CONTENT_MODEL.md`), differing only by input modality. This makes the tap fallback structurally guaranteed rather than a rule to remember: a drag interaction without a tap fallback is not expressible.
+
+Degradation is never authored. The player selects the input modality from screen size, motion preference, and repeated difficulty.
 
 Memory, hidden object, sorting, reveal, and pairing are **configurations** of these engines, never new engines.
 
