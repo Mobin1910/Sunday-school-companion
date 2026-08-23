@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+  Provisional tokens.
+
+  Colour should be derived from the artwork, and the artwork does not exist
+  yet. These are deliberately temporary and will be replaced in Milestone 13.
+
+  They are named by ROLE, never by hue, so that replacement is a change of
+  values and not a refactor. Nothing in the app should ever refer to "orange".
+
+  Every pairing below meets the contrast thresholds in DESIGN_SYSTEM.md:
+    ink on ground          11.92:1
+    ink-soft on ground      5.69:1
+    ground-raised on touchable  4.64:1
+    ground-raised on joy        5.33:1
+*/
+@theme {
+  --color-ground: #fbf3e8;
+  --color-ground-raised: #fffdf9;
+  --color-ink: #3a2e28;
+  --color-ink-soft: #6e5d53;
+  --color-touchable: #c0512b;
+  --color-joy: #27784c;
+  --color-edge: #eadfcf;
+
+  --radius-card: 1.5rem;
+
+  --font-sans:
+    ui-rounded, "SF Pro Rounded", "Nunito", "Quicksand", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+
+  /* A child's thumb should never zoom the page by accident. */
+  -webkit-text-size-adjust: 100%;
+}
+
+/*
+  Calm over clutter, and calm for children who need stillness.
+  Nothing becomes unusable — motion simply stops.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
