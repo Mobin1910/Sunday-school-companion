@@ -1,6 +1,6 @@
 # Tiny Disciples — Product Constitution
 
-> **Version:** 2.3
+> **Version:** 2.4
 > **Status:** Living Document
 > **Repository:** `tiny-disciples`
 
@@ -341,6 +341,72 @@ The timings that govern this are in `ARCHITECTURE.md`, and they are guesses unti
 
 ---
 
+# What We Celebrate
+
+**We celebrate what a child did, never whether they happened to know the answer.**
+
+Correctness is the least interesting thing about a six-year-old reading a Bible story. What is worth recognising is that they looked closely, stayed with something hard, tried again, noticed something, or reached the end.
+
+## The behaviours
+
+| We celebrate | Because |
+|---|---|
+| **Curiosity** | They touched something they did not have to |
+| **Careful looking** | They noticed what was there |
+| **Persistence** | They stayed with it |
+| **Trying again** | They came back after something did not work |
+| **Finishing** | They reached the end of the story |
+| **Discovering** | They found something for themselves |
+
+**Kindness is not on this list, and its absence is deliberate.** The app cannot see whether a child is kind, and pretending to would be the most artificial thing we could do. Kindness is celebrated *in the story* — Stephen was kind, and the child recognises it — never as a behaviour we claim to have observed.
+
+## Warmth is constant. Words are responsive.
+
+A child who needed help did not fail. They kept going. So they are never celebrated less.
+
+But nor are they celebrated *more*. Warmth that scales with struggle builds a reason to struggle, and it quietly tells a child *we know that was hard for you*, which is condescension wearing a kind face.
+
+So the size, length and volume of a celebration never change. Only what it names changes:
+
+- Arrived alone → **capability**
+- Arrived after trying → **persistence**
+- Arrived after help → **partnership**
+
+Three honest recognitions of three different journeys, none of them louder than the others, none of them mentioning what went wrong.
+
+## Being real rather than positive
+
+Children detect insincerity faster than adults do, and praise that does not fit the act teaches them the praise means nothing.
+
+- **Specificity is the whole of sincerity.** "You put them all in order" proves someone was watching. "Great job!" proves only that a machine fired. If a celebration could be pasted onto any other moment, it is not a celebration.
+- **Proportion.** Small things get small acknowledgement. Tapping a picture is not an achievement and treating it as one is embarrassing for everyone.
+- **Restraint is not stinginess — it is what makes the real moments land.** Celebrating everything devalues the currency. A child who is celebrated constantly stops hearing it, and a child rewarded heavily for something they already enjoyed enjoys it less afterwards.
+- **Never repeat.** As with Recovery, a phrase that recurs becomes a counter.
+- **Celebrate attention, not ability.** "You noticed" is available to every child. "You're so clever" is not, and it hands a child a label they will avoid hard things to protect.
+
+## Where celebration happens
+
+**In the moment, where the behaviour was.** What a child did is known only inside the interaction they did it in, and it stays there — a summary at the end of a chapter would be a report card, and this product does not issue those.
+
+**At the end of the chapter**, one fuller moment, about the story and what the child did with it. This one is written by the chapter's author, because it is the only celebration that can say something true about *this* story.
+
+**A discovery celebrates itself.** The reward for curiosity is the thing you found. Nothing counts how many a child found, and finding one and moving on is a complete experience.
+
+## What we never celebrate
+
+- Being right first time
+- Being fast
+- Doing it without help
+- Finding all of something
+- Completing everything
+- Coming back — re-reading is a private pleasure, and noticing it out loud would make it feel watched
+
+## Keepsakes, not trophies
+
+The memory verse a child collects is **the thing they learned**, not a token they earned. We keep what a child made. We never keep what a child scored.
+
+---
+
 # Information Architecture
 
 ```
@@ -645,6 +711,16 @@ This is a living document, but it changes deliberately.
 ---
 
 # Changelog
+
+## 2.4
+
+- Added **What We Celebrate**: behaviours, never correctness — curiosity, careful looking, persistence, trying again, finishing, discovering.
+- Established that **warmth is constant and only the words respond**: arriving alone names capability, arriving after trying names persistence, arriving after help names partnership. A child who needed help is never celebrated less, and never more — warmth that scales with struggle builds a reason to struggle.
+- Ruled kindness out of the celebrated behaviours, because the app cannot observe it. Kindness is celebrated in the story, never claimed as something we detected.
+- Established that **specificity is the whole of sincerity**, and that restraint is what lets the real moments land.
+- Established that behaviour is celebrated **where it happened**, never summarised at the end of a chapter, because a summary is a report card.
+- Added an explicit list of what is never celebrated, including coming back — re-reading is a private pleasure and noticing it would make it feel watched.
+- Named the distinction between **keepsakes and trophies**: we keep what a child made, never what a child scored.
 
 ## 2.3
 

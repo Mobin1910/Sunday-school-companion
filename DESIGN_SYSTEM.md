@@ -175,6 +175,61 @@ Roughly two seconds from mistake to hint. That is what a person feels like. Anyt
 
 ---
 
+# Celebration
+
+What the product says when a child arrives. Principles are in `PRODUCT_CONSTITUTION.md`; this is the library and how it moves.
+
+## Three pools, one volume
+
+Which pool is chosen depends on how the child arrived. **How much warmth they get does not.** Same size, same duration, same weight — only the words differ.
+
+**Capability** — arrived on their own.
+
+- You found it
+- You spotted it
+- You did it
+- That's the one
+
+**Persistence** — arrived after more than one try. Never mentions what did not work.
+
+- You kept looking
+- You stayed with it
+- You didn't give up
+- You worked it out
+
+**Partnership** — arrived after help. Honest about the company, never about the need for it.
+
+- We found it together
+- We got there together
+- We did that together
+
+## Choosing a line
+
+- Never repeat within a chapter until the pool is exhausted, exactly as with Recovery.
+- Maximum five words.
+- No exclamation marks.
+- Never name what went wrong, and never use "but".
+
+## Discovery has no completion line
+
+Nothing there can be wrong and nothing is required, so there is no arriving. Each reveal is its own small delight, and a child who finds one thing and moves on has had a complete experience. **Never count what was found.**
+
+## How celebration moves
+
+**Recovery settles. Celebration blooms.** Recovery moves down and inward; celebration moves up and outward. The two must never be mistaken for each other, or arriving stops meaning anything.
+
+| Moment | Motion | Duration |
+|---|---|---|
+| Interaction complete | The answer rises slightly and opens; a soft warmth spreads once | 500 ms |
+| Words | Fade in and rise 8px, a beat after the motion begins | 400 ms |
+| Chapter celebration | Fuller — the one moment in a chapter that earns real motion | 600–1200 ms, spring |
+
+Every interaction's celebration is the same size regardless of pool. The chapter's celebration is the only larger one, and restraint everywhere else is what lets it land.
+
+**Never:** confetti, stars, points, trophies, badges, counters, or anything that accumulates. Under `prefers-reduced-motion`, the bloom becomes a gentle cross-fade and the warmth still spreads.
+
+---
+
 # Illustration
 
 - One coherent hand-drawn style across all chapters — visible texture, imperfect line, warm palette.

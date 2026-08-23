@@ -147,6 +147,16 @@ Recovery precedes every rung after the first (see `PRODUCT_CONSTITUTION.md`; the
 - **A first miss gets silent Recovery** — motion only, no words. Words begin at the second.
 - Recovery's own state, like the rung and the attempt count, never leaves the Interaction Player.
 
+### Celebration
+
+Which of the three celebration pools is used depends on how the child arrived — alone, after trying, or after help. That is derived from the attempt count and the rung.
+
+**Both of those are sealed inside the Interaction Player, so the choice is made there and only there.** The wording is chosen at the moment of completion and never travels. `onComplete()` still takes no arguments.
+
+This is why behaviour is celebrated where it happened rather than summarised at the end of a chapter: a summary would need the data to escape, and the moment it escapes it becomes a report card. The constraint and the right design agree.
+
+The chapter's own celebration card knows nothing about any of this, and needs to know nothing. It speaks about the story.
+
 ### What advances a rung
 
 Whichever comes first:
