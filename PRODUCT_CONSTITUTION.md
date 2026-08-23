@@ -45,6 +45,7 @@ The constitution governs **why** and **what**. It deliberately does not contain 
 | `CONTENT_MODEL.md` | The chapter schema — card types, interactions, validation rules |
 | `ARCHITECTURE.md` | Technical structure, performance budgets, offline strategy, persistence |
 | `DESIGN_SYSTEM.md` | Tokens, typography, colour, motion specs, accessibility metrics, copy rules |
+| `DESIGN_NOTES.md` | Visual judgements deferred until real artwork exists — observations, not decisions |
 
 Where the constitution states a principle, the companion documents state the measurable rule that enforces it.
 

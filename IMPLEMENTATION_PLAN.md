@@ -299,10 +299,13 @@ The roadmap for Version 1: one Sunday School class, ten chapters, children aged 
 
 **Why this exists.** Colour should come from the artwork, and until now there hasn't been any. This is where the provisional palette is replaced and the product stops looking like a prototype. It is also the first honest test of the performance budget, because real illustrations are the payload.
 
+**This is the milestone that acts on `DESIGN_NOTES.md`.** Every visual judgement deferred while building against placeholders — the weight of illustrations against text, the typeface, how navigation should feel, the warmth of the spacing — is collected there and is settled here, not before. Work through that document as part of this milestone.
+
 **Goal.** Stephen looks like the product, not the scaffolding.
 
 **Deliverables**
 - Stephen fully illustrated, replacing placeholders.
+- `DESIGN_NOTES.md` worked through, each observation either resolved or consciously carried forward.
 - Real palette derived from the artwork; provisional token *values* replaced, names unchanged.
 - Typeface selected and licensed.
 - Image pipeline: AVIF with WebP fallback, two width tiers, fixed dimensions.
