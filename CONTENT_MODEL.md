@@ -1,4 +1,4 @@
-# Tiny Disciples — Content Model
+# Sunday School Companion — Content Model
 
 > **Version:** 2.1
 > **Status:** Draft — pending review
@@ -6,7 +6,7 @@
 > **Governed by:** `PRODUCT_CONSTITUTION.md`
 > **Reference chapter:** `content/stephen.story.json`
 
-This is the authoring handbook for Tiny Disciples. It defines how every chapter is written.
+This is the authoring handbook for Sunday School Companion. It defines how every chapter is written.
 
 It is not an API specification. It is the format you will hand-write for years, so it is designed for the person holding the pen.
 

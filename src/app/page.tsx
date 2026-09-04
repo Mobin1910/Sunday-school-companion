@@ -14,7 +14,7 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-xl px-6 py-16">
-      <h1 className="text-4xl">Tiny Disciples</h1>
+      <h1 className="text-4xl">Sunday School Companion</h1>
       <p className="mt-3 text-lg text-ink-soft">
         Bible stories to read again at home.
       </p>

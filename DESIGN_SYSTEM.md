@@ -1,4 +1,4 @@
-# Tiny Disciples — Design System
+# Sunday School Companion — Design System
 
 > **Version:** 1.0
 > **Status:** Draft — pending review

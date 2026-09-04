@@ -1,4 +1,4 @@
-# Tiny Disciples — Architecture
+# Sunday School Companion — Architecture
 
 > **Version:** 1.0
 > **Status:** Draft — pending review

@@ -1,4 +1,4 @@
-# Tiny Disciples — Implementation Plan
+# Sunday School Companion — Implementation Plan
 
 > **Version:** 1.0
 > **Status:** Ready to begin

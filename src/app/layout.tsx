@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tiny Disciples",
+  title: "Sunday School Companion",
   description: "Bible stories to read again at home.",
 };
 

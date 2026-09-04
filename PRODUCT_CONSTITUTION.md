@@ -1,20 +1,20 @@
-# Tiny Disciples — Product Constitution
+# Sunday School Companion — Product Constitution
 
-> **Version:** 2.4
+> **Version:** 2.5
 > **Status:** Living Document
-> **Repository:** `tiny-disciples`
+> **Repository:** `sunday-school-companion`
 
 ---
 
 # Purpose
 
-**Tiny Disciples** exists to become the most delightful way for children aged **6–7** to revisit Bible stories after Sunday School through comics, interactive storytelling, activities, quizzes, and memory verses.
+**Sunday School Companion** exists to become the most delightful way for children aged **6–7** to revisit Bible stories at home — through comics, interactive storytelling, activities, quizzes, and memory verses.
 
 This is **not** a Bible encyclopedia or a church management platform.
 
 It is a calm, playful, story-first experience that children enjoy opening on their own.
 
-Tiny Disciples does not replace Sunday School. It **complements** it.
+The name is the promise. This is a **companion** to Sunday School, never a replacement for it.
 
 The child has already heard the story from their teacher. Our job is to help them revisit it, remember it, and enjoy it again.
 
@@ -71,7 +71,7 @@ Primary audience:
 
 The real constraint is not age — it is **reading fluency**.
 
-A six-year-old may not read fluently, or at all. Tiny Disciples must therefore be understandable through **illustration and interaction alone**. Text supports the picture. It never carries the story by itself.
+A six-year-old may not read fluently, or at all. Sunday School Companion must therefore be understandable through **illustration and interaction alone**. Text supports the picture. It never carries the story by itself.
 
 Version 1 intentionally excludes:
 
@@ -92,7 +92,7 @@ A six-year-old does not open a browser, type a URL, or install an app.
 
 **The parent is not a user. The parent is the door.**
 
-Tiny Disciples has exactly one adult-facing surface, and it exists only to get the child through that door:
+Sunday School Companion has exactly one adult-facing surface, and it exists only to get the child through that door:
 
 - A link a teacher or parent can share
 - An install moment written for an adult, not a child
@@ -172,7 +172,7 @@ Used consistently in code, content, and conversation. No synonyms.
 
 # Non-Goals (Version 1)
 
-Tiny Disciples will **not** include:
+Sunday School Companion will **not** include:
 
 - Backend
 - Authentication
@@ -194,7 +194,7 @@ Tiny Disciples will **not** include:
 
 # Privacy Promise
 
-Tiny Disciples is used by children. Therefore:
+Sunday School Companion is used by children. Therefore:
 
 - We collect **nothing**.
 - No analytics, no telemetry, no beacons, no fingerprinting.
@@ -209,7 +209,7 @@ This is a product principle, not a compliance checkbox. It is also a promise we 
 
 # Child Safety & Tone
 
-Bible stories include violence, fear, and death. Tiny Disciples tells them honestly but gently.
+Bible stories include violence, fear, and death. Sunday School Companion tells them honestly but gently.
 
 - Never depict graphic violence, gore, or terror.
 - Difficult moments are told through implication, aftermath, and consequence — not spectacle.
@@ -551,7 +551,7 @@ The architecture must not make narration difficult to add later — but Version 
 
 # Interaction Philosophy
 
-**Tiny Disciples is not a collection of games. It is a collection of meaningful interactions that reinforce learning.**
+**Sunday School Companion is not a collection of games. It is a collection of meaningful interactions that reinforce learning.**
 
 The question is never "which game should we build here?" It is **"which interaction best reinforces this part of the lesson?"**
 
@@ -712,6 +712,11 @@ This is a living document, but it changes deliberately.
 
 # Changelog
 
+## 2.5
+
+- Renamed the product from *Tiny Disciples* to **Sunday School Companion**, everywhere — documents, code, and the app itself.
+- The name now carries a principle it used to need a sentence for: this is a **companion** to Sunday School, never a replacement for it.
+
 ## 2.4
 
 - Added **What We Celebrate**: behaviours, never correctness — curiosity, careful looking, persistence, trying again, finishing, discovering.
@@ -745,7 +750,7 @@ This is a living document, but it changes deliberately.
 
 ## 2.1
 
-- Replaced *Game Philosophy* with *Interaction Philosophy*: Tiny Disciples is not a collection of games, it is a collection of meaningful interactions that reinforce learning.
+- Replaced *Game Philosophy* with *Interaction Philosophy*: Sunday School Companion is not a collection of games, it is a collection of meaningful interactions that reinforce learning.
 - Introduced the three-layer model — **Learning Goal → Interaction Model → Presentation** — so interactions are chosen pedagogically rather than mechanically.
 - Replaced four interaction *engines* with four interaction **models** (Selection, Pairing, Ordering, Discovery) and thirteen presentations across them.
 - Replaced the Game Engine with the **Interaction Player**, a standalone renderer that knows nothing about which section it is rendering.

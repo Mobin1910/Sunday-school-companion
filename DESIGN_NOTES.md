@@ -1,4 +1,4 @@
-# Tiny Disciples — Design Notes
+# Sunday School Companion — Design Notes
 
 > **Status:** Open observations
 > **Act on these in:** Milestone 13, when Stephen is fully illustrated

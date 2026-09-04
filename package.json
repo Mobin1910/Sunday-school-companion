@@ -14,7 +14,7 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   },
-  "name": "tiny-disciples",
+  "name": "sunday-school-companion",
   "private": true,
   "scripts": {
     "dev": "next dev",
