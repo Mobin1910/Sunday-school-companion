@@ -1,104 +1,341 @@
 "use client";
 
-import { Children, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 /**
- * Turns the pages of a chapter.
+ * Turns the pages of a chapter with a page curl.
  *
- * The paging is native CSS scroll-snap rather than a JavaScript carousel.
- * That gives real swipe physics and real momentum on a phone, which is the
- * difference between turning a page and operating a control — and it is less
- * code than any version we would write ourselves.
+ * Chosen over scroll-snap and a flat-card slide after prototyping both at
+ * /prototype/spatial (deleted) and /prototype/curl (kept, for reference).
+ * The curl is two rigid pieces, not one rotating rectangle: `flat` is the
+ * untouched majority of the current page, only ever cropped shorter by
+ * `clip-path` as the drag advances; `spine` is a narrow strip at that cut
+ * boundary, the only part that turns in 3D, and it is decoration only — a
+ * light/shadow gradient standing in for the edge of the paper, never a copy
+ * of the page's own content. Duplicating live content there would mean two
+ * simultaneous instances of a quiz's state and timers.
  *
- * Navigation lives outside the scrolling track so the buttons never move
- * between pages. A control that stays exactly where it was is calmer for a
- * child than one that slides in with each screen, and it keeps the focus
- * order to one forward button rather than one per page.
+ * Only two pages are ever mounted: `flat` (the settled, active page) and
+ * `under` (whichever neighbour the current drag direction would reveal).
+ * That bounds memory and avoids a worse problem — a neighbour's
+ * InteractionPlayer sitting fully mounted, and hence fully "on screen" by a
+ * plain viewport IntersectionObserver, well before the child has actually
+ * turned to it. `under` is always rendered with `active={false}` for
+ * exactly that reason; see InteractionPlayer's `active` prop.
  *
- * The pages arrive as children, already rendered on the server, because they
- * contain illustrations resolved from disk at build time.
+ * A drag only begins once the pointer has moved past a small deadzone and
+ * the movement reads as horizontal. Below that, or moving mostly downward,
+ * nothing here intercepts the pointer at all — a tap on a quiz option still
+ * reaches it as an ordinary click, because we never called
+ * `setPointerCapture` or `preventDefault` on it.
+ *
+ * Trade-off worth naming: because only two pages are ever in the DOM, a
+ * screen reader can no longer browse the whole chapter as a list the way
+ * the old scroll-snap `<ol>` allowed — only the current page and the
+ * `aria-live` page-count announcement are available at any moment.
  */
 export default function ChapterReader({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pages = Children.toArray(children);
-  const trackRef = useRef<HTMLOListElement>(null);
-  const [active, setActive] = useState(0);
+  const pages = useMemo(() => Children.toArray(children), [children]);
+  const lastPage = pages.length - 1;
 
-  // Only true once the reader is running, so the styles that depend on
-  // JavaScript never hide anything from a child whose JavaScript failed.
+  const stage = useRef<HTMLDivElement>(null);
+  const spine = useRef<HTMLDivElement>(null);
+  const spineShade = useRef<HTMLDivElement>(null);
+  const flat = useRef<HTMLDivElement>(null);
+  const shadow = useRef<HTMLDivElement>(null);
+
+  const position = useRef(0);
+  const anchor = useRef(0);
+  /**
+   * Where a directed turn (keyboard, the nav buttons) is ultimately headed —
+   * separate from `anchor`, which only updates once a turn actually settles.
+   * Without this, pressing "next" twice quickly, before the first turn
+   * finishes, would compute the second press's target from the still-stale
+   * settled page and just re-target the same page instead of advancing.
+   */
+  const targetIndex = useRef(0);
+  const dragging = useRef(false);
+  const verticalLocked = useRef(false);
+  const potentialStart = useRef({ x: 0, y: 0 });
+  const startX = useRef(0);
+  const startPosition = useRef(0);
+  const samples = useRef<{ t: number; x: number }[]>([]);
+  const settleFrame = useRef<number | null>(null);
+
+  const [index, setIndex] = useState(0);
+  const [underIndex, setUnderIndex] = useState(() => Math.min(1, lastPage));
+  const underIndexRef = useRef(underIndex);
+
   const [enhanced, setEnhanced] = useState(false);
   useEffect(() => setEnhanced(true), []);
 
-  const lastPage = pages.length - 1;
-  const onFirstPage = active === 0;
-  const onLastPage = active === lastPage;
+  const reducedMotion = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    [],
+  );
+
+  const onFirstPage = index === 0;
+  const onLastPage = index === lastPage;
+
+  function widthOf(): number {
+    return stage.current?.clientWidth ?? window.innerWidth;
+  }
+
+  function renderAt(pos: number) {
+    const width = widthOf();
+    const raw = pos - anchor.current;
+    const progress = Math.max(-1, Math.min(1, raw));
+    const forward = progress >= 0;
+
+    const desiredUnder = Math.max(
+      0,
+      Math.min(lastPage, anchor.current + (forward ? 1 : -1)),
+    );
+    if (desiredUnder !== underIndexRef.current) {
+      underIndexRef.current = desiredUnder;
+      setUnderIndex(desiredUnder);
+    }
+
+    const dFrac = Math.abs(progress);
+    const dPx = dFrac * width;
+    const eased = 1 - Math.pow(1 - dFrac, 2);
+    const angle = eased * MAX_ANGLE;
+    const spineW = MIN_SPINE + eased * (MAX_SPINE - MIN_SPINE);
+
+    const flatEl = flat.current;
+    const spineEl = spine.current;
+    const shadeEl = spineShade.current;
+    const shadowEl = shadow.current;
+    if (!flatEl || !spineEl || !shadeEl || !shadowEl) return;
+
+    const cut = Math.min(width, dPx);
+
+    if (forward) {
+      const flatEnd = Math.max(0, width - cut);
+      const spineStart = flatEnd;
+      const spineEnd = Math.min(width, flatEnd + spineW);
+
+      flatEl.style.clipPath = `inset(0 ${width - flatEnd}px 0 0)`;
+      spineEl.style.clipPath = `inset(0 ${width - spineEnd}px 0 ${spineStart}px)`;
+      spineEl.style.transformOrigin = "left center";
+      spineEl.style.transform = `rotateY(${angle}deg)`;
+
+      shadowEl.style.left = `${spineEnd}px`;
+      shadowEl.style.right = "auto";
+      shadowEl.style.width = `${Math.max(0, Math.min(width - spineEnd, spineW * 1.6))}px`;
+      shadowEl.style.background = `linear-gradient(to right, rgba(0,0,0,${(0.28 * eased).toFixed(3)}), rgba(0,0,0,0))`;
+      shadeEl.style.background = `linear-gradient(to right, rgba(255,255,255,${(0.18 * eased).toFixed(3)}), rgba(0,0,0,${(0.24 * eased).toFixed(3)}))`;
+    } else {
+      const flatStart = Math.min(width, cut);
+      const spineEnd = flatStart;
+      const spineStart = Math.max(0, flatStart - spineW);
+
+      flatEl.style.clipPath = `inset(0 0 0 ${flatStart}px)`;
+      spineEl.style.clipPath = `inset(0 ${width - spineEnd}px 0 ${spineStart}px)`;
+      spineEl.style.transformOrigin = "right center";
+      spineEl.style.transform = `rotateY(${-angle}deg)`;
+
+      shadowEl.style.right = `${width - spineStart}px`;
+      shadowEl.style.left = "auto";
+      shadowEl.style.width = `${Math.max(0, Math.min(spineStart, spineW * 1.6))}px`;
+      shadowEl.style.background = `linear-gradient(to left, rgba(0,0,0,${(0.28 * eased).toFixed(3)}), rgba(0,0,0,0))`;
+      shadeEl.style.background = `linear-gradient(to left, rgba(255,255,255,${(0.18 * eased).toFixed(3)}), rgba(0,0,0,${(0.24 * eased).toFixed(3)}))`;
+    }
+
+    const visible = dFrac > 0.001;
+    spineEl.style.display = visible ? "" : "none";
+    shadowEl.style.opacity = visible ? "1" : "0";
+  }
+
+  function cancelSettle() {
+    if (settleFrame.current !== null) {
+      cancelAnimationFrame(settleFrame.current);
+      settleFrame.current = null;
+    }
+  }
+
+  function settleTo(target: number) {
+    const clampedTarget = Math.max(0, Math.min(lastPage, target));
+    targetIndex.current = clampedTarget;
+    const from = position.current;
+    const distance = Math.abs(clampedTarget - from);
+    const duration = reducedMotion
+      ? 1
+      : Math.max(180, Math.min(380, 220 + distance * 160));
+    const start = performance.now();
+
+    const step = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      position.current = from + (clampedTarget - from) * eased;
+      renderAt(position.current);
+      if (t < 1) {
+        settleFrame.current = requestAnimationFrame(step);
+      } else {
+        settleFrame.current = null;
+        anchor.current = clampedTarget;
+        setIndex(clampedTarget);
+        renderAt(position.current);
+      }
+    };
+    settleFrame.current = requestAnimationFrame(step);
+  }
+
+  function goTo(rawTarget: number, jump = false) {
+    cancelSettle();
+    const target = Math.max(0, Math.min(lastPage, rawTarget));
+    targetIndex.current = target;
+    if (jump || reducedMotion) {
+      position.current = target;
+      anchor.current = target;
+      setIndex(target);
+      renderAt(target);
+    } else {
+      settleTo(target);
+    }
+  }
+
+  function onPointerDown(e: React.PointerEvent) {
+    if (e.button !== undefined && e.button !== 0) return;
+    cancelSettle();
+    dragging.current = false;
+    verticalLocked.current = false;
+    potentialStart.current = { x: e.clientX, y: e.clientY };
+    startX.current = e.clientX;
+    startPosition.current = position.current;
+    samples.current = [{ t: performance.now(), x: e.clientX }];
+  }
+
+  function onPointerMove(e: React.PointerEvent) {
+    if (verticalLocked.current) return;
+
+    if (!dragging.current) {
+      const dx = e.clientX - potentialStart.current.x;
+      const dy = e.clientY - potentialStart.current.y;
+      if (Math.abs(dx) < DEADZONE && Math.abs(dy) < DEADZONE) return;
+      if (Math.abs(dy) > Math.abs(dx)) {
+        verticalLocked.current = true;
+        return;
+      }
+      dragging.current = true;
+      stage.current?.setPointerCapture(e.pointerId);
+    }
+
+    const width = widthOf();
+    const dx = e.clientX - startX.current;
+    let next = startPosition.current - dx / width;
+
+    if (next < 0) next = -(0 - next) / EDGE_RESISTANCE;
+    if (next > lastPage) next = lastPage + (next - lastPage) / EDGE_RESISTANCE;
+
+    position.current = next;
+    renderAt(next);
+
+    samples.current.push({ t: performance.now(), x: e.clientX });
+    const cutoff = performance.now() - 100;
+    while (samples.current.length > 2 && (samples.current[0]?.t ?? 0) < cutoff) {
+      samples.current.shift();
+    }
+  }
+
+  function onPointerUp() {
+    if (!dragging.current) return;
+    dragging.current = false;
+
+    const progress = position.current - anchor.current;
+    const first = samples.current[0];
+    const last = samples.current[samples.current.length - 1];
+    const velocity =
+      first && last && last.t !== first.t
+        ? (last.x - first.x) / (last.t - first.t)
+        : 0;
+
+    let target = anchor.current;
+    if (Math.abs(progress) > THRESHOLD) {
+      target = anchor.current + (progress > 0 ? 1 : -1);
+    } else if (Math.abs(velocity) > FLICK_VELOCITY && Math.abs(progress) > 0.03) {
+      target = anchor.current + (velocity < 0 ? 1 : -1);
+    }
+
+    settleTo(target);
+  }
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActive(Number((entry.target as HTMLElement).dataset["index"]));
-          }
-        }
-      },
-      { root: track, threshold: 0.6 },
-    );
-
-    for (const page of track.children) observer.observe(page);
-    return () => observer.disconnect();
-  }, [pages.length]);
-
-  const goTo = useCallback(
-    (index: number, jump = false) => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      const stillness = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const target = Math.max(0, Math.min(pages.length - 1, index));
-
-      track.scrollTo({
-        left: target * track.clientWidth,
-        behavior: jump || stillness.matches ? "auto" : "smooth",
-      });
-    },
-    [pages.length],
-  );
+    renderAt(position.current);
+    const onResize = () => renderAt(position.current);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="flex h-dvh flex-col" data-enhanced={enhanced}>
-      <Dots count={pages.length} active={active} />
+      <Dots count={pages.length} active={index} />
 
-      <ol
-        ref={trackRef}
+      <div
+        ref={stage}
         tabIndex={0}
-        aria-label="Story pages"
+        role="group"
+        aria-roledescription="story page"
+        aria-label={`Page ${index + 1} of ${pages.length}`}
         onKeyDown={(event) => {
-          if (event.key === "ArrowRight") goTo(active + 1);
-          if (event.key === "ArrowLeft") goTo(active - 1);
+          if (event.key === "ArrowRight") goTo(targetIndex.current + 1);
+          if (event.key === "ArrowLeft") goTo(targetIndex.current - 1);
         }}
-        className="reader-track flex flex-1 snap-x snap-mandatory overflow-x-auto overscroll-x-contain outline-none"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+        className="relative flex-1 touch-pan-y select-none overflow-hidden outline-none"
+        style={{ perspective: 1400 }}
       >
-        {pages.map((page, index) => (
-          <li
-            key={index}
-            data-index={index}
-            data-active={index === active}
-            className="flex h-full w-full shrink-0 snap-center"
-          >
-            {page}
-          </li>
-        ))}
-      </ol>
+        <div
+          data-active="false"
+          className="absolute inset-0 z-[1] flex flex-col overflow-hidden bg-ground"
+        >
+          {withActive(pages[underIndex], false)}
+        </div>
+
+        <div
+          ref={shadow}
+          className="pointer-events-none absolute inset-y-0 z-[2]"
+          aria-hidden
+        />
+
+        <div
+          ref={spine}
+          className="absolute inset-0 z-[3] overflow-hidden bg-ground will-change-transform"
+          style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+          aria-hidden
+        >
+          <div ref={spineShade} className="absolute inset-0" />
+        </div>
+
+        <div
+          ref={flat}
+          data-active="true"
+          className="absolute inset-0 z-[4] flex flex-col overflow-hidden bg-ground will-change-[clip-path]"
+        >
+          {withActive(pages[index], true)}
+        </div>
+      </div>
 
       <p className="sr-only" aria-live="polite">
-        Page {active + 1} of {pages.length}
+        Page {index + 1} of {pages.length}
       </p>
 
       <nav className="flex items-center justify-between px-6 pt-2 pb-8">
@@ -107,7 +344,11 @@ export default function ChapterReader({
         {onFirstPage ? (
           <span className="size-16" aria-hidden />
         ) : (
-          <RoundButton onClick={() => goTo(active - 1)} label="Go back" quiet>
+          <RoundButton
+            onClick={() => goTo(targetIndex.current - 1)}
+            label="Go back"
+            quiet
+          >
             <ArrowLeft />
           </RoundButton>
         )}
@@ -119,13 +360,36 @@ export default function ChapterReader({
             <Repeat />
           </RoundButton>
         ) : (
-          <RoundButton onClick={() => goTo(active + 1)} label="Next page">
+          <RoundButton
+            onClick={() => goTo(targetIndex.current + 1)}
+            label="Next page"
+          >
             <ArrowRight />
           </RoundButton>
         )}
       </nav>
     </div>
   );
+}
+
+const DEADZONE = 8;
+const THRESHOLD = 0.32;
+const FLICK_VELOCITY = 0.5;
+const EDGE_RESISTANCE = 3;
+const MAX_ANGLE = 72;
+const MIN_SPINE = 16;
+const MAX_SPINE = 64;
+
+/**
+ * Injects the runtime `active` flag into a pre-built CardScreen element.
+ * ChapterReader is the one place that knows which of the (at most two)
+ * mounted pages the child has actually turned to, so it is the one place
+ * that can tell CardScreen — which is otherwise handed fully-formed
+ * elements it never constructs itself.
+ */
+function withActive(node: React.ReactNode, active: boolean): React.ReactNode {
+  if (!isValidElement<{ active?: boolean }>(node)) return node;
+  return cloneElement(node, { active });
 }
 
 function Dots({ count, active }: { count: number; active: number }) {

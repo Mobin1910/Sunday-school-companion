@@ -40,21 +40,6 @@ body {
 }
 
 /*
-  The scrolling track of a chapter.
-
-  A scrollbar across the bottom of a storybook would break the illusion
-  entirely, and there is nothing for it to tell a child that the page dots
-  do not already say.
-*/
-.reader-track {
-  scrollbar-width: none;
-}
-
-.reader-track::-webkit-scrollbar {
-  display: none;
-}
-
-/*
   A page settling.
 
   The illustration is already in place when a page arrives; only the words

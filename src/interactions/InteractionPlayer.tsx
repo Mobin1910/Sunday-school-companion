@@ -11,8 +11,15 @@ import { say } from "./voice";
 /**
  * Plays one interaction, and knows nothing else.
  *
- * Two props. There is no way to tell this component which section it is in,
- * which is how the promise that it behaves identically everywhere is kept.
+ * There is no way to tell this component which section it is in, which is
+ * how the promise that it behaves identically everywhere is kept. `active`
+ * doesn't break that: it says whether anyone is looking yet, not what this
+ * is or where it lives. It exists because the page-turn reader keeps the
+ * next page mounted, ready to be revealed mid-drag, and `onScreen` below —
+ * a plain viewport IntersectionObserver — cannot tell "mounted underneath
+ * the current page" from "actually being read": both are geometrically on
+ * screen. `active` is the difference. It defaults to true, so every caller
+ * that doesn't need this distinction is unaffected.
  *
  * `onComplete` takes no arguments and never will. How many tries a child
  * needed, and how much help they were given, live here and only here — a
@@ -21,9 +28,11 @@ import { say } from "./voice";
 export default function InteractionPlayer({
   interaction,
   onComplete,
+  active = true,
 }: {
   interaction: PlayInteraction;
   onComplete: () => void;
+  active?: boolean;
 }) {
   /** 0 alone · 1 a word · 2 a clue · 3 together */
   const [rung, setRung] = useState(0);
@@ -104,21 +113,19 @@ export default function InteractionPlayer({
   // know what to do usually does nothing at all.
   useEffect(() => {
     if (done || rung >= 3) return;
-
+    if (!onScreen || !active) return;
 
     const wait =
       rung === 0 && misses === 0
         ? TIMING.stillnessBeforeFirstHelp
         : TIMING.stillnessBetweenRungs;
 
-    if (!onScreen) return;
-
     const timer = setTimeout(() => {
       climb(true, rung === 0 && misses === 0 ? "beginning" : "joining");
     }, wait);
 
     return () => clearTimeout(timer);
-  }, [rung, misses, done, onScreen, climb]);
+  }, [rung, misses, done, onScreen, active, climb]);
 
   useEffect(() => {
     const element = root.current;
