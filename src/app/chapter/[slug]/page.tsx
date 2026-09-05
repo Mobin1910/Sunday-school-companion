@@ -84,11 +84,23 @@ export default async function ChapterHubPage({
             </div>
           ) : null}
 
-          <div>
-            <h1 className="text-4xl leading-tight text-balance">
-              {chapter.title}
-            </h1>
-            <p className="mt-1 text-base text-ink-soft">{chapter.reference}</p>
+          <div className="flex items-center gap-3">
+            {/*
+              A welcome has to arrive when the child does. Parked below the
+              section list, Halo sat under the fold and read as a mascot
+              decorating the bottom of a menu — met last, doing nothing.
+              Beside the title it is simply someone already here.
+            */}
+            <HaloPresence state="idle" placement="beside" size="compact" />
+
+            <div className="text-left">
+              <h1 className="text-4xl leading-tight text-balance">
+                {chapter.title}
+              </h1>
+              <p className="mt-1 text-base text-ink-soft">
+                {chapter.reference}
+              </p>
+            </div>
           </div>
         </header>
 

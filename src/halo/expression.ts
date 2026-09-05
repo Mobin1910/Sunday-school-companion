@@ -107,17 +107,27 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     transition: 420,
   }),
 
-  /** Considering. Narrower eyes, slower breath, light drawn inward. */
+  /**
+   * Genuinely considering, and inviting a child to consider with it.
+   *
+   * Not "processing", and never "you were wrong and I am about to say so" —
+   * it is reached when nothing has gone wrong at all, from stillness. So it
+   * stays on the calm tone rather than the warm one that carries help, and
+   * it is brighter and slightly larger than rest: an opening, not a retreat.
+   * Eyes narrow a little, the way anyone's do while they look at something
+   * properly.
+   */
   thinking: from({
-    scale: 0.99,
-    shape: [56, 44, 50, 50],
-    glow: 0.34,
-    light: 0.52,
-    gaze: { x: -0.12, y: -0.18 },
-    openness: 0.62,
-    breath: { duration: 3000, depth: 0.026 },
+    scale: 1.03,
+    shape: [56, 44, 48, 52],
+    squish: 0.98,
+    glow: 0.46,
+    light: 0.62,
+    gaze: { x: -0.1, y: -0.16 },
+    openness: 0.72,
+    breath: { duration: 3600, depth: 0.028 },
     drift: 4,
-    transition: 520,
+    transition: 560,
   }),
 
   /**

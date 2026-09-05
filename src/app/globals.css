@@ -229,8 +229,15 @@ body {
 */
 .halo-cross {
   position: absolute;
-  /* Held inside the silhouette, weighted low. */
-  inset: 26% 24% 16%;
+  /*
+    Held entirely BELOW the eye line.
+
+    When the upright bar passed between the eyes it stopped reading as a
+    cross and started reading as a nose — two dots and a bar is a face, and
+    a face is the one thing Halo must never become. Starting it below the
+    eyes keeps it light gathering low in the body.
+  */
+  inset: 56% 26% 12%;
   opacity: var(--halo-cross);
   /*
     Two soft bars of light, upright, with the crossbar high — read as a
@@ -259,11 +266,11 @@ body {
     sitting lower, it reads as light gathering in the body.
   */
   background-size:
-    16% 100%,
-    76% 12%;
+    17% 100%,
+    82% 15%;
   background-position:
     center,
-    center 62%;
+    center 34%;
   background-repeat: no-repeat;
   filter: blur(calc(var(--halo-size) * 0.01));
   transition:
@@ -287,11 +294,17 @@ body {
 }
 
 .halo-eye {
-  width: calc(var(--halo-size) * 0.1);
-  height: calc(var(--halo-size) * 0.13 * var(--halo-openness));
+  width: calc(var(--halo-size) * 0.115);
+  height: calc(var(--halo-size) * 0.16 * var(--halo-openness));
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.92);
-  box-shadow: 0 0 calc(var(--halo-size) * 0.06) rgb(255 255 255 / 0.7);
+  /* A highlight with a soft edge, not a drilled hole. */
+  background: radial-gradient(
+    ellipse at 42% 34%,
+    rgb(255 255 255 / 0.98) 0%,
+    rgb(255 255 255 / 0.86) 55%,
+    rgb(255 255 255 / 0.35) 100%
+  );
+  box-shadow: 0 0 calc(var(--halo-size) * 0.075) rgb(255 255 255 / 0.55);
   transition: height var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 

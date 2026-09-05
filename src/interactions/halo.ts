@@ -24,6 +24,13 @@ export type InteractionMoment = {
   misses: number;
   /** Recovery is being spoken right now. */
   recovering: boolean;
+  /**
+   * This moment began with stillness rather than with a try that did not
+   * work. A child who has done nothing has failed at nothing, so being met
+   * here is an invitation, not a recovery, and Halo must not look like it
+   * is consoling someone for a mistake they never made.
+   */
+  invited: boolean;
   /** Arrived. */
   done: boolean;
   /** The child is actually here, looking at this. */
@@ -43,31 +50,52 @@ function forgiving(interaction: PlayInteraction): boolean {
   return interaction.type === "reveal";
 }
 
+/**
+ * Three things happen after a child acts, and they are not the same thing.
+ *
+ *   acknowledgement — "I saw what you did."          → curious
+ *   recovery        — "It's okay, let's look again." → recovering
+ *   assistance      — actual help, once warranted    → hinting, then helping
+ *
+ * They are kept apart deliberately. Collapsing them is how a companion turns
+ * into an error handler: a child who taps the wrong thing should be noticed
+ * first, met second, and helped only if help is warranted — and Halo should
+ * not look like it already knows the answer at the moment of the tap.
+ *
+ * `thinking` is not part of that sequence at all. It means Halo is genuinely
+ * considering, or inviting attention — never "you were wrong and I am about
+ * to tell you". The only place the ladder produces it is stillness, where
+ * nothing has gone wrong by definition.
+ */
 export function haloStateFor(
   interaction: PlayInteraction,
   moment: InteractionMoment,
 ): HaloState {
-  const { rung, misses, recovering, done, attending } = moment;
+  const { rung, misses, recovering, invited, done, attending } = moment;
 
   if (!attending) return "idle";
   if (done) return "celebrating";
 
-  // Recovery owns the beat it is on. Help never lands on the same moment as
-  // the try that did not work — that ordering is the assistance system's,
-  // and Halo must not visually undo it by jumping straight to hinting.
-  if (recovering) return forgiving(interaction) ? "curious" : "recovering";
+  // Being met. This beat is the assistance system's own — help never lands
+  // on the same moment as the try that did not work, and Halo must not
+  // visually undo that ordering by looking helpful too early.
+  if (recovering) {
+    if (forgiving(interaction)) return "curious";
+    // Nothing went wrong; the child was simply still. Considering, not
+    // consoling.
+    return invited ? "thinking" : "recovering";
+  }
 
-  // With the child: the ladder has reached company, or the answer itself.
-  if (rung >= 3) return "helping";
+  // Assistance, now that it is warranted. Stronger rungs narrow the field
+  // and finally draw the eye to the answer, which is company rather than a
+  // clue — so they read as helping rather than hinting.
+  if (rung >= 2) return "helping";
 
-  // Drawing the eye. A clue is on screen and worth looking toward.
-  if (rung >= 2) return "hinting";
+  // A specific clue is on screen: at this rung the author's hint appears.
+  if (rung >= 1) return "hinting";
 
-  // A word of help has arrived; Halo is alongside, considering it.
-  if (rung >= 1) return "thinking";
-
-  // The child has acted and nothing has been decided yet. Interest, not
-  // judgement — this is the beat they get before any help arrives.
+  // Acknowledgement. The child acted and nothing has been decided — this is
+  // the beat they get, and it must read as interest, never as a verdict.
   if (misses > 0) return "curious";
 
   return "listening";

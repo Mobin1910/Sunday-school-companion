@@ -47,6 +47,13 @@ export default function InteractionPlayer({
   const [misses, setMisses] = useState(0);
   const [saying, setSaying] = useState<string | null>(null);
   const [arrived, setArrived] = useState<string | null>(null);
+  /**
+   * Whether the words on screen were brought by stillness rather than by a
+   * try that did not work. The ladder treats both the same — it climbs
+   * either way — but they are not the same experience, and Halo reads them
+   * differently: one is an invitation, the other is being met.
+   */
+  const [invited, setInvited] = useState(false);
 
   const root = useRef<HTMLDivElement>(null);
   const climbing = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -74,16 +81,24 @@ export default function InteractionPlayer({
    * help that lands on the same beat as the mistake reads as a verdict.
    */
   const climb = useCallback(
-    (withWords: boolean, pool: Parameters<typeof say>[0]) => {
+    (
+      withWords: boolean,
+      pool: Parameters<typeof say>[0],
+      fromStillness = false,
+    ) => {
       if (done) return;
 
       const speak = setTimeout(() => {
-        if (withWords) setSaying(say(pool));
+        if (withWords) {
+          setSaying(say(pool));
+          setInvited(fromStillness);
+        }
       }, TIMING.beforeRecovery);
 
       const help = setTimeout(
         () => {
           setSaying(null);
+          setInvited(false);
           setRung((r) => Math.min(3, r + 1));
         },
         TIMING.beforeRecovery + (withWords ? TIMING.recoveryBeforeHelp : 0),
@@ -111,6 +126,7 @@ export default function InteractionPlayer({
   const handleArrive = useCallback(() => {
     clearTimers();
     setSaying(null);
+    setInvited(false);
     setArrived(
       say(rung > 0 ? "partnership" : misses > 0 ? "persistence" : "capability"),
     );
@@ -129,7 +145,7 @@ export default function InteractionPlayer({
         : TIMING.stillnessBetweenRungs;
 
     const timer = setTimeout(() => {
-      climb(true, rung === 0 && misses === 0 ? "beginning" : "joining");
+      climb(true, rung === 0 && misses === 0 ? "beginning" : "joining", true);
     }, wait);
 
     return () => clearTimeout(timer);
@@ -152,6 +168,7 @@ export default function InteractionPlayer({
     rung,
     misses,
     recovering: saying !== null,
+    invited,
     done,
     attending: onScreen && active,
   });

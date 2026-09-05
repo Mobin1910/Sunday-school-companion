@@ -13,22 +13,41 @@
  * Halo a grading system wearing a friendly face.
  */
 
+/**
+ * Acknowledgement, recovery and assistance are three different things, and
+ * the states keep them apart:
+ *
+ *   curious     — "I saw what you did."
+ *   recovering  — "It's okay, let's take another look."
+ *   hinting     — a specific clue is being surfaced.
+ *   helping     — active assistance is being given.
+ *
+ * Collapsing any of those into the others is how a companion becomes an
+ * error handler. In particular `thinking` is *not* a stop on that path: it
+ * means Halo is genuinely considering, and it is reached when nothing has
+ * gone wrong. It must never become shorthand for "you were wrong and I am
+ * about to tell you the answer".
+ */
 export type HaloState =
   /** Nobody is being asked for anything. Halo rests. */
   | "idle"
   /** Attending. A child has been asked something and has not yet acted. */
   | "listening"
-  /** Interested in what the child just did. No judgement in it. */
+  /** Acknowledgement: "I saw what you did." Interest, never a verdict. */
   | "curious"
-  /** Considering, alongside the child rather than ahead of them. */
+  /**
+   * Genuinely considering, and inviting a child to look with it. Not a
+   * consequence of being wrong — reached from stillness, where nothing has
+   * gone wrong at all.
+   */
   | "thinking"
-  /** With the child. The ladder has climbed to company. */
+  /** Active assistance is being given. The ladder has climbed to company. */
   | "helping"
-  /** Drawing the eye toward something worth noticing. */
+  /** A specific clue is being surfaced, and Halo looks toward it. */
   | "hinting"
-  /** Meeting a child after a try that did not work. Warm, never corrective. */
+  /** "It's okay, let's take another look." Warm, and never corrective. */
   | "recovering"
-  /** Something was arrived at. */
+  /** The child arrived. */
   | "celebrating"
   /** Moving between places. Briefly, and out of the way. */
   | "transitioning";
