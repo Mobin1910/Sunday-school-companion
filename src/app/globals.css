@@ -159,35 +159,82 @@ body {
 /*
   Halo — the companion.
 
-  Every value here comes from a custom property set by the expression table
-  in src/halo/expression.ts. Nothing in this block knows a state name, which
-  is what lets a designer retune Halo without touching CSS, and lets the
-  browser tween between states without a line of transition code.
+  Two ideas run through all of it.
 
-  Halo carries its own light rather than the interface's palette. The UI's
-  tokens are named by role and will be replaced when real artwork lands;
-  these five are Halo's identity and are meant to survive that. They are the
-  only literal colours in the product, and they belong to a character rather
-  than to a surface.
+  LIFE COMES FROM RHYTHMS THAT NEVER LINE UP. One element can only run one
+  transform animation, so a single breathing keyframe is why Halo used to
+  read as an illustration being scaled. Instead the layers each carry one
+  slow loop at a duration that shares no common multiple with the others —
+  4.7s, 6.1s, 7.3s, 9.4s, 11.2s, 13.7s — so the arrangement a child sees
+  never repeats within any time they would sit and watch it.
+
+  LIGHT COMES FROM INSIDE, THEN LEAVES. Internal hotspots light the
+  material, a rim shows the material is lit, and an aura puts that light
+  into the room. One coherent source, three consequences — never a
+  `filter: brightness()` bolted on top.
+
+  `--halo-life` scales every loop's amplitude, so a calmer state moves less
+  without moving slower. Nothing here knows a state name.
 */
+/*
+  The silhouette's four corners, and the wobble added to them.
+
+  Registering them buys two things a plain custom property cannot do. The
+  radii become interpolatable, so a state change *morphs* the outline
+  instead of snapping it; and the wobble becomes animatable, which is how
+  the body deforms by genuinely changing its border-radius rather than by
+  being scaled. A scaled blob is an illustration being zoomed; a blob whose
+  corners move is something soft.
+*/
+@property --halo-s0 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 64;
+}
+@property --halo-s1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 38;
+}
+@property --halo-s2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 34;
+}
+@property --halo-s3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 62;
+}
+@property --halo-wobble {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 .halo {
   --halo-cyan: #4fd6ff;
   --halo-blue: #3d7bff;
   --halo-violet: #9b6bff;
   --halo-pink: #ff8ecb;
   --halo-peach: #ffb583;
-  --halo-gold: #ffd166;
 
   position: relative;
   width: var(--halo-size);
-  /*
-    Room above for the ring and below for the reflection, and the body is
-    sized well inside the box so the largest state still has somewhere to
-    grow. Sizing the body to the full width meant celebrating clipped
-    against whatever contained it.
-  */
   height: calc(var(--halo-size) * 1.42);
   flex: none;
+  /*
+    The radii are transitioned here, at the root, rather than on the body
+    that uses them: they are inherited, so easing them once at the source
+    means every layer downstream receives an already-smooth number. This is
+    what makes a state change read as the silhouette *becoming* the next
+    shape instead of cutting to it.
+  */
+  transition:
+    --halo-s0 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    --halo-s1 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    --halo-s2 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    --halo-s3 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1);
 }
 
 .halo-stage {
@@ -196,54 +243,123 @@ body {
 }
 
 /*
-  The ring.
+  ENVIRONMENTAL GLOW — the light Halo puts into the room.
 
-  Held as an ellipse rather than a circle so it reads as a ring seen from
-  slightly below — a flat circle above a head looks like a sticker. The
-  border is uneven by a hair on purpose: a mathematically perfect ring is
-  the thing the reference explicitly is not.
-
-  Light, never metal: no gradient stops that imply a polished surface, just
-  a soft golden line with bloom around it.
+  Sits behind everything and is deliberately large: on the night ground
+  this is what makes Halo the source of light in the scene rather than an
+  object sitting in it. It breathes on the longest cycle of all, so the
+  room brightens and dims a beat after Halo does.
 */
-.halo-ring {
+.halo-aura {
+  position: absolute;
+  left: 50%;
+  /*
+    Kept clear of the ring. The bloom belongs around the body; pulled up
+    over the ring it washes the gold out at exactly the moment — arriving —
+    when the ring is meant to be at its most present.
+  */
+  top: calc(var(--halo-size) * 0.14);
+  width: calc(var(--halo-size) * 1.95);
+  height: calc(var(--halo-size) * 1.55);
+  margin-left: calc(var(--halo-size) * -0.975);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse 46% 42% at 50% 46%,
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-glow) * 0.46)) 0%,
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.76)) 26%,
+      rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.46)) 52%,
+      transparent 78%
+    ),
+    radial-gradient(
+      ellipse 42% 36% at 40% 68%,
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.58)) 0%,
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-glow) * 0.28)) 46%,
+      transparent 76%
+    );
+  filter: blur(calc(var(--halo-size) * 0.1));
+  /*
+    Light adds; it does not smear. Screened against whatever Halo is
+    standing on, the bloom brightens the night and all but disappears on
+    parchment — which is correct, because you cannot add light to a page
+    that is already bright. Painted normally it would read there as a grey
+    smudge behind the character.
+  */
+  mix-blend-mode: screen;
+  animation: halo-aura-breathe 11200ms ease-in-out infinite;
+  transition: background var(--halo-transition) ease-out;
+}
+
+/*
+  THE RING — light, never metal.
+
+  An ellipse rather than a circle so it reads as seen from below, uneven in
+  width because a mathematically perfect ring is precisely what it is not.
+  It floats on 8100ms, which shares nothing with the body's rhythm, so it
+  is never caught rising at the same moment Halo does. The float is a
+  wander, not a spin: a ring that rotates continuously stops being light
+  and becomes a loading spinner.
+*/
+.halo-ring-orbit {
   position: absolute;
   left: 50%;
   top: calc(var(--halo-size) * 0.03);
   width: calc(var(--halo-size) * 0.58);
   height: calc(var(--halo-size) * 0.17);
-  transform: translateX(-50%)
-    translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
-    rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
+  margin-left: calc(var(--halo-size) * -0.29);
+  animation: halo-ring-float 8100ms ease-in-out infinite;
+}
+
+.halo-ring {
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
   border: calc(var(--halo-size) * 0.034) solid
-    rgb(250 190 74 / calc(0.62 + var(--halo-ring-glow) * 0.38));
-  /* A touch thinner at the bottom, as a ring of light catching the eye. */
+    rgb(255 198 74 / calc(0.78 + var(--halo-ring-glow) * 0.22));
   border-bottom-width: calc(var(--halo-size) * 0.024);
   box-shadow:
-    0 0 calc(var(--halo-size) * 0.2) rgb(255 200 90 / calc(var(--halo-ring-glow) * 0.9)),
-    0 0 calc(var(--halo-size) * 0.44) rgb(255 176 52 / calc(var(--halo-ring-glow) * 0.55)),
-    inset 0 0 calc(var(--halo-size) * 0.06) rgb(255 236 190 / calc(var(--halo-ring-glow) * 0.8));
-  animation: halo-ring-float calc(var(--halo-breath-duration) * 1.25)
-    ease-in-out infinite;
+    0 0 calc(var(--halo-size) * 0.2)
+      rgb(255 200 90 / calc(var(--halo-ring-glow) * 0.95)),
+    0 0 calc(var(--halo-size) * 0.5)
+      rgb(255 176 52 / calc(var(--halo-ring-glow) * 0.6)),
+    inset 0 0 calc(var(--halo-size) * 0.07)
+      rgb(255 240 200 / calc(var(--halo-ring-glow) * 0.9));
+  transform: translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
+    rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
   transition:
-    transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1),
     border-color var(--halo-transition) ease-out,
-    box-shadow var(--halo-transition) ease-out;
+    box-shadow var(--halo-transition) ease-out,
+    transform var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+
+/* Wandering: the whole companion shifting its weight. 9400ms. */
+.halo-drift {
+  position: absolute;
+  inset: 0;
+  animation: halo-wander 9400ms ease-in-out infinite;
 }
 
 /*
-  The body.
+  Deforming: the silhouette itself, on 6100ms.
 
-  Lit from within, not shaded from outside. A sphere is a ball with a
-  highlight and a dark rim, and that reads as an orb — the one thing Halo
-  must not be. So the colours are stacked as overlapping soft radials, each
-  sitting where the reference puts it: cyan high left, electric blue through
-  the middle, violet low centre, pink and peach gathering at the bottom
-  left. `--halo-warmth` cross-fades the warm two forward without changing
-  the family, which is how a state shows care.
+  Separate from the wander above so the two never resolve together, and
+  separate from the body below so the state's own shape stays a transition
+  rather than being overwritten by a keyframe.
+*/
+.halo-morph {
+  position: absolute;
+  inset: 0;
+  /* The base stays put, so swelling pushes up and out, never downward. */
+  transform-origin: 50% 88%;
+  animation: halo-deform 6100ms ease-in-out infinite;
+}
 
-  The bottom radius stays the flattest of the four: Halo rests on something.
+/*
+  THE BODY — translucent material, lit from within.
+
+  Carries the state's shape and transform only. All ambient motion lives in
+  the two wrappers above, which is what lets a state change cross-fade
+  while the life underneath never pauses.
 */
 .halo-body {
   position: absolute;
@@ -252,65 +368,154 @@ body {
   width: calc(var(--halo-size) * 0.84);
   height: calc(var(--halo-size) * 0.8);
   margin-left: calc(var(--halo-size) * -0.42);
-  border-radius: var(--halo-shape);
-  background:
-    radial-gradient(
-        ellipse 62% 54% at 24% 78%,
-        rgb(from var(--halo-peach) r g b / calc(0.5 + var(--halo-warmth) * 0.5))
-          0%,
-        transparent 72%
-      ),
-    radial-gradient(
-        ellipse 58% 50% at 42% 88%,
-        rgb(from var(--halo-pink) r g b / calc(0.42 + var(--halo-warmth) * 0.45))
-          0%,
-        transparent 70%
-      ),
-    radial-gradient(
-        ellipse 74% 66% at 56% 58%,
-        rgb(from var(--halo-violet) r g b / 0.72) 0%,
-        transparent 76%
-      ),
-    radial-gradient(
-        ellipse 82% 76% at 66% 40%,
-        rgb(from var(--halo-blue) r g b / 0.88) 0%,
-        transparent 78%
-      ),
-    radial-gradient(
-        ellipse 62% 58% at 26% 22%,
-        rgb(from var(--halo-cyan) r g b / calc(0.95 - var(--halo-warmth) * 0.25))
-          0%,
-        transparent 74%
-      ),
-    radial-gradient(
-      ellipse 70% 64% at 50% 52%,
-      rgb(255 255 255 / calc(var(--halo-light) * 0.34)) 0%,
-      transparent 70%
-    );
+  /*
+    The state's four radii, each with a share of the wobble added on a
+    different sign, so no two corners swell together and the outline never
+    passes through a symmetrical pose. The horizontal and vertical radii
+    are deliberately mismatched — that mismatch is the whole difference
+    between a soft blob and a rounded rectangle.
+  */
+  border-radius: calc((var(--halo-s0) + var(--halo-wobble) * 5) * 1%)
+    calc((var(--halo-s1) - var(--halo-wobble) * 4) * 1%)
+    calc((var(--halo-s2) + var(--halo-wobble) * 3.5) * 1%)
+    calc((var(--halo-s3) - var(--halo-wobble) * 4.5) * 1%) /
+    calc((var(--halo-s1) - var(--halo-wobble) * 3) * 1%)
+    calc((var(--halo-s2) + var(--halo-wobble) * 4.5) * 1%)
+    calc((var(--halo-s3) - var(--halo-wobble) * 5) * 1%)
+    calc((var(--halo-s0) + var(--halo-wobble) * 3) * 1%);
+  overflow: hidden;
+  /*
+    The blend group is this element and nothing else. Without it the
+    additive light inside can pick up the ring's shadow as its backdrop,
+    which at large sizes leaves a hard gold sliver beside the body.
+  */
+  isolation: isolate;
+  background: radial-gradient(
+    ellipse 76% 70% at 50% 56%,
+    rgb(from var(--halo-blue) r g b / 0.52) 0%,
+    rgb(from var(--halo-violet) r g b / 0.42) 60%,
+    rgb(from var(--halo-violet) r g b / 0.3) 100%
+  );
+  /*
+    Close spill only. A box-shadow cannot blend, so anything wide here has
+    to look right on parchment as well as on night — and wide colour on
+    parchment is a stain. The far reach of the glow is the aura's job,
+    because the aura can screen.
+  */
   box-shadow:
-    0 0 calc(var(--halo-size) * 0.5) calc(var(--halo-size) * 0.06)
-      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.5)),
-    0 calc(var(--halo-size) * 0.1) calc(var(--halo-size) * 0.4)
-      rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.34)),
-    inset 0 calc(var(--halo-size) * 0.1) calc(var(--halo-size) * 0.2)
-      rgb(255 255 255 / calc(var(--halo-light) * 0.3));
+    0 0 calc(var(--halo-size) * 0.24) calc(var(--halo-size) * 0.01)
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-glow) * 0.42)),
+    0 0 calc(var(--halo-size) * 0.4) calc(var(--halo-size) * 0.03)
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.6)),
+    0 calc(var(--halo-size) * 0.07) calc(var(--halo-size) * 0.34)
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.38));
   transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
     scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)));
-  animation: halo-breathe var(--halo-breath-duration) ease-in-out infinite;
+  /*
+    The only animation on this element, and it touches no transform: it
+    drives the wobble number above, which is why the silhouette can deform
+    at the same time as the state transition is repainting its corners.
+  */
+  animation: halo-wobble 6100ms ease-in-out infinite;
   transition:
-    border-radius var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
     transform var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
     box-shadow var(--halo-transition) ease-out,
     background var(--halo-transition) ease-out;
 }
 
 /*
-  The glass highlight.
+  INTERNAL LIGHT — five hotspots, five clocks.
 
-  One soft ellipse high on the left shoulder. This is the single detail that
-  makes the surface read as a surface — without it the body is a coloured
-  cloud rather than something jelly-like you could press.
+  Each is one colour of light with a soft falloff, drifting on its own
+  duration and its own path. Because the durations share no common
+  multiple, the interior never returns to an arrangement a child has
+  already seen — which is the difference between light moving through a
+  material and a gradient someone painted on.
+
+  They are additive (`screen`), so where two overlap the material gets
+  brighter rather than muddier. That is what makes it read as light.
 */
+.halo-lume {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.halo-lume-cyan {
+  background: radial-gradient(
+    ellipse 34% 30% at 30% 26%,
+    rgb(from var(--halo-cyan) r g b / calc((0.95 - var(--halo-warmth) * 0.2) * var(--halo-light)))
+      0%,
+    transparent 68%
+  );
+  animation: halo-lume-a 13700ms ease-in-out infinite;
+}
+
+.halo-lume-blue {
+  background: radial-gradient(
+    ellipse 40% 34% at 62% 42%,
+    rgb(from var(--halo-blue) r g b / calc(0.9 * var(--halo-light))) 0%,
+    transparent 70%
+  );
+  animation: halo-lume-b 11200ms ease-in-out infinite;
+}
+
+.halo-lume-violet {
+  background: radial-gradient(
+    ellipse 38% 32% at 52% 62%,
+    rgb(from var(--halo-violet) r g b / calc(0.8 * var(--halo-light))) 0%,
+    transparent 70%
+  );
+  animation: halo-lume-c 9400ms ease-in-out infinite;
+}
+
+.halo-lume-pink {
+  background: radial-gradient(
+    ellipse 34% 28% at 42% 80%,
+    rgb(from var(--halo-pink) r g b / calc((0.5 + var(--halo-warmth) * 0.5) * var(--halo-light)))
+      0%,
+    transparent 68%
+  );
+  animation: halo-lume-d 7300ms ease-in-out infinite;
+}
+
+.halo-lume-peach {
+  background: radial-gradient(
+    ellipse 30% 26% at 26% 84%,
+    rgb(from var(--halo-peach) r g b / calc((0.55 + var(--halo-warmth) * 0.55) * var(--halo-light)))
+      0%,
+    transparent 66%
+  );
+  animation: halo-lume-e 10300ms ease-in-out infinite;
+}
+
+/*
+  RIM LIGHT — the lit edge of a translucent thing.
+
+  Brighter at the lower left where the warm light gathers and fading around
+  the top, so the edge varies rather than tracing a uniform outline. This is
+  the layer that says "this material is illuminated from inside" rather than
+  "this shape has a border".
+*/
+.halo-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 calc(var(--halo-size) * 0.045)
+      rgb(255 255 255 / calc(var(--halo-light) * 0.62)),
+    inset calc(var(--halo-size) * 0.022) calc(var(--halo-size) * -0.032)
+      calc(var(--halo-size) * 0.1)
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-light) * 0.7)),
+    inset calc(var(--halo-size) * -0.022) calc(var(--halo-size) * 0.032)
+      calc(var(--halo-size) * 0.09)
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-light) * 0.52));
+  transition: box-shadow var(--halo-transition) ease-out;
+}
+
+/* The glass highlight — the reason it reads as jelly and not as paint. */
 .halo-sheen {
   position: absolute;
   left: 12%;
@@ -320,34 +525,35 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     ellipse at 38% 34%,
-    rgb(255 255 255 / 0.72) 0%,
-    rgb(255 255 255 / 0.16) 52%,
+    rgb(255 255 255 / 0.8) 0%,
+    rgb(255 255 255 / 0.2) 52%,
     transparent 76%
   );
   filter: blur(calc(var(--halo-size) * 0.012));
-  transition: opacity var(--halo-transition) ease-out;
+  animation: halo-sheen-slide 12500ms ease-in-out infinite;
 }
 
 /*
-  The eyes.
+  THE EYES.
 
-  Two pale vertical capsules. No pupils, no iris, no lashes, no brows, and
-  nothing that could be read as a mouth. Openness squashes them for a state
-  that is looking hard; tilt is a few degrees and carries most of the mood.
-
-  They sit slightly right of centre and high, as the reference has them —
-  centring them makes the blob symmetrical, and symmetry is what turns a
-  companion into a cartoon face.
+  Outer element: the state's gaze, as a transition — Halo looking at
+  something. Inner element: a wander of a fraction of a pixel on 7900ms —
+  Halo being alive while it looks. Both together read as noticing; the
+  gaze alone is a stare, and the wander alone is a twitch.
 */
 .halo-eyes {
   position: absolute;
   left: 54%;
   top: 42%;
-  display: flex;
-  gap: calc(var(--halo-size) * 0.1);
   transform: translate(-50%, -50%)
     translate(var(--halo-gaze-x), var(--halo-gaze-y));
   transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+.halo-eyes-wander {
+  display: flex;
+  gap: calc(var(--halo-size) * 0.1);
+  animation: halo-eye-wander 7900ms ease-in-out infinite;
 }
 
 .halo-eye {
@@ -360,9 +566,11 @@ body {
     transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 
-/* Mirrored, so a tilt leans the pair inward rather than sliding both one way. */
+/* Mirrored, so a tilt leans the pair inward rather than sliding both. */
 .halo-eye:last-child {
   transform: rotate(calc(var(--halo-eye-tilt) * -1));
+  /* A hair behind its partner: eyes that arrive together look mechanical. */
+  animation: halo-eye-offset 6700ms ease-in-out infinite;
 }
 
 .halo-eye-capsule,
@@ -374,83 +582,403 @@ body {
 
 .halo-eye-capsule {
   border-radius: calc(var(--halo-size) * 0.05);
-  background: rgb(255 255 255 / 0.97);
-  box-shadow: 0 0 calc(var(--halo-size) * 0.05) rgb(235 245 255 / 0.7);
+  background: rgb(255 255 255 / 0.98);
+  box-shadow: 0 0 calc(var(--halo-size) * 0.06) rgb(225 240 255 / 0.85);
   opacity: calc(1 - var(--halo-eye-curve));
 }
 
-/*
-  The joyful eye: an upward arc, drawn as the top edge of a wide ellipse.
-  A curve rather than a second shape, so it can never read as a smiley face
-  bolted onto a blob.
-*/
+/* The joyful eye: an upward arc, drawn as the top edge of a wide ellipse. */
 .halo-eye-arc {
   top: -8%;
   left: -46%;
   right: -46%;
   bottom: 22%;
-  border-top: calc(var(--halo-size) * 0.026) solid rgb(255 255 255 / 0.97);
+  border-top: calc(var(--halo-size) * 0.026) solid rgb(255 255 255 / 0.98);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  filter: drop-shadow(0 0 calc(var(--halo-size) * 0.04) rgb(235 245 255 / 0.7));
+  filter: drop-shadow(0 0 calc(var(--halo-size) * 0.04) rgb(225 240 255 / 0.8));
   opacity: var(--halo-eye-curve);
 }
 
-/*
-  The reflection.
-
-  Halo is standing on something, and this is the whole of that idea: a soft
-  smear of its own light on the floor beneath it. It is what stops the blob
-  floating in the middle of a screen like a cursor.
-*/
+/* The reflection: Halo's light picked up by the ground it rests on. */
 .halo-floor {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: calc(var(--halo-size) * 0.86);
-  height: calc(var(--halo-size) * 0.13);
-  margin-left: calc(var(--halo-size) * -0.43);
+  width: calc(var(--halo-size) * 0.92);
+  height: calc(var(--halo-size) * 0.15);
+  margin-left: calc(var(--halo-size) * -0.46);
   border-radius: 50%;
   background: radial-gradient(
-    ellipse at 50% 40%,
-    rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.5)) 0%,
-    rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.22)) 46%,
-    transparent 78%
+    ellipse at 50% 36%,
+    rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.8)) 0%,
+    rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.42)) 44%,
+    transparent 80%
   );
-  filter: blur(calc(var(--halo-size) * 0.03));
-  transition:
-    background var(--halo-transition) ease-out,
-    opacity var(--halo-transition) ease-out;
+  filter: blur(calc(var(--halo-size) * 0.04));
+  /* A reflection is light too, and disappears on a ground already bright. */
+  mix-blend-mode: screen;
+  animation: halo-floor-breathe 10300ms ease-in-out infinite;
+  transition: background var(--halo-transition) ease-out;
 }
 
-@keyframes halo-breathe {
+/*
+  The loops.
+
+  Amplitudes are in the hundredths. Every one of these is meant to be felt
+  and not seen — a child who notices Halo animating is a child being
+  distracted from a story.
+*/
+@keyframes halo-wander {
   0%,
   100% {
-    transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
-      scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)))
-      translateY(0);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
-  50% {
-    transform: rotate(var(--halo-lean))
-      scale(calc(var(--halo-scale) + var(--halo-breath-depth)))
-      scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)))
-      translateY(calc(var(--halo-drift) * -0.5));
+  33% {
+    transform: translate3d(
+        calc(var(--halo-life) * 0.9px),
+        calc(var(--halo-life) * -1.6px),
+        0
+      )
+      rotate(calc(var(--halo-life) * 0.5deg));
+  }
+  66% {
+    transform: translate3d(
+        calc(var(--halo-life) * -0.7px),
+        calc(var(--halo-life) * -0.5px),
+        0
+      )
+      rotate(calc(var(--halo-life) * -0.4deg));
   }
 }
 
-/* The ring drifts on its own clock, so the two never look mechanical. */
+/*
+  The silhouette deforming.
+
+  Width and height move independently and never peak together, which is why
+  it reads as something soft changing shape rather than an icon scaling.
+  Transform origin sits at the base so the bottom stays put: Halo is
+  resting on something, and swelling should push upward and outward.
+*/
+@keyframes halo-deform {
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1) rotate(0deg) translate3d(0, 0, 0);
+  }
+  28% {
+    transform: scaleX(calc(1 + var(--halo-life) * 0.03))
+      scaleY(calc(1 - var(--halo-life) * 0.014))
+      rotate(calc(var(--halo-life) * 0.7deg))
+      translate3d(0, calc(var(--halo-life) * 0.5px), 0);
+  }
+  55% {
+    transform: scaleX(calc(1 - var(--halo-life) * 0.012))
+      scaleY(calc(1 + var(--halo-life) * 0.034))
+      rotate(calc(var(--halo-life) * -0.5deg))
+      translate3d(0, calc(var(--halo-life) * -0.9px), 0);
+  }
+  78% {
+    transform: scaleX(calc(1 + var(--halo-life) * 0.016))
+      scaleY(calc(1 + var(--halo-life) * 0.008))
+      rotate(calc(var(--halo-life) * 0.3deg))
+      translate3d(0, calc(var(--halo-life) * -0.3px), 0);
+  }
+}
+
+/*
+  The corners moving. Runs at the same 6100ms as the squash above and is
+  deliberately out of phase with it: the widest moment of the silhouette is
+  never the moment its corners are most extreme, which is what stops the
+  deformation resolving into a single readable pulse.
+*/
+@keyframes halo-wobble {
+  0%,
+  100% {
+    --halo-wobble: 0;
+  }
+  22% {
+    --halo-wobble: calc(var(--halo-life) * 1);
+  }
+  48% {
+    --halo-wobble: calc(var(--halo-life) * -0.4);
+  }
+  71% {
+    --halo-wobble: calc(var(--halo-life) * 0.6);
+  }
+  88% {
+    --halo-wobble: calc(var(--halo-life) * -0.8);
+  }
+}
+
+/*
+  Five drifts, five paths, five brightness curves.
+
+  None of them is a rotation and none is a loop a child could follow. The
+  opacity steps are the light *breathing* — each hotspot dims and swells a
+  few percent around its resting level, and because the five clocks never
+  align, the total light inside the body wanders continuously instead of
+  pulsing. That wander is the difference between a lit thing and a picture
+  of a lit thing, and it is why none of this is a `filter: brightness()`.
+*/
+@keyframes halo-lume-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.97;
+  }
+  40% {
+    transform: translate3d(
+        calc(var(--halo-life) * 7%),
+        calc(var(--halo-life) * 5%),
+        0
+      )
+      scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate3d(
+        calc(var(--halo-life) * 3%),
+        calc(var(--halo-life) * -4%),
+        0
+      )
+      scale(0.95);
+    opacity: 0.91;
+  }
+}
+
+@keyframes halo-lume-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.94;
+  }
+  35% {
+    transform: translate3d(
+        calc(var(--halo-life) * -6%),
+        calc(var(--halo-life) * 4%),
+        0
+      )
+      scale(1.08);
+    opacity: 1;
+  }
+  72% {
+    transform: translate3d(
+        calc(var(--halo-life) * -2%),
+        calc(var(--halo-life) * 7%),
+        0
+      )
+      scale(0.94);
+    opacity: 0.9;
+  }
+}
+
+@keyframes halo-lume-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: translate3d(
+        calc(var(--halo-life) * 5%),
+        calc(var(--halo-life) * -6%),
+        0
+      )
+      scale(1.12);
+    opacity: 0.92;
+  }
+  75% {
+    transform: translate3d(
+        calc(var(--halo-life) * -4%),
+        calc(var(--halo-life) * -2%),
+        0
+      )
+      scale(0.97);
+    opacity: 0.98;
+  }
+}
+
+@keyframes halo-lume-d {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.93;
+  }
+  38% {
+    transform: translate3d(
+        calc(var(--halo-life) * 6%),
+        calc(var(--halo-life) * -5%),
+        0
+      )
+      scale(1.14);
+    opacity: 1;
+  }
+  68% {
+    transform: translate3d(
+        calc(var(--halo-life) * -5%),
+        calc(var(--halo-life) * 3%),
+        0
+      )
+      scale(0.92);
+    opacity: 0.89;
+  }
+}
+
+@keyframes halo-lume-e {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.96;
+  }
+  42% {
+    transform: translate3d(
+        calc(var(--halo-life) * -5%),
+        calc(var(--halo-life) * -6%),
+        0
+      )
+      scale(1.16);
+    opacity: 0.88;
+  }
+  74% {
+    transform: translate3d(
+        calc(var(--halo-life) * 4%),
+        calc(var(--halo-life) * 2%),
+        0
+      )
+      scale(1);
+    opacity: 1;
+  }
+}
+
+/* The highlight migrating, so the surface never looks fixed. */
+@keyframes halo-sheen-slide {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.9;
+  }
+  45% {
+    transform: translate3d(
+        calc(var(--halo-life) * 8%),
+        calc(var(--halo-life) * 5%),
+        0
+      )
+      scale(1.08);
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(
+        calc(var(--halo-life) * -4%),
+        calc(var(--halo-life) * 3%),
+        0
+      )
+      scale(0.95);
+    opacity: 0.82;
+  }
+}
+
+/*
+  The eyes wandering.
+
+  Sub-pixel at compact sizes and barely a pixel at hero. Anything larger
+  becomes googly, which is the failure mode this is closest to.
+*/
+@keyframes halo-eye-wander {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  30% {
+    transform: translate3d(
+      calc(var(--halo-life) * 1.1px),
+      calc(var(--halo-life) * -0.6px),
+      0
+    );
+  }
+  58% {
+    transform: translate3d(
+      calc(var(--halo-life) * -0.9px),
+      calc(var(--halo-life) * 0.5px),
+      0
+    );
+  }
+  80% {
+    transform: translate3d(calc(var(--halo-life) * 0.4px), 0, 0);
+  }
+}
+
+/*
+  `translate` rather than `transform`, because the eye's `transform` is
+  already carrying its tilt. The two are separate properties that compose,
+  which keeps this on the compositor instead of laying out the pair again
+  every frame.
+*/
+@keyframes halo-eye-offset {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 calc(var(--halo-life) * 0.6px);
+  }
+}
+
+/* The room brightening and dimming a beat behind Halo. */
+@keyframes halo-aura-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  40% {
+    transform: scale(calc(1 + var(--halo-life) * 0.05));
+    opacity: 1;
+  }
+  70% {
+    transform: scale(calc(1 - var(--halo-life) * 0.03));
+    opacity: 0.84;
+  }
+}
+
+@keyframes halo-floor-breathe {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 0.92;
+  }
+  45% {
+    transform: scaleX(calc(1 + var(--halo-life) * 0.06));
+    opacity: 1;
+  }
+}
+
+/*
+  The ring floating. Purely relative — the state's own lift, tilt and scale
+  live on the ring inside, so the two compose instead of fighting, and the
+  state survives when this animation is switched off.
+*/
 @keyframes halo-ring-float {
   0%,
   100% {
-    transform: translateX(-50%)
-      translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
-      rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.94;
   }
-  50% {
-    transform: translateX(-50%)
-      translateY(
-        calc(var(--halo-size) * -0.06 * var(--halo-ring-lift) - var(--halo-drift) * 0.7px)
+  45% {
+    transform: translate3d(
+        calc(var(--halo-life) * 0.5px),
+        calc(var(--halo-life) * -2.2px),
+        0
       )
-      rotate(var(--halo-ring-tilt)) scale(calc(var(--halo-ring-scale) * 1.02));
+      rotate(calc(var(--halo-life) * 0.8deg));
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(
+        calc(var(--halo-life) * -0.4px),
+        calc(var(--halo-life) * 0.8px),
+        0
+      )
+      rotate(calc(var(--halo-life) * -0.5deg));
+    opacity: 0.9;
   }
 }
 
@@ -465,7 +993,7 @@ body {
   background:
     radial-gradient(ellipse 80% 60% at 50% 46%, #16295c 0%, transparent 70%),
     radial-gradient(ellipse 90% 70% at 50% 100%, #123a6b 0%, transparent 66%),
-    linear-gradient(180deg, #060b1c 0%, #0a1330 55%, #060b1c 100%);
+    linear-gradient(180deg, #050a19 0%, #0a1330 55%, #050a19 100%);
 }
 
 /*
@@ -482,15 +1010,39 @@ body {
   }
 
   /*
-    Halo stops moving but does not stop meaning.
+    Halo stops moving but does not stop meaning, and above all does not
+    stop glowing.
 
-    The breathing, the drift and the ring's float go. Shape, colour, light,
-    glow, lean, gaze, eye openness and the ring's height and brightness all
-    stay, because those are what distinguish helping from recovering — a
-    child who needs stillness still needs to be able to tell the two apart.
+    Every ambient loop is switched off at the source rather than left to be
+    squashed into 0.01ms by the blanket rule above, so each layer holds the
+    resting pose its keyframes open on: the silhouette undeformed, the
+    light where it was placed, the eyes still, the ring at rest. What
+    survives is everything that carries meaning — shape, colour, warmth,
+    internal light, rim, aura, floor, glow, lean, gaze, eye openness and
+    the ring's height, tilt and brightness — because those are what
+    distinguish helping from recovering, and a child who needs stillness
+    still needs to be able to tell the two apart.
+
+    The result is a lit, layered, luminous Halo that simply is not moving.
+    Not a dimmed one, and not a flat one.
   */
+  .halo-aura,
+  .halo-ring-orbit,
+  .halo-drift,
+  .halo-morph,
   .halo-body,
-  .halo-ring {
+  .halo-lume,
+  .halo-sheen,
+  .halo-eyes-wander,
+  .halo-eye:last-child,
+  .halo-floor {
     animation: none !important;
   }
+
+  /*
+    The corners settle to the state's own radii. `--halo-wobble` is what
+    the animation drove, so with the animation gone it returns to its
+    initial value of 0 and the silhouette becomes exactly the shape the
+    expression table asked for — deformation removed, shape kept.
+  */
 }

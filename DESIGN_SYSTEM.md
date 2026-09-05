@@ -263,7 +263,7 @@ Golden, thin, floating above, and one of Halo's strongest signatures.
 
 An **ellipse rather than a circle**, so it reads as a ring seen from slightly below; a flat circle above a head looks like a sticker. Slightly uneven in width, because a mathematically perfect ring is precisely what it is not. Built from a soft border plus bloom — **light, never metal**, never neon.
 
-It drifts on its own clock, a quarter slower than the body breathes, so the two never look mechanical.
+It floats on its own clock — a wander, never a spin, because a ring that rotates continuously stops being light and becomes a loading spinner. Its float and its state are carried on two separate elements, so a state can still raise, tilt and brighten the ring when motion is switched off.
 
 ## Eyes
 
@@ -282,10 +282,35 @@ Only two things change: **openness** (they squash for a state looking hard) and 
 | `helping` | company; largest, warmest, ring at its most present |
 | `hinting` | leaning and looking toward something worth noticing |
 | `recovering` | settling down and inward, dimmer, ring drawn closer |
-| `celebrating` | up and outward, brightest, ring widest |
+| `happy` | pleased with the child; curved eyes, warm — but not an ending |
+| `celebrating` | out and up, brightest, ring widest |
 | `transitioning` | small and quiet, out of the way |
 
-Recovery **settles down and inward**. Celebration **rises up and outward**. Nothing shakes, flashes, reddens, bounces, spins or emits particles, at any state, ever.
+Recovery **settles down and inward**. Celebration **opens out and up** — wider than tall, because joy that only grows upward turns the silhouette into an egg, and an egg is one step from the orb this character is defined against. Nothing shakes, flashes, reddens, bounces, spins or emits particles, at any state, ever.
+
+## Life
+
+Halo is lit and alive at rest, not a still image that animates on events.
+
+**One element can only run one transform animation.** A single element breathing on a single keyframe is what makes a companion read as a gradient illustration being scaled, so the motion is spread across nested layers, each carrying exactly one rhythm: an environmental bloom, the ring's float, the body's wander, the silhouette's deformation, five independently drifting hotspots of light, a migrating highlight, the eyes' micro-wander, and the reflection.
+
+Their periods share no common multiple — 4.7s, 6.1s, 6.7s, 7.3s, 7.9s, 8.1s, 9.4s, 10.3s, 11.2s, 12.5s, 13.7s — so the layers never resolve into a single readable pulse and the interior never returns to an arrangement a child has already seen.
+
+The silhouette deforms by **moving its corners**, not by `scale()`: the four radii are registered custom properties, so a wobble can be added to each corner on a different sign while a state change morphs the underlying shape. Scaling a blob is zooming a picture of one.
+
+`life` is the only ambient dial a state has, and it multiplies **amplitude, never speed** — a state is more alive by moving further, because faster is how calm becomes agitated. There is deliberately no per-state duration.
+
+## Glow
+
+Three layers, in order of how far the light travels:
+
+1. **Internal light** — five coloured hotspots inside the body, blended additively so overlaps get brighter rather than muddier, each drifting and breathing on its own clock.
+2. **Rim light** — the lit edge of a translucent thing, brighter at the lower left where the warm light gathers, fading around the top. It says *this material is illuminated from inside*, not *this shape has a border*.
+3. **Environmental glow** — the light Halo puts into the room, breathing on the longest cycle of all.
+
+The environmental layers **screen** rather than paint. Light adds; it does not smear. Screened against whatever Halo is standing on, the bloom lights the night and all but disappears on parchment — which is correct, because you cannot add light to a page that is already bright. Painted normally it reads there as a grey smudge behind the character.
+
+None of it is `filter: brightness()`. Brightness is saturation; this is light.
 
 ## Environment
 
@@ -299,7 +324,9 @@ Halo remains legible on the light surfaces the app uses today, but night is the 
 
 ## Reduced motion
 
-Breathing, drift and the ring's float stop. **Shape, colour, warmth, light, glow, lean, gaze, eye openness and the ring's height and brightness all remain**, because those are what distinguish helping from recovering — a child who needs stillness still needs to tell the two apart.
+Every ambient loop stops at its source, so each layer holds the resting pose its keyframes open on: the silhouette undeformed, the light where it was placed, the eyes still, the ring at rest.
+
+**Shape, colour, warmth, internal light, rim, aura, floor, glow, lean, gaze, eye openness and the ring's height, tilt and brightness all remain**, because those are what distinguish helping from recovering — a child who needs stillness still needs to tell the two apart. The result is a lit, layered, luminous Halo that simply is not moving. Not a dimmed one, and not a flat one.
 
 ## Announcement
 

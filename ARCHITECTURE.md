@@ -304,9 +304,13 @@ It is also where interaction-model awareness lives — Discovery's "no wrong ans
 
 ## The expression table
 
-`expression.ts` maps each state to shape, scale, squish, glow, internal light, cross presence, gaze, eye openness, breathing, drift, tone and transition duration. Every field becomes a CSS custom property.
+`expression.ts` maps each state to shape, scale, squish, lean, glow, internal light, warmth, gaze, eye openness, eye tilt, eye curve, the ring's four properties, how turned-up the ambient life is, and the transition duration. Every field becomes a CSS custom property.
 
 This is why there is no animation code: the browser interpolates the properties, so `idle → thinking → helping` is free and adding a state is a row in a table. Retuning Halo means changing numbers in one file. No component branches on a state name — only this table knows what a state looks like.
+
+The four corner radii and the wobble added to them are registered with `@property`, which is what lets a silhouette *morph* between states rather than snap, and lets the body deform by genuinely moving its corners instead of being scaled.
+
+The ambient loops are the one thing the table does not set. They run at fixed periods that share no common multiple, and `life` scales their **amplitude only** — a state is more alive by moving further, never by moving faster. React sets the custom properties when the state changes and is then out of the loop entirely: the motion continues without a single re-render, and every layer animates `transform` or `opacity`, so it stays on the compositor.
 
 ## Presentation
 

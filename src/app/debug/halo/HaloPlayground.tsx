@@ -89,8 +89,9 @@ export default function HaloPlayground() {
         <Value name="ring lift" value={e.ring.lift} />
         <Value name="ring glow" value={e.ring.glow} />
         <Value name="ring scale" value={e.ring.scale} />
-        <Value name="drift" value={`${e.drift}px`} />
-        <Value name="breath" value={`${e.breath.duration}ms`} />
+        <Value name="ring tilt" value={`${e.ring.tilt}°`} />
+        <Value name="eyeCurve" value={e.eyeCurve} />
+        <Value name="life" value={e.life} />
         <Value name="transition" value={`${e.transition}ms`} />
       </dl>
     </div>

@@ -12,9 +12,9 @@ import type { HaloState } from "./state";
  * Every field lands on a CSS custom property, which is why states can
  * cross-fade into one another for free: the browser interpolates the
  * properties, so `idle → thinking → helping` needs no transition code and
- * no keyframes between states. Only the ambient loops (breathing, the
- * ring's drift) are keyframes, because those are the only motion that
- * repeats.
+ * no keyframes between states. Only the ambient loops — the silhouette
+ * deforming, the light drifting inside, the ring floating — are keyframes,
+ * because those are the only motion that repeats.
  */
 export type HaloExpression = {
   /** Overall presence. 1 is resting size. */
@@ -54,10 +54,19 @@ export type HaloExpression = {
   eyeCurve: number;
   /** The ring: how high it floats, how much it glows, how wide it sits. */
   ring: { lift: number; glow: number; scale: number; tilt: number };
-  /** The breathing loop. Longer is calmer. */
-  breath: { duration: number; depth: number };
-  /** How far Halo drifts as it breathes, in px. */
-  drift: number;
+  /**
+   * How turned-up the ambient life is, 0–1.5. Multiplies the amplitude of
+   * every continuous loop — the silhouette's deformation, the drift of the
+   * light inside, the ring's float, the eyes' wander. It does not touch the
+   * *speed* of any of them: a state is more alive by moving further, never
+   * by moving faster, because faster is how calm becomes agitated.
+   *
+   * This is the only ambient dial. There is deliberately no per-state
+   * duration: the loops run at fixed, mutually prime periods so that they
+   * never resolve together, and letting a state retime them would put that
+   * back at risk for no gain a child could name.
+   */
+  life: number;
   /** How long it takes to become this, in ms. */
   transition: number;
 };
@@ -79,8 +88,7 @@ const RESTING: HaloExpression = {
   eyeTilt: 0,
   eyeCurve: 0,
   ring: { lift: 1, glow: 0.7, scale: 1, tilt: 0 },
-  breath: { duration: 5200, depth: 0.018 },
-  drift: 3,
+  life: 1,
   transition: 700,
 };
 
@@ -97,7 +105,6 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     light: 0.54,
     warmth: 0.3,
     ring: { lift: 1, glow: 0.6, scale: 1, tilt: 0 },
-    breath: { duration: 6000, depth: 0.016 },
   }),
 
   /** Awake and turned toward the child. Brighter, a fraction taller. */
@@ -108,7 +115,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     light: 0.7,
     warmth: 0.42,
     ring: { lift: 1.05, glow: 0.78, scale: 1.02, tilt: 0 },
-    breath: { duration: 4200, depth: 0.022 },
+    life: 1.05,
     transition: 500,
   }),
 
@@ -127,8 +134,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     warmth: 0.5,
     gaze: { x: 0.26, y: -0.14 },
     ring: { lift: 1.1, glow: 0.8, scale: 1.04, tilt: -4 },
-    breath: { duration: 3400, depth: 0.026 },
-    drift: 5,
+    life: 1.2,
     transition: 420,
   }),
 
@@ -151,8 +157,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     openness: 0.82,
     eyeTilt: -4,
     ring: { lift: 1.14, glow: 0.72, scale: 1.02, tilt: 5 },
-    breath: { duration: 3600, depth: 0.024 },
-    drift: 4,
+    life: 0.9,
     transition: 560,
   }),
 
@@ -170,7 +175,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     warmth: 0.66,
     gaze: { x: 0, y: 0.06 },
     ring: { lift: 1.12, glow: 0.95, scale: 1.06, tilt: 0 },
-    breath: { duration: 3800, depth: 0.024 },
+    life: 1.1,
     transition: 600,
   }),
 
@@ -191,8 +196,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     openness: 0.6,
     eyeTilt: -10,
     ring: { lift: 1.08, glow: 0.88, scale: 1.03, tilt: -7 },
-    breath: { duration: 2800, depth: 0.03 },
-    drift: 6,
+    life: 1.15,
     transition: 460,
   }),
 
@@ -215,16 +219,21 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     openness: 0.42,
     eyeTilt: 9,
     ring: { lift: 0.86, glow: 0.6, scale: 0.97, tilt: 0 },
-    breath: { duration: 4600, depth: 0.018 },
-    drift: 2,
+    life: 0.6,
     transition: 620,
   }),
 
-  /** Arrived. Up and outward, brightest, ring at its widest and warmest. */
+  /**
+   * Arrived. Up and outward, brightest, ring at its widest and warmest.
+   *
+   * Wider than tall on purpose. Joy that grows *upward* turns the
+   * silhouette into an egg, and an egg is only one step from the orb this
+   * character is defined against.
+   */
   celebrating: from({
     scale: 1.1,
-    shape: [58, 44, 40, 58],
-    squish: 0.97,
+    shape: [44, 64, 38, 70],
+    squish: 1.05,
     glow: 1,
     light: 1,
     warmth: 0.72,
@@ -233,8 +242,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     eyeTilt: 0,
     eyeCurve: 1,
     ring: { lift: 1.3, glow: 1, scale: 1.16, tilt: 0 },
-    breath: { duration: 2400, depth: 0.038 },
-    drift: 6,
+    life: 1.4,
     transition: 420,
   }),
 
@@ -248,8 +256,8 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
    */
   happy: from({
     scale: 1.05,
-    shape: [58, 44, 38, 60],
-    squish: 1.02,
+    shape: [56, 48, 40, 64],
+    squish: 1.04,
     glow: 0.8,
     light: 0.9,
     warmth: 0.66,
@@ -257,8 +265,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     openness: 0.74,
     eyeCurve: 1,
     ring: { lift: 1.18, glow: 0.92, scale: 1.08, tilt: 0 },
-    breath: { duration: 3000, depth: 0.03 },
-    drift: 5,
+    life: 1.25,
     transition: 440,
   }),
 
@@ -270,8 +277,7 @@ export const EXPRESSIONS: Record<HaloState, HaloExpression> = {
     warmth: 0.34,
     openness: 0.6,
     ring: { lift: 0.94, glow: 0.45, scale: 0.96, tilt: 0 },
-    breath: { duration: 5200, depth: 0.012 },
-    drift: 1,
+    life: 0.5,
     transition: 260,
   }),
 };

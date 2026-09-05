@@ -349,7 +349,7 @@ The timings that govern this are in `ARCHITECTURE.md`, and they are guesses unti
 
 # Halo
 
-Halo is the companion: an abstract organic blob with internal light, a soft glow, and eye-like highlights. It breathes, squishes, gazes, and shifts tone. A subtle cross sits low inside its light — a quality of the glow, never a badge.
+Halo is the companion: an abstract organic blob lit from within, with a golden ring above and two pale eye-like highlights. It deforms, gazes, and shifts tone, and it is alive at rest — light moves inside it whether or not anything is happening. It carries no cross, no badge and no mark.
 
 **Halo is the visual voice of the Assistance Ladder.** That is its job, and it is the reason it exists. Where the ladder says a child is being noticed, met, or joined, Halo is what that looks like.
 
