@@ -5,7 +5,7 @@ import BackLink from "./BackLink";
 /**
  * The frame a chapter section that isn't the story sits in.
  *
- * Practice and the memory verse are short and quiet, so they are ordinary
+ * Games and the memory verse are short and quiet, so they are ordinary
  * screens rather than the page-turning reader — a swipe gesture on a screen
  * with one thing on it teaches a child nothing.
  *

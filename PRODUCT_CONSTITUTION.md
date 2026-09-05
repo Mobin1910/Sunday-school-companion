@@ -159,7 +159,7 @@ Used consistently in code, content, and conversation. No synonyms.
 | **Story** | The biblical narrative itself (e.g. David and Goliath) |
 | **Chapter** | One complete playable unit built around a Story |
 | **Chapter Hub** | A chapter's own front page — where its Sections are chosen. Every chapter is entered here |
-| **Section** | A part of a chapter a child can choose: Story, Practice, Memory Verse, and whatever follows them |
+| **Section** | A part of a chapter a child can choose: Story, Games, Memory Verse, and whatever follows them |
 | **Step** | A stage within the Story section (Cover, Interactive Story, Quiz, Celebration) |
 | **Card** | A single screen within a Step — the atomic unit the Chapter Player renders |
 | **Learning Goal** | What a moment should help the child do — recall, association, sequencing, observation |
@@ -170,9 +170,9 @@ Used consistently in code, content, and conversation. No synonyms.
 
 "Lesson" is not a term in this project. Use **Chapter**.
 
-"Game" and "Engine" are not terms in this project. Use **Practice** for the section, **Activity** for a single thing to do inside it, and **Interaction** for the mechanic.
+"Engine" is not a term in this project. **Games** is the destination a child sees, **Activity** is what an author writes in a chapter file, and **Interaction** is the mechanic underneath. The three are different levels and should not be swapped for one another.
 
-"Games" is never a destination name. **Practice** is age-neutral and says what the thing is for.
+**Games** is what a child calls them, so it is what the product says. The word was avoided at first for fear of an arcade; the arcade is prevented by what is actually behind the door — no levels, no locks, no scores, no "Game 1 / Game 2" — and not by refusing the child's own word for play. "Practice" survives in one narrower place: practising a memory verse, which is what that genuinely is.
 
 ---
 
@@ -470,7 +470,7 @@ There are exactly **two levels of navigation**, and they are never mixed.
 **Global navigation** is the product. It is a bottom bar, because this is a phone and tablet product first, and it holds four destinations:
 
 ```
-Home  |  Chapters  |  Practice  |  Verses
+Home  |  Chapters  |  Games  |  Verses
 ```
 
 **Chapter navigation** is inside one chapter. It is the Chapter Hub, and it never appears in the bottom bar.
@@ -482,7 +482,7 @@ Chapters
   │
 Chapter Hub                    ← every chapter is entered here
   ├── Story                    → the full-screen reader
-  ├── Practice                 → the chapter's activities
+  ├── Games                    → the chapter's activities
   ├── Memory Verse             → the verse, and practising it
   └── future sections
 ```
@@ -497,7 +497,7 @@ Choosing a chapter never drops a child straight into the Story.
 
 ## Sections are real
 
-A chapter is not one linear thing. Story, Practice and Memory Verse are **first-class parts** a child chooses between.
+A chapter is not one linear thing. Story, Games and Memory Verse are **first-class parts** a child chooses between.
 
 The Chapter Player may still flatten a section's content into one card list internally — that is the player's business. The child-facing architecture understands sections, and adding a fourth one is a new entry rather than a redesign.
 
@@ -509,7 +509,7 @@ Back always goes up one level, and never sideways:
 
 | From | Back goes to |
 |---|---|
-| Story, Practice, Memory Verse | that chapter's Hub |
+| Story, Games, Memory Verse | that chapter's Hub |
 | Chapter Hub | Chapters |
 
 The browser and device back gestures follow the same hierarchy, because each level is a real route rather than a change of state.
@@ -527,7 +527,7 @@ Nothing at the end happens on its own. There is no timer and no auto-advance —
 
 ## The global destinations
 
-**Home** is a door, not a dashboard. **Chapters** is the shelf. **Practice** is every chapter's activities in one place — never "Games", never levels or an arcade. **Verses** becomes the child's growing collection of verses from chapters they have read.
+**Home** is a door, not a dashboard. **Chapters** is the shelf. **Games** is every chapter's activities in one place, and will shuffle between them as chapters gain more than one — still no levels, locks or scores. **Verses** becomes the child's growing collection of verses from chapters they have read.
 
 **About** is the adult-facing surface described in *Adults & Access*, reachable from Home and not in the child's path.
 

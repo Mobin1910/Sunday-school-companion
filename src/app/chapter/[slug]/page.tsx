@@ -55,10 +55,10 @@ export default async function ChapterHubPage({
       present: storyCards(chapter).length > 0,
     },
     {
-      key: "practice",
-      label: "Practice",
+      key: "games",
+      label: "Games",
       blurb: "Play with the story",
-      href: `/chapter/${slug}/practice`,
+      href: `/chapter/${slug}/games`,
       icon: SparkIcon,
       present: activityOf(chapter) !== undefined,
     },
@@ -125,10 +125,6 @@ export default async function ChapterHubPage({
             </li>
           ))}
         </ul>
-
-        {/* A welcome, which is a thing Halo is for. Idle: nothing is
-            being asked of the child on this screen. */}
-        <HaloPresence state="idle" placement="inline" size="large" />
       </div>
     </div>
   );

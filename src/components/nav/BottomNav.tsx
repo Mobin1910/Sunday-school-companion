@@ -12,11 +12,14 @@ import Link from "next/link";
  * component and the bar costs no JavaScript. There are four callers; four
  * explicit props are cheaper than hydrating a nav.
  *
- * "Practice", never "Games". Activities are part of learning here, not a
- * separate arcade — the word is doing real work and should not drift.
+ * "Games" is what a child calls them, so it is what the tab says. That does
+ * not make this an arcade: the destination holds a chapter's activities, and
+ * there are no levels, locks or scores behind it. The word names the thing
+ * from the child's side; the philosophy is enforced by what is actually
+ * there, not by refusing the word.
  */
 
-export type GlobalDestination = "home" | "chapters" | "practice" | "verses";
+export type GlobalDestination = "home" | "chapters" | "games" | "verses";
 
 const DESTINATIONS: {
   key: GlobalDestination;
@@ -26,7 +29,7 @@ const DESTINATIONS: {
 }[] = [
   { key: "home", label: "Home", href: "/", icon: HomeIcon },
   { key: "chapters", label: "Chapters", href: "/chapters", icon: BooksIcon },
-  { key: "practice", label: "Practice", href: "/practice", icon: SparkIcon },
+  { key: "games", label: "Games", href: "/games", icon: SparkIcon },
   { key: "verses", label: "Verses", href: "/verses", icon: HeartIcon },
 ];
 

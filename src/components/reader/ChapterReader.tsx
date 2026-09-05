@@ -16,7 +16,7 @@ import {
  *
  * Halo is deliberately absent from this file. The story artwork is not his,
  * and a companion floating over a page of Scripture would be the one place
- * he makes the product feel like a game. He belongs on the Hub, in practice
+ * he makes the product feel like a toy. He belongs on the Hub, in games
  * and beside the verse — not here.
  *
  * Chosen over scroll-snap and a flat-card slide after prototyping both at
