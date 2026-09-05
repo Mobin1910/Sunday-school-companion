@@ -27,6 +27,13 @@ import { say } from "./voice";
  * needed, and how much help they were given, live here and only here — a
  * number that cannot escape cannot become a score.
  *
+ * `onMiss` is the one thing that leaves besides completion, and it carries
+ * nothing: it fires to say "that try did not work", not how many times.
+ * Games needs it to end a run, and the fact is already public — the child
+ * is watching Halo receive it. A caller that counted these events would be
+ * building the tally this product refuses to keep, so callers hold a run,
+ * not a record; see `src/games/streak.ts`.
+ *
  * Halo is driven from here rather than by the models, because this is where
  * the assistance ladder actually lives. What crosses to the companion is a
  * HaloState — "recovering", "helping" — derived by `haloStateFor` from the
@@ -36,10 +43,13 @@ import { say } from "./voice";
 export default function InteractionPlayer({
   interaction,
   onComplete,
+  onMiss,
   active = true,
 }: {
   interaction: PlayInteraction;
   onComplete: () => void;
+  /** A try did not work. No count, and never a reason to interrupt. */
+  onMiss?: () => void;
   active?: boolean;
 }) {
   /** 0 alone · 1 a word · 2 a clue · 3 together */
@@ -110,6 +120,8 @@ export default function InteractionPlayer({
   );
 
   const handleMiss = useCallback(() => {
+    onMiss?.();
+
     setMisses((count) => {
       const next = count + 1;
 
@@ -121,7 +133,7 @@ export default function InteractionPlayer({
 
       return next;
     });
-  }, [climb]);
+  }, [climb, onMiss]);
 
   const handleArrive = useCallback(() => {
     clearTimers();
