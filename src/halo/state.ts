@@ -47,7 +47,9 @@ export type HaloState =
   | "hinting"
   /** "It's okay, let's take another look." Warm, and never corrective. */
   | "recovering"
-  /** The child arrived. */
+  /** Pleased with the child. Warm, but not an ending. */
+  | "happy"
+  /** The child arrived. Halo shares the moment. */
   | "celebrating"
   /** Moving between places. Briefly, and out of the way. */
   | "transitioning";
@@ -72,6 +74,7 @@ export const HALO_STATES: readonly HaloState[] = [
   "helping",
   "hinting",
   "recovering",
+  "happy",
   "celebrating",
   "transitioning",
 ] as const;
@@ -102,5 +105,6 @@ export const SIZE_PX: Record<HaloSize, number> = {
  */
 export const ANNOUNCEMENT: Partial<Record<HaloState, string>> = {
   helping: "Halo is helping",
+  happy: "Halo is pleased",
   celebrating: "Halo is celebrating with you",
 };

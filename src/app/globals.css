@@ -157,48 +157,145 @@ body {
 }
 
 /*
-  Halo.
+  Halo — the companion.
 
   Every value here comes from a custom property set by the expression table
   in src/halo/expression.ts. Nothing in this block knows a state name, which
   is what lets a designer retune Halo without touching CSS, and lets the
   browser tween between states without a line of transition code.
+
+  Halo carries its own light rather than the interface's palette. The UI's
+  tokens are named by role and will be replaced when real artwork lands;
+  these five are Halo's identity and are meant to survive that. They are the
+  only literal colours in the product, and they belong to a character rather
+  than to a surface.
 */
 .halo {
+  --halo-cyan: #4fd6ff;
+  --halo-blue: #3d7bff;
+  --halo-violet: #9b6bff;
+  --halo-pink: #ff8ecb;
+  --halo-peach: #ffb583;
+  --halo-gold: #ffd166;
+
   position: relative;
   width: var(--halo-size);
-  height: var(--halo-size);
+  /*
+    Room above for the ring and below for the reflection, and the body is
+    sized well inside the box so the largest state still has somewhere to
+    grow. Sizing the body to the full width meant celebrating clipped
+    against whatever contained it.
+  */
+  height: calc(var(--halo-size) * 1.42);
   flex: none;
 }
 
-.halo-body {
+.halo-stage {
   position: absolute;
   inset: 0;
-  border-radius: var(--halo-shape);
-  /*
-    Lit from within, not shaded from outside.
+}
 
-    A sphere is a ball with a highlight and a dark rim, and that reads as
-    an orb — the one thing Halo must not be. So the fill is brightest at
-    the core and falls away to a soft translucent edge, with no dark rim
-    at all. What gives it form is the glow it casts, not modelling.
-  */
+/*
+  The ring.
+
+  Held as an ellipse rather than a circle so it reads as a ring seen from
+  slightly below — a flat circle above a head looks like a sticker. The
+  border is uneven by a hair on purpose: a mathematically perfect ring is
+  the thing the reference explicitly is not.
+
+  Light, never metal: no gradient stops that imply a polished surface, just
+  a soft golden line with bloom around it.
+*/
+.halo-ring {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--halo-size) * 0.03);
+  width: calc(var(--halo-size) * 0.58);
+  height: calc(var(--halo-size) * 0.17);
+  transform: translateX(-50%)
+    translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
+    rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
+  border-radius: 50%;
+  border: calc(var(--halo-size) * 0.034) solid
+    rgb(250 190 74 / calc(0.62 + var(--halo-ring-glow) * 0.38));
+  /* A touch thinner at the bottom, as a ring of light catching the eye. */
+  border-bottom-width: calc(var(--halo-size) * 0.024);
+  box-shadow:
+    0 0 calc(var(--halo-size) * 0.2) rgb(255 200 90 / calc(var(--halo-ring-glow) * 0.9)),
+    0 0 calc(var(--halo-size) * 0.44) rgb(255 176 52 / calc(var(--halo-ring-glow) * 0.55)),
+    inset 0 0 calc(var(--halo-size) * 0.06) rgb(255 236 190 / calc(var(--halo-ring-glow) * 0.8));
+  animation: halo-ring-float calc(var(--halo-breath-duration) * 1.25)
+    ease-in-out infinite;
+  transition:
+    transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1),
+    border-color var(--halo-transition) ease-out,
+    box-shadow var(--halo-transition) ease-out;
+}
+
+/*
+  The body.
+
+  Lit from within, not shaded from outside. A sphere is a ball with a
+  highlight and a dark rim, and that reads as an orb — the one thing Halo
+  must not be. So the colours are stacked as overlapping soft radials, each
+  sitting where the reference puts it: cyan high left, electric blue through
+  the middle, violet low centre, pink and peach gathering at the bottom
+  left. `--halo-warmth` cross-fades the warm two forward without changing
+  the family, which is how a state shows care.
+
+  The bottom radius stays the flattest of the four: Halo rests on something.
+*/
+.halo-body {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--halo-size) * 0.26);
+  width: calc(var(--halo-size) * 0.84);
+  height: calc(var(--halo-size) * 0.8);
+  margin-left: calc(var(--halo-size) * -0.42);
+  border-radius: var(--halo-shape);
   background:
     radial-gradient(
-      ellipse 78% 82% at 44% 40%,
-      color-mix(in oklab, var(--halo-hue) 18%, white) 0%,
-      color-mix(in oklab, var(--halo-hue) 62%, white) 38%,
-      var(--halo-hue) 72%,
-      color-mix(in oklab, var(--halo-hue) 82%, transparent) 100%
+        ellipse 62% 54% at 24% 78%,
+        rgb(from var(--halo-peach) r g b / calc(0.5 + var(--halo-warmth) * 0.5))
+          0%,
+        transparent 72%
+      ),
+    radial-gradient(
+        ellipse 58% 50% at 42% 88%,
+        rgb(from var(--halo-pink) r g b / calc(0.42 + var(--halo-warmth) * 0.45))
+          0%,
+        transparent 70%
+      ),
+    radial-gradient(
+        ellipse 74% 66% at 56% 58%,
+        rgb(from var(--halo-violet) r g b / 0.72) 0%,
+        transparent 76%
+      ),
+    radial-gradient(
+        ellipse 82% 76% at 66% 40%,
+        rgb(from var(--halo-blue) r g b / 0.88) 0%,
+        transparent 78%
+      ),
+    radial-gradient(
+        ellipse 62% 58% at 26% 22%,
+        rgb(from var(--halo-cyan) r g b / calc(0.95 - var(--halo-warmth) * 0.25))
+          0%,
+        transparent 74%
+      ),
+    radial-gradient(
+      ellipse 70% 64% at 50% 52%,
+      rgb(255 255 255 / calc(var(--halo-light) * 0.34)) 0%,
+      transparent 70%
     );
-  box-shadow: 0 0 calc(var(--halo-size) * 0.55) calc(var(--halo-size) * 0.05)
-    color-mix(
-      in oklab,
-      var(--halo-hue) calc(var(--halo-glow) * 42%),
-      transparent
-    );
-  transform: scale(var(--halo-scale)) scaleX(var(--halo-squish))
-    scaleY(calc(2 - var(--halo-squish)));
+  box-shadow:
+    0 0 calc(var(--halo-size) * 0.5) calc(var(--halo-size) * 0.06)
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.5)),
+    0 calc(var(--halo-size) * 0.1) calc(var(--halo-size) * 0.4)
+      rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.34)),
+    inset 0 calc(var(--halo-size) * 0.1) calc(var(--halo-size) * 0.2)
+      rgb(255 255 255 / calc(var(--halo-light) * 0.3));
+  transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
+    scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)));
   animation: halo-breathe var(--halo-breath-duration) ease-in-out infinite;
   transition:
     border-radius var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
@@ -207,129 +304,168 @@ body {
     background var(--halo-transition) ease-out;
 }
 
-/* The light inside. What makes Halo lit rather than coloured. */
-.halo-light {
-  position: absolute;
-  inset: 6%;
-  border-radius: inherit;
-  background: radial-gradient(
-    ellipse 66% 62% at 46% 44%,
-    rgb(255 255 255 / calc(var(--halo-light) * 0.34)) 0%,
-    rgb(255 255 255 / calc(var(--halo-light) * 0.2)) 52%,
-    transparent 78%
-  );
-  transition: background var(--halo-transition) ease-out;
-}
-
 /*
-  The cross, held inside the light rather than drawn on top of it.
+  The glass highlight.
 
-  It is a quality of the glow, never a badge or a logo — barely resolved at
-  rest and clearest when Halo celebrates. Two soft bars, no hard edges.
+  One soft ellipse high on the left shoulder. This is the single detail that
+  makes the surface read as a surface — without it the body is a coloured
+  cloud rather than something jelly-like you could press.
 */
-.halo-cross {
+.halo-sheen {
   position: absolute;
-  /*
-    Held entirely BELOW the eye line.
-
-    When the upright bar passed between the eyes it stopped reading as a
-    cross and started reading as a nose — two dots and a bar is a face, and
-    a face is the one thing Halo must never become. Starting it below the
-    eyes keeps it light gathering low in the body.
-  */
-  inset: 56% 26% 12%;
-  opacity: var(--halo-cross);
-  /*
-    Two soft bars of light, upright, with the crossbar high — read as a
-    cross rather than a plus sign. Built from gradients so the ends fade
-    out instead of stopping, which keeps it a quality of the light rather
-    than a symbol stamped on top.
-  */
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(255 255 255 / 0.95) 16%,
-      rgb(255 255 255 / 0.95) 84%,
-      transparent 100%
-    ),
-    linear-gradient(
-      to right,
-      transparent 0%,
-      rgb(255 255 255 / 0.85) 18%,
-      rgb(255 255 255 / 0.85) 82%,
-      transparent 100%
-    );
-  /*
-    Set below the eye line so the cross and the eyes never compete. A
-    crossbar level with the eyes reads as a symbol stamped over a face;
-    sitting lower, it reads as light gathering in the body.
-  */
-  background-size:
-    17% 100%,
-    82% 15%;
-  background-position:
-    center,
-    center 34%;
-  background-repeat: no-repeat;
-  filter: blur(calc(var(--halo-size) * 0.01));
-  transition:
-    opacity var(--halo-transition) ease-out,
-    filter var(--halo-transition) ease-out;
+  left: 12%;
+  top: 8%;
+  width: 42%;
+  height: 32%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 38% 34%,
+    rgb(255 255 255 / 0.72) 0%,
+    rgb(255 255 255 / 0.16) 52%,
+    transparent 76%
+  );
+  filter: blur(calc(var(--halo-size) * 0.012));
+  transition: opacity var(--halo-transition) ease-out;
 }
 
 /*
-  Eye-like highlights, not eyes. Two soft lights that catch and move, which
-  is enough to read as alive and stops well short of a cartoon face.
+  The eyes.
+
+  Two pale vertical capsules. No pupils, no iris, no lashes, no brows, and
+  nothing that could be read as a mouth. Openness squashes them for a state
+  that is looking hard; tilt is a few degrees and carries most of the mood.
+
+  They sit slightly right of centre and high, as the reference has them —
+  centring them makes the blob symmetrical, and symmetry is what turns a
+  companion into a cartoon face.
 */
 .halo-eyes {
   position: absolute;
-  inset: 0;
+  left: 54%;
+  top: 42%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--halo-size) * 0.17);
-  transform: translate(var(--halo-gaze-x), var(--halo-gaze-y));
+  gap: calc(var(--halo-size) * 0.1);
+  transform: translate(-50%, -50%)
+    translate(var(--halo-gaze-x), var(--halo-gaze-y));
   transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 
 .halo-eye {
-  width: calc(var(--halo-size) * 0.115);
-  height: calc(var(--halo-size) * 0.16 * var(--halo-openness));
-  border-radius: 50%;
-  /* A highlight with a soft edge, not a drilled hole. */
-  background: radial-gradient(
-    ellipse at 42% 34%,
-    rgb(255 255 255 / 0.98) 0%,
-    rgb(255 255 255 / 0.86) 55%,
-    rgb(255 255 255 / 0.35) 100%
-  );
-  box-shadow: 0 0 calc(var(--halo-size) * 0.075) rgb(255 255 255 / 0.55);
-  transition: height var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+  position: relative;
+  width: calc(var(--halo-size) * 0.078);
+  height: calc(var(--halo-size) * 0.155 * var(--halo-openness));
+  transform: rotate(var(--halo-eye-tilt));
+  transition:
+    height var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1),
+    transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 
-/* Tone decides which token carries the light. Named by role, never by hue. */
-.halo[data-halo-tone="calm"] {
-  --halo-hue: var(--color-edge);
+/* Mirrored, so a tilt leans the pair inward rather than sliding both one way. */
+.halo-eye:last-child {
+  transform: rotate(calc(var(--halo-eye-tilt) * -1));
 }
-.halo[data-halo-tone="warm"] {
-  --halo-hue: var(--color-touchable);
+
+.halo-eye-capsule,
+.halo-eye-arc {
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--halo-transition) ease-out;
 }
-.halo[data-halo-tone="joy"] {
-  --halo-hue: var(--color-joy);
+
+.halo-eye-capsule {
+  border-radius: calc(var(--halo-size) * 0.05);
+  background: rgb(255 255 255 / 0.97);
+  box-shadow: 0 0 calc(var(--halo-size) * 0.05) rgb(235 245 255 / 0.7);
+  opacity: calc(1 - var(--halo-eye-curve));
+}
+
+/*
+  The joyful eye: an upward arc, drawn as the top edge of a wide ellipse.
+  A curve rather than a second shape, so it can never read as a smiley face
+  bolted onto a blob.
+*/
+.halo-eye-arc {
+  top: -8%;
+  left: -46%;
+  right: -46%;
+  bottom: 22%;
+  border-top: calc(var(--halo-size) * 0.026) solid rgb(255 255 255 / 0.97);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  filter: drop-shadow(0 0 calc(var(--halo-size) * 0.04) rgb(235 245 255 / 0.7));
+  opacity: var(--halo-eye-curve);
+}
+
+/*
+  The reflection.
+
+  Halo is standing on something, and this is the whole of that idea: a soft
+  smear of its own light on the floor beneath it. It is what stops the blob
+  floating in the middle of a screen like a cursor.
+*/
+.halo-floor {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: calc(var(--halo-size) * 0.86);
+  height: calc(var(--halo-size) * 0.13);
+  margin-left: calc(var(--halo-size) * -0.43);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.5)) 0%,
+    rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.22)) 46%,
+    transparent 78%
+  );
+  filter: blur(calc(var(--halo-size) * 0.03));
+  transition:
+    background var(--halo-transition) ease-out,
+    opacity var(--halo-transition) ease-out;
 }
 
 @keyframes halo-breathe {
   0%,
   100% {
-    transform: scale(var(--halo-scale)) scaleX(var(--halo-squish))
-      scaleY(calc(2 - var(--halo-squish))) translateY(0);
+    transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
+      scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)))
+      translateY(0);
   }
   50% {
-    transform: scale(calc(var(--halo-scale) + var(--halo-breath-depth)))
+    transform: rotate(var(--halo-lean))
+      scale(calc(var(--halo-scale) + var(--halo-breath-depth)))
       scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)))
-      translateY(calc(var(--halo-drift) * -1));
+      translateY(calc(var(--halo-drift) * -0.5));
   }
+}
+
+/* The ring drifts on its own clock, so the two never look mechanical. */
+@keyframes halo-ring-float {
+  0%,
+  100% {
+    transform: translateX(-50%)
+      translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
+      rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
+  }
+  50% {
+    transform: translateX(-50%)
+      translateY(
+        calc(var(--halo-size) * -0.06 * var(--halo-ring-lift) - var(--halo-drift) * 0.7px)
+      )
+      rotate(var(--halo-ring-tilt)) scale(calc(var(--halo-ring-scale) * 1.02));
+  }
+}
+
+/*
+  Night, which is the primary presentation.
+
+  "The interface is the night. Halo is the light." A surface that wants to
+  present Halo properly wraps it in this rather than reinventing a dark box,
+  so the atmosphere stays one thing everywhere it appears.
+*/
+.halo-night {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 46%, #16295c 0%, transparent 70%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, #123a6b 0%, transparent 66%),
+    linear-gradient(180deg, #060b1c 0%, #0a1330 55%, #060b1c 100%);
 }
 
 /*
@@ -348,12 +484,13 @@ body {
   /*
     Halo stops moving but does not stop meaning.
 
-    The breathing and the drift go. Shape, light, glow, gaze and eye
-    openness stay, because those are what distinguish helping from
-    recovering — a child who needs stillness still needs to be able to
-    tell the two apart.
+    The breathing, the drift and the ring's float go. Shape, colour, light,
+    glow, lean, gaze, eye openness and the ring's height and brightness all
+    stay, because those are what distinguish helping from recovering — a
+    child who needs stillness still needs to be able to tell the two apart.
   */
-  .halo-body {
+  .halo-body,
+  .halo-ring {
     animation: none !important;
   }
 }

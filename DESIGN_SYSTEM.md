@@ -232,59 +232,78 @@ Every interaction's celebration is the same size regardless of pool. The chapter
 
 # Halo
 
-The companion. Principles are in `PRODUCT_CONSTITUTION.md`; this is how it looks and moves.
+The companion. Principles are in `PRODUCT_CONSTITUTION.md`; this is how it looks and moves. **The approved reference image is the visual source of truth** — this section describes it, and does not reinterpret it.
 
 ## Form
 
-An organic blob, never a circle. Asymmetric corner radii give it a silhouette that differs per state; a symmetrical shape reads as an orb, which is the thing it must not be.
+An organic blob, never a circle. Asymmetric corner radii give it a silhouette that differs per state, and the bottom radius stays the flattest of the four: Halo rests on something rather than floating like a bubble.
 
-It is **lit from within, never shaded from outside**. No dark rim, no specular highlight, no modelling — a bright core falling away to a soft translucent edge, and a glow it casts rather than a surface it reflects. Two soft eye-like highlights, which move and narrow. Nothing else. No mouth, no brows, no face.
+It is **lit from within, never shaded from outside**. No dark rim, no specular modelling — the colours are overlapping soft radials, and what gives it form is the light it casts. One glass sheen high on the left shoulder is the single detail that makes the surface read as jelly rather than as a coloured cloud. A soft reflection beneath grounds it.
 
-A cross sits low inside the light, below the eye line so the two never compete. Subtle at rest, clearest in celebration, and never a badge.
+No arms, no legs, no clothing, no mouth, no brows, no cross. Nothing that turns it into a mascot.
 
-## Tone
+## Colour
 
-Halo borrows the product's tokens; it introduces no colour of its own.
+Halo carries **its own light rather than the interface's palette**. These are the only literal colours in the product — everything else is a role token — because they belong to a character rather than to a surface, and they are meant to survive Milestone 13's retokenising.
 
-| Tone | Token | Used by |
-|---|---|---|
-| calm | `edge` | idle, listening, thinking, transitioning |
-| warm | `touchable` | curious, helping, hinting, recovering |
-| joy | `joy` | celebrating |
+| | |
+|---|---|
+| cyan | `#4fd6ff` — high left |
+| electric blue | `#3d7bff` — through the middle |
+| violet | `#9b6bff` — low centre |
+| pink | `#ff8ecb` — gathering at the base |
+| peach | `#ffb583` — bottom left |
+| gold | the ring, and only the ring |
+
+They blend inside the body as overlapping radials, never as bands. `warmth` cross-fades the peach and pink forward without changing the family — that is how a state shows care.
+
+## The ring
+
+Golden, thin, floating above, and one of Halo's strongest signatures.
+
+An **ellipse rather than a circle**, so it reads as a ring seen from slightly below; a flat circle above a head looks like a sticker. Slightly uneven in width, because a mathematically perfect ring is precisely what it is not. Built from a soft border plus bloom — **light, never metal**, never neon.
+
+It drifts on its own clock, a quarter slower than the body breathes, so the two never look mechanical.
+
+## Eyes
+
+Two pale **vertical capsules**. No pupils, no iris, no lashes, no brows. Set slightly right of centre and high — centring them makes the blob symmetrical, and symmetry is what turns a companion into a cartoon face.
+
+Only two things change: **openness** (they squash for a state looking hard) and **tilt** (a few degrees carries most of the mood). Position shifts with gaze.
 
 ## States
 
 | State | Reads as |
 |---|---|
-| `idle` | resting; nothing is being asked |
+| `idle` | resting, cool, unhurried |
 | `listening` | attending, brighter, turned toward the child |
-| `curious` | interested in what just happened — **never a verdict** |
-| `thinking` | considering alongside; eyes narrow, light drawn in |
-| `helping` | company; the largest, calmest, warmest state |
+| `curious` | leaning, eyes and ring following — **never a verdict** |
+| `thinking` | considering; cool, eyes narrowed, ring lifted |
+| `helping` | company; largest, warmest, ring at its most present |
 | `hinting` | leaning and looking toward something worth noticing |
-| `recovering` | settling down and inward, softer and dimmer |
-| `celebrating` | up and outward, brightest, cross clearest |
-| `transitioning` | small and quiet, out of the way of the move |
+| `recovering` | settling down and inward, dimmer, ring drawn closer |
+| `celebrating` | up and outward, brightest, ring widest |
+| `transitioning` | small and quiet, out of the way |
 
-Recovery **settles down and inward**. Celebration **rises up and outward**. This is the same grammar the rest of the system uses, and the two may never borrow from each other.
+Recovery **settles down and inward**. Celebration **rises up and outward**. Nothing shakes, flashes, reddens, bounces, spins or emits particles, at any state, ever.
 
-## Motion
+## Environment
 
-Every state is a set of CSS custom properties, so transitions between states are property interpolation — no keyframes between states and no animation library. The only loop is breathing.
+**The interface is the night. Halo is the light.** Deep navy, a soft blue atmospheric gradient, restrained haze, subtle reflective grounding. `HaloPresence` takes `ground="night"` to provide it, so the atmosphere stays one thing everywhere rather than being reinvented per surface.
 
-Nothing shakes, flashes, reddens or bounces, at any state, ever.
+Halo remains legible on the light surfaces the app uses today, but night is the primary presentation. Never a black-and-neon sci-fi UI.
 
 ## Sizes
 
-`compact` 40px · `standard` 72px · `large` 120px · `hero` 200px. Chosen by the surface, never inferred by Halo.
+`compact` 40px · `standard` 72px · `large` 120px · `hero` 200px. The rendered box is 1.42× the size to hold the ring above and the reflection below, and the body sits well inside it so the largest state has room to grow.
 
 ## Reduced motion
 
-Breathing and drift stop. **Shape, tone, glow, gaze and eye openness remain**, because those are what distinguish helping from recovering — a child who needs stillness still needs to tell the two apart. State recognition never depends on animation alone.
+Breathing, drift and the ring's float stop. **Shape, colour, warmth, light, glow, lean, gaze, eye openness and the ring's height and brightness all remain**, because those are what distinguish helping from recovering — a child who needs stillness still needs to tell the two apart.
 
 ## Announcement
 
-Halo is silent to screen readers in most states. Only `helping` and `celebrating` announce, because only those carry meaning a child would otherwise miss. Nothing announces a mistake.
+Silent to screen readers in most states. Only `helping` and `celebrating` announce, because only those carry meaning a child would otherwise miss. Nothing announces a mistake.
 
 ---
 

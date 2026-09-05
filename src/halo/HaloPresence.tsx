@@ -38,16 +38,30 @@ export default function HaloPresence({
   state,
   placement = "inline",
   size,
+  ground = "auto",
   className = "",
 }: {
   state: HaloState;
   placement?: HaloPlacement;
   /** Overrides the placement's natural size. Rarely needed. */
   size?: HaloSize;
+  /**
+   * "night" wraps Halo in the deep atmospheric ground the approved
+   * direction calls its primary presentation — the interface is the night,
+   * Halo is the light. "auto" sits on whatever surface it was placed on,
+   * which is what the light screens use today.
+   */
+  ground?: "auto" | "night";
   className?: string;
 }) {
+  const night = ground === "night";
+
   return (
-    <div className={`${PLACEMENT[placement]} ${className}`}>
+    <div
+      className={`${PLACEMENT[placement]} ${
+        night ? "halo-night overflow-hidden rounded-card" : ""
+      } ${className}`}
+    >
       <Halo state={state} size={size ?? DEFAULT_SIZE[placement]} />
     </div>
   );

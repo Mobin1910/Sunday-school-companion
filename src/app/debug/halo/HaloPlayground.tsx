@@ -27,15 +27,15 @@ import {
 export default function HaloPlayground() {
   const [state, setState] = useState<HaloState>("idle");
   const [size, setSize] = useState<HaloSize>("large");
-  const [onDark, setOnDark] = useState(false);
+  const [night, setNight] = useState(true);
 
   const e = expressionFor(state);
 
   return (
     <div className="flex flex-col gap-6">
       <div
-        className={`flex min-h-72 items-center justify-center rounded-card transition-colors duration-300 ${
-          onDark ? "bg-[#2a2119]" : "bg-ground-raised"
+        className={`flex min-h-80 items-center justify-center rounded-card transition-colors duration-300 ${
+          night ? "halo-night" : "bg-ground-raised"
         }`}
       >
         <Halo state={state} size={size} />
@@ -67,27 +67,30 @@ export default function HaloPlayground() {
         </Row>
 
         <Row label="Ground">
-          <Chip on={!onDark} onClick={() => setOnDark(false)}>
-            light
+          <Chip on={night} onClick={() => setNight(true)}>
+            night
           </Chip>
-          <Chip on={onDark} onClick={() => setOnDark(true)}>
-            dark
+          <Chip on={!night} onClick={() => setNight(false)}>
+            light
           </Chip>
         </Row>
       </div>
 
       <dl className="grid grid-cols-2 gap-x-6 gap-y-1 font-mono text-xs text-ink-soft sm:grid-cols-3">
-        <Value name="tone" value={e.tone} />
         <Value name="scale" value={e.scale} />
         <Value name="squish" value={e.squish} />
+        <Value name="lean" value={`${e.lean}°`} />
         <Value name="glow" value={e.glow} />
         <Value name="light" value={e.light} />
-        <Value name="cross" value={e.cross} />
+        <Value name="warmth" value={e.warmth} />
         <Value name="openness" value={e.openness} />
+        <Value name="eyeTilt" value={`${e.eyeTilt}°`} />
         <Value name="gaze" value={`${e.gaze.x}, ${e.gaze.y}`} />
+        <Value name="ring lift" value={e.ring.lift} />
+        <Value name="ring glow" value={e.ring.glow} />
+        <Value name="ring scale" value={e.ring.scale} />
         <Value name="drift" value={`${e.drift}px`} />
         <Value name="breath" value={`${e.breath.duration}ms`} />
-        <Value name="depth" value={e.breath.depth} />
         <Value name="transition" value={`${e.transition}ms`} />
       </dl>
     </div>
