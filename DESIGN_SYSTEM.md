@@ -230,6 +230,64 @@ Every interaction's celebration is the same size regardless of pool. The chapter
 
 ---
 
+# Halo
+
+The companion. Principles are in `PRODUCT_CONSTITUTION.md`; this is how it looks and moves.
+
+## Form
+
+An organic blob, never a circle. Asymmetric corner radii give it a silhouette that differs per state; a symmetrical shape reads as an orb, which is the thing it must not be.
+
+It is **lit from within, never shaded from outside**. No dark rim, no specular highlight, no modelling — a bright core falling away to a soft translucent edge, and a glow it casts rather than a surface it reflects. Two soft eye-like highlights, which move and narrow. Nothing else. No mouth, no brows, no face.
+
+A cross sits low inside the light, below the eye line so the two never compete. Subtle at rest, clearest in celebration, and never a badge.
+
+## Tone
+
+Halo borrows the product's tokens; it introduces no colour of its own.
+
+| Tone | Token | Used by |
+|---|---|---|
+| calm | `edge` | idle, listening, thinking, transitioning |
+| warm | `touchable` | curious, helping, hinting, recovering |
+| joy | `joy` | celebrating |
+
+## States
+
+| State | Reads as |
+|---|---|
+| `idle` | resting; nothing is being asked |
+| `listening` | attending, brighter, turned toward the child |
+| `curious` | interested in what just happened — **never a verdict** |
+| `thinking` | considering alongside; eyes narrow, light drawn in |
+| `helping` | company; the largest, calmest, warmest state |
+| `hinting` | leaning and looking toward something worth noticing |
+| `recovering` | settling down and inward, softer and dimmer |
+| `celebrating` | up and outward, brightest, cross clearest |
+| `transitioning` | small and quiet, out of the way of the move |
+
+Recovery **settles down and inward**. Celebration **rises up and outward**. This is the same grammar the rest of the system uses, and the two may never borrow from each other.
+
+## Motion
+
+Every state is a set of CSS custom properties, so transitions between states are property interpolation — no keyframes between states and no animation library. The only loop is breathing.
+
+Nothing shakes, flashes, reddens or bounces, at any state, ever.
+
+## Sizes
+
+`compact` 40px · `standard` 72px · `large` 120px · `hero` 200px. Chosen by the surface, never inferred by Halo.
+
+## Reduced motion
+
+Breathing and drift stop. **Shape, tone, glow, gaze and eye openness remain**, because those are what distinguish helping from recovering — a child who needs stillness still needs to tell the two apart. State recognition never depends on animation alone.
+
+## Announcement
+
+Halo is silent to screen readers in most states. Only `helping` and `celebrating` announce, because only those carry meaning a child would otherwise miss. Nothing announces a mistake.
+
+---
+
 # Illustration
 
 - One coherent hand-drawn style across all chapters — visible texture, imperfect line, warm palette.

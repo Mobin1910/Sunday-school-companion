@@ -1,4 +1,4 @@
-import Job from "@/components/Job";
+import HaloPresence from "@/halo/HaloPresence";
 
 /**
  * An honest empty state for a section whose interaction has no model yet.
@@ -17,7 +17,7 @@ export default function NotReadyYet({ what }: { what: string }) {
       <p className="max-w-sm text-lg text-ink-soft text-balance">
         Come back for it soon.
       </p>
-      <Job where="guidance" />
+      <HaloPresence state="idle" />
     </div>
   );
 }

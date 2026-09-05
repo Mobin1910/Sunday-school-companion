@@ -11,10 +11,13 @@ import {
   useState,
 } from "react";
 
-import Job from "@/components/Job";
-
 /**
  * Turns the pages of a chapter's story with a page curl.
+ *
+ * Halo is deliberately absent from this file. The story artwork is not his,
+ * and a companion floating over a page of Scripture would be the one place
+ * he makes the product feel like a game. He belongs on the Hub, in practice
+ * and beside the verse — not here.
  *
  * Chosen over scroll-snap and a flat-card slide after prototyping both at
  * /prototype/spatial (deleted) and /prototype/curl (kept, for reference).
@@ -402,8 +405,7 @@ export default function ChapterReader({
         Page {index + 1} of {pages.length}
       </p>
 
-      {/* Job is offered the moment a child might be unsure what to do. */}
-      {showGuide ? <Job where="guidance" /> : null}
+
 
       {onLastPage ? (
         <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />

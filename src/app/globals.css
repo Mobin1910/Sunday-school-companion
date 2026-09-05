@@ -157,6 +157,169 @@ body {
 }
 
 /*
+  Halo.
+
+  Every value here comes from a custom property set by the expression table
+  in src/halo/expression.ts. Nothing in this block knows a state name, which
+  is what lets a designer retune Halo without touching CSS, and lets the
+  browser tween between states without a line of transition code.
+*/
+.halo {
+  position: relative;
+  width: var(--halo-size);
+  height: var(--halo-size);
+  flex: none;
+}
+
+.halo-body {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--halo-shape);
+  /*
+    Lit from within, not shaded from outside.
+
+    A sphere is a ball with a highlight and a dark rim, and that reads as
+    an orb — the one thing Halo must not be. So the fill is brightest at
+    the core and falls away to a soft translucent edge, with no dark rim
+    at all. What gives it form is the glow it casts, not modelling.
+  */
+  background:
+    radial-gradient(
+      ellipse 78% 82% at 44% 40%,
+      color-mix(in oklab, var(--halo-hue) 18%, white) 0%,
+      color-mix(in oklab, var(--halo-hue) 62%, white) 38%,
+      var(--halo-hue) 72%,
+      color-mix(in oklab, var(--halo-hue) 82%, transparent) 100%
+    );
+  box-shadow: 0 0 calc(var(--halo-size) * 0.55) calc(var(--halo-size) * 0.05)
+    color-mix(
+      in oklab,
+      var(--halo-hue) calc(var(--halo-glow) * 42%),
+      transparent
+    );
+  transform: scale(var(--halo-scale)) scaleX(var(--halo-squish))
+    scaleY(calc(2 - var(--halo-squish)));
+  animation: halo-breathe var(--halo-breath-duration) ease-in-out infinite;
+  transition:
+    border-radius var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    transform var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    box-shadow var(--halo-transition) ease-out,
+    background var(--halo-transition) ease-out;
+}
+
+/* The light inside. What makes Halo lit rather than coloured. */
+.halo-light {
+  position: absolute;
+  inset: 6%;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 66% 62% at 46% 44%,
+    rgb(255 255 255 / calc(var(--halo-light) * 0.34)) 0%,
+    rgb(255 255 255 / calc(var(--halo-light) * 0.2)) 52%,
+    transparent 78%
+  );
+  transition: background var(--halo-transition) ease-out;
+}
+
+/*
+  The cross, held inside the light rather than drawn on top of it.
+
+  It is a quality of the glow, never a badge or a logo — barely resolved at
+  rest and clearest when Halo celebrates. Two soft bars, no hard edges.
+*/
+.halo-cross {
+  position: absolute;
+  /* Held inside the silhouette, weighted low. */
+  inset: 26% 24% 16%;
+  opacity: var(--halo-cross);
+  /*
+    Two soft bars of light, upright, with the crossbar high — read as a
+    cross rather than a plus sign. Built from gradients so the ends fade
+    out instead of stopping, which keeps it a quality of the light rather
+    than a symbol stamped on top.
+  */
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(255 255 255 / 0.95) 16%,
+      rgb(255 255 255 / 0.95) 84%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgb(255 255 255 / 0.85) 18%,
+      rgb(255 255 255 / 0.85) 82%,
+      transparent 100%
+    );
+  /*
+    Set below the eye line so the cross and the eyes never compete. A
+    crossbar level with the eyes reads as a symbol stamped over a face;
+    sitting lower, it reads as light gathering in the body.
+  */
+  background-size:
+    16% 100%,
+    76% 12%;
+  background-position:
+    center,
+    center 62%;
+  background-repeat: no-repeat;
+  filter: blur(calc(var(--halo-size) * 0.01));
+  transition:
+    opacity var(--halo-transition) ease-out,
+    filter var(--halo-transition) ease-out;
+}
+
+/*
+  Eye-like highlights, not eyes. Two soft lights that catch and move, which
+  is enough to read as alive and stops well short of a cartoon face.
+*/
+.halo-eyes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--halo-size) * 0.17);
+  transform: translate(var(--halo-gaze-x), var(--halo-gaze-y));
+  transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+.halo-eye {
+  width: calc(var(--halo-size) * 0.1);
+  height: calc(var(--halo-size) * 0.13 * var(--halo-openness));
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 0 0 calc(var(--halo-size) * 0.06) rgb(255 255 255 / 0.7);
+  transition: height var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+/* Tone decides which token carries the light. Named by role, never by hue. */
+.halo[data-halo-tone="calm"] {
+  --halo-hue: var(--color-edge);
+}
+.halo[data-halo-tone="warm"] {
+  --halo-hue: var(--color-touchable);
+}
+.halo[data-halo-tone="joy"] {
+  --halo-hue: var(--color-joy);
+}
+
+@keyframes halo-breathe {
+  0%,
+  100% {
+    transform: scale(var(--halo-scale)) scaleX(var(--halo-squish))
+      scaleY(calc(2 - var(--halo-squish))) translateY(0);
+  }
+  50% {
+    transform: scale(calc(var(--halo-scale) + var(--halo-breath-depth)))
+      scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)))
+      translateY(calc(var(--halo-drift) * -1));
+  }
+}
+
+/*
   Calm over clutter, and calm for children who need stillness.
   Nothing becomes unusable — motion simply stops.
 */
@@ -167,5 +330,17 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /*
+    Halo stops moving but does not stop meaning.
+
+    The breathing and the drift go. Shape, light, glow, gaze and eye
+    openness stay, because those are what distinguish helping from
+    recovering — a child who needs stillness still needs to be able to
+    tell the two apart.
+  */
+  .halo-body {
+    animation: none !important;
   }
 }

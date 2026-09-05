@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import Job from "@/components/Job";
+import HaloPresence from "@/halo/HaloPresence";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import QuizCard from "@/components/reader/QuizCard";
@@ -38,11 +38,10 @@ export default async function ChapterPracticePage({
       chapterTitle={chapter.title}
       hubHref={`/chapter/${slug}`}
     >
+      {/* Halo is not placed here: a playable activity brings its own,
+          driven by the assistance ladder inside InteractionPlayer. */}
       {canPlay(activity.interaction) ? (
-        <>
-          <QuizCard interaction={activity.interaction} />
-          <Job where="practice" />
-        </>
+        <QuizCard interaction={activity.interaction} />
       ) : (
         <NotReadyYet what="This activity" />
       )}

@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { PlayInteraction } from "@/content";
+import HaloPresence from "@/halo/HaloPresence";
 
+import { haloStateFor } from "./halo";
 import { renderModel } from "./registry";
 import { TIMING } from "./timing";
 import { say } from "./voice";
@@ -24,6 +26,12 @@ import { say } from "./voice";
  * `onComplete` takes no arguments and never will. How many tries a child
  * needed, and how much help they were given, live here and only here — a
  * number that cannot escape cannot become a score.
+ *
+ * Halo is driven from here rather than by the models, because this is where
+ * the assistance ladder actually lives. What crosses to the companion is a
+ * HaloState — "recovering", "helping" — derived by `haloStateFor` from the
+ * state below. The counts stay in this file, which is the whole point of
+ * deriving rather than passing.
  */
 export default function InteractionPlayer({
   interaction,
@@ -140,6 +148,14 @@ export default function InteractionPlayer({
     return () => observer.disconnect();
   }, []);
 
+  const halo = haloStateFor(interaction, {
+    rung,
+    misses,
+    recovering: saying !== null,
+    done,
+    attending: onScreen && active,
+  });
+
   return (
     <div ref={root} className="flex w-full flex-col items-center gap-6">
       {renderModel({
@@ -150,11 +166,17 @@ export default function InteractionPlayer({
         onArrive: handleArrive,
       })}
 
-      <Voice
-        line={arrived ?? saying}
-        celebrating={done}
-        hint={rung >= 1 && !done ? hintOf(interaction) : undefined}
-      />
+      {/* Beside what it is saying, so the companion and the words read as
+          one voice rather than two things happening at once. */}
+      <div className="flex items-center gap-4">
+        <HaloPresence state={halo} placement="beside" />
+
+        <Voice
+          line={arrived ?? saying}
+          celebrating={done}
+          hint={rung >= 1 && !done ? hintOf(interaction) : undefined}
+        />
+      </div>
     </div>
   );
 }

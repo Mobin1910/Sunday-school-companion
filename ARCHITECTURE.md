@@ -278,6 +278,50 @@ Revisit when a chapter genuinely needs a hidden-object scene.
 
 ---
 
+# Halo
+
+The companion layer. Product rules are in `PRODUCT_CONSTITUTION.md`, the visual spec in `DESIGN_SYSTEM.md`; this is the structure.
+
+```
+src/halo/                    imports nothing from interactions or content
+├── state.ts                 HaloState · HaloSize · HaloPlacement · announcements
+├── expression.ts            HaloState → visual spec (the tuning table)
+├── Halo.tsx                 spec → CSS custom properties. Pure presentation
+└── HaloPresence.tsx         where Halo sits, separate from what Halo is
+
+src/interactions/halo.ts     the adapter: interaction state → HaloState
+```
+
+## The one-way dependency
+
+`interactions → halo`, never the reverse. Halo cannot import a chapter, an interaction, or a rung, so it *cannot* contain business logic — the boundary is structural rather than a rule someone has to remember.
+
+## The adapter
+
+`haloStateFor(interaction, moment)` runs **inside** the Interaction Player, which is what keeps the constitution's promise intact. It takes `misses` and `rung` as arguments and returns `"recovering"`. The counts are read; they are never returned. A number that cannot escape cannot become a score.
+
+It is also where interaction-model awareness lives — Discovery's "no wrong answer, therefore no recovery" is a rule about interactions, so it belongs on the interactions side, not inside a blob.
+
+## The expression table
+
+`expression.ts` maps each state to shape, scale, squish, glow, internal light, cross presence, gaze, eye openness, breathing, drift, tone and transition duration. Every field becomes a CSS custom property.
+
+This is why there is no animation code: the browser interpolates the properties, so `idle → thinking → helping` is free and adding a state is a row in a table. Retuning Halo means changing numbers in one file. No component branches on a state name — only this table knows what a state looks like.
+
+## Presentation
+
+`HaloPresence` owns placement (`inline`, `beside`, `corner`, `hero`) and the natural size for each. Surfaces reach for it rather than positioning a blob themselves, or the next surface positions it slightly differently and Halo stops being one thing.
+
+## Content stays clean
+
+No chapter JSON carries Halo configuration, and none ever should. Halo's behaviour is derived from the interaction system. Should content-specific assistance arrive later, it enters as *assistance data* the author writes about the moment (what a child should notice) — the Interaction Player passes it through, and Halo decides how that is expressed. Content says what; Halo says how.
+
+## Playground
+
+`/debug/halo` — every state and size, one tap apart, with the live expression values beside it. Not linked from anything a child sees.
+
+---
+
 # Performance Budgets
 
 Reference device: **Moto G-class Android, 4GB RAM, mid-tier CPU, 4G.** Test on real hardware, not a throttled desktop.

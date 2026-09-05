@@ -165,7 +165,8 @@ Used consistently in code, content, and conversation. No synonyms.
 | **Learning Goal** | What a moment should help the child do — recall, association, sequencing, observation |
 | **Interaction Model** | The kind of thinking an interaction requires — Selection, Pairing, Ordering, Discovery |
 | **Presentation** | How an interaction model looks and behaves on screen — Match, Drag & Drop, Reveal, and so on |
-| **Job** | The companion. An abstract organic blob, strongest during Practice and help — never a navigation mascot |
+| **Halo** | The companion. An abstract organic blob that expresses the Assistance Ladder — never a mascot, never a chatbot |
+| **Halo State** | What Halo is expressing: idle, listening, curious, thinking, helping, hinting, recovering, celebrating, transitioning |
 
 "Lesson" is not a term in this project. Use **Chapter**.
 
@@ -343,6 +344,56 @@ The four ladders share a promise — help always comes, it always climbs, it nev
 Help offered too early steals the moment a child was about to have. Help offered too late leaves them defeated. When in doubt, wait longer than feels comfortable — six-year-olds think slowly, and slow thinking is not struggling.
 
 The timings that govern this are in `ARCHITECTURE.md`, and they are guesses until we have watched real children meet them.
+
+---
+
+# Halo
+
+Halo is the companion: an abstract organic blob with internal light, a soft glow, and eye-like highlights. It breathes, squishes, gazes, and shifts tone. A subtle cross sits low inside its light — a quality of the glow, never a badge.
+
+**Halo is the visual voice of the Assistance Ladder.** That is its job, and it is the reason it exists. Where the ladder says a child is being noticed, met, or joined, Halo is what that looks like.
+
+## What Halo is not
+
+Not a mascot, not a cartoon character, not an orb, not a robot, and **never a chatbot**. There is no "ask Halo", no chat surface, no free-text anything. Halo has no arms, legs, clothes or costume. Its intelligence is expressed entirely through context-aware visual behaviour.
+
+## Halo never decides anything
+
+The Assistance Ladder is authoritative. Halo is told what is happening and expresses it — it never determines correctness, never chooses an assistance level, and never decides that a child needs help.
+
+```
+Interaction  →  assistance system  →  Halo state  →  how Halo looks
+```
+
+Reversing that arrow — a companion working out whether an answer was wrong — would make Halo a grading system with a friendly face. It is forbidden.
+
+## Halo never counts
+
+Halo receives states, never numbers. Attempts, scores and rungs stay inside the Interaction Player, exactly as the Kindness Rules require. What crosses to Halo is *recovering*, never *two wrong*.
+
+## A wrong answer
+
+A try that did not work earns a **beat, not a verdict**. Halo may soften, dim, look toward something, or breathe differently. It never flashes, reddens, shakes, or plays a large animation at a mistake.
+
+The sequence is fixed, and it is the ladder's own:
+
+```
+child acts → Halo notices → a beat → Recovery → help if needed → child arrives → Halo celebrates
+```
+
+## Discovery has no recovery
+
+Where an interaction has no wrong answer, Halo has no recovery state. In Discovery every tap is a discovery, so Halo stays a curious companion — entering a recovery state there would invent a mistake that was never made.
+
+## Where Halo appears
+
+The Chapter Hub, activities, memory-verse practice, help and celebration moments, and onboarding guidance.
+
+**Halo stays out of the story artwork.** A companion floating over a page of Scripture is the one place it would make the product feel like a game.
+
+## Time may only add
+
+Stillness may bring Halo's help forward. It may never punish, remove an opportunity, force advancement, or introduce a countdown.
 
 ---
 

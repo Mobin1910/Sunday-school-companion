@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import Job from "@/components/Job";
+import HaloPresence from "@/halo/HaloPresence";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import QuizCard from "@/components/reader/QuizCard";
@@ -43,12 +43,11 @@ export default async function ChapterVersePage({
     >
       <VerseCard text={verse.text} reference={verse.reference} />
 
+      {/* Practising the verse brings its own Halo, driven by the assistance
+          ladder. Nothing is placed here that would make a second one. */}
       {practice ? (
         canPlay(practice.interaction) ? (
-          <>
-            <QuizCard interaction={practice.interaction} />
-            <Job where="verse" />
-          </>
+          <QuizCard interaction={practice.interaction} />
         ) : (
           <NotReadyYet what="Practising this verse" />
         )

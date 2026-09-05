@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import Job from "@/components/Job";
+import HaloPresence from "@/halo/HaloPresence";
 import Picture from "@/components/Picture";
 import BackLink from "@/components/chapter/BackLink";
 import {
@@ -114,8 +114,9 @@ export default async function ChapterHubPage({
           ))}
         </ul>
 
-        {/* Job belongs here — this is a welcome, and welcoming is his. */}
-        <Job where="hub" />
+        {/* A welcome, which is a thing Halo is for. Idle: nothing is
+            being asked of the child on this screen. */}
+        <HaloPresence state="idle" placement="inline" size="large" />
       </div>
     </div>
   );
