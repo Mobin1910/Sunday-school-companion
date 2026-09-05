@@ -158,15 +158,20 @@ Used consistently in code, content, and conversation. No synonyms.
 |---|---|
 | **Story** | The biblical narrative itself (e.g. David and Goliath) |
 | **Chapter** | One complete playable unit built around a Story |
-| **Step** | A stage of the chapter journey (Cover, Interactive Story, Activity, Quiz, Memory Verse, Celebration) |
+| **Chapter Hub** | A chapter's own front page — where its Sections are chosen. Every chapter is entered here |
+| **Section** | A part of a chapter a child can choose: Story, Practice, Memory Verse, and whatever follows them |
+| **Step** | A stage within the Story section (Cover, Interactive Story, Quiz, Celebration) |
 | **Card** | A single screen within a Step — the atomic unit the Chapter Player renders |
 | **Learning Goal** | What a moment should help the child do — recall, association, sequencing, observation |
 | **Interaction Model** | The kind of thinking an interaction requires — Selection, Pairing, Ordering, Discovery |
 | **Presentation** | How an interaction model looks and behaves on screen — Match, Drag & Drop, Reveal, and so on |
+| **Job** | The companion. An abstract organic blob, strongest during Practice and help — never a navigation mascot |
 
 "Lesson" is not a term in this project. Use **Chapter**.
 
-"Game" and "Engine" are not terms in this project. Use **Activity** for the journey step and **Interaction** for the mechanic.
+"Game" and "Engine" are not terms in this project. Use **Practice** for the section, **Activity** for a single thing to do inside it, and **Interaction** for the mechanic.
+
+"Games" is never a destination name. **Practice** is age-neutral and says what the thing is for.
 
 ---
 
@@ -409,32 +414,71 @@ The memory verse a child collects is **the thing they learned**, not a token the
 
 # Information Architecture
 
+There are exactly **two levels of navigation**, and they are never mixed.
+
+**Global navigation** is the product. It is a bottom bar, because this is a phone and tablet product first, and it holds four destinations:
+
+```
+Home  |  Chapters  |  Practice  |  Verses
+```
+
+**Chapter navigation** is inside one chapter. It is the Chapter Hub, and it never appears in the bottom bar.
+
 ```
 Home
-
-├── Bible Stories
-│      └── Chapter
-│             ├── Cover
-│             ├── Interactive Story
-│             ├── Activity
-│             ├── Quiz
-│             ├── Memory Verse
-│             └── Celebration
-│
-├── Memory Verses
-│
-└── About
+  │
+Chapters
+  │
+Chapter Hub                    ← every chapter is entered here
+  ├── Story                    → the full-screen reader
+  ├── Practice                 → the chapter's activities
+  ├── Memory Verse             → the verse, and practising it
+  └── future sections
 ```
 
-Every chapter follows the same journey, in the same order.
+The bottom bar is **absent inside a chapter**. A story framed by a tab bar is a web page; a story with nothing around it is a story.
 
-Children should always know what comes next.
+## Entering a chapter
 
-A step may be **omitted** when it genuinely would not serve the story. Steps are never **reordered**, and new steps are never invented. The child's mental model stays intact; the content does not get padded.
+**Every chapter begins at its Hub, without exception** — including a chapter arrived at by "Next Chapter" from the chapter before it. A child sees what a chapter holds before being put inside part of it.
 
-**Memory Verses** (top level) is the child's growing collection of verses from chapters they have played — a place to revisit and practise, not a reference library.
+Choosing a chapter never drops a child straight into the Story.
 
-**About** is the adult-facing surface described in *Adults & Access*.
+## Sections are real
+
+A chapter is not one linear thing. Story, Practice and Memory Verse are **first-class parts** a child chooses between.
+
+The Chapter Player may still flatten a section's content into one card list internally — that is the player's business. The child-facing architecture understands sections, and adding a fourth one is a new entry rather than a redesign.
+
+Within the **Story** section the order is still fixed: Cover, Interactive Story, Quiz, Celebration. A step may be **omitted** when it genuinely would not serve the story; steps are never **reordered**, and new steps are never invented.
+
+## Back
+
+Back always goes up one level, and never sideways:
+
+| From | Back goes to |
+|---|---|
+| Story, Practice, Memory Verse | that chapter's Hub |
+| Chapter Hub | Chapters |
+
+The browser and device back gestures follow the same hierarchy, because each level is a real route rather than a change of state.
+
+## Ending a chapter
+
+No section may leave a child asking "what now?". At the end of the Story:
+
+- **Next Chapter** — primary, and it leads to the next chapter's **Hub**, never straight into its story.
+- **Chapter Menu** — back to this chapter's Hub.
+
+Where there is no next chapter, **Chapters** takes the primary place. A disabled "Next Chapter" is never shown: a door a child can see and cannot open is worse than no door.
+
+Nothing at the end happens on its own. There is no timer and no auto-advance — offered, never done for them.
+
+## The global destinations
+
+**Home** is a door, not a dashboard. **Chapters** is the shelf. **Practice** is every chapter's activities in one place — never "Games", never levels or an arcade. **Verses** becomes the child's growing collection of verses from chapters they have read.
+
+**About** is the adult-facing surface described in *Adults & Access*, reachable from Home and not in the child's path.
 
 ---
 

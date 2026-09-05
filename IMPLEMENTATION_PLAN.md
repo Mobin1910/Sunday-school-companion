@@ -26,6 +26,21 @@ The roadmap for Version 1: one Sunday School class, ten chapters, children aged 
 
 ---
 
+# Out of Order: the Navigation Architecture
+
+Built between Milestones 4 and 5, ahead of its place in this plan, because the shape of the product was being decided one screen at a time and that had to stop before more screens existed.
+
+It delivers the information architecture in the constitution: the four global destinations, the Chapter Hub every chapter is entered through, Story / Practice / Memory Verse as real sections with their own routes, chapter-to-chapter progression that lands on the next chapter's Hub, and an end-of-story that is never a dead end.
+
+**What this takes from later milestones.** Milestone 8's routing and shelf, and Milestone 10's Verses destination, are now largely built. What remains of them is the part that needs content and progress rather than architecture:
+
+- **Milestone 8** still owes a second chapter, and `library.json` driving order rather than filename order — the shelf lists every chapter that exists today.
+- **Milestone 10** still owes the *collection*: Verses lists every verse there is, not the ones a child has met, because that needs Milestone 9's progress. About is not built.
+
+**What it deliberately does not do.** Practice and verse practice have routes and honest "still being made" states rather than interactions, because Ordering and Discovery are Milestones 5 and 6 and jumping them to fill a screen would have been the wrong trade.
+
+---
+
 # Milestone 1 — Skeleton and Placeholders
 
 **Why this exists.** Nothing can be validated until something runs on a phone. This milestone's real job is removing the two things that would otherwise block every later milestone: a project that doesn't build, and artwork that doesn't exist.

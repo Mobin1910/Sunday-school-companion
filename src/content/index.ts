@@ -41,3 +41,17 @@ export function getChapters(): LoadedChapter[] {
 
 export type { LoadedChapter };
 export type { Art, Card, PlayInteraction, PlayItem } from "./cards";
+export {
+  activityOf,
+  coverOf,
+  nextChapter,
+  storyCards,
+  verseOf,
+  versePracticeOf,
+} from "./sections";
+export type {
+  ActivityCard,
+  CoverCard,
+  PracticeCard,
+  VerseCard,
+} from "./sections";

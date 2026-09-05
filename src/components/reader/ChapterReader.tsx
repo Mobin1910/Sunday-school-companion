@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Children,
   cloneElement,
@@ -10,8 +11,10 @@ import {
   useState,
 } from "react";
 
+import Job from "@/components/Job";
+
 /**
- * Turns the pages of a chapter with a page curl.
+ * Turns the pages of a chapter's story with a page curl.
  *
  * Chosen over scroll-snap and a flat-card slide after prototyping both at
  * /prototype/spatial (deleted) and /prototype/curl (kept, for reference).
@@ -41,11 +44,23 @@ import {
  * screen reader can no longer browse the whole chapter as a list the way
  * the old scroll-snap `<ol>` allowed — only the current page and the
  * `aria-live` page-count announcement are available at any moment.
+ *
+ * The reader is the one full-screen place in the app: no tab bar, no
+ * dashboard, nothing framing the artwork. The only chrome is the page dots,
+ * a way back up to the Chapter Hub, and — at the end — where to go next.
  */
 export default function ChapterReader({
   children,
+  hubHref,
+  chapterTitle,
+  nextChapterHref,
 }: {
   children: React.ReactNode;
+  /** This chapter's Hub. Always reachable, from every page. */
+  hubHref: string;
+  chapterTitle: string;
+  /** The next chapter's Hub, when there is a next chapter. */
+  nextChapterHref?: string;
 }) {
   const pages = useMemo(() => Children.toArray(children), [children]);
   const lastPage = pages.length - 1;
@@ -77,6 +92,8 @@ export default function ChapterReader({
   const [index, setIndex] = useState(0);
   const [underIndex, setUnderIndex] = useState(() => Math.min(1, lastPage));
   const underIndexRef = useRef(underIndex);
+  /** The swipe guide is for a child who has not yet turned a page. Once. */
+  const [turnedOnce, setTurnedOnce] = useState(false);
 
   const [enhanced, setEnhanced] = useState(false);
   useEffect(() => setEnhanced(true), []);
@@ -197,6 +214,7 @@ export default function ChapterReader({
 
   function goTo(rawTarget: number, jump = false) {
     cancelSettle();
+    setTurnedOnce(true);
     const target = Math.max(0, Math.min(lastPage, rawTarget));
     targetIndex.current = target;
     if (jump || reducedMotion) {
@@ -232,6 +250,7 @@ export default function ChapterReader({
         return;
       }
       dragging.current = true;
+      setTurnedOnce(true);
       stage.current?.setPointerCapture(e.pointerId);
     }
 
@@ -282,9 +301,38 @@ export default function ChapterReader({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const showGuide = enhanced && !turnedOnce && pages.length > 1;
+
   return (
     <div className="flex h-dvh flex-col" data-enhanced={enhanced}>
-      <Dots count={pages.length} active={index} />
+      <div className="flex items-center gap-2 px-3 pt-3">
+        <Link
+          href={hubHref}
+          aria-label={`Back to ${chapterTitle}`}
+          className="flex size-11 shrink-0 items-center justify-center rounded-full text-ink-soft"
+        >
+          <svg
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M15 6l-6 6 6 6" />
+          </svg>
+        </Link>
+
+        <div className="min-w-0 flex-1">
+          <Dots count={pages.length} active={index} />
+        </div>
+
+        {/* Keeps the dots optically centred against the button on the left. */}
+        <span className="size-11 shrink-0" aria-hidden />
+      </div>
 
       <div
         ref={stage}
@@ -332,42 +380,57 @@ export default function ChapterReader({
         >
           {withActive(pages[index], true)}
         </div>
+
+        {/* Shown until the first page turn, then never again this reading.
+            It sits over the page rather than in the layout so that nothing
+            moves when it goes — a child who has just learned the gesture
+            should not have the page shift under the finger that did it. */}
+        {showGuide ? (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-4 z-[5] flex justify-center"
+            aria-hidden
+          >
+            <p className="voice flex items-center gap-2 rounded-full bg-ground-raised/90 px-4 py-2 text-base text-ink-soft">
+              Swipe to turn the page
+              <ArrowRight small />
+            </p>
+          </div>
+        ) : null}
       </div>
 
       <p className="sr-only" aria-live="polite">
         Page {index + 1} of {pages.length}
       </p>
 
-      <nav className="flex items-center justify-between px-6 pt-2 pb-8">
-        {/* Hidden rather than disabled on the first page. A child should never
-            be shown something they are not allowed to press. */}
-        {onFirstPage ? (
-          <span className="size-16" aria-hidden />
-        ) : (
-          <RoundButton
-            onClick={() => goTo(targetIndex.current - 1)}
-            label="Go back"
-            quiet
-          >
-            <ArrowLeft />
-          </RoundButton>
-        )}
+      {/* Job is offered the moment a child might be unsure what to do. */}
+      {showGuide ? <Job where="guidance" /> : null}
 
-        {onLastPage ? (
-          // Never a dead end. The end of a chapter offers the thing children
-          // this age actually want, which is to read it again.
-          <RoundButton onClick={() => goTo(0, true)} label="Read it again">
-            <Repeat />
-          </RoundButton>
-        ) : (
+      {onLastPage ? (
+        <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
+      ) : (
+        <nav className="flex items-center justify-between px-6 pt-2 pb-8">
+          {/* Hidden rather than disabled on the first page. A child should
+              never be shown something they are not allowed to press. */}
+          {onFirstPage ? (
+            <span className="size-16" aria-hidden />
+          ) : (
+            <RoundButton
+              onClick={() => goTo(targetIndex.current - 1)}
+              label="Go back"
+              quiet
+            >
+              <ArrowLeft />
+            </RoundButton>
+          )}
+
           <RoundButton
             onClick={() => goTo(targetIndex.current + 1)}
             label="Next page"
           >
             <ArrowRight />
           </RoundButton>
-        )}
-      </nav>
+        </nav>
+      )}
     </div>
   );
 }
@@ -390,6 +453,45 @@ const MAX_SPINE = 64;
 function withActive(node: React.ReactNode, active: boolean): React.ReactNode {
   if (!isValidElement<{ active?: boolean }>(node)) return node;
   return cloneElement(node, { active });
+}
+
+/**
+ * Where the story leaves a child.
+ *
+ * Never a dead end, and never a decision made for them: the next chapter is
+ * offered but nothing happens on its own, there is no timer, and the way
+ * back into this chapter is warm rather than a consolation prize. When there
+ * is no next chapter, the shelf takes the primary place — a disabled button
+ * is a door a child can see and not open, which is worse than no door.
+ *
+ * "Next Chapter" goes to the next chapter's Hub, never straight into its
+ * story. Every chapter is entered by seeing what is in it.
+ */
+function ChapterEnd({
+  hubHref,
+  nextChapterHref,
+}: {
+  hubHref: string;
+  nextChapterHref?: string;
+}) {
+  return (
+    <nav className="flex flex-col gap-3 px-6 pt-3 pb-8">
+      <Link
+        href={nextChapterHref ?? "/chapters"}
+        className="flex min-h-16 items-center justify-center gap-2 rounded-card bg-touchable px-6 text-xl text-ground-raised"
+      >
+        {nextChapterHref ? "Next chapter" : "All chapters"}
+        <ArrowRight small />
+      </Link>
+
+      <Link
+        href={hubHref}
+        className="flex min-h-14 items-center justify-center rounded-card px-6 text-lg text-ink-soft"
+      >
+        Chapter menu
+      </Link>
+    </nav>
+  );
 }
 
 function Dots({ count, active }: { count: number; active: number }) {
@@ -448,8 +550,8 @@ const iconProps = {
   strokeLinejoin: "round" as const,
 };
 
-const ArrowRight = () => (
-  <svg {...iconProps}>
+const ArrowRight = ({ small = false }: { small?: boolean }) => (
+  <svg {...iconProps} {...(small ? { width: 20, height: 20 } : {})}>
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );
@@ -460,9 +562,3 @@ const ArrowLeft = () => (
   </svg>
 );
 
-const Repeat = () => (
-  <svg {...iconProps}>
-    <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8M20 3v5h-5" />
-    <path d="M20 12a8 8 0 0 1-13.7 5.6L4 16M4 21v-5h5" />
-  </svg>
-);
