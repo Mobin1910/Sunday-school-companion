@@ -16,8 +16,11 @@ import { canPlay } from "@/interactions/registry";
  * nothing away from the verse itself.
  */
 
+/** Only chapters that have a verse. See the practice route for why. */
 export function generateStaticParams() {
-  return getChapters().map(({ slug }) => ({ slug }));
+  return getChapters()
+    .filter((chapter) => verseOf(chapter) !== undefined)
+    .map(({ slug }) => ({ slug }));
 }
 
 export default async function ChapterVersePage({

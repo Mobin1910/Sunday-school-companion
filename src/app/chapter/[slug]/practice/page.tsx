@@ -15,8 +15,18 @@ import { canPlay } from "@/interactions/registry";
  * not have to change.
  */
 
+/**
+ * Only chapters that actually have an activity get this route.
+ *
+ * Emitting it for every chapter built pages that resolve to "not found" —
+ * unreachable from the Hub, which filters absent sections out, but real
+ * URLs all the same, and a URL that exists only to fail is a dead end
+ * waiting for a stale link to find it.
+ */
 export function generateStaticParams() {
-  return getChapters().map(({ slug }) => ({ slug }));
+  return getChapters()
+    .filter((chapter) => activityOf(chapter) !== undefined)
+    .map(({ slug }) => ({ slug }));
 }
 
 export default async function ChapterPracticePage({
