@@ -40,19 +40,57 @@ They are not repeated here. One set of numbers, one home.
 
 # Colour
 
-Warm, saturated, and calm — not muted. Bluey and Sago Mini are saturated; "calm" comes from restraint in *quantity*, not in *chroma*.
+**The interface is a dark room that catches light.** It began as warm parchment with a terracotta accent, which made the product and its companion look like two different things with one blob between them. It is now in Halo's own key, and there is **one set of role tokens**, not two: the parallel "night" set that Home used has been deleted rather than aliased, because a second set of names for the same colours is how the drift started.
+
+## The lighting order
+
+This is the rule the whole palette exists to serve.
+
+| | | |
+|---|---|---|
+| 1 | **Halo** | the strongest local source, and the only saturated thing on any screen |
+| 2 | **a primary action** | a secondary source, lit from within |
+| 3 | **an active state** | a glint — a tab, a page dot |
+| 4 | **a surface** | mostly unlit; it is *seen*, not lit |
+| 5 | **the ground** | atmosphere |
+
+If everything glows, nothing is a light. The interface exists to support Halo, so almost none of it glows: at most one element per screen carries a spreading coloured shadow, and it is always either the primary action or the one surface being offered.
+
+## The tokens
+
+| Role | Value | |
+|---|---|---|
+| `--color-ground` | `#070c1c` | the room |
+| `--color-ground-raised` | `#0e1731` | a surface in it |
+| `--color-ground-lit` | `#16224a` | one catching more light |
+| `--color-edge` | `#24345f` | |
+| `--color-ink` | `#f2f0ea` | warm off-white, so the dark never turns clinical |
+| `--color-ink-soft` | `#a4b1cf` | |
+| `--color-touchable` | `#6e9bff` | a glint on something interactive |
+| `--color-joy` | `#ffc65a` | arriving, and anything a child keeps |
+| `--color-cta-start/mid/end` | `#3f7bff` → `#6b5cf0` → `#a563f5` | a primary action, as light |
 
 Rules:
 
 - One dominant hue per chapter, drawn from its illustration.
 - Never more than three accent colours on screen at once.
-- Backgrounds are warm neutrals, never pure white or pure grey.
-- No pure black text — use a deep warm brown or ink.
+- **Gold is Halo's ring**, so it is the product's warm note and is spent carefully: celebration, a streak that is alive, a verse learned. Never an ordinary control.
 - Interactive elements share one consistent accent across the whole app, so a child learns "this colour means I can touch it."
+- Text carries hierarchy through **brightness, not colour**. Accent colour is reserved for actions and active states.
 
-**Provisional tokens ship first.** Colour should be derived from the artwork, and the artwork does not exist yet — but nothing can be built without *some* palette. So Version 1 starts with a deliberately provisional set (warm neutral ground, one ink, one interactive accent, one success accent) and replaces it once the first chapter is illustrated.
+**Every pairing meets the thresholds above:** ink on ground 17.09:1, ink on a surface 15.54:1, ink-soft on ground 9.06:1, ink-soft on a surface 8.24:1, touchable on ground 7.23:1, joy on ground 12.50:1, white on a CTA 4.76:1.
 
-Naming tokens by role rather than by hue — `--ground`, `--ink`, `--touchable` — means that replacement is a values change, not a refactor.
+Naming tokens by role rather than by hue — `--ground`, `--ink`, `--touchable` — is what let a whole-product palette migration be a change of values plus three shared classes, rather than a rewrite. Nothing in the app should ever refer to "orange", and nothing should now refer to "blue".
+
+## The three things the interface is made of
+
+Defined once, in `@layer components`, so hierarchy is a property of the system rather than something each screen remembers — and so a Tailwind utility on the element can still win.
+
+**`.cta` — a primary action.** The only part of the interface that is a light source. Electric blue through indigo to violet, the three the body of Halo moves through. **Its glow is drawn from its own gradient's two ends**, never from a generic shadow, so the dark around it picks up blue on one side and violet on the other. Deliberately tight: a wide bloom on a button competes with Halo. An inset hairline along the top edge is what makes it read as an illuminated object rather than a rectangle filled with a gradient. Hover brightens and reaches further; press compresses and the light pulls in, the way a real object's shadow shortens as it meets the surface — never a colour change, because a button that changes colour under a thumb reads as a different button.
+
+**`.btn-quiet` — a secondary action.** No gradient and no glow at all. A surface with an edge that happens to be tappable, whose whole job is to make the primary action look like the lit one.
+
+**`.surface` — a thing in the room, not a lit thing.** On a dark ground a fill alone is invisible: `ground-raised` sits 1.10:1 from the ground, which is an edge and not a contrast. So what makes a card read as a card is the hairline plus the faintest cool wash — the environment catching a little of the light in the room, never the card producing any of its own. `.surface-lit` is the single exception: the chapter a child is being offered right now, and the only card in the product that glows.
 
 ---
 
@@ -292,6 +330,8 @@ Both stop under reduced motion, with the eyes left open.
 | `celebrating` | out and up, brightest, ring widest |
 | `transitioning` | small and quiet, out of the way |
 
+The end of a chapter is the one place the cool room is deliberately warmed: a soft golden bloom behind the words, in Halo's own key, screened so it adds to the dark instead of sitting on top of it. Cool environment, warm light. No confetti, no badges and no stars — the whole of celebration's visual vocabulary is that the room got warmer.
+
 Recovery **settles down and inward**. Celebration **opens out and up** — wider than tall, because joy that only grows upward turns the silhouette into an egg, and an egg is one step from the orb this character is defined against. Nothing shakes, flashes, reddens, bounces, spins or emits particles, at any state, ever.
 
 ## Life
@@ -314,7 +354,7 @@ Three layers, in order of how far the light travels — and **which technique dr
 2. **Rim light** — the lit edge of a translucent thing, brighter at the lower left where the warm light gathers, fading around the top. It says *this material is illuminated from inside*, not *this shape has a border*.
 3. **Environmental glow** — the light Halo puts into the room, breathing on the longest cycle of all.
 
-The environmental layers **screen** rather than paint. Light adds; it does not smear. Screened against whatever Halo is standing on, the bloom lights the night and all but disappears on parchment — which is correct, because you cannot add light to a page that is already bright. Painted normally it reads there as a grey smudge behind the character.
+The environmental layers **screen** rather than paint. Light adds; it does not smear. Screened against whatever Halo is standing on, the bloom adds to the dark rather than sitting on it. The whole product is dark now, but the rule earns its keep anyway: it is what makes the same Halo correct at 40px beside a quiz and at 272px in Home's hero, and it is why the bloom never becomes a grey smudge behind the character.
 
 None of it is `filter: brightness()`. Brightness is saturation; this is light.
 

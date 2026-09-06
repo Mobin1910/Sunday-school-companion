@@ -1,44 +1,72 @@
 @import "tailwindcss";
 
 /*
-  Provisional tokens.
+  The palette.
 
-  Colour should be derived from the artwork, and the artwork does not exist
-  yet. These are deliberately temporary and will be replaced in Milestone 13.
+  ONE SET OF ROLES, AND THE WHOLE PRODUCT IS DARK. There used to be two — a
+  parchment set for the app and a "night" set for Home, which is how the
+  product came to look like two products with one companion between them.
+  There is now one, in Halo's key, and the night names are gone rather than
+  aliased: a second set of names for the same colours is how the drift
+  started.
 
-  They are named by ROLE, never by hue, so that replacement is a change of
-  values and not a refactor. Nothing in the app should ever refer to "orange".
+  The interface is a dark room that catches light, and the light has an
+  order of precedence that every rule below serves:
 
-  Every pairing below meets the contrast thresholds in DESIGN_SYSTEM.md:
-    ink on ground          11.92:1
-    ink-soft on ground      5.69:1
-    ground-raised on touchable  4.64:1
-    ground-raised on joy        5.33:1
+    1  Halo             the strongest local source, and the only saturated thing
+    2  a primary action a secondary source, lit from within
+    3  an active state a glint
+    4  a surface        mostly unlit; it is *seen*, not lit
+    5  the ground       atmosphere
+
+  If everything glows, nothing is a light. The interface exists to support
+  Halo, so almost none of it glows.
+
+  Named by ROLE, never by hue, which is what let this migration be a change
+  of values rather than a rewrite. Nothing in the app should ever refer to
+  "orange" — nor now to "blue".
+
+  Every pairing meets the thresholds in DESIGN_SYSTEM.md:
+    ink on ground          17.09:1
+    ink on surface         15.54:1
+    ink-soft on ground      9.06:1
+    ink-soft on surface     8.24:1
+    touchable on ground     7.23:1
+    joy on ground          12.50:1
+    white on a CTA          4.76:1
 */
 @theme {
-  --color-ground: #fbf3e8;
-  --color-ground-raised: #fffdf9;
-  --color-ink: #3a2e28;
-  --color-ink-soft: #6e5d53;
-  --color-touchable: #c0512b;
-  --color-joy: #27784c;
-  --color-edge: #eadfcf;
+  /* The room. */
+  --color-ground: #070c1c;
+  /* A surface in it. Barely lighter than the ground on purpose — at 1.10:1
+     it is an edge, not a fill, that says "this is a thing". */
+  --color-ground-raised: #0e1731;
+  /* One catching more light: the current thing, the thing being offered. */
+  --color-ground-lit: #16224a;
+  --color-edge: #24345f;
+
+  /* What is written in it. Warm off-white, so the dark never turns clinical. */
+  --color-ink: #f2f0ea;
+  --color-ink-soft: #a4b1cf;
+
+  /* A glint on something interactive: an active tab, a page dot, a link. */
+  --color-touchable: #6e9bff;
 
   /*
-    The night surface.
-
-    Home is the one screen presented in Halo's own environment rather than on
-    parchment — "the interface is the night, Halo is the light" — so it needs
-    the same roles again in that key. Named by role for the same reason as
-    above, and paired for contrast on the deepest part of the ground:
-      night-ink on night        15.8:1
-      night-ink-soft on night    7.3:1
+    Arriving, and anything a child keeps. Gold is Halo's ring, so it is the
+    product's warm note and is spent carefully: celebration, a streak that
+    is alive, a verse learned. Never an ordinary control.
   */
-  --color-night: #050a19;
-  --color-night-raised: #101c3d;
-  --color-night-ink: #f4f1ea;
-  --color-night-ink-soft: #a8b4d0;
-  --color-night-edge: #22335e;
+  --color-joy: #ffc65a;
+
+  /*
+    A primary action, as light rather than as a colour: electric blue
+    through indigo to violet, the same three the body of Halo moves
+    through. The glow is drawn from these two ends, never from white.
+  */
+  --color-cta-start: #3f7bff;
+  --color-cta-mid: #6b5cf0;
+  --color-cta-end: #a563f5;
 
   --radius-card: 1.5rem;
 
@@ -47,12 +75,180 @@
 }
 
 body {
+  /*
+    Atmosphere rather than a flat fill: a cool wash gathering toward the top
+    of the screen, where the content starts, falling away below. It is
+    deliberately far weaker than Home's — that screen has Halo in it and is
+    allowed to be lit; every other screen is a dark room with things in it.
+  */
   background-color: var(--color-ground);
+  background-image:
+    radial-gradient(ellipse 120% 46% at 50% -8%, #101a3a 0%, transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 104%, #0a1330 0%, transparent 72%);
+  background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans);
 
   /* A child's thumb should never zoom the page by accident. */
   -webkit-text-size-adjust: 100%;
+}
+
+/*
+  THE THREE THINGS THE INTERFACE IS MADE OF.
+
+  A primary action is lit. A secondary action is quiet. A surface is seen.
+  Defined once here so that hierarchy is a property of the system rather
+  than something each screen has to remember, and so that the day a button
+  changes, every button changes.
+
+  In `@layer components` on purpose: a Tailwind utility on the element must
+  still be able to win. `class="surface border-joy/40"` has to warm one
+  card's edge without the class fighting it, and an unlayered rule beats a
+  layered utility — which would silently make that impossible.
+*/
+@layer components {
+
+  /*
+    A primary action — the only part of the interface that is a light source.
+
+    The glow is drawn from the gradient's own two ends rather than from a
+    generic dark shadow, so the dark around the button picks up blue on one
+    side and violet on the other, the way it would if the button were really
+    lit. It is deliberately tight: a wide bloom on a button competes with
+    Halo, and there is only one thing on any screen allowed to do that.
+
+    The top edge carries a hairline of lighter light — an inset highlight —
+    which is what makes it read as an illuminated object rather than a
+    rectangle filled with a gradient.
+  */
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    background-image: linear-gradient(
+      135deg,
+      var(--color-cta-start) 0%,
+      var(--color-cta-mid) 52%,
+      var(--color-cta-end) 100%
+    );
+    color: #fff;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.28),
+      0 1px 2px rgb(6 10 26 / 0.6),
+      0 6px 18px -6px rgb(from var(--color-cta-start) r g b / 0.65),
+      0 10px 26px -10px rgb(from var(--color-cta-end) r g b / 0.55);
+    transition:
+      box-shadow 180ms ease-out,
+      filter 180ms ease-out,
+      transform 120ms ease-out;
+  }
+
+  /* Brighter, and reaching a little further into the room. */
+  @media (hover: hover) {
+    .cta:hover {
+      filter: brightness(1.08);
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.34),
+        0 1px 2px rgb(6 10 26 / 0.6),
+        0 8px 22px -6px rgb(from var(--color-cta-start) r g b / 0.8),
+        0 14px 32px -10px rgb(from var(--color-cta-end) r g b / 0.68);
+    }
+  }
+
+  /*
+    Pressed: it compresses and the light it casts pulls in, the way a real
+    object's shadow shortens as it meets the surface. Never a colour change —
+    a button that changes colour under a thumb reads as a different button.
+  */
+  .cta:active {
+    transform: scale(0.985);
+    filter: brightness(0.97);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.2),
+      0 1px 1px rgb(6 10 26 / 0.6),
+      0 3px 10px -6px rgb(from var(--color-cta-start) r g b / 0.5),
+      0 5px 14px -10px rgb(from var(--color-cta-end) r g b / 0.4);
+  }
+
+  /*
+    A secondary action — quiet, and quiet is the point.
+
+    No gradient and no glow at all. It is a surface with an edge that happens
+    to be tappable, and the whole of its job is to make the primary action
+    look like the lit one.
+  */
+  .btn-quiet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-edge);
+    background: rgb(from var(--color-ground-raised) r g b / 0.7);
+    color: var(--color-ink);
+    transition:
+      background-color 160ms ease-out,
+      border-color 160ms ease-out,
+      transform 120ms ease-out;
+  }
+
+  @media (hover: hover) {
+    .btn-quiet:hover {
+      border-color: rgb(from var(--color-touchable) r g b / 0.45);
+      background: rgb(from var(--color-ground-lit) r g b / 0.8);
+    }
+  }
+
+  .btn-quiet:active {
+    transform: scale(0.99);
+  }
+
+  /*
+    A surface — a thing in the room, not a lit thing.
+
+    On a dark ground a fill alone is invisible: `ground-raised` sits 1.10:1
+    from the ground, which is an edge and not a contrast. So what makes a card
+    read as a card is the hairline, plus the faintest cool wash across it —
+    the environment catching a little of the light in the room rather than the
+    card producing any of its own.
+  */
+  .surface {
+    border: 1px solid var(--color-edge);
+    border-radius: var(--radius-card);
+    background-color: var(--color-ground-raised);
+    background-image: linear-gradient(
+      170deg,
+      rgb(from var(--color-ground-lit) r g b / 0.55) 0%,
+      transparent 62%
+    );
+  }
+
+  /*
+    The one exception: the surface a child is being offered right now — the
+    chapter to carry on with. It catches enough light to be the thing you
+    look at first, and it is the only card in the product that does.
+  */
+  .surface-lit {
+    border-color: rgb(from var(--color-touchable) r g b / 0.34);
+    background-image: linear-gradient(
+      170deg,
+      rgb(from var(--color-ground-lit) r g b / 0.95) 0%,
+      rgb(from var(--color-ground-lit) r g b / 0.35) 70%
+    );
+    box-shadow: 0 8px 26px -14px rgb(from var(--color-cta-mid) r g b / 0.55);
+  }
+  /*
+    The current destination, and the current page.
+
+    Third rung of the lighting order, so it is a *glint* and not a lamp: the
+    accent colour plus the faintest bloom on the mark itself. Colour never
+    carries this alone — the label goes bold too — so the glow is confirming
+    something already said rather than saying it.
+  */
+  .nav-here {
+    filter: drop-shadow(0 0 6px rgb(from var(--color-touchable) r g b / 0.55));
+  }
 }
 
 /*
@@ -85,6 +281,34 @@ body {
 */
 [data-enhanced="true"] [data-active="false"] .breathe {
   opacity: 0;
+}
+
+/*
+  The warm light at the end of a chapter.
+
+  The one place the cool room is deliberately warmed, and it is light rather
+  than decoration: a soft golden bloom behind the words, in Halo's own key,
+  screened so it adds to the dark instead of sitting on top of it. No
+  confetti, no badges, no stars — the whole of the celebration's visual
+  vocabulary is that the room got warmer.
+*/
+.celebration-light::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(150%, 30rem);
+  aspect-ratio: 1.4;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 46% 42% at 50% 50%,
+    rgb(from var(--color-joy) r g b / 0.2) 0%,
+    rgb(255 176 92 / 0.09) 42%,
+    transparent 74%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 /*
@@ -153,7 +377,9 @@ body {
 
 .noticing {
   animation: noticing 2000ms ease-in-out 3 both;
-  box-shadow: 0 0 0 3px var(--color-touchable);
+  box-shadow:
+    0 0 0 2px var(--color-touchable),
+    0 0 18px -4px rgb(from var(--color-touchable) r g b / 0.55);
 }
 
 /* Anything the app says, arriving gently. */
@@ -1460,14 +1686,14 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
   font-size: clamp(1.75rem, 7vw, 2.5rem);
   line-height: 1.15;
   text-wrap: balance;
-  color: var(--color-night-ink);
+  color: var(--color-ink);
 }
 
 .welcome-copy {
   font-size: clamp(1rem, 4.2vw, 1.2rem);
   line-height: 1.5;
   text-wrap: balance;
-  color: var(--color-night-ink-soft);
+  color: var(--color-ink-soft);
 }
 
 /* The moment the name lands. Bigger than the copy, alone on the screen. */
@@ -1475,7 +1701,7 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
   font-size: clamp(1.75rem, 7vw, 2.5rem);
   line-height: 1.2;
   text-wrap: balance;
-  color: var(--color-night-ink);
+  color: var(--color-ink);
 }
 
 /*
@@ -1488,7 +1714,7 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
   justify-content: center;
   gap: clamp(1rem, 6vw, 2.25rem);
   margin-top: 0.5rem;
-  color: var(--color-night-ink-soft);
+  color: var(--color-ink-soft);
 }
 
 .welcome-things li {
@@ -1505,20 +1731,20 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
   min-height: 3.75rem;
   margin-top: 0.25rem;
   padding: 0 1.25rem;
-  border: 1px solid var(--color-night-edge);
+  border: 1px solid var(--color-edge);
   border-radius: var(--radius-card);
-  background: rgb(from var(--color-night-raised) r g b / 0.55);
-  color: var(--color-night-ink);
+  background: rgb(from var(--color-ground-raised) r g b / 0.7);
+  color: var(--color-ink);
   font-size: 1.375rem;
   text-align: center;
 }
 
 .welcome-field::placeholder {
-  color: rgb(from var(--color-night-ink-soft) r g b / 0.7);
+  color: rgb(from var(--color-ink-soft) r g b / 0.7);
 }
 
 .welcome-field:focus-visible {
-  outline: 2px solid rgb(255 198 74 / 0.9);
+  outline: 2px solid var(--color-touchable);
   outline-offset: 2px;
 }
 
@@ -1530,7 +1756,7 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
 .welcome-nudge {
   min-height: 1.5rem;
   font-size: 0.9375rem;
-  color: var(--color-night-ink-soft);
+  color: var(--color-ink-soft);
 }
 
 .welcome-act {
@@ -1539,16 +1765,10 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
 }
 
 .welcome-onward {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 3.5rem;
   width: 100%;
   max-width: 22rem;
   padding: 0 1.75rem;
-  border-radius: 999px;
-  background: var(--color-night-ink);
-  color: var(--color-night);
   font-size: 1.1875rem;
 }
 

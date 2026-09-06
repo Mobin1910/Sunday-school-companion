@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbf3e8",
+  themeColor: "#070c1c",
 
   // Children hold devices close and press hard. Let them zoom if they need to,
   // but never zoom by accident — the font sizes are already large enough.

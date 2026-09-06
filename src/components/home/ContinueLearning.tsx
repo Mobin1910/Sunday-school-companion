@@ -46,7 +46,7 @@ export default function ContinueLearning({
 
   return (
     <section className="flex flex-col gap-3">
-      <h2 className="text-xs tracking-[0.14em] text-night-ink-soft uppercase">
+      <h2 className="text-xs tracking-[0.14em] text-ink-soft uppercase">
         {heading}
       </h2>
 
@@ -62,18 +62,18 @@ export default function ContinueLearning({
             ? `/chapter/${chapter.slug}/story`
             : `/chapter/${chapter.slug}`
         }
-        className="flex items-center gap-4 rounded-card border border-night-edge bg-night-raised/50 px-5 py-4"
+        className="surface surface-lit flex items-center gap-4 px-5 py-4"
       >
         <span className="min-w-0 flex-1">
           <span className="block text-2xl leading-snug text-balance">
             {chapter.title}
           </span>
-          <span className="mt-0.5 block text-sm text-night-ink-soft">
+          <span className="mt-0.5 block text-sm text-ink-soft">
             {line}
           </span>
         </span>
 
-        <span className="shrink-0 rounded-full bg-night-ink/95 px-4 py-2 text-base text-night">
+        <span className="cta shrink-0 px-4 py-2 text-base">
           {step.kind === "continue" ? "Continue" : "Start"}
         </span>
       </Link>

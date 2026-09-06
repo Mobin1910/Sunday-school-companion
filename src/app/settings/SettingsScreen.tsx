@@ -92,13 +92,13 @@ export default function SettingsScreen() {
               autoComplete="off"
               autoCapitalize="words"
               spellCheck={false}
-              className="min-h-14 rounded-card bg-ground-raised px-4 text-xl"
+              className="min-h-14 rounded-card border border-edge bg-ground-raised px-4 text-xl text-ink"
             />
             <div className="flex gap-3">
               <button
                 type="button"
                 onClick={commitName}
-                className="flex min-h-14 flex-1 items-center justify-center rounded-card bg-touchable px-5 text-lg text-ground-raised"
+                className="cta min-h-14 flex-1 px-5 text-lg"
               >
                 Save
               </button>
@@ -171,7 +171,7 @@ export default function SettingsScreen() {
               <button
                 type="button"
                 onClick={clearEverything}
-                className="min-h-12 rounded-full bg-touchable px-4 text-base text-ground-raised"
+                className="cta min-h-12 px-4 text-base"
               >
                 Clear
               </button>
@@ -282,7 +282,7 @@ function Choice<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <span className="flex shrink-0 gap-1 rounded-full bg-ground-raised p-1">
+    <span className="flex shrink-0 gap-1 rounded-full border border-edge bg-ground-raised p-1">
       {options.map(([key, label]) => (
         <button
           key={key}
@@ -290,7 +290,7 @@ function Choice<T extends string>({
           onClick={() => onChange(key)}
           aria-pressed={key === value}
           className={`min-h-11 rounded-full px-4 text-base ${
-            key === value ? "bg-touchable text-ground-raised" : "text-ink-soft"
+            key === value ? "cta" : "text-ink-soft"
           }`}
         >
           {label}

@@ -1,4 +1,3 @@
-import type { Viewport } from "next";
 import Link from "next/link";
 
 import ContinueLearning from "@/components/home/ContinueLearning";
@@ -19,10 +18,11 @@ import type { ChapterBrief } from "@/local/place";
  * then the ways further in — and Halo is given more of the first screenful
  * than anything else on it.
  *
- * It is the one destination presented in the night. Everywhere else the app
- * is parchment; here the interface is the dark and Halo is the light in it,
- * which is the only arrangement in which a luminous companion actually reads
- * as luminous.
+ * The whole product is dark now, so Home is no longer the exception it once
+ * was — but it is still the most lit room in it. Everywhere else is a dark
+ * room with things in it; here Halo is present and the atmosphere gathers
+ * around it, which is the only arrangement in which a luminous companion
+ * actually reads as luminous.
  *
  * The greeting and the chapter to carry on with both come from this device
  * and so are settled in the browser, which is why they are the only two
@@ -35,13 +35,6 @@ import type { ChapterBrief } from "@/local/place";
  * learning" names a chapter, which is a fact about the content, not a
  * measurement of the child.
  */
-
-/**
- * The phone's own furniture joins the night while Home is open. A cream
- * status bar above a navy screen is a seam across the top of the one moment
- * that is meant to feel whole.
- */
-export const viewport: Viewport = { themeColor: "#050a19" };
 
 export default function HomePage() {
   const doors = DESTINATIONS.filter((d) => d.key !== "home");
@@ -77,7 +70,7 @@ export default function HomePage() {
             <Link
               href="/settings"
               aria-label="Settings"
-              className="absolute -top-2 -right-3 flex size-12 items-center justify-center rounded-full text-night-ink-soft"
+              className="absolute -top-2 -right-3 flex size-12 items-center justify-center rounded-full text-ink-soft"
             >
               <GearIcon />
             </Link>
@@ -87,13 +80,13 @@ export default function HomePage() {
               two touch on a narrow phone and the icon reads as punctuation
               on the end of the app's own name.
             */}
-            <p className="px-10 pt-2 text-xs tracking-[0.18em] text-night-ink-soft uppercase">
+            <p className="px-10 pt-2 text-xs tracking-[0.18em] text-ink-soft uppercase">
               Sunday School Companion
             </p>
 
             <Greeting />
 
-            <p className="mt-2 text-lg text-night-ink-soft text-balance">
+            <p className="mt-2 text-lg text-ink-soft text-balance">
               Ready for a new adventure?
             </p>
           </header>
@@ -104,13 +97,13 @@ export default function HomePage() {
         {chapters.length > 0 ? (
           <ContinueLearning chapters={chapters} />
         ) : (
-          <p className="text-lg text-night-ink-soft">
+          <p className="text-lg text-ink-soft">
             Stories are on their way.
           </p>
         )}
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-xs tracking-[0.14em] text-night-ink-soft uppercase">
+          <h2 className="text-xs tracking-[0.14em] text-ink-soft uppercase">
             Explore
           </h2>
 
@@ -122,12 +115,12 @@ export default function HomePage() {
           */}
           <ul className="flex flex-col">
             {doors.map(({ key, label, href, icon: Icon }) => (
-              <li key={key} className="border-b border-night-edge last:border-0">
+              <li key={key} className="border-b border-edge last:border-0">
                 <Link
                   href={href}
                   className="flex min-h-16 items-center gap-4 text-lg"
                 >
-                  <span className="text-night-ink-soft">
+                  <span className="text-ink-soft">
                     <Icon />
                   </span>
                   <span className="flex-1">{label}</span>
@@ -154,7 +147,7 @@ function Chevron() {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="shrink-0 text-night-ink-soft"
+      className="shrink-0 text-ink-soft"
       aria-hidden
     >
       <path d="m9 5 7 7-7 7" />

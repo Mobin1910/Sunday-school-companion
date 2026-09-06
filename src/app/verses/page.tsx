@@ -61,7 +61,7 @@ export default function VersesPage() {
                 <li key={chapter.slug}>
                   <Link
                     href={`/chapter/${chapter.slug}/verse`}
-                    className="flex flex-col gap-3 rounded-card bg-ground-raised px-5 py-5"
+                    className="surface flex flex-col gap-3 px-5 py-5"
                   >
                     <p className="text-2xl leading-relaxed text-balance">
                       {verse.text}

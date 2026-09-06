@@ -447,7 +447,7 @@ export default function ChapterReader({
             className="pointer-events-none absolute inset-x-0 bottom-4 z-[5] flex justify-center"
             aria-hidden
           >
-            <p className="voice flex items-center gap-2 rounded-full bg-ground-raised/90 px-4 py-2 text-base text-ink-soft">
+            <p className="voice flex items-center gap-2 rounded-full border border-edge bg-ground-raised/90 px-4 py-2 text-base text-ink-soft">
               Swipe to turn the page
               <ArrowRight small />
             </p>
@@ -534,7 +534,7 @@ function ChapterEnd({
     <nav className="flex flex-col gap-3 px-6 pt-3 pb-8">
       <Link
         href={nextChapterHref ?? "/chapters"}
-        className="flex min-h-16 items-center justify-center gap-2 rounded-card bg-touchable px-6 text-xl text-ground-raised"
+        className="cta min-h-16 px-6 text-xl"
       >
         {nextChapterHref ? "Next chapter" : "All chapters"}
         <ArrowRight small />
@@ -560,7 +560,7 @@ function Dots({ count, active }: { count: number; active: number }) {
         <span
           key={index}
           className={`h-1.5 rounded-full transition-all duration-300 ${
-            index === active ? "w-5 bg-touchable" : "w-1.5 bg-edge"
+            index === active ? "nav-here w-5 bg-touchable" : "w-1.5 bg-edge"
           }`}
         />
       ))}
@@ -585,9 +585,7 @@ function RoundButton({
       onClick={onClick}
       aria-label={label}
       className={`flex size-16 items-center justify-center rounded-full transition-transform duration-150 active:scale-95 ${
-        quiet
-          ? "bg-ground-raised text-ink-soft"
-          : "bg-touchable text-ground-raised shadow-sm"
+        quiet ? "btn-quiet text-ink-soft" : "cta"
       }`}
     >
       {children}

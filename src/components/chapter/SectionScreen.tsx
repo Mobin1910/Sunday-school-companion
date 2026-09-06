@@ -38,7 +38,7 @@ export default function SectionScreen({
 
         <Link
           href={hubHref}
-          className="flex min-h-16 items-center justify-center rounded-card bg-touchable px-6 text-xl text-ground-raised"
+          className="cta min-h-16 px-6 text-xl"
         >
           Chapter menu
         </Link>

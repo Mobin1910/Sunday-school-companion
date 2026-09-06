@@ -91,7 +91,7 @@ export default function Selection({
                 aria-hidden={gone}
                 tabIndex={gone ? -1 : 0}
                 className={[
-                  "flex min-h-20 w-full items-center gap-4 rounded-card bg-ground-raised p-3 pr-5 text-left text-xl transition-opacity duration-500",
+                  "surface flex min-h-20 w-full items-center gap-4 p-3 pr-5 text-left text-xl transition-opacity duration-500",
                   gone && "pointer-events-none opacity-0",
                   settling === index && "settling",
                   chosen === index && "blooming",

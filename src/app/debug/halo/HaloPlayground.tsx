@@ -35,7 +35,7 @@ export default function HaloPlayground() {
     <div className="flex flex-col gap-6">
       <div
         className={`flex min-h-80 items-center justify-center rounded-card transition-colors duration-300 ${
-          night ? "halo-night" : "bg-ground-raised"
+          night ? "halo-night" : "surface"
         }`}
       >
         <Halo state={state} size={size} />
@@ -129,7 +129,7 @@ function Chip({
       type="button"
       onClick={onClick}
       className={`min-h-9 rounded-full px-3 font-mono text-xs ${
-        on ? "bg-touchable text-ground-raised" : "bg-ground-raised text-ink-soft"
+        on ? "cta" : "btn-quiet text-ink-soft"
       }`}
     >
       {children}

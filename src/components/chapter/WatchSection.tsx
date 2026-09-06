@@ -126,8 +126,8 @@ function Poster({
     return (
       <div className="flex flex-col items-center gap-2 px-6 py-8 text-center">
         <HaloPresence state="transitioning" size="compact" />
-        <p className="text-lg text-night-ink">Video unavailable offline</p>
-        <p className="max-w-xs text-base text-night-ink-soft text-balance">
+        <p className="text-lg text-ink">Video unavailable offline</p>
+        <p className="max-w-xs text-base text-ink-soft text-balance">
           Everything else still works. Come back when you&rsquo;re connected.
         </p>
       </div>
@@ -144,7 +144,7 @@ function Poster({
 
       <span className="relative flex flex-col items-center gap-3">
         <HaloPresence state="listening" size="standard" />
-        <span className="flex items-center gap-2 rounded-full bg-night-ink/95 px-5 py-2.5 text-lg text-night">
+        <span className="cta px-5 py-2.5 text-lg">
           <PlayIcon />
           Watch
         </span>

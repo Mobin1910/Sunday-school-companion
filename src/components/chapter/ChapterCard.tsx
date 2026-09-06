@@ -27,7 +27,7 @@ export default function ChapterCard({
   return (
     <Link
       href={`/chapter/${slug}`}
-      className="flex flex-col gap-3 rounded-card bg-ground-raised p-3"
+      className="surface flex flex-col gap-3 p-3"
     >
       {cover ? (
         <Picture art={cover.art} alt={title} />

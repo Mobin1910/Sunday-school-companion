@@ -46,7 +46,7 @@ export default function BottomNav({ active }: { active: GlobalDestination }) {
   return (
     <nav
       aria-label="Main"
-      className="border-t border-edge bg-ground-raised pb-[env(safe-area-inset-bottom)]"
+      className="border-t border-edge bg-ground-raised/80 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm"
     >
       <ul className="mx-auto flex max-w-2xl">
         {DESTINATIONS.map(({ key, label, href, icon: Icon }) => {
@@ -57,7 +57,7 @@ export default function BottomNav({ active }: { active: GlobalDestination }) {
                 href={href}
                 {...(here ? { "aria-current": "page" as const } : {})}
                 className={`flex min-h-16 flex-col items-center justify-center gap-1 px-1 py-2 ${
-                  here ? "text-touchable" : "text-ink-soft"
+                  here ? "nav-here text-touchable" : "text-ink-soft"
                 }`}
               >
                 <Icon />

@@ -5,6 +5,10 @@
  * before they are illustrated, and nothing about building the app should wait
  * on an illustrator. So this is drawn calmly, in the product's own palette,
  * and it says which picture is missing.
+ *
+ * Quiet on purpose: an absence should read as an absence. On the dark ground
+ * a bright dashed box would be the loudest thing on a page whose picture has
+ * not been drawn yet, which is precisely backwards.
  */
 export default function PicturePlaceholder({
   name,
@@ -15,7 +19,7 @@ export default function PicturePlaceholder({
 }) {
   return (
     <div
-      className={`flex items-center justify-center border-2 border-dashed border-edge bg-ground-raised p-4 ${className}`}
+      className={`flex items-center justify-center border border-dashed border-edge/70 bg-ground-raised/40 p-4 ${className}`}
       role="img"
       aria-label={`Illustration not drawn yet: ${name}`}
     >

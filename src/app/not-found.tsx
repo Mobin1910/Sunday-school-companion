@@ -25,7 +25,7 @@ export default function NotFound() {
 
       <Link
         href="/chapters"
-        className="flex min-h-16 items-center justify-center rounded-card bg-touchable px-8 text-xl text-ground-raised"
+        className="cta min-h-16 px-8 text-xl"
       >
         All chapters
       </Link>

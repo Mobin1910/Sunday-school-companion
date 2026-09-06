@@ -118,9 +118,9 @@ export default async function ChapterHubPage({
             <li key={key}>
               <Link
                 href={href}
-                className="flex min-h-20 items-center gap-4 rounded-card bg-ground-raised px-5 py-4"
+                className="surface flex min-h-20 items-center gap-4 px-5 py-4"
               >
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ground text-touchable">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ground/70 text-touchable ring-1 ring-edge">
                   <Icon />
                 </span>
 

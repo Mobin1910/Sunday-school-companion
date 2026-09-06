@@ -183,7 +183,7 @@ export default function PracticeScreen({
             <button
               type="button"
               onClick={next}
-              className="flex min-h-14 items-center justify-center rounded-card bg-ground-raised px-6 text-lg text-ink"
+              className="btn-quiet min-h-14 px-6 text-lg"
             >
               Try another
             </button>
@@ -212,7 +212,7 @@ export default function PracticeScreen({
       <button
         type="button"
         onClick={start}
-        className="flex min-h-20 items-center justify-center rounded-card bg-touchable px-6 text-2xl text-ground-raised"
+        className="cta min-h-20 px-6 text-2xl"
       >
         {startLabel}
       </button>
@@ -242,8 +242,8 @@ function Stat({
 }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-1 rounded-card py-5 ${
-        lit ? "bg-joy/10 text-joy" : "bg-ground-raised text-ink"
+      className={`surface flex flex-col items-center justify-center gap-1 py-5 ${
+        lit ? "border-joy/40 text-joy" : "text-ink"
       }`}
     >
       <span className="text-3xl leading-none">{value}</span>

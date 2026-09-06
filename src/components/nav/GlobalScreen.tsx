@@ -45,7 +45,7 @@ export default function GlobalScreen({
   return (
     <div
       className={`flex h-dvh flex-col ${
-        night ? "night-screen text-night-ink" : ""
+        night ? "night-screen text-ink" : ""
       }`}
     >
       <main className="flex-1 overflow-x-hidden overflow-y-auto">

@@ -270,7 +270,7 @@ function Onward({
   children: React.ReactNode;
 }) {
   return (
-    <button type="button" onClick={onClick} className="welcome-onward">
+    <button type="button" onClick={onClick} className="cta welcome-onward">
       {children}
     </button>
   );
