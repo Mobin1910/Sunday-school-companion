@@ -672,9 +672,11 @@ body {
   THE EYES.
 
   Outer element: the state's gaze, as a transition — Halo looking at
-  something. Inner element: a wander of a fraction of a pixel on 7900ms —
-  Halo being alive while it looks. Both together read as noticing; the
-  gaze alone is a stare, and the wander alone is a twitch.
+  something — and the blink, which is a separate property so the two never
+  fight. Inner element: where the eyes go on their own, which is a wander
+  of a fraction of a pixel in most states and a proper look around the room
+  when nothing is being asked. Both together read as noticing; the gaze
+  alone is a stare, and the wander alone is a twitch.
 */
 .halo-eyes {
   position: absolute;
@@ -682,13 +684,116 @@ body {
   top: 42%;
   transform: translate(-50%, -50%)
     translate(var(--halo-gaze-x), var(--halo-gaze-y));
+  /*
+    `scale` rather than `transform`, because the transform above is already
+    carrying the gaze. They are separate properties that compose, so a blink
+    can happen mid-look without either one interrupting the other — and both
+    stay on the compositor.
+  */
+  animation: halo-blink 8300ms ease-in-out infinite;
   transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+/*
+  Blinking.
+
+  Two closes per cycle, one of them a double, so it averages a blink every
+  four seconds or so without ever falling into an obvious beat. Each close
+  and open takes about 70ms, which is roughly what a real eyelid does;
+  anything slower reads as sleepy and anything faster as a glitch.
+
+  The amount closed is scaled by how curved the eyes are. At rest they are
+  capsules and shut all the way; in the happy and celebrating states they
+  are already crescents, and a crescent squashing to nothing and springing
+  back would read as a wink. So those states simply do not blink, and the
+  rule that says so is arithmetic rather than a state name.
+*/
+@keyframes halo-blink {
+  0%,
+  2.6%,
+  4.2%,
+  46%,
+  47.6%,
+  49.2%,
+  100% {
+    scale: 1 1;
+  }
+  3.4%,
+  46.8%,
+  48.4% {
+    scale: 1 calc(1 - 0.92 * (1 - var(--halo-eye-curve)));
+  }
 }
 
 .halo-eyes-wander {
   display: flex;
   gap: calc(var(--halo-size) * 0.1);
   animation: halo-eye-wander 7900ms ease-in-out infinite;
+}
+
+/*
+  Looking around, when nothing is being asked.
+
+  Every other state has somewhere to look — at the child, at a wrong answer,
+  at the thing worth noticing — and its gaze is set by the expression table.
+  `idle` is the one state with nothing to attend to, and eyes that hold
+  perfectly still while pointed at the viewer are the difference between a
+  companion resting and a face staring.
+
+  So the eyes move the way real ones do: they *flick* and then hold. Each
+  move takes a beat and each new place is kept for a second or two, which is
+  why the keyframes come in tight pairs with long gaps between them. A slow
+  glide between positions would read as scanning, which is a machine; a
+  saccade and a pause reads as noticing something, and then something else.
+
+  It rarely returns to centre, because centre is looking straight at the
+  child, and Halo at rest is not doing that.
+*/
+.halo[data-halo-state="idle"] .halo-eyes-wander {
+  animation: halo-eye-roam 11900ms cubic-bezier(0.5, 0, 0.2, 1) infinite;
+}
+
+@keyframes halo-eye-roam {
+  /* Off to the right, a little down — where it settled last time. */
+  0%,
+  12% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
+      calc(var(--halo-life) * var(--halo-size) * 0.008);
+  }
+  /* Away to the left. */
+  14%,
+  28% {
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.03)
+      calc(var(--halo-life) * var(--halo-size) * 0.004);
+  }
+  /* Something higher up. */
+  30%,
+  44% {
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
+      calc(var(--halo-life) * var(--halo-size) * -0.016);
+  }
+  /* Back across, still up. */
+  46%,
+  58% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.022)
+      calc(var(--halo-life) * var(--halo-size) * -0.012);
+  }
+  /* Down and out to the right. */
+  60%,
+  74% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.032)
+      calc(var(--halo-life) * var(--halo-size) * 0.014);
+  }
+  /* A brief glance back toward the child, and then away again. */
+  76%,
+  84% {
+    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.002);
+  }
+  86%,
+  100% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
+      calc(var(--halo-life) * var(--halo-size) * 0.008);
+  }
 }
 
 .halo-eye {
@@ -1545,6 +1650,7 @@ html[data-motion="reduce"] *::after {
 .halo-body,
 .halo-lume,
 .halo-sheen,
+.halo-eyes,
 .halo-eyes-wander,
 .halo-eye:last-child,
 .halo-core,

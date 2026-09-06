@@ -271,6 +271,12 @@ Two pale **vertical capsules**. No pupils, no iris, no lashes, no brows. Set sli
 
 Only two things change: **openness** (they squash for a state looking hard) and **tilt** (a few degrees carries most of the mood). Position shifts with gaze.
 
+They **blink**, on a cycle carrying two closes — one of them a double — so it averages roughly one every four seconds without falling into a beat. Each close and open takes about 70ms, which is what a real eyelid does; slower reads as sleepy, faster as a glitch. How far they shut is scaled by how curved they are, so the crescent-eyed states simply do not blink: a crescent squashing to nothing and springing back reads as a wink. That rule is arithmetic, not a state name.
+
+**In `idle` they look around.** Every other state has somewhere to look — at the child, at a wrong answer, at the thing worth noticing — and its gaze comes from the expression table. `idle` is the one state with nothing to attend to, and eyes that hold still while pointed at the viewer are the difference between a companion resting and a face staring. So they move the way real ones do: **flick and hold**, never glide. A slow glide between positions reads as scanning, which is a machine; a saccade and a pause reads as noticing something, and then something else. They rarely return to centre, because centre is looking straight at the child.
+
+Both stop under reduced motion, with the eyes left open.
+
 ## States
 
 | State | Reads as |
