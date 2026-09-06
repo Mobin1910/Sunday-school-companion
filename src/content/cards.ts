@@ -63,6 +63,17 @@ export type Card =
       attribution?: string;
     }
   | { kind: "practice"; interaction: PlayInteraction }
+  /**
+   * The one card that is not offline content. It carries an id, never a
+   * player: nothing is embedded until a child asks to watch.
+   */
+  | {
+      kind: "video";
+      youtubeId: string;
+      title: string;
+      description?: string;
+      art?: Art;
+    }
   | { kind: "celebration"; message: string; art?: Art };
 
 type Resolve = (name: string) => string | null;
@@ -183,6 +194,25 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
         interaction: toInteraction(chapter.verse.practice, resolve),
       });
     }
+  }
+
+  /*
+    A video held back by `enabled: false` produces no card at all, so every
+    screen downstream asks one question — is there a video card? — rather
+    than each remembering to check a flag.
+  */
+  if (chapter.video && chapter.video.enabled !== false) {
+    cards.push({
+      kind: "video",
+      youtubeId: chapter.video.youtubeId,
+      title: chapter.video.title,
+      ...(chapter.video.description !== undefined && {
+        description: chapter.video.description,
+      }),
+      ...(chapter.video.picture !== undefined && {
+        art: toArt(chapter.video.picture, resolve),
+      }),
+    });
   }
 
   cards.push({

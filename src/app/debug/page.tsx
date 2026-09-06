@@ -20,6 +20,8 @@ function summarise(card: Card): string {
       return `${card.interaction.type} — ${card.interaction.prompt ?? "no prompt"}`;
     case "verse":
       return `${card.text} (${card.reference})`;
+    case "video":
+      return `${card.title} — youtube:${card.youtubeId}`;
     case "celebration":
       return card.message;
   }

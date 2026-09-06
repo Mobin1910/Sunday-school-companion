@@ -1182,17 +1182,42 @@ body {
 /*
   Calm over clutter, and calm for children who need stillness.
   Nothing becomes unusable — motion simply stops.
+
+  Stillness has two ways in, and they are peers rather than alternatives:
+
+    the device asking for it   `prefers-reduced-motion: reduce`
+    the child asking for it    Settings, as `data-motion="reduce"`
+
+  The media query works with no JavaScript at all, which is why it is still
+  the primary route; the attribute is an override on top. `data-motion:
+  full` overrules the *device*, because a child on a shared tablet may want
+  the motion someone else turned off, and a choice made deliberately here
+  outranks a system default made elsewhere.
+
+  Below, each set of selectors is written once and applies under both
+  conditions. The universal rule is the exception — a pseudo-element cannot
+  be nested inside `:is()` — so those three declarations, and only those,
+  appear twice.
 */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html:not([data-motion="full"]) *,
+  html:not([data-motion="full"]) *::before,
+  html:not([data-motion="full"]) *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
 
-  /*
+html[data-motion="reduce"] *,
+html[data-motion="reduce"] *::before,
+html[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/*
     Halo stops moving but does not stop meaning, and above all does not
     stop glowing.
 
@@ -1209,40 +1234,63 @@ body {
     The result is a lit, layered, luminous Halo that simply is not moving.
     Not a dimmed one, and not a flat one.
   */
-  .halo-aura,
-  .halo-ring-orbit,
-  .halo-drift,
-  .halo-morph,
-  .halo-body,
-  .halo-lume,
-  .halo-sheen,
-  .halo-eyes-wander,
-  .halo-eye:last-child,
-  .halo-floor {
-    animation: none !important;
+.halo-aura,
+.halo-ring-orbit,
+.halo-drift,
+.halo-morph,
+.halo-body,
+.halo-lume,
+.halo-sheen,
+.halo-eyes-wander,
+.halo-eye:last-child,
+.halo-floor {
+  @media (prefers-reduced-motion: reduce) {
+    html:not([data-motion="full"]) & {
+      animation: none !important;
+    }
   }
 
-  /*
-    The corners settle to the state's own radii. `--halo-wobble` is what
-    the animation drove, so with the animation gone it returns to its
-    initial value of 0 and the silhouette becomes exactly the shape the
-    expression table asked for — deformation removed, shape kept.
-  */
+  html[data-motion="reduce"] & {
+    animation: none !important;
+  }
+}
 
-  /*
-    Home's arrival keeps its meaning and loses its motion. Halo is placed
-    where it belongs and its light comes up there; nothing descends and
-    nothing travels. A first moment is still a first moment when it is only
-    a brightening.
-  */
-  .halo-arriving {
+/*
+  The corners settle to the state's own radii. `--halo-wobble` is what the
+  animation drove, so with the animation gone it returns to its initial
+  value of 0 and the silhouette becomes exactly the shape the expression
+  table asked for — deformation removed, shape kept.
+
+  Home's arrival keeps its meaning and loses its motion too: Halo is placed
+  where it belongs and its light comes up there; nothing descends and
+  nothing travels. A first moment is still a first moment when it is only a
+  brightening. The staging light is motion by definition, so it simply does
+  not happen.
+*/
+.halo-arriving {
+  @media (prefers-reduced-motion: reduce) {
+    html:not([data-motion="full"]) & {
+      animation:
+        home-settle 900ms ease-out both,
+        home-reveal 900ms ease-out both !important;
+    }
+  }
+
+  html[data-motion="reduce"] & {
     animation:
       home-settle 900ms ease-out both,
       home-reveal 900ms ease-out both !important;
   }
+}
 
-  /* The staging light is motion by definition, so it simply does not happen. */
-  .home-arrival {
+.home-arrival {
+  @media (prefers-reduced-motion: reduce) {
+    html:not([data-motion="full"]) & {
+      animation: none !important;
+    }
+  }
+
+  html[data-motion="reduce"] & {
     animation: none !important;
   }
 }

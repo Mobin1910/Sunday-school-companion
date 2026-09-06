@@ -1,9 +1,9 @@
 import GlobalScreen from "@/components/nav/GlobalScreen";
+import PracticeScreen from "@/components/play/PracticeScreen";
 import { getChapters } from "@/content";
-import { gamePool } from "@/content/games";
+import { gamePool } from "@/content/pools";
 import { canPlay } from "@/interactions/registry";
 
-import GamesScreen from "./GamesScreen";
 
 /**
  * Games — cross-chapter quick play.
@@ -14,11 +14,11 @@ import GamesScreen from "./GamesScreen";
  *
  * Two filters, and they are different questions:
  *
- *   eligibleForGames  — *should* this be in a shuffled pool? Content's
- *                       business, and it excludes Discovery, which has no
- *                       wrong answer to streak on.
- *   canPlay           — *can* this be rendered yet? The registry's business,
- *                       and it shrinks as Milestones 5–7 land.
+ *   eligibleForPlay — *should* this be in a shuffled pool? Content's
+ *                     business, and it excludes Discovery, which has no
+ *                     wrong answer to streak on.
+ *   canPlay         — *can* this be rendered yet? The registry's business,
+ *                     and it shrinks as Milestones 5–7 land.
  *
  * The pool is built here, on the server, so the whole content layer stays
  * out of the browser bundle.
@@ -30,7 +30,18 @@ export default function GamesPage() {
 
   return (
     <GlobalScreen active="games">
-      <GamesScreen pool={pool} />
+      <PracticeScreen
+        pool={pool}
+        streak="games"
+        title="Games"
+        blurb="Let's see what we remember together."
+        startLabel="Start game"
+        note="Questions from every story you have, shuffled."
+        empty={{
+          title: "No games yet.",
+          blurb: "They arrive with the stories.",
+        }}
+      />
     </GlobalScreen>
   );
 }

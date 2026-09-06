@@ -382,11 +382,34 @@ Constraints:
 
 # Progress & Persistence
 
-- Stored in **localStorage**. Progress is a few KB; IndexedDB's async surface is not worth its cost at this size.
-- The record is a chapter slug and a card index. Nothing else. No hashes, no timestamps, no attempt counts.
-- If the index is out of range because a chapter was edited, clamp to the last card. That is the entire migration strategy for Version 1.
-- All reads and writes are wrapped in try/catch — localStorage throws in private mode and can be evicted on iOS. A storage failure degrades the experience, never breaks it.
+Everything the product remembers lives in `src/local/`, under the `ssc.` namespace in **localStorage**. It is a few KB; IndexedDB's async surface is not worth its cost at this size, and `navigator.storage.persist()` is deliberately never called — it would change nothing here and can only add a prompt.
+
+| Key | Holds |
+|---|---|
+| `ssc.child` | `{ name }` — a word the app says back, not an identifier |
+| `ssc.settings` | `{ sound, motion }` |
+| `ssc.place` | `{ v, slug, section, page, pages, done, at }` |
+| `ssc.games.streak` | `{ best, todayBest, day }` |
+| `ssc.verse.streak` | the same shape, and never the same store |
+
+- **A place, not a URL.** A stored address is a promise about routing that content changes quietly break; a stored place can be checked against the content that exists now and repaired or discarded honestly. `nextStep()` resolves a missing chapter, an out-of-range page, a record from a future version and a first-time child to the same honest answer: a chapter that exists, at its beginning.
+- The record carries no history — no chapters-visited list, no times-opened count, no per-page timing. `at` exists only so a later feature can tell stale progress from fresh, and is never shown to a child.
+- **Every key is enumerated** in `store.ts`, so "clear progress" is exact rather than hopeful and a new key that nobody thought about deleting is a compile error rather than data that quietly survives.
+- All reads and writes are wrapped in try/catch — localStorage throws in private mode and can be evicted on iOS. A storage failure degrades the experience, never breaks it: every screen is written so that *this device has no memory* is an ordinary state.
+- Stored data outlives the code that wrote it, so nothing downstream assumes it is well-formed. Each reader is handed the raw value and must repair it or return the fallback.
 - **Content is never locked behind progress.** Losing progress is disappointing, never devastating — which is what makes localStorage sufficient.
+
+---
+
+# Online and offline
+
+The distinction is explicit, and it is one line long.
+
+**Offline** — the app shell, chapter content, artwork, the reader, Games, Memory Verse, both streaks, settings, the child's name, Continue Learning, and Halo. All of it is static, bundled and local.
+
+**Online** — YouTube playback, and nothing else.
+
+A chapter with a video is not a chapter that needs the internet. The player is *offered* rather than loaded: no embed and no thumbnail until the child taps, so opening the chapter contacts nobody, and `navigator.onLine` decides whether to offer it at all. That check is optimistic on purpose — `onLine` is only reliable when it says false — so a child on a connection the browser is unsure about is never shown a video hidden for no reason. Going offline mid-video takes the player away rather than leaving a frozen frame.
 
 ---
 

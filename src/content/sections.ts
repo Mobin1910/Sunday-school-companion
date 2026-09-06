@@ -19,6 +19,7 @@ export type CoverCard = Extract<Card, { kind: "cover" }>;
 export type VerseCard = Extract<Card, { kind: "verse" }>;
 export type ActivityCard = Extract<Card, { kind: "activity" }>;
 export type PracticeCard = Extract<Card, { kind: "practice" }>;
+export type VideoCard = Extract<Card, { kind: "video" }>;
 
 /** What the story section reads: the narrative arc, and nothing else. */
 const STORY_KINDS = new Set<Card["kind"]>([
@@ -49,6 +50,17 @@ export function versePracticeOf(
   return chapter.cards.find(
     (card): card is PracticeCard => card.kind === "practice",
   );
+}
+
+/**
+ * A chapter's videos.
+ *
+ * Plural from the start, though the schema allows one today, so that the
+ * screens are already written for a chapter with two. A chapter with none
+ * returns an empty list, which is the ordinary case and never an error.
+ */
+export function videosOf(chapter: LoadedChapter): VideoCard[] {
+  return chapter.cards.filter((card): card is VideoCard => card.kind === "video");
 }
 
 export function storyCards(chapter: LoadedChapter): Card[] {

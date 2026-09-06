@@ -10,6 +10,7 @@ import {
   getChapters,
   storyCards,
   verseOf,
+  videosOf,
 } from "@/content";
 
 /**
@@ -53,6 +54,14 @@ export default async function ChapterHubPage({
       href: `/chapter/${slug}/story`,
       icon: BookIcon,
       present: storyCards(chapter).length > 0,
+    },
+    {
+      key: "watch",
+      label: "Watch",
+      blurb: "See the story told",
+      href: `/chapter/${slug}/watch`,
+      icon: PlayIcon,
+      present: videosOf(chapter).length > 0,
     },
     {
       key: "games",
@@ -156,6 +165,14 @@ function SparkIcon() {
     <svg {...iconProps}>
       <path d="M12 4l1.8 4.9L19 10.5l-5.2 1.6L12 17l-1.8-4.9L5 10.5l5.2-1.6z" />
       <path d="M18 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" />
+    </svg>
+  );
+}
+
+function PlayIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M5 4.8v14.4a1 1 0 0 0 1.53.85l11.2-7.2a1 1 0 0 0 0-1.7L6.53 3.95A1 1 0 0 0 5 4.8z" />
     </svg>
   );
 }

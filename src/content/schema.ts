@@ -139,6 +139,35 @@ const verse = z.strictObject({
   note,
 });
 
+/**
+ * A video that belongs to a chapter.
+ *
+ * The identifier is validated to YouTube's actual format — eleven characters
+ * from a known alphabet — rather than accepted as any string, so a pasted
+ * full URL, a truncated id or an empty field fails the build instead of
+ * becoming a broken player in front of a child. Nothing in the app ever
+ * hard-codes one: a video is chapter content like everything else.
+ *
+ * `enabled` exists so a video can be written and held back without deleting
+ * the work, which is the same reason `library.json` exists for chapters.
+ * `picture` is an ordinary chapter picture, resolved like any other; it is
+ * deliberately *not* a YouTube thumbnail URL, because fetching one would
+ * reach out to a third party before the child has asked to watch anything.
+ */
+const video = z.strictObject({
+  youtubeId: z
+    .string()
+    .regex(
+      /^[A-Za-z0-9_-]{11}$/,
+      "must be a YouTube video id — the 11 characters after `v=`, not a URL",
+    ),
+  title: z.string().min(1),
+  description: z.string().optional(),
+  picture: z.string().optional(),
+  enabled: z.boolean().optional(),
+  note,
+});
+
 export const chapterSchema = z.strictObject({
   title: z.string(),
   reference: z.string(),
@@ -150,6 +179,13 @@ export const chapterSchema = z.strictObject({
   activity: interactionSchema.optional(),
   quiz: z.array(interactionSchema).min(1).optional(),
   verse: verse.optional(),
+
+  /*
+    Zero or one today, and the app already treats it as a list downstream, so
+    the day a chapter wants two is a schema change here and nothing else.
+    A chapter with no video is completely valid and always will be.
+  */
+  video: video.optional(),
   celebration: z.strictObject({
     message: z.string(),
     picture: z.string().optional(),

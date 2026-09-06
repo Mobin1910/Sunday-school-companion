@@ -48,10 +48,12 @@ export {
   storyCards,
   verseOf,
   versePracticeOf,
+  videosOf,
 } from "./sections";
 export type {
   ActivityCard,
   CoverCard,
   PracticeCard,
   VerseCard,
+  VideoCard,
 } from "./sections";

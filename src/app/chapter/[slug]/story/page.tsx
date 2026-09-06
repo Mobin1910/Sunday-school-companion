@@ -35,6 +35,7 @@ export default async function ChapterStoryPage({
 
   return (
     <ChapterReader
+      slug={slug}
       hubHref={`/chapter/${slug}`}
       chapterTitle={chapter.title}
       {...(next ? { nextChapterHref: `/chapter/${next.slug}` } : {})}

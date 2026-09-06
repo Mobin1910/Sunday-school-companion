@@ -209,6 +209,12 @@ Sunday School Companion is used by children. Therefore:
 - All progress stays on the child's device.
 - The app makes no network requests at runtime beyond loading its own static assets.
 
+**The child's name is the one thing they may tell us, and it is not an exception to any of the above.** It is asked for nowhere, never suggested, and never invented; it lives in this device's own storage so the app can say it back, and there is no account, no identifier and no request that carries it. A child who gives no name is greeted warmly without one.
+
+**Videos are the one online thing.** Where a chapter has one, tapping to watch loads YouTube's own privacy-enhanced embed, and that is a request to a third party — so nothing is loaded until the child taps, not even a thumbnail. Opening a chapter that has a video contacts nobody. Everything else in the product still works with no internet at all.
+
+Nothing here needs a browser permission prompt. Ordinary device storage asks for nothing, and a product that interrupts a six-year-old with a dialog to remember their name has already got it wrong.
+
 This is a product principle, not a compliance checkbox. It is also a promise we can make plainly to parents.
 
 ---
@@ -531,7 +537,19 @@ Nothing at the end happens on its own. There is no timer and no auto-advance —
 
 **Home** is where a child meets Halo. Not a door and not a dashboard: the room the companion lives in, and the one screen presented in the night rather than on parchment. The order of it is greeting, Halo, the chapter to carry on with, then the ways further in — and Halo is given more of the first screenful than anything else on it. Nothing there counts anything; "continue learning" names a chapter, which is a fact about the content and not a measurement of the child. **Chapters** is the shelf. **Games** is every chapter's activities in one place, and will shuffle between them as chapters gain more than one — still no levels, locks or scores. **Verses** becomes the child's growing collection of verses from chapters they have read.
 
+**Verses** carries two streaks' worth of distinction from Games: recalling a story and holding particular words are different kinds of practice, so they keep **separate streaks**. A child flying at one and finding the other hard should see two honest numbers, never one blurred one — and a run ended in one place must never quietly reset the other.
+
+**Settings** is not a fifth destination. It is a small control on Home, and it holds the child's name, two comfort switches and a way to clear everything. Every switch added there is a decision handed to a six-year-old, and most decisions are better made once, well, by us.
+
 **About** is the adult-facing surface described in *Adults & Access*, reachable from Home and not in the child's path.
+
+## Watching
+
+A chapter may carry a **video**, and where it does, Watch is a section beside Story, Games and Memory Verse — another way into the same story, chosen by the child. It is chapter content, authored in the chapter file like everything else; no video is ever named in code.
+
+The player is **offered, not loaded**. Nothing reaches a third party until a child taps to watch — no embed on arrival, and no thumbnail fetched from YouTube either, because a poster image is a request that says a particular child opened a particular chapter. Once tapped, it plays here; a child never leaves the chapter to watch the chapter's video.
+
+Nothing about a video is downloaded, proxied or cached. It is the one part of this product that genuinely needs the internet, and offline it says so plainly while the rest of the chapter carries on working.
 
 ---
 

@@ -70,6 +70,7 @@ function artOf(card: Card): Art[] {
       return fromInteraction(card.interaction);
     case "verse":
       return [];
+    case "video":
     case "celebration":
       return card.art ? [card.art] : [];
   }

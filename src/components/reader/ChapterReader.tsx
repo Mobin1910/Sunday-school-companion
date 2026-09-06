@@ -11,6 +11,8 @@ import {
   useState,
 } from "react";
 
+import { rememberPlace, resumeAt } from "@/local/place";
+
 /**
  * Turns the pages of a chapter's story with a page curl.
  *
@@ -54,11 +56,14 @@ import {
  */
 export default function ChapterReader({
   children,
+  slug,
   hubHref,
   chapterTitle,
   nextChapterHref,
 }: {
   children: React.ReactNode;
+  /** Which chapter this is, for remembering the place in it. */
+  slug: string;
   /** This chapter's Hub. Always reachable, from every page. */
   hubHref: string;
   chapterTitle: string;
@@ -100,6 +105,55 @@ export default function ChapterReader({
 
   const [enhanced, setEnhanced] = useState(false);
   useEffect(() => setEnhanced(true), []);
+
+  /*
+    Where they were, restored.
+
+    Only when there is somewhere to return to: a chapter opened for the
+    first time, or re-opened after being finished, starts at the cover.
+    `resumeAt` decides which, and it runs once, after mount, because the
+    answer lives on the device.
+
+    It must run *before* the remembering below, and that order is
+    load-bearing rather than incidental — that effect writes page 0 on
+    mount, so reading the stored place after it would always find the
+    beginning, every time.
+  */
+  useEffect(() => {
+    const resume = resumeAt(slug, pages.length);
+    if (resume === 0) return;
+
+    position.current = resume;
+    anchor.current = resume;
+    targetIndex.current = resume;
+    setIndex(resume);
+    setUnderIndex(Math.min(resume + 1, pages.length - 1));
+    renderAt(resume);
+    // Once, on arrival. Later turns are the child's own.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /*
+    Where the child is, remembered.
+
+    This is the component that knows it — the page a child is on exists here
+    and nowhere else — so this is where it is written down. It is a place,
+    not an address: the chapter, the section, and how far through, so that
+    Home can check it against the content that actually exists rather than
+    trusting a URL that content changes may have invalidated.
+
+    It writes on settle rather than on every frame of a drag, so a chapter
+    read end to end costs one small write per page turned.
+  */
+  useEffect(() => {
+    rememberPlace({
+      slug,
+      section: "story",
+      page: index,
+      pages: pages.length,
+      done: index === lastPage,
+    });
+  }, [slug, index, lastPage, pages.length]);
 
   const reducedMotion = useMemo(
     () =>
