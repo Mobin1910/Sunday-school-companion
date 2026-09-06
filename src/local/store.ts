@@ -20,10 +20,17 @@
 /** One namespace, so "clear everything" can be exact rather than hopeful. */
 const PREFIX = "ssc.";
 
-export type Key = "child" | "settings" | "place" | "games.streak" | "verse.streak";
+export type Key =
+  | "child"
+  | "welcomed"
+  | "settings"
+  | "place"
+  | "games.streak"
+  | "verse.streak";
 
 const ALL: readonly Key[] = [
   "child",
+  "welcomed",
   "settings",
   "place",
   "games.streak",

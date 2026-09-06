@@ -6,6 +6,7 @@ import Greeting from "@/components/home/Greeting";
 import HomeHalo from "@/components/home/HomeHalo";
 import { DESTINATIONS } from "@/components/nav/BottomNav";
 import GlobalScreen from "@/components/nav/GlobalScreen";
+import Doorway from "@/components/welcome/Doorway";
 import { getChapters, storyCards } from "@/content";
 import type { ChapterBrief } from "@/local/place";
 
@@ -59,7 +60,13 @@ export default function HomePage() {
 
   return (
     <GlobalScreen active="home" ground="night">
-      <div className="mx-auto flex min-h-full max-w-2xl flex-col gap-10 px-6 pt-6 pb-12">
+      {/*
+        A child who has not been welcomed meets Halo instead of Home, on the
+        same route and the same ground — so finishing the welcome puts them
+        *on* Home rather than navigating them to it.
+      */}
+      <Doorway>
+        <div className="mx-auto flex min-h-full max-w-2xl flex-col gap-10 px-6 pt-6 pb-12">
         <div className="flex flex-col gap-6">
           <header className="relative text-center">
             {/*
@@ -130,7 +137,8 @@ export default function HomePage() {
             ))}
           </ul>
         </section>
-      </div>
+        </div>
+      </Doorway>
     </GlobalScreen>
   );
 }

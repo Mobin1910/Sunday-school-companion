@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
 import Preferences from "@/components/Preferences";
+import { DOORWAY_SCRIPT } from "@/local/child";
 
 import "./globals.css";
 
@@ -26,6 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-dvh">
+        {/*
+          Runs before anything paints, so the first frame of the first screen
+          is already the right one. It sets an attribute and nothing else —
+          the stylesheet does the hiding, and this makes no request and
+          writes nothing. See `DOORWAY_SCRIPT`.
+        */}
+        <script dangerouslySetInnerHTML={{ __html: DOORWAY_SCRIPT }} />
+
         <Preferences />
         {children}
       </body>

@@ -65,3 +65,36 @@ export function saveName(input: string): string {
 export function greeting(name: string): string {
   return name ? `Good to see you, ${name}!` : "Good to see you!";
 }
+
+/**
+ * Whether this child has been met.
+ *
+ * Kept apart from the name on purpose. A child may reach the end of the
+ * welcome without giving a name — or clear their name later — and neither
+ * should mean being introduced to Halo all over again. "Have we met?" and
+ * "what shall I call you?" are two questions, so they are two facts.
+ *
+ * It is also the reason this is a flag rather than a check for stored data:
+ * a returning child with nothing else saved has still been welcomed.
+ */
+export function readWelcomed(): boolean {
+  return read("welcomed", (raw) => (raw === true ? true : null), false);
+}
+
+export function markWelcomed(): void {
+  write("welcomed", true);
+}
+
+/**
+ * What the document is told before anything is painted.
+ *
+ * Run as a blocking script in `layout.tsx` so the first frame is already the
+ * right screen. Without it a returning child would see the welcome for a
+ * moment, or a new one would see a Home built around a name they have not
+ * given — either way the first impression would be of the app changing its
+ * mind. The stylesheet does the hiding; this only says which.
+ *
+ * Written as a string because it has to run before React exists. Nothing it
+ * touches leaves the device, and it makes no request.
+ */
+export const DOORWAY_SCRIPT = `try{document.documentElement.dataset.welcomed=localStorage.getItem("ssc.welcomed")==="true"?"yes":"no"}catch(e){}`;

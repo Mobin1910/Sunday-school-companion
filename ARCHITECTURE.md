@@ -387,11 +387,14 @@ Everything the product remembers lives in `src/local/`, under the `ssc.` namespa
 | Key | Holds |
 |---|---|
 | `ssc.child` | `{ name }` — a word the app says back, not an identifier |
+| `ssc.welcomed` | `true` once the welcome is finished |
 | `ssc.settings` | `{ sound, motion }` |
 | `ssc.place` | `{ v, slug, section, page, pages, done, at }` |
 | `ssc.games.streak` | `{ best, todayBest, day }` |
 | `ssc.verse.streak` | the same shape, and never the same store |
 
+- **Being welcomed is its own fact**, kept apart from the name. A child may reach the end without giving one, or clear their name later, and neither should mean being introduced to Halo again. It is also why this is a flag rather than a check for stored data: a returning child with nothing else saved has still been met.
+- **Which screen `/` is gets decided before the first paint.** A blocking inline script (`DOORWAY_SCRIPT`) reads the flag and sets an attribute; the stylesheet hides the other branch. Both are in the prerendered HTML, and React drops the unwanted one once it knows. With no JavaScript at all, nothing is hidden and Home is what shows — the right fallback, because the welcome is lovely and the stories are the point.
 - **A place, not a URL.** A stored address is a promise about routing that content changes quietly break; a stored place can be checked against the content that exists now and repaired or discarded honestly. `nextStep()` resolves a missing chapter, an out-of-range page, a record from a future version and a first-time child to the same honest answer: a chapter that exists, at its beginning.
 - The record carries no history — no chapters-visited list, no times-opened count, no per-page timing. `at` exists only so a later feature can tell stale progress from fresh, and is never shown to a child.
 - **Every key is enumerated** in `store.ts`, so "clear progress" is exact rather than hopeful and a new key that nobody thought about deleting is a compile error rather than data that quietly survives.

@@ -119,6 +119,17 @@ export default function Halo({
               <div className="halo-lume halo-lume-pink" />
               <div className="halo-lume halo-lume-peach" />
 
+              {/*
+                The source itself. The five above are colours *of* the light;
+                this is the light, sitting low and central where a lamp
+                inside a translucent thing would sit, swelling and easing on
+                a clock of its own. Deliberately soft and deliberately not
+                white-hot: a bright core reads as a lamp behind a screen,
+                where this has to read as a body that is lit all the way
+                through.
+              */}
+              <div className="halo-core" />
+
               <div className="halo-rim" />
               <div className="halo-sheen" />
 

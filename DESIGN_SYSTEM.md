@@ -302,7 +302,7 @@ The silhouette deforms by **moving its corners**, not by `scale()`: the four rad
 
 ## Glow
 
-Three layers, in order of how far the light travels:
+Three layers, in order of how far the light travels — and **which technique draws which layer is a hard constraint, not a preference**:
 
 1. **Internal light** — five coloured hotspots inside the body, blended additively so overlaps get brighter rather than muddier, each drifting and breathing on its own clock.
 2. **Rim light** — the lit edge of a translucent thing, brighter at the lower left where the warm light gathers, fading around the top. It says *this material is illuminated from inside*, not *this shape has a border*.
@@ -311,6 +311,10 @@ Three layers, in order of how far the light travels:
 The environmental layers **screen** rather than paint. Light adds; it does not smear. Screened against whatever Halo is standing on, the bloom lights the night and all but disappears on parchment — which is correct, because you cannot add light to a page that is already bright. Painted normally it reads there as a grey smudge behind the character.
 
 None of it is `filter: brightness()`. Brightness is saturation; this is light.
+
+**Wide soft light is drawn with gradients, never with a blur or a large shadow.** A gradient is evaluated per pixel and has no resolution; a `filter: blur()` or a `box-shadow` with a large radius is rasterised, and on a 2× or 3× phone that rasterisation is tiled — whose seams then show as faint rectangles across the glow once the layers above screen over them. So the aura carries the reach and has no blur at all, the body's own shadow is close spill only, and the one blur that remains (the ground reflection) is small enough to rasterise whole. This is invisible at 1× and obvious on a real phone, which is the trap: it must be checked at device pixel ratio, not in a desktop browser.
+
+The body's colour is three passes rather than one — a cool cast across the top, a warm one across the base, over the blue-to-violet ramp. A single ramp reads as a shape someone filled in; the extra two give the light somewhere to come from and somewhere to gather. A sixth hotspot, the **core**, sits low and central where a lamp inside a translucent thing would sit and breathes on a clock of its own. Its alpha is deliberately modest: a bright core stops being a body full of light and becomes a bulb.
 
 ## Environment
 
@@ -325,6 +329,16 @@ Halo remains legible on the light surfaces the app uses today, but night is the 
 `compact` 40px · `standard` 72px · `large` 120px · `hero` 200px. The rendered box is 1.42× the size to hold the ring above and the reflection below, and the body sits well inside it so the largest state has room to grow.
 
 A surface may give Halo more room than its placement's natural size by setting `--halo-room` on an ancestor; Home's hero uses `clamp(11rem, 53vw, 15rem)` so Halo grows with the phone. Everything in Halo is expressed in those units, so it scales as one thing rather than as a blob with a stretched glow.
+
+## Meeting Halo
+
+A child who has not been welcomed meets Halo before they meet anything else — on `/`, not on a route of its own, so finishing the welcome puts them *on* Home rather than navigating them to it. Which one `/` is gets decided before the first paint (`DOORWAY_SCRIPT` sets an attribute; the stylesheet hides the other), because a returning child glimpsing the welcome, or a new one glimpsing a Home built around a name they have not given, is an app visibly changing its mind.
+
+Four beats, one screen. **Halo is mounted once and never remounts**: it arrives, settles, breathes and changes mood continuously while only the words around it change. That is the whole difference between a companion introducing itself and four slides about a product — and it is why the welcome is a state inside one component rather than four routes.
+
+Its mood carries the argument. `listening` while it introduces itself, `curious` while it says what it can do, and **`happy` the moment a name is written** — before the button is pressed, because that is when the meeting actually happens. Giving a name earns a beat of its own: the light swells (`--halo-reveal` lifts above 1), the ring brightens with it, and it settles. A name should feel like being met, not like filling in a settings field.
+
+Nothing here is a card, a panel or a progress dot. Every beat takes focus so a keyboard or screen reader is told it changed; the name field deliberately does not, because raising the keyboard over Halo at the moment Halo is asking something personal is the wrong trade.
 
 ## Arriving
 

@@ -311,19 +311,31 @@ body {
   border-radius: 50%;
   background:
     radial-gradient(
-      ellipse 46% 42% at 50% 46%,
-      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.46)) 0%,
-      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.76)) 26%,
-      rgb(from var(--halo-violet) r g b / calc(var(--halo-bloom) * 0.46)) 52%,
-      transparent 78%
+      ellipse 48% 44% at 50% 44%,
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.72)) 0%,
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 1)) 20%,
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.62)) 36%,
+      rgb(from var(--halo-violet) r g b / calc(var(--halo-bloom) * 0.32)) 54%,
+      rgb(from var(--halo-violet) r g b / calc(var(--halo-bloom) * 0.1)) 72%,
+      transparent 88%
     ),
     radial-gradient(
       ellipse 42% 36% at 40% 68%,
-      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.58)) 0%,
-      rgb(from var(--halo-peach) r g b / calc(var(--halo-bloom) * 0.28)) 46%,
-      transparent 76%
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.88)) 0%,
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-bloom) * 0.42)) 34%,
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-bloom) * 0.12)) 58%,
+      transparent 82%
     );
-  filter: blur(calc(var(--halo-size) * 0.1));
+  /*
+    No `filter: blur()`, deliberately.
+
+    A radial gradient is already as soft as a blur would make it, and it is
+    resolution-independent: the browser evaluates it per pixel. Blurring one
+    forces the layer to be rasterised instead, and on a 2× or 3× phone that
+    rasterisation is tiled — which, seen through `screen`, shows up as faint
+    rectangles across the glow. The stops below do the softening the blur
+    used to do, and cost nothing to draw.
+  */
   /*
     Light adds; it does not smear. Screened against whatever Halo is
     standing on, the bloom brightens the night and all but disappears on
@@ -361,15 +373,17 @@ body {
   inset: 0;
   border-radius: 50%;
   border: calc(var(--halo-size) * 0.034) solid
-    rgb(255 198 74 / calc(0.78 + var(--halo-ring-glow) * 0.22));
+    rgb(255 206 92 / calc(0.84 + var(--halo-ring-glow) * 0.16));
   border-bottom-width: calc(var(--halo-size) * 0.024);
   box-shadow:
-    0 0 calc(var(--halo-size) * 0.2)
-      rgb(255 200 90 / calc(var(--halo-ring-glow) * 0.95)),
-    0 0 calc(var(--halo-size) * 0.5)
-      rgb(255 176 52 / calc(var(--halo-ring-glow) * 0.6)),
-    inset 0 0 calc(var(--halo-size) * 0.07)
-      rgb(255 240 200 / calc(var(--halo-ring-glow) * 0.9));
+    0 0 calc(var(--halo-size) * 0.12)
+      rgb(255 226 150 / calc(var(--halo-ring-glow) * 0.8)),
+    0 0 calc(var(--halo-size) * 0.26)
+      rgb(255 200 90 / calc(var(--halo-ring-glow) * 1)),
+    0 0 calc(var(--halo-size) * 0.62)
+      rgb(255 176 52 / calc(var(--halo-ring-glow) * 0.7)),
+    inset 0 0 calc(var(--halo-size) * 0.08)
+      rgb(255 244 210 / calc(var(--halo-ring-glow) * 1));
   transform: translateY(calc(var(--halo-size) * -0.06 * var(--halo-ring-lift)))
     rotate(var(--halo-ring-tilt)) scale(var(--halo-ring-scale));
   transition:
@@ -443,25 +457,51 @@ body {
     parts arriving. It rests at 1 everywhere except Home's arrival.
   */
   opacity: var(--halo-reveal);
-  background: radial-gradient(
-    ellipse 76% 70% at 50% 56%,
-    rgb(from var(--halo-blue) r g b / 0.52) 0%,
-    rgb(from var(--halo-violet) r g b / 0.42) 60%,
-    rgb(from var(--halo-violet) r g b / 0.3) 100%
-  );
   /*
-    Close spill only. A box-shadow cannot blend, so anything wide here has
-    to look right on parchment as well as on night — and wide colour on
-    parchment is a stain. The far reach of the glow is the aura's job,
-    because the aura can screen.
+    The material's own colour, in three passes rather than one.
+
+    A single blue-to-violet ramp is a wash: it reads as a shape someone
+    filled in. Laying a cool cast across the top and a warm one across the
+    base over that ramp gives the body somewhere for the light to come from
+    and somewhere for it to gather, which is what makes it look dimensional
+    instead of flat — and it stays smooth, because all three are soft
+    radials with no edge between them.
+  */
+  background:
+    radial-gradient(
+      ellipse 64% 56% at 34% 26%,
+      rgb(from var(--halo-cyan) r g b / 0.3) 0%,
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 60% 52% at 60% 82%,
+      rgb(from var(--halo-pink) r g b / 0.32) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 76% 70% at 50% 56%,
+      rgb(from var(--halo-blue) r g b / 0.62) 0%,
+      rgb(from var(--halo-violet) r g b / 0.52) 58%,
+      rgb(from var(--halo-violet) r g b / 0.38) 100%
+    );
+  /*
+    Close spill only, and *tight*. Two reasons, and both are hard limits.
+
+    A box-shadow cannot blend, so anything wide here has to look right on
+    parchment as well as on night — and wide colour on parchment is a stain.
+    It is also rasterised rather than evaluated per pixel, and a blur this
+    element's width across gets drawn in tiles on a 2× or 3× phone, whose
+    seams then show as faint rectangles once the layers above screen over
+    them. Both say the same thing: the far reach of the glow is the aura's
+    job, because the aura is a gradient and a gradient has no tiles.
   */
   box-shadow:
-    0 0 calc(var(--halo-size) * 0.24) calc(var(--halo-size) * 0.01)
-      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.42)),
-    0 0 calc(var(--halo-size) * 0.4) calc(var(--halo-size) * 0.03)
-      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.6)),
-    0 calc(var(--halo-size) * 0.07) calc(var(--halo-size) * 0.34)
-      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.38));
+    0 0 calc(var(--halo-size) * 0.1) calc(var(--halo-size) * 0.005)
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.5)),
+    0 0 calc(var(--halo-size) * 0.16) calc(var(--halo-size) * 0.015)
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.66)),
+    0 calc(var(--halo-size) * 0.04) calc(var(--halo-size) * 0.15)
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.42));
   transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
     scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)));
   /*
@@ -499,7 +539,7 @@ body {
 .halo-lume-cyan {
   background: radial-gradient(
     ellipse 34% 30% at 30% 26%,
-    rgb(from var(--halo-cyan) r g b / calc((0.95 - var(--halo-warmth) * 0.2) * var(--halo-light)))
+    rgb(from var(--halo-cyan) r g b / calc((1.12 - var(--halo-warmth) * 0.2) * var(--halo-light)))
       0%,
     transparent 68%
   );
@@ -509,7 +549,7 @@ body {
 .halo-lume-blue {
   background: radial-gradient(
     ellipse 40% 34% at 62% 42%,
-    rgb(from var(--halo-blue) r g b / calc(0.9 * var(--halo-light))) 0%,
+    rgb(from var(--halo-blue) r g b / calc(1.06 * var(--halo-light))) 0%,
     transparent 70%
   );
   animation: halo-lume-b 11200ms ease-in-out infinite;
@@ -518,7 +558,7 @@ body {
 .halo-lume-violet {
   background: radial-gradient(
     ellipse 38% 32% at 52% 62%,
-    rgb(from var(--halo-violet) r g b / calc(0.8 * var(--halo-light))) 0%,
+    rgb(from var(--halo-violet) r g b / calc(0.96 * var(--halo-light))) 0%,
     transparent 70%
   );
   animation: halo-lume-c 9400ms ease-in-out infinite;
@@ -527,7 +567,7 @@ body {
 .halo-lume-pink {
   background: radial-gradient(
     ellipse 34% 28% at 42% 80%,
-    rgb(from var(--halo-pink) r g b / calc((0.5 + var(--halo-warmth) * 0.5) * var(--halo-light)))
+    rgb(from var(--halo-pink) r g b / calc((0.62 + var(--halo-warmth) * 0.55) * var(--halo-light)))
       0%,
     transparent 68%
   );
@@ -537,11 +577,53 @@ body {
 .halo-lume-peach {
   background: radial-gradient(
     ellipse 30% 26% at 26% 84%,
-    rgb(from var(--halo-peach) r g b / calc((0.55 + var(--halo-warmth) * 0.55) * var(--halo-light)))
+    rgb(from var(--halo-peach) r g b / calc((0.68 + var(--halo-warmth) * 0.6) * var(--halo-light)))
       0%,
     transparent 66%
   );
   animation: halo-lume-e 10300ms ease-in-out infinite;
+}
+
+/*
+  THE CORE — the light itself, rather than a colour of it.
+
+  Low and central, where a lamp inside a translucent thing would sit, and
+  warm rather than white so the body reads as lit through rather than lit
+  from behind. It breathes on 5300ms — a clock that belongs to nothing else
+  here — so the brightest part of Halo swells and eases without ever
+  landing on the beat of the silhouette or of any hotspot.
+
+  Its alpha is deliberately modest. A bright core is the failure mode this
+  is closest to: it stops being a body full of light and becomes a bulb.
+*/
+.halo-core {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    ellipse 44% 40% at 48% 58%,
+    rgb(255 246 232 / calc(var(--halo-light) * 0.3)) 0%,
+    rgb(from var(--halo-cyan) r g b / calc(var(--halo-light) * 0.22)) 38%,
+    transparent 74%
+  );
+  animation: halo-core-breathe 5300ms ease-in-out infinite;
+}
+
+@keyframes halo-core-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.86;
+  }
+  42% {
+    transform: scale(calc(1 + var(--halo-life) * 0.07));
+    opacity: 1;
+  }
+  73% {
+    transform: scale(calc(1 - var(--halo-life) * 0.04));
+    opacity: 0.8;
+  }
 }
 
 /*
@@ -558,13 +640,13 @@ body {
   border-radius: inherit;
   box-shadow:
     inset 0 0 calc(var(--halo-size) * 0.045)
-      rgb(255 255 255 / calc(var(--halo-light) * 0.62)),
+      rgb(255 255 255 / calc(var(--halo-light) * 0.8)),
     inset calc(var(--halo-size) * 0.022) calc(var(--halo-size) * -0.032)
       calc(var(--halo-size) * 0.1)
-      rgb(from var(--halo-peach) r g b / calc(var(--halo-light) * 0.7)),
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-light) * 0.9)),
     inset calc(var(--halo-size) * -0.022) calc(var(--halo-size) * 0.032)
       calc(var(--halo-size) * 0.09)
-      rgb(from var(--halo-cyan) r g b / calc(var(--halo-light) * 0.52));
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-light) * 0.7));
   transition: box-shadow var(--halo-transition) ease-out;
 }
 
@@ -667,7 +749,13 @@ body {
     rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.42)) 44%,
     transparent 80%
   );
-  filter: blur(calc(var(--halo-size) * 0.04));
+  /*
+    This one keeps its blur. The aura lost its own because a large blurred
+    layer is rasterised in tiles and the seams show through `screen` at 2×;
+    the reflection is a fraction of that size, rasterises whole, and without
+    the blur its ellipse ends in a visible edge on the ground.
+  */
+  filter: blur(calc(var(--halo-size) * 0.05));
   /* A reflection is light too, and disappears on a ground already bright. */
   mix-blend-mode: screen;
   animation: halo-floor-breathe 10300ms ease-in-out infinite;
@@ -1180,6 +1268,222 @@ body {
 }
 
 /*
+  THE DOORWAY — which screen `/` is, decided before anything paints.
+
+  `DOORWAY_SCRIPT` sets the attribute; these two rules do the hiding. With
+  no attribute at all — which is what a browser running no JavaScript sees —
+  Home shows and the welcome does not, because the welcome is lovely and the
+  stories are the point.
+*/
+/*
+  The wrappers exist only to be addressable. They must not become a layout
+  step of their own, or the welcome would be measuring its height against a
+  box rather than against the screen.
+*/
+[data-doorway] {
+  display: contents;
+}
+
+html[data-welcomed="no"] [data-doorway="home"],
+html:not([data-welcomed="no"]) [data-doorway="welcome"] {
+  display: none;
+}
+
+/*
+  MEETING HALO.
+
+  Four beats on one screen, so the layout never changes underneath the
+  child: Halo holds the top and grows into whatever room is left, the words
+  sit under it, and the way onward is always in the same place at the
+  bottom. Only the words swap, which is what makes four beats read as one
+  conversation rather than four slides.
+
+  No cards, no panels, no progress dots. A child being welcomed is not
+  filling in a form.
+*/
+.welcome {
+  /*
+    Sized from the height, not the width, because Halo's box is 1.42× its
+    width tall — so a number chosen to look right across a phone is the one
+    that pushes the button off a short one. 30vh of the screen becomes
+    roughly 43vh of box, which leaves the words and the way onward their
+    room on a 568-tall phone and still gives Halo the whole middle of an
+    iPad.
+  */
+  --halo-room: clamp(8.5rem, 30vh, 17rem);
+
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: clamp(1rem, 4vh, 2.25rem);
+  min-height: 100%;
+  padding: clamp(1.25rem, 4vh, 2.5rem) 1.5rem clamp(1.5rem, 5vh, 3rem);
+  text-align: center;
+}
+
+/*
+  Halo takes the room that is left, and is centred in it. The stage clips
+  nothing: the aura reaches well past the body, and a child on a short
+  phone should see the glow fall off rather than meet an edge.
+*/
+.welcome-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.welcome-words {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-inline: auto;
+  max-width: 28rem;
+  /* Each beat arrives rather than cutting; see the keyframe below. */
+  animation: welcome-beat 420ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+
+  /*
+    Focused programmatically so each beat is announced, never by tabbing to
+    it, so there is nothing for a focus ring to explain. The beat itself is
+    the visible change.
+  */
+  outline: none;
+}
+
+.welcome-title {
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--color-night-ink);
+}
+
+.welcome-copy {
+  font-size: clamp(1rem, 4.2vw, 1.2rem);
+  line-height: 1.5;
+  text-wrap: balance;
+  color: var(--color-night-ink-soft);
+}
+
+/* The moment the name lands. Bigger than the copy, alone on the screen. */
+.welcome-meeting {
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  line-height: 1.2;
+  text-wrap: balance;
+  color: var(--color-night-ink);
+}
+
+/*
+  The four things, as marks in the dark rather than tiles. No borders, no
+  backgrounds, no boxes — they are things Halo does with the child, and a
+  grid of panels would make them things the app contains.
+*/
+.welcome-things {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 6vw, 2.25rem);
+  margin-top: 0.5rem;
+  color: var(--color-night-ink-soft);
+}
+
+.welcome-things li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+}
+
+.welcome-field {
+  width: 100%;
+  max-width: 20rem;
+  min-height: 3.75rem;
+  margin-top: 0.25rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--color-night-edge);
+  border-radius: var(--radius-card);
+  background: rgb(from var(--color-night-raised) r g b / 0.55);
+  color: var(--color-night-ink);
+  font-size: 1.375rem;
+  text-align: center;
+}
+
+.welcome-field::placeholder {
+  color: rgb(from var(--color-night-ink-soft) r g b / 0.7);
+}
+
+.welcome-field:focus-visible {
+  outline: 2px solid rgb(255 198 74 / 0.9);
+  outline-offset: 2px;
+}
+
+/*
+  Not an error, so it does not look like one. Nothing has gone wrong — Halo
+  simply has not been told yet. The line keeps its height whether or not it
+  says anything, so asking again never moves the button.
+*/
+.welcome-nudge {
+  min-height: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--color-night-ink-soft);
+}
+
+.welcome-act {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-onward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  width: 100%;
+  max-width: 22rem;
+  padding: 0 1.75rem;
+  border-radius: 999px;
+  background: var(--color-night-ink);
+  color: var(--color-night);
+  font-size: 1.1875rem;
+}
+
+@keyframes welcome-beat {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  The name landing.
+
+  A brief lift of Halo's own reveal, which multiplies the internal light and
+  the bloom it puts into the room — so the light swells and settles rather
+  than a new effect appearing. It rides on top of the `happy` state the
+  words arrive with; together they are Halo being pleased, not an animation
+  being played at the child.
+*/
+.halo-gladdening {
+  animation: halo-glad 1500ms cubic-bezier(0.25, 0.8, 0.3, 1) both;
+}
+
+@keyframes halo-glad {
+  0% {
+    --halo-reveal: 1;
+  }
+  35% {
+    --halo-reveal: 1.35;
+  }
+  100% {
+    --halo-reveal: 1.12;
+  }
+}
+
+/*
   Calm over clutter, and calm for children who need stillness.
   Nothing becomes unusable — motion simply stops.
 
@@ -1243,6 +1547,7 @@ html[data-motion="reduce"] *::after {
 .halo-sheen,
 .halo-eyes-wander,
 .halo-eye:last-child,
+.halo-core,
 .halo-floor {
   @media (prefers-reduced-motion: reduce) {
     html:not([data-motion="full"]) & {

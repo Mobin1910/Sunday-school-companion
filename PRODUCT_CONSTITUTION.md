@@ -539,6 +539,10 @@ Nothing at the end happens on its own. There is no timer and no auto-advance —
 
 **Verses** carries two streaks' worth of distinction from Games: recalling a story and holding particular words are different kinds of practice, so they keep **separate streaks**. A child flying at one and finding the other hard should see two honest numbers, never one blurred one — and a run ended in one place must never quietly reset the other.
 
+**The welcome** is what `/` is for a child who has not been met. Halo introduces itself, says what it can do, asks what to call them, and takes them into Home — four beats on one screen, with the same Halo present throughout. It happens once, and only once: finishing it is remembered, so a reopened app goes straight to Home. Clearing storage brings it back, which is correct — a device with no memory has not met anyone.
+
+Asking a child's name is the one thing this product asks of anyone, and it earns a moment rather than a form field: Halo becomes happy the instant the name is written, and the light swells around it before the last beat. A name is being met, not being recorded.
+
 **Settings** is not a fifth destination. It is a small control on Home, and it holds the child's name, two comfort switches and a way to clear everything. Every switch added there is a decision handed to a six-year-old, and most decisions are better made once, well, by us.
 
 **About** is the adult-facing surface described in *Adults & Access*, reachable from Home and not in the child's path.

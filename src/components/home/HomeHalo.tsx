@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { arrivalTaken, claimArrival } from "@/halo/arrival";
 import HaloPresence from "@/halo/HaloPresence";
 
 /**
@@ -14,12 +15,12 @@ import HaloPresence from "@/halo/HaloPresence";
  *
  * It plays once per visit to the app, not once per visit to this screen. Home
  * is where a child comes back to between a chapter and a game, and a small
- * magical moment stops being one on the fourth time in five minutes. A module
- * flag is exactly the right memory for that: it lasts as long as the tab, and
- * it is not storage — nothing about this child is written down anywhere, which
- * is the promise this product makes.
+ * magical moment stops being one on the fourth time in five minutes.
+ *
+ * The claim is shared with the welcome — see `halo/arrival.ts` — so a child
+ * who has just watched Halo descend into their first screen does not watch
+ * it descend again the moment they reach Home.
  */
-let staged = false;
 
 export default function HomeHalo() {
   /*
@@ -27,10 +28,10 @@ export default function HomeHalo() {
     first render agree — and so the prerendered HTML, where this module is
     also fresh, agrees with both.
   */
-  const [arriving] = useState(() => !staged);
+  const [arriving] = useState(() => !arrivalTaken());
 
   useEffect(() => {
-    staged = true;
+    claimArrival();
   }, []);
 
   return (
