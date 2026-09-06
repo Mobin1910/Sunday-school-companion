@@ -32,7 +32,7 @@ import { say } from "./voice";
  * Games needs it to end a run, and the fact is already public — the child
  * is watching Halo receive it. A caller that counted these events would be
  * building the tally this product refuses to keep, so callers hold a run,
- * not a record; see `src/games/streak.ts`.
+ * not a record; see `src/local/streak.ts`.
  *
  * Halo is driven from here rather than by the models, because this is where
  * the assistance ladder actually lives. What crosses to the companion is a
