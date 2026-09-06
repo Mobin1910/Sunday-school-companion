@@ -189,6 +189,8 @@ Every model implements the same four rungs. What changes is what a clue can be.
 ### Rules the implementation must hold
 
 - Help never retreats. A rung once reached stays reached for as long as the card is open.
+- **Options are shuffled when the question begins, and are then still.** A fixed order teaches *tap the second one* instead of *think about the answer*, and an order fixed per question teaches it just as well one question at a time — so the shuffle is genuinely random and rolled again each time the question is presented. What an author wrote is the semantic order, never the visual one.
+- **Nothing after that may reorder them.** Not a wrong tap, not Recovery, not a hint, not the ladder climbing, not a re-render. A child looking again at the same choices must be looking at the same choices; reordering under them turns a second try into a fresh puzzle.
 - Withdrawing a wrong option is a removal, not a disabling. Nothing is left on screen greyed out — `DESIGN_SYSTEM.md` says disabled states do not exist.
 - The final rung reveals but never completes. No model may call `onComplete()` on the child's behalf.
 - Every clue has a non-visual equivalent, and every clue that moves has a still version under `prefers-reduced-motion`.

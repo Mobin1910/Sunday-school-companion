@@ -21,12 +21,21 @@ import Link from "next/link";
 
 export type GlobalDestination = "home" | "chapters" | "games" | "verses";
 
-const DESTINATIONS: {
+export type Destination = {
   key: GlobalDestination;
   label: string;
   href: string;
   icon: () => React.ReactElement;
-}[] = [
+};
+
+/**
+ * The product's destinations, in one list.
+ *
+ * Exported because Home shows the same doors in its own way, and two lists
+ * would drift: a destination added to the bar but not to Home is a place a
+ * child can only reach from three of the four screens.
+ */
+export const DESTINATIONS: Destination[] = [
   { key: "home", label: "Home", href: "/", icon: HomeIcon },
   { key: "chapters", label: "Chapters", href: "/chapters", icon: BooksIcon },
   { key: "games", label: "Games", href: "/games", icon: SparkIcon },

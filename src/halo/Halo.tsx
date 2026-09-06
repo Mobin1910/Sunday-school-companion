@@ -47,7 +47,14 @@ export default function Halo({
   const announcement = ANNOUNCEMENT[state];
 
   const style = {
-    "--halo-size": `${px}px`,
+    /*
+      The natural size for this placement. A surface that wants Halo to fill
+      the room it has — Home's hero, where Halo is the reason the screen
+      exists — sets `--halo-room` on an ancestor and this becomes the
+      fallback. Everything downstream is expressed in these units, so Halo
+      scales as one thing rather than as a blob with a stretched glow.
+    */
+    "--halo-basis": `${px}px`,
     "--halo-scale": e.scale,
     "--halo-squish": e.squish,
     "--halo-lean": `${e.lean}deg`,

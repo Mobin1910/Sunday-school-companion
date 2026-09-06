@@ -489,6 +489,8 @@ Chapter Hub                    ← every chapter is entered here
 
 The bottom bar is **absent inside a chapter**. A story framed by a tab bar is a web page; a story with nothing around it is a story.
 
+It is also **absent on Home**. Home already carries the greeting, the chapter to carry on with and the three doors, so a bar repeating those doors is the same navigation offered twice — and the row it costs is a row taken from Halo, who is the reason that screen exists. The architecture is unchanged: the four destinations and their routes are exactly as above. Only the bar's visibility differs, and it differs in one place in the code so no screen can get it wrong.
+
 ## Entering a chapter
 
 **Every chapter begins at its Hub, without exception** — including a chapter arrived at by "Next Chapter" from the chapter before it. A child sees what a chapter holds before being put inside part of it.
@@ -527,7 +529,7 @@ Nothing at the end happens on its own. There is no timer and no auto-advance —
 
 ## The global destinations
 
-**Home** is a door, not a dashboard. **Chapters** is the shelf. **Games** is every chapter's activities in one place, and will shuffle between them as chapters gain more than one — still no levels, locks or scores. **Verses** becomes the child's growing collection of verses from chapters they have read.
+**Home** is where a child meets Halo. Not a door and not a dashboard: the room the companion lives in, and the one screen presented in the night rather than on parchment. The order of it is greeting, Halo, the chapter to carry on with, then the ways further in — and Halo is given more of the first screenful than anything else on it. Nothing there counts anything; "continue learning" names a chapter, which is a fact about the content and not a measurement of the child. **Chapters** is the shelf. **Games** is every chapter's activities in one place, and will shuffle between them as chapters gain more than one — still no levels, locks or scores. **Verses** becomes the child's growing collection of verses from chapters they have read.
 
 **About** is the adult-facing surface described in *Adults & Access*, reachable from Home and not in the child's path.
 

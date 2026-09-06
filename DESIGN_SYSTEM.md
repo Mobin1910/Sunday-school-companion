@@ -316,11 +316,27 @@ None of it is `filter: brightness()`. Brightness is saturation; this is light.
 
 **The interface is the night. Halo is the light.** Deep navy, a soft blue atmospheric gradient, restrained haze, subtle reflective grounding. `HaloPresence` takes `ground="night"` to provide it, so the atmosphere stays one thing everywhere rather than being reinvented per surface.
 
+There are two of these, and the difference matters. `.halo-night` is a **panel**, tuned for a box the size of a card. `.night-screen` is a **room**, for a whole screen: its atmosphere gathers where Halo actually is and falls away everywhere else. Stretching the panel over a phone puts its bloom along the bottom edge, which makes the furthest corner from Halo the brightest thing on the screen — the opposite of a companion being the local light source. The room is painted on the viewport-height frame rather than on the scrolling content, so the atmosphere holds still while the page moves through it.
+
 Halo remains legible on the light surfaces the app uses today, but night is the primary presentation. Never a black-and-neon sci-fi UI.
 
 ## Sizes
 
 `compact` 40px · `standard` 72px · `large` 120px · `hero` 200px. The rendered box is 1.42× the size to hold the ring above and the reflection below, and the body sits well inside it so the largest state has room to grow.
+
+A surface may give Halo more room than its placement's natural size by setting `--halo-room` on an ancestor; Home's hero uses `clamp(11rem, 53vw, 15rem)` so Halo grows with the phone. Everything in Halo is expressed in those units, so it scales as one thing rather than as a blob with a stretched glow.
+
+## Arriving
+
+Halo comes into Home rather than being present on it — the one moment in the product that is staged.
+
+It is told **entirely in light**, because the literal version of "descending from above" is a cartoon heaven. No clouds, no wings, no rays, no particles. A warm glow appears in an empty dark; the golden ring becomes visible inside it and begins to descend; the body gathers underneath it as its own light comes up; the room brightens around them both; the staging light fades and Halo simply lives there.
+
+The mechanism is one number. `--halo-reveal` fades the body — with everything lit inside it — and holds back the environmental bloom, and deliberately does **not** touch the ring, which keeps its own brightness throughout. That single exemption is the whole arrival: at 0 there is a golden ring alone in the dark. No surface reaches into Halo's parts to achieve it.
+
+Nothing bounces or overshoots. The easing decelerates the whole way, so it reads as settling rather than as landing. It plays **once per visit to the app**, not once per visit to the screen: Home is where a child comes back to between a chapter and a game, and a small magical moment stops being one on the fourth time in five minutes.
+
+Under reduced motion the arrival keeps its meaning and loses its motion — Halo is placed where it belongs and its light comes up there. Nothing descends, and the staging light does not happen at all.
 
 ## Reduced motion
 

@@ -24,6 +24,22 @@
   --color-joy: #27784c;
   --color-edge: #eadfcf;
 
+  /*
+    The night surface.
+
+    Home is the one screen presented in Halo's own environment rather than on
+    parchment — "the interface is the night, Halo is the light" — so it needs
+    the same roles again in that key. Named by role for the same reason as
+    above, and paired for contrast on the deepest part of the ground:
+      night-ink on night        15.8:1
+      night-ink-soft on night    7.3:1
+  */
+  --color-night: #050a19;
+  --color-night-raised: #101c3d;
+  --color-night-ink: #f4f1ea;
+  --color-night-ink-soft: #a8b4d0;
+  --color-night-edge: #22335e;
+
   --radius-card: 1.5rem;
 
   --font-sans:
@@ -212,12 +228,42 @@ body {
   initial-value: 0;
 }
 
+/*
+  How much of Halo's own light is showing, 0–1.
+
+  It fades the body — with everything lit inside it — and holds back the
+  bloom Halo puts into the room. It deliberately does not touch the ring:
+  the ring is a separate light and keeps its own brightness throughout.
+
+  That one exemption is the whole arrival. At 0 there is a golden ring alone
+  in the dark; as it rises the body gathers underneath it and the room
+  brightens around them both. Light arriving, rather than an object being
+  moved into place — and no surface had to reach into Halo's parts to say
+  so. It rests at 1, so nothing that does not animate it notices it exists.
+*/
+@property --halo-reveal {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
 .halo {
   --halo-cyan: #4fd6ff;
   --halo-blue: #3d7bff;
   --halo-violet: #9b6bff;
   --halo-pink: #ff8ecb;
   --halo-peach: #ffb583;
+
+  /*
+    A surface may give Halo more room than its placement's natural size by
+    setting `--halo-room` on an ancestor — Home's hero uses a `clamp()` so
+    Halo grows with the phone. Everything below is in these units, so it
+    scales as one thing.
+  */
+  --halo-size: var(--halo-room, var(--halo-basis));
+
+  /* The bloom Halo puts into the room, held back while it is arriving. */
+  --halo-bloom: calc(var(--halo-glow) * var(--halo-reveal));
 
   position: relative;
   width: var(--halo-size);
@@ -266,15 +312,15 @@ body {
   background:
     radial-gradient(
       ellipse 46% 42% at 50% 46%,
-      rgb(from var(--halo-cyan) r g b / calc(var(--halo-glow) * 0.46)) 0%,
-      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.76)) 26%,
-      rgb(from var(--halo-violet) r g b / calc(var(--halo-glow) * 0.46)) 52%,
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.46)) 0%,
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.76)) 26%,
+      rgb(from var(--halo-violet) r g b / calc(var(--halo-bloom) * 0.46)) 52%,
       transparent 78%
     ),
     radial-gradient(
       ellipse 42% 36% at 40% 68%,
-      rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.58)) 0%,
-      rgb(from var(--halo-peach) r g b / calc(var(--halo-glow) * 0.28)) 46%,
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.58)) 0%,
+      rgb(from var(--halo-peach) r g b / calc(var(--halo-bloom) * 0.28)) 46%,
       transparent 76%
     );
   filter: blur(calc(var(--halo-size) * 0.1));
@@ -390,6 +436,13 @@ body {
     which at large sizes leaves a hard gold sliver beside the body.
   */
   isolation: isolate;
+  /*
+    Everything lit lives inside this element, so one opacity is the whole of
+    the body's reveal: the material, the hotspots, the rim, the highlight and
+    the eyes all come up together, as one thing gathering rather than as
+    parts arriving. It rests at 1 everywhere except Home's arrival.
+  */
+  opacity: var(--halo-reveal);
   background: radial-gradient(
     ellipse 76% 70% at 50% 56%,
     rgb(from var(--halo-blue) r g b / 0.52) 0%,
@@ -404,11 +457,11 @@ body {
   */
   box-shadow:
     0 0 calc(var(--halo-size) * 0.24) calc(var(--halo-size) * 0.01)
-      rgb(from var(--halo-cyan) r g b / calc(var(--halo-glow) * 0.42)),
+      rgb(from var(--halo-cyan) r g b / calc(var(--halo-bloom) * 0.42)),
     0 0 calc(var(--halo-size) * 0.4) calc(var(--halo-size) * 0.03)
-      rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.6)),
+      rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.6)),
     0 calc(var(--halo-size) * 0.07) calc(var(--halo-size) * 0.34)
-      rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.38));
+      rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.38));
   transform: rotate(var(--halo-lean)) scale(var(--halo-scale))
     scaleX(var(--halo-squish)) scaleY(calc(2 - var(--halo-squish)));
   /*
@@ -610,8 +663,8 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     ellipse at 50% 36%,
-    rgb(from var(--halo-blue) r g b / calc(var(--halo-glow) * 0.8)) 0%,
-    rgb(from var(--halo-pink) r g b / calc(var(--halo-glow) * 0.42)) 44%,
+    rgb(from var(--halo-blue) r g b / calc(var(--halo-bloom) * 0.8)) 0%,
+    rgb(from var(--halo-pink) r g b / calc(var(--halo-bloom) * 0.42)) 44%,
     transparent 80%
   );
   filter: blur(calc(var(--halo-size) * 0.04));
@@ -997,6 +1050,136 @@ body {
 }
 
 /*
+  The night as a whole screen, rather than as a panel.
+
+  `.halo-night` above is tuned for a box the size of a card, and stretching
+  it over a phone puts its lower bloom along the bottom of the screen — which
+  makes the furthest corner from Halo the brightest thing on it. Here the
+  atmosphere gathers where Halo actually is and falls away everywhere else,
+  so the companion stays the local light source and the screen does not glow
+  as a whole.
+
+  It is painted on the viewport-height frame rather than on the scrolling
+  content, so the atmosphere holds still while the page moves through it.
+*/
+.night-screen {
+  background:
+    radial-gradient(ellipse 66% 30% at 50% 38%, #172c62 0%, transparent 74%),
+    radial-gradient(ellipse 110% 44% at 50% 12%, #0c1735 0%, transparent 72%),
+    linear-gradient(180deg, #070d21 0%, #050a19 52%, #030611 100%);
+}
+
+/*
+  HOME — light arriving.
+
+  Home opens into Halo's own environment and Halo comes into it, which is
+  the one moment in the product that is staged rather than simply present.
+
+  It is told entirely in light, because the alternative is literal and the
+  literal version of "descending from above" is a cartoon heaven. There are
+  no clouds, no wings, no rays and no particles. A warm glow appears in an
+  empty dark, the golden ring becomes visible inside it, the body's own
+  colour comes up as it settles, and the room brightens around it. Then the
+  staging is over and Halo simply lives there.
+
+  Nothing here bounces or overshoots. The easing decelerates the whole way,
+  so the arrival reads as settling rather than as landing.
+*/
+.home-sky {
+  /*
+    How much room Home gives Halo. This is the largest Halo is anywhere in
+    the product, and deliberately so: it is the reason the screen exists.
+    It grows with the phone rather than being one fixed number, and the
+    ceiling keeps the greeting above it and the chapter below it on screen
+    together on a tall device.
+  */
+  --halo-room: clamp(11rem, 53vw, 15rem);
+
+  position: relative;
+  isolation: isolate;
+}
+
+/* The warm light that arrives before Halo does, and fades once it has. */
+.home-arrival {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  width: min(148%, 30rem);
+  aspect-ratio: 1;
+  margin-left: min(-74%, -15rem);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 42%,
+    rgb(255 216 140 / 0.34) 0%,
+    rgb(255 186 92 / 0.16) 34%,
+    transparent 68%
+  );
+  filter: blur(28px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  animation: home-arrival-light 3000ms cubic-bezier(0.3, 0.6, 0.3, 1) both;
+}
+
+@keyframes home-arrival-light {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+/*
+  Halo coming down into the scene.
+
+  Two rhythms on one element, which is allowed because they touch different
+  properties: the descent, and the reveal of Halo's own light. The reveal
+  starts later and finishes later, so the ring is visible for a moment
+  before the colour inside the body comes up behind it — light arriving,
+  rather than an object being moved into place.
+*/
+.halo-arriving {
+  animation:
+    home-descend 2400ms cubic-bezier(0.16, 0.66, 0.2, 1) 260ms both,
+    home-reveal 1800ms cubic-bezier(0.4, 0.2, 0.3, 1) 640ms both;
+}
+
+/*
+  The container's own fade is short and early, because all it is fading in is
+  the ring — the body has its own, later reveal. So the gold appears first
+  and then keeps descending while the light gathers under it.
+*/
+@keyframes home-descend {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -11%, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes home-reveal {
+  from {
+    --halo-reveal: 0;
+  }
+  to {
+    --halo-reveal: 1;
+  }
+}
+
+/*
   Calm over clutter, and calm for children who need stillness.
   Nothing becomes unusable — motion simply stops.
 */
@@ -1045,4 +1228,30 @@ body {
     initial value of 0 and the silhouette becomes exactly the shape the
     expression table asked for — deformation removed, shape kept.
   */
+
+  /*
+    Home's arrival keeps its meaning and loses its motion. Halo is placed
+    where it belongs and its light comes up there; nothing descends and
+    nothing travels. A first moment is still a first moment when it is only
+    a brightening.
+  */
+  .halo-arriving {
+    animation:
+      home-settle 900ms ease-out both,
+      home-reveal 900ms ease-out both !important;
+  }
+
+  /* The staging light is motion by definition, so it simply does not happen. */
+  .home-arrival {
+    animation: none !important;
+  }
+}
+
+@keyframes home-settle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
