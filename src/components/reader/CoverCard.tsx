@@ -4,7 +4,19 @@ import type { Art } from "@/content";
 /**
  * The front door of the chapter.
  *
- * A book cover, not a menu: the title and one picture, with nothing to decide.
+ * One illustration, edge to edge, and nothing else. The chapter's name is
+ * painted into the artwork rather than set beneath it — a cover is a picture
+ * with a title on it, not a picture with a caption — so this card lays no
+ * type over the image at all and only makes sure the name still exists for a
+ * screen reader, which cannot read paint.
+ *
+ * It is the one card that escapes the shared frame: everywhere else in the
+ * reader the margins are fixed so that turning a page never moves the ground
+ * under a child's feet, and here the whole page *is* the picture. The scrim
+ * is what makes that safe — it lands the bottom of the artwork exactly on the
+ * ground colour, so the chrome the reader draws over it is legible without
+ * anything being boxed off.
+ *
  * The way in is the same forward button used on every other page, so a child
  * learns one gesture and it never changes.
  */
@@ -16,14 +28,10 @@ export default function CoverCard({
   title: string;
 }) {
   return (
-    <>
-      <div className="w-full max-w-md px-6">
-        <Picture art={art} alt={title} />
-      </div>
-
-      <h1 className="breathe px-6 text-center text-5xl leading-tight text-balance">
-        {title}
-      </h1>
-    </>
+    <div className="absolute inset-0 overflow-hidden">
+      <Picture art={art} alt={title} className="size-full object-cover" />
+      <div className="cover-scrim absolute inset-0" aria-hidden />
+      <h1 className="sr-only">{title}</h1>
+    </div>
   );
 }

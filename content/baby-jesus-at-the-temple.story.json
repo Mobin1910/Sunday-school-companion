@@ -1,0 +1,73 @@
+{
+  "title": "Baby Jesus at the Temple",
+  "reference": "Luke 2:22–38",
+  "cover": {
+    "picture": "cover",
+    "note": "Mary holding baby Jesus, Joseph beside her, old Simeon reaching out with both hands and a huge smile. Warm temple light, tall stone columns behind. The chapter title is painted into the artwork itself — the reader lays no text over the cover."
+  },
+  "story": [
+    {
+      "picture": "mary-and-joseph",
+      "text": "Mary and Joseph had a new baby. His name was Jesus."
+    },
+    {
+      "picture": "walking-to-the-temple",
+      "text": "When Jesus was small, they took him to the temple."
+    },
+    {
+      "picture": "two-doves",
+      "text": "They brought two little doves as their gift to God.",
+      "interaction": {
+        "type": "reveal",
+        "prompt": "What else did people bring?",
+        "items": ["basket-of-bread", "oil-lamp", "small-coins"],
+        "note": "Discovery — nothing here is wrong and nothing is required. Each tap gives a small warm animation and a thank-you."
+      }
+    },
+    {
+      "picture": "simeon-waiting",
+      "text": "An old man named Simeon was waiting there."
+    },
+    {
+      "picture": "simeon-promise",
+      "text": "God had promised he would see the Saviour."
+    },
+    {
+      "picture": "simeon-holds-jesus",
+      "text": "Simeon held the baby and smiled. God kept his promise.",
+      "note": "The heart of the chapter. Give this card the most space — old hands, small baby, light from above."
+    },
+    {
+      "picture": "anna-praying",
+      "text": "Anna was very old. She prayed at the temple every day."
+    },
+    {
+      "picture": "anna-tells-everyone",
+      "text": "Anna saw Jesus and thanked God. She told everyone.",
+      "note": "The chapter ends on gladness being passed on, not on the ceremony finishing."
+    }
+  ],
+  "quiz": [
+    {
+      "type": "multiple-choice",
+      "prompt": "Who was waiting to see baby Jesus?",
+      "hint": "He was an old man who had waited a long time.",
+      "options": [
+        { "label": "Simeon", "correct": true },
+        { "label": "A soldier" },
+        { "label": "A shepherd" }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "My eyes have seen your salvation.",
+    "reference": "Luke 2:30",
+    "translation": "WEB",
+    "note": "Simeon's own words, and short enough for a six-year-old to carry."
+  },
+  "celebration": {
+    "message": "You learned how Simeon waited, and how God kept his promise.",
+    "picture": "celebration",
+    "note": "Warm light, the temple steps, the family walking home together."
+  }
+}

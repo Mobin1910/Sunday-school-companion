@@ -17,7 +17,21 @@ import VerseCard from "./VerseCard";
  * as opposed to the neighbour the page-turn reader keeps mounted so it can
  * be revealed mid-drag. Only kinds that carry their own state and timers
  * (currently quiz) need to know; everything else ignores it.
+ *
+ * The bottom padding is the room the reader's own chrome occupies. That
+ * chrome floats over the page rather than sitting under it, so that a cover
+ * can run the full height of the screen; every other card keeps clear of it
+ * here, in one place, instead of each kind remembering to.
+ *
+ * The last page is the exception in both directions: it carries two stacked
+ * ways onward instead of one round button, so it needs more room, and the
+ * cover needs none at all because it is the picture underneath everything.
  */
+const ROOM_FOR_CHROME: Partial<Record<Card["kind"], string>> = {
+  cover: "",
+  celebration: "pb-48",
+};
+
 export default function CardScreen({
   card,
   title,
@@ -27,8 +41,12 @@ export default function CardScreen({
   title: string;
   active?: boolean;
 }) {
+  const room = ROOM_FOR_CHROME[card.kind] ?? "pb-32";
+
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-10 py-4">
+    <div
+      className={`relative flex h-full w-full flex-col items-center justify-center gap-10 pt-4 ${room}`}
+    >
       {render(card, title, active)}
     </div>
   );

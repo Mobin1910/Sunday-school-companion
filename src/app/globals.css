@@ -249,6 +249,125 @@ body {
   .nav-here {
     filter: drop-shadow(0 0 6px rgb(from var(--color-touchable) r g b / 0.55));
   }
+
+  /*
+    Where you are, said by position.
+
+    A short bar of light hanging on the top edge of the bar, over the
+    destination you are on. It is the one moving light in the product: the
+    stylesheet reads `--nav-here` — an index, 0 to 3, set by the bar — and
+    turns it into a position, so the mark travels rather than blinks from one
+    tab to the next, and neither the bar nor the mark ever needs to know how
+    wide the screen is.
+
+    Under reduced motion the universal rule at the end of this file collapses
+    the transition, and the mark simply appears where it belongs.
+  */
+  .nav-mark {
+    position: absolute;
+    top: -0.25rem;
+    left: calc((var(--nav-here, 0) + 0.5) * 25%);
+    translate: -50% 0;
+    width: 2.125rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background-image: linear-gradient(
+      167deg,
+      var(--color-cta-start) 0%,
+      var(--color-cta-mid) 52%,
+      var(--color-cta-end) 100%
+    );
+    box-shadow: 0 3px 16px rgb(from var(--color-cta-mid) r g b / 0.55);
+    transition: left 340ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+
+  /*
+    The light the mark spills downward onto the bar. Blurred and sitting just
+    under the lit edge, so the mark reads as something glowing on the bar
+    rather than a coloured rectangle stuck to it.
+  */
+  .nav-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0.25rem 0.28rem -0.56rem;
+    border-radius: 999px;
+    background-image: linear-gradient(
+      153deg,
+      var(--color-cta-start) 0%,
+      var(--color-cta-mid) 52%,
+      var(--color-cta-end) 100%
+    );
+    filter: blur(8px);
+  }
+
+  /*
+    The current destination's label, in the same light as its mark. Bold
+    first — the weight is what carries this for anyone who cannot separate
+    the colours — and the gradient second.
+  */
+  .nav-label-here {
+    font-weight: 700;
+    background-image: linear-gradient(
+      102deg,
+      var(--color-cta-start) 15%,
+      var(--color-cta-mid) 16%,
+      var(--color-cta-end) 67%
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  /*
+    A door on Home.
+
+    Three of them, side by side, each the plainest possible container: the
+    edge colour at a third strength, a hairline of the same, and the mark
+    over the word. They are deliberately unlit — this is the fourth rung of
+    the lighting order, a surface — so that the row reads as three ways out
+    of the room rather than three things competing with Halo for the eye.
+  */
+  .tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid rgb(from var(--color-edge) r g b / 0.85);
+    border-radius: 1rem;
+    background: rgb(from var(--color-edge) r g b / 0.35);
+    color: var(--color-ink);
+    transition:
+      background-color 160ms ease-out,
+      border-color 160ms ease-out,
+      transform 120ms ease-out;
+  }
+
+  @media (hover: hover) {
+    .tile:hover {
+      border-color: rgb(from var(--color-touchable) r g b / 0.45);
+      background: rgb(from var(--color-ground-lit) r g b / 0.75);
+    }
+  }
+
+  .tile:active {
+    transform: scale(0.98);
+  }
+
+  /*
+    The dark the cover's chrome is legible against.
+
+    A chapter's cover is one full-bleed illustration with its own title
+    painted into it, so nothing can be laid over the picture safely without
+    first giving the bottom of it somewhere to go. The ground colour rises
+    out of nothing across the lower third and lands exactly on the ground, so
+    the artwork does not end — it becomes the room the app is in.
+  */
+  .cover-scrim {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(from var(--color-ground) r g b / 0) 65%,
+      var(--color-ground) 91%
+    );
+  }
 }
 
 /*

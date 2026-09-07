@@ -98,7 +98,7 @@ It delivers the information architecture in the constitution: the four global de
 - Chapter Player: renders the flattened card sequence, one card per screen.
 - Card renderers for cover, story, verse, celebration. Interaction cards render their picture and text with the interaction skipped.
 - Forward and back navigation, thumb-reachable, meeting the 56px minimum.
-- Step-based progress indicator — dots, never a number.
+- Step-based progress indicator — dots, never a number. *(Superseded: the dots are now a `01 / 11` counter. The rule they were serving — never a score — is unchanged; see DESIGN_NOTES §6.)*
 - Card transitions honouring `prefers-reduced-motion`.
 
 **Acceptance criteria**

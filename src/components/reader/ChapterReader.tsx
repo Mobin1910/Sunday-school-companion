@@ -361,16 +361,25 @@ export default function ChapterReader({
   const showGuide = enhanced && !turnedOnce && pages.length > 1;
 
   return (
-    <div className="flex h-dvh flex-col" data-enhanced={enhanced}>
-      <div className="flex items-center gap-2 px-3 pt-3">
+    <div className="relative flex h-dvh flex-col" data-enhanced={enhanced}>
+      {/*
+        The way up a level, floating over the page rather than above it.
+
+        A cover is a full-bleed illustration, so this button has to be able to
+        sit on top of artwork and stay legible there — hence the dark disc
+        behind it. It is the only chrome at the top of the reader now: where
+        a child is in the chapter is said at the bottom, next to the button
+        that moves them.
+      */}
+      <div className="absolute inset-x-0 top-0 z-[6] flex items-center px-4 pt-3">
         <Link
           href={hubHref}
           aria-label={`Back to ${chapterTitle}`}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full text-ink-soft"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-edge/70 bg-ground/55 text-ink backdrop-blur-sm"
         >
           <svg
-            width={24}
-            height={24}
+            width={22}
+            height={22}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -382,13 +391,6 @@ export default function ChapterReader({
             <path d="M15 6l-6 6 6 6" />
           </svg>
         </Link>
-
-        <div className="min-w-0 flex-1">
-          <Dots count={pages.length} active={index} />
-        </div>
-
-        {/* Keeps the dots optically centred against the button on the left. */}
-        <span className="size-11 shrink-0" aria-hidden />
       </div>
 
       <div
@@ -438,55 +440,66 @@ export default function ChapterReader({
           {withActive(pages[index], true)}
         </div>
 
-        {/* Shown until the first page turn, then never again this reading.
-            It sits over the page rather than in the layout so that nothing
-            moves when it goes — a child who has just learned the gesture
-            should not have the page shift under the finger that did it. */}
-        {showGuide ? (
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-4 z-[5] flex justify-center"
-            aria-hidden
-          >
-            <p className="voice flex items-center gap-2 rounded-full border border-edge bg-ground-raised/90 px-4 py-2 text-base text-ink-soft">
-              Swipe to turn the page
-              <ArrowRight small />
-            </p>
-          </div>
-        ) : null}
       </div>
 
       <p className="sr-only" aria-live="polite">
         Page {index + 1} of {pages.length}
       </p>
 
-
-
-      {onLastPage ? (
-        <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
-      ) : (
-        <nav className="flex items-center justify-between px-6 pt-2 pb-8">
-          {/* Hidden rather than disabled on the first page. A child should
-              never be shown something they are not allowed to press. */}
-          {onFirstPage ? (
-            <span className="size-16" aria-hidden />
-          ) : (
-            <RoundButton
-              onClick={() => goTo(targetIndex.current - 1)}
-              label="Go back"
-              quiet
-            >
-              <ArrowLeft />
-            </RoundButton>
-          )}
-
-          <RoundButton
-            onClick={() => goTo(targetIndex.current + 1)}
-            label="Next page"
+      {/*
+        Everything a child steers with, floating over the page rather than
+        sitting beneath it. That is what lets a cover be one full-bleed
+        illustration; CardScreen keeps every other kind of card clear of this
+        band so nothing is ever covered by it.
+      */}
+      <div className="absolute inset-x-0 bottom-0 z-[6]">
+        {/* Shown until the first page turn, then never again this reading.
+            It floats above the row rather than joining it so that nothing
+            moves when it goes — a child who has just learned the gesture
+            should not have the page shift under the finger that did it. */}
+        {showGuide ? (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-[7rem] flex justify-center"
+            aria-hidden
           >
-            <ArrowRight />
-          </RoundButton>
-        </nav>
-      )}
+            <p className="voice btn-quiet gap-2 px-6 py-3 text-lg">
+              Swipe to turn the page
+              <ArrowRight small />
+            </p>
+          </div>
+        ) : null}
+
+        {onLastPage ? (
+          <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
+        ) : (
+          <nav className="flex items-end justify-between px-6 pt-2 pb-8">
+            <div className="flex items-end gap-3">
+              <PageCount index={index} total={pages.length} />
+
+              {/* Hidden rather than disabled on the first page. A child should
+                  never be shown something they are not allowed to press. */}
+              {onFirstPage ? null : (
+                <button
+                  type="button"
+                  onClick={() => goTo(targetIndex.current - 1)}
+                  aria-label="Go back"
+                  className="btn-quiet mb-1 size-11 text-ink-soft transition-transform duration-150 active:scale-95"
+                >
+                  <ArrowLeft small />
+                </button>
+              )}
+            </div>
+
+            <RoundButton
+              onClick={() => goTo(targetIndex.current + 1)}
+              label="Next page"
+              caption="Next"
+            >
+              <ArrowRight small />
+            </RoundButton>
+          </nav>
+        )}
+      </div>
     </div>
   );
 }
@@ -550,32 +563,41 @@ function ChapterEnd({
   );
 }
 
-function Dots({ count, active }: { count: number; active: number }) {
+/**
+ * Where the child is in the chapter.
+ *
+ * A counter rather than a row of dots, because a chapter's pages are now
+ * worth naming: "01 / 11" says both where you are and how much is left, in
+ * the space a dozen dots used to take, and it stays readable at eleven pages
+ * or thirty. The page you are on is in full ink and the total is quieter —
+ * this is a position, not a score, and nothing is being measured.
+ *
+ * Hidden from assistive technology: the live region below the stage already
+ * says "Page 3 of 11" in words, and saying it twice is worse than once.
+ */
+function PageCount({ index, total }: { index: number; total: number }) {
   return (
-    <div
-      className="flex items-center justify-center gap-1.5 pt-4 pb-2"
-      aria-hidden
-    >
-      {Array.from({ length: count }, (_, index) => (
-        <span
-          key={index}
-          className={`h-1.5 rounded-full transition-all duration-300 ${
-            index === active ? "nav-here w-5 bg-touchable" : "w-1.5 bg-edge"
-          }`}
-        />
-      ))}
-    </div>
+    <p className="flex items-baseline gap-1 leading-none" aria-hidden>
+      <span className="text-2xl text-ink">{pad(index + 1)}</span>
+      <span className="text-[1.75rem] text-ink-soft">/</span>
+      <span className="text-base text-ink-soft">{pad(total)}</span>
+    </p>
   );
 }
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 function RoundButton({
   onClick,
   label,
+  caption,
   quiet = false,
   children,
 }: {
   onClick: () => void;
   label: string;
+  /** Said on the button as well as to a screen reader, where there is room. */
+  caption?: string;
   quiet?: boolean;
   children: React.ReactNode;
 }) {
@@ -584,11 +606,16 @@ function RoundButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`flex size-16 items-center justify-center rounded-full transition-transform duration-150 active:scale-95 ${
+      className={`flex size-16 flex-col items-center justify-center gap-0.5 rounded-full transition-transform duration-150 active:scale-95 ${
         quiet ? "btn-quiet text-ink-soft" : "cta"
       }`}
     >
       {children}
+      {caption ? (
+        <span className="text-[0.6875rem] leading-none" aria-hidden>
+          {caption}
+        </span>
+      ) : null}
     </button>
   );
 }
@@ -610,8 +637,8 @@ const ArrowRight = ({ small = false }: { small?: boolean }) => (
   </svg>
 );
 
-const ArrowLeft = () => (
-  <svg {...iconProps}>
+const ArrowLeft = ({ small = false }: { small?: boolean }) => (
+  <svg {...iconProps} {...(small ? { width: 20, height: 20 } : {})}>
     <path d="M19 12H5M11 18l-6-6 6-6" />
   </svg>
 );

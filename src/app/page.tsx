@@ -109,22 +109,21 @@ export default function HomePage() {
 
           {/*
             The same three destinations the bar carries elsewhere, from the
-            same list, so they can never drift apart. Rows rather than tiles:
-            a three-up grid of equal boxes is the dashboard this screen is
-            deliberately not.
+            same list, so they can never drift apart.
+
+            Three doors side by side, each one mark and one word. What keeps
+            this from being a dashboard is not the shape but what is on them:
+            no counts, no progress rings, no "3 left". They are ways out of
+            this room, and they say only where they go.
           */}
-          <ul className="flex flex-col">
+          <ul className="grid grid-cols-3 gap-3">
             {doors.map(({ key, label, href, icon: Icon }) => (
-              <li key={key} className="border-b border-edge last:border-0">
-                <Link
-                  href={href}
-                  className="flex min-h-16 items-center gap-4 text-lg"
-                >
+              <li key={key} className="flex">
+                <Link href={href} className="tile flex-1 p-4 text-base">
                   <span className="text-ink-soft">
                     <Icon />
                   </span>
-                  <span className="flex-1">{label}</span>
-                  <Chevron />
+                  <span>{label}</span>
                 </Link>
               </li>
             ))}
@@ -133,25 +132,6 @@ export default function HomePage() {
         </div>
       </Doorway>
     </GlobalScreen>
-  );
-}
-
-function Chevron() {
-  return (
-    <svg
-      width={20}
-      height={20}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="shrink-0 text-ink-soft"
-      aria-hidden
-    >
-      <path d="m9 5 7 7-7 7" />
-    </svg>
   );
 }
 

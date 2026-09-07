@@ -49,17 +49,21 @@ Reducing text size to fix a typeface problem would be the wrong trade: this audi
 
 **Worth exploring:** deliberate asymmetry, more generous and *uneven* rhythm, letting the illustration break its container, a slightly rotated or hand-placed feel. Warmth in children's design usually comes from things being a little off-grid, which is the opposite of what a spacing scale produces by default.
 
-## 5. Every page uses the same frame
+## 5. Every page uses the same frame — *settled*
 
-**Seen:** the cover, story pages, verse and celebration all share one layout — same height, same margins, same centre.
+**Was:** the cover, story pages, verse and celebration all shared one layout — same height, same margins, same centre — and the cover did not feel like a *cover*.
 
-That consistency was deliberate and it is doing real work, but the cover in particular may deserve to feel like a *cover* rather than the first page. Worth revisiting whether the payoff pages (cover, celebration) earn a distinct treatment without breaking the sense of one continuous book.
+**Now:** the cover is the one page that escapes the frame. It is a single full-bleed illustration with the chapter's name painted into the artwork, and a scrim landing the bottom of it exactly on the ground colour so the reader's chrome stays legible over it. Every other page keeps the shared frame, so the book still reads as one continuous thing with a cover on the front.
 
-## 6. The dots may not scale
+The celebration was left alone. It earns its distinction from the warm light behind the words, not from a different layout.
 
-**Seen:** fourteen per-card dots work well at this length and give feedback on every page turn.
+## 6. The dots may not scale — *settled*
 
-At twenty or more pages they will get cramped. Revisit if a chapter grows, and reconsider step-based dots then — but only then, because per-card dots are the better experience at the length chapters actually are.
+**Was:** fourteen per-card dots, which would get cramped past twenty pages.
+
+**Now:** a counter — `01 / 11`, bottom-left, beside the button that moves you. It says both where you are and how much is left, reads the same at eleven pages or thirty, and takes less room than the dots did. The page you are on is in full ink and the total is quieter, because this is a position and not a score.
+
+The feedback the dots gave on every turn is not lost: the number changes, and the live region still says "Page 3 of 11" in words.
 
 ---
 

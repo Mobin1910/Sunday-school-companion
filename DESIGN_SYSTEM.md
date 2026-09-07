@@ -50,7 +50,7 @@ This is the rule the whole palette exists to serve.
 |---|---|---|
 | 1 | **Halo** | the strongest local source, and the only saturated thing on any screen |
 | 2 | **a primary action** | a secondary source, lit from within |
-| 3 | **an active state** | a glint — a tab, a page dot |
+| 3 | **an active state** | a glint — the mark over the destination you are on |
 | 4 | **a surface** | mostly unlit; it is *seen*, not lit |
 | 5 | **the ground** | atmosphere |
 
@@ -445,7 +445,8 @@ Rules:
 
 - **One primary action per screen.** The primary action is always the largest, most saturated element.
 - Back and exit are always available, never louder than "next."
-- Progress is shown as dots or a path — never a percentage, never a number.
+- Position may be shown as a place in the whole — `01 / 11` in a story, a mark under the destination you are on. Never a percentage, never a score, never "3 left". The test is whether the number describes the *content* or the *child*: the eleventh page exists whether or not anyone reaches it.
+- The active state is said twice, never once by colour alone: the mark moves *and* the label goes bold.
 - Loading shows a character, never a spinner.
 - Empty and error states show a character and one obvious way forward.
 - Disabled states do not exist. If a child cannot do something yet, it is not on screen.
