@@ -7,10 +7,16 @@ import type { Art } from "@/content";
  * **A finished comic** — a panel whose speech, narration and composition are
  * painted into the artwork itself. It has no `text`, because there is nothing
  * left for the interface to say, so it takes the whole page exactly as the
- * cover does: edge to edge, with the scrim landing the bottom of it on the
- * ground colour so the reader's own chrome stays legible over it. Laying a
- * caption under a panel that already contains its dialogue would say the same
- * thing twice, in two typefaces.
+ * cover does: edge to edge, filling the screen, with the scrim landing the
+ * bottom of it on the ground colour so the reader's own chrome stays legible
+ * over it. Laying a caption under a panel that already contains its dialogue
+ * would say the same thing twice, in two typefaces.
+ *
+ * Filling the screen means cropping, and that is the accepted trade: a phone
+ * is taller in proportion than the artwork, so roughly nine percent comes off
+ * each side at 390x844. Immersion was judged worth it. What it asks of the
+ * artwork is a habit rather than a rule — keep anything that must survive,
+ * speech bubbles above all, inside the central 82% horizontally.
  *
  * **A picture with words under it** — the older form, and still the right one
  * for a panel that has not been drawn as a comic. The illustration takes the

@@ -17,6 +17,12 @@ import type { Art } from "@/content";
  * ground colour, so the chrome the reader draws over it is legible without
  * anything being boxed off.
  *
+ * It fills the screen, which on a phone means cropping: the artwork is less
+ * tall in proportion than the display, so roughly nine percent comes off each
+ * side at 390x844. That is a deliberate trade of edges for immersion. It does
+ * ask something of the artwork in return — keep the title, and anything else
+ * that carries meaning, inside the central 82% horizontally.
+ *
  * The way in is the same forward button used on every other page, so a child
  * learns one gesture and it never changes.
  */
@@ -29,7 +35,11 @@ export default function CoverCard({
 }) {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <Picture art={art} alt={title} className="size-full object-cover" />
+      <Picture
+        art={art}
+        alt={title}
+        className="size-full object-cover"
+      />
       <div className="cover-scrim absolute inset-0" aria-hidden />
       <h1 className="sr-only">{title}</h1>
     </div>
