@@ -32,6 +32,21 @@ export default function Doorway({ children }: { children: React.ReactNode }) {
   useEffect(() => setWelcomed(readWelcomed()), []);
 
   /*
+    `data-welcomed` is a mirror of this state, and this is what keeps it one.
+    The pre-paint script only sets its *first* value; it never runs again. So
+    when the welcome finishes, or a grown-up clears everything in Settings,
+    React swaps the branch while the attribute still describes the old world
+    — and the stylesheet, which trusts the attribute, hides the branch that
+    just arrived. The screen goes blank until a reload re-runs the script.
+    Owning the attribute here rather than at the two places that write the
+    flag covers both directions, and keeps one thing responsible for it.
+  */
+  useEffect(() => {
+    if (welcomed === null) return;
+    document.documentElement.dataset.welcomed = welcomed ? "yes" : "no";
+  }, [welcomed]);
+
+  /*
     Both branches keep the same position in the tree while the answer is
     unknown, and the welcome keeps it afterwards. That is not tidiness: React
     remounts a component that moves, and a remounted welcome would ask Halo
