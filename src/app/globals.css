@@ -436,6 +436,24 @@ body {
       var(--color-ground) 91%
     );
   }
+
+  /*
+    The edge where a chapter's cover meets its row on the shelf.
+
+    The artwork runs off the right of the card and dissolves into the surface
+    on its left, so the picture reads as a window into the chapter rather than
+    a thumbnail pasted onto a panel. The card colour, not black — a fade to
+    black on a dark blue card is a smudge, and this has to disappear into the
+    exact surface it sits on.
+  */
+  .shelf-fade {
+    background-image: linear-gradient(
+      to right,
+      var(--color-ground-raised) 0%,
+      rgb(from var(--color-ground-raised) r g b / 0.72) 34%,
+      rgb(from var(--color-ground-raised) r g b / 0) 78%
+    );
+  }
 }
 
 /*

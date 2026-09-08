@@ -7,6 +7,11 @@
   },
   "story": [
     {
+      "picture": "panel-01",
+      "alt": "Halo floats beside a boy at his desk at home and asks, “Have you ever gone to church with your family?”",
+      "note": "The first finished comic panel: Act 1, Connect. Halo's question is painted into the artwork, so this card carries no text — only the alt a screen reader needs, because a comic cannot describe itself. A story card with no text takes the whole page; see StoryCard."
+    },
+    {
       "picture": "mary-and-joseph",
       "text": "Mary and Joseph had a new baby. His name was Jesus."
     },

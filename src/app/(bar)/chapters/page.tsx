@@ -4,10 +4,14 @@ import { coverOf, getChapters } from "@/content";
 /**
  * The shelf.
  *
- * Covers, at a size a child can aim at, in the order the chapters load. One
- * column on a phone and two on a tablet, because a shelf that needs
- * horizontal scrolling hides half of itself from the child who most needs to
- * browse by picture.
+ * One column of rows, in the order the chapters load, each carrying its own
+ * cover. A list rather than a grid: a shelf a child runs down beats a wall
+ * they have to scan, it stays one column at every width, and it does not get
+ * worse as chapters are added — the twentieth chapter is one more row, not a
+ * second screenful of tiles.
+ *
+ * The number a chapter shows is its place here, and nothing more. Order comes
+ * from the content layer, so this screen never decides it.
  */
 export default function ChaptersPage() {
   const chapters = getChapters();
@@ -19,13 +23,13 @@ export default function ChaptersPage() {
         {chapters.length === 0 ? (
           <p className="text-lg text-ink-soft">Stories are on their way.</p>
         ) : (
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {chapters.map((chapter) => (
+          <ul className="flex flex-col gap-4">
+            {chapters.map((chapter, index) => (
               <li key={chapter.slug}>
                 <ChapterCard
                   slug={chapter.slug}
+                  number={index + 1}
                   title={chapter.title}
-                  reference={chapter.reference}
                   cover={coverOf(chapter)}
                 />
               </li>
