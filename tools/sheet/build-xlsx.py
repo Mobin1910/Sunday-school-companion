@@ -13,6 +13,7 @@ Writes "Sunday School Companion — Content.xlsx" beside itself.
 from pathlib import Path
 
 from openpyxl import Workbook
+from openpyxl.comments import Comment
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -25,6 +26,11 @@ SECTION = "FF16224A"
 COMPUTED_BG = "FFF1F3F9"
 COMPUTED_TEXT = "FF6B7280"
 HELP_BG = "FFFBFAF7"
+
+# Rows that came out of the app rather than from a contributor, and that are
+# still waiting on a decision. Pale amber so it reads as "look at this" rather
+# than "something is broken".
+PROVISIONAL_BG = "FFFDF4E3"
 
 CLASSES = [
     ("6-7", "6–7 Years", "6–7 Years", 1, "Yes"),
@@ -185,6 +191,11 @@ def config(wb):
         "You never need to write story panels, dialogue, questions or answers. "
         "Those are made from what you write here.",
         "",
+        "Rows shaded pale amber were imported from the app rather than written by "
+        "a contributor. They are not settled — the Notes column on each one says "
+        "what still needs deciding, and which class they belong to has not been "
+        "confirmed.",
+        "",
     ]
 
     for i, line in enumerate(help_lines, start=1):
@@ -193,6 +204,7 @@ def config(wb):
     ws.cell(row=1, column=1).font = Font(size=16, bold=True, color=INK)
     ws.cell(row=5, column=1).font = Font(bold=True)
     ws.cell(row=13, column=1).font = Font(italic=True, color=COMPUTED_TEXT)
+    ws.cell(row=15, column=1).font = Font(italic=True, color=COMPUTED_TEXT)
 
     row = len(help_lines) + 1
 
@@ -247,43 +259,102 @@ def config(wb):
     return ws
 
 
+PROVISIONAL_CLASS = (
+    "Needs a decision — which class this belongs to. Nothing in the app records "
+    "a class for this chapter. It was put in 6–7 Years only because its sentences "
+    "are short enough for the limits that class uses. Move the row to another tab "
+    "if that is wrong; nothing depends on it being here."
+)
+
+BABY_JESUS_NOTES = "\n".join([
+    PROVISIONAL_CLASS,
+    "",
+    "Needs a decision — which passage this lesson covers. The app records "
+    "Luke 2:22–38, which takes in Anna (verses 36–38), and the chapter has two "
+    "pictures of her. The lesson source supplied later said Luke 2:22–33, which "
+    "stops at Simeon. The app's version is kept until the content owner confirms "
+    "which is right. This is not a typo to tidy — the two readings tell slightly "
+    "different stories.",
+    "",
+    "Imported from the app (content/baby-jesus-at-the-temple.story.json). No "
+    "curriculum was ever written for it — the children's text was written "
+    "directly, which is the gap this sheet exists to close.",
+    "",
+    "Already agreed about the pictures:",
+    "• Cover — Mary holding baby Jesus, Joseph beside her, old Simeon reaching out "
+    "with both hands and a huge smile. Warm temple light, tall stone columns "
+    "behind. The title is painted into the artwork itself.",
+    "• \"Simeon held the baby\" is the heart of the chapter. Give it the most "
+    "space — old hands, small baby, light from above.",
+    "• The chapter ends on gladness being passed on, not on the ceremony finishing.",
+    "• Celebration — warm light, the temple steps, the family walking home together.",
+    "• The memory verse is Simeon's own words, and short enough for a six-year-old "
+    "to carry.",
+])
+
+STEPHEN_NOTES = "\n".join([
+    PROVISIONAL_CLASS,
+    "",
+    "Needs a decision — the memory verse translation. The app still has the word "
+    "PLACEHOLDER where the translation should be, and that raises a warning every "
+    "time the app is built.",
+    "",
+    "Imported from the app (content/stephen.story.json). No curriculum was ever "
+    "written for it.",
+    "",
+    "Already agreed about the pictures:",
+    "• Cover — Stephen mid-smile, carrying a basket of bread. Warm morning light. "
+    "He should look like someone you would want to sit next to.",
+    "• The turning point — light from above, Stephen calm, the crowd small and out "
+    "of focus at the edges. We never show the stoning.",
+    "• Stephen's forgiveness is the heart of this chapter. Give it the most space.",
+    "• Aftermath, not event — empty warm sky, one basket of bread left on the "
+    "ground. Nothing frightening on screen.",
+    "• The chapter must not end on grief. The last picture resolves it — kindness "
+    "continues.",
+])
+
+
 def seed(sheets, lo):
     """The two chapters that exist in the repository. Curriculum is blank on
-    both because neither ever had one — that is the gap this sheet closes."""
+    both because neither ever had one — that is the gap this sheet closes.
+
+    Both rows are provisional in two separate ways, said plainly at the top of
+    the Notes cell rather than buried in it, and shaded so they cannot be
+    mistaken for settled ones."""
     ws = sheets["6–7 Years"]
 
     rows = [
         (1, "Baby Jesus at the Temple", "Luke 2:22–38", "",
          "My eyes have seen your salvation.", "Luke 2:30", "", "", "", "", "",
-         "Draft",
-         "Imported from content/baby-jesus-at-the-temple.story.json. No curriculum "
-         "was ever written for it — the child-facing text was authored directly. "
-         "CHECK: the repository says Luke 2:22–38, which includes Anna (vv. 36–38) "
-         "and the chapter has two Anna panels; the brief said 22–33, which stops at "
-         "Simeon. Art direction already agreed: cover is Mary holding Jesus with "
-         "Simeon reaching out, warm temple light. \"Simeon held the baby\" is the "
-         "heart of the chapter and gets the most space. It ends on gladness passed "
-         "on, not on the ceremony finishing."),
+         "Draft", BABY_JESUS_NOTES),
         (2, "Stephen", "Acts 6–7", "",
          "Be kind to one another, forgiving one another.", "Ephesians 4:32", "",
-         "", "", "", "", "Draft",
-         "Imported from content/stephen.story.json. No curriculum was ever written "
-         "for it. The memory verse translation is still PLACEHOLDER in the "
-         "repository and currently raises a build warning — it needs a real "
-         "translation. Art direction already agreed: we never show the stoning; "
-         "the turning point is light from above with the crowd out of focus; "
-         "aftermath, not event; the chapter must not end on grief."),
+         "", "", "", "", "Draft", STEPHEN_NOTES),
     ]
 
+    fill = PatternFill("solid", fgColor=PROVISIONAL_BG)
     for i, r in enumerate(rows, start=2):
         for c, v in enumerate(r[:4], start=1):
             ws.cell(row=i, column=c, value=v)
         for c, v in enumerate(r[4:], start=6):  # skip the formula in column E
             ws.cell(row=i, column=c, value=v)
-        ws.row_dimensions[i].height = 130
+        for c in range(1, len(CLASS_COLUMNS) + 1):
+            ws.cell(row=i, column=c).fill = fill
+        ws.row_dimensions[i].height = 220
 
-    derived = ("Derived from a game the chapter already contains — not supplied "
-               "by a contributor.")
+    ws.cell(row=2, column=1).comment = Comment(
+        "The class this chapter belongs to has not been confirmed. It was placed "
+        "here provisionally — see the Notes column.", "Content pipeline")
+    ws.cell(row=3, column=1).comment = Comment(
+        "The class this chapter belongs to has not been confirmed. It was placed "
+        "here provisionally — see the Notes column.", "Content pipeline")
+    ws.cell(row=2, column=3).comment = Comment(
+        "The app and the lesson source disagree about this passage. The app's "
+        "value is shown — see the Notes column.", "Content pipeline")
+
+    derived = ("Read back from a game the chapter already contains — not written "
+               "by a contributor. The class is provisional; see the chapter row.")
     objectives = [
         ("6–7 Years", 1, "Recall who was waiting at the temple to see Jesus.",
          "Core", derived),
@@ -291,7 +362,9 @@ def seed(sheets, lo):
         ("6–7 Years", 2, "Remember what Stephen prayed for the people who hurt him.",
          "Core", derived),
         ("6–7 Years", 2, "Understand the order the events happened in.",
-         "Supporting", "Derived from the chapter’s existing sequence activity."),
+         "Supporting",
+         "Read back from the chapter’s existing ordering activity — not written "
+         "by a contributor. The class is provisional; see the chapter row."),
     ]
     for i, o in enumerate(objectives, start=2):
         lo.cell(row=i, column=1, value=o[0])
@@ -299,7 +372,9 @@ def seed(sheets, lo):
         lo.cell(row=i, column=4, value=o[2])
         lo.cell(row=i, column=5, value=o[3])
         lo.cell(row=i, column=6, value=o[4])
-        lo.row_dimensions[i].height = 46
+        for c in range(1, len(LO_COLUMNS) + 1):
+            lo.cell(row=i, column=c).fill = fill
+        lo.row_dimensions[i].height = 54
 
 
 def main():

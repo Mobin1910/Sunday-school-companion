@@ -48,6 +48,14 @@ const COMPUTED_BG = '#F1F3F9';
 const COMPUTED_TEXT = '#6B7280';
 const HELP_BG = '#FBFAF7';
 
+/**
+ * Rows that came out of the app rather than from a contributor, and that are
+ * still waiting on a decision. Pale amber so it reads as "look at this" rather
+ * than "something is broken", and so nobody mistakes a provisional row for a
+ * settled one.
+ */
+const PROVISIONAL_BG = '#FDF4E3';
+
 /** Column, width in pixels, whether it wraps, and the note on its header. */
 const CLASS_COLUMNS = [
   ['Chapter', 80, false,
@@ -185,7 +193,13 @@ function buildClassTab(sheet, className) {
 
   sheet.getRange(2, 1, 500, 1).setHorizontalAlignment('center');
   sheet.getRange(1, 1, 1, CLASS_COLUMNS.length).createFilter();
-  sheet.getRange(2, 1, 200, CLASS_COLUMNS.length)
+
+  /*
+    Banding starts at row 4, below the two imported rows. In Sheets a banding
+    layer wins over a cell background, and those two rows have to keep their
+    amber — being visibly provisional matters more than being striped.
+  */
+  sheet.getRange(4, 1, 198, CLASS_COLUMNS.length)
     .applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, false, false);
 
   sheet.deleteColumns(CLASS_COLUMNS.length + 1,
@@ -210,7 +224,9 @@ function buildLearningObjectives(sheet) {
 
   sheet.getRange(2, 2, 500, 2).setHorizontalAlignment('center');
   sheet.getRange(1, 1, 1, LO_COLUMNS.length).createFilter();
-  sheet.getRange(2, 1, 200, LO_COLUMNS.length)
+
+  /* Below the four imported rows, for the reason given on the class tabs. */
+  sheet.getRange(6, 1, 196, LO_COLUMNS.length)
     .applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, false, false);
 
   sheet.deleteColumns(LO_COLUMNS.length + 1,
@@ -244,6 +260,8 @@ function buildConfig(sheet) {
     [''],
     ['Hover any column heading for a one-line explanation of it.'],
     [''],
+    ['Rows shaded pale amber were imported from the app rather than written by a contributor. They are not settled — the Notes column on each one says what still needs deciding, and which class they belong to has not been confirmed.'],
+    [''],
   ];
 
   sheet.getRange(1, 1, help.length, 1).setValues(help);
@@ -251,6 +269,7 @@ function buildConfig(sheet) {
   sheet.getRange(5, 1).setFontWeight('bold');
   sheet.getRange(13, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
   sheet.getRange(15, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
+  sheet.getRange(17, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
   sheet.getRange(1, 1, help.length, 1).setWrap(true);
   sheet.setColumnWidth(1, 220);
 
@@ -324,24 +343,69 @@ function table(sheet, row, title, headings, rows) {
  * their child-facing text was authored directly, which is the gap this sheet
  * exists to close. Nothing here is invented; every filled cell is a value that
  * exists in content/*.story.json.
+ *
+ * Both rows are provisional in two separate ways, and both are said plainly at
+ * the top of the Notes cell rather than buried in it: nothing in the app says
+ * which class either chapter belongs to, and Chapter 1's passage is recorded
+ * differently in the app and in the lesson source it came from. Neither is
+ * settled here. The rows are shaded so they cannot be mistaken for settled ones.
  */
+const PROVISIONAL_CLASS =
+  'Needs a decision — which class this belongs to. Nothing in the app records a class for this chapter. ' +
+  'It was put in 6–7 Years only because its sentences are short enough for the limits that class uses. ' +
+  'Move the row to another tab if that is wrong; nothing depends on it being here.';
+
 function seed(ss) {
   const sheet = ss.getSheetByName('6–7 Years');
+
+  const babyJesusNotes = [
+    PROVISIONAL_CLASS,
+    '',
+    'Needs a decision — which passage this lesson covers. The app records Luke 2:22–38, which takes in Anna ' +
+    '(verses 36–38), and the chapter has two pictures of her. The lesson source supplied later said Luke 2:22–33, ' +
+    'which stops at Simeon. The app\'s version is kept until the content owner confirms which is right. ' +
+    'This is not a typo to tidy — the two readings tell slightly different stories.',
+    '',
+    'Imported from the app (content/baby-jesus-at-the-temple.story.json). No curriculum was ever written for it — ' +
+    'the children\'s text was written directly, which is the gap this sheet exists to close.',
+    '',
+    'Already agreed about the pictures:',
+    '• Cover — Mary holding baby Jesus, Joseph beside her, old Simeon reaching out with both hands and a huge ' +
+    'smile. Warm temple light, tall stone columns behind. The title is painted into the artwork itself.',
+    '• "Simeon held the baby" is the heart of the chapter. Give it the most space — old hands, small baby, ' +
+    'light from above.',
+    '• The chapter ends on gladness being passed on, not on the ceremony finishing.',
+    '• Celebration — warm light, the temple steps, the family walking home together.',
+    '• The memory verse is Simeon\'s own words, and short enough for a six-year-old to carry.',
+  ].join('\n');
+
+  const stephenNotes = [
+    PROVISIONAL_CLASS,
+    '',
+    'Needs a decision — the memory verse translation. The app still has the word PLACEHOLDER where the ' +
+    'translation should be, and that raises a warning every time the app is built.',
+    '',
+    'Imported from the app (content/stephen.story.json). No curriculum was ever written for it.',
+    '',
+    'Already agreed about the pictures:',
+    '• Cover — Stephen mid-smile, carrying a basket of bread. Warm morning light. He should look like someone ' +
+    'you would want to sit next to.',
+    '• The turning point — light from above, Stephen calm, the crowd small and out of focus at the edges. ' +
+    'We never show the stoning.',
+    '• Stephen\'s forgiveness is the heart of this chapter. Give it the most space.',
+    '• Aftermath, not event — empty warm sky, one basket of bread left on the ground. Nothing frightening ' +
+    'on screen.',
+    '• The chapter must not end on grief. The last picture resolves it — kindness continues.',
+  ].join('\n');
 
   const rows = [
     [1, 'Baby Jesus at the Temple', 'Luke 2:22–38', '',
       'My eyes have seen your salvation.', 'Luke 2:30', '', '', '', '', '',
-      'Draft',
-      'Imported from content/baby-jesus-at-the-temple.story.json. No curriculum was ever written for it — the child-facing text was authored directly. ' +
-      'CHECK: the repository says Luke 2:22–38, which includes Anna (vv. 36–38) and the chapter has two Anna panels; the brief said 22–33, which stops at Simeon. ' +
-      'Art direction already agreed: cover is Mary holding Jesus with Simeon reaching out, warm temple light. "Simeon held the baby" is the heart of the chapter and gets the most space. It ends on gladness passed on, not on the ceremony finishing.'],
+      'Draft', babyJesusNotes],
 
     [2, 'Stephen', 'Acts 6–7', '',
       'Be kind to one another, forgiving one another.', 'Ephesians 4:32', '', '', '', '', '',
-      'Draft',
-      'Imported from content/stephen.story.json. No curriculum was ever written for it. ' +
-      'The memory verse translation is still PLACEHOLDER in the repository and currently raises a build warning — it needs a real translation. ' +
-      'Art direction already agreed: we never show the stoning; the turning point is light from above with the crowd out of focus; aftermath, not event; the chapter must not end on grief.'],
+      'Draft', stephenNotes],
   ];
 
   rows.forEach(function (r, i) {
@@ -350,15 +414,29 @@ function seed(ss) {
     sheet.getRange(row, 6, 1, 9).setValues([r.slice(4)]);          // F–N, skipping the formula
   });
 
+  /* Visibly not settled, in three places that do not need each other. */
+  sheet.getRange(2, 1, rows.length, CLASS_COLUMNS.length)
+    .setBackground(PROVISIONAL_BG);
+
+  sheet.getRange(2, 1, rows.length, 1).setNote(
+    'The class this chapter belongs to has not been confirmed. It was placed here provisionally — ' +
+    'see the Notes column.');
+
+  sheet.getRange(2, 3).setNote(
+    'The app and the lesson source disagree about this passage. The app\'s value is shown — ' +
+    'see the Notes column.');
+
   const lo = ss.getSheetByName('Learning Objectives');
-  const derived = 'Derived from a game the chapter already contains — not supplied by a contributor.';
+  const derived = 'Read back from a game the chapter already contains — not written by a contributor. ' +
+    'The class is provisional; see the chapter row.';
 
   const objectives = [
     ['6–7 Years', 1, 'Recall who was waiting at the temple to see Jesus.', 'Core', derived],
     ['6–7 Years', 2, 'Recall how Stephen helped people.', 'Core', derived],
     ['6–7 Years', 2, 'Remember what Stephen prayed for the people who hurt him.', 'Core', derived],
     ['6–7 Years', 2, 'Understand the order the events happened in.', 'Supporting',
-      'Derived from the chapter’s existing sequence activity.'],
+      'Read back from the chapter’s existing ordering activity — not written by a contributor. ' +
+      'The class is provisional; see the chapter row.'],
   ];
 
   objectives.forEach(function (o, i) {
@@ -367,6 +445,10 @@ function seed(ss) {
     lo.getRange(row, 4, 1, 3).setValues([[o[2], o[3], o[4]]]);     // D–F
   });
 
-  sheet.setRowHeights(2, rows.length, 120);
-  lo.setRowHeights(2, objectives.length, 48);
+  /* Same shading, same meaning, so the two tabs agree at a glance. */
+  lo.getRange(2, 1, objectives.length, LO_COLUMNS.length)
+    .setBackground(PROVISIONAL_BG);
+
+  sheet.setRowHeights(2, rows.length, 220);
+  lo.setRowHeights(2, objectives.length, 54);
 }
