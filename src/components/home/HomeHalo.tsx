@@ -35,7 +35,12 @@ export default function HomeHalo() {
   }, []);
 
   return (
-    <div className="home-sky flex justify-center">
+    /*
+      The one part of Home that gives way. Everything else on the screen
+      takes the height it needs; this takes what is left, and `.home-sky`
+      sizes Halo from it — see globals.css.
+    */
+    <div className="home-sky flex min-h-0 flex-1 justify-center">
       {arriving ? <div className="home-arrival" aria-hidden /> : null}
 
       {/*

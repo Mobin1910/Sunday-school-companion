@@ -326,11 +326,46 @@ body {
     the lighting order, a surface — so that the row reads as three ways out
     of the room rather than three things competing with Halo for the eye.
   */
+  /*
+    Home, as one screenful.
+
+    A child coming back for the story they left should see it without
+    scrolling for it, so Home takes exactly the height it is given and
+    nothing on it is allowed to push past the fold. Halo is the part that
+    yields — see `.home-sky` — but it must not be the *only* part, or a
+    small phone would defend type and padding sized for a tall one by
+    shrinking the companion to a bead.
+
+    So the fixed parts are measured in `vh` too. Everything here is a
+    `clamp()`: a floor small enough for a 568px phone, the value the design
+    asks for at the top, and a continuous line between them. Nothing steps
+    at a breakpoint, because the thing that varies is height, and heights
+    vary continuously — a browser toolbar sliding away is not a breakpoint.
+  */
+  .home {
+    gap: clamp(0.75rem, 2.7vh, 1.5rem);
+    padding-top: clamp(0.5rem, 1.7vh, 1.25rem);
+    padding-bottom: clamp(0.5rem, 1.7vh, 1.25rem);
+  }
+
+  .home-greeting {
+    margin-top: clamp(0.25rem, 1.1vh, 0.75rem);
+    font-size: clamp(1.5rem, 4.4vh, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .home-sub {
+    margin-top: clamp(0.125rem, 0.7vh, 0.5rem);
+    font-size: clamp(0.9375rem, 2.2vh, 1.125rem);
+    line-height: 1.4;
+  }
+
   .tile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: clamp(0.5rem, 1.4vh, 0.75rem);
+    padding: clamp(0.625rem, 1.9vh, 1rem);
     border: 1px solid rgb(from var(--color-edge) r g b / 0.85);
     border-radius: 1rem;
     background: rgb(from var(--color-edge) r g b / 0.35);
@@ -1625,15 +1660,31 @@ body {
 */
 .home-sky {
   /*
-    How much room Home gives Halo. This is the largest Halo is anywhere in
-    the product, and deliberately so: it is the reason the screen exists.
-    It grows with the phone rather than being one fixed number, and the
-    ceiling keeps the greeting above it and the chapter below it on screen
-    together on a tall device.
-  */
-  --halo-room: clamp(11rem, 53vw, 15rem);
+    How much room Home gives Halo: everything the screen has left once the
+    greeting, the chapter to carry on with and the three doors have taken
+    theirs.
 
+    Home has to arrive whole. A child coming back for the story they left
+    should see it without scrolling for it, so the screen is one fixed
+    column and Halo is the part that yields — which it does by measuring
+    rather than by guessing. `100cqh` is this element's own height, which
+    the column has already decided; 1.42 is Halo's aspect (see `.halo`) and
+    the 2rem is the air its placement keeps above and below it.
+
+    The ceiling is still the old one, because past a point Halo stops being
+    a companion in a room and becomes wallpaper. The floor is the opposite
+    promise: on a screen too short for all of this, Halo stays a companion
+    you can see and the page scrolls, rather than shrinking to a bead.
+  */
+  --halo-room: clamp(
+    3.75rem,
+    min(46vw, calc((100cqh - 2rem) / 1.42)),
+    15rem
+  );
+
+  container-type: size;
   position: relative;
+  align-items: center;
   isolation: isolate;
 }
 
@@ -1643,6 +1694,14 @@ body {
   left: 50%;
   top: 6%;
   width: min(148%, 30rem);
+  /*
+    Bounded to the room it lights. Decoration must never be the reason a
+    screen scrolls: on a short phone this bloom is taller than the space
+    Halo has, and left unbounded its last few pixels reach past the fold and
+    hand Home a scrollbar it has no content to fill. Capped here, it simply
+    gets smaller along with everything else.
+  */
+  max-height: 94%;
   aspect-ratio: 1;
   margin-left: min(-74%, -15rem);
   border-radius: 50%;

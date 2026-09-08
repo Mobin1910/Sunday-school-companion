@@ -19,8 +19,6 @@ export default function Greeting() {
   useEffect(() => setName(readName()), []);
 
   return (
-    <h1 className="mt-3 text-4xl leading-tight text-balance">
-      {greeting(name)}
-    </h1>
+    <h1 className="home-greeting text-balance">{greeting(name)}</h1>
   );
 }

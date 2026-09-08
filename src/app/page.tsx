@@ -59,9 +59,14 @@ export default function HomePage() {
         *on* Home rather than navigating them to it.
       */}
       <Doorway>
-        <div className="mx-auto flex min-h-full max-w-2xl flex-col gap-10 px-6 pt-6 pb-12">
-        <div className="flex flex-col gap-6">
-          <header className="relative text-center">
+        {/*
+          One screenful, fixed. Not `min-h-full`: Home must arrive whole, so
+          the column takes exactly the height it is given and Halo absorbs
+          whatever is left over. A child coming back for the story they left
+          should never have to scroll to find it.
+        */}
+        <div className="home mx-auto flex h-full max-w-2xl flex-col px-6">
+          <header className="relative shrink-0 text-center">
             {/*
               Small, in the corner, and reachable rather than advertised.
               Settings is somewhere a child goes once — usually with an
@@ -80,55 +85,52 @@ export default function HomePage() {
               two touch on a narrow phone and the icon reads as punctuation
               on the end of the app's own name.
             */}
-            <p className="px-10 pt-2 text-xs tracking-[0.18em] text-ink-soft uppercase">
+            <p className="px-10 text-xs tracking-[0.18em] text-ink-soft uppercase">
               Sunday School Companion
             </p>
 
             <Greeting />
 
-            <p className="mt-2 text-lg text-ink-soft text-balance">
+            <p className="home-sub text-ink-soft text-balance">
               Ready for a new adventure?
             </p>
           </header>
 
           <HomeHalo />
-        </div>
 
-        {chapters.length > 0 ? (
-          <ContinueLearning chapters={chapters} />
-        ) : (
-          <p className="text-lg text-ink-soft">
-            Stories are on their way.
-          </p>
-        )}
+          {chapters.length > 0 ? (
+            <ContinueLearning chapters={chapters} />
+          ) : (
+            <p className="text-lg text-ink-soft">Stories are on their way.</p>
+          )}
 
-        <section className="flex flex-col gap-3">
-          <h2 className="text-xs tracking-[0.14em] text-ink-soft uppercase">
-            Explore
-          </h2>
+          <section className="flex shrink-0 flex-col gap-3">
+            <h2 className="text-xs tracking-[0.14em] text-ink-soft uppercase">
+              Explore
+            </h2>
 
-          {/*
-            The same three destinations the bar carries elsewhere, from the
-            same list, so they can never drift apart.
+            {/*
+              The same three destinations the bar carries elsewhere, from the
+              same list, so they can never drift apart.
 
-            Three doors side by side, each one mark and one word. What keeps
-            this from being a dashboard is not the shape but what is on them:
-            no counts, no progress rings, no "3 left". They are ways out of
-            this room, and they say only where they go.
-          */}
-          <ul className="grid grid-cols-3 gap-3">
-            {doors.map(({ key, label, href, icon: Icon }) => (
-              <li key={key} className="flex">
-                <Link href={href} className="tile flex-1 p-4 text-base">
-                  <span className="text-ink-soft">
-                    <Icon />
-                  </span>
-                  <span>{label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+              Three doors side by side, each one mark and one word. What keeps
+              this from being a dashboard is not the shape but what is on them:
+              no counts, no progress rings, no "3 left". They are ways out of
+              this room, and they say only where they go.
+            */}
+            <ul className="grid grid-cols-3 gap-3">
+              {doors.map(({ key, label, href, icon: Icon }) => (
+                <li key={key} className="flex">
+                  <Link href={href} className="tile flex-1 text-base">
+                    <span className="text-ink-soft">
+                      <Icon />
+                    </span>
+                    <span>{label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </Doorway>
     </GlobalScreen>
