@@ -32,6 +32,22 @@ const CLASSES = [
 const STATUSES = ['Draft', 'Ready for Review', 'Published'];
 const PRIORITIES = ['Core', 'Supporting'];
 
+/**
+ * How many empty rows to prepare, and no more.
+ *
+ * A sheet with hundreds of formatted blank rows reads as a database template
+ * waiting to be filled in, which is the opposite of how this should feel. These
+ * are working sheets: enough room for the chapters anyone will write this year,
+ * and the grid ends where the work ends. Adding rows past this is the ordinary
+ * Google Sheets "add more rows" button — the formatting will not follow, which
+ * is a small cost against a sheet that looks finished on the day it is opened.
+ *
+ * Objectives outnumber chapters — three or four to a lesson — so that tab gets
+ * proportionally more.
+ */
+const CLASS_ROWS = 50;
+const LO_ROWS = 80;
+
 /** Plain English on purpose. A teacher never has to learn our vocabulary. */
 const GAME_IDEAS = [
   'Pick the right one',
@@ -67,7 +83,7 @@ const CLASS_COLUMNS = [
   ['Curriculum', 460, true,
     'The most important cell in this sheet. What the lesson is about, in your own words — as much or as little as you need. Do NOT rewrite it for children; that is done for you later.'],
   ['Learning Objectives', 320, true,
-    'Shown automatically from the Learning Objectives tab. Do not type here — add objectives on that tab and they appear here.'],
+    'Read-only summary. Objectives are entered on the Learning Objectives tab — add them there and they appear here on their own. Nothing you type in this column will be kept.'],
   ['Memory Verse', 300, true,
     'The words children should learn. Leave blank if this lesson has none.'],
   ['Memory Verse Reference', 160, false,
@@ -76,10 +92,10 @@ const CLASS_COLUMNS = [
     'Optional. Paste the whole YouTube link — we will pull out what we need.'],
   ['Take Home', 300, true,
     'Optional. Something the child can do or ask about with their family after the lesson.'],
-  ['Suggested Story Approach', 300, true,
-    'Optional, and only a suggestion. How might this lesson connect to a child’s own life? You do not need to write a script.'],
-  ['Suggested Game Approach', 240, true,
-    'Optional, and only a suggestion. Pick from the list or write your own idea. We choose the final game.'],
+  ['Teaching Notes', 300, true,
+    'Optional. Anything important about how this lesson should be taught, emphasised, introduced or put in context. You do not need to write a script or plan any pictures.'],
+  ['Game Suggestion', 240, true,
+    'Optional. An idea for a game or activity, if you have one. Pick from the list or write your own — we decide the actual game.'],
   ['Contributor', 140, false,
     'Who wrote this brief.'],
   ['Status', 150, false,
@@ -120,8 +136,8 @@ function createContentSheet() {
   return ss.getUrl();
 }
 
-/** One header row, styled the same way everywhere. */
-function header(sheet, columns) {
+/** One header row, styled the same way everywhere, over `rows` working rows. */
+function header(sheet, columns, rows) {
   const titles = columns.map(function (c) { return c[0]; });
   const range = sheet.getRange(1, 1, 1, titles.length);
 
@@ -136,22 +152,32 @@ function header(sheet, columns) {
   columns.forEach(function (c, i) {
     sheet.setColumnWidth(i + 1, c[1]);
     if (c[3]) sheet.getRange(1, i + 1).setNote(c[3]);
-    if (c[2]) sheet.getRange(2, i + 1, 500).setWrap(true);
+    if (c[2]) sheet.getRange(2, i + 1, rows).setWrap(true);
   });
 
   sheet.setRowHeight(1, 44);
   sheet.setFrozenRows(1);
-  sheet.getRange(2, 1, 500, titles.length)
+  sheet.getRange(2, 1, rows, titles.length)
     .setVerticalAlignment('top')
     .setFontSize(10);
 }
 
-function dropdown(sheet, column, values, strict) {
+function dropdown(sheet, column, rows, values, strict) {
   const rule = SpreadsheetApp.newDataValidation()
     .requireValueInList(values, true)
     .setAllowInvalid(!strict)
     .build();
-  sheet.getRange(2, column, 500).setDataValidation(rule);
+  sheet.getRange(2, column, rows).setDataValidation(rule);
+}
+
+/** The grid ends where the work ends. */
+function trim(sheet, columns, rows) {
+  if (sheet.getMaxColumns() > columns) {
+    sheet.deleteColumns(columns + 1, sheet.getMaxColumns() - columns);
+  }
+  if (sheet.getMaxRows() > rows + 1) {
+    sheet.deleteRows(rows + 2, sheet.getMaxRows() - (rows + 1));
+  }
 }
 
 /** Read-only, and it looks read-only. */
@@ -170,28 +196,31 @@ function computed(sheet, column, rows) {
 /* ------------------------------------------------------------------ */
 
 function buildClassTab(sheet, className) {
-  header(sheet, CLASS_COLUMNS);
+  header(sheet, CLASS_COLUMNS, CLASS_ROWS);
   sheet.setFrozenColumns(1);
 
-  dropdown(sheet, 11, GAME_IDEAS, false); // a suggestion — typing your own is fine
-  dropdown(sheet, 13, STATUSES, true);    // three, and only three
+  dropdown(sheet, 11, CLASS_ROWS, GAME_IDEAS, false); // typing your own is fine
+  dropdown(sheet, 13, CLASS_ROWS, STATUSES, true);    // three, and only three
 
   /*
     Objectives have one home — the Learning Objectives tab — and this column
     shows them here. A teacher sees their objectives on the chapter row without
     the same words living in two places and drifting apart.
+
+    Whole-column references on purpose: they keep working when someone adds
+    rows to the objectives tab, which a fixed range would not.
   */
   const formulas = [];
-  for (var r = 2; r <= 201; r++) {
+  for (var r = 2; r <= CLASS_ROWS + 1; r++) {
     formulas.push(['=IF($A' + r + '="","",IFERROR(TEXTJOIN(CHAR(10),TRUE,' +
-      'FILTER(\'Learning Objectives\'!$D$2:$D$500,' +
-      '\'Learning Objectives\'!$A$2:$A$500="' + className + '",' +
-      '\'Learning Objectives\'!$B$2:$B$500=$A' + r + ')),""))']);
+      'FILTER(\'Learning Objectives\'!$D:$D,' +
+      '\'Learning Objectives\'!$A:$A="' + className + '",' +
+      '\'Learning Objectives\'!$B:$B=$A' + r + ')),""))']);
   }
   sheet.getRange(2, 5, formulas.length, 1).setFormulas(formulas);
-  computed(sheet, 5, 200);
+  computed(sheet, 5, CLASS_ROWS);
 
-  sheet.getRange(2, 1, 500, 1).setHorizontalAlignment('center');
+  sheet.getRange(2, 1, CLASS_ROWS, 1).setHorizontalAlignment('center');
   sheet.getRange(1, 1, 1, CLASS_COLUMNS.length).createFilter();
 
   /*
@@ -199,38 +228,36 @@ function buildClassTab(sheet, className) {
     layer wins over a cell background, and those two rows have to keep their
     amber — being visibly provisional matters more than being striped.
   */
-  sheet.getRange(4, 1, 198, CLASS_COLUMNS.length)
+  sheet.getRange(4, 1, CLASS_ROWS - 2, CLASS_COLUMNS.length)
     .applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, false, false);
 
-  sheet.deleteColumns(CLASS_COLUMNS.length + 1,
-    sheet.getMaxColumns() - CLASS_COLUMNS.length);
+  trim(sheet, CLASS_COLUMNS.length, CLASS_ROWS);
 }
 
 function buildLearningObjectives(sheet) {
-  header(sheet, LO_COLUMNS);
+  header(sheet, LO_COLUMNS, LO_ROWS);
 
-  dropdown(sheet, 1, CLASSES.map(function (c) { return c[2]; }), true);
-  dropdown(sheet, 5, PRIORITIES, true);
+  dropdown(sheet, 1, LO_ROWS, CLASSES.map(function (c) { return c[2]; }), true);
+  dropdown(sheet, 5, LO_ROWS, PRIORITIES, true);
 
   /* Numbered per chapter, so nobody has to invent an ID. */
   const ids = [];
-  for (var r = 2; r <= 501; r++) {
+  for (var r = 2; r <= LO_ROWS + 1; r++) {
     ids.push(['=IF(OR($A' + r + '="",$B' + r + '=""),"",' +
       'TEXT($B' + r + ',"00")&"."&COUNTIFS($A$2:$A' + r + ',$A' + r +
       ',$B$2:$B' + r + ',$B' + r + '))']);
   }
   sheet.getRange(2, 3, ids.length, 1).setFormulas(ids);
-  computed(sheet, 3, 500);
+  computed(sheet, 3, LO_ROWS);
 
-  sheet.getRange(2, 2, 500, 2).setHorizontalAlignment('center');
+  sheet.getRange(2, 2, LO_ROWS, 2).setHorizontalAlignment('center');
   sheet.getRange(1, 1, 1, LO_COLUMNS.length).createFilter();
 
   /* Below the four imported rows, for the reason given on the class tabs. */
-  sheet.getRange(6, 1, 196, LO_COLUMNS.length)
+  sheet.getRange(6, 1, LO_ROWS - 4, LO_COLUMNS.length)
     .applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, false, false);
 
-  sheet.deleteColumns(LO_COLUMNS.length + 1,
-    sheet.getMaxColumns() - LO_COLUMNS.length);
+  trim(sheet, LO_COLUMNS.length, LO_ROWS);
 }
 
 /**
@@ -351,9 +378,10 @@ function table(sheet, row, title, headings, rows) {
  * settled here. The rows are shaded so they cannot be mistaken for settled ones.
  */
 const PROVISIONAL_CLASS =
-  'Needs a decision — which class this belongs to. Nothing in the app records a class for this chapter. ' +
-  'It was put in 6–7 Years only because its sentences are short enough for the limits that class uses. ' +
-  'Move the row to another tab if that is wrong; nothing depends on it being here.';
+  'Provisional class assignment — confirm age group before publishing. ' +
+  'Nothing in the app records a class for this chapter; it was put in 6–7 Years only because its ' +
+  'sentences are short enough for the limits that class uses. Move the row to another tab if that ' +
+  'is wrong — nothing depends on it being here.';
 
 function seed(ss) {
   const sheet = ss.getSheetByName('6–7 Years');
@@ -361,10 +389,10 @@ function seed(ss) {
   const babyJesusNotes = [
     PROVISIONAL_CLASS,
     '',
-    'Needs a decision — which passage this lesson covers. The app records Luke 2:22–38, which takes in Anna ' +
-    '(verses 36–38), and the chapter has two pictures of her. The lesson source supplied later said Luke 2:22–33, ' +
-    'which stops at Simeon. The app\'s version is kept until the content owner confirms which is right. ' +
-    'This is not a typo to tidy — the two readings tell slightly different stories.',
+    'Content-owner confirmation needed: source lesson references Luke 2:22–33, while current repository ' +
+    'content references Luke 2:22–38 and includes Anna. The repository value is kept until this is settled. ' +
+    'This is not a typo to tidy — the two readings tell slightly different stories, and the chapter ' +
+    'currently has two pictures of Anna.',
     '',
     'Imported from the app (content/baby-jesus-at-the-temple.story.json). No curriculum was ever written for it — ' +
     'the children\'s text was written directly, which is the gap this sheet exists to close.',
@@ -382,8 +410,9 @@ function seed(ss) {
   const stephenNotes = [
     PROVISIONAL_CLASS,
     '',
-    'Needs a decision — the memory verse translation. The app still has the word PLACEHOLDER where the ' +
-    'translation should be, and that raises a warning every time the app is built.',
+    'Content-owner confirmation needed: the memory verse translation is still the word PLACEHOLDER in the ' +
+    'repository. It raises a warning every time the app is built, and must be resolved before this chapter ' +
+    'is published. The existing data is left exactly as it is.',
     '',
     'Imported from the app (content/stephen.story.json). No curriculum was ever written for it.',
     '',
@@ -419,12 +448,11 @@ function seed(ss) {
     .setBackground(PROVISIONAL_BG);
 
   sheet.getRange(2, 1, rows.length, 1).setNote(
-    'The class this chapter belongs to has not been confirmed. It was placed here provisionally — ' +
-    'see the Notes column.');
+    'Provisional class assignment — confirm age group before publishing. See the Notes column.');
 
   sheet.getRange(2, 3).setNote(
-    'The app and the lesson source disagree about this passage. The app\'s value is shown — ' +
-    'see the Notes column.');
+    'Content-owner confirmation needed: the source lesson and the repository disagree about this ' +
+    'passage. See the Notes column.');
 
   const lo = ss.getSheetByName('Learning Objectives');
   const derived = 'Read back from a game the chapter already contains — not written by a contributor. ' +

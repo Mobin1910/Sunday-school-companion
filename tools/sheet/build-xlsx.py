@@ -59,8 +59,8 @@ CLASS_COLUMNS = [
     ("Memory Verse Reference", 20, False),
     ("Video", 26, False),
     ("Take Home", 38, True),
-    ("Suggested Story Approach", 38, True),
-    ("Suggested Game Approach", 30, True),
+    ("Teaching Notes", 38, True),
+    ("Game Suggestion", 30, True),
     ("Contributor", 18, False),
     ("Status", 18, False),
     ("Notes", 40, True),
@@ -75,10 +75,14 @@ LO_COLUMNS = [
     ("Notes", 40, True),
 ]
 
-ROWS = 200
+# How many empty rows to prepare, and no more. A sheet with hundreds of
+# formatted blank rows reads as a database template waiting to be filled in.
+# Objectives outnumber chapters, so that tab gets proportionally more.
+CLASS_ROWS = 50
+LO_ROWS = 80
 
 
-def header(ws, columns):
+def header(ws, columns, rows):
     for i, (name, width, wrap) in enumerate(columns, start=1):
         cell = ws.cell(row=1, column=i, value=name)
         cell.fill = PatternFill("solid", fgColor=INK)
@@ -87,12 +91,12 @@ def header(ws, columns):
         ws.column_dimensions[get_column_letter(i)].width = width
 
         if wrap:
-            for r in range(2, ROWS + 2):
+            for r in range(2, rows + 2):
                 ws.cell(row=r, column=i).alignment = Alignment(
                     vertical="top", wrap_text=True
                 )
         else:
-            for r in range(2, ROWS + 2):
+            for r in range(2, rows + 2):
                 ws.cell(row=r, column=i).alignment = Alignment(vertical="top")
 
     ws.row_dimensions[1].height = 42
@@ -100,7 +104,7 @@ def header(ws, columns):
     ws.auto_filter.ref = f"A1:{get_column_letter(len(columns))}1"
 
 
-def dropdown(ws, column, values, strict):
+def dropdown(ws, column, rows, values, strict):
     dv = DataValidation(
         type="list",
         formula1='"' + ",".join(values) + '"',
@@ -111,11 +115,11 @@ def dropdown(ws, column, values, strict):
     dv.showErrorMessage = strict
     ws.add_data_validation(dv)
     letter = get_column_letter(column)
-    dv.add(f"{letter}2:{letter}{ROWS + 1}")
+    dv.add(f"{letter}2:{letter}{rows + 1}")
 
 
-def computed(ws, column):
-    for r in range(2, ROWS + 2):
+def computed(ws, column, rows):
+    for r in range(2, rows + 2):
         cell = ws.cell(row=r, column=column)
         cell.fill = PatternFill("solid", fgColor=COMPUTED_BG)
         cell.font = Font(color=COMPUTED_TEXT, italic=True, size=10)
@@ -123,23 +127,25 @@ def computed(ws, column):
 
 def class_tab(wb, class_name):
     ws = wb.create_sheet(class_name)
-    header(ws, CLASS_COLUMNS)
+    header(ws, CLASS_COLUMNS, CLASS_ROWS)
     ws.freeze_panes = "B2"
 
-    dropdown(ws, 11, GAME_IDEAS, strict=False)
-    dropdown(ws, 13, STATUSES, strict=True)
+    dropdown(ws, 11, CLASS_ROWS, GAME_IDEAS, strict=False)
+    dropdown(ws, 13, CLASS_ROWS, STATUSES, strict=True)
 
     # Objectives have one home. This column shows them, it does not store them.
-    for r in range(2, ROWS + 2):
+    # Whole-column references on purpose: they keep working when someone adds
+    # rows to the objectives tab, which a fixed range would not.
+    for r in range(2, CLASS_ROWS + 2):
         ws.cell(row=r, column=5).value = (
             f'=IF($A{r}="","",IFERROR(TEXTJOIN(CHAR(10),TRUE,'
-            f"FILTER('Learning Objectives'!$D$2:$D$500,"
-            f"'Learning Objectives'!$A$2:$A$500=\"{class_name}\","
-            f"'Learning Objectives'!$B$2:$B$500=$A{r})),\"\"))"
+            f"FILTER('Learning Objectives'!$D:$D,"
+            f"'Learning Objectives'!$A:$A=\"{class_name}\","
+            f"'Learning Objectives'!$B:$B=$A{r})),\"\"))"
         )
-    computed(ws, 5)
+    computed(ws, 5, CLASS_ROWS)
 
-    for r in range(2, ROWS + 2):
+    for r in range(2, CLASS_ROWS + 2):
         ws.cell(row=r, column=1).alignment = Alignment(
             horizontal="center", vertical="top"
         )
@@ -148,19 +154,19 @@ def class_tab(wb, class_name):
 
 def learning_objectives(wb):
     ws = wb.create_sheet("Learning Objectives")
-    header(ws, LO_COLUMNS)
+    header(ws, LO_COLUMNS, LO_ROWS)
 
-    dropdown(ws, 1, [c[2] for c in CLASSES], strict=True)
-    dropdown(ws, 5, PRIORITIES, strict=True)
+    dropdown(ws, 1, LO_ROWS, [c[2] for c in CLASSES], strict=True)
+    dropdown(ws, 5, LO_ROWS, PRIORITIES, strict=True)
 
-    for r in range(2, ROWS + 2):
+    for r in range(2, LO_ROWS + 2):
         ws.cell(row=r, column=3).value = (
             f'=IF(OR($A{r}="",$B{r}=""),"",'
             f'TEXT($B{r},"00")&"."&COUNTIFS($A$2:$A{r},$A{r},$B$2:$B{r},$B{r}))'
         )
-    computed(ws, 3)
+    computed(ws, 3, LO_ROWS)
 
-    for r in range(2, ROWS + 2):
+    for r in range(2, LO_ROWS + 2):
         for c in (2, 3, 5):
             ws.cell(row=r, column=c).alignment = Alignment(
                 horizontal="center", vertical="top"
@@ -260,21 +266,20 @@ def config(wb):
 
 
 PROVISIONAL_CLASS = (
-    "Needs a decision — which class this belongs to. Nothing in the app records "
-    "a class for this chapter. It was put in 6–7 Years only because its sentences "
-    "are short enough for the limits that class uses. Move the row to another tab "
-    "if that is wrong; nothing depends on it being here."
+    "Provisional class assignment — confirm age group before publishing. "
+    "Nothing in the app records a class for this chapter; it was put in 6–7 Years "
+    "only because its sentences are short enough for the limits that class uses. "
+    "Move the row to another tab if that is wrong — nothing depends on it being here."
 )
 
 BABY_JESUS_NOTES = "\n".join([
     PROVISIONAL_CLASS,
     "",
-    "Needs a decision — which passage this lesson covers. The app records "
-    "Luke 2:22–38, which takes in Anna (verses 36–38), and the chapter has two "
-    "pictures of her. The lesson source supplied later said Luke 2:22–33, which "
-    "stops at Simeon. The app's version is kept until the content owner confirms "
-    "which is right. This is not a typo to tidy — the two readings tell slightly "
-    "different stories.",
+    "Content-owner confirmation needed: source lesson references Luke 2:22–33, "
+    "while current repository content references Luke 2:22–38 and includes Anna. "
+    "The repository value is kept until this is settled. This is not a typo to "
+    "tidy — the two readings tell slightly different stories, and the chapter "
+    "currently has two pictures of Anna.",
     "",
     "Imported from the app (content/baby-jesus-at-the-temple.story.json). No "
     "curriculum was ever written for it — the children's text was written "
@@ -295,9 +300,10 @@ BABY_JESUS_NOTES = "\n".join([
 STEPHEN_NOTES = "\n".join([
     PROVISIONAL_CLASS,
     "",
-    "Needs a decision — the memory verse translation. The app still has the word "
-    "PLACEHOLDER where the translation should be, and that raises a warning every "
-    "time the app is built.",
+    "Content-owner confirmation needed: the memory verse translation is still the "
+    "word PLACEHOLDER in the repository. It raises a warning every time the app is "
+    "built, and must be resolved before this chapter is published. The existing "
+    "data is left exactly as it is.",
     "",
     "Imported from the app (content/stephen.story.json). No curriculum was ever "
     "written for it.",
@@ -343,15 +349,13 @@ def seed(sheets, lo):
             ws.cell(row=i, column=c).fill = fill
         ws.row_dimensions[i].height = 220
 
-    ws.cell(row=2, column=1).comment = Comment(
-        "The class this chapter belongs to has not been confirmed. It was placed "
-        "here provisionally — see the Notes column.", "Content pipeline")
-    ws.cell(row=3, column=1).comment = Comment(
-        "The class this chapter belongs to has not been confirmed. It was placed "
-        "here provisionally — see the Notes column.", "Content pipeline")
+    for r in (2, 3):
+        ws.cell(row=r, column=1).comment = Comment(
+            "Provisional class assignment — confirm age group before publishing. "
+            "See the Notes column.", "Content pipeline")
     ws.cell(row=2, column=3).comment = Comment(
-        "The app and the lesson source disagree about this passage. The app's "
-        "value is shown — see the Notes column.", "Content pipeline")
+        "Content-owner confirmation needed: the source lesson and the repository "
+        "disagree about this passage. See the Notes column.", "Content pipeline")
 
     derived = ("Read back from a game the chapter already contains — not written "
                "by a contributor. The class is provisional; see the chapter row.")
