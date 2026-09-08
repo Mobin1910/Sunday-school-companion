@@ -1,4 +1,3 @@
-import GlobalScreen from "@/components/nav/GlobalScreen";
 import PracticeScreen from "@/components/play/PracticeScreen";
 import { getChapters } from "@/content";
 import { gamePool } from "@/content/pools";
@@ -29,7 +28,6 @@ export default function GamesPage() {
   );
 
   return (
-    <GlobalScreen active="games">
       <PracticeScreen
         pool={pool}
         streak="games"
@@ -42,6 +40,5 @@ export default function GamesPage() {
           blurb: "They arrive with the stories.",
         }}
       />
-    </GlobalScreen>
   );
 }

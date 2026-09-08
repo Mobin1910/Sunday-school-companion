@@ -3,7 +3,7 @@ import Link from "next/link";
 import ContinueLearning from "@/components/home/ContinueLearning";
 import Greeting from "@/components/home/Greeting";
 import HomeHalo from "@/components/home/HomeHalo";
-import { DESTINATIONS } from "@/components/nav/BottomNav";
+import { DESTINATIONS } from "@/components/nav/destinations";
 import GlobalScreen from "@/components/nav/GlobalScreen";
 import Doorway from "@/components/welcome/Doorway";
 import { getChapters, storyCards } from "@/content";
@@ -52,7 +52,7 @@ export default function HomePage() {
   }));
 
   return (
-    <GlobalScreen active="home" ground="night">
+    <GlobalScreen ground="night">
       {/*
         A child who has not been welcomed meets Halo instead of Home, on the
         same route and the same ground — so finishing the welcome puts them

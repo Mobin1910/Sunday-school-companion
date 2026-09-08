@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import GlobalScreen from "@/components/nav/GlobalScreen";
 import PracticeScreen from "@/components/play/PracticeScreen";
 import { getChapters, verseOf } from "@/content";
 import { versePool } from "@/content/pools";
@@ -37,7 +36,6 @@ export default function VersesPage() {
   });
 
   return (
-    <GlobalScreen active="verses">
       <PracticeScreen
         pool={pool}
         streak="verse"
@@ -76,6 +74,5 @@ export default function VersesPage() {
           </section>
         ) : null}
       </PracticeScreen>
-    </GlobalScreen>
   );
 }
