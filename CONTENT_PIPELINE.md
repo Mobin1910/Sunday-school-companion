@@ -10,6 +10,11 @@ who have never opened a terminal.
 This document is about where chapters come from. Where the two overlap, this one
 proposes changes and says so explicitly.
 
+> **Revised by `STORY_ARCHITECTURE.md`** in two places: the story panel schema
+> (§F/§G below) and the asset layout (§L below). That document takes the story
+> comic further — dialogue is typeset into the artwork rather than drawn by the
+> reader — and where the two disagree, it wins. Everything else here stands.
+
 ---
 
 # The one decision everything else follows from
