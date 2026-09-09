@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { arrivalTaken, claimArrival } from "@/halo/arrival";
 import HaloPresence from "@/halo/HaloPresence";
+import { useDriftingMood } from "@/halo/mood";
 import type { HaloState } from "@/halo/state";
 import { markWelcomed, saveName, tidyName } from "@/local/child";
 
@@ -33,6 +34,23 @@ type Step = 0 | 1 | 2 | 3;
 
 /** How long "Nice to meet you" is allowed to be its own moment. */
 const MEETING_MS = 1500;
+
+/**
+ * The moods Halo may drift through while a beat is waiting.
+ *
+ * A beat that is waiting is one where Halo has said its piece and the child
+ * is reading it — nothing has been answered, nothing has gone wrong, and
+ * holding one expression for as long as a child takes to read three lines is
+ * what made this look like a slide rather than someone sitting with them.
+ *
+ * `happy` is deliberately not in the list, and that is the point of having a
+ * list at all. On this screen `happy` means something exact — a name has been
+ * written, the meeting has happened — and a mood that wandered into it would
+ * spend that meaning on nothing. The three that are here are the ones that
+ * are simply true of a companion mid-introduction: attending, interested, and
+ * thinking about what it is saying.
+ */
+const WAITING: readonly HaloState[] = ["listening", "curious", "thinking"];
 
 export default function Welcome({ onDone }: { onDone: () => void }) {
   const [step, setStep] = useState<Step>(0);
@@ -129,11 +147,11 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
   };
 
   /*
-    Halo's mood, as one expression rather than a branch in four places.
-    `happy` the moment a name is written — the meeting is the writing of it,
-    not the pressing of the button afterwards.
+    What this beat means, as one expression rather than a branch in four
+    places. `happy` the moment a name is written — the meeting is the writing
+    of it, not the pressing of the button afterwards.
   */
-  const halo: HaloState = meeting
+  const beat: HaloState = meeting
     ? "happy"
     : step === 3
       ? "happy"
@@ -144,6 +162,27 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
         : step === 1
           ? "curious"
           : "listening";
+
+  /*
+    And then, where the beat is only waiting, Halo drifts.
+
+    The drift is off for every `happy` beat, which is the whole design: those
+    three are Halo reacting to the child, and a companion that wandered off
+    mid-reaction would be a companion that had not really noticed. Where it
+    is on, the beat's own expression is still what the child sees first —
+    `resetOn` puts Halo back to it — so each beat opens meaning what it says
+    and only afterwards starts to look around.
+
+    `step` alone is enough to reset on: `beat` already changes when the draft
+    does, and the two beats that share `listening` are told apart by it.
+  */
+  const halo = useDriftingMood({
+    moods: WAITING,
+    start: beat,
+    enabled: beat !== "happy",
+    resetOn: step,
+    firstAfter: arriving ? 4200 : 2600,
+  });
 
   return (
     <div className="welcome" data-step={meeting ? "meeting" : step}>

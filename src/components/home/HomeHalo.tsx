@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { arrivalTaken, claimArrival } from "@/halo/arrival";
 import HaloPresence from "@/halo/HaloPresence";
+import { useDriftingMood } from "@/halo/mood";
 import type { HaloState } from "@/halo/state";
 
 /**
@@ -46,9 +47,6 @@ import type { HaloState } from "@/halo/state";
  */
 const AT_HOME: readonly HaloState[] = ["idle", "curious", "thinking", "happy"];
 
-/** How long a mood is held. Varied, so it never reads as a carousel. */
-const DWELL = [7200, 9400, 6100, 11300, 8300];
-
 export default function HomeHalo() {
   /*
     Read before the flag is set, so a development double-render and the real
@@ -56,41 +54,21 @@ export default function HomeHalo() {
     also fresh, agrees with both.
   */
   const [arriving] = useState(() => !arrivalTaken());
-  const [mood, setMood] = useState<HaloState>("idle");
 
   useEffect(() => {
     claimArrival();
   }, []);
 
   /*
-    The moods, drifting.
-
-    A chain of timers rather than one interval, so each mood can be held for
-    a different length of time — an even beat is the thing that would make
-    this read as a slideshow of faces rather than as someone sitting with
-    you. The next mood is never the current one, so nothing ever "changes"
-    into itself and stalls.
-
-    It waits for the arrival to finish. Changing expression halfway down
-    would fight the one moment on this screen that is choreographed.
+    The moods, drifting. The first one is held until the arrival has landed —
+    changing expression halfway down would fight the one moment on this
+    screen that is choreographed.
   */
-  useEffect(() => {
-    if (stillnessWanted()) return;
-
-    let step = 0;
-    let timer: ReturnType<typeof setTimeout>;
-
-    const drift = () => {
-      setMood((now) => {
-        const others = AT_HOME.filter((state) => state !== now);
-        return others[Math.floor(Math.random() * others.length)] ?? now;
-      });
-      timer = setTimeout(drift, DWELL[step++ % DWELL.length]!);
-    };
-
-    timer = setTimeout(drift, arriving ? 4200 : 2600);
-    return () => clearTimeout(timer);
-  }, [arriving]);
+  const mood = useDriftingMood({
+    moods: AT_HOME,
+    start: "idle",
+    firstAfter: arriving ? 4200 : 2600,
+  });
 
   return (
     /*
@@ -108,19 +86,4 @@ export default function HomeHalo() {
       />
     </div>
   );
-}
-
-/**
- * Whether this device has asked for things to hold still.
- *
- * Both routes the stylesheet honours: the browser setting, and the child's
- * own choice in Settings, which can override it in either direction. A Halo
- * that kept changing face here would be the one thing on the screen still
- * moving after everything else had been asked to stop.
- */
-function stillnessWanted(): boolean {
-  const chosen = document.documentElement.dataset.motion;
-  if (chosen === "reduce") return true;
-  if (chosen === "full") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
