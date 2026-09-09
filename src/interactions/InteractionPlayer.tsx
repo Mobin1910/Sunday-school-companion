@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { PlayInteraction } from "@/content";
 import HaloPresence from "@/halo/HaloPresence";
 
+import Confetti from "./Confetti";
 import { haloStateFor } from "./halo";
 import { renderModel } from "./registry";
 import { TIMING } from "./timing";
@@ -119,21 +120,50 @@ export default function InteractionPlayer({
     [done],
   );
 
+  /**
+   * Being met, and nothing more.
+   *
+   * A word and a look, then quiet again — no rung, no option withdrawn, no
+   * clue. It shares `beforeRecovery` with the ladder for the same reason
+   * the ladder has it: an answer that lands on the same instant as the tap
+   * reads as a buzzer, and one that lands a beat later reads as someone
+   * looking up. What separates this from `climb` is only what happens after
+   * the words, which is nothing.
+   */
+  const meet = useCallback(
+    (pool: Parameters<typeof say>[0]) => {
+      if (done) return;
+
+      const speak = setTimeout(() => {
+        setSaying(say(pool));
+        setInvited(false);
+      }, TIMING.beforeRecovery);
+
+      const quiet = setTimeout(
+        () => setSaying(null),
+        TIMING.beforeRecovery + TIMING.recoveryBeforeHelp,
+      );
+
+      climbing.current.push(speak, quiet);
+    },
+    [done],
+  );
+
   const handleMiss = useCallback(() => {
     onMiss?.();
 
     setMisses((count) => {
       const next = count + 1;
 
-      // The first miss passes in silence. A teacher usually says nothing the
-      // first time, and silence treats a mistake as unremarkable.
-      if (next >= TIMING.missesBeforeWords) {
-        climb(true, next === TIMING.missesBeforeWords ? "noticing" : "joining");
-      }
+      // Answered every time; helped only once help is warranted. The first
+      // try that did not work turns the child back to the question, and the
+      // ones after it start the ladder as well.
+      if (next < TIMING.missesBeforeHelp) meet("lookingAgain");
+      else climb(true, next === TIMING.missesBeforeHelp ? "noticing" : "joining");
 
       return next;
     });
-  }, [climb, onMiss]);
+  }, [climb, meet, onMiss]);
 
   const handleArrive = useCallback(() => {
     clearTimers();
@@ -197,7 +227,10 @@ export default function InteractionPlayer({
 
       {/* Beside what it is saying, so the companion and the words read as
           one voice rather than two things happening at once. */}
-      <div className="flex items-center gap-4">
+      <div className="relative flex items-center gap-4">
+        {/* From Halo, because Halo is who is pleased. */}
+        {done ? <Confetti /> : null}
+
         <HaloPresence state={halo} placement="beside" />
 
         <Voice

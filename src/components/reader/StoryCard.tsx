@@ -1,5 +1,7 @@
 import Picture from "@/components/Picture";
-import type { Art } from "@/content";
+import type { Art, PlayInteraction } from "@/content";
+
+import QuizCard from "./QuizCard";
 
 /**
  * A page of the story, in one of two forms.
@@ -22,20 +24,57 @@ import type { Art } from "@/content";
  * for a panel that has not been drawn as a comic. The illustration takes the
  * room and the text sits quietly beneath it with air around it.
  *
- * Which one a card is, is decided by the card: `text` present or absent. That
- * is not a flag anyone sets — the schema already requires a picture with no
- * text to carry `alt`, precisely because such a picture cannot describe
- * itself, and a comic is the case that rule was waiting for.
+ * Which one a card is, is decided by the card: `text` present or absent, and
+ * whether it carries a question. That is not a flag anyone sets — the schema
+ * already requires a picture with no text to carry `alt`, precisely because
+ * such a picture cannot describe itself, and a comic is the case that rule
+ * was waiting for.
  */
 export default function StoryCard({
   art,
   text,
   alt,
+  interaction,
+  active = true,
 }: {
   art: Art;
   text?: string;
   alt?: string;
+  interaction?: PlayInteraction;
+  active?: boolean;
 }) {
+  /*
+    **A panel that stops and asks.** The story pauses on the picture it is
+    asking about and the question is laid over it, so a child answers while
+    still looking at the moment rather than after leaving it.
+
+    The picture dims while the question is up. That is not decoration: the
+    choices have to be readable over whatever happens to be painted behind
+    them, and dimming says plainly that the story is waiting. It brightens
+    again for nobody — the child turns the page, as they do everywhere else.
+  */
+  if (interaction) {
+    return (
+      <div className="absolute inset-0 overflow-hidden">
+        <Picture
+          art={art}
+          {...(alt ? { alt } : {})}
+          className="question-backdrop size-full object-cover"
+        />
+        <div className="question-veil absolute inset-0" aria-hidden />
+        <div className="cover-scrim absolute inset-0" aria-hidden />
+
+        {/* The same card the end-of-chapter question uses, so a question
+            behaves identically wherever a child meets one. It is also what
+            keeps this file a server component: the player needs a handler,
+            and QuizCard is the one that owns it. */}
+        <div className="absolute inset-x-0 top-0 bottom-24 flex items-center justify-center overflow-y-auto py-4">
+          <QuizCard interaction={interaction} active={active} />
+        </div>
+      </div>
+    );
+  }
+
   if (text === undefined) {
     return (
       <div className="absolute inset-0 overflow-hidden">

@@ -11,8 +11,15 @@
  * struggling.
  */
 export const TIMING = {
-  /** A first miss passes without words. Help begins on the second. */
-  missesBeforeWords: 2,
+  /**
+   * How many tries that did not work before *help* begins.
+   *
+   * Every miss is answered, from the first — a tap that gets no reply reads
+   * as an app that did not notice. What the first one gets is a word and a
+   * look and nothing else: no rung, no narrowing, no clue. Help is a
+   * different thing from being answered, and it still waits.
+   */
+  missesBeforeHelp: 2,
 
   /** Stillness is as loud a call for help as a wrong answer. */
   stillnessBeforeFirstHelp: 20_000,

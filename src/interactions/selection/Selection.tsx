@@ -65,13 +65,26 @@ export default function Selection({
     onMiss();
   }
 
+  /*
+    Two across, when every choice has a picture to be recognised by.
+
+    A picture is what a child who cannot yet read the words is choosing from,
+    so illustrated options are laid out as a field to be scanned rather than
+    a list to be read down — and four of them side by side fit on one screen
+    without pushing the question off the top of it. A choice that is only
+    words stays a column, where the reading is the work.
+  */
+  const illustrated = options.length >= 4 && options.every((o) => o.art);
+
   return (
-    <div className="flex w-full max-w-sm flex-col gap-5 px-6">
+    <div
+      className={`flex w-full flex-col gap-5 px-4 ${illustrated ? "max-w-xl" : "max-w-sm px-6"}`}
+    >
       <h2 className="text-center text-2xl leading-snug text-balance">
         {interaction.prompt}
       </h2>
 
-      <ul className="flex flex-col gap-3">
+      <ul className={illustrated ? "grid grid-cols-2 gap-3" : "flex flex-col gap-3"}>
         {options.map((option, index) => {
           const gone = index === withdrawn;
           const showing = rung >= 3 && option.correct && chosen === null;
@@ -79,11 +92,21 @@ export default function Selection({
           return (
             <li
               key={index}
-              className={
-                gone && tidied
-                  ? "max-h-0 overflow-hidden transition-[max-height] duration-500"
-                  : "max-h-40 transition-[max-height] duration-500"
-              }
+              className={[
+                // A column closes the gap by collapsing the row. A grid has
+                // no row of its own to collapse, so the tidied option leaves
+                // the layout instead and the rest close up around it — the
+                // same idea, said in the only way a grid can say it.
+                illustrated
+                  ? gone && tidied
+                    ? "hidden"
+                    : ""
+                  : gone && tidied
+                    ? "max-h-0 overflow-hidden transition-[max-height] duration-500"
+                    : "max-h-40 transition-[max-height] duration-500",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <button
                 type="button"
@@ -91,7 +114,10 @@ export default function Selection({
                 aria-hidden={gone}
                 tabIndex={gone ? -1 : 0}
                 className={[
-                  "surface flex min-h-20 w-full items-center gap-4 p-3 pr-5 text-left text-xl transition-opacity duration-500",
+                  "flex w-full items-center text-left transition-opacity duration-500",
+                  illustrated
+                    ? "option-card h-full min-h-24 gap-2 p-2 pr-3 text-lg leading-tight font-semibold"
+                    : "surface min-h-20 gap-4 p-3 pr-5 text-xl",
                   gone && "pointer-events-none opacity-0",
                   settling === index && "settling",
                   chosen === index && "blooming",
@@ -103,10 +129,14 @@ export default function Selection({
                 {option.art ? (
                   <Picture
                     art={option.art}
-                    className="size-16 shrink-0 rounded-xl object-cover"
+                    className={
+                      illustrated
+                        ? "size-20 shrink-0 object-contain"
+                        : "size-16 shrink-0 rounded-xl object-cover"
+                    }
                   />
                 ) : null}
-                <span className="min-w-0 flex-1">{option.label}</span>
+                <span className="min-w-0 flex-1 text-balance">{option.label}</span>
               </button>
             </li>
           );

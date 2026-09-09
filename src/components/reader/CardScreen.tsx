@@ -61,8 +61,12 @@ function render(card: Card, title: string, active: boolean) {
       return (
         <StoryCard
           art={card.art}
+          active={active}
           {...(card.text !== undefined && { text: card.text })}
           {...(card.alt !== undefined && { alt: card.alt })}
+          {...(card.interaction !== undefined && {
+            interaction: card.interaction,
+          })}
         />
       );
 

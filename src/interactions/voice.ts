@@ -15,6 +15,22 @@
  */
 
 const POOLS = {
+  /**
+   * The immediate answer to a try that did not work.
+   *
+   * Said every time, from the very first one, because a child who taps and
+   * gets silence does not know whether the app saw them. It turns the child
+   * back to the question rather than commenting on them: "look again", not
+   * "wrong". Nothing here says no, and nothing here says try harder.
+   */
+  lookingAgain: [
+    "Hmm — let's look again",
+    "Not quite. Have another look",
+    "Let's think again",
+    "Ooh, not that one. Look again",
+    "Let's take another look",
+  ],
+
   /** First words after a try that did not work. Names the effort, never the outcome. */
   noticing: [
     "You're thinking",

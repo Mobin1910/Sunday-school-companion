@@ -56,7 +56,13 @@ const multipleChoice = z
     // Required, not optional: the second try always comes with help, and a
     // chapter that breaks that promise should be impossible to write.
     hint: z.string().min(1),
-    options: z.array(item).min(2).max(3),
+    /*
+      Four is the ceiling because four illustrated choices are what fits on
+      one phone screen under the question, and a choice a child has to
+      scroll to find is not really being offered. Two is the floor because
+      one option is not a question.
+    */
+    options: z.array(item).min(2).max(4),
     picture: z.string().optional(),
     note,
   })
