@@ -1104,6 +1104,29 @@ body {
   initial-value: 1;
 }
 
+/*
+  How turned-up the ambient life is.
+
+  Registered for the same reason the radii are, and it matters more here.
+  Every continuous loop reads this to scale its own amplitude, so an
+  unregistered `--halo-life` changing between two states is one frame in
+  which the aura, the ring's float, all five lights and the eyes' wander
+  recompute at once — a twitch of the whole companion rather than a change
+  of mood. Measured at the change, the lights moved thirty-three times a
+  normal frame's distance in a single frame.
+
+  Registering it makes it interpolatable, and easing it at the root over the
+  state's own transition means the amplitude *grows* into the new state. The
+  loops never stop or restart; they simply reach a little further, or a
+  little less far, over the same half-second the silhouette takes to become
+  the new shape.
+*/
+@property --halo-life {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
 .halo {
   --halo-cyan: #4fd6ff;
   --halo-blue: #3d7bff;
@@ -1137,7 +1160,8 @@ body {
     --halo-s0 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
     --halo-s1 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
     --halo-s2 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
-    --halo-s3 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1);
+    --halo-s3 var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1),
+    --halo-life var(--halo-transition) cubic-bezier(0.4, 0.1, 0.2, 1);
 }
 
 .halo-stage {
