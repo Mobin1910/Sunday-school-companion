@@ -1641,24 +1641,24 @@ body {
 @keyframes halo-eye-flick {
   0%,
   100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.018)
-      calc(var(--halo-life) * var(--halo-size) * -0.008);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.040)
+      calc(var(--halo-life) * var(--halo-size) * -0.018);
   }
   22% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.021)
-      calc(var(--halo-life) * var(--halo-size) * 0.003);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.044)
+      calc(var(--halo-life) * var(--halo-size) * 0.008);
   }
   41% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.008)
-      calc(var(--halo-life) * var(--halo-size) * 0.013);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.016)
+      calc(var(--halo-life) * var(--halo-size) * 0.026);
   }
   63% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.024)
-      calc(var(--halo-life) * var(--halo-size) * -0.011);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.050)
+      calc(var(--halo-life) * var(--halo-size) * -0.024);
   }
   81% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
-      calc(var(--halo-life) * var(--halo-size) * 0.009);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.030)
+      calc(var(--halo-life) * var(--halo-size) * 0.020);
   }
 }
 
@@ -1667,20 +1667,20 @@ body {
   0%,
   100% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.011),
-      calc(var(--halo-life) * var(--halo-size) * 0.006)
+      calc(var(--halo-life) * var(--halo-size) * 0.022),
+      calc(var(--halo-life) * var(--halo-size) * 0.012)
     );
   }
   33% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * -0.013),
-      calc(var(--halo-life) * var(--halo-size) * -0.004)
+      calc(var(--halo-life) * var(--halo-size) * -0.026),
+      calc(var(--halo-life) * var(--halo-size) * -0.008)
     );
   }
   66% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.004),
-      calc(var(--halo-life) * var(--halo-size) * -0.012)
+      calc(var(--halo-life) * var(--halo-size) * 0.008),
+      calc(var(--halo-life) * var(--halo-size) * -0.024)
     );
   }
 }
@@ -1695,42 +1695,42 @@ body {
   /* Off to the right, a little down — where it settled last time. */
   0%,
   12% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
-      calc(var(--halo-life) * var(--halo-size) * 0.008);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.0481)
+      calc(var(--halo-life) * var(--halo-size) * 0.0148);
   }
   /* Away to the left. */
   14%,
   28% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.03)
-      calc(var(--halo-life) * var(--halo-size) * 0.004);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.0555)
+      calc(var(--halo-life) * var(--halo-size) * 0.0074);
   }
   /* Something higher up. */
   30%,
   44% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
-      calc(var(--halo-life) * var(--halo-size) * -0.016);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.0259)
+      calc(var(--halo-life) * var(--halo-size) * -0.0296);
   }
   /* Back across, still up. */
   46%,
   58% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.022)
-      calc(var(--halo-life) * var(--halo-size) * -0.012);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.0407)
+      calc(var(--halo-life) * var(--halo-size) * -0.0222);
   }
   /* Down and out to the right. */
   60%,
   74% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.032)
-      calc(var(--halo-life) * var(--halo-size) * 0.014);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.0592)
+      calc(var(--halo-life) * var(--halo-size) * 0.0259);
   }
   /* A brief glance back toward the child, and then away again. */
   76%,
   84% {
-    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.002);
+    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.0037);
   }
   86%,
   100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
-      calc(var(--halo-life) * var(--halo-size) * 0.008);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.0481)
+      calc(var(--halo-life) * var(--halo-size) * 0.0148);
   }
 }
 
