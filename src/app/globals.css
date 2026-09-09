@@ -1582,74 +1582,67 @@ body {
   }
 }
 
+/*
+  Looking around, and then back at the child.
+
+  One motion, in every state. It goes wide — off to one side, up, across,
+  down — and twice in the cycle it comes back to centre and rests there a
+  moment, which is Halo looking at whoever is holding the phone. That return
+  is the point of the whole thing: eyes that only wander are distracted, and
+  eyes that only stare are a portrait. It is the coming back that reads as
+  someone who is with you.
+
+  It flows rather than flicks. Each keyframe eases in and out of the next, so
+  the eyes slow as they arrive somewhere, sit in it, and set off again —
+  which is the difference between a gaze moving and a gaze being teleported.
+  An earlier attempt made these instant on the grounds that real saccades
+  are, which is true of eyes and wrong for this face: at this size and this
+  degree of abstraction the jump reads as a glitch rather than as life.
+
+  `--halo-look` is how far it reaches, as a fraction of Halo's own size, so
+  the motion holds its proportions from the small companion beside a question
+  to the large one on Home. It is a fraction and not a pixel count because
+  the pixel count is what went wrong before: 1.1px is a wander at 40px and
+  nothing at all at 190.
+*/
 .halo-eyes-wander {
+  --halo-look: calc(var(--halo-life) * var(--halo-size) * 0.038);
   display: flex;
   gap: calc(var(--halo-size) * 0.1);
-  animation: halo-eye-wander 7900ms ease-in-out infinite;
+  animation: halo-eye-look 15300ms ease-in-out infinite;
 }
 
-/*
-  Looking around, when nothing is being asked.
-
-  Every other state has somewhere to look — at the child, at a wrong answer,
-  at the thing worth noticing — and its gaze is set by the expression table.
-  `idle` is the one state with nothing to attend to, and eyes that hold
-  perfectly still while pointed at the viewer are the difference between a
-  companion resting and a face staring.
-
-  So the eyes move the way real ones do: they *flick* and then hold. Each
-  move takes a beat and each new place is kept for a second or two, which is
-  why the keyframes come in tight pairs with long gaps between them. A slow
-  glide between positions would read as scanning, which is a machine; a
-  saccade and a pause reads as noticing something, and then something else.
-
-  It rarely returns to centre, because centre is looking straight at the
-  child, and Halo at rest is not doing that.
-*/
-.halo[data-halo-state="idle"] .halo-eyes-wander {
-  animation: halo-eye-roam 11900ms cubic-bezier(0.5, 0, 0.2, 1) infinite;
-}
-
-@keyframes halo-eye-roam {
-  /* Off to the right, a little down — where it settled last time. */
+@keyframes halo-eye-look {
+  /* Away to the right, and a little down. */
   0%,
-  12% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
-      calc(var(--halo-life) * var(--halo-size) * 0.008);
-  }
-  /* Away to the left. */
-  14%,
-  28% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.03)
-      calc(var(--halo-life) * var(--halo-size) * 0.004);
-  }
-  /* Something higher up. */
-  30%,
-  44% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
-      calc(var(--halo-life) * var(--halo-size) * -0.016);
-  }
-  /* Back across, still up. */
-  46%,
-  58% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.022)
-      calc(var(--halo-life) * var(--halo-size) * -0.012);
-  }
-  /* Down and out to the right. */
-  60%,
-  74% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.032)
-      calc(var(--halo-life) * var(--halo-size) * 0.014);
-  }
-  /* A brief glance back toward the child, and then away again. */
-  76%,
-  84% {
-    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.002);
-  }
-  86%,
   100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
-      calc(var(--halo-life) * var(--halo-size) * 0.008);
+    translate: calc(var(--halo-look) * 0.85) calc(var(--halo-look) * 0.3);
+  }
+  /* Up and across. */
+  13% {
+    translate: calc(var(--halo-look) * 0.35) calc(var(--halo-look) * -0.55);
+  }
+  /* Out to the far left. */
+  26% {
+    translate: calc(var(--halo-look) * -1) calc(var(--halo-look) * -0.2);
+  }
+  /* Back to the child, and held. */
+  38%,
+  46% {
+    translate: 0 0;
+  }
+  /* Off again, low and left. */
+  58% {
+    translate: calc(var(--halo-look) * -0.7) calc(var(--halo-look) * 0.45);
+  }
+  /* Up to something on the right. */
+  71% {
+    translate: calc(var(--halo-look) * 0.9) calc(var(--halo-look) * -0.5);
+  }
+  /* Back to the child again, briefly. */
+  82%,
+  88% {
+    translate: 0 calc(var(--halo-look) * 0.05);
   }
 }
 
@@ -1976,36 +1969,6 @@ body {
       )
       scale(0.95);
     opacity: 0.82;
-  }
-}
-
-/*
-  The eyes wandering.
-
-  Sub-pixel at compact sizes and barely a pixel at hero. Anything larger
-  becomes googly, which is the failure mode this is closest to.
-*/
-@keyframes halo-eye-wander {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  30% {
-    transform: translate3d(
-      calc(var(--halo-life) * 1.1px),
-      calc(var(--halo-life) * -0.6px),
-      0
-    );
-  }
-  58% {
-    transform: translate3d(
-      calc(var(--halo-life) * -0.9px),
-      calc(var(--halo-life) * 0.5px),
-      0
-    );
-  }
-  80% {
-    transform: translate3d(calc(var(--halo-life) * 0.4px), 0, 0);
   }
 }
 
