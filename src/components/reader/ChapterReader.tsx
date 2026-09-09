@@ -89,6 +89,15 @@ export default function ChapterReader({
    * settled page and just re-target the same page instead of advancing.
    */
   const targetIndex = useRef(0);
+  /**
+   * Whether the pointer is actually down on the page.
+   *
+   * A finger only reports movement while it is touching, so on a phone this
+   * is implied. A mouse reports movement the whole time it is on screen, so
+   * without this a desktop cursor crossing the page would peel it — and,
+   * because no button is ever released, leave it peeled.
+   */
+  const pressed = useRef(false);
   const dragging = useRef(false);
   const verticalLocked = useRef(false);
   const potentialStart = useRef({ x: 0, y: 0 });
@@ -287,6 +296,7 @@ export default function ChapterReader({
   function onPointerDown(e: React.PointerEvent) {
     if (e.button !== undefined && e.button !== 0) return;
     cancelSettle();
+    pressed.current = true;
     dragging.current = false;
     verticalLocked.current = false;
     potentialStart.current = { x: e.clientX, y: e.clientY };
@@ -296,6 +306,21 @@ export default function ChapterReader({
   }
 
   function onPointerMove(e: React.PointerEvent) {
+    /*
+      A page is turned by being held and moved, so a move with nothing held
+      is not the beginning of anything. `buttons` is the browser's own answer
+      to the same question and it re-asserts itself on every move, so it also
+      recovers the case where a mouse was released somewhere this element
+      never heard about — off the window, say, before the drag was captured.
+      Only mice are checked that way: a finger in contact is expected to
+      report a button, but that is not worth betting the whole gesture on.
+    */
+    if (!pressed.current) return;
+    if (e.pointerType === "mouse" && e.buttons === 0) {
+      pressed.current = false;
+      return;
+    }
+
     if (verticalLocked.current) return;
 
     if (!dragging.current) {
@@ -329,6 +354,7 @@ export default function ChapterReader({
   }
 
   function onPointerUp() {
+    pressed.current = false;
     if (!dragging.current) return;
     dragging.current = false;
 
