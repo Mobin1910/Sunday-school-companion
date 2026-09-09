@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Children, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Children,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { rememberPlace, resumeAt } from "@/local/place";
 
@@ -195,6 +202,19 @@ export default function ChapterReader({
       done: index === lastPage,
     });
   }, [slug, index, lastPage, pages.length]);
+
+  /*
+    Finish a turn in the same frame the new page appears in.
+
+    A layout effect runs after React has mutated the DOM and before the
+    browser paints, which is the only moment where "the page has changed"
+    and "the page is whole again" can be made to happen together.
+  */
+  useSameFrame(() => {
+    renderAt(position.current);
+    // Once per settled page. Drags call renderAt themselves, every move.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
 
   const reducedMotion = useMemo(
     () =>
@@ -394,7 +414,20 @@ export default function ChapterReader({
         settleFrame.current = null;
         anchor.current = clampedTarget;
         setIndex(clampedTarget);
-        renderAt(position.current);
+        /*
+          The clip is *not* cleared here, and that is the whole point.
+
+          Clearing it now un-clips whatever `flat` is currently showing —
+          which is still the page being turned away from, because React has
+          not swapped it yet. If the browser paints in that gap, the old page
+          snaps back to full screen for one frame before the new one arrives.
+          That was the flash after every turn.
+
+          So the settle stops at saying where we are, and the layout effect
+          below clears the clip after React has put the new page in — after
+          the DOM changes, before anything is painted. The two can no longer
+          be seen out of step because they now happen in the same frame.
+        */
       }
     };
     settleFrame.current = requestAnimationFrame(step);
@@ -707,6 +740,17 @@ export default function ChapterReader({
     </div>
   );
 }
+
+/**
+ * A layout effect that does not complain on the server.
+ *
+ * The reader is prerendered, and `useLayoutEffect` warns when it runs where
+ * there is no layout to read. There is nothing to do in that pass anyway —
+ * nothing has been painted yet — so on the server it is an ordinary effect
+ * that never fires.
+ */
+const useSameFrame =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 const DEADZONE = 8;
 const THRESHOLD = 0.32;
