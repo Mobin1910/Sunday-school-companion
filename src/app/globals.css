@@ -1548,7 +1548,22 @@ body {
     stay on the compositor.
   */
   animation: halo-blink 8300ms ease-in-out infinite;
-  transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
+  /*
+    A saccade, not a glide.
+
+    This used to move the eyes to a new gaze over the same duration the body
+    takes to change shape — half a second of smooth travel — and that is the
+    single thing that made Halo read as floating rather than looking. Real
+    eyes do not travel. They jump, in well under a tenth of a second, and
+    then hold; the only time they move smoothly is when they are following
+    something that is itself moving, which nothing here is.
+
+    So the eyes snap and the body still morphs slowly behind them. That
+    mismatch is not a mistake — eyes arrive somewhere before the head does,
+    and doing it in the right order is most of what makes a face look like
+    it noticed something rather than drifted towards it.
+  */
+  transition: transform 110ms cubic-bezier(0.2, 0.9, 0.3, 1);
 }
 
 /*
@@ -1582,10 +1597,83 @@ body {
   }
 }
 
+/*
+  What the eyes do while they are looking at something.
+
+  Two motions at once, on two properties so they compose instead of
+  overwriting each other:
+
+    translate — micro-saccades. Tiny flicks, held. Even a fixed gaze is not
+                still; an eye locked on one point still jumps a fraction of
+                a degree every second or so, and a face without that reads
+                as a photograph of a face.
+    transform — the drift. A slow wandering underneath, of about half the
+                size, which is what the eye does *between* flicks as it
+                fails to hold perfectly still.
+
+  Together they are how a real eye rests. Neither alone is: drift on its own
+  is the floating this replaced, and flicks on their own are a twitch.
+
+  This runs in every state. It used to be an ease-in-out sine, which is a
+  motion nothing alive makes.
+*/
 .halo-eyes-wander {
   display: flex;
   gap: calc(var(--halo-size) * 0.1);
-  animation: halo-eye-wander 7900ms ease-in-out infinite;
+  animation:
+    halo-eye-flick 5300ms steps(1, end) infinite,
+    halo-eye-drift 17300ms ease-in-out infinite;
+}
+
+/*
+  The flicks. Each one is instant — `steps(1, end)` on the animation means
+  the eye is at one place or the next and never between, which is what a
+  saccade looks like at this size: too fast to see travelling.
+*/
+@keyframes halo-eye-flick {
+  0%,
+  100% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.004)
+      calc(var(--halo-life) * var(--halo-size) * -0.002);
+  }
+  22% {
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.005) 0px;
+  }
+  41% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.002)
+      calc(var(--halo-life) * var(--halo-size) * 0.004);
+  }
+  63% {
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.006)
+      calc(var(--halo-life) * var(--halo-size) * -0.003);
+  }
+  81% {
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.003)
+      calc(var(--halo-life) * var(--halo-size) * 0.002);
+  }
+}
+
+/* The drift between them. Slow, small, and never quite repeating the flicks. */
+@keyframes halo-eye-drift {
+  0%,
+  100% {
+    transform: translate(
+      calc(var(--halo-life) * var(--halo-size) * 0.003),
+      calc(var(--halo-life) * var(--halo-size) * 0.002)
+    );
+  }
+  33% {
+    transform: translate(
+      calc(var(--halo-life) * var(--halo-size) * -0.004),
+      calc(var(--halo-life) * var(--halo-size) * -0.001)
+    );
+  }
+  66% {
+    transform: translate(
+      calc(var(--halo-life) * var(--halo-size) * 0.001),
+      calc(var(--halo-life) * var(--halo-size) * -0.004)
+    );
+  }
 }
 
 /*
@@ -1607,7 +1695,9 @@ body {
   child, and Halo at rest is not doing that.
 */
 .halo[data-halo-state="idle"] .halo-eyes-wander {
-  animation: halo-eye-roam 11900ms cubic-bezier(0.5, 0, 0.2, 1) infinite;
+  animation:
+    halo-eye-roam 11900ms cubic-bezier(0.34, 1.2, 0.4, 1) infinite,
+    halo-eye-drift 17300ms ease-in-out infinite;
 }
 
 @keyframes halo-eye-roam {
@@ -1979,35 +2069,6 @@ body {
   }
 }
 
-/*
-  The eyes wandering.
-
-  Sub-pixel at compact sizes and barely a pixel at hero. Anything larger
-  becomes googly, which is the failure mode this is closest to.
-*/
-@keyframes halo-eye-wander {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  30% {
-    transform: translate3d(
-      calc(var(--halo-life) * 1.1px),
-      calc(var(--halo-life) * -0.6px),
-      0
-    );
-  }
-  58% {
-    transform: translate3d(
-      calc(var(--halo-life) * -0.9px),
-      calc(var(--halo-life) * 0.5px),
-      0
-    );
-  }
-  80% {
-    transform: translate3d(calc(var(--halo-life) * 0.4px), 0, 0);
-  }
-}
 
 /*
   `translate` rather than `transform`, because the eye's `transform` is
