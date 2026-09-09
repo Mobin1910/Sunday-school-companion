@@ -142,8 +142,16 @@ function Poster({
     >
       {artwork}
 
+      {/*
+        Halo stands in for a poster the chapter has not got, and steps aside
+        the moment it has one. A companion floating over Mary and the baby is
+        the same mistake as putting him inside the story panels: this artwork
+        is the chapter's, not his. Where there is no artwork he is the poster
+        — a lit thing on a dark rectangle, which is far better than an empty
+        rectangle.
+      */}
       <span className="relative flex flex-col items-center gap-3">
-        <HaloPresence state="listening" size="standard" />
+        {video.art ? null : <HaloPresence state="listening" size="standard" />}
         <span className="cta px-5 py-2.5 text-lg">
           <PlayIcon />
           Watch

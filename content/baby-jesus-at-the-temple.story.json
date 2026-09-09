@@ -271,6 +271,13 @@
     "translation": "WEB",
     "note": "Simeon's own words, and short enough for a six-year-old to carry."
   },
+  "video": {
+    "youtubeId": "leN-xNrkjbo",
+    "title": "Baby Jesus at the Temple",
+    "description": "Watch the story told.",
+    "picture": "panel-04",
+    "note": "The poster is the walk up the temple steps — the beginning of the story rather than its heart, so pressing play still leads somewhere. Nothing is fetched from YouTube to draw it; see WatchSection for why the player is offered rather than mounted."
+  },
   "celebration": {
     "message": "You learned how Simeon waited, and how God kept his promise.",
     "picture": "celebration",
