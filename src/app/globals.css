@@ -421,6 +421,37 @@ body {
   }
 
   /*
+    The page of the book, on a screen that is wider than a page.
+
+    Every illustration is drawn portrait, at the shape a phone is held. A
+    phone is narrower still, so filling the screen crops a little off each
+    side and nothing that matters is lost. A laptop is the other way round
+    entirely — it is *wider* than the artwork, so filling it means scaling
+    the picture up until only a horizontal band survives. At 1440x900 that
+    band was 35% of the artwork: the painted chapter title gone, a comic
+    panel's speech bubble cut off above the frame. The story became
+    unreadable on the one screen with the most room to read it.
+
+    So the page stops being the screen. Its width is capped at its own
+    height times the shape of the artwork, which makes the widest it can
+    ever be exactly the shape the pictures were drawn to — height-bound,
+    centred, with the app's ground either side. Nothing is cropped
+    vertically at any size, and a phone keeps the side crop it already had.
+    This is what a comic looks like on a wide screen, and it is the same
+    page a child turns on a phone rather than a second layout to maintain.
+
+    The alternative was landscape variants of every illustration. Those are
+    still worth having one day; this is what makes them an enhancement
+    rather than the price of opening the app on a laptop.
+  */
+  .reader-page {
+    /* 941x1672 — the canvas every illustration is drawn on. */
+    --page-aspect: 0.563;
+    width: min(100%, calc(100dvh * var(--page-aspect)));
+    margin-inline: auto;
+  }
+
+  /*
     The dark the cover's chrome is legible against.
 
     A chapter's cover is one full-bleed illustration with its own title

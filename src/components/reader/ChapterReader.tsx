@@ -50,9 +50,13 @@ import { rememberPlace, resumeAt } from "@/local/place";
  * the old scroll-snap `<ol>` allowed — only the current page and the
  * `aria-live` page-count announcement are available at any moment.
  *
- * The reader is the one full-screen place in the app: no tab bar, no
- * dashboard, nothing framing the artwork. The only chrome is the page dots,
- * a way back up to the Chapter Hub, and — at the end — where to go next.
+ * The reader is the one place in the app with no tab bar and no dashboard
+ * framing it. The only chrome is the page count, a way back up to the
+ * Chapter Hub, and — at the end — where to go next. It takes the full height
+ * of the screen always, and the full width only while the screen is no wider
+ * than the artwork; past that it stays a page and the ground shows either
+ * side. See `.reader-page`, which is also what keeps the curl's arithmetic
+ * honest — the drag is measured against the stage, not the window.
  */
 export default function ChapterReader({
   children,
@@ -387,7 +391,7 @@ export default function ChapterReader({
   const showGuide = enhanced && !turnedOnce && pages.length > 1;
 
   return (
-    <div className="relative flex h-dvh flex-col" data-enhanced={enhanced}>
+    <div className="reader-page relative flex h-dvh flex-col" data-enhanced={enhanced}>
       {/*
         The way up a level, floating over the page rather than above it.
 
