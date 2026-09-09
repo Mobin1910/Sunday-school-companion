@@ -27,9 +27,19 @@ export default function Confetti() {
     <div className="confetti" aria-hidden>
       {Array.from({ length: PIECES }, (_, i) => {
         const angle = -SPREAD / 2 + (SPREAD * i) / (PIECES - 1);
-        // Far enough to clear Halo, who is the size of something that speaks
-        // and would otherwise swallow its own burst. Alternating distances
-        // stop the pieces landing on one clean arc.
+        /*
+          Far enough to clear Halo, who would otherwise swallow its own
+          burst — the pieces are thrown from behind the companion, so a
+          throw shorter than Halo is wide is a throw nobody sees.
+
+          These distances are written for the Halo beside a question, and
+          `--confetti-scale` is how a bigger one asks for a bigger throw.
+          Clearance is a proportion, not a number of pixels: the companion
+          at the end of a chapter is half again the size of the one beside a
+          question, and its burst has to be too.
+
+          Alternating distances stop the pieces landing on one clean arc.
+        */
         const reach = 76 + ((i * 37) % 40);
         const spin = ((i * 149) % 360) - 180;
 
@@ -40,7 +50,7 @@ export default function Confetti() {
             style={
               {
                 "--angle": `${angle.toFixed(1)}deg`,
-                "--reach": `${reach}px`,
+                "--reach": `calc(${reach}px * var(--confetti-scale, 1))`,
                 "--spin": `${spin}deg`,
                 "--wait": `${(i % 5) * 26}ms`,
                 "--tint": TINTS[i % TINTS.length]!,

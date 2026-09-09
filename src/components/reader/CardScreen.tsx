@@ -75,12 +75,7 @@ function render(card: Card, title: string) {
       return <VerseCard text={card.text} reference={card.reference} />;
 
     case "celebration":
-      return (
-        <CelebrationCard
-          {...(card.art !== undefined && { art: card.art })}
-          message={card.message}
-        />
-      );
+      return <CelebrationCard message={card.message} />;
 
     // Activity and practice are not readable yet. Their interactions arrive
     // in Milestones 5 and 6, and until then the reader does not show them at

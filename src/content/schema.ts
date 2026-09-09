@@ -344,11 +344,14 @@ export const chapterSchema = z.strictObject({
     A chapter with no video is completely valid and always will be.
   */
   video: video.optional(),
-  celebration: z.strictObject({
-    message: z.string(),
-    picture: z.string().optional(),
-    note,
-  }),
+  /*
+    The ending is a message and nothing else. It took a picture once, and
+    the field is gone rather than left optional: a chapter ends on Halo
+    celebrating with the child, so artwork here has nowhere to be drawn, and
+    an accepted field that renders nothing is how a content file quietly
+    stops matching the app.
+  */
+  celebration: z.strictObject({ message: z.string(), note }),
 });
 
 export type Chapter = z.infer<typeof chapterSchema>;

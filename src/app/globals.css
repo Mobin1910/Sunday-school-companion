@@ -1000,12 +1000,19 @@ body {
   pointer-events: none;
 }
 
+/*
+  `--confetti-scale` is the size of the whole burst, not just how far it is
+  thrown — pieces that travelled further but stayed the same size would read
+  as the same small burst seen from further away. It defaults to 1, which is
+  the burst beside a question; the companion at the end of a chapter is
+  bigger and throws a bigger one.
+*/
 .confetti-piece {
   position: absolute;
   left: 0;
   top: 0;
-  width: 4px;
-  height: var(--long, 6px);
+  width: calc(4px * var(--confetti-scale, 1));
+  height: calc(var(--long, 6px) * var(--confetti-scale, 1));
   border-radius: 1px;
   background: var(--tint);
   transform-origin: 50% 50%;

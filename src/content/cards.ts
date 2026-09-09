@@ -96,7 +96,12 @@ export type Card =
       description?: string;
       art?: Art;
     }
-  | { kind: "celebration"; message: string; art?: Art };
+  /**
+   * The ending. No picture: the companion is what a child sees here, and a
+   * chapter that ends on artwork ends by pointing back at the story rather
+   * than at the person who just read it.
+   */
+  | { kind: "celebration"; message: string };
 
 type Resolve = (ref: AssetReference) => string | null;
 
@@ -105,7 +110,7 @@ const toArt = (ref: AssetReference, resolve: Resolve): Art => ({
   src: resolve(ref),
 });
 
-/** Cover, story and celebration pictures are story panels, always. */
+/** Cover and story pictures are story panels, always. */
 const panel = (name: string): AssetReference => ({
   source: "story",
   panelId: name,
@@ -252,13 +257,7 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
     });
   }
 
-  cards.push({
-    kind: "celebration",
-    message: chapter.celebration.message,
-    ...(chapter.celebration.picture !== undefined && {
-      art: toArt(panel(chapter.celebration.picture), resolve),
-    }),
-  });
+  cards.push({ kind: "celebration", message: chapter.celebration.message });
 
   return cards;
 }

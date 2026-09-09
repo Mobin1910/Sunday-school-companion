@@ -83,10 +83,11 @@ function artOf(card: Card): Art[] {
     case "quiz":
     case "practice":
       return interactionsOf(card).flatMap(fromInteraction);
+    // The ending draws no picture: it is Halo celebrating with the child.
     case "verse":
+    case "celebration":
       return [];
     case "video":
-    case "celebration":
       return card.art ? [card.art] : [];
   }
 }
