@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="A soldier">
+  <g fill="none" stroke="#123047" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Spear, behind everything -->
+    <path d="M50 58V17" />
+    <path d="M50 6.5 53.4 14a4.6 4.6 0 0 1-6.8 0z" fill="#C6D0DC" />
+
+    <!-- Shoulders, in plate -->
+    <path d="M11 60c0-8.5 6.4-14 19-14s19 5.5 19 14z" fill="#9FB0C4" />
+    <path d="M17 52.5h26M15 57h30" stroke-width="2" />
+
+    <!-- Head -->
+    <path d="M30 17c6.4 0 10.4 4.2 10.4 11.5S36.4 41 30 41s-10.4-5.2-10.4-12.5S23.6 17 30 17z" fill="#EEC49A" />
+
+    <!-- Helmet: brow band, cheek guards, and the crest across the top. The
+         brow sits high enough to leave him a face — a helmet with nobody
+         inside it is not one of the four people being asked about. -->
+    <path d="M18.8 25c0-7.6 5-12.4 11.2-12.4S41.2 17.4 41.2 25z" fill="#C6D0DC" />
+    <path d="M17.8 25h24.4" stroke-width="2.4" />
+    <path d="M20.6 25c-1 5.6-.3 9.6 2.2 12.2 1.4-3 1.8-7 1.2-12.2zM39.4 25c1 5.6.3 9.6-2.2 12.2-1.4-3-1.8-7-1.2-12.2z" fill="#C6D0DC" />
+    <path d="M26 31h.01M34 31h.01" stroke-width="3.2" />
+    <path d="M30 4c4.2 0 6.6 3.4 6.6 9.4H23.4C23.4 7.4 25.8 4 30 4z" fill="#C1603F" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="A priest">
+  <g fill="none" stroke="#123047" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Robe, with the breastpiece a temple priest wore -->
+    <path d="M12 60c0-8.5 6.6-14 20-14s20 5.5 20 14z" fill="#B9855A" />
+    <rect x="25" y="49" width="14" height="11" rx="2" fill="#7A4FA3" />
+    <path d="M29 52.5h.01M35 52.5h.01M29 56.5h.01M35 56.5h.01" stroke="#F2B93E" stroke-width="2.6" />
+
+    <!-- Head -->
+    <path d="M32 16c6.8 0 11 4.4 11 12S38.8 42 32 42s-11-6.4-11-14 4.2-12 11-12z" fill="#EEC49A" />
+    <!-- Eyes -->
+    <path d="M27.6 28h.01M36.4 28h.01" stroke-width="3.2" />
+    <!-- The long white beard of an old man -->
+    <path d="M22.8 31c0 8.6 4.1 15 9.2 15s9.2-6.4 9.2-15c-2.4 2.6-5.6 3.9-9.2 3.9s-6.8-1.3-9.2-3.9z" fill="#DBD1BF" />
+    <!-- Head covering, falling to the shoulders -->
+    <path d="M20 27c0-8 5.4-13 12-13s12 5 12 13l3-1c0-11-6.7-17.5-15-17.5S17 15 17 26z" fill="#FBF3E0" />
+    <path d="M18.6 24c-1.6 6.4-1.2 12.4 1.2 18l4.2-2.4M45.4 24c1.6 6.4 1.2 12.4-1.2 18l-4.2-2.4" fill="#FBF3E0" />
+  </g>
+</svg>
