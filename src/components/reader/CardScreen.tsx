@@ -13,10 +13,11 @@ import VerseCard from "./VerseCard";
  * margins, the same centre — so that turning a page never moves the ground
  * under a child's feet. What changes inside is only ever the content.
  *
- * `active` says whether this is the page the child has actually turned to,
- * as opposed to the neighbour the page-turn reader keeps mounted so it can
- * be revealed mid-drag. Only kinds that carry their own state and timers
- * (currently quiz) need to know; everything else ignores it.
+ * Whether this is the page the child has actually turned to — as opposed to
+ * the neighbour the reader keeps mounted so it can be revealed mid-drag —
+ * is not passed through here. Only the cards that carry their own state and
+ * timers need it, and they read it from the page directly; see
+ * `PageContext`, and why props cannot make that journey.
  *
  * The bottom padding is the room the reader's own chrome occupies. That
  * chrome floats over the page rather than sitting under it, so that a cover
@@ -35,11 +36,9 @@ const ROOM_FOR_CHROME: Partial<Record<Card["kind"], string>> = {
 export default function CardScreen({
   card,
   title,
-  active = true,
 }: {
   card: Card;
   title: string;
-  active?: boolean;
 }) {
   const room = ROOM_FOR_CHROME[card.kind] ?? "pb-32";
 
@@ -47,12 +46,12 @@ export default function CardScreen({
     <div
       className={`relative flex h-full w-full flex-col items-center justify-center gap-10 pt-4 ${room}`}
     >
-      {render(card, title, active)}
+      {render(card, title)}
     </div>
   );
 }
 
-function render(card: Card, title: string, active: boolean) {
+function render(card: Card, title: string) {
   switch (card.kind) {
     case "cover":
       return <CoverCard art={card.art} title={title} />;
@@ -61,7 +60,6 @@ function render(card: Card, title: string, active: boolean) {
       return (
         <StoryCard
           art={card.art}
-          active={active}
           {...(card.text !== undefined && { text: card.text })}
           {...(card.alt !== undefined && { alt: card.alt })}
           {...(card.interaction !== undefined && {
@@ -71,7 +69,7 @@ function render(card: Card, title: string, active: boolean) {
       );
 
     case "quiz":
-      return <QuizCard interaction={card.interaction} active={active} />;
+      return <QuizCard interaction={card.interaction} />;
 
     case "verse":
       return <VerseCard text={card.text} reference={card.reference} />;

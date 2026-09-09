@@ -708,6 +708,52 @@ body {
 }
 
 /*
+  A screen held to exactly one fold.
+
+  Only where a fold is actually big enough to hold one. Below that the page
+  goes back to being an ordinary scrolling page, because the alternative is
+  not "it fits" — it is `overflow: hidden` quietly cutting the last row of
+  answers off the bottom, which is the same bug with the evidence removed. A
+  child who has to scroll can still reach every answer; a child whose answers
+  were clipped cannot.
+
+  The threshold is a height rather than a width, because height is what runs
+  out: at 700px there is room for Halo, a question and four choices, and
+  below it there is not.
+*/
+@media (min-height: 700px) {
+  .fit-fold {
+    height: 100dvh;
+    overflow-y: hidden;
+  }
+}
+
+/*
+  The back of a turning page.
+
+  It is the page's own picture, reflected in the crease by a matrix set per
+  frame, so the two halves meet exactly along the fold and the back swings
+  with the crease when it leans. What makes it read as the *back* rather than
+  as a second copy is the light: paper turned over is lit from behind and
+  through, so it is much darker, lower in contrast and slightly warmer than
+  the face of it. Bright enough to see what page you are leaving; nowhere
+  near bright enough to be mistaken for a page you could read.
+
+  `transform-origin` has to be the top-left corner, because the matrix is
+  written in the stage's own coordinates and not in the image's.
+*/
+.fold-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: 0 0;
+  filter: brightness(0.34) contrast(0.82) sepia(0.18);
+  will-change: transform;
+}
+
+/*
   Ordering: the story so far, and the moments still to lay down.
 
   The row of slots is the whole feedback mechanism, so it is drawn from the
@@ -722,7 +768,7 @@ body {
   display: flex;
   flex: 1 1 0;
   aspect-ratio: 1;
-  max-width: 4.5rem;
+  max-width: clamp(2.5rem, 8vh, 4.5rem);
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -760,17 +806,24 @@ body {
 }
 
 /*
-  Square, not a letterbox.
+  Square, not a letterbox — until the screen cannot spare it.
 
   These are crops of portrait story panels, and the four moments of a chapter
   are usually the same people in the same room. A shallow band through the
   middle of each makes three of them look identical; a square keeps enough of
   the composition — who is holding whom, who is reaching — for the picture to
   be doing some of the telling rather than leaving it all to the words.
+
+  The square is what it wants to be, and the height cap is what it settles
+  for. Two rows of these are the tallest thing on the screen, so on a short
+  phone they give up height first: a slightly letterboxed picture a child can
+  see beats a square one below the fold.
 */
 .step-art {
   width: 100%;
   aspect-ratio: 1;
+  max-height: clamp(3.25rem, 15vh, 9rem);
+  object-fit: cover;
 }
 
 /*
@@ -808,6 +861,41 @@ body {
   opacity: 0.42;
   border-color: transparent;
   background: rgb(from var(--color-ground-raised) r g b / 0.4);
+}
+
+/* The card that has left the column and is under the finger. */
+.pair-cell.is-carrying {
+  opacity: 0.35;
+}
+
+/* Where it would land, while it is still in the air. */
+.pair-cell.is-over {
+  border-color: var(--color-touchable);
+  background: rgb(from var(--color-ground-lit) r g b / 0.95);
+}
+
+/*
+  The card being carried.
+
+  Fixed to the viewport and centred under the finger, so it tracks the
+  pointer exactly rather than lagging inside a scrolling ancestor. It never
+  takes a pointer event — the thing it must not do is intercept the very
+  event that is dragging it, which would make it undroppable.
+*/
+.pair-carried {
+  position: fixed;
+  z-index: 50;
+  translate: -50% -50%;
+  pointer-events: none;
+  max-width: 11rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-touchable);
+  border-radius: 0.875rem;
+  background: var(--color-ground-lit);
+  color: var(--color-ink);
+  font-size: 1rem;
+  line-height: 1.15;
+  box-shadow: 0 10px 24px -8px rgb(0 0 0 / 0.7);
 }
 
 /*

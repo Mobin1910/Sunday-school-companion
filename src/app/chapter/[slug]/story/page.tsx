@@ -39,6 +39,8 @@ export default async function ChapterStoryPage({
       hubHref={`/chapter/${slug}`}
       chapterTitle={chapter.title}
       {...(next ? { nextChapterHref: `/chapter/${next.slug}` } : {})}
+      /* The picture on each page, for the back of the sheet when it turns. */
+      backs={pages.map((card) => ("art" in card && card.art ? card.art.src : null))}
     >
       {pages.map((card, index) => (
         <CardScreen key={index} card={card} title={chapter.title} />

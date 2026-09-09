@@ -35,13 +35,11 @@ export default function StoryCard({
   text,
   alt,
   interaction,
-  active = true,
 }: {
   art: Art;
   text?: string;
   alt?: string;
   interaction?: PlayInteraction;
-  active?: boolean;
 }) {
   /*
     **A panel that stops and asks.** The story pauses on the picture it is
@@ -69,7 +67,7 @@ export default function StoryCard({
             keeps this file a server component: the player needs a handler,
             and QuizCard is the one that owns it. */}
         <div className="absolute inset-x-0 top-0 bottom-24 flex items-center justify-center overflow-y-auto py-4">
-          <QuizCard interaction={interaction} active={active} />
+          <QuizCard interaction={interaction} />
         </div>
       </div>
     );

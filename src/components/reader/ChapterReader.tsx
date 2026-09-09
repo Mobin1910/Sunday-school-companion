@@ -1,17 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Children, useEffect, useMemo, useRef, useState } from "react";
 
 import { rememberPlace, resumeAt } from "@/local/place";
+
+import { PageProvider } from "./PageContext";
 
 /**
  * Turns the pages of a chapter's story with a page curl.
@@ -50,8 +44,8 @@ import { rememberPlace, resumeAt } from "@/local/place";
  * That bounds memory and avoids a worse problem — a neighbour's
  * InteractionPlayer sitting fully mounted, and hence fully "on screen" by a
  * plain viewport IntersectionObserver, well before the child has actually
- * turned to it. `under` is always rendered with `active={false}` for
- * exactly that reason; see InteractionPlayer's `active` prop.
+ * turned to it. The neighbour is given a page state that says it has not
+ * been arrived at, for exactly that reason; see `PageContext`.
  *
  * A drag only begins once the pointer has moved past a small deadzone and
  * the movement reads as horizontal. Below that, or moving mostly downward,
@@ -78,6 +72,7 @@ export default function ChapterReader({
   hubHref,
   chapterTitle,
   nextChapterHref,
+  backs,
 }: {
   children: React.ReactNode;
   /** Which chapter this is, for remembering the place in it. */
@@ -87,6 +82,16 @@ export default function ChapterReader({
   chapterTitle: string;
   /** The next chapter's Hub, when there is a next chapter. */
   nextChapterHref?: string;
+  /**
+   * The picture on each page, in page order, for the back of the sheet.
+   *
+   * Pictures rather than the pages themselves: the back of a turning page is
+   * paper and ink, and mounting a second copy of a page to get it would mean
+   * a second copy of anything live on that page — a question's state, its
+   * shuffled order, its clocks. A page with no picture simply has a plain
+   * back, which is what the back of a page of text looks like anyway.
+   */
+  backs?: (string | null)[];
 }) {
   const pages = useMemo(() => Children.toArray(children), [children]);
   const lastPage = pages.length - 1;
@@ -94,6 +99,7 @@ export default function ChapterReader({
   const stage = useRef<HTMLDivElement>(null);
   const fold = useRef<HTMLDivElement>(null);
   const foldShade = useRef<HTMLDivElement>(null);
+  const foldBack = useRef<HTMLImageElement>(null);
   const flat = useRef<HTMLDivElement>(null);
   const shadow = useRef<HTMLDivElement>(null);
 
@@ -197,6 +203,8 @@ export default function ChapterReader({
     [],
   );
 
+  const back = backs?.[index] ?? null;
+
   const onFirstPage = index === 0;
   const onLastPage = index === lastPage;
 
@@ -280,6 +288,32 @@ export default function ChapterReader({
     shadowEl.style.clipPath = polygon([top, corners[0]!, corners[1]!, bottom]);
 
     /*
+      The back of the sheet is the page itself, reflected in the crease.
+
+      The same reflection the corners went through, applied to the picture
+      rather than to a point — so the image on the back lines up exactly with
+      the image on the front along the fold, and swings with the crease as it
+      slants. That is what a turning page actually looks like: you are seeing
+      the same paper from the other side, not a second picture.
+
+      It is a matrix because a reflection in an arbitrary line is one. A plain
+      horizontal flip would only be right for a perfectly vertical crease, and
+      would slide out of register the moment the fold leaned.
+    */
+    const backEl = foldBack.current;
+    if (backEl) {
+      const len = Math.hypot(bottom.x - top.x, bottom.y - top.y) || 1;
+      const ux = (bottom.x - top.x) / len;
+      const uy = (bottom.y - top.y) / len;
+      const r11 = 2 * ux * ux - 1;
+      const r12 = 2 * ux * uy;
+      const r22 = 2 * uy * uy - 1;
+      const tx = top.x - (r11 * top.x + r12 * top.y);
+      const ty = top.y - (r12 * top.x + r22 * top.y);
+      backEl.style.transform = `matrix(${r11}, ${r12}, ${r12}, ${r22}, ${tx}, ${ty})`;
+    }
+
+    /*
       Light, in the only two places a fold makes any.
 
       The crease is the bright edge — a hard rim right at it, falling away
@@ -338,7 +372,19 @@ export default function ChapterReader({
     const start = performance.now();
 
     const step = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
+      /*
+        Clamped at both ends, and the lower end is the one that matters.
+
+        `start` is read inside the event that began the turn, but the frame
+        callback is handed the time that frame *began* — which is earlier,
+        because the event was handled during it. So the first step can arrive
+        with a negative elapsed time, and this easing curve turns a slightly
+        negative `t` into a slightly negative position: one frame of the page
+        folding the wrong way, and of the neighbour underneath being the one
+        behind rather than the one ahead. It read as a flick at the start of
+        every turn.
+      */
+      const t = Math.min(1, Math.max(0, (now - start) / duration));
       const eased = 1 - Math.pow(1 - t, 3);
       position.current = from + (clampedTarget - from) * eased;
       renderAt(position.current);
@@ -352,6 +398,23 @@ export default function ChapterReader({
       }
     };
     settleFrame.current = requestAnimationFrame(step);
+  }
+
+  /*
+    A question that has been answered turns its own page.
+
+    This is a deliberate reversal: pages used to be turned only by the child,
+    on the grounds that finishing something is not a reason to take the
+    steering away. Watching it, that was wrong here — a child who has just
+    got it right has plainly finished with the page, and asking them to then
+    find the arrow reads as the app not having noticed.
+
+    It waits, though. The pause is the celebration: Halo's face, the burst
+    and the words all happen, and *then* the page turns. Turning on the
+    instant of the tap would trade one bad feeling for another.
+  */
+  function turnAfterSolving() {
+    window.setTimeout(() => goTo(targetIndex.current + 1), AFTER_SOLVING);
   }
 
   function goTo(rawTarget: number, jump = false) {
@@ -526,7 +589,7 @@ export default function ChapterReader({
           data-active="false"
           className="absolute inset-0 z-[1] flex flex-col overflow-hidden bg-ground"
         >
-          {withActive(pages[underIndex], false)}
+          <PageProvider value={UNDER}>{pages[underIndex]}</PageProvider>
         </div>
 
         {/* The gutter: the dark the lifted corner drops onto the page it is
@@ -542,7 +605,9 @@ export default function ChapterReader({
           data-active="true"
           className="absolute inset-0 z-[3] flex flex-col overflow-hidden bg-ground will-change-[clip-path]"
         >
-          {withActive(pages[index], true)}
+          <PageProvider value={{ active: true, onSolved: turnAfterSolving }}>
+            {pages[index]}
+          </PageProvider>
         </div>
 
         {/* The back of the sheet, lying over the page it was just part of.
@@ -553,6 +618,15 @@ export default function ChapterReader({
           className="pointer-events-none absolute inset-0 z-[4] bg-ground-lit will-change-[clip-path]"
           aria-hidden
         >
+          {back ? (
+            <img
+              ref={foldBack}
+              src={back}
+              alt=""
+              className="fold-back"
+              draggable={false}
+            />
+          ) : null}
           <div ref={foldShade} className="absolute inset-0" />
         </div>
       </div>
@@ -631,6 +705,11 @@ const GUTTER = 64;
 const RIM = 10;
 /** Where a thumb would have been, for turns nobody took hold of. */
 const THUMB = 0.62;
+/** How long a solved page is left alone before it turns itself. */
+const AFTER_SOLVING = 1600;
+
+/** The neighbour page: on screen, not arrived at, and not steering. */
+const UNDER = { active: false } as const;
 
 /**
  * A point reflected in the line through `a` and `b`.
@@ -656,18 +735,6 @@ const polygon = (points: Point[]) =>
   `polygon(${points.map((p) => `${p.x.toFixed(2)}px ${p.y.toFixed(2)}px`).join(", ")})`;
 
 type Point = { x: number; y: number };
-
-/**
- * Injects the runtime `active` flag into a pre-built CardScreen element.
- * ChapterReader is the one place that knows which of the (at most two)
- * mounted pages the child has actually turned to, so it is the one place
- * that can tell CardScreen — which is otherwise handed fully-formed
- * elements it never constructs itself.
- */
-function withActive(node: React.ReactNode, active: boolean): React.ReactNode {
-  if (!isValidElement<{ active?: boolean }>(node)) return node;
-  return cloneElement(node, { active });
-}
 
 /**
  * Where the story leaves a child.

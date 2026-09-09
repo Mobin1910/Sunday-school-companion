@@ -42,15 +42,27 @@ export default async function ChapterGamePage({
   const game = gameOf(chapter, id);
   if (!game) notFound();
 
+  /*
+    Where finishing this one leads: the next game a child could play, or the
+    shelf when there is none left. Worked out here rather than in the player,
+    because the chapter's list of games is content and the player has no
+    business knowing about chapters at all.
+  */
+  const playable = gamesOf(chapter).filter((g) => g.interactions.every(canPlay));
+  const after = playable[playable.findIndex((g) => g.id === id) + 1];
+  const nextHref = after
+    ? `/chapter/${slug}/games/${after.id}`
+    : `/chapter/${slug}/games`;
+
   return (
     <SectionScreen
       title={game.title}
       chapterTitle="Games"
       hubHref={`/chapter/${slug}/games`}
-      onward="All games"
+      fit
     >
       {game.interactions.every(canPlay) ? (
-        <GamePlayer interactions={game.interactions} />
+        <GamePlayer interactions={game.interactions} nextHref={nextHref} />
       ) : (
         <NotReadyYet what="This game" />
       )}

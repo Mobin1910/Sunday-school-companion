@@ -77,7 +77,7 @@ export default function Sequence({
   }
 
   return (
-    <div className="flex w-full max-w-xl flex-col gap-4 px-4">
+    <div className="flex w-full max-w-xl flex-col gap-3 px-2">
       <h2 className="text-center text-2xl leading-snug text-balance">
         {interaction.prompt}
       </h2>
@@ -137,7 +137,7 @@ export default function Sequence({
                 {step.art ? (
                   <Picture art={step.art} className="step-art object-cover" />
                 ) : null}
-                <span className="px-3 py-2 text-base leading-tight font-semibold text-balance">
+                <span className="px-2 py-1.5 text-sm leading-tight font-semibold text-balance">
                   {step.label}
                 </span>
               </button>
