@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import GamePlayer from "@/components/play/GamePlayer";
-import { gameOf, gamesOf, getChapters } from "@/content";
+import GamesEnd from "@/components/play/GamesEnd";
+import { gameOf, gamesOf, getChapters, verseOf } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -43,16 +44,18 @@ export default async function ChapterGamePage({
   if (!game) notFound();
 
   /*
-    Where finishing this one leads: the next game a child could play, or the
-    shelf when there is none left. Worked out here rather than in the player,
-    because the chapter's list of games is content and the player has no
-    business knowing about chapters at all.
+    Where finishing this one leads. Worked out here rather than in the
+    player, because the chapter's list of games is content — and so is
+    whether the chapter has a verse to offer at the end of them — and the
+    player has no business knowing about chapters at all.
+
+    A game with another after it moves straight on. The last one does not
+    move anywhere: it hands over a screen with the ways onward on it, and
+    the memory verse is the one it leads with.
   */
   const playable = gamesOf(chapter).filter((g) => g.interactions.every(canPlay));
   const after = playable[playable.findIndex((g) => g.id === id) + 1];
-  const nextHref = after
-    ? `/chapter/${slug}/games/${after.id}`
-    : `/chapter/${slug}/games`;
+  const verse = verseOf(chapter);
 
   return (
     <SectionScreen
@@ -62,7 +65,22 @@ export default async function ChapterGamePage({
       fit
     >
       {game.interactions.every(canPlay) ? (
-        <GamePlayer interactions={game.interactions} nextHref={nextHref} />
+        <GamePlayer
+          interactions={game.interactions}
+          {...(after
+            ? { nextHref: `/chapter/${slug}/games/${after.id}` }
+            : {
+                ending: (
+                  <GamesEnd
+                    {...(verse ? { verseHref: `/chapter/${slug}/verse` } : {})}
+                    {...(playable.length > 1
+                      ? { shelfHref: `/chapter/${slug}/games` }
+                      : {})}
+                    hubHref={`/chapter/${slug}`}
+                  />
+                ),
+              })}
+        />
       ) : (
         <NotReadyYet what="This game" />
       )}

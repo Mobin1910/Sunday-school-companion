@@ -78,6 +78,7 @@ export default function ChapterReader({
   slug,
   hubHref,
   chapterTitle,
+  gamesHref,
   nextChapterHref,
   backs,
 }: {
@@ -87,6 +88,12 @@ export default function ChapterReader({
   /** This chapter's Hub. Always reachable, from every page. */
   hubHref: string;
   chapterTitle: string;
+  /**
+   * This chapter's games, when it has any that can be played. Worked out by
+   * the page, not here: which games are playable is a content question, and
+   * the reader has no business knowing what an interaction is.
+   */
+  gamesHref?: string;
   /** The next chapter's Hub, when there is a next chapter. */
   nextChapterHref?: string;
   /**
@@ -692,7 +699,11 @@ export default function ChapterReader({
         ) : null}
 
         {onLastPage ? (
-          <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
+          <ChapterEnd
+            hubHref={hubHref}
+            {...(gamesHref ? { gamesHref } : {})}
+            {...(nextChapterHref ? { nextChapterHref } : {})}
+          />
         ) : (
           /*
             Back, where you are, forward — one layout for every page.
@@ -798,27 +809,49 @@ type Point = { x: number; y: number };
 /**
  * Where the story leaves a child.
  *
- * Never a dead end, and never a decision made for them: the next chapter is
- * offered but nothing happens on its own, there is no timer, and the way
- * back into this chapter is warm rather than a consolation prize. When there
- * is no next chapter, the shelf takes the primary place — a disabled button
- * is a door a child can see and not open, which is worse than no door.
+ * Never a dead end, and never a decision made for them: everything here is
+ * offered, nothing happens on its own, there is no timer, and the way back
+ * into this chapter is warm rather than a consolation prize. When there is
+ * no next chapter, the shelf takes that place — a disabled button is a door
+ * a child can see and not open, which is worse than no door.
  *
- * "Next Chapter" goes to the next chapter's Hub, never straight into its
+ * The games come first where a chapter has them, and that is a change of
+ * mind about what the loudest thing here should be. Leaving the chapter was
+ * the lit button, which meant the app's own suggestion, at the exact moment
+ * a child finished the story, was to skip the rest of it — the games about
+ * that story and the verse from it. The chapter's own parts come before
+ * leaving the chapter. Nothing is locked either way: a child who wants the
+ * next chapter still has it, one row down and perfectly visible.
+ *
+ * "Next chapter" goes to the next chapter's Hub, never straight into its
  * story. Every chapter is entered by seeing what is in it.
  */
 function ChapterEnd({
   hubHref,
+  gamesHref,
   nextChapterHref,
 }: {
   hubHref: string;
+  /** This chapter's games, when it has any that can actually be played. */
+  gamesHref?: string;
   nextChapterHref?: string;
 }) {
   return (
     <nav className="flex flex-col gap-3 px-6 pt-3 pb-8">
+      {gamesHref ? (
+        <Link href={gamesHref} className="cta min-h-16 px-6 text-xl">
+          Play the games
+          <ArrowRight small />
+        </Link>
+      ) : null}
+
       <Link
         href={nextChapterHref ?? "/chapters"}
-        className="cta min-h-16 px-6 text-xl"
+        className={
+          gamesHref
+            ? "btn-quiet min-h-14 gap-2 px-6 text-lg"
+            : "cta min-h-16 px-6 text-xl"
+        }
       >
         {nextChapterHref ? "Next chapter" : "All chapters"}
         <ArrowRight small />

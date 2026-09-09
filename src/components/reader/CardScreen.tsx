@@ -24,13 +24,20 @@ import VerseCard from "./VerseCard";
  * can run the full height of the screen; every other card keeps clear of it
  * here, in one place, instead of each kind remembering to.
  *
- * The last page is the exception in both directions: it carries two stacked
- * ways onward instead of one round button, so it needs more room, and the
- * cover needs none at all because it is the picture underneath everything.
+ * The last page is the exception in both directions: it carries three
+ * stacked ways onward instead of one round button, so it needs a lot more
+ * room, and the cover needs none at all because it is the picture underneath
+ * everything.
+ *
+ * That number is the whole reason this is measured rather than guessed. The
+ * ending's chrome is 244px tall and this was 192px, which fits two rows and
+ * silently hid the last line of the message behind the third — the page does
+ * not scroll, so there is nothing to reveal it. Anything added to the ending
+ * has to be paid for here in the same breath.
  */
 const ROOM_FOR_CHROME: Partial<Record<Card["kind"], string>> = {
   cover: "",
-  celebration: "pb-48",
+  celebration: "pb-64",
 };
 
 export default function CardScreen({

@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 
 import CardScreen from "@/components/reader/CardScreen";
 import ChapterReader from "@/components/reader/ChapterReader";
-import { getChapters, nextChapter, storyCards } from "@/content";
+import { gamesOf, getChapters, nextChapter, storyCards } from "@/content";
+import { canPlay } from "@/interactions/registry";
 
 /**
  * The story, read cover to celebration.
@@ -11,8 +12,9 @@ import { getChapters, nextChapter, storyCards } from "@/content";
  * their own sections off the Chapter Hub now — the story no longer swallows
  * the whole chapter on the way past.
  *
- * Where the story ends, the next chapter's Hub is offered, never the next
- * chapter's story: a chapter is always entered by seeing what is in it.
+ * Where the story ends, the chapter's own games are offered first and the
+ * next chapter after them — and the next chapter means its Hub, never its
+ * story: a chapter is always entered by seeing what is in it.
  */
 
 export function generateStaticParams() {
@@ -33,11 +35,22 @@ export default async function ChapterStoryPage({
   const pages = storyCards(chapter);
   const next = nextChapter(chapters, slug);
 
+  /*
+    Offered at the end, and only when there is something behind the door: a
+    chapter whose games are written but not yet playable has no games as far
+    as a child is concerned, and the shelf would greet them with an empty
+    room. Same test the games shelf itself uses.
+  */
+  const playable = gamesOf(chapter).some((game) =>
+    game.interactions.every(canPlay),
+  );
+
   return (
     <ChapterReader
       slug={slug}
       hubHref={`/chapter/${slug}`}
       chapterTitle={chapter.title}
+      {...(playable ? { gamesHref: `/chapter/${slug}/games` } : {})}
       {...(next ? { nextChapterHref: `/chapter/${next.slug}` } : {})}
       /* The picture on each page, for the back of the sheet when it turns. */
       backs={pages.map((card) => ("art" in card && card.art ? card.art.src : null))}
