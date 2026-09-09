@@ -679,6 +679,24 @@ body {
   transition:
     transform 120ms ease-out,
     box-shadow 160ms ease-out;
+  /*
+    Two of these sit across the page, so each one only ever has half the
+    width minus the gutters — about 138px on the narrowest phone we support
+    and 173px on a common one. The picture and the word have to share that,
+    and a fixed pair sized for the larger phone pushes the word off the
+    smaller one. Both are sized from the width instead, and the ceilings are
+    what the roomier screens settle at.
+
+    Width, not the reader's page: the page is only narrower than the window
+    on a desktop, where there is more of both than either needs.
+  */
+  font-size: clamp(0.9375rem, 4.1vw, 1.125rem);
+}
+
+.option-art {
+  width: clamp(2.75rem, 17vw, 5rem);
+  height: clamp(2.75rem, 17vw, 5rem);
+  flex: none;
 }
 
 .option-card:active {
@@ -717,7 +735,7 @@ body {
 
 .confetti {
   position: absolute;
-  left: 1.25rem;
+  left: 50%;
   top: 50%;
   width: 0;
   height: 0;

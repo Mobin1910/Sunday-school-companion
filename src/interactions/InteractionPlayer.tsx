@@ -216,22 +216,35 @@ export default function InteractionPlayer({
   });
 
   return (
-    <div ref={root} className="flex w-full flex-col items-center gap-6">
-      {renderModel({
-        interaction,
-        rung,
-        locked: done,
-        onMiss: handleMiss,
-        onArrive: handleArrive,
-      })}
+    <div ref={root} className="flex w-full flex-col items-center gap-4">
+      {/*
+        Halo first, and above everything, because Halo is the one asking.
 
-      {/* Beside what it is saying, so the companion and the words read as
-          one voice rather than two things happening at once. */}
-      <div className="relative flex items-center gap-4">
-        {/* From Halo, because Halo is who is pleased. */}
-        {done ? <Confetti /> : null}
+        A companion tucked underneath the choices is a decoration watching a
+        child take a test. The same companion above the question, at a size
+        you would notice, is the one who spoke it — and everything below then
+        reads as the answer to somebody rather than as a form to fill in.
+        Order does that work here; nothing needed to be said twice.
 
-        <HaloPresence state={halo} placement="beside" />
+        What Halo is saying stays directly beneath Halo, and the line holds
+        its height whether or not there are words in it, so the question
+        never jumps down the screen when Halo speaks.
+      */}
+      <div className="flex flex-col items-center gap-1">
+        {/*
+          Halo takes what the screen can spare. The rest of a question is
+          close to fixed — four cards, a prompt, a line of speech — so the
+          companion is the part that gives, and on a short phone it gives
+          rather than pushing the last row of choices under the chrome.
+        */}
+        <div
+          className="relative"
+          style={{ "--halo-room": "clamp(4.75rem, 14.2vh, 7.5rem)" } as React.CSSProperties}
+        >
+          {/* From Halo, because Halo is who is pleased. */}
+          {done ? <Confetti /> : null}
+          <HaloPresence state={halo} placement="inline" />
+        </div>
 
         <Voice
           line={arrived ?? saying}
@@ -239,6 +252,14 @@ export default function InteractionPlayer({
           hint={rung >= 1 && !done ? hintOf(interaction) : undefined}
         />
       </div>
+
+      {renderModel({
+        interaction,
+        rung,
+        locked: done,
+        onMiss: handleMiss,
+        onArrive: handleArrive,
+      })}
     </div>
   );
 }
@@ -269,7 +290,7 @@ function Voice({
   return (
     <p
       aria-live="polite"
-      className={`voice min-h-14 max-w-sm px-6 text-center text-xl leading-relaxed text-balance ${
+      className={`voice min-h-12 max-w-sm px-6 text-center text-xl leading-relaxed text-balance ${
         celebrating ? "text-joy" : "text-ink-soft"
       }`}
       key={showing}

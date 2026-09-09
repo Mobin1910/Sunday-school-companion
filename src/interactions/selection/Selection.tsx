@@ -116,7 +116,7 @@ export default function Selection({
                 className={[
                   "flex w-full items-center text-left transition-opacity duration-500",
                   illustrated
-                    ? "option-card h-full min-h-24 gap-2 p-2 pr-3 text-lg leading-tight font-semibold"
+                    ? "option-card h-full min-h-24 gap-2 p-2 pr-3 leading-tight font-semibold"
                     : "surface min-h-20 gap-4 p-3 pr-5 text-xl",
                   gone && "pointer-events-none opacity-0",
                   settling === index && "settling",
@@ -131,7 +131,7 @@ export default function Selection({
                     art={option.art}
                     className={
                       illustrated
-                        ? "size-20 shrink-0 object-contain"
+                        ? "option-art object-contain"
                         : "size-16 shrink-0 rounded-xl object-cover"
                     }
                   />

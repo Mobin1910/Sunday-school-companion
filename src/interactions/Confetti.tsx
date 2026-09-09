@@ -27,8 +27,10 @@ export default function Confetti() {
     <div className="confetti" aria-hidden>
       {Array.from({ length: PIECES }, (_, i) => {
         const angle = -SPREAD / 2 + (SPREAD * i) / (PIECES - 1);
-        // Alternating distances stop the pieces landing on one clean arc.
-        const reach = 46 + ((i * 37) % 34);
+        // Far enough to clear Halo, who is the size of something that speaks
+        // and would otherwise swallow its own burst. Alternating distances
+        // stop the pieces landing on one clean arc.
+        const reach = 76 + ((i * 37) % 40);
         const spin = ((i * 149) % 360) - 180;
 
         return (
