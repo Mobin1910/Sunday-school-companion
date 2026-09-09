@@ -23,13 +23,27 @@ import { rememberPlace, resumeAt } from "@/local/place";
  *
  * Chosen over scroll-snap and a flat-card slide after prototyping both at
  * /prototype/spatial (deleted) and /prototype/curl (kept, for reference).
- * The curl is two rigid pieces, not one rotating rectangle: `flat` is the
- * untouched majority of the current page, only ever cropped shorter by
- * `clip-path` as the drag advances; `spine` is a narrow strip at that cut
- * boundary, the only part that turns in 3D, and it is decoration only — a
- * light/shadow gradient standing in for the edge of the paper, never a copy
- * of the page's own content. Duplicating live content there would mean two
- * simultaneous instances of a quiz's state and timers.
+ *
+ * The fold is a corner peel, and the geometry is the real thing rather than
+ * an impression of it. A stiff sheet lifted at one corner folds about a
+ * straight line, and the part beyond that line is not squashed or rotated
+ * away — it is *mirrored* across it. So there are two pieces and one line
+ * between them: `flat` is the current page clipped to the near side of the
+ * fold, and `fold` is the back of the paper, clipped to the reflection of
+ * the cut-off corner in that same line. Both are `clip-path` polygons
+ * recomputed per frame from one line, which is why they can never disagree
+ * about where the crease is.
+ *
+ * The line is not vertical. It runs from wherever the child took hold of the
+ * page, and the far end lags behind — take the bottom corner and the bottom
+ * leads, take the middle and it stays nearly straight. That lag straightens
+ * out as the page comes over, so a completed turn always clears the page
+ * however it began.
+ *
+ * `fold` shows paper, never the page's own content. That is the same
+ * decision the old turning strip made and for the same reason: copying live
+ * content into it would mean two simultaneous instances of a quiz's state
+ * and timers. A real book shows the blank back of the sheet here anyway.
  *
  * Only two pages are ever mounted: `flat` (the settled, active page) and
  * `under` (whichever neighbour the current drag direction would reveal).
@@ -78,10 +92,18 @@ export default function ChapterReader({
   const lastPage = pages.length - 1;
 
   const stage = useRef<HTMLDivElement>(null);
-  const spine = useRef<HTMLDivElement>(null);
-  const spineShade = useRef<HTMLDivElement>(null);
+  const fold = useRef<HTMLDivElement>(null);
+  const foldShade = useRef<HTMLDivElement>(null);
   const flat = useRef<HTMLDivElement>(null);
   const shadow = useRef<HTMLDivElement>(null);
+
+  /**
+   * Where down the page this turn was taken hold of, as -1 at the top edge
+   * through 0 at the middle to 1 at the bottom. It sets which corner leads
+   * the fold. A turn nobody grabbed — the Next button, an arrow key — is
+   * given a low corner, because that is where a thumb would have been.
+   */
+  const grabAt = useRef(THUMB);
 
   const position = useRef(0);
   const anchor = useRef(0);
@@ -182,6 +204,10 @@ export default function ChapterReader({
     return stage.current?.clientWidth ?? window.innerWidth;
   }
 
+  function heightOf(): number {
+    return stage.current?.clientHeight ?? window.innerHeight;
+  }
+
   function renderAt(pos: number) {
     const width = widthOf();
     const raw = pos - anchor.current;
@@ -197,55 +223,101 @@ export default function ChapterReader({
       setUnderIndex(desiredUnder);
     }
 
-    const dFrac = Math.abs(progress);
-    const dPx = dFrac * width;
-    const eased = 1 - Math.pow(1 - dFrac, 2);
-    const angle = eased * MAX_ANGLE;
-    const spineW = MIN_SPINE + eased * (MAX_SPINE - MIN_SPINE);
-
     const flatEl = flat.current;
-    const spineEl = spine.current;
-    const shadeEl = spineShade.current;
+    const foldEl = fold.current;
+    const shadeEl = foldShade.current;
     const shadowEl = shadow.current;
-    if (!flatEl || !spineEl || !shadeEl || !shadowEl) return;
+    if (!flatEl || !foldEl || !shadeEl || !shadowEl) return;
 
-    const cut = Math.min(width, dPx);
-
-    if (forward) {
-      const flatEnd = Math.max(0, width - cut);
-      const spineStart = flatEnd;
-      const spineEnd = Math.min(width, flatEnd + spineW);
-
-      flatEl.style.clipPath = `inset(0 ${width - flatEnd}px 0 0)`;
-      spineEl.style.clipPath = `inset(0 ${width - spineEnd}px 0 ${spineStart}px)`;
-      spineEl.style.transformOrigin = "left center";
-      spineEl.style.transform = `rotateY(${angle}deg)`;
-
-      shadowEl.style.left = `${spineEnd}px`;
-      shadowEl.style.right = "auto";
-      shadowEl.style.width = `${Math.max(0, Math.min(width - spineEnd, spineW * 1.6))}px`;
-      shadowEl.style.background = `linear-gradient(to right, rgba(0,0,0,${(0.28 * eased).toFixed(3)}), rgba(0,0,0,0))`;
-      shadeEl.style.background = `linear-gradient(to right, rgba(255,255,255,${(0.18 * eased).toFixed(3)}), rgba(0,0,0,${(0.24 * eased).toFixed(3)}))`;
-    } else {
-      const flatStart = Math.min(width, cut);
-      const spineEnd = flatStart;
-      const spineStart = Math.max(0, flatStart - spineW);
-
-      flatEl.style.clipPath = `inset(0 0 0 ${flatStart}px)`;
-      spineEl.style.clipPath = `inset(0 ${width - spineEnd}px 0 ${spineStart}px)`;
-      spineEl.style.transformOrigin = "right center";
-      spineEl.style.transform = `rotateY(${-angle}deg)`;
-
-      shadowEl.style.right = `${width - spineStart}px`;
-      shadowEl.style.left = "auto";
-      shadowEl.style.width = `${Math.max(0, Math.min(spineStart, spineW * 1.6))}px`;
-      shadowEl.style.background = `linear-gradient(to left, rgba(0,0,0,${(0.28 * eased).toFixed(3)}), rgba(0,0,0,0))`;
-      shadeEl.style.background = `linear-gradient(to left, rgba(255,255,255,${(0.18 * eased).toFixed(3)}), rgba(0,0,0,${(0.24 * eased).toFixed(3)}))`;
+    const dFrac = Math.abs(progress);
+    const visible = dFrac > 0.001;
+    foldEl.style.display = visible ? "" : "none";
+    shadowEl.style.display = visible ? "" : "none";
+    if (!visible) {
+      // A settled page is whole. Nothing is clipped off it.
+      flatEl.style.clipPath = "none";
+      return;
     }
 
-    const visible = dFrac > 0.001;
-    spineEl.style.display = visible ? "" : "none";
-    shadowEl.style.opacity = visible ? "1" : "0";
+    const height = heightOf();
+    const cut = Math.min(width, dFrac * width);
+
+    /*
+      The crease, as two points on the page's top and bottom edges.
+
+      `lead` is how far the fold has run at the end the child took hold of,
+      and it tracks the finger exactly — paper does not lag behind the hand
+      holding it. `lag` is the other end, behind by the slant. The slant is
+      widest for a corner grab and nothing at all for a grab at the middle,
+      and it closes as the turn completes so that a finished fold has swept
+      the whole page rather than leaving a wedge of it standing.
+    */
+    const slant = Math.min(1, Math.abs(grabAt.current)) * SLANT * (1 - dFrac);
+    const lead = forward ? width - cut : cut;
+    const lag = forward ? width - cut * (1 - slant) : cut * (1 - slant);
+    const low = grabAt.current >= 0;
+    const top = { x: low ? lag : lead, y: 0 };
+    const bottom = { x: low ? lead : lag, y: height };
+
+    // The two corners that leave the page, and where they land once the
+    // sheet is folded over: their mirror image in the crease.
+    const corners = forward
+      ? [
+          { x: width, y: 0 },
+          { x: width, y: height },
+        ]
+      : [
+          { x: 0, y: 0 },
+          { x: 0, y: height },
+        ];
+    const turned = corners.map((c) => mirror(c, top, bottom));
+
+    flatEl.style.clipPath = forward
+      ? polygon([{ x: 0, y: 0 }, top, bottom, { x: 0, y: height }])
+      : polygon([top, { x: width, y: 0 }, { x: width, y: height }, bottom]);
+
+    foldEl.style.clipPath = polygon([top, turned[0]!, turned[1]!, bottom]);
+    shadowEl.style.clipPath = polygon([top, corners[0]!, corners[1]!, bottom]);
+
+    /*
+      Light, in the only two places a fold makes any.
+
+      The crease is the bright edge — a hard rim right at it, falling away
+      across the back of the sheet into its own shade. And the page being
+      uncovered is darkest in the gutter immediately beside the crease. Both
+      gradients run flat across the page rather than square to the crease: at
+      these angles the difference cannot be seen, and it keeps every stop in
+      the same units as the polygons above.
+
+      All of it scales with how far the turn has come, so a page just barely
+      lifted is barely shaded and nothing announces itself before it exists.
+    */
+    const crease = (top.x + bottom.x) / 2;
+    const edge = forward ? 2 * crease - width : 2 * crease;
+    const rim = forward ? crease - RIM : crease + RIM;
+    const pct = (x: number) => `${((x / width) * 100).toFixed(2)}%`;
+    // The crease keeps its light even when the page is barely lifted — that
+    // bright edge is how a fold announces itself as paper rather than a hole.
+    const lit = (0.14 + 0.3 * dFrac).toFixed(3);
+    const away = (0.06 * dFrac).toFixed(3);
+    const shade = (0.55 * dFrac).toFixed(3);
+    const stops = forward
+      ? [
+          `rgba(0,0,0,${shade}) ${pct(edge)}`,
+          `rgba(255,255,255,${away}) ${pct(rim)}`,
+          `rgba(255,255,255,${lit}) ${pct(crease)}`,
+        ]
+      : [
+          `rgba(255,255,255,${lit}) ${pct(crease)}`,
+          `rgba(255,255,255,${away}) ${pct(rim)}`,
+          `rgba(0,0,0,${shade}) ${pct(edge)}`,
+        ];
+    shadeEl.style.background = `linear-gradient(to right, ${stops.join(", ")})`;
+
+    const gutter = (0.55 * dFrac).toFixed(3);
+    shadowEl.style.background = forward
+      ? `linear-gradient(to right, rgba(0,0,0,${gutter}) ${pct(crease)}, rgba(0,0,0,0) ${pct(crease + GUTTER)})`
+      : `linear-gradient(to right, rgba(0,0,0,0) ${pct(crease - GUTTER)}, rgba(0,0,0,${gutter}) ${pct(crease)})`;
   }
 
   function cancelSettle() {
@@ -285,6 +357,8 @@ export default function ChapterReader({
   function goTo(rawTarget: number, jump = false) {
     cancelSettle();
     setTurnedOnce(true);
+    // Nobody took hold of this one, so put the crease where a thumb goes.
+    grabAt.current = THUMB;
     const target = Math.max(0, Math.min(lastPage, rawTarget));
     targetIndex.current = target;
     if (jump || reducedMotion) {
@@ -307,6 +381,15 @@ export default function ChapterReader({
     startX.current = e.clientX;
     startPosition.current = position.current;
     samples.current = [{ t: performance.now(), x: e.clientX }];
+
+    // Which corner leads is decided here, by where the page was taken hold
+    // of, and then held for the whole turn — a crease does not move up and
+    // down the sheet while the hand slides across it.
+    const box = stage.current?.getBoundingClientRect();
+    if (box && box.height > 0) {
+      const down = (e.clientY - box.top) / box.height;
+      grabAt.current = Math.max(-1, Math.min(1, down * 2 - 1));
+    }
   }
 
   function onPointerMove(e: React.PointerEvent) {
@@ -438,7 +521,6 @@ export default function ChapterReader({
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
         className="relative flex-1 touch-pan-y select-none overflow-hidden outline-none"
-        style={{ perspective: 1400 }}
       >
         <div
           data-active="false"
@@ -447,29 +529,32 @@ export default function ChapterReader({
           {withActive(pages[underIndex], false)}
         </div>
 
+        {/* The gutter: the dark the lifted corner drops onto the page it is
+            uncovering. Clipped to exactly the part now showing. */}
         <div
           ref={shadow}
-          className="pointer-events-none absolute inset-y-0 z-[2]"
+          className="pointer-events-none absolute inset-0 z-[2] will-change-[clip-path]"
           aria-hidden
         />
 
         <div
-          ref={spine}
-          className="absolute inset-0 z-[3] overflow-hidden bg-ground will-change-transform"
-          style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
-          aria-hidden
-        >
-          <div ref={spineShade} className="absolute inset-0" />
-        </div>
-
-        <div
           ref={flat}
           data-active="true"
-          className="absolute inset-0 z-[4] flex flex-col overflow-hidden bg-ground will-change-[clip-path]"
+          className="absolute inset-0 z-[3] flex flex-col overflow-hidden bg-ground will-change-[clip-path]"
         >
           {withActive(pages[index], true)}
         </div>
 
+        {/* The back of the sheet, lying over the page it was just part of.
+            Paper and light only — see the note at the top of this file on
+            why the page's own content is never copied here. */}
+        <div
+          ref={fold}
+          className="pointer-events-none absolute inset-0 z-[4] bg-ground-lit will-change-[clip-path]"
+          aria-hidden
+        >
+          <div ref={foldShade} className="absolute inset-0" />
+        </div>
       </div>
 
       <p className="sr-only" aria-live="polite">
@@ -538,9 +623,39 @@ const DEADZONE = 8;
 const THRESHOLD = 0.32;
 const FLICK_VELOCITY = 0.5;
 const EDGE_RESISTANCE = 3;
-const MAX_ANGLE = 72;
-const MIN_SPINE = 16;
-const MAX_SPINE = 64;
+/** How far the far end of the crease lags behind, for a full corner grab. */
+const SLANT = 0.55;
+/** The reach of the dark the fold drops into the gutter, in pixels. */
+const GUTTER = 64;
+/** How wide the bright edge of the crease is, in pixels. */
+const RIM = 10;
+/** Where a thumb would have been, for turns nobody took hold of. */
+const THUMB = 0.62;
+
+/**
+ * A point reflected in the line through `a` and `b`.
+ *
+ * This is the whole of the fold: the corner that leaves the page is not
+ * moved or shrunk, it is mirrored in the crease, which is what a sheet of
+ * paper does when you lift it. Points already on the crease come back
+ * unchanged, so the two pieces always meet exactly along it.
+ */
+function mirror(p: Point, a: Point, b: Point): Point {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len;
+  const uy = dy / len;
+  const vx = p.x - a.x;
+  const vy = p.y - a.y;
+  const along = vx * ux + vy * uy;
+  return { x: a.x + 2 * along * ux - vx, y: a.y + 2 * along * uy - vy };
+}
+
+const polygon = (points: Point[]) =>
+  `polygon(${points.map((p) => `${p.x.toFixed(2)}px ${p.y.toFixed(2)}px`).join(", ")})`;
+
+type Point = { x: number; y: number };
 
 /**
  * Injects the runtime `active` flag into a pre-built CardScreen element.
