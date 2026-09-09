@@ -59,12 +59,34 @@ export default function SectionScreen({
           <h1 className={fit ? "mt-1 text-2xl" : "mt-2 text-3xl"}>{title}</h1>
         </div>
 
+        {/*
+          Centred while it fits, and scrolled from the top when it does not.
+
+          `justify-center` is wrong for the second case and was the bug: when
+          the content is taller than the space, centring pushes the overflow
+          out of *both* ends — up under the title, where Halo's ring landed
+          on the words, and down past the fold, where `overflow: hidden` then
+          made the last row of answers unreachable. One cause, two symptoms
+          that looked unrelated.
+
+          `my-auto` on the child does what was actually meant. Free space is
+          shared as margin, so it centres exactly as before; when there is no
+          free space the margins collapse to nothing, the content starts
+          below the header where it belongs, and the scroll can reach the
+          end of it. Nothing is ever both off-screen and unreachable.
+        */}
         <div
-          className={`flex min-h-0 flex-1 flex-col items-center justify-center ${
-            fit ? "" : "gap-8"
+          className={`flex min-h-0 flex-1 flex-col items-center ${
+            fit ? "overflow-y-auto" : "justify-center gap-8"
           }`}
         >
-          {children}
+          {fit ? (
+            <div className="my-auto flex w-full flex-col items-center">
+              {children}
+            </div>
+          ) : (
+            children
+          )}
         </div>
 
         {fit ? null : (
