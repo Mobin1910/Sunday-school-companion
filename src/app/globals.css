@@ -1616,6 +1616,14 @@ body {
 
   This runs in every state. It used to be an ease-in-out sine, which is a
   motion nothing alive makes.
+
+  The amplitudes are fractions of Halo's own size, so they hold up from the
+  40px companion beside a question to the 190px one on Home. They are also
+  the thing to watch: a first pass at this used numbers around 0.004, which
+  is half a pixel on a 120px Halo — arithmetically a saccade and visually a
+  frozen face. Measured end to end, the eyes should travel something like a
+  twentieth of Halo's width in each direction. Below that it stops reading
+  as alive at all, and there is no warning, because nothing is broken.
 */
 .halo-eyes-wander {
   display: flex;
@@ -1633,67 +1641,50 @@ body {
 @keyframes halo-eye-flick {
   0%,
   100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.004)
-      calc(var(--halo-life) * var(--halo-size) * -0.002);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.018)
+      calc(var(--halo-life) * var(--halo-size) * -0.008);
   }
   22% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.005) 0px;
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.021)
+      calc(var(--halo-life) * var(--halo-size) * 0.003);
   }
   41% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.002)
-      calc(var(--halo-life) * var(--halo-size) * 0.004);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.008)
+      calc(var(--halo-life) * var(--halo-size) * 0.013);
   }
   63% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.006)
-      calc(var(--halo-life) * var(--halo-size) * -0.003);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.024)
+      calc(var(--halo-life) * var(--halo-size) * -0.011);
   }
   81% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.003)
-      calc(var(--halo-life) * var(--halo-size) * 0.002);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
+      calc(var(--halo-life) * var(--halo-size) * 0.009);
   }
 }
 
-/* The drift between them. Slow, small, and never quite repeating the flicks. */
+/* The drift between them. Slow, and never quite repeating the flicks. */
 @keyframes halo-eye-drift {
   0%,
   100% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.003),
-      calc(var(--halo-life) * var(--halo-size) * 0.002)
+      calc(var(--halo-life) * var(--halo-size) * 0.011),
+      calc(var(--halo-life) * var(--halo-size) * 0.006)
     );
   }
   33% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * -0.004),
-      calc(var(--halo-life) * var(--halo-size) * -0.001)
+      calc(var(--halo-life) * var(--halo-size) * -0.013),
+      calc(var(--halo-life) * var(--halo-size) * -0.004)
     );
   }
   66% {
     transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.001),
-      calc(var(--halo-life) * var(--halo-size) * -0.004)
+      calc(var(--halo-life) * var(--halo-size) * 0.004),
+      calc(var(--halo-life) * var(--halo-size) * -0.012)
     );
   }
 }
 
-/*
-  Looking around, when nothing is being asked.
-
-  Every other state has somewhere to look — at the child, at a wrong answer,
-  at the thing worth noticing — and its gaze is set by the expression table.
-  `idle` is the one state with nothing to attend to, and eyes that hold
-  perfectly still while pointed at the viewer are the difference between a
-  companion resting and a face staring.
-
-  So the eyes move the way real ones do: they *flick* and then hold. Each
-  move takes a beat and each new place is kept for a second or two, which is
-  why the keyframes come in tight pairs with long gaps between them. A slow
-  glide between positions would read as scanning, which is a machine; a
-  saccade and a pause reads as noticing something, and then something else.
-
-  It rarely returns to centre, because centre is looking straight at the
-  child, and Halo at rest is not doing that.
-*/
 .halo[data-halo-state="idle"] .halo-eyes-wander {
   animation:
     halo-eye-roam 11900ms cubic-bezier(0.34, 1.2, 0.4, 1) infinite,
