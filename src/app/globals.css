@@ -688,20 +688,126 @@ body {
     what the roomier screens settle at.
 
     Width, not the reader's page: the page is only narrower than the window
-    on a desktop, where there is more of both than either needs.
+    on a desktop, where there is more of both than either needs. The tightest
+    case is not the reader at all — it is these same choices inside a game,
+    where the section frame's own margins take another 48px before the cards
+    are measured, so the low end of each clamp is set from there.
   */
-  font-size: clamp(0.9375rem, 4.1vw, 1.125rem);
+  font-size: clamp(0.875rem, 3.8vw, 1.125rem);
 }
 
 .option-art {
-  width: clamp(2.75rem, 17vw, 5rem);
-  height: clamp(2.75rem, 17vw, 5rem);
+  width: clamp(2.25rem, 15vw, 5rem);
+  height: clamp(2.25rem, 15vw, 5rem);
   flex: none;
 }
 
 .option-card:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 rgb(from #a98b52 r g b / 0.35);
+}
+
+/*
+  Ordering: the story so far, and the moments still to lay down.
+
+  The row of slots is the whole feedback mechanism, so it is drawn from the
+  first frame with every slot present — filled and empty alike. A row that
+  grew as the child worked would move under their hand and would hide how
+  much story is left. The slot being asked for is the only lit one, in the
+  interaction accent rather than in Halo's warm key: this is the interface
+  asking, not the companion speaking.
+*/
+.step-slot {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  aspect-ratio: 1;
+  max-width: 4.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--color-edge);
+  border-radius: 0.875rem;
+  background: rgb(from var(--color-ground-raised) r g b / 0.6);
+  transition:
+    border-color 260ms ease-out,
+    background-color 260ms ease-out;
+}
+
+.step-slot[aria-current="step"] {
+  border-color: rgb(from var(--color-touchable) r g b / 0.7);
+  background: rgb(from var(--color-ground-lit) r g b / 0.6);
+}
+
+.step-slot.is-filled {
+  border-color: rgb(from var(--color-touchable) r g b / 0.4);
+  background: var(--color-ground-raised);
+}
+
+/* A moment still to be placed. Picture above, words beneath. */
+.step-card {
+  border: 1px solid var(--color-edge);
+  border-radius: 1rem;
+  background: rgb(from var(--color-ground-raised) r g b / 0.85);
+  color: var(--color-ink);
+  transition:
+    transform 120ms ease-out,
+    border-color 160ms ease-out;
+}
+
+.step-card:active {
+  transform: scale(0.98);
+}
+
+/*
+  Square, not a letterbox.
+
+  These are crops of portrait story panels, and the four moments of a chapter
+  are usually the same people in the same room. A shallow band through the
+  middle of each makes three of them look identical; a square keeps enough of
+  the composition — who is holding whom, who is reaching — for the picture to
+  be doing some of the telling rather than leaving it all to the words.
+*/
+.step-art {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+/*
+  Pairing: two halves, and the moment they are joined.
+
+  `is-held` is the one thing the child is carrying, and it is the only place
+  the accent appears while they are choosing — so at any moment exactly one
+  cell is lit and it is the one they picked up. A joined pair keeps its words
+  and loses its edge: it is still there to be read back, and it is plainly no
+  longer part of the work.
+*/
+.pair-cell {
+  border: 1px solid var(--color-edge);
+  border-radius: 0.875rem;
+  background: rgb(from var(--color-ground-raised) r g b / 0.85);
+  color: var(--color-ink);
+  transition:
+    transform 120ms ease-out,
+    border-color 200ms ease-out,
+    background-color 200ms ease-out,
+    opacity 400ms ease-out;
+}
+
+.pair-cell:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.pair-cell.is-held {
+  border-color: var(--color-touchable);
+  background: rgb(from var(--color-ground-lit) r g b / 0.9);
+  box-shadow: 0 0 18px -6px rgb(from var(--color-touchable) r g b / 0.7);
+}
+
+.pair-cell.is-joined {
+  opacity: 0.42;
+  border-color: transparent;
+  background: rgb(from var(--color-ground-raised) r g b / 0.4);
 }
 
 /*

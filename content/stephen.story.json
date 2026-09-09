@@ -1,12 +1,10 @@
 {
   "title": "Stephen",
   "reference": "Acts 6–7",
-
   "cover": {
     "picture": "cover",
     "note": "Stephen mid-smile, carrying a basket of bread. Warm morning light. He should look like someone you would want to sit next to."
   },
-
   "story": [
     {
       "picture": "stephen-serving",
@@ -18,7 +16,11 @@
       "interaction": {
         "type": "reveal",
         "prompt": "Who else is hungry?",
-        "items": ["old-woman", "small-boy", "tired-man"],
+        "items": [
+          "old-woman",
+          "small-boy",
+          "tired-man"
+        ],
         "note": "Discovery — nothing here is wrong and nothing is required. Each tap gives a smile and a small thank-you animation."
       }
     },
@@ -63,28 +65,58 @@
       "note": "The chapter must not end on grief. This card resolves it — kindness continues."
     }
   ],
-
-  "activity": {
-    "type": "sequence",
-    "prompt": "What happened first?",
-    "items": [
-      "stephen-serving",
-      "stephen-teaching",
-      "stephen-looks-up",
-      "friends-remember"
-    ],
-    "hint": "Stephen was helping people at the very beginning."
-  },
-
+  "games": [
+    {
+      "id": "what-happened-first",
+      "title": "What Happened First?",
+      "objective": "Follow the order of Stephen's story, from serving to being remembered.",
+      "note": "Migrated from this chapter's `activity`, which had no name and no objective. The positions are the order it was written in, which is what the old schema treated as the answer.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "What happened first?",
+          "hint": "Stephen was helping people at the very beginning.",
+          "items": [
+            {
+              "picture": "stephen-serving",
+              "position": 1
+            },
+            {
+              "picture": "stephen-teaching",
+              "position": 2
+            },
+            {
+              "picture": "stephen-looks-up",
+              "position": 3
+            },
+            {
+              "picture": "friends-remember",
+              "position": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "quiz": [
     {
       "type": "multiple-choice",
       "prompt": "How did Stephen help people?",
       "hint": "It was something you can eat.",
       "options": [
-        { "picture": "bread-basket", "label": "He shared food", "correct": true },
-        { "picture": "gold-coins", "label": "He gave them gold" },
-        { "picture": "scroll", "label": "He wrote them letters" }
+        {
+          "picture": "bread-basket",
+          "label": "He shared food",
+          "correct": true
+        },
+        {
+          "picture": "gold-coins",
+          "label": "He gave them gold"
+        },
+        {
+          "picture": "scroll",
+          "label": "He wrote them letters"
+        }
       ]
     },
     {
@@ -92,12 +124,18 @@
       "prompt": "What did Stephen pray?",
       "hint": "He was thinking about the people who were unkind.",
       "options": [
-        { "picture": "praying-hands", "label": "Please forgive them", "correct": true },
-        { "picture": "storm-cloud", "label": "Please punish them" }
+        {
+          "picture": "praying-hands",
+          "label": "Please forgive them",
+          "correct": true
+        },
+        {
+          "picture": "storm-cloud",
+          "label": "Please punish them"
+        }
       ]
     }
   ],
-
   "verse": {
     "text": "Be kind to one another, forgiving one another.",
     "reference": "Ephesians 4:32",
@@ -113,7 +151,6 @@
       ]
     }
   },
-
   "celebration": {
     "picture": "celebration",
     "message": "You learned how Stephen stayed kind, even when it was hard."

@@ -99,6 +99,153 @@
       "note": "The chapter lands on the child’s own answer, not on a summary."
     }
   ],
+  "games": [
+    {
+      "id": "who-belongs-in-the-story",
+      "title": "Who Belongs in the Story?",
+      "objective": "Recognise the key people in the story and their roles.",
+      "note": "No artwork: these four are told apart by who they are, not by what they look like, and four portraits would be four drawings doing the work one word already does.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each person with who they are.",
+          "hint": "Simeon is the one who had been waiting a long time.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Mary"
+              },
+              "to": {
+                "label": "Jesus’ mother"
+              }
+            },
+            {
+              "from": {
+                "label": "Joseph"
+              },
+              "to": {
+                "label": "Jesus’ father"
+              }
+            },
+            {
+              "from": {
+                "label": "Simeon"
+              },
+              "to": {
+                "label": "Waited to see the Saviour"
+              }
+            },
+            {
+              "from": {
+                "label": "Baby Jesus"
+              },
+              "to": {
+                "label": "The Saviour God promised"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-happened-first",
+      "title": "What Happened First?",
+      "objective": "Understand the basic sequence of the Bible story.",
+      "featured": true,
+      "note": "The chapter leads with this one. Every step points at a panel the child has already read, so the game is remembering the story rather than reading a new one — and no artwork was drawn twice to make it.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the story back in order.",
+          "hint": "It begins with a journey to the temple.",
+          "items": [
+            {
+              "picture": {
+                "source": "story",
+                "panelId": "panel-04"
+              },
+              "label": "Jesus comes to the temple",
+              "position": 1
+            },
+            {
+              "picture": {
+                "source": "story",
+                "panelId": "panel-06"
+              },
+              "label": "Simeon sees Jesus",
+              "position": 2
+            },
+            {
+              "picture": {
+                "source": "story",
+                "panelId": "panel-08"
+              },
+              "label": "Simeon holds Jesus",
+              "position": 3
+            },
+            {
+              "picture": {
+                "source": "story",
+                "panelId": "panel-09"
+              },
+              "label": "They all praise God",
+              "position": 4,
+              "note": "Panel 8 already shows Simeon praising, so the fourth beat is the praise spreading to everyone else — which is what panel 9 actually draws."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-did-simeon-know",
+      "title": "What Did Simeon Know?",
+      "objective": "Remember that Simeon recognised Jesus as the promised Saviour.",
+      "note": "Two questions, because the objective is about recognising the promise and the first question only reaches who. The option pictures are the ones the story's own question already uses.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who was Simeon waiting to see?",
+          "hint": "God promised him he would see the Saviour.",
+          "options": [
+            {
+              "picture": "option-soldier",
+              "label": "A soldier"
+            },
+            {
+              "picture": "option-king",
+              "label": "A king"
+            },
+            {
+              "picture": "option-baby-jesus",
+              "label": "Jesus",
+              "correct": true
+            },
+            {
+              "picture": "option-priest",
+              "label": "A priest"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Why was Simeon so happy?",
+          "hint": "He had waited his whole life for one promise.",
+          "options": [
+            {
+              "label": "He saw the promised Saviour",
+              "correct": true
+            },
+            {
+              "label": "He was given a gift"
+            },
+            {
+              "label": "He was going home"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "quiz": [
     {
       "type": "multiple-choice",

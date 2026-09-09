@@ -17,11 +17,19 @@ export default function SectionScreen({
   title,
   chapterTitle,
   hubHref,
+  onward,
   children,
 }: {
   title: string;
   chapterTitle: string;
   hubHref: string;
+  /**
+   * What the way onward is called, when the place above this screen is not
+   * the Chapter Hub. A screen one level deeper than a section — a single
+   * game, chosen off the games shelf — goes back to the shelf, and a button
+   * that says "Chapter menu" and does not go there is a small lie.
+   */
+  onward?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -40,7 +48,7 @@ export default function SectionScreen({
           href={hubHref}
           className="cta min-h-16 px-6 text-xl"
         >
-          Chapter menu
+          {onward ?? "Chapter menu"}
         </Link>
       </div>
     </div>

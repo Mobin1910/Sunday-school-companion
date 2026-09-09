@@ -1,4 +1,5 @@
-import type { Chapter, Interaction, Item } from "./schema";
+import { assetName } from "./art";
+import type { AssetReference, Chapter, Interaction, Item } from "./schema";
 
 /**
  * The runtime shape of a chapter: one flat, ordered list of cards.
@@ -40,7 +41,16 @@ export type PlayInteraction =
       pairs: { from: PlayItem; to: PlayItem }[];
       hint?: string;
     }
-  | { type: "sequence"; prompt: string; items: PlayItem[]; hint?: string }
+  /**
+   * Ordering. Each step carries where it goes, so the array this arrives in
+   * is only a list — never the answer. See `sequence` in the schema.
+   */
+  | {
+      type: "sequence";
+      prompt: string;
+      items: (PlayItem & { position: number })[];
+      hint?: string;
+    }
   | { type: "arrange-words"; prompt: string; words: string[]; hint?: string }
   | { type: "reveal"; prompt?: string; items: PlayItem[] };
 
@@ -53,7 +63,19 @@ export type Card =
       alt?: string;
       interaction?: PlayInteraction;
     }
-  | { kind: "activity"; interaction: PlayInteraction }
+  /**
+   * A game: an interaction a child chose to play, rather than one the story
+   * put in front of them. It carries its own name and its own point — see
+   * `game` in the schema for why the objective is not optional.
+   */
+  | {
+      kind: "game";
+      id: string;
+      title: string;
+      objective: string;
+      interactions: PlayInteraction[];
+      featured?: true;
+    }
   | { kind: "quiz"; interaction: PlayInteraction }
   | {
       kind: "verse";
@@ -76,11 +98,17 @@ export type Card =
     }
   | { kind: "celebration"; message: string; art?: Art };
 
-type Resolve = (name: string) => string | null;
+type Resolve = (ref: AssetReference) => string | null;
 
-const toArt = (name: string, resolve: Resolve): Art => ({
-  name,
-  src: resolve(name),
+const toArt = (ref: AssetReference, resolve: Resolve): Art => ({
+  name: assetName(ref),
+  src: resolve(ref),
+});
+
+/** Cover, story and celebration pictures are story panels, always. */
+const panel = (name: string): AssetReference => ({
+  source: "story",
+  panelId: name,
 });
 
 function toItem(item: Item, resolve: Resolve): PlayItem {
@@ -124,7 +152,12 @@ function toInteraction(
       return {
         type: "sequence",
         prompt: interaction.prompt,
-        items: interaction.items.map(item),
+        // The step keeps the position it was written with. Nothing here
+        // sorts, and nothing downstream may read the array order as meaning.
+        items: interaction.items.map((step) => ({
+          ...item(step),
+          position: step.position,
+        })),
         ...(interaction.hint !== undefined && { hint: interaction.hint }),
       };
 
@@ -151,13 +184,13 @@ function toInteraction(
  */
 export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
   const cards: Card[] = [
-    { kind: "cover", art: toArt(chapter.cover.picture, resolve) },
+    { kind: "cover", art: toArt(panel(chapter.cover.picture), resolve) },
   ];
 
   for (const card of chapter.story) {
     cards.push({
       kind: "story",
-      art: toArt(card.picture, resolve),
+      art: toArt(panel(card.picture), resolve),
       ...(card.text !== undefined && { text: card.text }),
       ...(card.alt !== undefined && { alt: card.alt }),
       ...(card.interaction !== undefined && {
@@ -166,10 +199,14 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
     });
   }
 
-  if (chapter.activity) {
+  for (const game of chapter.games ?? []) {
     cards.push({
-      kind: "activity",
-      interaction: toInteraction(chapter.activity, resolve),
+      kind: "game",
+      id: game.id,
+      title: game.title,
+      objective: game.objective,
+      interactions: game.interactions.map((i) => toInteraction(i, resolve)),
+      ...(game.featured !== undefined && { featured: game.featured }),
     });
   }
 
@@ -210,7 +247,7 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
         description: chapter.video.description,
       }),
       ...(chapter.video.picture !== undefined && {
-        art: toArt(chapter.video.picture, resolve),
+        art: toArt(panel(chapter.video.picture), resolve),
       }),
     });
   }
@@ -219,7 +256,7 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
     kind: "celebration",
     message: chapter.celebration.message,
     ...(chapter.celebration.picture !== undefined && {
-      art: toArt(chapter.celebration.picture, resolve),
+      art: toArt(panel(chapter.celebration.picture), resolve),
     }),
   });
 

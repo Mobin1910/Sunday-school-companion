@@ -14,29 +14,57 @@ import { z } from "zod";
 /** Any object in a chapter file may carry a note. The app ignores it entirely. */
 const note = z.string().optional();
 
+/**
+ * Where a picture comes from.
+ *
+ * A chapter has two kinds of artwork and they are not the same thing. Story
+ * panels are the chapter — drawn once, read in order, and freely reused by
+ * anything that wants to point back at a moment in the story. Game artwork
+ * is drawn for one game and means nothing outside it. Keeping them apart in
+ * the content means keeping them apart on disk, which is what stops a games
+ * folder slowly filling with copies of panels that already existed.
+ *
+ * A bare string is the shorthand every chapter already writes, and it means
+ * a story panel of this chapter. It is normalised here, so nothing
+ * downstream ever has to think about the shorthand again.
+ */
+export type AssetReference =
+  | { source: "story"; panelId: string }
+  | { source: "game"; path: string };
+
+const assetReference = z
+  .union([
+    z.string().min(1),
+    z.strictObject({ source: z.literal("story"), panelId: z.string().min(1) }),
+    z.strictObject({ source: z.literal("game"), path: z.string().min(1) }),
+  ])
+  .transform((value): AssetReference =>
+    typeof value === "string" ? { source: "story", panelId: value } : value,
+  );
+
 export type Item = {
-  picture?: string;
+  picture?: AssetReference;
   label?: string;
   correct?: true;
   note?: string;
 };
 
 /**
- * A bare string means "the picture with this name". Normalised here so that
- * nothing downstream ever has to think about the shorthand again.
+ * A bare string means "the story panel with this name". Normalised here so
+ * that nothing downstream ever has to think about the shorthand again.
  */
 const item = z
   .union([
     z.string(),
     z.strictObject({
-      picture: z.string().optional(),
+      picture: assetReference.optional(),
       label: z.string().optional(),
       correct: z.literal(true).optional(),
       note,
     }),
   ])
   .transform((value): Item =>
-    typeof value === "string" ? { picture: value } : value,
+    typeof value === "string" ? { picture: { source: "story", panelId: value } } : value,
   )
   .refine((value) => value.picture !== undefined || value.label !== undefined, {
     message: "an item needs a picture or a label",
@@ -63,28 +91,81 @@ const multipleChoice = z
       one option is not a question.
     */
     options: z.array(item).min(2).max(4),
-    picture: z.string().optional(),
+    picture: assetReference.optional(),
     note,
   })
   .refine((i) => i.options.filter((o) => o.correct).length === 1, {
     message: "needs exactly one option marked correct",
   });
 
+/**
+ * Pairing.
+ *
+ * The answer key is the shape: `from` and `to` sit inside one object, so a
+ * thing and its partner are the same row of the file and cannot drift apart.
+ * That is stronger than naming each side and pointing one at the other by
+ * id — there is no id to mistype and no dangling reference to validate,
+ * because an unpaired half cannot be written down in the first place.
+ * Shuffling reorders the rows and each side independently; the binding is
+ * untouched by any of it.
+ */
 const match = z.strictObject({
   type: z.literal("match"),
   prompt: z.string(),
-  pairs: z.array(z.strictObject({ from: item, to: item, note })).min(2),
+  pairs: z.array(z.strictObject({ from: item, to: item, note })).min(2).max(4),
   hint: z.string().optional(),
   note,
 });
 
-const sequence = z.strictObject({
-  type: z.literal("sequence"),
-  prompt: z.string(),
-  items: z.array(item).min(3),
-  hint: z.string().optional(),
-  note,
-});
+/**
+ * Ordering, with the order stated rather than implied.
+ *
+ * This is the one interaction where the note above does not hold, and it is
+ * worth saying why. Selection carries `correct` on the option and Pairing
+ * binds `from` to `to` inside one object: in both, the answer travels with
+ * the thing it belongs to and survives any amount of shuffling or
+ * re-editing. Ordering had no such anchor — the answer was the order the
+ * items happened to be written in, so tidying the file, sorting it, or
+ * moving one line for readability silently changed what was correct.
+ *
+ * So each step says where it goes. `position` is 1-based because it is read
+ * by people, and the positions must be exactly 1..n with none missing and
+ * none repeated — checked below, so a sequence cannot be half-numbered.
+ */
+const sequence = z
+  .strictObject({
+    type: z.literal("sequence"),
+    prompt: z.string(),
+    items: z
+      .array(
+        z
+          .strictObject({
+            picture: assetReference.optional(),
+            label: z.string().optional(),
+            position: z.number().int().min(1),
+            note,
+          })
+          .refine((i) => i.picture !== undefined || i.label !== undefined, {
+            message: "a step needs a picture or a label",
+          }),
+      )
+      .min(3),
+    hint: z.string().optional(),
+    note,
+  })
+  .refine(
+    (i) => {
+      const seen = new Set(i.items.map((step) => step.position));
+      return (
+        seen.size === i.items.length &&
+        [...seen].every((p) => p >= 1 && p <= i.items.length)
+      );
+    },
+    {
+      message:
+        "positions must be exactly 1..n — each step numbered once, none missing, none repeated",
+    },
+  );
 
 const arrangeWords = z.strictObject({
   type: z.literal("arrange-words"),
@@ -119,6 +200,57 @@ export const interactionSchema = z.discriminatedUnion("type", [
 ]);
 
 export type Interaction = z.infer<typeof interactionSchema>;
+
+/**
+ * A game: one interaction, with the things a child and a teacher need in
+ * order to know what it is.
+ *
+ * A chapter used to carry a single bare `activity` — an interaction with no
+ * name and nothing said about why it existed. That was fine while there was
+ * one and it lived behind a door labelled "Games", and it stops being fine
+ * the moment a chapter has three and a child has to choose between them.
+ *
+ * `objective` is required, and it is the reason this shape exists at all. It
+ * is what the teacher's brief actually contains — a learning objective and a
+ * suggested approach — so it is the one thing that must survive the journey
+ * from the sheet into the repository. A game nobody can say the point of is
+ * a game that should not have been written.
+ *
+ * `id` is the game's address: it names the file it was written in, the route
+ * a child plays it at, and nothing else. It is deliberately not a number,
+ * because numbers imply an order and these can be played in any.
+ */
+const game = z.strictObject({
+  id: z
+    .string()
+    .regex(
+      /^[a-z0-9]+(-[a-z0-9]+)*$/,
+      "must be lower-case words joined by hyphens — it becomes part of a URL",
+    ),
+  title: z.string().min(1),
+  objective: z.string().min(1),
+  /*
+    A game is one or more questions, played in the order they are written.
+    Most are one. Where a second genuinely asks something the first does not
+    — the *why* behind a *who*, say — it belongs to the same game rather than
+    to a second one with its own name and its own objective.
+  */
+  interactions: z.array(interactionSchema).min(1),
+
+  /*
+    The one the chapter leads with, drawn larger on the shelf. It is a
+    property of the game rather than of its position in the list, because
+    the order these are written in is the order they read best in, and that
+    is not always the one worth starting with. At most one per chapter.
+
+    It is emphasis and never a ranking: nothing is locked, nothing is
+    ordered, and a child who plays the last one first has lost nothing.
+  */
+  featured: z.literal(true).optional(),
+  note,
+});
+
+export type Game = z.infer<typeof game>;
 
 /* Chapter sections */
 
@@ -182,7 +314,27 @@ export const chapterSchema = z.strictObject({
   // rather than by a rule someone has to remember.
   cover: z.strictObject({ picture: z.string(), note }),
   story: z.array(storyCard).min(1),
-  activity: interactionSchema.optional(),
+
+  /*
+    A chapter's games, each named and each with its point written down. Ids
+    must be unique inside a chapter, because an id is a route.
+  */
+  games: z
+    .array(game)
+    .min(1)
+    .optional()
+    .refine(
+      (games) =>
+        games === undefined ||
+        new Set(games.map((g) => g.id)).size === games.length,
+      { message: "two games share an id, and an id is a route" },
+    )
+    .refine(
+      (games) =>
+        games === undefined || games.filter((g) => g.featured).length <= 1,
+      { message: "only one game can be the one a chapter leads with" },
+    ),
+
   quiz: z.array(interactionSchema).min(1).optional(),
   verse: verse.optional(),
 

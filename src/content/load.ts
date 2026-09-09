@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { resolvePicture } from "./art";
+import { resolveAsset } from "./art";
 import { toCards, type Card } from "./cards";
 import { chapterSchema, librarySchema } from "./schema";
 
@@ -79,7 +79,7 @@ export function loadChapters(): LoadedChapter[] {
       file,
       title: parsed.data.title,
       reference: parsed.data.reference,
-      cards: toCards(parsed.data, (picture) => resolvePicture(slug, picture)),
+      cards: toCards(parsed.data, (ref) => resolveAsset(slug, ref)),
       shipping: shipping.has(slug),
     };
   });

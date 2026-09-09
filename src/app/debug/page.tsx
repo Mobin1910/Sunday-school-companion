@@ -14,7 +14,10 @@ function summarise(card: Card): string {
       return card.art.name;
     case "story":
       return card.text ?? `(wordless) ${card.art.name}`;
-    case "activity":
+    case "game":
+      return card.interactions
+        .map((i) => `${i.type} — ${i.prompt ?? "no prompt"}`)
+        .join(" · ");
     case "quiz":
     case "practice":
       return `${card.interaction.type} — ${card.interaction.prompt ?? "no prompt"}`;

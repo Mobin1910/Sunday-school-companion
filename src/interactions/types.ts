@@ -24,3 +24,7 @@ export type MultipleChoice = Extract<
   PlayInteraction,
   { type: "multiple-choice" }
 >;
+
+export type Ordering = Extract<PlayInteraction, { type: "sequence" }>;
+
+export type Pairing = Extract<PlayInteraction, { type: "match" }>;

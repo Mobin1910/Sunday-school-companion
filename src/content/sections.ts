@@ -17,7 +17,7 @@ import type { LoadedChapter } from "./load";
 
 export type CoverCard = Extract<Card, { kind: "cover" }>;
 export type VerseCard = Extract<Card, { kind: "verse" }>;
-export type ActivityCard = Extract<Card, { kind: "activity" }>;
+export type GameCard = Extract<Card, { kind: "game" }>;
 export type PracticeCard = Extract<Card, { kind: "practice" }>;
 export type VideoCard = Extract<Card, { kind: "video" }>;
 
@@ -37,10 +37,24 @@ export function verseOf(chapter: LoadedChapter): VerseCard | undefined {
   return chapter.cards.find((card): card is VerseCard => card.kind === "verse");
 }
 
-export function activityOf(chapter: LoadedChapter): ActivityCard | undefined {
-  return chapter.cards.find(
-    (card): card is ActivityCard => card.kind === "activity",
-  );
+/**
+ * A chapter's games, in the order they were written.
+ *
+ * Plural, and a list even when there is one, because the Hub and the Games
+ * section both have to cope with none, one and several without three
+ * different shapes. Authored order is presentation order — the first game is
+ * the one the chapter leads with — and it is never an order a child has to
+ * play them in.
+ */
+export function gamesOf(chapter: LoadedChapter): GameCard[] {
+  return chapter.cards.filter((card): card is GameCard => card.kind === "game");
+}
+
+export function gameOf(
+  chapter: LoadedChapter,
+  id: string,
+): GameCard | undefined {
+  return gamesOf(chapter).find((game) => game.id === id);
 }
 
 /** The drill that follows the verse, where one was written. */

@@ -51,7 +51,7 @@ export function eligibleForPlay(interaction: PlayInteraction): boolean {
  * game. That is why the two streaks can be honest about being different
  * things — they are fed by different kinds of content, decided here once.
  */
-const GAME_KINDS = new Set<Card["kind"]>(["story", "activity", "quiz"]);
+const GAME_KINDS = new Set<Card["kind"]>(["story", "game", "quiz"]);
 const VERSE_KINDS = new Set<Card["kind"]>(["practice"]);
 
 /** Every interaction a card can carry, wherever it lives on that card. */
@@ -59,7 +59,8 @@ function interactionsOf(card: Card): PlayInteraction[] {
   switch (card.kind) {
     case "story":
       return card.interaction ? [card.interaction] : [];
-    case "activity":
+    case "game":
+      return card.interactions;
     case "quiz":
     case "practice":
       return [card.interaction];

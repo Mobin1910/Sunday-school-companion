@@ -5,7 +5,7 @@ import HaloPresence from "@/halo/HaloPresence";
 import Picture from "@/components/Picture";
 import BackLink from "@/components/chapter/BackLink";
 import {
-  activityOf,
+  gamesOf,
   coverOf,
   getChapters,
   storyCards,
@@ -66,10 +66,10 @@ export default async function ChapterHubPage({
     {
       key: "games",
       label: "Games",
-      blurb: "Play with the story",
+      blurb: playWith(gamesOf(chapter).length),
       href: `/chapter/${slug}/games`,
       icon: SparkIcon,
-      present: activityOf(chapter) !== undefined,
+      present: gamesOf(chapter).length > 0,
     },
     {
       key: "verse",
@@ -191,4 +191,16 @@ function ChevronRight() {
       <path d="M9 6l6 6-6 6" />
     </svg>
   );
+}
+
+/**
+ * What the Games door says it holds.
+ *
+ * A count rather than a fixed line, because "Play with the story" beside one
+ * game and beside three says the same thing about two different rooms. It
+ * counts games and never anything a child did — there is nothing here about
+ * how many were finished, and there never will be.
+ */
+function playWith(count: number): string {
+  return count === 1 ? "One way to play" : `${count} ways to play`;
 }

@@ -48,6 +48,21 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
   }
 }
 
+/** Every interaction a card carries, however many that is. */
+function interactionsOf(card: Card): PlayInteraction[] {
+  switch (card.kind) {
+    case "story":
+      return card.interaction ? [card.interaction] : [];
+    case "game":
+      return card.interactions;
+    case "quiz":
+    case "practice":
+      return [card.interaction];
+    default:
+      return [];
+  }
+}
+
 function artOf(card: Card): Art[] {
   const fromInteraction = (interaction: PlayInteraction): Art[] => [
     ...("art" in interaction && interaction.art ? [interaction.art] : []),
@@ -64,10 +79,10 @@ function artOf(card: Card): Art[] {
         card.art,
         ...(card.interaction ? fromInteraction(card.interaction) : []),
       ];
-    case "activity":
+    case "game":
     case "quiz":
     case "practice":
-      return fromInteraction(card.interaction);
+      return interactionsOf(card).flatMap(fromInteraction);
     case "verse":
       return [];
     case "video":
@@ -116,9 +131,7 @@ function copyAdvisories(cards: Card[]): { where: string; message: string }[] {
       tooLong(at, card.message, LIMITS.celebrationWords, "celebration");
     }
 
-    const interaction = "interaction" in card ? card.interaction : undefined;
-
-    if (interaction) {
+    for (const interaction of interactionsOf(card)) {
       if (interaction.prompt) {
         tooLong(at, interaction.prompt, LIMITS.promptWords, "prompt");
       }

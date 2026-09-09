@@ -1,6 +1,8 @@
 import type { PlayInteraction } from "@/content";
 
+import Pairing from "./pairing/Pairing";
 import Selection from "./selection/Selection";
+import Sequence from "./sequence/Sequence";
 import type { ModelProps } from "./types";
 
 /**
@@ -12,7 +14,11 @@ import type { ModelProps } from "./types";
  * disagree — adding a model means editing this file once.
  */
 export function canPlay(interaction: PlayInteraction): boolean {
-  return interaction.type === "multiple-choice";
+  return (
+    interaction.type === "multiple-choice" ||
+    interaction.type === "match" ||
+    interaction.type === "sequence"
+  );
 }
 
 /**
@@ -22,7 +28,7 @@ export function canPlay(interaction: PlayInteraction): boolean {
  * type as it goes — each model receives exactly the shape it handles, checked
  * by the compiler rather than asserted.
  *
- * Version 1 builds five presentations. This is the first.
+ * Version 1 builds five presentations. Three of them are here.
  */
 export function renderModel(props: ModelProps) {
   const { interaction } = props;
@@ -31,9 +37,15 @@ export function renderModel(props: ModelProps) {
     case "multiple-choice":
       return <Selection {...props} interaction={interaction} />;
 
-    // Not built yet: match, sequence, arrange-words and reveal arrive in
-    // Milestones 5 to 7. Cards carrying them are not shown to a child until
-    // then, so this is unreachable rather than a silent gap.
+    case "match":
+      return <Pairing {...props} interaction={interaction} />;
+
+    case "sequence":
+      return <Sequence {...props} interaction={interaction} />;
+
+    // Not built yet: arrange-words and reveal. Cards carrying them are not
+    // shown to a child until then, so this is unreachable rather than a
+    // silent gap.
     default:
       return null;
   }
