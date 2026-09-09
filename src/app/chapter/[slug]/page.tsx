@@ -88,8 +88,12 @@ export default async function ChapterHubPage({
 
         <header className="flex flex-col items-center gap-5 text-center">
           {cover ? (
-            <div className="w-full max-w-xs">
-              <Picture art={cover.art} alt={chapter.title} />
+            <div className="flex w-full max-w-xs justify-center">
+              <Picture
+                art={cover.art}
+                alt={chapter.title}
+                className="hub-cover rounded-card object-cover"
+              />
             </div>
           ) : null}
 
@@ -113,23 +117,40 @@ export default async function ChapterHubPage({
           </div>
         </header>
 
-        <ul className="flex flex-col gap-3">
+        {/*
+          Two across, so a chapter's ways in are all on one screen.
+
+          They were a column, which is the right shape for a list that grows
+          — and this one does not. A chapter has these four parts and will
+          have these four parts, so the argument for a column ("the fifth is
+          a new row, not a redesign") was never going to be tested, while the
+          cost was real: the fourth door sat under the fold on an ordinary
+          phone, and the one a child is least likely to think of on their own
+          was the one they had to go looking for.
+
+          Stacked rather than side by side inside each tile, because at half
+          the width there is no room for an icon, two lines of words and a
+          chevron in a row. The chevron goes: on a grid of four squares
+          nothing is pointing anywhere, and the whole tile was always the
+          target.
+        */}
+        <ul className="grid grid-cols-2 gap-3">
           {sections.map(({ key, label, blurb, href, icon: Icon }) => (
             <li key={key}>
               <Link
                 href={href}
-                className="surface flex min-h-20 items-center gap-4 px-5 py-4"
+                className="surface flex h-full flex-col items-center gap-2 px-3 py-4 text-center"
               >
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ground/70 text-touchable ring-1 ring-edge">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ground/70 text-touchable ring-1 ring-edge">
                   <Icon />
                 </span>
 
-                <span className="min-w-0 flex-1">
-                  <span className="block text-2xl leading-snug">{label}</span>
-                  <span className="block text-base text-ink-soft">{blurb}</span>
+                <span className="min-w-0">
+                  <span className="block text-xl leading-snug">{label}</span>
+                  <span className="block text-sm leading-snug text-ink-soft text-balance">
+                    {blurb}
+                  </span>
                 </span>
-
-                <ChevronRight />
               </Link>
             </li>
           ))}
@@ -181,14 +202,6 @@ function HeartIcon() {
   return (
     <svg {...iconProps}>
       <path d="M12 19.5S4.5 15 4.5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7.5 1.8c0 5.2-7.5 9.7-7.5 9.7z" />
-    </svg>
-  );
-}
-
-function ChevronRight() {
-  return (
-    <svg {...iconProps} width={22} height={22} className="text-ink-soft">
-      <path d="M9 6l6 6-6 6" />
     </svg>
   );
 }

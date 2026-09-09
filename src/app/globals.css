@@ -708,6 +708,21 @@ body {
 }
 
 /*
+  The chapter's own picture, on the Hub.
+
+  It is the first thing a child sees and it is not the thing they came for,
+  so it gives up height before the doors below it do. Capped against the
+  viewport rather than set in pixels: on a tall phone it is as big as it
+  ever was, and on a short one it shrinks so that the fourth way into the
+  chapter stays above the fold. The aspect is fixed, so the width follows.
+*/
+.hub-cover {
+  aspect-ratio: 4 / 3;
+  max-height: clamp(7rem, 23vh, 15rem);
+  max-width: 100%;
+}
+
+/*
   A screen held to exactly one fold.
 
   Only where a fold is actually big enough to hold one. Below that the page

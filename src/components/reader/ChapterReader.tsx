@@ -660,24 +660,17 @@ export default function ChapterReader({
 
         {onLastPage ? (
           <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
-        ) : (
-          <nav className="flex items-end justify-between px-6 pt-2 pb-8">
-            <div className="flex items-end gap-3">
-              <PageCount index={index} total={pages.length} />
+        ) : onFirstPage ? (
+          /*
+            The cover has one bright thing on it, and it is the way in.
 
-              {/* Hidden rather than disabled on the first page. A child should
-                  never be shown something they are not allowed to press. */}
-              {onFirstPage ? null : (
-                <button
-                  type="button"
-                  onClick={() => goTo(targetIndex.current - 1)}
-                  aria-label="Go back"
-                  className="btn-quiet mb-1 size-11 text-ink-soft transition-transform duration-150 active:scale-95"
-                >
-                  <ArrowLeft small />
-                </button>
-              )}
-            </div>
+            A colour that appears once means something; a colour on every page
+            is wallpaper. So the lit button lives here and nowhere else, where
+            a child arriving at a chapter has exactly one obvious thing to do
+            and no way back to want yet.
+          */
+          <nav className="flex items-end justify-between px-6 pt-2 pb-8">
+            <PageCount index={index} total={pages.length} />
 
             <RoundButton
               onClick={() => goTo(targetIndex.current + 1)}
@@ -686,6 +679,47 @@ export default function ChapterReader({
             >
               <ArrowRight small />
             </RoundButton>
+          </nav>
+        ) : (
+          /*
+            Inside the story: back, where you are, forward.
+
+            Both directions are drawn the same, because by now they are the
+            same kind of thing — the child is reading, and going back a page
+            is as ordinary as going on. Making one of them glow would be the
+            app leaning on them to keep moving, over artwork it is also
+            asking them to look at.
+
+            The count moves to the middle for the same reason: it is not a
+            score, it is where you are, and the middle of the row is where a
+            position belongs when there is a direction on either side of it.
+          */
+          <nav className="grid grid-cols-3 items-center px-6 pt-2 pb-8">
+            <div className="justify-self-start">
+              <RoundButton
+                quiet
+                onClick={() => goTo(targetIndex.current - 1)}
+                label="Go back a page"
+                caption="Back"
+              >
+                <ArrowLeft small />
+              </RoundButton>
+            </div>
+
+            <div className="justify-self-center">
+              <PageCount index={index} total={pages.length} />
+            </div>
+
+            <div className="justify-self-end">
+              <RoundButton
+                quiet
+                onClick={() => goTo(targetIndex.current + 1)}
+                label="Next page"
+                caption="Next"
+              >
+                <ArrowRight small />
+              </RoundButton>
+            </div>
           </nav>
         )}
       </div>
