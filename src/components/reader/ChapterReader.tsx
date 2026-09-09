@@ -660,42 +660,27 @@ export default function ChapterReader({
 
         {onLastPage ? (
           <ChapterEnd hubHref={hubHref} {...(nextChapterHref ? { nextChapterHref } : {})} />
-        ) : onFirstPage ? (
-          /*
-            The cover has one bright thing on it, and it is the way in.
-
-            A colour that appears once means something; a colour on every page
-            is wallpaper. So the lit button lives here and nowhere else, where
-            a child arriving at a chapter has exactly one obvious thing to do
-            and no way back to want yet.
-          */
-          <nav className="flex items-end justify-between px-6 pt-2 pb-8">
-            <PageCount index={index} total={pages.length} />
-
-            <RoundButton
-              onClick={() => goTo(targetIndex.current + 1)}
-              label="Next page"
-              caption="Next"
-            >
-              <ArrowRight small />
-            </RoundButton>
-          </nav>
         ) : (
           /*
-            Inside the story: back, where you are, forward.
+            Back, where you are, forward — one layout for every page.
 
-            Both directions are drawn the same, because by now they are the
-            same kind of thing — the child is reading, and going back a page
-            is as ordinary as going on. Making one of them glow would be the
-            app leaning on them to keep moving, over artwork it is also
-            asking them to look at.
+            The columns are sized to their contents at the ends and to
+            whatever is left in the middle, because the middle is the row of
+            pages and it wants the room. Equal thirds gave it a hundred
+            pixels to fit nineteen marks into, which is a row of hairlines.
 
-            The count moves to the middle for the same reason: it is not a
-            score, it is where you are, and the middle of the row is where a
-            position belongs when there is a direction on either side of it.
+            On the cover the way back is an empty space rather than a hidden
+            button, so the row does not jump the first time a child turns a
+            page. And the cover keeps the one lit button in the chapter: a
+            colour that appears once means something, and the same colour on
+            all nineteen pages is wallpaper. Inside the story both directions
+            are drawn alike, because by then going back is as ordinary as
+            going on.
           */
-          <nav className="grid grid-cols-3 items-center px-6 pt-2 pb-8">
-            <div className="justify-self-start">
+          <nav className="grid grid-cols-[auto_1fr_auto] items-center gap-2 px-5 pt-2 pb-8">
+            {onFirstPage ? (
+              <span className="size-16" aria-hidden />
+            ) : (
               <RoundButton
                 quiet
                 onClick={() => goTo(targetIndex.current - 1)}
@@ -704,22 +689,18 @@ export default function ChapterReader({
               >
                 <ArrowLeft small />
               </RoundButton>
-            </div>
+            )}
 
-            <div className="justify-self-center">
-              <PageCount index={index} total={pages.length} />
-            </div>
+            <PageTrack index={index} total={pages.length} />
 
-            <div className="justify-self-end">
-              <RoundButton
-                quiet
-                onClick={() => goTo(targetIndex.current + 1)}
-                label="Next page"
-                caption="Next"
-              >
-                <ArrowRight small />
-              </RoundButton>
-            </div>
+            <RoundButton
+              onClick={() => goTo(targetIndex.current + 1)}
+              label="Next page"
+              caption="Next"
+              quiet={!onFirstPage}
+            >
+              <ArrowRight small />
+            </RoundButton>
           </nav>
         )}
       </div>
@@ -812,26 +793,46 @@ function ChapterEnd({
 /**
  * Where the child is in the chapter.
  *
- * A counter rather than a row of dots, because a chapter's pages are now
- * worth naming: "01 / 11" says both where you are and how much is left, in
- * the space a dozen dots used to take, and it stays readable at eleven pages
- * or thirty. The page you are on is in full ink and the total is quieter —
- * this is a position, not a score, and nothing is being measured.
+ * This was "13 / 19" for a while, and before that a row of dots. The counter
+ * was chosen over the dots on the grounds that it stays readable at thirty
+ * pages, which is true and turned out to be beside the point: the reader is
+ * for six-year-olds, and a fraction is the one notation in the product that
+ * a child who cannot yet read numbers well gets nothing at all from. It says
+ * where you are only if you can already do the arithmetic to care.
+ *
+ * A row of pages says it without being read. You can see how many there are,
+ * which ones you have been through, and — the part a number never managed —
+ * that they are laid out in a line and go that way. That is the thing the
+ * screen most needed to say and had been saying only in words, once, in a
+ * hint that disappears after the first turn.
+ *
+ * These are marks and not buttons. Nineteen targets four pixels wide would be
+ * a row of things to miss, and jumping to page fourteen is not something a
+ * story wants offered anyway — you read a chapter, you do not index it.
+ *
+ * The one you are on is wider rather than merely brighter, so it survives
+ * being looked at on a bright panel by someone not looking carefully, and so
+ * the row reads as a position rather than as a progress bar filling up. What
+ * is behind you stays lit, quietly: it is a trail, and a trail is a nicer
+ * thing to be shown than a percentage.
  *
  * Hidden from assistive technology: the live region below the stage already
  * says "Page 3 of 11" in words, and saying it twice is worse than once.
  */
-function PageCount({ index, total }: { index: number; total: number }) {
+function PageTrack({ index, total }: { index: number; total: number }) {
   return (
-    <p className="flex items-baseline gap-1 leading-none" aria-hidden>
-      <span className="text-2xl text-ink">{pad(index + 1)}</span>
-      <span className="text-[1.75rem] text-ink-soft">/</span>
-      <span className="text-base text-ink-soft">{pad(total)}</span>
+    <p className="page-track" aria-hidden>
+      {Array.from({ length: total }, (_, page) => (
+        <span
+          key={page}
+          className={
+            page === index ? "is-here" : page < index ? "is-behind" : ""
+          }
+        />
+      ))}
     </p>
   );
 }
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 function RoundButton({
   onClick,

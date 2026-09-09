@@ -708,6 +708,55 @@ body {
 }
 
 /*
+  The chapter, as a row of pages.
+
+  One mark per page, laid out the way the pages are: in a line, going that
+  way. It is the only part of the reader that says "there is more of this
+  and it goes sideways" without a word, and it says it on every page rather
+  than once in a hint that vanishes after the first turn.
+
+  The marks share the width rather than each taking a fixed slice, so a
+  chapter of thirty is a tighter row and not an overflowing one. The one you
+  are on is wider, not just brighter — width survives a glance and a bright
+  panel behind it, and it keeps the row reading as a position rather than as
+  a bar filling up.
+
+  The transition is on the width, which is what makes a turn look like a
+  step along the row rather than a redraw of it.
+*/
+.page-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 1.5rem;
+}
+
+.page-track span {
+  flex: 1 1 0;
+  max-width: 0.5rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: rgb(from var(--color-edge) r g b / 0.9);
+  transition:
+    flex-grow 320ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    max-width 320ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    background-color 320ms ease-out;
+}
+
+/* Behind you: a trail, not a score. */
+.page-track .is-behind {
+  background: rgb(from var(--color-touchable) r g b / 0.5);
+}
+
+.page-track .is-here {
+  flex-grow: 3;
+  max-width: 1.25rem;
+  background: var(--color-touchable);
+  box-shadow: 0 0 10px -2px rgb(from var(--color-touchable) r g b / 0.8);
+}
+
+/*
   The chapter's own picture, on the Hub.
 
   It is the first thing a child sees and it is not the thing they came for,
