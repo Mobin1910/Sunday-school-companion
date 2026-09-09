@@ -1548,22 +1548,7 @@ body {
     stay on the compositor.
   */
   animation: halo-blink 8300ms ease-in-out infinite;
-  /*
-    A saccade, not a glide.
-
-    This used to move the eyes to a new gaze over the same duration the body
-    takes to change shape — half a second of smooth travel — and that is the
-    single thing that made Halo read as floating rather than looking. Real
-    eyes do not travel. They jump, in well under a tenth of a second, and
-    then hold; the only time they move smoothly is when they are following
-    something that is itself moving, which nothing here is.
-
-    So the eyes snap and the body still morphs slowly behind them. That
-    mismatch is not a mistake — eyes arrive somewhere before the head does,
-    and doing it in the right order is most of what makes a face look like
-    it noticed something rather than drifted towards it.
-  */
-  transition: transform 110ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  transition: transform var(--halo-transition) cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 
 /*
@@ -1597,140 +1582,74 @@ body {
   }
 }
 
-/*
-  What the eyes do while they are looking at something.
-
-  Two motions at once, on two properties so they compose instead of
-  overwriting each other:
-
-    translate — micro-saccades. Tiny flicks, held. Even a fixed gaze is not
-                still; an eye locked on one point still jumps a fraction of
-                a degree every second or so, and a face without that reads
-                as a photograph of a face.
-    transform — the drift. A slow wandering underneath, of about half the
-                size, which is what the eye does *between* flicks as it
-                fails to hold perfectly still.
-
-  Together they are how a real eye rests. Neither alone is: drift on its own
-  is the floating this replaced, and flicks on their own are a twitch.
-
-  This runs in every state. It used to be an ease-in-out sine, which is a
-  motion nothing alive makes.
-
-  The amplitudes are fractions of Halo's own size, so they hold up from the
-  40px companion beside a question to the 190px one on Home. They are also
-  the thing to watch: a first pass at this used numbers around 0.004, which
-  is half a pixel on a 120px Halo — arithmetically a saccade and visually a
-  frozen face. Measured end to end, the eyes should travel something like a
-  twentieth of Halo's width in each direction. Below that it stops reading
-  as alive at all, and there is no warning, because nothing is broken.
-*/
 .halo-eyes-wander {
   display: flex;
   gap: calc(var(--halo-size) * 0.1);
-  animation:
-    halo-eye-flick 5300ms steps(1, end) infinite,
-    halo-eye-drift 17300ms ease-in-out infinite;
+  animation: halo-eye-wander 7900ms ease-in-out infinite;
 }
 
 /*
-  The flicks. Each one is instant — `steps(1, end)` on the animation means
-  the eye is at one place or the next and never between, which is what a
-  saccade looks like at this size: too fast to see travelling.
+  Looking around, when nothing is being asked.
+
+  Every other state has somewhere to look — at the child, at a wrong answer,
+  at the thing worth noticing — and its gaze is set by the expression table.
+  `idle` is the one state with nothing to attend to, and eyes that hold
+  perfectly still while pointed at the viewer are the difference between a
+  companion resting and a face staring.
+
+  So the eyes move the way real ones do: they *flick* and then hold. Each
+  move takes a beat and each new place is kept for a second or two, which is
+  why the keyframes come in tight pairs with long gaps between them. A slow
+  glide between positions would read as scanning, which is a machine; a
+  saccade and a pause reads as noticing something, and then something else.
+
+  It rarely returns to centre, because centre is looking straight at the
+  child, and Halo at rest is not doing that.
 */
-@keyframes halo-eye-flick {
-  0%,
-  100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.040)
-      calc(var(--halo-life) * var(--halo-size) * -0.018);
-  }
-  22% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.044)
-      calc(var(--halo-life) * var(--halo-size) * 0.008);
-  }
-  41% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.016)
-      calc(var(--halo-life) * var(--halo-size) * 0.026);
-  }
-  63% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.050)
-      calc(var(--halo-life) * var(--halo-size) * -0.024);
-  }
-  81% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.030)
-      calc(var(--halo-life) * var(--halo-size) * 0.020);
-  }
-}
-
-/* The drift between them. Slow, and never quite repeating the flicks. */
-@keyframes halo-eye-drift {
-  0%,
-  100% {
-    transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.022),
-      calc(var(--halo-life) * var(--halo-size) * 0.012)
-    );
-  }
-  33% {
-    transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * -0.026),
-      calc(var(--halo-life) * var(--halo-size) * -0.008)
-    );
-  }
-  66% {
-    transform: translate(
-      calc(var(--halo-life) * var(--halo-size) * 0.008),
-      calc(var(--halo-life) * var(--halo-size) * -0.024)
-    );
-  }
-}
-
 .halo[data-halo-state="idle"] .halo-eyes-wander {
-  animation:
-    halo-eye-roam 11900ms cubic-bezier(0.34, 1.2, 0.4, 1) infinite,
-    halo-eye-drift 17300ms ease-in-out infinite;
+  animation: halo-eye-roam 11900ms cubic-bezier(0.5, 0, 0.2, 1) infinite;
 }
 
 @keyframes halo-eye-roam {
   /* Off to the right, a little down — where it settled last time. */
   0%,
   12% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.0481)
-      calc(var(--halo-life) * var(--halo-size) * 0.0148);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
+      calc(var(--halo-life) * var(--halo-size) * 0.008);
   }
   /* Away to the left. */
   14%,
   28% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.0555)
-      calc(var(--halo-life) * var(--halo-size) * 0.0074);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.03)
+      calc(var(--halo-life) * var(--halo-size) * 0.004);
   }
   /* Something higher up. */
   30%,
   44% {
-    translate: calc(var(--halo-life) * var(--halo-size) * -0.0259)
-      calc(var(--halo-life) * var(--halo-size) * -0.0296);
+    translate: calc(var(--halo-life) * var(--halo-size) * -0.014)
+      calc(var(--halo-life) * var(--halo-size) * -0.016);
   }
   /* Back across, still up. */
   46%,
   58% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.0407)
-      calc(var(--halo-life) * var(--halo-size) * -0.0222);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.022)
+      calc(var(--halo-life) * var(--halo-size) * -0.012);
   }
   /* Down and out to the right. */
   60%,
   74% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.0592)
-      calc(var(--halo-life) * var(--halo-size) * 0.0259);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.032)
+      calc(var(--halo-life) * var(--halo-size) * 0.014);
   }
   /* A brief glance back toward the child, and then away again. */
   76%,
   84% {
-    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.0037);
+    translate: 0 calc(var(--halo-life) * var(--halo-size) * 0.002);
   }
   86%,
   100% {
-    translate: calc(var(--halo-life) * var(--halo-size) * 0.0481)
-      calc(var(--halo-life) * var(--halo-size) * 0.0148);
+    translate: calc(var(--halo-life) * var(--halo-size) * 0.026)
+      calc(var(--halo-life) * var(--halo-size) * 0.008);
   }
 }
 
@@ -2060,6 +1979,35 @@ body {
   }
 }
 
+/*
+  The eyes wandering.
+
+  Sub-pixel at compact sizes and barely a pixel at hero. Anything larger
+  becomes googly, which is the failure mode this is closest to.
+*/
+@keyframes halo-eye-wander {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  30% {
+    transform: translate3d(
+      calc(var(--halo-life) * 1.1px),
+      calc(var(--halo-life) * -0.6px),
+      0
+    );
+  }
+  58% {
+    transform: translate3d(
+      calc(var(--halo-life) * -0.9px),
+      calc(var(--halo-life) * 0.5px),
+      0
+    );
+  }
+  80% {
+    transform: translate3d(calc(var(--halo-life) * 0.4px), 0, 0);
+  }
+}
 
 /*
   `translate` rather than `transform`, because the eye's `transform` is
