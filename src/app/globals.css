@@ -1609,7 +1609,7 @@ body {
   --halo-look: calc(var(--halo-life) * var(--halo-size) * 0.038);
   display: flex;
   gap: calc(var(--halo-size) * 0.1);
-  animation: halo-eye-look 15300ms ease-in-out infinite;
+  animation: halo-eye-look 10300ms ease-in-out infinite;
 }
 
 @keyframes halo-eye-look {
