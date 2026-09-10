@@ -91,7 +91,7 @@
       "picture": "panel-05",
       "title": "The Day at Cana",
       "objective": "Put the day back in order, from the feast to the miracle.",
-      "note": "Written with labels and no pictures, deliberately. Chapter 1's ordering game points at its own panels, and pointing at Chapter 2's would mean choosing which of seventeen says “the wine ran out” — a storyboard decision. Words work now and can be given panels later without the game changing. Shelf picture: The feast in full swing — the day this game puts back in order, before anything goes wrong.",
+      "note": "Each step is the panel that draws it: the feast, the wine running out, Mary telling Jesus, the jars being filled, the water turned. A child who has just read the story is putting the pictures back in order rather than reading five sentences and sorting them, which is the difference between remembering a story and parsing a list. The labels stay for whoever cannot see the pictures.",
       "interactions": [
         {
           "type": "sequence",
@@ -99,22 +99,27 @@
           "hint": "The wedding had only just begun.",
           "items": [
             {
+              "picture": "panel-05",
               "label": "Everyone is at the wedding",
               "position": 1
             },
             {
+              "picture": "panel-06",
               "label": "The wine runs out",
               "position": 2
             },
             {
+              "picture": "panel-08",
               "label": "Mary tells Jesus",
               "position": 3
             },
             {
+              "picture": "panel-11",
               "label": "The servants fill the jars",
               "position": 4
             },
             {
+              "picture": "panel-12",
               "label": "The water becomes wine",
               "position": 5
             }

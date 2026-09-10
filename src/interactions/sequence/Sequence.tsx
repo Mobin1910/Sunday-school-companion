@@ -203,7 +203,20 @@ export default function Sequence({
         })}
       </ol>
 
-      <ul className="grid grid-cols-2 gap-3">
+      {/*
+        Two across for four steps, three across for five or more.
+
+        A fifth picture in a two-column grid is a third row, and a third row
+        of pictures does not fit a phone — so the grid narrows instead of the
+        screen scrolling. Three across is smaller but it is still a picture,
+        and a picture a child can see all of beats a bigger one they have to
+        scroll to find.
+      */}
+      <ul
+        className={
+          total > 4 ? "grid grid-cols-3 gap-2" : "grid grid-cols-2 gap-3"
+        }
+      >
         {steps.map((step) => {
           const done = laid.includes(step.position);
           const showing = rung >= 3 && step.position === wanted && !locked;
@@ -237,7 +250,11 @@ export default function Sequence({
                 {step.art ? (
                   <Picture art={step.art} className="step-art object-cover" />
                 ) : null}
-                <span className="px-2 py-1.5 text-sm leading-tight font-semibold text-balance">
+                <span
+                  className={`px-2 py-1.5 leading-tight font-semibold text-balance ${
+                    total > 4 ? "text-xs" : "text-sm"
+                  }`}
+                >
                   {step.label}
                 </span>
               </button>

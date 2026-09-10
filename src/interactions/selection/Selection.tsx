@@ -89,6 +89,12 @@ export default function Selection({
     a list to be read down — and four of them side by side fit on one screen
     without pushing the question off the top of it. A choice that is only
     words stays a column, where the reading is the work.
+
+    This decides the *shape* of the field and nothing else. The card itself
+    is the same warm one either way: a question in the middle of a story and
+    a question in a game were two different-looking things for no reason
+    anybody could have given a child, and the one that looked like part of
+    the story is the one worth keeping.
   */
   const illustrated = options.length >= 4 && options.every((o) => o.art);
 
@@ -131,9 +137,13 @@ export default function Selection({
                 tabIndex={gone ? -1 : 0}
                 className={[
                   "flex w-full items-center text-left transition-opacity duration-500",
+                  // One card, everywhere. What the layout changes is how
+                  // many sit in a row and how much room the word gets — not
+                  // what a choice looks like.
+                  "option-card font-semibold",
                   illustrated
-                    ? "option-card h-full min-h-24 gap-2 p-2 pr-3 leading-tight font-semibold"
-                    : "surface min-h-20 gap-4 p-3 pr-5 text-xl",
+                    ? "h-full min-h-24 gap-2 p-2 pr-3 leading-tight"
+                    : "min-h-[clamp(3.25rem,7.4vh,5rem)] gap-4 px-4 py-3 text-[clamp(1.05rem,2.6vh,1.25rem)] leading-snug",
                   gone && "pointer-events-none opacity-0",
                   settling === index && "settling",
                   chosen === index && "blooming is-right",
