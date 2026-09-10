@@ -102,9 +102,10 @@
   "games": [
     {
       "id": "who-belongs-in-the-story",
+      "picture": "panel-09",
       "title": "Who Belongs in the Story?",
       "objective": "Recognise the key people in the story and their roles.",
-      "note": "No artwork: these four are told apart by who they are, not by what they look like, and four portraits would be four drawings doing the work one word already does.",
+      "note": "No artwork: these four are told apart by who they are, not by what they look like, and four portraits would be four drawings doing the work one word already does. Shelf picture: Mary, Joseph and Simeon all in one frame with the baby — which is the question this game asks.",
       "interactions": [
         {
           "type": "match",
@@ -198,9 +199,10 @@
     },
     {
       "id": "what-did-simeon-know",
+      "picture": "panel-08",
       "title": "What Did Simeon Know?",
       "objective": "Remember that Simeon recognised Jesus as the promised Saviour.",
-      "note": "Two questions, because the objective is about recognising the promise and the first question only reaches who. The option pictures are the ones the story's own question already uses.",
+      "note": "Two questions, because the objective is about recognising the promise and the first question only reaches who. The option pictures are the ones the story's own question already uses. Shelf picture: Simeon holding the baby and beaming. The shelf was falling back to the first picture inside the game, which is a flat option icon and reads as clip art at card size.",
       "interactions": [
         {
           "type": "multiple-choice",

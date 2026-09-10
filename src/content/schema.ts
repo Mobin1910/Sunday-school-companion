@@ -185,29 +185,39 @@ const reveal = z
     type: z.literal("reveal"),
     prompt: z.string().optional(),
     items: z.array(item).min(1),
-
-    /*
-      What every item looks like before it is touched, and what they all
-      become once every one has been.
-
-      Both optional, and a discovery normally has neither: tapping a thing to
-      find out about it needs no before and no after. They exist for the
-      shape the Cana game needs — six identical jars that start empty, fill
-      one at a time, and then all change together — which is discovery with
-      a beginning and an end rather than a different interaction.
-
-      `becomes` is what makes the change a second beat. Without it the last
-      tap is the end; with it the last tap fills the last jar, and then the
-      water turns, and the child watches something happen that they caused
-      and did not do.
-    */
-    covered: assetReference.optional(),
-    becomes: assetReference.optional(),
     note,
   })
   .refine((i) => i.items.every((x) => x.correct === undefined), {
     message: "nothing in a reveal can be correct — discovery has no wrong answers",
   });
+
+/**
+ * Pouring — the one interaction that is a scene rather than a question.
+ *
+ * A child can be asked what Jesus told the servants to do and pick the right
+ * word out of three, or they can turn a tap and watch a jar fill. This is the
+ * second, and it is the only place in the product where the interaction is
+ * built rather than illustrated: no artwork, no hotspots, no tapping about on
+ * a picture hoping something is clickable. Two objects respond to touch — the
+ * handle, and then the jar — and never both at once.
+ *
+ * It carries only its words. Everything else it needs is a state machine and
+ * a stylesheet, which is why this schema is three strings: what to do first,
+ * what to do once the jar is full, and what is said while it changes.
+ *
+ * There is no `hint`, for the same reason `reveal` has none. Nothing here can
+ * be done wrongly, so nothing here needs help — only the next thing to do,
+ * which is on the screen already.
+ */
+const pouring = z.strictObject({
+  type: z.literal("pouring"),
+  prompt: z.string(),
+  /** Once the jar is full and the jar is the thing that answers. */
+  then: z.string(),
+  /** While the water is turning. Optional; the change speaks for itself. */
+  during: z.string().optional(),
+  note,
+});
 
 export const interactionSchema = z.discriminatedUnion("type", [
   multipleChoice,
@@ -215,6 +225,7 @@ export const interactionSchema = z.discriminatedUnion("type", [
   sequence,
   arrangeWords,
   reveal,
+  pouring,
 ]);
 
 export type Interaction = z.infer<typeof interactionSchema>;

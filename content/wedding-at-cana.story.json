@@ -88,70 +88,17 @@
   "games": [
     {
       "id": "fill-the-jars",
-      "picture": {
-        "source": "game",
-        "path": "fill-the-jars/jar-wine"
-      },
-      "title": "Fill the Six Jars",
-      "objective": "Do what the servants did — fill all six stone jars, and see what Jesus does with the water.",
+      "picture": "panel-11",
+      "title": "Fill the Jar",
+      "objective": "Do what the servants did — turn the tap, fill the jar, and see what Jesus does with the water.",
       "featured": true,
-      "note": "The chapter's own game, and the one that is not a question. A child can be asked what Jesus told the servants to do and pick the right word out of three; or they can fill the jars. Six items because the story says six, and nothing here can be got wrong — see the reveal note in the schema.",
+      "note": "The chapter’s own game, and the one that is not a question. It is also the only interaction in the product that is built rather than illustrated: the first version was photographs of jars, and a child meeting it started tapping around the picture hunting for whatever was supposed to respond. Nothing in a painting tells you which part of it is a control. Now there are two things that answer touch, never both at once, and neither of them is artwork.",
       "interactions": [
         {
-          "type": "reveal",
-          "prompt": "Fill the jars with water",
-          "covered": {
-            "source": "game",
-            "path": "fill-the-jars/jar-empty"
-          },
-          "becomes": {
-            "source": "game",
-            "path": "fill-the-jars/jar-wine"
-          },
-          "items": [
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar one"
-            },
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar two"
-            },
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar three"
-            },
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar four"
-            },
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar five"
-            },
-            {
-              "picture": {
-                "source": "game",
-                "path": "fill-the-jars/jar-water"
-              },
-              "label": "Jar six"
-            }
-          ]
+          "type": "pouring",
+          "prompt": "Turn the tap to fill the jar.",
+          "then": "Double-tap the jar.",
+          "during": "Watch what happens!"
         }
       ]
     },
@@ -420,6 +367,13 @@
       ]
     },
     "note": "Supplied with the chapter. The translation is deliberately unresolved: this wording is not the World English Bible's, which is the public-domain text Chapter 1 uses, so which translation is credited — and whether it may be used — is still open. PLACEHOLDER is what keeps that from being decided by accident; checks.ts warns while the chapter is a draft and refuses it once the chapter is listed in library.json."
+  },
+  "video": {
+    "youtubeId": "7plJa_qnVug",
+    "title": "Wedding at Cana",
+    "description": "Watch the story told.",
+    "picture": "panel-04",
+    "note": "The poster is the walk up to the wedding — the beginning of the story rather than its heart, so pressing play still leads somewhere. Nothing is fetched from YouTube to draw it; the player is offered rather than mounted, so no third party is contacted until a child asks to watch."
   },
   "celebration": {
     "message": "You learned how Mary told Jesus, and how He helped.",

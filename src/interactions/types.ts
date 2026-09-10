@@ -32,3 +32,5 @@ export type Pairing = Extract<PlayInteraction, { type: "match" }>;
 export type ArrangeWords = Extract<PlayInteraction, { type: "arrange-words" }>;
 
 export type Discovery = Extract<PlayInteraction, { type: "reveal" }>;
+
+export type Pouring = Extract<PlayInteraction, { type: "pouring" }>;

@@ -1,6 +1,7 @@
 import type { PlayInteraction } from "@/content";
 
 import Pairing from "./pairing/Pairing";
+import Pouring from "./pouring/Pouring";
 import Selection from "./selection/Selection";
 import Reveal from "./reveal/Reveal";
 import Sequence from "./sequence/Sequence";
@@ -21,7 +22,8 @@ export function canPlay(interaction: PlayInteraction): boolean {
     interaction.type === "match" ||
     interaction.type === "sequence" ||
     interaction.type === "arrange-words" ||
-    interaction.type === "reveal"
+    interaction.type === "reveal" ||
+    interaction.type === "pouring"
   );
 }
 
@@ -32,7 +34,8 @@ export function canPlay(interaction: PlayInteraction): boolean {
  * type as it goes — each model receives exactly the shape it handles, checked
  * by the compiler rather than asserted.
  *
- * Version 1 builds five presentations. All five are here.
+ * Version 1 built five presentations. All five are here, and so is the
+ * sixth — see `pouring` in the schema for why a scene earned its own place.
  */
 export function renderModel(props: ModelProps) {
   const { interaction } = props;
@@ -52,5 +55,8 @@ export function renderModel(props: ModelProps) {
 
     case "reveal":
       return <Reveal {...props} interaction={interaction} />;
+
+    case "pouring":
+      return <Pouring {...props} interaction={interaction} />;
   }
 }

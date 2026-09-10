@@ -170,13 +170,15 @@ export default function InteractionPlayer({
     setSaying(null);
     setInvited(false);
     /*
-      A discovery is congratulated differently, because there was nothing to
-      get right — see `wonder` in voice.ts. Everything else keeps the three
-      registers it had: alone, after trying, or together.
+      A discovery and a scene are congratulated differently, because in
+      neither was there anything to get right — see `wonder` in voice.ts.
+      "You found it" after turning a tap and watching water become wine
+      credits a child with a choice they were never offered. Everything else
+      keeps the three registers it had: alone, after trying, or together.
     */
     setArrived(
       say(
-        interaction.type === "reveal"
+        interaction.type === "reveal" || interaction.type === "pouring"
           ? "wonder"
           : rung > 0
             ? "partnership"

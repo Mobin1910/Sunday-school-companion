@@ -47,6 +47,7 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
     case "match":
       return interaction.pairs.flatMap((pair) => [pair.from, pair.to]);
     case "arrange-words":
+    case "pouring":
       return [];
   }
 }
@@ -69,18 +70,6 @@ function interactionsOf(card: Card): PlayInteraction[] {
 function artOf(card: Card): Art[] {
   const fromInteraction = (interaction: PlayInteraction): Art[] => [
     ...("art" in interaction && interaction.art ? [interaction.art] : []),
-    /*
-      A reveal's before and after states. They belong to the interaction
-      rather than to any one item, so without this the orphan check reports
-      artwork the app is actively drawing as unused — which is worse than no
-      check, because it teaches you to ignore the ones that are real.
-    */
-    ...(interaction.type === "reveal" && interaction.covered
-      ? [interaction.covered]
-      : []),
-    ...(interaction.type === "reveal" && interaction.becomes
-      ? [interaction.becomes]
-      : []),
     ...itemsOf(interaction)
       .map((item) => item.art)
       .filter((art) => art !== undefined),

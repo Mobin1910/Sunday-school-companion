@@ -58,14 +58,8 @@ export type PlayInteraction =
       hint?: string;
     }
   | { type: "arrange-words"; prompt: string; words: string[]; hint?: string }
-  | {
-      type: "reveal";
-      prompt?: string;
-      items: PlayItem[];
-      /** Every item before it is touched, and what they all become after. */
-      covered?: Art;
-      becomes?: Art;
-    };
+  | { type: "reveal"; prompt?: string; items: PlayItem[] }
+  | { type: "pouring"; prompt: string; then: string; during?: string };
 
 export type Card =
   | { kind: "cover"; art: Art }
@@ -218,12 +212,15 @@ function toInteraction(
         type: "reveal",
         ...(interaction.prompt !== undefined && { prompt: interaction.prompt }),
         items: interaction.items.map(item),
-        ...(interaction.covered !== undefined && {
-          covered: toArt(interaction.covered, resolve),
-        }),
-        ...(interaction.becomes !== undefined && {
-          becomes: toArt(interaction.becomes, resolve),
-        }),
+      };
+
+    // A scene, not a question: it carries its words and builds the rest.
+    case "pouring":
+      return {
+        type: "pouring",
+        prompt: interaction.prompt,
+        then: interaction.then,
+        ...(interaction.during !== undefined && { during: interaction.during }),
       };
   }
 }
