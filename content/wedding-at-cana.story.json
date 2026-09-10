@@ -1,0 +1,26 @@
+{
+  "title": "Wedding at Cana",
+  "reference": "John 2:1–11",
+  "note": "Core lesson: when we have a problem or are worried, we can tell Jesus, because he cares for us and can help us. The chapter's decision, and the line it lands on, is “I will tell Jesus everything.” Three acts, as Chapter 1: Connect — the modern child and Story Halo, a worry the child already knows; Discover — Cana itself, Story Halo absent; Reflect — back to the child, Story Halo returns. The panel sequence and every line of dialogue are pending approval and are deliberately not written down here: a numbered list of events sitting in this file would be read as a storyboard, and this chapter does not have one yet. Jesus and Mary are recurring characters — face, age, hair, skin, proportions and rendering language stay as Chapter 1 established them, and only clothing, pose and composition change.",
+  "cover": {
+    "picture": "cover",
+    "note": "Pending. Drawn once the storyboard is approved. Chapter 1 paints the chapter title into the cover artwork itself and this one should too — the reader lays no text over a cover."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "alt": "Pending — Chapter 2 has no approved storyboard, so this panel has not been written or drawn.",
+      "note": "The one card the schema requires and nothing more: `story` cannot be empty, so this holds the chapter's place until the approved panels replace it. It carries `alt` rather than `text` on purpose — text renders on the page as narration and could be mistaken later for approved copy, where an alt that says it is pending cannot be. Act 1, Connect, begins here."
+    }
+  ],
+  "verse": {
+    "text": "Cast all your anxiety on him, because he cares for you.",
+    "reference": "1 Peter 5:7",
+    "translation": "PLACEHOLDER",
+    "note": "Supplied with the chapter. The translation is deliberately unresolved: this wording is not the World English Bible's, which is the public-domain text Chapter 1 uses, so which translation is credited — and whether it may be used — is still open. PLACEHOLDER is what keeps that from being decided by accident; checks.ts warns while the chapter is a draft and refuses it once the chapter is listed in library.json."
+  },
+  "celebration": {
+    "message": "I will tell Jesus everything.",
+    "note": "The chapter's own decision, supplied with the curriculum, standing where Chapter 1 puts a “you learned…” recap. Its placement is provisional: if the approved Act 3 lands the decision inside a panel, this becomes a recap instead. The field is required, and nothing was invented to fill it."
+  }
+}

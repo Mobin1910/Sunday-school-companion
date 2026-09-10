@@ -310,6 +310,16 @@ export const chapterSchema = z.strictObject({
   title: z.string(),
   reference: z.string(),
 
+  /*
+    The chapter's own note. Every other object in a chapter file could carry
+    one and this one could not, which made the rule at the top of this file
+    false in exactly the place it is most needed: what a chapter is *for* —
+    its lesson, its acts, what is still pending — belongs to the chapter, not
+    to whichever card happens to be first. Ignored by the app like every
+    other note; see cards.ts, which drops them all.
+  */
+  note,
+
   // Exactly one cover and exactly one celebration, guaranteed by the shape
   // rather than by a rule someone has to remember.
   cover: z.strictObject({ picture: z.string(), note }),
