@@ -1,9 +1,8 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import HaloPresence from "@/halo/HaloPresence";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
-import QuizCard from "@/components/reader/QuizCard";
 import VerseCard from "@/components/reader/VerseCard";
 import { getChapters, verseOf, versePracticeOf } from "@/content";
 import { canPlay } from "@/interactions/registry";
@@ -46,11 +45,21 @@ export default async function ChapterVersePage({
     >
       <VerseCard text={verse.text} reference={verse.reference} />
 
-      {/* Practising the verse brings its own Halo, driven by the assistance
-          ladder. Nothing is placed here that would make a second one. */}
+      {/*
+        The drill is a door rather than the rest of this page. It ran
+        underneath the verse until the verse card — the tallest thing in the
+        product that is not a picture — put every piece a child was meant to
+        tap below the fold. It brings its own Halo when it opens, so nothing
+        is placed here that would make a second one.
+      */}
       {practice ? (
         canPlay(practice.interaction) ? (
-          <QuizCard interaction={practice.interaction} />
+          <Link
+            href={`/chapter/${slug}/verse/practice`}
+            className="cta min-h-16 w-full max-w-sm px-6 text-xl"
+          >
+            Practise it
+          </Link>
         ) : (
           <NotReadyYet what="Practising this verse" />
         )

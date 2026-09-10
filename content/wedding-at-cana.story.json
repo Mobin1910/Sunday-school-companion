@@ -13,10 +13,175 @@
       "note": "The one card the schema requires and nothing more: `story` cannot be empty, so this holds the chapter's place until the approved panels replace it. It carries `alt` rather than `text` on purpose — text renders on the page as narration and could be mistaken later for approved copy, where an alt that says it is pending cannot be. Act 1, Connect, begins here."
     }
   ],
+  "games": [
+    {
+      "id": "the-day-at-cana",
+      "title": "The Day at Cana",
+      "objective": "Put the day back in order, from the feast to the miracle.",
+      "note": "Written with labels and no pictures, deliberately. Chapter 1's ordering game points at its own panels, and pointing at Chapter 2's would mean choosing which of seventeen says “the wine ran out” — a storyboard decision. Words work now and can be given panels later without the game changing.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "What happened first?",
+          "hint": "The wedding had only just begun.",
+          "items": [
+            { "label": "Everyone is at the wedding", "position": 1 },
+            { "label": "The wine runs out", "position": 2 },
+            { "label": "Mary tells Jesus", "position": 3 },
+            { "label": "The servants fill the jars", "position": 4 },
+            { "label": "The water becomes wine", "position": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-do-you-remember",
+      "title": "What Do You Remember?",
+      "objective": "Recall the facts of the miracle: the town, what ran out, the six jars, and what the water became.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where was the wedding?",
+          "hint": "It was a little town called Cana.",
+          "options": [
+            { "label": "Cana", "correct": true },
+            { "label": "Bethlehem" },
+            { "label": "Jerusalem" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What ran out at the wedding?",
+          "hint": "There was not enough left to drink.",
+          "options": [
+            { "label": "The wine", "correct": true },
+            { "label": "The bread" },
+            { "label": "The music" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "How many stone jars were there?",
+          "hint": "One more than five.",
+          "options": [
+            { "label": "Six", "correct": true },
+            { "label": "Two" },
+            { "label": "Nine" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What did Jesus say to fill them with?",
+          "hint": "You draw it from a well.",
+          "options": [
+            { "label": "Water", "correct": true },
+            { "label": "Oil" },
+            { "label": "Milk" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What did the water become?",
+          "hint": "It was the thing that had run out.",
+          "options": [
+            { "label": "Wine", "correct": true },
+            { "label": "Oil" },
+            { "label": "Bread" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What was special about this miracle?",
+          "hint": "Jesus had never done one before this day.",
+          "options": [
+            { "label": "It was Jesus’ first", "correct": true },
+            { "label": "It was Jesus’ last" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-or-wrong",
+      "title": "Right or Wrong?",
+      "objective": "Tell what really happened at Cana from what did not.",
+      "note": "True-and-false, built from the presentations that exist rather than as a sixth one: the statement is the prompt and the two answers are the choices. Three of the five statements were reworded — the curriculum's wording runs past the ten-word prompt limit and uses words like “informed”, which a six-year-old reads over. The meaning of each, and whether it is right or wrong, is unchanged.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Jesus was not invited to the wedding.",
+          "hint": "He was there with his mother and his friends.",
+          "options": [
+            { "label": "Wrong", "correct": true },
+            { "label": "Right" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "The wine ran out at the wedding.",
+          "hint": "That was the problem Mary noticed.",
+          "options": [
+            { "label": "Right", "correct": true },
+            { "label": "Wrong" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Mary told Jesus about the problem.",
+          "hint": "She noticed first, and she went straight to him.",
+          "options": [
+            { "label": "Right", "correct": true },
+            { "label": "Wrong" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "There were nine stone jars.",
+          "hint": "Count again — it was one more than five.",
+          "options": [
+            { "label": "Wrong", "correct": true },
+            { "label": "Right" }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "This was Jesus’ last miracle.",
+          "hint": "It was the very first one he ever did.",
+          "options": [
+            { "label": "Wrong", "correct": true },
+            { "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "multiple-choice",
+      "prompt": "Who told Jesus about the problem?",
+      "hint": "She was Jesus’ mother.",
+      "note": "One question, in the reader, where Chapter 1 puts one: a gentle “did you notice?” between the last panel and the ending, not a test. It asks the thing the chapter is about — that somebody noticed a problem and took it to Jesus — and the rest of the recall lives in the games, which is where a child chooses to go.",
+      "options": [
+        { "label": "Mary", "correct": true },
+        { "label": "A servant" },
+        { "label": "The bride" }
+      ]
+    }
+  ],
   "verse": {
     "text": "Cast all your anxiety on him, because he cares for you.",
     "reference": "1 Peter 5:7",
     "translation": "PLACEHOLDER",
+    "practice": {
+      "type": "arrange-words",
+      "prompt": "Put the verse back together",
+      "hint": "It begins with what you do with your worries.",
+      "words": [
+        "Cast all your anxiety",
+        "on him,",
+        "because he cares",
+        "for you."
+      ]
+    },
     "note": "Supplied with the chapter. The translation is deliberately unresolved: this wording is not the World English Bible's, which is the public-domain text Chapter 1 uses, so which translation is credited — and whether it may be used — is still open. PLACEHOLDER is what keeps that from being decided by accident; checks.ts warns while the chapter is a draft and refuses it once the chapter is listed in library.json."
   },
   "celebration": {

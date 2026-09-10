@@ -31,6 +31,9 @@ const LIMITS = {
 
 const words = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
 
+/** One shape for comparing two spellings of the same sentence. */
+const tidy = (text: string) => text.replace(/\s+/g, " ").trim();
+
 const sentences = (text: string) =>
   text.split(/[.!?]+/).filter((part) => part.trim().length > 0).length;
 
@@ -176,6 +179,37 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
         level,
         where: `public/art/${chapter.slug}`,
         message: `${name} is drawn but no card uses it`,
+      });
+    }
+  }
+
+  /*
+    The pieces of a verse drill have to add back up to the verse.
+
+    Arrange-words is the one interaction whose answer is the order its pieces
+    are written in, so a piece edited on its own — a word fixed, a comma
+    moved, a chunk split — quietly teaches a child a verse the chapter does
+    not contain. Nothing else would catch it: every piece is still a valid
+    string and the drill still plays perfectly. Reading them back against the
+    verse text is the only check there is, and it costs one join.
+
+    Whitespace is normalised on both sides, because how the chunks are broken
+    up is a decision about breathing and must stay free.
+  */
+  const verse = chapter.cards.find((card) => card.kind === "verse");
+  const practice = chapter.cards.find((card) => card.kind === "practice");
+
+  if (
+    verse?.kind === "verse" &&
+    practice?.kind === "practice" &&
+    practice.interaction.type === "arrange-words"
+  ) {
+    const said = practice.interaction.words.join(" ");
+    if (tidy(said) !== tidy(verse.text)) {
+      advisories.push({
+        level,
+        where: chapter.file,
+        message: `the verse drill does not spell out the verse\n      verse:  "${verse.text}"\n      pieces: "${said}"`,
       });
     }
   }

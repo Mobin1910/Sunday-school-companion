@@ -3,6 +3,7 @@ import type { PlayInteraction } from "@/content";
 import Pairing from "./pairing/Pairing";
 import Selection from "./selection/Selection";
 import Sequence from "./sequence/Sequence";
+import Words from "./words/Words";
 import type { ModelProps } from "./types";
 
 /**
@@ -17,7 +18,8 @@ export function canPlay(interaction: PlayInteraction): boolean {
   return (
     interaction.type === "multiple-choice" ||
     interaction.type === "match" ||
-    interaction.type === "sequence"
+    interaction.type === "sequence" ||
+    interaction.type === "arrange-words"
   );
 }
 
@@ -28,7 +30,7 @@ export function canPlay(interaction: PlayInteraction): boolean {
  * type as it goes — each model receives exactly the shape it handles, checked
  * by the compiler rather than asserted.
  *
- * Version 1 builds five presentations. Three of them are here.
+ * Version 1 builds five presentations. Four of them are here.
  */
 export function renderModel(props: ModelProps) {
   const { interaction } = props;
@@ -43,9 +45,11 @@ export function renderModel(props: ModelProps) {
     case "sequence":
       return <Sequence {...props} interaction={interaction} />;
 
-    // Not built yet: arrange-words and reveal. Cards carrying them are not
-    // shown to a child until then, so this is unreachable rather than a
-    // silent gap.
+    case "arrange-words":
+      return <Words {...props} interaction={interaction} />;
+
+    // Not built yet: reveal. Cards carrying it are not shown to a child
+    // until then, so this is unreachable rather than a silent gap.
     default:
       return null;
   }
