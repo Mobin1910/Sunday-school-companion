@@ -1,5 +1,11 @@
 import { assetName } from "./art";
-import type { AssetReference, Chapter, Interaction, Item } from "./schema";
+import type {
+  AssetReference,
+  Chapter,
+  Game,
+  Interaction,
+  Item,
+} from "./schema";
 
 /**
  * The runtime shape of a chapter: one flat, ordered list of cards.
@@ -75,6 +81,8 @@ export type Card =
       objective: string;
       interactions: PlayInteraction[];
       featured?: true;
+      /** What the shelf shows. See `art` below for where it comes from. */
+      art?: Art;
     }
   | { kind: "quiz"; interaction: PlayInteraction }
   | {
@@ -115,6 +123,30 @@ const panel = (name: string): AssetReference => ({
   source: "story",
   panelId: name,
 });
+
+/** The first picture a game already uses, wherever it sits inside it. */
+function firstPicture(game: Game): AssetReference | undefined {
+  for (const interaction of game.interactions) {
+    if ("picture" in interaction && interaction.picture) return interaction.picture;
+
+    const items =
+      interaction.type === "multiple-choice"
+        ? interaction.options
+        : interaction.type === "sequence" || interaction.type === "reveal"
+          ? interaction.items
+          : interaction.type === "match"
+            ? interaction.pairs.flatMap((pair): Item[] => [pair.from, pair.to])
+            : [];
+
+    for (const item of items) if (item.picture) return item.picture;
+  }
+  return undefined;
+}
+
+function shelfArt(game: Game, resolve: Resolve): Art | undefined {
+  const ref = game.picture ?? firstPicture(game);
+  return ref ? toArt(ref, resolve) : undefined;
+}
 
 function toItem(item: Item, resolve: Resolve): PlayItem {
   return {
@@ -212,6 +244,17 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
       objective: game.objective,
       interactions: game.interactions.map((i) => toInteraction(i, resolve)),
       ...(game.featured !== undefined && { featured: game.featured }),
+      /*
+        The picture the game named, or the first one it already uses.
+
+        Resolved here rather than on the shelf so that the shelf receives a
+        picture like every other card does, and so a game that is all words
+        simply has none — which the shelf can then draw around instead of
+        leaving a hole.
+      */
+      ...(shelfArt(game, resolve) !== undefined && {
+        art: shelfArt(game, resolve)!,
+      }),
     });
   }
 

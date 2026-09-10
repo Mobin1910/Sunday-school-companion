@@ -38,6 +38,8 @@
 @theme {
   /* The room. */
   --color-ground: #070c1c;
+  /* The same, as channels, for scrims that need an alpha. */
+  --color-ground-rgb: 7 12 28;
   /* A surface in it. Barely lighter than the ground on purpose — at 1.10:1
      it is an edge, not a fill, that says "this is a thing". */
   --color-ground-raised: #0e1731;
@@ -595,6 +597,38 @@ body {
   100% {
     transform: scale(1);
   }
+}
+
+/*
+  Which part of a tall panel a wide card shows.
+
+  A story panel is portrait and a shelf card is a letterbox, so `cover` takes
+  a band out of the middle — which on these illustrations is chests and
+  hands, the one stripe with no faces in it. Biasing the crop upwards finds
+  the faces; not all the way up, because the top of every panel is where its
+  caption is painted, and a shelf card is not the place to read it again.
+*/
+.game-art {
+  object-position: center 34%;
+}
+
+/*
+  The dark a game's name is legible against.
+
+  A shelf card is a whole illustration, and an illustration is bright exactly
+  where it feels like being — so the name needs its own ground rather than a
+  text shadow, which is what a caption looks like when it is losing. It rises
+  from nothing across the lower half and lands on the ground colour, the same
+  idea `cover-scrim` uses on a chapter cover and for the same reason.
+*/
+.game-scrim {
+  background: linear-gradient(
+    to top,
+    var(--color-ground) 0%,
+    rgb(var(--color-ground-rgb) / 0.82) 26%,
+    rgb(var(--color-ground-rgb) / 0.35) 52%,
+    transparent 78%
+  );
 }
 
 .asking {

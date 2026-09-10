@@ -247,6 +247,20 @@ const game = z.strictObject({
     ordered, and a child who plays the last one first has lost nothing.
   */
   featured: z.literal(true).optional(),
+
+  /*
+    The picture on the shelf.
+
+    Optional, and usually left out: a game that asks about a moment already
+    has that moment drawn inside it, so the shelf takes the first picture the
+    game uses and nothing has to be written down or drawn twice. Set this
+    only where that pick is wrong, or where a game is all words and would
+    otherwise be a paragraph on a dark card.
+
+    It is an ordinary asset reference, so it can point at a story panel —
+    which is the whole reason a reference says where it comes from.
+  */
+  picture: assetReference.optional(),
   note,
 });
 

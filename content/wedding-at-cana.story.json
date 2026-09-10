@@ -88,26 +88,43 @@
   "games": [
     {
       "id": "the-day-at-cana",
+      "picture": "panel-05",
       "title": "The Day at Cana",
       "objective": "Put the day back in order, from the feast to the miracle.",
-      "note": "Written with labels and no pictures, deliberately. Chapter 1's ordering game points at its own panels, and pointing at Chapter 2's would mean choosing which of seventeen says “the wine ran out” — a storyboard decision. Words work now and can be given panels later without the game changing.",
+      "note": "Written with labels and no pictures, deliberately. Chapter 1's ordering game points at its own panels, and pointing at Chapter 2's would mean choosing which of seventeen says “the wine ran out” — a storyboard decision. Words work now and can be given panels later without the game changing. Shelf picture: The feast in full swing — the day this game puts back in order, before anything goes wrong.",
       "interactions": [
         {
           "type": "sequence",
           "prompt": "What happened first?",
           "hint": "The wedding had only just begun.",
           "items": [
-            { "label": "Everyone is at the wedding", "position": 1 },
-            { "label": "The wine runs out", "position": 2 },
-            { "label": "Mary tells Jesus", "position": 3 },
-            { "label": "The servants fill the jars", "position": 4 },
-            { "label": "The water becomes wine", "position": 5 }
+            {
+              "label": "Everyone is at the wedding",
+              "position": 1
+            },
+            {
+              "label": "The wine runs out",
+              "position": 2
+            },
+            {
+              "label": "Mary tells Jesus",
+              "position": 3
+            },
+            {
+              "label": "The servants fill the jars",
+              "position": 4
+            },
+            {
+              "label": "The water becomes wine",
+              "position": 5
+            }
           ]
         }
       ]
     },
     {
       "id": "what-do-you-remember",
+      "picture": "panel-12",
       "title": "What Do You Remember?",
       "objective": "Recall the facts of the miracle: the town, what ran out, the six jars, and what the water became.",
       "interactions": [
@@ -116,9 +133,16 @@
           "prompt": "Where was the wedding?",
           "hint": "It was a little town called Cana.",
           "options": [
-            { "label": "Cana", "correct": true },
-            { "label": "Bethlehem" },
-            { "label": "Jerusalem" }
+            {
+              "label": "Cana",
+              "correct": true
+            },
+            {
+              "label": "Bethlehem"
+            },
+            {
+              "label": "Jerusalem"
+            }
           ]
         },
         {
@@ -126,9 +150,16 @@
           "prompt": "What ran out at the wedding?",
           "hint": "There was not enough left to drink.",
           "options": [
-            { "label": "The wine", "correct": true },
-            { "label": "The bread" },
-            { "label": "The music" }
+            {
+              "label": "The wine",
+              "correct": true
+            },
+            {
+              "label": "The bread"
+            },
+            {
+              "label": "The music"
+            }
           ]
         },
         {
@@ -136,9 +167,16 @@
           "prompt": "How many stone jars were there?",
           "hint": "One more than five.",
           "options": [
-            { "label": "Six", "correct": true },
-            { "label": "Two" },
-            { "label": "Nine" }
+            {
+              "label": "Six",
+              "correct": true
+            },
+            {
+              "label": "Two"
+            },
+            {
+              "label": "Nine"
+            }
           ]
         },
         {
@@ -146,9 +184,16 @@
           "prompt": "What did Jesus say to fill them with?",
           "hint": "You draw it from a well.",
           "options": [
-            { "label": "Water", "correct": true },
-            { "label": "Oil" },
-            { "label": "Milk" }
+            {
+              "label": "Water",
+              "correct": true
+            },
+            {
+              "label": "Oil"
+            },
+            {
+              "label": "Milk"
+            }
           ]
         },
         {
@@ -156,9 +201,16 @@
           "prompt": "What did the water become?",
           "hint": "It was the thing that had run out.",
           "options": [
-            { "label": "Wine", "correct": true },
-            { "label": "Oil" },
-            { "label": "Bread" }
+            {
+              "label": "Wine",
+              "correct": true
+            },
+            {
+              "label": "Oil"
+            },
+            {
+              "label": "Bread"
+            }
           ]
         },
         {
@@ -166,25 +218,37 @@
           "prompt": "What was special about this miracle?",
           "hint": "Jesus had never done one before this day.",
           "options": [
-            { "label": "It was Jesus’ first", "correct": true },
-            { "label": "It was Jesus’ last" }
+            {
+              "label": "It was Jesus’ first",
+              "correct": true
+            },
+            {
+              "label": "It was Jesus’ last"
+            }
           ]
         }
-      ]
+      ],
+      "note": "Shelf picture: The moment the game is mostly about: six jars of water gone deep red."
     },
     {
       "id": "right-or-wrong",
+      "picture": "panel-07",
       "title": "Right or Wrong?",
       "objective": "Tell what really happened at Cana from what did not.",
-      "note": "True-and-false, built from the presentations that exist rather than as a sixth one: the statement is the prompt and the two answers are the choices. Three of the five statements were reworded — the curriculum's wording runs past the ten-word prompt limit and uses words like “informed”, which a six-year-old reads over. The meaning of each, and whether it is right or wrong, is unchanged.",
+      "note": "True-and-false, built from the presentations that exist rather than as a sixth one: the statement is the prompt and the two answers are the choices. Three of the five statements were reworded — the curriculum's wording runs past the ten-word prompt limit and uses words like “informed”, which a six-year-old reads over. The meaning of each, and whether it is right or wrong, is unchanged. Shelf picture: Mary listening to the servants beside the jars — the problem being noticed, which is what most of these statements circle.",
       "interactions": [
         {
           "type": "multiple-choice",
           "prompt": "Jesus was not invited to the wedding.",
           "hint": "He was there with his mother and his friends.",
           "options": [
-            { "label": "Wrong", "correct": true },
-            { "label": "Right" }
+            {
+              "label": "Wrong",
+              "correct": true
+            },
+            {
+              "label": "Right"
+            }
           ]
         },
         {
@@ -192,8 +256,13 @@
           "prompt": "The wine ran out at the wedding.",
           "hint": "That was the problem Mary noticed.",
           "options": [
-            { "label": "Right", "correct": true },
-            { "label": "Wrong" }
+            {
+              "label": "Right",
+              "correct": true
+            },
+            {
+              "label": "Wrong"
+            }
           ]
         },
         {
@@ -201,8 +270,13 @@
           "prompt": "Mary told Jesus about the problem.",
           "hint": "She noticed first, and she went straight to him.",
           "options": [
-            { "label": "Right", "correct": true },
-            { "label": "Wrong" }
+            {
+              "label": "Right",
+              "correct": true
+            },
+            {
+              "label": "Wrong"
+            }
           ]
         },
         {
@@ -210,8 +284,13 @@
           "prompt": "There were nine stone jars.",
           "hint": "Count again — it was one more than five.",
           "options": [
-            { "label": "Wrong", "correct": true },
-            { "label": "Right" }
+            {
+              "label": "Wrong",
+              "correct": true
+            },
+            {
+              "label": "Right"
+            }
           ]
         },
         {
@@ -219,8 +298,13 @@
           "prompt": "This was Jesus’ last miracle.",
           "hint": "It was the very first one he ever did.",
           "options": [
-            { "label": "Wrong", "correct": true },
-            { "label": "Right" }
+            {
+              "label": "Wrong",
+              "correct": true
+            },
+            {
+              "label": "Right"
+            }
           ]
         }
       ]
@@ -233,9 +317,16 @@
       "hint": "She was Jesus’ mother.",
       "note": "One question, in the reader, where Chapter 1 puts one: a gentle “did you notice?” between the last panel and the ending, not a test. It asks the thing the chapter is about — that somebody noticed a problem and took it to Jesus — and the rest of the recall lives in the games, which is where a child chooses to go.",
       "options": [
-        { "label": "Mary", "correct": true },
-        { "label": "A servant" },
-        { "label": "The bride" }
+        {
+          "label": "Mary",
+          "correct": true
+        },
+        {
+          "label": "A servant"
+        },
+        {
+          "label": "The bride"
+        }
       ]
     }
   ],

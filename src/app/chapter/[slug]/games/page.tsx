@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import Picture from "@/components/Picture";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import { gamesOf, getChapters } from "@/content";
@@ -20,10 +21,12 @@ import { canPlay } from "@/interactions/registry";
  * order to work through, and nothing is locked behind anything else. A child
  * may play the last one first and has lost nothing.
  *
- * The objective is on the card, quietly and in the grown-up's register. It
- * is here because it is the one thing a teacher needs in order to know what
- * a game is for, and it is small and grey because it is not addressed to the
- * child. This is not a curriculum dashboard and must not become one.
+ * The objective is not on the card. It is written in the grown-up's register
+ * — the one thing a teacher needs in order to know what a game is for — and
+ * printing it under every title turned a shelf a child chooses from into a
+ * table of contents. It stays in the content, and it is what a screen reader
+ * announces, so nothing is lost except two lines of grey text a six-year-old
+ * was never going to read. This is not a curriculum dashboard.
  */
 
 export function generateStaticParams() {
@@ -55,25 +58,52 @@ export default async function ChapterGamesPage({
       {games.length === 0 ? (
         <NotReadyYet what="These games" />
       ) : (
+        /*
+          A shelf of pictures with names on them, rather than a column of
+          paragraphs.
+
+          It was a title and its objective on a plain card, which is two
+          blocks of text on a dark screen and reads as a table of contents —
+          and a six-year-old choosing what to play is not reading a table of
+          contents. The picture is what they choose from, so the picture is
+          the card: the game's own artwork fills it, the ground rises across
+          the lower half so the name is legible on any illustration, and the
+          name sits on top of it.
+
+          The objective goes. It is written in the grown-up's register and
+          was never addressed to the child — see the note in the schema — so
+          on the child's screen it was doing nothing but taking the room a
+          picture wanted. It stays in the content, where a teacher reads it.
+        */
         <ul className="flex w-full flex-col gap-4">
           {games.map((game) => (
             <li key={game.id}>
               <Link
                 href={`/chapter/${slug}/games/${game.id}`}
-                className={`surface flex flex-col ${
-                  game.featured ? "gap-2 px-6 py-7" : "gap-1 px-5 py-5"
+                aria-label={`${game.title}. ${game.objective}`}
+                className={`surface relative flex items-end overflow-hidden ${
+                  game.featured ? "min-h-44" : "min-h-32"
                 }`}
               >
+                {game.art ? (
+                  <Picture
+                    art={game.art}
+                    className="game-art absolute inset-0 size-full object-cover"
+                  />
+                ) : null}
+
+                {/* Only where there is a picture to be legible against. */}
+                {game.art ? (
+                  <div className="game-scrim absolute inset-0" aria-hidden />
+                ) : null}
+
                 <span
-                  className={
-                    game.featured
-                      ? "text-2xl leading-snug"
-                      : "text-xl leading-snug"
-                  }
+                  className={`relative px-5 pb-4 leading-snug text-balance ${
+                    game.featured ? "text-2xl" : "text-xl"
+                  }`}
                 >
                   {game.title}
                 </span>
-                <span className="text-sm text-ink-soft">{game.objective}</span>
               </Link>
             </li>
           ))}
