@@ -87,6 +87,75 @@
   ],
   "games": [
     {
+      "id": "fill-the-jars",
+      "picture": {
+        "source": "game",
+        "path": "fill-the-jars/jar-wine"
+      },
+      "title": "Fill the Six Jars",
+      "objective": "Do what the servants did — fill all six stone jars, and see what Jesus does with the water.",
+      "featured": true,
+      "note": "The chapter's own game, and the one that is not a question. A child can be asked what Jesus told the servants to do and pick the right word out of three; or they can fill the jars. Six items because the story says six, and nothing here can be got wrong — see the reveal note in the schema.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Fill the jars with water",
+          "covered": {
+            "source": "game",
+            "path": "fill-the-jars/jar-empty"
+          },
+          "becomes": {
+            "source": "game",
+            "path": "fill-the-jars/jar-wine"
+          },
+          "items": [
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar one"
+            },
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar two"
+            },
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar three"
+            },
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar four"
+            },
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar five"
+            },
+            {
+              "picture": {
+                "source": "game",
+                "path": "fill-the-jars/jar-water"
+              },
+              "label": "Jar six"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "the-day-at-cana",
       "picture": "panel-05",
       "title": "The Day at Cana",

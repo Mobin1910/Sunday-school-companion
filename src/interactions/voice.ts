@@ -67,6 +67,23 @@ const POOLS = {
   /** Arrived alone. */
   capability: ["You found it", "You spotted it", "You did it", "That's the one"],
 
+  /**
+   * Finished a discovery — every one touched, and something happened.
+   *
+   * Apart from the others because they all congratulate a child on being
+   * right, and a discovery has nothing to be right about. "That's the one"
+   * after filling six jars and watching the water turn credits the child
+   * with a choice they were never offered, and quietly tells them the point
+   * was picking correctly. These say the true thing instead: you did it, and
+   * then look what happened.
+   */
+  wonder: [
+    "Look what happened!",
+    "You did it — every one",
+    "Look at them all",
+    "There they are",
+  ],
+
   /** Arrived after trying. Never mentions what did not work. */
   persistence: [
     "You kept looking",

@@ -185,6 +185,24 @@ const reveal = z
     type: z.literal("reveal"),
     prompt: z.string().optional(),
     items: z.array(item).min(1),
+
+    /*
+      What every item looks like before it is touched, and what they all
+      become once every one has been.
+
+      Both optional, and a discovery normally has neither: tapping a thing to
+      find out about it needs no before and no after. They exist for the
+      shape the Cana game needs — six identical jars that start empty, fill
+      one at a time, and then all change together — which is discovery with
+      a beginning and an end rather than a different interaction.
+
+      `becomes` is what makes the change a second beat. Without it the last
+      tap is the end; with it the last tap fills the last jar, and then the
+      water turns, and the child watches something happen that they caused
+      and did not do.
+    */
+    covered: assetReference.optional(),
+    becomes: assetReference.optional(),
     note,
   })
   .refine((i) => i.items.every((x) => x.correct === undefined), {

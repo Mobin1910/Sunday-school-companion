@@ -786,6 +786,48 @@ body {
 }
 
 /*
+  A jar, and what filling one looks like.
+
+  Taller than it is wide, because the artwork is and cropping a jar to a
+  square takes the neck or the foot off it — and a jar with no neck is a pot.
+  Six of them fit two rows of three at this ratio on the narrowest phone we
+  support.
+*/
+.jar-art {
+  aspect-ratio: 3 / 4;
+  max-height: clamp(4.5rem, 17vh, 9rem);
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+/*
+  An empty jar is quiet and a filled one is lit.
+
+  Deliberately not a tick and deliberately not a count — what tells a child
+  which ones they have done is the jars themselves, which is also what tells
+  them in the story. But the water is a thin band at the top of a jar and
+  these are small at six across two rows, so the difference needs help: a
+  cool ring, the same blue the app uses for anything touchable, bright enough
+  to be read at a glance without competing with the gold that arrives at the
+  end.
+*/
+.step-card.is-filled {
+  border-color: rgb(from var(--color-touchable) r g b / 0.85);
+  box-shadow: 0 0 14px -4px rgb(from var(--color-touchable) r g b / 0.55);
+}
+
+/*
+  All six, once the water has turned. The glow is the only moment in a game
+  where the app says something happened that the child did not do, so it is
+  warm and it is brief — `--color-joy` is Halo's own note, spent here on the
+  one beat that has earned it.
+*/
+.step-card.is-turned {
+  border-color: rgb(from var(--color-joy) r g b / 0.75);
+  box-shadow: 0 0 24px -6px rgb(from var(--color-joy) r g b / 0.55);
+}
+
+/*
   These two come after every card style on purpose. They are single classes
   in the same layer as `.option-card`, so nothing but source order decides
   which box-shadow a card ends up with — and an answered card has to win.

@@ -30,3 +30,5 @@ export type Ordering = Extract<PlayInteraction, { type: "sequence" }>;
 export type Pairing = Extract<PlayInteraction, { type: "match" }>;
 
 export type ArrangeWords = Extract<PlayInteraction, { type: "arrange-words" }>;
+
+export type Discovery = Extract<PlayInteraction, { type: "reveal" }>;

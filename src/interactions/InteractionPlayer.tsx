@@ -169,11 +169,24 @@ export default function InteractionPlayer({
     clearTimers();
     setSaying(null);
     setInvited(false);
+    /*
+      A discovery is congratulated differently, because there was nothing to
+      get right — see `wonder` in voice.ts. Everything else keeps the three
+      registers it had: alone, after trying, or together.
+    */
     setArrived(
-      say(rung > 0 ? "partnership" : misses > 0 ? "persistence" : "capability"),
+      say(
+        interaction.type === "reveal"
+          ? "wonder"
+          : rung > 0
+            ? "partnership"
+            : misses > 0
+              ? "persistence"
+              : "capability",
+      ),
     );
     onComplete();
-  }, [misses, rung, onComplete]);
+  }, [misses, rung, onComplete, interaction.type]);
 
   // Stillness calls for help as loudly as a wrong answer. A child who does not
   // know what to do usually does nothing at all.
