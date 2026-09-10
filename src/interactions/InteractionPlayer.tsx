@@ -239,7 +239,7 @@ export default function InteractionPlayer({
         */}
         <div
           className="relative"
-          style={{ "--halo-room": "clamp(4.75rem, 14.2vh, 7.5rem)" } as React.CSSProperties}
+          style={{ "--halo-room": "clamp(4.25rem, 11.8vh, 7.5rem)" } as React.CSSProperties}
         >
           {/* From Halo, because Halo is who is pleased. */}
           {done ? <Confetti /> : null}
@@ -290,7 +290,7 @@ function Voice({
   return (
     <p
       aria-live="polite"
-      className={`voice min-h-12 max-w-sm px-6 text-center text-xl leading-relaxed text-balance ${
+      className={`voice min-h-12 max-w-sm px-6 text-center text-[clamp(1rem,2.5vh,1.25rem)] leading-relaxed text-balance ${
         celebrating ? "text-joy" : "text-ink-soft"
       }`}
       key={showing}

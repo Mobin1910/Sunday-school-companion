@@ -75,11 +75,27 @@ export default function StoryCard({
 
   if (text === undefined) {
     return (
-      <div className="absolute inset-0 overflow-hidden">
+      /*
+        The whole panel, never part of it.
+
+        This filled the page with `object-cover`, which is right for a
+        photograph and wrong for a comic: the dialogue is painted into the
+        artwork, so cropping to fill does not lose scenery, it loses words.
+        Measured on a 2:3 panel at 390x844, thirty-one per cent of the width
+        went — enough to take the first letter of a caption off the left edge
+        and cut a character in half.
+
+        So the panel is contained and whatever is left over is the ground
+        colour the rest of the app is already made of. It reads as a page
+        laid on the table rather than as a picture that did not fit, and it
+        lets a chapter be drawn on any canvas without the reader having to
+        be told which one.
+      */
+      <div className="absolute inset-0 overflow-hidden bg-ground">
         <Picture
           art={art}
           {...(alt ? { alt } : {})}
-          className="size-full object-cover"
+          className="size-full object-contain"
         />
         <div className="cover-scrim absolute inset-0" aria-hidden />
       </div>

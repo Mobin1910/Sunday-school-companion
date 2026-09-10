@@ -89,7 +89,7 @@ export default function Words({
 
   return (
     <div className="flex w-full max-w-sm flex-col gap-5 px-4">
-      <h2 className="text-center text-2xl leading-snug text-balance">
+      <h2 className="asking text-center leading-snug text-balance">
         {interaction.prompt}
       </h2>
 
@@ -100,7 +100,7 @@ export default function Words({
         buttons below never move under a child's finger.
       */}
       <p
-        className="min-h-24 text-center text-2xl leading-relaxed text-balance text-joy"
+        className="min-h-[clamp(4rem,11vh,6rem)] text-center text-[clamp(1.15rem,2.9vh,1.5rem)] leading-relaxed text-balance text-joy"
         aria-live="polite"
       >
         {said.map((piece) => (
@@ -148,7 +148,7 @@ export default function Words({
                 aria-hidden={done}
                 tabIndex={done ? -1 : 0}
                 className={[
-                  "surface flex min-h-16 w-full items-center justify-center px-4 text-center text-xl leading-snug text-balance",
+                  "surface flex min-h-[clamp(2.75rem,6.6vh,4rem)] w-full items-center justify-center px-4 text-center text-[clamp(1rem,2.5vh,1.25rem)] leading-snug text-balance",
                   done && "pointer-events-none",
                   settling === piece.at && "settling",
                   showing && "noticing",

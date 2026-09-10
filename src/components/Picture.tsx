@@ -27,6 +27,19 @@ export default function Picture({
     return <PicturePlaceholder name={art.name} className={className} />;
   }
 
+  /*
+    `draggable={false}` is not decoration. A browser starts its own native
+    drag when a finger or a mouse presses on an image, and that drag cancels
+    the pointer stream underneath it — so a picture inside something the
+    child is meant to drag receives a pointerdown, one or two moves, and then
+    silence. It is why the ordering game's cards could be dragged in every
+    version of that code except the ones with pictures on them.
+
+    Nothing in this app ever wants an image dragged out of it, so it is
+    turned off here, once, rather than at each place that might.
+  */
   // eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized
-  return <img src={art.src} alt={alt ?? ""} className={className} />;
+  return (
+    <img src={art.src} alt={alt ?? ""} className={className} draggable={false} />
+  );
 }

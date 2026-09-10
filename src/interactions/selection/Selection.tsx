@@ -13,7 +13,10 @@ import type { ModelProps, MultipleChoice } from "../types";
  * The most examination-shaped of the four models, so it needs the most care to
  * feel like a teacher rather than a test. A choice that does not stay settles
  * quietly back where it came from: a fact about the world, not about the child.
- * Nothing reddens, nothing shakes, nothing is marked.
+ * Nothing shakes, and nothing reddens — the colour a wrong tap wears is
+ * orange, it lasts about a second, and it leaves the card looking exactly as
+ * it did before, so there is never a record on the screen of what was tried.
+ * The right one keeps its green, because arriving is worth looking at.
  *
  * Its ladder takes the fear out of choosing. A wrong option withdraws — which
  * must feel like tidying rather than confiscation, and so never happens as a
@@ -36,6 +39,8 @@ export default function Selection({
   const [tried, setTried] = useState<number[]>([]);
   const [settling, setSettling] = useState<number | null>(null);
   const [chosen, setChosen] = useState<number | null>(null);
+  /** The card wearing the orange, and only for as long as it wears it. */
+  const [nudged, setNudged] = useState<number | null>(null);
 
   const withdrawn = rung >= 2 ? withdraw(options, tried) : null;
 
@@ -63,6 +68,16 @@ export default function Selection({
     setTried((seen) => (seen.includes(index) ? seen : [...seen, index]));
     setSettling(index);
     window.setTimeout(() => setSettling(null), 300);
+
+    // The colour outlasts the movement — the card has finished settling back
+    // long before the orange has finished going, so the two do not read as
+    // one event that happened and was over before it was noticed.
+    setNudged(index);
+    window.setTimeout(
+      () => setNudged((now) => (now === index ? null : now)),
+      1000,
+    );
+
     onMiss();
   }
 
@@ -81,7 +96,7 @@ export default function Selection({
     <div
       className={`flex w-full flex-col gap-5 ${illustrated ? "max-w-xl px-1" : "max-w-sm px-6"}`}
     >
-      <h2 className="text-center text-2xl leading-snug text-balance">
+      <h2 className="asking text-center leading-snug text-balance">
         {interaction.prompt}
       </h2>
 
@@ -121,7 +136,8 @@ export default function Selection({
                     : "surface min-h-20 gap-4 p-3 pr-5 text-xl",
                   gone && "pointer-events-none opacity-0",
                   settling === index && "settling",
-                  chosen === index && "blooming",
+                  chosen === index && "blooming is-right",
+                  nudged === index && "is-again",
                   showing && "noticing",
                 ]
                   .filter(Boolean)

@@ -60,6 +60,34 @@
   --color-joy: #ffc65a;
 
   /*
+    Answering, in two colours.
+
+    These are the only two in the product that say anything about what a
+    child just did, so they are drawn tightly. `right` is a mint green, warm
+    rather than clinical, and it stays — arriving is worth keeping on screen.
+    `again` is orange and lasts about a second before the choice looks
+    exactly as it did before it was touched.
+
+    Orange and not red, and that line holds. Red is a verdict; it appears
+    nowhere in this product and must not start here, three inches from a
+    celebration. Orange is the colour of "have another look", which is what
+    the second try actually is — the hint is already on its way.
+  */
+  --color-right: #5bd6a0;
+  --color-again: #ff9d5c;
+
+  /*
+    The same two as bare channels, so the rules below can compose an alpha
+    without `rgb(from …)`. Relative colour is used throughout this file and
+    is silently dropped by some browsers — Samsung Internet among them — and
+    where that only costs a slightly flatter glow it is a fair trade. Here it
+    would cost the whole answer: a keyframe whose colour does not parse
+    animates nothing, and a child would tap and see no reply at all.
+  */
+  --color-right-rgb: 91 214 160;
+  --color-again-rgb: 255 157 92;
+
+  /*
     A primary action, as light rather than as a colour: electric blue
     through indigo to violet, the same three the body of Halo moves
     through. The glow is drawn from these two ends, never from white.
@@ -569,8 +597,67 @@ body {
   }
 }
 
+.asking {
+  /*
+    The question a game asks, sized to the screen rather than set once.
+
+    It was a fixed 1.5rem, which is right on a roomy phone and is two lines
+    on a narrow one — and the second line is 33px that has to come out of
+    the answers below it, which is where a game runs out of fold first. The
+    ceiling is the size it always was, so nothing changes on the phones that
+    were already fine.
+  */
+  font-size: clamp(1.1rem, 2.85vh, 1.5rem);
+}
+
 .settling {
   animation: settle 300ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/*
+  What a choice looks like once it has been answered.
+
+  Both are drawn as a ring in `box-shadow` and touch neither the border nor
+  the background, which is what lets one pair of rules work on the cream
+  illustrated cards and the dark word-only ones alike — and it is what lets
+  the orange leave without having to know what colour it was covering.
+
+  The green stays. Arriving is worth keeping on the screen, and it is on the
+  card the child chose, so it reads as "that one" rather than as a mark.
+*/
+.is-right {
+  box-shadow:
+    0 0 0 2px var(--color-right),
+    0 0 22px -4px rgb(var(--color-right-rgb) / 0.7);
+}
+
+/*
+  The orange goes. It comes up quickly, holds about half a second and then
+  fades out entirely, so the choice ends up looking exactly as it did before
+  it was touched — which is the point that was already being made by the
+  card settling back, now said in colour as well. Nothing is left behind to
+  count, and a child who taps the same card again meets no history of having
+  done so.
+*/
+@keyframes again {
+  0% {
+    box-shadow: 0 0 0 2px rgb(var(--color-again-rgb) / 0);
+  }
+  12%,
+  55% {
+    box-shadow:
+      0 0 0 2px rgb(var(--color-again-rgb) / 1),
+      0 0 18px -6px rgb(var(--color-again-rgb) / 0.6);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px rgb(var(--color-again-rgb) / 0),
+      0 0 18px -6px rgb(var(--color-again-rgb) / 0);
+  }
+}
+
+.is-again {
+  animation: again 1000ms ease-out both;
 }
 
 /* Arriving. Up and outward, and larger than anything Recovery does. */
@@ -854,6 +941,43 @@ body {
   background: var(--color-ground-raised);
 }
 
+/*
+  Every empty slot lights while a step is being carried.
+
+  The row is the target and no single square of it is, so lighting one would
+  be telling a child to aim — and aiming is the part of dragging a six-year-old
+  is worst at. What this says is "up here", which is all they need to know.
+*/
+.step-slot.is-over {
+  border-color: var(--color-touchable);
+  background: rgb(from var(--color-ground-lit) r g b / 0.95);
+}
+
+/* The step under the finger. Its own size, so it never covers the row. */
+.step-carried {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  translate: -50% -50%;
+  overflow: hidden;
+  border: 1px solid var(--color-touchable);
+  border-radius: 0.875rem;
+  background: var(--color-ground-lit);
+  color: var(--color-ink);
+  pointer-events: none;
+  text-align: center;
+  box-shadow: 0 10px 24px -8px rgb(0 0 0 / 0.7);
+}
+
+/* Left behind, faintly, so it is clear what is being moved. */
+.step-card.is-carrying {
+  opacity: 0.35;
+}
+
 /* A moment still to be placed. Picture above, words beneath. */
 .step-card {
   border: 1px solid var(--color-edge);
@@ -886,7 +1010,7 @@ body {
 .step-art {
   width: 100%;
   aspect-ratio: 1;
-  max-height: clamp(3.25rem, 15vh, 9rem);
+  max-height: clamp(3rem, 11.8vh, 9rem);
   object-fit: cover;
 }
 
@@ -900,6 +1024,15 @@ body {
   longer part of the work.
 */
 .pair-cell {
+  /*
+    Eight of these stack up on a pairing screen — four rows of two — so this
+    is the game that runs out of fold first, and the height each one insists
+    on is what decides whether it does. Fluid, with the old fixed 4rem as
+    the ceiling, so the roomy phones are unchanged and the short ones give
+    up a few pixels a row rather than the last row entirely. Never below
+    2.75rem: that is still a comfortable target for a small thumb.
+  */
+  min-height: clamp(2.75rem, 6vh, 4rem);
   border: 1px solid var(--color-edge);
   border-radius: 0.875rem;
   background: rgb(from var(--color-ground-raised) r g b / 0.85);

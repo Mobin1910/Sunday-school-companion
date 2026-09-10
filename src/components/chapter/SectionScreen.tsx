@@ -56,7 +56,9 @@ export default function SectionScreen({
       >
         <div className="shrink-0">
           <BackLink href={hubHref} label={chapterTitle} />
-          <h1 className={fit ? "mt-1 text-2xl" : "mt-2 text-3xl"}>{title}</h1>
+          <h1 className={fit ? "mt-1 text-[clamp(1.15rem,2.9vh,1.5rem)]" : "mt-2 text-3xl"}>
+            {title}
+          </h1>
         </div>
 
         {/*

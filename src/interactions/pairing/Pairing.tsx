@@ -153,7 +153,7 @@ export default function Pairing({
 
   return (
     <div className="flex w-full max-w-xl flex-col gap-3 px-4">
-      <h2 className="text-center text-2xl leading-snug text-balance">
+      <h2 className="asking text-center leading-snug text-balance">
         {interaction.prompt}
       </h2>
 
@@ -170,7 +170,7 @@ export default function Pairing({
       </p>
 
       <div className="grid grid-cols-2 gap-3">
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-1.5">
           {lefts.map((entry) => {
             const done = solved(entry.pair);
             const holding = held === entry.pair;
@@ -186,7 +186,7 @@ export default function Pairing({
                   aria-pressed={holding}
                   disabled={done || locked}
                   className={[
-                    "pair-cell flex min-h-16 w-full touch-none items-center gap-2 px-3 py-2 text-left text-base leading-tight",
+                    "pair-cell flex w-full touch-none items-center gap-2 px-3 py-2 text-left text-base leading-tight",
                     done && "is-joined blooming",
                     holding && "is-held",
                     carry && holding && "is-carrying",
@@ -210,7 +210,7 @@ export default function Pairing({
           })}
         </ul>
 
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-1.5">
           {rights.map((entry) => {
             const done = solved(entry.pair);
 
@@ -222,7 +222,7 @@ export default function Pairing({
                   onClick={() => join(entry.pair)}
                   disabled={done || locked}
                   className={[
-                    "pair-cell flex min-h-16 w-full items-center gap-2 px-3 py-2 text-left text-base leading-tight",
+                    "pair-cell flex w-full items-center gap-2 px-3 py-2 text-left text-base leading-tight",
                     done && "is-joined blooming",
                     over === entry.pair && !done && "is-over",
                     settling === entry.pair && "settling",

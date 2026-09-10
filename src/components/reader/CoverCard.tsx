@@ -34,12 +34,11 @@ export default function CoverCard({
   title: string;
 }) {
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      <Picture
-        art={art}
-        alt={title}
-        className="size-full object-cover"
-      />
+    // Contained, for the same reason a story panel is: a cover has its
+    // chapter title and its verse painted into the artwork, so anything
+    // cropped off the edge is words. What is left over is the ground.
+    <div className="absolute inset-0 overflow-hidden bg-ground">
+      <Picture art={art} alt={title} className="size-full object-contain" />
       <div className="cover-scrim absolute inset-0" aria-hidden />
       <h1 className="sr-only">{title}</h1>
     </div>
