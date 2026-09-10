@@ -4,7 +4,7 @@ import Link from "next/link";
  * Up one level, and it always says where that is.
  *
  * "Back" alone asks a child to remember how they got somewhere. Naming the
- * destination — "All chapters", "Stephen" — means they can read where they
+ * destination — "All chapters", "Games" — means they can read where they
  * are going instead.
  */
 export default function BackLink({

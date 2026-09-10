@@ -21,10 +21,20 @@ const READABLE = new Set<Card["kind"]>([
 ]);
 
 export default function CurlPrototypePage() {
-  const chapter = getChapters().find((c) => c.slug === "stephen");
+  /*
+    Whatever chapter is first, rather than one named here. It named one, and
+    when that chapter was removed this page was the only thing in the app
+    that broke — a prototype for evaluating a page turn had made itself
+    depend on a particular chapter existing, which is a dependency it never
+    needed. Any chapter has pages to turn.
+  */
+  const [chapter] = getChapters();
   if (!chapter) notFound();
 
   return (
-    <CurlBook cards={chapter.cards.filter((c) => READABLE.has(c.kind))} />
+    <CurlBook
+      title={chapter.title}
+      cards={chapter.cards.filter((c) => READABLE.has(c.kind))}
+    />
   );
 }

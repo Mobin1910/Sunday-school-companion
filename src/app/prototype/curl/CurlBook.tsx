@@ -44,7 +44,14 @@ const MAX_ANGLE = 72;
 const MIN_SPINE = 16;
 const MAX_SPINE = 64;
 
-export default function CurlBook({ cards }: { cards: Card[] }) {
+export default function CurlBook({
+  title,
+  cards,
+}: {
+  /** The chapter these pages came from. The cover shows it; see captionOf. */
+  title: string;
+  cards: Card[];
+}) {
   const stage = useRef<HTMLDivElement>(null);
   const underArt = useRef<HTMLDivElement>(null);
   const underCaption = useRef<HTMLDivElement>(null);
@@ -89,7 +96,8 @@ export default function CurlBook({ cards }: { cards: Card[] }) {
     const i = Math.max(0, Math.min(cards.length - 1, rawIndex));
     if (artRef.current) artRef.current.style.background = sceneFor(i);
     const card = cards[i];
-    if (capRef.current && card) capRef.current.textContent = captionOf(card);
+    if (capRef.current && card)
+      capRef.current.textContent = captionOf(card, title);
   }
 
   function renderAt(pos: number) {
@@ -334,10 +342,10 @@ export default function CurlBook({ cards }: { cards: Card[] }) {
   );
 }
 
-function captionOf(card: Card): string {
+function captionOf(card: Card, title: string): string {
   switch (card.kind) {
     case "cover":
-      return "Stephen";
+      return title;
     case "story":
       return card.text ?? "";
     case "verse":
