@@ -9,8 +9,80 @@
   "story": [
     {
       "picture": "panel-01",
-      "alt": "Pending — Chapter 2 has no approved storyboard, so this panel has not been written or drawn.",
-      "note": "The one card the schema requires and nothing more: `story` cannot be empty, so this holds the chapter's place until the approved panels replace it. It carries `alt` rather than `text` on purpose — text renders on the page as narration and could be mistaken later for approved copy, where an alt that says it is pending cannot be. Act 1, Connect, begins here."
+      "alt": "A boy sits at his desk with his chin in his hands, looking worried. Above him the question reads, “What do you do when you are worried or have a problem?”, with three small pictures — a difficult test, a problem with a friend, and something that gets broken. Halo glows beside him and says, “You can tell Jesus about it! He always listens and cares.”",
+      "note": "Act 1, Connect. The chapter opens on the child's own worry before it opens on the Bible, and the three small pictures are there so a six-year-old finds their own kind of problem in one of them."
+    },
+    {
+      "picture": "panel-02",
+      "alt": "Halo says, “Someone in the Bible had a problem too.” A thought bubble above the boy shows Jesus and Mary at a wedding feast. The boy asks, “Really? What happened?”",
+      "note": "Act 1. The bridge: the child's problem and the Bible's problem are the same kind of thing."
+    },
+    {
+      "picture": "panel-03",
+      "alt": "The boy lies on his bed with a big storybook open in front of him. Halo says, “Let’s find out what happened!” and the picture above shows the wedding at Cana, with the words, “Jesus, his mother Mary, and his disciples were invited to a wedding in Cana.”",
+      "note": "Act 1 ends here, on the way in. The next panel is inside the story."
+    },
+    {
+      "picture": "panel-04",
+      "alt": "Jesus and his mother Mary walk with his disciples through a flowered archway. A sign reads, “Welcome to the Wedding in Cana.” The words above say, “Jesus, his mother Mary, and his disciples were invited to a wedding in Cana.”",
+      "note": "Act 2, Discover, begins. Halo is absent from every panel from here to panel-14, which is the rule and not an oversight."
+    },
+    {
+      "picture": "panel-05",
+      "alt": "A long table full of food and flowers, with musicians and guests all around. Jesus and Mary sit together among them. The words say, “The wedding was a happy celebration. Everyone was enjoying the feast!”"
+    },
+    {
+      "picture": "panel-06",
+      "alt": "A servant holds an empty jar and another spreads his hands, both worried. Empty cups stand on the table. The words say, “But during the feast, the wine ran out.”"
+    },
+    {
+      "picture": "panel-07",
+      "alt": "Mary stands behind a pillar, listening, while three servants talk beside the six stone jars. One says, “The wine has run out!” and another says, “What can we do now?” The words say, “Mary overheard the servants talking about the problem.”",
+      "note": "The first panel where all six stone jars are in shot."
+    },
+    {
+      "picture": "panel-08",
+      "alt": "Mary leans towards Jesus with her hand on her chest and says, “They have no wine.” Jesus listens. The words say, “Mary went to Jesus and told him about the problem.”",
+      "note": "The heart of the chapter, and the thing the lesson is about: somebody noticed a problem and took it to Jesus. The reader's one question asks about this panel."
+    },
+    {
+      "picture": "panel-09",
+      "alt": "Mary turns to the servants by the stone jars and says, “If he commands you to do anything, do it.” The words say, “Mary told the servants to do whatever Jesus said.”"
+    },
+    {
+      "picture": "panel-10",
+      "alt": "Jesus points towards the stone jars and says, “Fill the jars with water,” while the servants begin to pour. The words say, “Jesus told the servants what to do.”"
+    },
+    {
+      "picture": "panel-11",
+      "alt": "The servants pour water from smaller jugs into the six big stone jars, and the water shines as it falls. The words say, “The servants filled the six stone jars with water.”"
+    },
+    {
+      "picture": "panel-12",
+      "alt": "The water in the six stone jars has turned deep red. The servants and Mary look at it in astonishment. The words say, “The water became wine!”"
+    },
+    {
+      "picture": "panel-13",
+      "alt": "A servant lifts a golden cup, delighted, and says, “It’s wine! Wonderful wine!” The words say, “The servants tasted the water, and it was wine!”"
+    },
+    {
+      "picture": "panel-14",
+      "alt": "Jesus raises a cup among the smiling guests and one of them says, “This is amazing!” The words say, “Jesus did his first miracle at the wedding in Cana. He showed his glory, and his disciples believed in him.” The reference below reads John 2:11.",
+      "note": "Act 2 closes on the miracle being named as the first one. Halo returns on the next panel."
+    },
+    {
+      "picture": "panel-15",
+      "alt": "The boy is back at his desk at home, resting his chin on his hand. Halo glows beside him and asks, “Do you ever have problems that make you worried or sad?”",
+      "note": "Act 3, Reflect. The same room and the same pose as panel-01, on purpose — the child is being asked their own question back, now that they know the story."
+    },
+    {
+      "picture": "panel-16",
+      "alt": "The boy looks up, easier now, and Halo says, “Jesus cares about you. You can tell Him everything.”"
+    },
+    {
+      "picture": "panel-17",
+      "alt": "The boy kneels by his bed with his hands folded and his eyes closed, Halo glowing beside him. A card reads, “My decision: I will tell Jesus everything,” and beneath it, 1 Peter 5:7 — “Cast all your anxiety on him, because he cares for you.”",
+      "note": "My Decision, and the memory verse, both painted into the artwork — the same shape Chapter 1 uses, where the chapter lands on the child's own answer rather than on a summary. There is no separate decision screen because there has never been one."
     }
   ],
   "games": [
@@ -185,7 +257,7 @@
     "note": "Supplied with the chapter. The translation is deliberately unresolved: this wording is not the World English Bible's, which is the public-domain text Chapter 1 uses, so which translation is credited — and whether it may be used — is still open. PLACEHOLDER is what keeps that from being decided by accident; checks.ts warns while the chapter is a draft and refuses it once the chapter is listed in library.json."
   },
   "celebration": {
-    "message": "I will tell Jesus everything.",
-    "note": "The chapter's own decision, supplied with the curriculum, standing where Chapter 1 puts a “you learned…” recap. Its placement is provisional: if the approved Act 3 lands the decision inside a panel, this becomes a recap instead. The field is required, and nothing was invented to fill it."
+    "message": "You learned how Mary told Jesus, and how He helped.",
+    "note": "A recap, because the decision now has its own place. This field held “I will tell Jesus everything.” while the storyboard was pending, and panel-17 turned out to paint that line into the artwork itself, under the words “My decision”. Saying it again one page later would take the child's own moment and repeat it back as a caption."
   }
 }
