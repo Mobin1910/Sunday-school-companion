@@ -88,6 +88,8 @@
   */
   --color-right-rgb: 91 214 160;
   --color-again-rgb: 255 157 92;
+  /* Gold too, for the same reason: a tint that has to parse everywhere. */
+  --color-joy-rgb: 255 198 90;
 
   /*
     A primary action, as light rather than as a colour: electric blue
@@ -682,6 +684,26 @@ body {
   color: var(--color-right);
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
+}
+
+/*
+  A run in progress, during free play only.
+
+  Sized and coloured to be glanceable and not much more. It sits in the same
+  row as "Finish", well away from the question, and it never appears inside
+  a chapter — see `PracticeScreen`, which is the only component that draws
+  it and is used by nothing under `chapter/`.
+*/
+.run-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: rgb(var(--color-joy-rgb) / 0.14);
+  color: var(--color-joy);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .asking {

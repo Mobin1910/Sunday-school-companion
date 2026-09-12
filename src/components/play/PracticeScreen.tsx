@@ -20,10 +20,25 @@ import { streakNamed, type StreakName, type StreakRecord } from "@/local/streak"
  * The landing and the session are one component and one route, so a run is
  * never lost to a navigation.
  *
- * The streak is momentum, not a score. It is not shown during play: a number
- * ticking up beside a question turns "let's see what we remember" into "let's
- * see how high you can get", which is the thing this must not become. It is
- * on the landing, before and after, and nowhere else.
+ * The pool is shuffled once, when a run starts, and then walked in order.
+ * Drawing at random each time meant a child could meet the same question
+ * three times in ten while another never came up at all, which reads as the
+ * app not having very much in it. A shuffle that holds for the visit means
+ * everything is seen once before anything is seen twice, and the order is
+ * different the next time they come.
+ *
+ * The streak is momentum, not a score, and this screen is the only place in
+ * the product that shows one. It belongs to free play — where there is no
+ * chapter, no story and nothing being worked through — and it must never
+ * appear inside a chapter: a child reading about Simeon is not on a run, and
+ * a number in the corner of that would turn a chapter into a scoreboard.
+ * Nothing in `chapter/` imports this component, which is what keeps that
+ * true rather than a note.
+ *
+ * During play it is a mark in the corner rather than a row of three: the
+ * question is what a child is looking at, and the run is something they can
+ * glance at. The full three — now, today, best — stay on the landing, before
+ * and after, where there is nothing to distract from.
  *
  * The two streaks never meet. Which store this screen writes to is a prop,
  * and each caller passes its own — see `local/streak.ts` for why sharing one
@@ -56,20 +71,44 @@ export default function PracticeScreen({
   const [record, setRecord] = useState<StreakRecord | null>(null);
   const [playing, setPlaying] = useState(false);
   const [run, setRun] = useState(0);
-  const [current, setCurrent] = useState<PoolQuestion | null>(null);
   const [stumbled, setStumbled] = useState(false);
   /** Remounts the player for each question so it starts genuinely fresh. */
   const [round, setRound] = useState(0);
+
+  /*
+    The order for this visit, and where in it the child is.
+
+    Held together because they are one fact: an order nobody is walking is
+    not an order. Reshuffled when a run starts, and again on the lap — so
+    every question is met once before any is met twice, and the second lap
+    is not a rerun of the first.
+  */
+  const [order, setOrder] = useState<PoolQuestion[]>([]);
+  const [at, setAt] = useState(0);
+  const current = order[at] ?? null;
 
   // Read after mount: localStorage does not exist while prerendering, and a
   // child in a private window must get a working game, not a broken one.
   useEffect(() => setRecord(streak.read()), [streak]);
 
-  const pick = useCallback(
-    (avoid: string | null) => {
-      const choices = pool.filter((q) => q.id !== avoid);
-      const from = choices.length > 0 ? choices : pool;
-      return from[Math.floor(Math.random() * from.length)] ?? null;
+  /*
+    Shuffled in the browser, on a tap, and never while rendering. A pool
+    shuffled during a prerender would be baked into the HTML — the same
+    "random" order for every child who ever opened the app — and a pool
+    shuffled during a render would disagree with itself on hydration.
+  */
+  const shuffled = useCallback(
+    (avoid?: string) => {
+      const deck = [...pool];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j]!, deck[i]!];
+      }
+      // Never open a lap on the question that closed the last one.
+      if (deck.length > 1 && deck[0]!.id === avoid) {
+        [deck[0], deck[1]] = [deck[1]!, deck[0]!];
+      }
+      return deck;
     },
     [pool],
   );
@@ -77,15 +116,24 @@ export default function PracticeScreen({
   const start = () => {
     setRun(0);
     setStumbled(false);
-    setCurrent(pick(null));
+    setOrder(shuffled());
+    setAt(0);
     setRound((r) => r + 1);
     setPlaying(true);
   };
 
   const next = () => {
     setStumbled(false);
-    setCurrent((c) => pick(c?.id ?? null));
     setRound((r) => r + 1);
+
+    if (at + 1 < order.length) {
+      setAt(at + 1);
+      return;
+    }
+
+    // The lap is over. A fresh order rather than the same one again.
+    setOrder(shuffled(current?.id));
+    setAt(0);
   };
 
   const onArrived = () => {
@@ -113,7 +161,8 @@ export default function PracticeScreen({
     setRecord(streak.record(run));
     setPlaying(false);
     setRun(0);
-    setCurrent(null);
+    setOrder([]);
+    setAt(0);
   };
 
   /*
@@ -164,6 +213,23 @@ export default function PracticeScreen({
           >
             Finish
           </button>
+
+          {/*
+            The run, in the corner, and only once there is one.
+
+            Zero is not shown. A child who has just started, or who has just
+            stumbled, is not looking at a nought — the mark appears when
+            something has gone right and goes when the run ends, which is
+            the only way a streak can be momentum rather than a mark out of
+            ten. It is small, it is not announced, and it is nowhere near
+            the question.
+          */}
+          {run > 0 ? (
+            <span className="run-mark" aria-hidden>
+              <FlameIcon />
+              {run}
+            </span>
+          ) : null}
         </div>
 
         <InteractionPlayer
@@ -221,6 +287,23 @@ export default function PracticeScreen({
 
       {children}
     </div>
+  );
+}
+
+function FlameIcon() {
+  return (
+    <svg
+      width={14}
+      height={14}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 3c.6 3 3 4 4.4 6.2A6.6 6.6 0 0 1 12 20.5 6.6 6.6 0 0 1 7.6 9.2C8.4 8 9 7.3 9.3 6.4c.9 1 1.3 1.8 1.4 2.7C11.4 7.6 11.8 5.4 12 3z" />
+    </svg>
   );
 }
 
