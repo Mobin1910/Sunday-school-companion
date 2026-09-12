@@ -18,6 +18,7 @@ export default function SectionScreen({
   chapterTitle,
   hubHref,
   onward,
+  quietOnward = false,
   fit = false,
   children,
 }: {
@@ -31,6 +32,17 @@ export default function SectionScreen({
    * that says "Chapter menu" and does not go there is a small lie.
    */
   onward?: string;
+  /**
+   * Say the way back rather than shout it, for a screen that offers its own
+   * way onward.
+   *
+   * Two lit buttons stacked at the bottom of a screen are two screens
+   * arguing about what to do next. Where a section supplies a real next
+   * step — the games shelf offering the memory verse once the shelf is
+   * empty — that step is the loud one and this becomes what it actually is:
+   * the way back up.
+   */
+  quietOnward?: boolean;
   /**
    * Hold the screen to exactly one fold, and let what is inside it have all
    * the room that is left.
@@ -92,7 +104,14 @@ export default function SectionScreen({
         </div>
 
         {fit ? null : (
-          <Link href={hubHref} className="cta min-h-16 px-6 text-xl">
+          <Link
+            href={hubHref}
+            className={
+              quietOnward
+                ? "btn-quiet min-h-14 px-6 text-lg"
+                : "cta min-h-16 px-6 text-xl"
+            }
+          >
             {onward ?? "Chapter menu"}
           </Link>
         )}

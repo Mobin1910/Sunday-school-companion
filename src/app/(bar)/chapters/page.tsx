@@ -1,5 +1,6 @@
 import ChapterCard from "@/components/chapter/ChapterCard";
-import { coverOf, getChapters } from "@/content";
+import { coverOf, gamesOf, getChapters, verseOf } from "@/content";
+import { canPlay } from "@/interactions/registry";
 
 /**
  * The shelf.
@@ -12,6 +13,13 @@ import { coverOf, getChapters } from "@/content";
  *
  * The number a chapter shows is its place here, and nothing more. Order comes
  * from the content layer, so this screen never decides it.
+ *
+ * What each chapter asks for before it counts as done is worked out here,
+ * from the chapter itself: the games it has that can actually be played, and
+ * whether it has a verse. A chapter with no games needs none, so it is never
+ * stuck at "0 of 0" — and a game written but not yet playable cannot hold a
+ * chapter open, because a child has no way to play it. Whether any of that
+ * has happened is the browser's business; see `ChapterCard`.
  */
 export default function ChaptersPage() {
   const chapters = getChapters();
@@ -31,6 +39,12 @@ export default function ChaptersPage() {
                   number={index + 1}
                   title={chapter.title}
                   cover={coverOf(chapter)}
+                  needs={{
+                    games: gamesOf(chapter)
+                      .filter((game) => game.interactions.every(canPlay))
+                      .map((game) => game.id),
+                    verse: verseOf(chapter) !== undefined,
+                  }}
                 />
               </li>
             ))}

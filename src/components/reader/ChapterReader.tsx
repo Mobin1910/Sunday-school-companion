@@ -11,6 +11,7 @@ import {
 } from "react";
 
 import { rememberPlace, resumeAt } from "@/local/place";
+import { finishedStory } from "@/local/session";
 
 import { PageProvider } from "./PageContext";
 
@@ -208,6 +209,17 @@ export default function ChapterReader({
       pages: pages.length,
       done: index === lastPage,
     });
+
+    /*
+      And, separately, that the story of this chapter was read *today*.
+
+      Two records because they answer two different questions. `place` is
+      where to carry on from, kept across weeks; this is the first of the
+      three things a chapter asks for, kept only for this sitting. Neither
+      can be derived from the other: a child who re-opens a finished chapter
+      has a remembered place and has not read it again.
+    */
+    if (index === lastPage) finishedStory(slug);
   }, [slug, index, lastPage, pages.length]);
 
   /*

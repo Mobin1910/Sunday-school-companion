@@ -633,6 +633,57 @@ body {
   );
 }
 
+/*
+  WHAT HAS BEEN DONE IN THIS SITTING.
+
+  Two marks, and both are deliberately small. Nothing here is a score, a
+  reward or a lock: they say "you have already been here today", which is
+  useful when three games look alike from the shelf, and they say nothing at
+  all about the child. Everything they mark is still fully open, and all of
+  it forgets itself when the tab closes — see `local/session.ts`.
+*/
+
+/*
+  A game already played. A tick in the corner, on the ground colour so it
+  reads on any illustration underneath it. The card itself keeps its light:
+  a game that has been played is still a game, and a six-year-old who wants
+  it again should not be looking at something that appears to be switched
+  off.
+*/
+.played-tick {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 9999px;
+  background: rgb(var(--color-ground-rgb) / 0.82);
+  color: var(--color-right);
+}
+
+/*
+  A chapter worked all the way through. The row loses a little of its light
+  rather than being crossed out, and it is never dimmed far enough to stop
+  being the way a child finds that story again.
+*/
+.chapter-done {
+  opacity: 0.72;
+}
+
+
+.done-pill {
+  padding: 0.05rem 0.45rem;
+  border-radius: 9999px;
+  background: rgb(var(--color-right-rgb) / 0.16);
+  color: var(--color-right);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+}
+
 .asking {
   /*
     The question a game asks, sized to the screen rather than set once.

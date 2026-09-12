@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import GamePlayer from "@/components/play/GamePlayer";
-import GamesEnd from "@/components/play/GamesEnd";
-import { gameOf, gamesOf, getChapters, verseOf } from "@/content";
+import { gameOf, gamesOf, getChapters } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -14,6 +13,12 @@ import { canPlay } from "@/interactions/registry";
  * who backs out of a game lands on the shelf they chose it from rather than
  * somewhere in the middle of it, and so that a game is a place that can be
  * returned to.
+ *
+ * Finishing leads back to the same shelf, and never on into the next game.
+ * Three games chained together were a corridor with no exit and no sense of
+ * how long it was; the shelf is where a child can see what is left, what
+ * they have done, and — when there is nothing left — the memory verse. Every
+ * way out of a game is therefore the same way, which is the point.
  *
  * The objective is not repeated here. It belongs to the shelf, where a
  * grown-up is choosing; a child who has started playing is not the person it
@@ -43,43 +48,19 @@ export default async function ChapterGamePage({
   const game = gameOf(chapter, id);
   if (!game) notFound();
 
-  /*
-    Where finishing this one leads. Worked out here rather than in the
-    player, because the chapter's list of games is content — and so is
-    whether the chapter has a verse to offer at the end of them — and the
-    player has no business knowing about chapters at all.
-
-    A game with another after it moves straight on. The last one does not
-    move anywhere: it hands over a screen with the ways onward on it, and
-    the memory verse is the one it leads with.
-  */
-  const playable = gamesOf(chapter).filter((g) => g.interactions.every(canPlay));
-  const after = playable[playable.findIndex((g) => g.id === id) + 1];
-  const verse = verseOf(chapter);
-
   return (
     <SectionScreen
       title={game.title}
-      chapterTitle="Games"
+      chapterTitle="Let's Play!"
       hubHref={`/chapter/${slug}/games`}
       fit
     >
       {game.interactions.every(canPlay) ? (
         <GamePlayer
           interactions={game.interactions}
-          {...(after
-            ? { nextHref: `/chapter/${slug}/games/${after.id}` }
-            : {
-                ending: (
-                  <GamesEnd
-                    {...(verse ? { verseHref: `/chapter/${slug}/verse` } : {})}
-                    {...(playable.length > 1
-                      ? { shelfHref: `/chapter/${slug}/games` }
-                      : {})}
-                    hubHref={`/chapter/${slug}`}
-                  />
-                ),
-              })}
+          slug={slug}
+          gameId={id}
+          doneHref={`/chapter/${slug}/games`}
         />
       ) : (
         <NotReadyYet what="This game" />

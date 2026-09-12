@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import type { PlayInteraction } from "@/content";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
+import { finishedGame } from "@/local/session";
 
 /**
  * One game, played through.
@@ -22,11 +23,17 @@ import InteractionPlayer from "@/interactions/InteractionPlayer";
  * screen, and making them find a button to say so reads as the app not
  * having noticed.
  *
- * That is true between questions and between games, and it stops being true
- * at the end of the last one. Moving a child on is kind while there is a
- * next thing they were already doing; carrying them out of the games
- * altogether is a decision being made for them. So the end is a screen with
- * ways onward on it — `ending` — and no timer runs after it appears.
+ * That is true between the questions inside one game. It is deliberately
+ * not true across games any more. A game used to run straight into the next
+ * one, which made three games one long corridor: a child could not see how
+ * many there were, could not tell which they had done, and had no way out
+ * that was not the back button. Finishing now returns to the shelf they
+ * chose from — the same place, one game fuller — and choosing again is
+ * theirs. See `GamesMenu`, which is what they land on.
+ *
+ * `replace` rather than `push`, so the finished game does not sit behind the
+ * shelf in history. Backing out of the shelf should leave the games, not
+ * re-open a game that has just been played.
  *
  * The player is remounted for each question, keyed by index, so a question
  * begins genuinely fresh — no rung carried over, no stillness clock already
@@ -36,24 +43,23 @@ const AFTER_SOLVING = 1600;
 
 export default function GamePlayer({
   interactions,
-  nextHref,
-  ending,
+  slug,
+  gameId,
+  doneHref,
 }: {
   interactions: PlayInteraction[];
   /**
-   * The next game, where this one has a next game. Followed once the last
-   * question has been answered and celebrated.
+   * Which chapter and which game, so that finishing counts towards this
+   * chapter's shelf. Nothing about a child is recorded — only that this
+   * game, in this chapter, was played in this sitting.
    */
-  nextHref?: string;
-  /**
-   * What the last game leaves behind when there is no next one. Shown in
-   * place of the player after the same pause, rather than followed.
-   */
-  ending?: React.ReactNode;
+  slug: string;
+  gameId: string;
+  /** Where finishing leads. The chapter's games shelf, always. */
+  doneHref: string;
 }) {
   const router = useRouter();
   const [at, setAt] = useState(0);
-  const [over, setOver] = useState(false);
   const waiting = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // A game left before the pause is up must not drag the next screen along
@@ -64,8 +70,6 @@ export default function GamePlayer({
     },
     [],
   );
-
-  if (over && ending) return <>{ending}</>;
 
   const interaction = interactions[at];
   if (!interaction) return null;
@@ -79,11 +83,18 @@ export default function GamePlayer({
         interaction={interaction}
         onComplete={() => {
           if (waiting.current) return;
+          /*
+            Written down before the pause, not after it. A child who taps
+            away during the celebration still played the game, and a shelf
+            that forgot it because they did not wait would be the app
+            quietly disagreeing with what just happened on screen.
+          */
+          if (last) finishedGame(slug, gameId);
+
           waiting.current = setTimeout(() => {
             waiting.current = null;
             if (!last) setAt((n) => n + 1);
-            else if (nextHref) router.push(nextHref);
-            else if (ending) setOver(true);
+            else router.replace(doneHref);
           }, AFTER_SOLVING);
         }}
       />
