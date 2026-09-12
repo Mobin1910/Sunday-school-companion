@@ -93,7 +93,20 @@ export type Card =
       translation: string;
       attribution?: string;
     }
-  | { kind: "practice"; interaction: PlayInteraction }
+  /**
+   * The drill that follows a verse, and the verse it is drilling.
+   *
+   * It carries the words and the reference because the screen that runs it
+   * has to show both once a child finishes — and a reference typed into a
+   * component is a reference that will one day disagree with the chapter it
+   * belongs to. Same source, read twice.
+   */
+  | {
+      kind: "practice";
+      interaction: PlayInteraction;
+      text: string;
+      reference: string;
+    }
   /**
    * The one card that is not offline content. It carries an id, never a
    * player: nothing is embedded until a child asks to watch.
@@ -287,6 +300,8 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
       cards.push({
         kind: "practice",
         interaction: toInteraction(chapter.verse.practice, resolve),
+        text: chapter.verse.text,
+        reference: chapter.verse.reference,
       });
     }
   }

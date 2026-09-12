@@ -268,10 +268,22 @@
     }
   ],
   "verse": {
-    "text": "My eyes have seen your salvation.",
-    "reference": "Luke 2:30",
-    "translation": "WEB",
-    "note": "Simeon's own words, and short enough for a six-year-old to carry."
+    "text": "For my eyes have seen your salvation, which you have prepared in the presence of all peoples",
+    "reference": "St Luke 2:30,31",
+    "translation": "PLACEHOLDER",
+    "practice": {
+      "type": "arrange-words",
+      "prompt": "Put the verse back together",
+      "hint": "It begins with what Simeon's own eyes had seen.",
+      "words": [
+        "For my eyes",
+        "have seen your salvation,",
+        "which you have prepared",
+        "in the presence",
+        "of all peoples"
+      ]
+    },
+    "note": "The complete memory verse from the curriculum, not the line Simeon speaks in panel 8 — “My eyes have seen your salvation!” is story dialogue and this is the verse, and the chapter had been carrying the short one. The translation is deliberately unresolved: this wording is not the World English Bible's, which is what the chapter claimed, so which translation is credited is an open decision rather than one made by accident."
   },
   "video": {
     "youtubeId": "leN-xNrkjbo",

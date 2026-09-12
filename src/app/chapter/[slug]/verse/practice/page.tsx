@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import SectionScreen from "@/components/chapter/SectionScreen";
-import QuizCard from "@/components/reader/QuizCard";
+import PractiseVerse from "@/components/play/PractiseVerse";
 import { getChapters, versePracticeOf } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
@@ -21,6 +21,11 @@ import { canPlay } from "@/interactions/registry";
  *
  * The route exists only for chapters that have a practice which can actually
  * be played, so the door is never one a child opens onto "not yet".
+ *
+ * It is also the end of the chapter journey — story, then games, then this —
+ * so finishing here is what marks the chapter done for the session and sends
+ * the child back to the shelf. The same drill reached from Home completes
+ * nothing, because it belongs to no chapter; see `PractiseVerse`.
  */
 
 export function generateStaticParams() {
@@ -52,7 +57,19 @@ export default async function VersePracticePage({
       hubHref={`/chapter/${slug}/verse`}
       fit
     >
-      <QuizCard interaction={practice.interaction} />
+      {/*
+        The last step of the chapter. Finishing it shows the verse and its
+        reference, marks the chapter finished for this sitting, and offers
+        the shelf — which is where a finished chapter leads.
+      */}
+      <PractiseVerse
+        interaction={practice.interaction}
+        text={practice.text}
+        reference={practice.reference}
+        slug={slug}
+        onwardHref="/chapters"
+        onwardLabel="All chapters"
+      />
     </SectionScreen>
   );
 }

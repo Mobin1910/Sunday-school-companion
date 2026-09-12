@@ -215,14 +215,56 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
     }
   }
 
-  for (const card of chapter.cards) {
-    if (card.kind === "verse" && card.translation === "PLACEHOLDER") {
+  /*
+    A verse has to be a verse, and it has to say where it comes from.
+
+    The schema asks for strings and an empty string is a string, so a verse
+    could ship with no words in it or — the one that actually happened — with
+    the reference left off. A child who assembles a memory verse and is never
+    told where in the Bible it lives has learned a sentence, which is most of
+    the way to the point and not the point. Both are checked here rather than
+    in the schema because a chapter being written is allowed to have neither
+    yet; a chapter that ships is not.
+  */
+  if (verse?.kind === "verse") {
+    if (tidy(verse.text) === "") {
+      advisories.push({
+        level,
+        where: chapter.file,
+        message: "the memory verse has no words",
+      });
+    }
+
+    if (tidy(verse.reference) === "") {
+      advisories.push({
+        level,
+        where: chapter.file,
+        message:
+          "the memory verse has no reference — a verse a child cannot look up",
+      });
+    }
+
+    if (verse.translation === "PLACEHOLDER") {
       advisories.push({
         level,
         where: chapter.file,
         message: "the memory verse still has a placeholder translation",
       });
     }
+  }
+
+  /*
+    And a verse worth learning is worth practising. Not an error anywhere:
+    plenty of verses are simply read, and a chapter is not broken for
+    offering one. It is said once so that a drill left off by accident is
+    visible rather than silent.
+  */
+  if (verse?.kind === "verse" && practice === undefined) {
+    advisories.push({
+      level: "warning",
+      where: chapter.file,
+      message: "the memory verse has no practice written for it",
+    });
   }
 
   for (const { where, message } of copyAdvisories(chapter.cards)) {
