@@ -40,9 +40,12 @@ const good = [];
  *
  * How a placeholder is recognised, with nothing to mark and nothing to
  * remember to unmark: real artwork is never one flat colour, and a flat
- * fill is exactly what `placeholders.mjs` writes. `sharp`'s per-channel
- * min and max are equal across a flat image and cannot be for anything
- * with a Halo in it.
+ * fill is what a stand-in looks like. `sharp`'s per-channel min and max are
+ * equal across a flat image and cannot be for anything with a Halo in it.
+ *
+ * Every asset is real artwork now, so this should never fire again. It is
+ * kept as the guard that says so: an icon that quietly became a dark square
+ * is reported rather than shipped.
  */
 async function isFlat(file) {
   const { channels } = await sharp(file).stats();
@@ -96,7 +99,7 @@ async function checkIco(name, asset, file) {
   try {
     data = await readFile(file);
   } catch {
-    faults.push(`${name}: ${asset.path} is missing — run \`npm run brand:ico\``);
+    faults.push(`${name}: ${asset.path} is missing — run \`npm run brand:derive\``);
     return;
   }
 
@@ -186,11 +189,11 @@ if (good.length > 0) {
 
 if (placeholders.length > 0) {
   console.log(
-    amber(`\n▲ ${placeholders.length} asset(s) are still TEMPORARY PLACEHOLDERS`),
+    amber(`\n▲ ${placeholders.length} asset(s) are a flat fill, not artwork`),
   );
   for (const line of placeholders) console.log(amber(`    ${line}`));
   console.log(
-    dim("\n    A flat fill of the ground colour, not branding. See BRAND_ASSETS.md"),
+    dim("\n    A single flat colour is a stand-in, not branding. See BRAND_ASSETS.md"),
   );
   console.log(dim("    for what each one should be, then drop the artwork in."));
 }

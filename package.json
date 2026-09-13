@@ -17,8 +17,7 @@
   "private": true,
   "scripts": {
     "brand:check": "node tools/brand/check.mjs",
-    "brand:ico": "node tools/brand/ico.mjs",
-    "brand:placeholders": "node tools/brand/placeholders.mjs",
+    "brand:derive": "node tools/brand/derive.mjs",
     "build": "next build",
     "content:check": "node tools/content/check-brief.mjs",
     "dev": "next dev",

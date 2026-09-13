@@ -9,12 +9,12 @@ goes through the content pipeline and no chapter file ever references it.
 Every asset below is Halo, at a size and crop suited to where it appears.
 There is no wordmark-only variant and no separate logo to fall back on.
 
-> **Status: awaiting final artwork.** Every file listed below currently
-> holds a temporary placeholder — a flat fill of the ground colour, written
-> by `npm run brand:placeholders`. They are not a draft and not a direction.
-> They exist so the app builds, `/favicon.ico` resolves and the manifest
-> validates while the real artwork is drawn. `npm run brand:check` reports
-> which are still placeholders.
+> **Status: artwork in place.** Halo was drawn as a 1024 master with a
+> transparent background, and the favicon, 192 and 512 icons were exported
+> from it alongside a 1687×932 social illustration. Three assets are derived
+> from those by `npm run brand:derive` — the apple-touch icon, the maskable
+> icon and the 1200×630 preview crop — because each needs framing the master
+> does not have. `npm run brand:check` verifies all nine.
 
 ---
 
@@ -46,7 +46,7 @@ already names public directories for what is in them — chapter artwork is
 request `/favicon.ico` from the site root on their own, with no markup
 involved; a `rel="icon"` link adds to that request rather than replacing
 it. A file anywhere else means a 404 on every page load. It is *derived*
-from the two favicon PNGs by `npm run brand:ico`, so there is still only
+from the two favicon PNGs by `npm run brand:derive`, so there is still only
 one place artwork is put.
 
 ---
@@ -130,27 +130,33 @@ Judge them at actual size in a real tab, never zoomed.
 
 ### Apple touch icon — 180×180
 
-Same composition as the master, opaque, no rounded corners and no gloss —
-iOS applies its own mask and has done since iOS 7. Corners drawn into the
-artwork get masked twice and show as a dark fringe.
+**Derived** by `brand:derive`: the master flattened onto the ground colour
+at 88%, then resized.
 
-Keep Halo clear of the outer ~10% so Apple's squircle does not clip the
-ring.
+Opaque because iOS composites alpha onto black, and Halo on a transparent
+background would become Halo in a black hole. Inset because Apple applies
+its own squircle and the master runs to all four edges — the ring at the top
+and the wings at the sides would otherwise be clipped. No rounded corners and
+no gloss drawn in: iOS has masked them itself since iOS 7, and corners drawn
+into the artwork get masked twice.
 
 ### PWA icons — 192×192, 512×512
 
-Straight exports of the master. Nothing special: these are shown whole.
+Exported from the master by hand. Shown whole, so transparency is fine here
+and is what they carry.
 
 ### Maskable icon — 512×512, opaque
 
-**A different export, not the same file relabelled.** Android crops this to
-whatever shape the launcher wants and guarantees only the central 80%
-survives — a circle of 409px diameter, centred.
+**Derived** by `brand:derive`: the master at 60%, centred on the ground.
 
-Halo and the entire ring must sit inside that circle. Everything outside it
-is bleed: the ground colour and Halo's glow, nothing that matters. In
-practice Halo occupies about 55–60% of the square here, noticeably smaller
-than in `icon-512.png`, and that is correct rather than a mistake.
+Android crops this to whatever shape the launcher wants and guarantees only
+the central 80% survives — a circle of 409px diameter. Halo and the entire
+ring must sit inside it; everything outside is bleed. Measured after
+derivation: the artwork reaches 145px from the centre against a safe radius
+of 205px.
+
+It is noticeably smaller than `icon-512.png`, and that is correct rather than
+a mistake.
 
 Reusing `icon-512.png` here is the single most common way this goes wrong,
 and the symptom is a home screen icon with its ring shaved off.
@@ -158,7 +164,10 @@ and the symptom is a home screen icon with its ring shaved off.
 ### Social preview — 1200×630, opaque
 
 The one asset that is a composition rather than a mark, and the one that
-needs independent art direction.
+needs independent art direction. **Cropped to 1.91:1 by `brand:derive`** —
+from the bottom only, because the title sits top-left and the bottom edge is
+carpet. Cropping from the top would push the title towards the frame edge,
+which is the one thing the safe area exists to prevent.
 
 - **1.91:1.** Exactly 1200×630.
 - **Halo is the focal point** and belongs left of centre or centred — never
@@ -209,17 +218,18 @@ fixed.** Until then previews work and production uses the Vercel hostname.
 ## Replacing the artwork
 
 ```
-1.  Export the sizes above from the approved master.
+1.  Redraw the 1024 master, and export the favicon, 192 and 512 from it.
 2.  Drop each file at its path in public/brand/.
-3.  npm run brand:ico          rebuilds favicon.ico from the two PNGs
-4.  npm run brand:check        sizes, transparency, nothing left placeholder
+3.  npm run brand:derive       apple-touch, maskable, preview crop, favicon.ico
+4.  npm run brand:check        sizes, transparency, nothing left flat
 5.  npm run build
 ```
 
-No code changes at any step. `brand:check` exits non-zero on a real fault —
-missing, wrong size, transparent where it must not be, or the two asset
-tables disagreeing — and reports placeholders without failing, because a
-placeholder is the expected state until step 2 happens.
+No code changes at any step. `brand:derive` is deterministic — every pixel it
+writes comes from the master or the preview — so re-running it after a redraw
+regenerates all four. `brand:check` exits non-zero on a real fault: missing,
+wrong size, transparent where it must not be, or the two asset tables
+disagreeing.
 
 Then, on a device: install on Android and on iOS, look at the home screen
 icon, and run a shared URL through a link preview debugger.
