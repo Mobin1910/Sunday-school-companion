@@ -1,4 +1,4 @@
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 import sharp from "sharp";
@@ -38,7 +38,7 @@ import { buildIco } from "./ico.mjs";
 /** `--color-ground`. What Halo is lit against everywhere else in the product. */
 const GROUND = { r: 7, g: 12, b: 28, alpha: 1 };
 
-const master = join(PUBLIC_DIR, CONTRACT.master.path);
+const iconMaster = join(PUBLIC_DIR, CONTRACT.master.path);
 
 /**
  * Halo, scaled to `fraction` of a square of `size`, centred on the ground.
@@ -49,7 +49,7 @@ const master = join(PUBLIC_DIR, CONTRACT.master.path);
  */
 async function onGround(size, fraction) {
   const art = Math.round(size * fraction);
-  const halo = await sharp(master)
+  const halo = await sharp(iconMaster)
     .resize(art, art, { fit: "contain", background: { ...GROUND, alpha: 0 } })
     .toBuffer();
 
@@ -67,9 +67,10 @@ const wrote = [];
 async function write(key, buffer) {
   const file = join(PUBLIC_DIR, CONTRACT[key].path);
   await mkdir(dirname(file), { recursive: true });
-  await sharp(buffer).toFile(file);
+  await writeFile(file, buffer);
   const { width, height } = await sharp(file).metadata();
-  wrote.push(`${CONTRACT[key].path} (${width}×${height})`);
+  const kb = Math.round(buffer.length / 1024);
+  wrote.push(`${CONTRACT[key].path} (${width}×${height}, ${kb} KB)`);
 }
 
 /*
@@ -88,35 +89,36 @@ await write("appleTouch", await onGround(180, 0.88));
 await write("icon512Maskable", await onGround(512, 0.6));
 
 /*
-  The preview, cropped to 1.91:1 and resized.
+  The preview: cropped to 1.91:1, resized, and written as JPEG.
+
+  JPEG is the whole point of this step. The illustration is photographic, and
+  as a PNG it came to 1.6 MB — past every scraper's cap for a link preview,
+  which is how a perfectly correct og:image still produces a card with no
+  picture in it. At quality 85 the same image is about 107 KB and looks the
+  same.
 
   Cropped from the bottom only. The title sits at the top left and the
   child's face in the middle; the bottom edge is carpet and the lower lip of
   the book, which is the only part of this composition nothing depends on.
-  Cropping from the top would move the title towards the frame edge, which
-  is the one thing the safe area exists to prevent.
+  Cropping from the top would move the title towards the frame edge, which is
+  the one thing the safe area exists to prevent.
 */
-const social = join(PUBLIC_DIR, CONTRACT.social.path);
-const { width: sw, height: sh } = await sharp(social).metadata();
+const master = join(PUBLIC_DIR, CONTRACT.socialMaster.path);
+const { width: sw, height: sh } = await sharp(master).metadata();
 const target = CONTRACT.social.width / CONTRACT.social.height;
+const keep = Math.min(Math.round(sw / target), sh);
 
-if (Math.abs(sw / sh - target) > 0.001) {
-  const keep = Math.round(sw / target);
-  await write(
-    "social",
-    await sharp(social)
-      .extract({ left: 0, top: 0, width: sw, height: Math.min(keep, sh) })
-      .resize(CONTRACT.social.width, CONTRACT.social.height)
-      .flatten({ background: GROUND })
-      .png({ compressionLevel: 9 })
-      .toBuffer(),
-  );
-} else {
-  wrote.push(`${CONTRACT.social.path} (already 1.91:1, untouched)`);
-}
+await write(
+  "social",
+  await sharp(master)
+    .extract({ left: 0, top: 0, width: sw, height: keep })
+    .resize(CONTRACT.social.width, CONTRACT.social.height)
+    .flatten({ background: GROUND })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toBuffer(),
+);
 
 /* And the root ICO, from whatever the favicon PNGs now are. */
-const { writeFile } = await import("node:fs/promises");
 await writeFile(join(PUBLIC_DIR, CONTRACT.faviconIco.path), await buildIco());
 wrote.push(`${CONTRACT.faviconIco.path} (from the favicon PNGs)`);
 

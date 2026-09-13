@@ -135,14 +135,35 @@ export const brandAssets = {
   ),
 
   /**
+   * The illustration as drawn, at whatever aspect it arrived in. Nothing
+   * requests it; it is the lossless source the served preview is cut from,
+   * kept for the same reason the 1024 icon master is.
+   */
+  socialMaster: {
+    src: `${BRAND_DIR}/social/preview-master.png`,
+    width: 0,
+    height: 0,
+    type: "image/png",
+    purpose: "Master social illustration. Never served — `social` is cut from it.",
+  } satisfies BrandAsset,
+
+  /**
    * The link preview. Not an icon at all — a composition, landscape, with
    * room for the product's name.
+   *
+   * JPEG, and that is not a style preference. This is a photographic
+   * illustration, and as a PNG it came to 1.6 MB — over every scraper's cap
+   * for a link preview, which is why a correct og:image still produced a
+   * card with no picture in WhatsApp. The same image as JPEG is about
+   * 107 KB and identical to look at.
    */
-  social: png(
-    `${BRAND_DIR}/social/preview-1200x630.png`,
-    [1200, 630],
-    "Open Graph and Twitter/X link preview. 1.91:1.",
-  ),
+  social: {
+    src: `${BRAND_DIR}/social/preview-1200x630.jpg`,
+    width: 1200,
+    height: 630,
+    type: "image/jpeg",
+    purpose: "Open Graph and Twitter/X link preview. 1.91:1, under 300 KB.",
+  } satisfies BrandAsset,
 } as const;
 
 /** Everything, for the checker to walk. */

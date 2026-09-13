@@ -202,16 +202,21 @@ disagree, so the copy cannot drift.
 ### Open Graph and absolute URLs
 
 A scraper reading a shared link has no page to resolve a relative image
-against, so `metadataBase` makes the OG image absolute. No domain is
-hardcoded:
+against, so `metadataBase` makes the OG image absolute:
 
 1. `NEXT_PUBLIC_SITE_URL` if set — use this for a custom domain.
-2. `https://$VERCEL_PROJECT_PRODUCTION_URL`, which Vercel sets at build
-   time and which is stable across renames and preview deployments.
-3. `http://localhost:3000` otherwise.
+2. `https://$VERCEL_PROJECT_PRODUCTION_URL`, when Vercel exposes it.
+3. `PRODUCTION_ORIGIN` in `layout.tsx` — the known production origin.
 
-**Set `NEXT_PUBLIC_SITE_URL` in Vercel once the production domain is
-fixed.** Until then previews work and production uses the Vercel hostname.
+**Step three used to be `http://localhost:3000`, and that is what shipped.**
+Neither env var was set at build time, so every shared link told the crawler
+to fetch the preview from its own machine. The card came out with the right
+title, the right description and no image at all.
+
+A hardcoded origin is a real cost — one more thing to change on the day this
+moves — but a silent fallback to localhost is a bug nobody sees until a link
+is already sitting in somebody's chat. Setting `NEXT_PUBLIC_SITE_URL` in
+Vercel still overrides it, and is what to do when a custom domain arrives.
 
 ---
 
@@ -220,7 +225,7 @@ fixed.** Until then previews work and production uses the Vercel hostname.
 ```
 1.  Redraw the 1024 master, and export the favicon, 192 and 512 from it.
 2.  Drop each file at its path in public/brand/.
-3.  npm run brand:derive       apple-touch, maskable, preview crop, favicon.ico
+3.  npm run brand:derive       apple-touch, maskable, preview JPEG, favicon.ico
 4.  npm run brand:check        sizes, transparency, nothing left flat
 5.  npm run build
 ```

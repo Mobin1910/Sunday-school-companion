@@ -29,19 +29,27 @@ import "./globals.css";
  * is simply dropped and the link shows nothing. `metadataBase` is what Next
  * resolves it with.
  *
- * No domain is written here, because guessing one would be worse than
- * having none — a wrong absolute URL is a preview that 404s for everyone
- * rather than a preview that is missing. Vercel sets
- * `VERCEL_PROJECT_PRODUCTION_URL` during the build, which is the production
- * hostname however the project is renamed or aliased, and
- * `NEXT_PUBLIC_SITE_URL` overrides it for a custom domain. Locally it falls
- * back to the dev server, where nobody is scraping anything.
+ * This used to fall back to `http://localhost:3000`, and that is exactly
+ * what shipped: a WhatsApp card with the right title and the right
+ * description and no picture, because the crawler was being sent to fetch an
+ * image from its own machine. Neither `NEXT_PUBLIC_SITE_URL` nor Vercel's
+ * `VERCEL_PROJECT_PRODUCTION_URL` was set at build time, and the chain had
+ * nowhere better to land.
+ *
+ * So the last resort is now the production origin itself. A hardcoded domain
+ * is a real cost — it is one more thing to remember on the day this moves —
+ * but it is the *known* domain rather than a guess, and the alternative
+ * failed silently in the one place nobody tests. The env vars still win when
+ * they are set, which is how a custom domain takes over without touching
+ * this file.
  */
+const PRODUCTION_ORIGIN = "https://sunday-school-comapnion-kohl.vercel.app";
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+    : PRODUCTION_ORIGIN);
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

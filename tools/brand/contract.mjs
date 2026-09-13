@@ -31,11 +31,16 @@ export const CONTRACT = {
     height: 512,
     opaque: true,
   },
+  // The illustration as drawn, at whatever aspect it came in. Not served.
+  socialMaster: { path: "brand/social/preview-master.png", anySize: true },
   social: {
-    path: "brand/social/preview-1200x630.png",
+    path: "brand/social/preview-1200x630.jpg",
     width: 1200,
     height: 630,
     opaque: true,
+    // Scrapers cap link-preview images. WhatsApp drops anything much past
+    // 600 KB, which is how a correct og:image can still show no picture.
+    maxKb: 300,
   },
 };
 

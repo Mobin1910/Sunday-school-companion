@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 
 import sharp from "sharp";
@@ -15,6 +15,7 @@ import { CONTRACT, ICO_SOURCES, PUBLIC_DIR } from "./contract.mjs";
  *   Is it the size it claims?            a 500px "512" icon Android rejects
  *   Is it still a flat placeholder?      shipping a dark square as branding
  *   Is it opaque where it must be?       iOS composites alpha onto black
+ *   Is it small enough to be fetched?    scrapers silently drop a big preview
  *   Does the ICO parse, with both sizes? a favicon nothing will render
  *   Does the code agree with this list?  an asset added in one file only
  *
@@ -58,6 +59,29 @@ async function checkPng(name, asset, file) {
     meta = await sharp(file).metadata();
   } catch {
     faults.push(`${name}: ${asset.path} is missing or is not a readable image`);
+    return;
+  }
+
+  /*
+    Weight, which is a correctness property for exactly one asset and the
+    reason a link preview can be right in every other way and still show no
+    picture. Checked before dimensions because a 1.6 MB file that is exactly
+    1200x630 passes every other test here and fails on a phone.
+  */
+  if (asset.maxKb) {
+    const kb = Math.round((await stat(file)).size / 1024);
+    if (kb > asset.maxKb) {
+      faults.push(
+        `${name}: ${asset.path} is ${kb} KB, over the ${asset.maxKb} KB cap — ` +
+          `scrapers drop oversized previews. Run \`npm run brand:derive\`.`,
+      );
+      return;
+    }
+  }
+
+  // A master that is kept rather than served has no size to hold it to.
+  if (asset.anySize) {
+    good.push(`${name}: ${asset.path} (${meta.width}×${meta.height}, master)`);
     return;
   }
 
