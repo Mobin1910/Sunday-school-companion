@@ -16,8 +16,11 @@
   "name": "sunday-school-companion",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "brand:check": "node tools/brand/check.mjs",
+    "brand:ico": "node tools/brand/ico.mjs",
+    "brand:placeholders": "node tools/brand/placeholders.mjs",
     "build": "next build",
+    "dev": "next dev",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit"
   }

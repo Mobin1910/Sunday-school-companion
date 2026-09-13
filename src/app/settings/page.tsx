@@ -7,7 +7,8 @@ import SettingsScreen from "./SettingsScreen";
  * the bottom bar, because a child does not navigate here on the way to
  * anything. It is reached from a small control on Home and goes back there.
  */
-export const metadata = { title: "Settings · Sunday School Companion" };
+// The product's name is appended by the title template in the root layout.
+export const metadata = { title: "Settings" };
 
 export default function SettingsPage() {
   return (
