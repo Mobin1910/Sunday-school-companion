@@ -1,33 +1,12 @@
 {
-  "note": "The classes this product has, and their stable identifiers. Mirrors the Classes table on the sheet's Config tab; see CONTENT_WORKFLOW.md. A class id is set once and never edited — it names a Drive folder, a brief file and, one day, a content directory, and renaming it orphans all three. The tab name is what a teacher sees and may be changed freely.",
+  "note": "The classes this product has, and their stable identifiers. Canonical Sunday School class names, youngest to oldest — they carry no ages, because the age band that maps to a class is a fact about a congregation rather than about this library. Mirrors the Classes table on the sheet's Config tab and the numbered folders in the Drive library; see CONTENT_LIBRARY.md. A class id is set once and never edited: it names a Drive folder, a brief file and, one day, a content directory, and renaming it orphans all three. The tab and display names are what a teacher sees and may be changed freely.",
   "classes": [
-    {
-      "id": "6-7",
-      "tab": "6–7 Years",
-      "display": "6–7 Years",
-      "order": 1,
-      "live": true
-    },
-    {
-      "id": "8-10",
-      "tab": "8–10 Years",
-      "display": "8–10 Years",
-      "order": 2,
-      "live": false
-    },
-    {
-      "id": "11-13",
-      "tab": "11–13 Years",
-      "display": "11–13 Years",
-      "order": 3,
-      "live": false
-    },
-    {
-      "id": "13-16",
-      "tab": "13–16 Years",
-      "display": "13–16 Years",
-      "order": 4,
-      "live": false
-    }
+    { "id": "nursery", "tab": "Nursery", "display": "Nursery", "order": 1, "live": false },
+    { "id": "beginner", "tab": "Beginner", "display": "Beginner", "order": 2, "live": true },
+    { "id": "primary", "tab": "Primary", "display": "Primary", "order": 3, "live": false },
+    { "id": "junior", "tab": "Junior", "display": "Junior", "order": 4, "live": false },
+    { "id": "intermediate", "tab": "Intermediate", "display": "Intermediate", "order": 5, "live": false },
+    { "id": "senior", "tab": "Senior", "display": "Senior", "order": 6, "live": false },
+    { "id": "young-adult", "tab": "Young Adult", "display": "Young Adult", "order": 7, "live": false }
   ]
 }

@@ -65,26 +65,33 @@ So they upload what they have.
 ```
 Sunday School Companion/
 │
-├── 6–7 Years/
+├── 00 - Admin & Templates/
+├── 01 - Nursery/
 │   ├── Chapter 01/
-│   │   ├── Curriculum/            ← the lesson pages. The authoritative source.
+│   │   ├── 01 - Curriculum Source/   ← the lesson pages. Authoritative.
 │   │   │   ├── page-01.jpg
-│   │   │   ├── IMG_4821.jpg       ← also fine
-│   │   │   └── lesson.pdf         ← also fine
-│   │   ├── Additional Material/   ← anything supporting: songs, crafts, handouts
-│   │   └── References/            ← anything consulted but not part of the lesson
-│   ├── Chapter 02/
-│   └── Chapter 03/
+│   │   │   ├── IMG_4821.jpg          ← also fine
+│   │   │   └── lesson.pdf            ← also fine
+│   │   ├── 02 - Teacher Materials/
+│   │   ├── 03 - Working Content/
+│   │   ├── 04 - Story Artwork/
+│   │   ├── 05 - Games/
+│   │   ├── 06 - Memory Verse/
+│   │   └── 07 - Approved Assets/
+│   └── … Chapter 20
 │
-├── 8–10 Years/
-├── 11–13 Years/
-├── 13–16 Years/
-│
-└── Shared/
-    ├── Character References/
-    ├── Brand References/
-    └── Other Resources/
+├── 02 - Beginner/
+├── 03 - Primary/
+├── 04 - Junior/
+├── 05 - Intermediate/
+├── 06 - Senior/
+├── 07 - Young Adult/
+└── 08 - Shared/
 ```
+
+The library is built and the folders are real — see **`CONTENT_LIBRARY.md`**,
+which owns this structure, what belongs in each folder, and the asset
+lifecycle. Only the first two folders concern a contributor.
 
 **JPG, PNG, WEBP and PDF are all acceptable.** A photograph of a page taken on a
 phone is a perfectly good contribution. Nobody converts anything by hand.
@@ -96,8 +103,9 @@ then from file creation time. Contributors are never asked to rename anything.
 
 **Folder naming is normalised, not enforced.** `Chapter 01` is preferred because
 it sorts correctly past chapter 9, but `Chapter 1` and `chapter-1` all resolve
-to chapter `1`. `6–7 Years` (en dash), `6-7 Years` (hyphen) and `6-7` all
-resolve to class `6-7`. See `normaliseClassId` and `normaliseChapterNumber` in
+to chapter `1`. A class folder's numeric prefix is display order, not
+identity: `04 - Junior` is the class `junior`. See `normaliseClassId` and
+`normaliseChapterNumber` in
 `tools/content/brief-schema.mjs` — one implementation, so the rule cannot be
 applied two ways.
 
@@ -112,8 +120,8 @@ Two areas, and the distinction matters:
 
 | Area | Who | What |
 |---|---|---|
-| Class folders (`6–7 Years/…`) | contributors + you | Upload curriculum. Contributors need nothing else. |
-| `Shared/` | contributors (read) + you | References. Read-only for contributors. |
+| Class folders (`04 - Junior/…`) | contributors + you | Upload curriculum. Contributors need nothing else. |
+| `08 - Shared/` | contributors (read) + you | References. Read-only for contributors. |
 | Production working files | **you only** | Generated artwork, prompts, drafts. Not in the contributor tree at all. |
 
 A contributor with access to one class folder can do their entire job. Nothing
@@ -131,10 +139,13 @@ deliberate:
 ```
 Sunday School Companion — Content
 ├── Config              ← instructions, class IDs, controlled values
-├── 6–7 Years           ← one row per chapter
-├── 8–10 Years
-├── 11–13 Years
-├── 13–16 Years
+├── Nursery             ← one row per chapter
+├── Beginner
+├── Primary
+├── Junior
+├── Intermediate
+├── Senior
+├── Young Adult
 └── Learning Objectives ← one row per objective, all classes
 ```
 
@@ -206,14 +217,14 @@ panel array into a brief fails by name.
 
 **`classId` + `chapterNumber`. Never the number alone.**
 
-`6-7` chapter 1 and `8-10` chapter 1 are different lessons that happen to share
-a number. Every part of the system carries both:
+`nursery` chapter 1 and `junior` chapter 1 are different lessons that happen
+to share a number. Every part of the system carries both:
 
 | | |
 |---|---|
-| Drive | `6–7 Years/Chapter 01/` |
-| Sheet | the `6–7 Years` tab, row with Chapter `1` |
-| Brief | `content/brief/6-7.json`, the entry with `"chapter": 1` |
+| Drive | `04 - Junior/Chapter 01/` |
+| Sheet | the `Junior` tab, row with Chapter `1` |
+| Brief | `content/brief/junior.json`, the entry with `"chapter": 1` |
 | Production | the chapter file named in that entry's `produces` |
 
 `content/classes.json` is the registry that makes a class id stable. **A class id
@@ -230,7 +241,7 @@ depend on them.
 content/
 ├── classes.json          the class registry: id, tab, display, order, live
 └── brief/
-    └── 6-7.json          one file per class, one entry per chapter
+    └── <class>.json      one file per class, one entry per chapter
 ```
 
 A brief is one class's rows, frozen into git. `npm run content:check` validates
@@ -302,7 +313,7 @@ The repository today:
 content/
 ├── library.json                        which chapters ship
 ├── classes.json
-├── brief/6-7.json
+├── brief/beginner.json
 ├── baby-jesus-at-the-temple.story.json
 └── wedding-at-cana.story.json
 
@@ -312,7 +323,7 @@ public/
 └── brand/                              the app's own identity
 ```
 
-**This is single-class today** — every chapter that ships belongs to `6-7`, and
+**This is single-class today** — every chapter that ships belongs to `beginner`, and
 the class is implied rather than in the path. `CONTENT_PIPELINE.md` §S proposes
 `content/chapters/<class>/NN.story.json` and `public/art/<class>/NN/` for when a
 second class goes live. That migration has not happened and is not part of this

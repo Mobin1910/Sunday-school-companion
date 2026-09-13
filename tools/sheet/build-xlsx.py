@@ -32,11 +32,17 @@ HELP_BG = "FFFBFAF7"
 # than "something is broken".
 PROVISIONAL_BG = "FFFDF4E3"
 
+# Canonical Sunday School class names, youngest to oldest. No ages: which
+# age band sits in which class is a fact about a congregation, not about this
+# content. The earlier "6–7 Years" naming was a placeholder.
 CLASSES = [
-    ("6-7", "6–7 Years", "6–7 Years", 1, "Yes"),
-    ("8-10", "8–10 Years", "8–10 Years", 2, "No"),
-    ("11-13", "11–13 Years", "11–13 Years", 3, "No"),
-    ("13-16", "13–16 Years", "13–16 Years", 4, "No"),
+    ("nursery", "Nursery", "Nursery", 1, "No"),
+    ("beginner", "Beginner", "Beginner", 2, "Yes"),
+    ("primary", "Primary", "Primary", 3, "No"),
+    ("junior", "Junior", "Junior", 4, "No"),
+    ("intermediate", "Intermediate", "Intermediate", 5, "No"),
+    ("senior", "Senior", "Senior", 6, "No"),
+    ("young-adult", "Young Adult", "Young Adult", 7, "No"),
 ]
 
 STATUSES = ["Draft", "Ready for Review", "Published"]
@@ -201,11 +207,10 @@ def config(wb):
         "Those are made from the pages you uploaded.",
         "",
         "The Drive folders look like this:",
-        "      Sunday School Companion / 6–7 Years / Chapter 01 / Curriculum / "
-        "(your pages)",
-        "                                                      / Additional "
-        "Material /",
-        "                                                      / References /",
+        "      Sunday School Companion / 02 - Beginner / Chapter 01 / "
+        "01 - Curriculum Source /",
+        "                                         / 02 - Teacher Materials /",
+        "                                         / 03 - Working Content / …",
         "",
         "Chapter 01 rather than Chapter 1 keeps the folders in order, but "
         "either is understood.",
@@ -286,15 +291,15 @@ def config(wb):
     return ws
 
 
-PROVISIONAL_CLASS = (
-    "Provisional class assignment — confirm age group before publishing. "
-    "Nothing in the app records a class for this chapter; it was put in 6–7 Years "
-    "only because its sentences are short enough for the limits that class uses. "
-    "Move the row to another tab if that is wrong — nothing depends on it being here."
+CONFIRMED_CLASS = (
+    "Imported from the app rather than written by a contributor. These two "
+    "chapters were built before this sheet existed and no curriculum was ever "
+    "written for them — that is the gap this sheet closes. The class is "
+    "Beginner and is settled."
 )
 
 BABY_JESUS_NOTES = "\n".join([
-    PROVISIONAL_CLASS,
+    CONFIRMED_CLASS,
     "",
     "Content-owner confirmation needed: source lesson references Luke 2:22–33, "
     "while current repository content references Luke 2:22–38 and includes Anna. "
@@ -318,27 +323,15 @@ BABY_JESUS_NOTES = "\n".join([
     "to carry.",
 ])
 
-STEPHEN_NOTES = "\n".join([
-    PROVISIONAL_CLASS,
+CANA_NOTES = "\n".join([
+    CONFIRMED_CLASS,
     "",
     "Content-owner confirmation needed: the memory verse translation is still the "
-    "word PLACEHOLDER in the repository. It raises a warning every time the app is "
-    "built, and must be resolved before this chapter is published. The existing "
-    "data is left exactly as it is.",
+    "word PLACEHOLDER in the repository. The wording is the NIV's and is painted "
+    "into the artwork of panel 17, so changing translation later means redrawing "
+    "a panel.",
     "",
-    "Imported from the app (content/stephen.story.json). No curriculum was ever "
-    "written for it.",
-    "",
-    "Already agreed about the pictures:",
-    "• Cover — Stephen mid-smile, carrying a basket of bread. Warm morning light. "
-    "He should look like someone you would want to sit next to.",
-    "• The turning point — light from above, Stephen calm, the crowd small and out "
-    "of focus at the edges. We never show the stoning.",
-    "• Stephen's forgiveness is the heart of this chapter. Give it the most space.",
-    "• Aftermath, not event — empty warm sky, one basket of bread left on the "
-    "ground. Nothing frightening on screen.",
-    "• The chapter must not end on grief. The last picture resolves it — kindness "
-    "continues.",
+    "Imported from the app (content/wedding-at-cana.story.json).",
 ])
 
 
@@ -349,15 +342,16 @@ def seed(sheets, lo):
     Both rows are provisional in two separate ways, said plainly at the top of
     the Notes cell rather than buried in it, and shaded so they cannot be
     mistaken for settled ones."""
-    ws = sheets["6–7 Years"]
+    ws = sheets["Beginner"]
 
     rows = [
-        (1, "Baby Jesus at the Temple", "Luke 2:22–38", "",
-         "My eyes have seen your salvation.", "Luke 2:30", "", "", "", "", "",
-         "Draft", BABY_JESUS_NOTES),
-        (2, "Stephen", "Acts 6–7", "",
-         "Be kind to one another, forgiving one another.", "Ephesians 4:32", "",
-         "", "", "", "", "Draft", STEPHEN_NOTES),
+        (1, "Baby Jesus at the Temple", "Luke 2:22–35", "",
+         "For my eyes have seen your salvation, which you have prepared in the "
+         "presence of all peoples", "St Luke 2:30,31", "", "", "", "", "",
+         "Published", BABY_JESUS_NOTES),
+        (2, "Wedding at Cana", "John 2:1–11", "",
+         "Cast all your anxiety on him, because he cares for you.", "1 Peter 5:7",
+         "", "", "", "", "", "Published", CANA_NOTES),
     ]
 
     fill = PatternFill("solid", fgColor=PROVISIONAL_BG)
@@ -381,12 +375,16 @@ def seed(sheets, lo):
     derived = ("Read back from a game the chapter already contains — not written "
                "by a contributor. The class is provisional; see the chapter row.")
     objectives = [
-        ("6–7 Years", 1, "Recall who was waiting at the temple to see Jesus.",
+        ("Beginner", 1, "Recognise the key people in the story and their roles.",
          "Core", derived),
-        ("6–7 Years", 2, "Recall how Stephen helped people.", "Core", derived),
-        ("6–7 Years", 2, "Remember what Stephen prayed for the people who hurt him.",
+        ("Beginner", 1, "Understand the basic sequence of the Bible story.",
          "Core", derived),
-        ("6–7 Years", 2, "Understand the order the events happened in.",
+        ("Beginner", 1,
+         "Remember that Simeon recognised Jesus as the promised Saviour.",
+         "Core", derived),
+        ("Beginner", 2, "Recall what happened at the wedding and in what order.",
+         "Core", derived),
+        ("Beginner", 2, "Remember that this was the first of Jesus’ miracles.",
          "Supporting",
          "Read back from the chapter’s existing ordering activity — not written "
          "by a contributor. The class is provisional; see the chapter row."),

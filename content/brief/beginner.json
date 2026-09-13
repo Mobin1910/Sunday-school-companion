@@ -1,6 +1,6 @@
 {
-  "note": "The editorial brief for the 6–7 Years class: one entry per chapter, mirroring that tab of the Google Sheet. This is what a teacher knows about a lesson, not what a child sees — no panels, no games, no artwork, no interaction types. The app never reads this file; see CONTENT_WORKFLOW.md. Once `content:pull` exists this file is written by it and hand-edits are overwritten; until then it is maintained by hand, which is why the two chapters below were filled in from the chapters that already ship.",
-  "classId": "6-7",
+  "note": "The editorial brief for the Beginner class: one entry per chapter, mirroring that tab of the Google Sheet. This is what a teacher knows about a lesson, not what a child sees — no panels, no games, no artwork, no interaction types. The app never reads this file; see CONTENT_WORKFLOW.md and CONTENT_LIBRARY.md. Once `content:pull` exists this file is written by it and hand-edits are overwritten; until then it is maintained by hand, which is why the two chapters below were filled in from the chapters that already ship.",
+  "classId": "beginner",
   "chapters": [
     {
       "chapter": 1,

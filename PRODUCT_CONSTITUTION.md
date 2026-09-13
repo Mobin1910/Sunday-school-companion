@@ -48,6 +48,7 @@ The constitution governs **why** and **what**. It deliberately does not contain 
 | `DESIGN_NOTES.md` | Visual judgements deferred until real artwork exists — observations, not decisions |
 | `BRAND_ASSETS.md` | The app's own identity — icons, favicon, install and link-preview artwork |
 | `CONTENT_WORKFLOW.md` | Where curriculum comes from — Drive, the sheet, the brief, and what the app may read |
+| `CONTENT_LIBRARY.md` | The Google Drive master library — folders, asset lifecycle, contributor and publishing workflow |
 
 Where the constitution states a principle, the companion documents state the measurable rule that enforces it.
 
