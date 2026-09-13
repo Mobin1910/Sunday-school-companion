@@ -20,6 +20,7 @@
     "brand:ico": "node tools/brand/ico.mjs",
     "brand:placeholders": "node tools/brand/placeholders.mjs",
     "build": "next build",
+    "content:check": "node tools/content/check-brief.mjs",
     "dev": "next dev",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit"

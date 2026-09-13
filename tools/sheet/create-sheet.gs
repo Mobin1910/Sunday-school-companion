@@ -81,7 +81,7 @@ const CLASS_COLUMNS = [
   ['Bible Reference', 140, false,
     'The passage this lesson comes from. For example: Luke 2:22–38'],
   ['Curriculum', 460, true,
-    'The most important cell in this sheet. What the lesson is about, in your own words — as much or as little as you need. Do NOT rewrite it for children; that is done for you later.'],
+    'Where the lesson comes from. Paste the link to this chapter\u2019s Curriculum folder in Google Drive \u2014 the photographed or scanned Samajham pages are enough on their own. You may add a few words of your own as well, but you do NOT need to type the lesson out, and you should not rewrite it for children; that is done for you later.'],
   ['Learning Objectives', 320, true,
     'Read-only summary. Objectives are entered on the Learning Objectives tab — add them there and they appear here on their own. Nothing you type in this column will be kept.'],
   ['Memory Verse', 300, true,
@@ -276,14 +276,21 @@ function buildConfig(sheet) {
     ['This sheet is where lessons begin. You write what a lesson is about; everything a child eventually sees is made from it later.'],
     [''],
     ['To add a lesson:'],
-    ['1.  Open your class tab.'],
-    ['2.  Add a row. Fill in the chapter number, title and Bible reference.'],
-    ['3.  Write the Curriculum — the lesson in your own words. This is the important one. Do not simplify it for children; that happens later.'],
+    ['1.  Photograph or scan the Samajham pages for the lesson and put them in Google Drive, under your class \u2192 the chapter \u2192 Curriculum. Any filenames are fine.'],
+    ['2.  Open your class tab here and add a row. Fill in the chapter number, title and Bible reference.'],
+    ['3.  Paste the link to that Drive folder into the Curriculum column. You do not need to type the lesson out.'],
     ['4.  Go to the Learning Objectives tab and add a row for each thing a child should come away with. One idea per row.'],
     ['5.  Add the memory verse, a video link and a take-home if the lesson has them. All optional.'],
     ['6.  Set Status to "Ready for Review". That is all you need to do.'],
     [''],
-    ['You never need to write story panels, dialogue, questions or answers. Those are made from what you write here.'],
+    ['You never need to write story panels, dialogue, questions or answers. Those are made from the pages you uploaded.'],
+    [''],
+    ['The Drive folders look like this:'],
+    ['      Sunday School Companion / 6\u20137 Years / Chapter 01 / Curriculum / (your pages)'],
+    ['                                                                    / Additional Material /'],
+    ['                                                                    / References /'],
+    [''],
+    ['Chapter 01 rather than Chapter 1 keeps the folders in order, but either is understood.'],
     [''],
     ['Hover any column heading for a one-line explanation of it.'],
     [''],
@@ -294,9 +301,25 @@ function buildConfig(sheet) {
   sheet.getRange(1, 1, help.length, 1).setValues(help);
   sheet.getRange(1, 1).setFontSize(16).setFontWeight('bold').setFontColor(INK);
   sheet.getRange(5, 1).setFontWeight('bold');
-  sheet.getRange(13, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
-  sheet.getRange(15, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
-  sheet.getRange(17, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
+  /*
+    Found by their text rather than by row number. The help block has grown
+    twice now, and both times the hard-coded row numbers below it quietly
+    started italicising the wrong lines — a formatting bug nobody notices
+    until they open the sheet.
+  */
+  help.forEach(function (line, i) {
+    const text = line[0];
+    if (/^(You never need|Chapter 01 rather|Hover any|Rows shaded)/.test(text)) {
+      sheet.getRange(i + 1, 1).setFontStyle('italic').setFontColor(COMPUTED_TEXT);
+    }
+    /* The folder tree, drawn as a tree. Proportional type collapses it. */
+    if (/^ {6}Sunday School Companion|^ {20}\//.test(text)) {
+      sheet.getRange(i + 1, 1)
+        .setFontFamily('Roboto Mono')
+        .setFontSize(9)
+        .setFontColor(COMPUTED_TEXT);
+    }
+  });
   sheet.getRange(1, 1, help.length, 1).setWrap(true);
   sheet.setColumnWidth(1, 220);
 

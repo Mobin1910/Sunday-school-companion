@@ -1,0 +1,77 @@
+{
+  "note": "The editorial brief for the 6–7 Years class: one entry per chapter, mirroring that tab of the Google Sheet. This is what a teacher knows about a lesson, not what a child sees — no panels, no games, no artwork, no interaction types. The app never reads this file; see CONTENT_WORKFLOW.md. Once `content:pull` exists this file is written by it and hand-edits are overwritten; until then it is maintained by hand, which is why the two chapters below were filled in from the chapters that already ship.",
+  "classId": "6-7",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Baby Jesus at the Temple",
+      "bibleReference": "Luke 2:22–35",
+      "curriculumNotes": "Backfilled from the chapter that already ships, not from the Samajham pages. No Drive folder has been linked yet, so `curriculumSource` is absent rather than guessed — see the flag below.",
+      "learningObjectives": [
+        {
+          "objective": "Recognise the key people in the story and their roles.",
+          "priority": "core"
+        },
+        {
+          "objective": "Understand the basic sequence of the Bible story.",
+          "priority": "core"
+        },
+        {
+          "objective": "Remember that Simeon recognised Jesus as the promised Saviour.",
+          "priority": "core"
+        }
+      ],
+      "memoryVerse": "For my eyes have seen your salvation, which you have prepared in the presence of all peoples",
+      "memoryVerseReference": "St Luke 2:30,31",
+      "video": "https://www.youtube.com/watch?v=leN-xNrkjbo",
+      "takeHome": "Ask your parents about your baptism, and who your Godfather or Godmother is.",
+      "status": "published",
+      "produces": "baby-jesus-at-the-temple",
+      "flags": [
+        {
+          "kind": "other",
+          "message": "No curriculum source folder linked. This brief was reconstructed from the shipped chapter rather than read from the Samajham pages, so the pages remain unverified against it.",
+          "blocking": false
+        },
+        {
+          "kind": "other",
+          "message": "The memory verse translation is unresolved — this wording is not the World English Bible's, which the chapter file previously claimed. `translation` is PLACEHOLDER until the curriculum's own translation is confirmed.",
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Wedding at Cana",
+      "bibleReference": "John 2:1–11",
+      "curriculumNotes": "Backfilled from the chapter that already ships. No Drive folder linked yet.",
+      "learningObjectives": [
+        {
+          "objective": "Recall what happened at the wedding and in what order.",
+          "priority": "core"
+        },
+        {
+          "objective": "Remember that this was the first of Jesus' miracles.",
+          "priority": "core"
+        }
+      ],
+      "memoryVerse": "Cast all your anxiety on him, because he cares for you.",
+      "memoryVerseReference": "1 Peter 5:7",
+      "video": "https://www.youtube.com/watch?v=7plJa_qnVug",
+      "status": "published",
+      "produces": "wedding-at-cana",
+      "flags": [
+        {
+          "kind": "other",
+          "message": "No curriculum source folder linked; brief reconstructed from the shipped chapter.",
+          "blocking": false
+        },
+        {
+          "kind": "incomplete-verse",
+          "message": "The memory verse translation is unresolved. The wording is NIV's and is painted into panel 17 of the artwork, so changing translation later means redrawing a panel.",
+          "blocking": false
+        }
+      ]
+    }
+  ]
+}

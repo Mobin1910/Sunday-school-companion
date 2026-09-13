@@ -1,0 +1,33 @@
+{
+  "note": "The classes this product has, and their stable identifiers. Mirrors the Classes table on the sheet's Config tab; see CONTENT_WORKFLOW.md. A class id is set once and never edited — it names a Drive folder, a brief file and, one day, a content directory, and renaming it orphans all three. The tab name is what a teacher sees and may be changed freely.",
+  "classes": [
+    {
+      "id": "6-7",
+      "tab": "6–7 Years",
+      "display": "6–7 Years",
+      "order": 1,
+      "live": true
+    },
+    {
+      "id": "8-10",
+      "tab": "8–10 Years",
+      "display": "8–10 Years",
+      "order": 2,
+      "live": false
+    },
+    {
+      "id": "11-13",
+      "tab": "11–13 Years",
+      "display": "11–13 Years",
+      "order": 3,
+      "live": false
+    },
+    {
+      "id": "13-16",
+      "tab": "13–16 Years",
+      "display": "13–16 Years",
+      "order": 4,
+      "live": false
+    }
+  ]
+}

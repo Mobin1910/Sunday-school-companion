@@ -184,10 +184,13 @@ def config(wb):
         "everything a child eventually sees is made from it later.",
         "",
         "To add a lesson:",
-        "1.  Open your class tab.",
-        "2.  Add a row. Fill in the chapter number, title and Bible reference.",
-        "3.  Write the Curriculum — the lesson in your own words. This is the "
-        "important one. Do not simplify it for children; that happens later.",
+        "1.  Photograph or scan the Samajham pages for the lesson and put them "
+        "in Google Drive, under your class → the chapter → Curriculum. Any "
+        "filenames are fine.",
+        "2.  Open your class tab here and add a row. Fill in the chapter "
+        "number, title and Bible reference.",
+        "3.  Paste the link to that Drive folder into the Curriculum column. "
+        "You do not need to type the lesson out.",
         "4.  Go to the Learning Objectives tab and add a row for each thing a "
         "child should come away with. One idea per row.",
         "5.  Add the memory verse, a video link and a take-home if the lesson "
@@ -195,7 +198,17 @@ def config(wb):
         '6.  Set Status to "Ready for Review". That is all you need to do.',
         "",
         "You never need to write story panels, dialogue, questions or answers. "
-        "Those are made from what you write here.",
+        "Those are made from the pages you uploaded.",
+        "",
+        "The Drive folders look like this:",
+        "      Sunday School Companion / 6–7 Years / Chapter 01 / Curriculum / "
+        "(your pages)",
+        "                                                      / Additional "
+        "Material /",
+        "                                                      / References /",
+        "",
+        "Chapter 01 rather than Chapter 1 keeps the folders in order, but "
+        "either is understood.",
         "",
         "Rows shaded pale amber were imported from the app rather than written by "
         "a contributor. They are not settled — the Notes column on each one says "
@@ -209,8 +222,16 @@ def config(wb):
         cell.alignment = Alignment(wrap_text=True, vertical="top")
     ws.cell(row=1, column=1).font = Font(size=16, bold=True, color=INK)
     ws.cell(row=5, column=1).font = Font(bold=True)
-    ws.cell(row=13, column=1).font = Font(italic=True, color=COMPUTED_TEXT)
-    ws.cell(row=15, column=1).font = Font(italic=True, color=COMPUTED_TEXT)
+
+    # Found by their text, not by row number. This block has grown twice and
+    # both times the hard-coded rows started italicising the wrong lines.
+    for i, line in enumerate(help_lines, start=1):
+        if line.startswith(("You never need", "Chapter 01 rather", "Rows shaded")):
+            ws.cell(row=i, column=1).font = Font(italic=True, color=COMPUTED_TEXT)
+        elif line.startswith(("      Sunday School Companion", "               ")):
+            ws.cell(row=i, column=1).font = Font(
+                name="Consolas", size=9, color=COMPUTED_TEXT
+            )
 
     row = len(help_lines) + 1
 
