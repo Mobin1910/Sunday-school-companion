@@ -18,6 +18,7 @@ export default function SectionScreen({
   chapterTitle,
   hubHref,
   onward,
+  aside,
   quietOnward = false,
   fit = false,
   children,
@@ -32,6 +33,14 @@ export default function SectionScreen({
    * that says "Chapter menu" and does not go there is a small lie.
    */
   onward?: string;
+  /**
+   * Anything the screen shows in its top corner, opposite the way back.
+   *
+   * Chrome, never content: it sits in the header band a child's eye passes
+   * over on the way in, well clear of whatever the screen is actually for.
+   * The run mark on a game is the only thing that uses it.
+   */
+  aside?: React.ReactNode;
   /**
    * Say the way back rather than shout it, for a screen that offers its own
    * way onward.
@@ -67,7 +76,10 @@ export default function SectionScreen({
         }`}
       >
         <div className="shrink-0">
-          <BackLink href={hubHref} label={chapterTitle} />
+          <div className="flex items-center justify-between gap-3">
+            <BackLink href={hubHref} label={chapterTitle} />
+            {aside}
+          </div>
           <h1 className={fit ? "mt-1 text-[clamp(1.15rem,2.9vh,1.5rem)]" : "mt-2 text-3xl"}>
             {title}
           </h1>

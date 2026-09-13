@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import RunMark from "@/components/play/RunMark";
 import type { PoolQuestion } from "@/content/pools";
 import HaloPresence from "@/halo/HaloPresence";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
+import { useRun, writeRun } from "@/local/run";
 import { streakNamed, type StreakName, type StreakRecord } from "@/local/streak";
 
 /**
@@ -27,18 +29,19 @@ import { streakNamed, type StreakName, type StreakRecord } from "@/local/streak"
  * everything is seen once before anything is seen twice, and the order is
  * different the next time they come.
  *
- * The streak is momentum, not a score, and this screen is the only place in
- * the product that shows one. It belongs to free play — where there is no
- * chapter, no story and nothing being worked through — and it must never
- * appear inside a chapter: a child reading about Simeon is not on a run, and
- * a number in the corner of that would turn a chapter into a scoreboard.
- * Nothing in `chapter/` imports this component, which is what keeps that
- * true rather than a note.
+ * The streak is momentum, not a score. During play it is a mark in the
+ * corner rather than a row of three: the question is what a child is looking
+ * at, and the run is something they can glance at. The full three — now,
+ * today, best — stay on the landing, before and after, where there is
+ * nothing to distract from.
  *
- * During play it is a mark in the corner rather than a row of three: the
- * question is what a child is looking at, and the run is something they can
- * glance at. The full three — now, today, best — stay on the landing, before
- * and after, where there is nothing to distract from.
+ * The run lives in `local/run.ts` rather than here, because this is not the
+ * only place a games run can grow: a chapter's own games feed the same
+ * streak. One rule holds everywhere — a run ends when a try does not work,
+ * and at no other time. Not on Finish, not on a navigation. A child who got
+ * three right in a chapter and tapped through to here was being shown "Now:
+ * 0" while the mark on the screen they had just left said 3, and there is no
+ * reading of that which is true.
  *
  * The two streaks never meet. Which store this screen writes to is a prop,
  * and each caller passes its own — see `local/streak.ts` for why sharing one
@@ -70,7 +73,7 @@ export default function PracticeScreen({
 
   const [record, setRecord] = useState<StreakRecord | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [run, setRun] = useState(0);
+  const run = useRun(name);
   const [stumbled, setStumbled] = useState(false);
   /** Remounts the player for each question so it starts genuinely fresh. */
   const [round, setRound] = useState(0);
@@ -114,7 +117,8 @@ export default function PracticeScreen({
   );
 
   const start = () => {
-    setRun(0);
+    // The run is not reset here. A child arriving with one already going has
+    // one already going; starting a session is not a thing that went wrong.
     setStumbled(false);
     setOrder(shuffled());
     setAt(0);
@@ -140,27 +144,24 @@ export default function PracticeScreen({
     // A question reached without stumbling carries the run forward. One
     // reached with help still counts as reached — it simply does not extend
     // a streak that has already ended.
-    setRun((r) => {
-      const grown = stumbled ? r : r + 1;
-      setRecord(streak.record(grown));
-      return grown;
-    });
+    const grown = stumbled ? run : run + 1;
+    writeRun(name, grown);
+    setRecord(streak.record(grown));
     window.setTimeout(next, 1600);
   };
 
   const onStumble = () => {
     if (stumbled) return;
     setStumbled(true);
-    setRun((r) => {
-      setRecord(streak.record(r));
-      return 0;
-    });
+    setRecord(streak.record(run));
+    writeRun(name, 0);
   };
 
   const leave = () => {
+    // Kept, not ended. Leaving the screen is not a mistake, and the run is
+    // the child's until something actually does not work.
     setRecord(streak.record(run));
     setPlaying(false);
-    setRun(0);
     setOrder([]);
     setAt(0);
   };
@@ -224,12 +225,7 @@ export default function PracticeScreen({
             ten. It is small, it is not announced, and it is nowhere near
             the question.
           */}
-          {run > 0 ? (
-            <span className="run-mark" aria-hidden>
-              <FlameIcon />
-              {run}
-            </span>
-          ) : null}
+          <RunMark streak={name} />
         </div>
 
         <InteractionPlayer
@@ -287,23 +283,6 @@ export default function PracticeScreen({
 
       {children}
     </div>
-  );
-}
-
-function FlameIcon() {
-  return (
-    <svg
-      width={14}
-      height={14}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 3c.6 3 3 4 4.4 6.2A6.6 6.6 0 0 1 12 20.5 6.6 6.6 0 0 1 7.6 9.2C8.4 8 9 7.3 9.3 6.4c.9 1 1.3 1.8 1.4 2.7C11.4 7.6 11.8 5.4 12 3z" />
-    </svg>
   );
 }
 

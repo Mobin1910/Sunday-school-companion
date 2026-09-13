@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import GamePlayer from "@/components/play/GamePlayer";
+import RunMark from "@/components/play/RunMark";
 import { gameOf, gamesOf, getChapters } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
@@ -53,6 +54,12 @@ export default async function ChapterGamePage({
       title={game.title}
       chapterTitle="Let's Play!"
       hubHref={`/chapter/${slug}/games`}
+      /*
+        The run, in the chrome, opposite the way back. It is drawn here
+        rather than by the player because it belongs to the screen — see
+        `RunMark`, which reads the same run the player writes.
+      */
+      aside={<RunMark streak="games" />}
       fit
     >
       {game.interactions.every(canPlay) ? (

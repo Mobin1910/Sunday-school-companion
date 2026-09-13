@@ -5,7 +5,9 @@ import { useRef, useState } from "react";
 
 import type { PlayInteraction } from "@/content";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
+import { readRun, writeRun } from "@/local/run";
 import { finishedVerse } from "@/local/session";
+import { streakNamed } from "@/local/streak";
 
 /**
  * Practising a chapter's verse, and what a child sees when they have it.
@@ -26,6 +28,13 @@ import { finishedVerse } from "@/local/session";
  * until the verse is actually finished, and nothing is recorded at all when
  * this is reached from the global Memory Verse, which has no chapter to
  * complete and passes no slug.
+ *
+ * The verse streak is fed here on the same terms a chapter's games feed the
+ * games streak: right first time carries the run, a try that did not work
+ * ends it, help arriving on its own does not. A child who held the whole
+ * verse and was then told they had practised nothing today would have been
+ * told something untrue by the one screen that had just watched them do it.
+ * The two streaks stay apart — see `local/streak.ts`.
  */
 export default function PractiseVerse({
   interaction,
@@ -48,6 +57,8 @@ export default function PractiseVerse({
 }) {
   const [done, setDone] = useState(false);
   const once = useRef(false);
+  const stumbled = useRef(false);
+  const streak = streakNamed("verse");
 
   return done ? (
     <div className="flex w-full max-w-sm flex-col items-center gap-6 px-4">
@@ -75,8 +86,23 @@ export default function PractiseVerse({
         if (once.current) return;
         once.current = true;
         if (slug) finishedVerse(slug);
+
+        const grown = stumbled.current
+          ? readRun("verse")
+          : readRun("verse") + 1;
+        writeRun("verse", grown);
+        streak.record(grown);
+
         // After the celebration has had its moment, not instead of it.
         window.setTimeout(() => setDone(true), 1800);
+      }}
+      onMiss={() => {
+        if (stumbled.current) return;
+        stumbled.current = true;
+        // The run that just ended is kept before it is let go of. Nothing
+        // about ending one is ever said to the child.
+        streak.record(readRun("verse"));
+        writeRun("verse", 0);
       }}
     />
   );

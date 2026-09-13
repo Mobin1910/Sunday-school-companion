@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import SectionScreen from "@/components/chapter/SectionScreen";
 import PractiseVerse from "@/components/play/PractiseVerse";
+import RunMark from "@/components/play/RunMark";
 import { getChapters, versePracticeOf } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
@@ -55,6 +56,7 @@ export default async function VersePracticePage({
       title="Practise"
       chapterTitle="Memory Verse"
       hubHref={`/chapter/${slug}/verse`}
+      aside={<RunMark streak="verse" />}
       fit
     >
       {/*

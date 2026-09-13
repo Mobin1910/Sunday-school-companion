@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from "react";
 
 import type { PlayInteraction } from "@/content";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
+import { readRun, writeRun } from "@/local/run";
 import { finishedGame } from "@/local/session";
+import { streakNamed } from "@/local/streak";
 
 /**
  * One game, played through.
@@ -38,6 +40,19 @@ import { finishedGame } from "@/local/session";
  * The player is remounted for each question, keyed by index, so a question
  * begins genuinely fresh — no rung carried over, no stillness clock already
  * running. `PracticeScreen` does the same thing for the same reason.
+ *
+ * It also carries the run, on the same terms free play does: a question
+ * answered first time extends it, a try that did not work ends it, and help
+ * arriving on its own does not — a child who thought for a while has not
+ * stumbled. Both feed the one games streak, because recalling a story is
+ * recalling a story whether a chapter asked or the shuffle did. A child who
+ * played three games well and was told they had done nothing today was being
+ * asked to believe the app had not noticed.
+ *
+ * The run itself lives in `local/run.ts` rather than here, because a game
+ * ends by leaving for the shelf and state in this component would not
+ * survive the walk. See there. The mark that shows it is the screen's, not
+ * the player's — the player counts, `RunMark` draws.
  */
 const AFTER_SOLVING = 1600;
 
@@ -61,6 +76,14 @@ export default function GamePlayer({
   const router = useRouter();
   const [at, setAt] = useState(0);
   const waiting = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /*
+    Whether this question was reached with help. Per question, not per game:
+    stumbling on the first of three ends the run, and getting the next two
+    right begins a new one, exactly as it would in free play.
+  */
+  const stumbled = useRef(false);
+  const streak = streakNamed("games");
 
   // A game left before the pause is up must not drag the next screen along
   // behind it.
@@ -91,11 +114,29 @@ export default function GamePlayer({
           */
           if (last) finishedGame(slug, gameId);
 
+          /*
+            A question reached without help carries the run forward. One
+            reached with help still counts as reached — it simply does not
+            extend a streak that has already ended.
+          */
+          const grown = stumbled.current ? readRun("games") : readRun("games") + 1;
+          writeRun("games", grown);
+          streak.record(grown);
+
           waiting.current = setTimeout(() => {
             waiting.current = null;
+            stumbled.current = false;
             if (!last) setAt((n) => n + 1);
             else router.replace(doneHref);
           }, AFTER_SOLVING);
+        }}
+        onMiss={() => {
+          if (stumbled.current) return;
+          stumbled.current = true;
+          // The run that just ended is kept before it is let go of; nothing
+          // about ending one is ever said to the child.
+          streak.record(readRun("games"));
+          writeRun("games", 0);
         }}
       />
 
