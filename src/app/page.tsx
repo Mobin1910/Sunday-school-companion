@@ -1,12 +1,13 @@
 import Link from "next/link";
 
+import ClassRow from "@/components/class/ClassRow";
 import ContinueLearning from "@/components/home/ContinueLearning";
 import Greeting from "@/components/home/Greeting";
 import HomeHalo from "@/components/home/HomeHalo";
 import { DESTINATIONS } from "@/components/nav/destinations";
 import GlobalScreen from "@/components/nav/GlobalScreen";
 import Doorway from "@/components/welcome/Doorway";
-import { getChapters, storyCards } from "@/content";
+import { byClass, storyCards } from "@/content";
 import type { ChapterBrief } from "@/local/place";
 
 /**
@@ -34,6 +35,14 @@ import type { ChapterBrief } from "@/local/place";
  * "3 chapters left" — those turn returning into an obligation. "Continue
  * learning" names a chapter, which is a fact about the content, not a
  * measurement of the child.
+ *
+ * Everything below the greeting belongs to one class. Which one is a fact
+ * about the device, and there is no server at runtime to bake it in, so the
+ * page ships one small list per class and `InClass` picks the child's — see
+ * that component for the trade this makes and why. The class itself is shown
+ * plainly under the greeting rather than buried in Settings: a child who was
+ * moved up on Sunday should be able to say so on the screen where they first
+ * notice the stories are wrong.
  */
 
 export default function HomePage() {
@@ -41,15 +50,17 @@ export default function HomePage() {
 
   /*
     The smallest shape that can validate a remembered place and label a
-    link. Sent rather than the chapters themselves so that nothing about
-    content — cards, interactions, artwork — crosses into the bundle.
+    link, per class. Sent rather than the chapters themselves so that nothing
+    about content — cards, interactions, artwork — crosses into the bundle.
   */
-  const chapters: ChapterBrief[] = getChapters().map((chapter) => ({
-    slug: chapter.slug,
-    title: chapter.title,
-    reference: chapter.reference,
-    storyPages: storyCards(chapter).length,
-  }));
+  const chapters = byClass<ChapterBrief[]>((inClass) =>
+    inClass.map((chapter) => ({
+      slug: chapter.slug,
+      title: chapter.title,
+      reference: chapter.reference,
+      storyPages: storyCards(chapter).length,
+    })),
+  );
 
   return (
     <GlobalScreen ground="night">
@@ -98,11 +109,15 @@ export default function HomePage() {
 
           <HomeHalo />
 
-          {chapters.length > 0 ? (
-            <ContinueLearning chapters={chapters} />
-          ) : (
-            <p className="text-lg text-ink-soft">Stories are on their way.</p>
-          )}
+          {/*
+            Which class these stories are, and the way to change it. A line
+            rather than a control, because a child in the right class should
+            be able to look straight past it — and two taps away when they
+            are not. Nothing is lost by switching; see `ClassRow`.
+          */}
+          <ClassRow />
+
+          <ContinueLearning by={chapters} />
 
           <section className="flex shrink-0 flex-col gap-3">
             <h2 className="text-xs tracking-[0.14em] text-ink-soft uppercase">

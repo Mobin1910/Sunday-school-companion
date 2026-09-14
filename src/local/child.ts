@@ -94,7 +94,19 @@ export function markWelcomed(): void {
  * given — either way the first impression would be of the app changing its
  * mind. The stylesheet does the hiding; this only says which.
  *
+ * It now has three answers rather than two, because there are three screens
+ * `/` can be. Home cannot be drawn without a class — every chapter on it
+ * belongs to one — so a child who has been welcomed but has never been asked
+ * which class they are in is not through the door yet. That is the ordinary
+ * state of everyone who used the app before classes existed, and `"class"`
+ * is the answer for them: the question on its own, rather than a Home with
+ * nothing on it or an introduction they have already had.
+ *
+ *   yes    Home
+ *   class  the class question alone
+ *   no     the whole welcome
+ *
  * Written as a string because it has to run before React exists. Nothing it
  * touches leaves the device, and it makes no request.
  */
-export const DOORWAY_SCRIPT = `try{document.documentElement.dataset.welcomed=localStorage.getItem("ssc.welcomed")==="true"?"yes":"no"}catch(e){}`;
+export const DOORWAY_SCRIPT = `try{var w=localStorage.getItem("ssc.welcomed")==="true",c=!!localStorage.getItem("ssc.class");document.documentElement.dataset.welcomed=w?(c?"yes":"class"):"no"}catch(e){}`;

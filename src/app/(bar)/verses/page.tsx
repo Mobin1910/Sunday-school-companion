@@ -1,10 +1,9 @@
-import Link from "next/link";
-
-import PracticeScreen from "@/components/play/PracticeScreen";
-import { getChapters, verseOf } from "@/content";
-import { versePool } from "@/content/pools";
+import ClassPractice, {
+  type VerseOnShelf,
+} from "@/components/play/ClassPractice";
+import { byClass, verseOf } from "@/content";
+import { versePool, type PoolQuestion } from "@/content/pools";
 import { canPlay } from "@/interactions/registry";
-
 
 /**
  * The verses, and practising them.
@@ -20,59 +19,46 @@ import { canPlay } from "@/interactions/registry";
  * at one and finding the other hard sees two honest numbers instead of one
  * blurred one.
  *
+ * Both the drill and the list below it are one class's, built here for all
+ * seven and chosen in the browser — see `ClassPractice`.
+ *
  * Nothing here is marked learned or unlearned. A verse a child half-knows is
  * not a failed verse, and this screen will never be the place that says so.
  */
 export default function VersesPage() {
-  const chapters = getChapters();
-
-  const pool = versePool(chapters).filter((question) =>
-    canPlay(question.interaction),
+  const pools = byClass<PoolQuestion[]>((chapters) =>
+    versePool(chapters).filter((question) => canPlay(question.interaction)),
   );
 
-  const verses = chapters.flatMap((chapter) => {
-    const verse = verseOf(chapter);
-    return verse ? [{ chapter, verse }] : [];
-  });
+  const verses = byClass<VerseOnShelf[]>((chapters) =>
+    chapters.flatMap((chapter) => {
+      const verse = verseOf(chapter);
+      return verse
+        ? [
+            {
+              slug: chapter.slug,
+              chapterTitle: chapter.title,
+              text: verse.text,
+              reference: verse.reference,
+            },
+          ]
+        : [];
+    }),
+  );
 
   return (
-      <PracticeScreen
-        pool={pool}
-        streak="verse"
-        title="Memory Verse"
-        blurb="Words worth keeping."
-        startLabel="Practise verses"
-        note="Verses from every story you have, shuffled."
-        empty={{
-          title: "No verses to practise yet.",
-          blurb: "They arrive with the stories.",
-        }}
-      >
-        {verses.length > 0 ? (
-          <section className="flex flex-col gap-4">
-            <h2 className="text-sm tracking-wide text-ink-soft uppercase">
-              Every verse
-            </h2>
-
-            <ul className="flex flex-col gap-4">
-              {verses.map(({ chapter, verse }) => (
-                <li key={chapter.slug}>
-                  <Link
-                    href={`/chapter/${chapter.slug}/verse`}
-                    className="surface flex flex-col gap-3 px-5 py-5"
-                  >
-                    <p className="text-2xl leading-relaxed text-balance">
-                      {verse.text}
-                    </p>
-                    <p className="text-base text-ink-soft">
-                      {verse.reference} · {chapter.title}
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-      </PracticeScreen>
+    <ClassPractice
+      pools={pools}
+      verses={verses}
+      streak="verse"
+      title="Memory Verse"
+      blurb="Words worth keeping."
+      startLabel="Practise verses"
+      note="Verses from every story you have, shuffled."
+      empty={{
+        title: "No verses to practise yet.",
+        blurb: "They arrive with the stories.",
+      }}
+    />
   );
 }

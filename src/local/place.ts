@@ -1,7 +1,9 @@
+import type { ClassId } from "@/classes/registry";
+
 import { read, write } from "./store";
 
 /**
- * Where the child was.
+ * Where the child was, in the class they were in.
  *
  * Deliberately semantic rather than a URL. A stored address is a promise
  * about routing that content changes quietly break; a stored *place* — this
@@ -11,11 +13,21 @@ import { read, write } from "./store";
  * that should meet a sensible screen, never a dead link or a page that is no
  * longer there.
  *
- * It is one record, not a history. There is no list of chapters visited, no
- * count of times opened and no per-page timing: this exists to answer "where
- * were we?" and nothing else. `at` is here only so that a later feature can
- * tell stale progress from fresh, and is never shown to a child.
+ * It is one record per class, not a history. There is no list of chapters
+ * visited, no count of times opened and no per-page timing: this exists to
+ * answer "where were we?" and nothing else. `at` is here only so that a
+ * later feature can tell stale progress from fresh, and is never shown to a
+ * child.
+ *
+ * One record *per class* is the important word. A Beginner place and a
+ * Primary place are different facts about different curricula, and a single
+ * record would mean switching class either destroyed the old position or
+ * offered a Beginner chapter to a child now in Primary. Both are wrong, so
+ * the class is in the key rather than in the record.
  */
+
+/** `place.beginner`, `place.primary`. One drawer per class. */
+const key = (classId: ClassId) => `place.${classId}` as const;
 
 export type Section = "story" | "games" | "verse" | "watch";
 
@@ -72,15 +84,16 @@ function repair(raw: unknown): Place | null {
   };
 }
 
-export function readPlace(): Place | null {
-  return read("place", repair, null);
+export function readPlace(classId: ClassId): Place | null {
+  return read(key(classId), repair, null);
 }
 
 export function rememberPlace(
+  classId: ClassId,
   place: Omit<Place, "v" | "at">,
   now = Date.now(),
 ): void {
-  write("place", { v: 1, ...place, at: now });
+  write(key(classId), { v: 1, ...place, at: now });
 }
 
 /**
@@ -139,8 +152,12 @@ export function nextStep(
  * dropping a child back onto the celebration of a story they came back to
  * re-read would be worse than a moment's scrolling.
  */
-export function resumeAt(slug: string, pages: number): number {
-  const place = readPlace();
+export function resumeAt(
+  classId: ClassId,
+  slug: string,
+  pages: number,
+): number {
+  const place = readPlace(classId);
   if (!place || place.slug !== slug || place.section !== "story") return 0;
   if (place.done) return 0;
   return place.page > 0 && place.page < pages ? place.page : 0;

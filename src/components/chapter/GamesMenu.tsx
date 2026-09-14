@@ -3,8 +3,9 @@
 import Link from "next/link";
 
 import Picture from "@/components/Picture";
-import type { Art } from "@/content";
-import { gamesDone, useSessionProgress } from "@/local/session";
+import type { ClassId } from "@/classes/registry";
+import { chapterHref, type Art } from "@/content/client";
+import { gamesDone, progressOf, useSessionProgress } from "@/local/session";
 
 /**
  * A chapter's games, as a shelf that knows what has been played today.
@@ -42,16 +43,18 @@ import { gamesDone, useSessionProgress } from "@/local/session";
  * announces. This is not a curriculum dashboard.
  */
 export default function GamesMenu({
+  classId,
   slug,
   games,
   verseHref,
 }: {
+  classId: ClassId;
   slug: string;
   games: { id: string; title: string; objective: string; featured?: true; art?: Art }[];
   /** The chapter's memory verse, where it has one that can be reached. */
   verseHref?: string;
 }) {
-  const progress = useSessionProgress()[slug];
+  const progress = progressOf(useSessionProgress(), classId, slug);
   const ids = games.map((game) => game.id);
   const done = gamesDone(progress, ids);
   const all = games.length > 0 && done === games.length;
@@ -77,7 +80,7 @@ export default function GamesMenu({
           return (
             <li key={game.id}>
               <Link
-                href={`/chapter/${slug}/games/${game.id}`}
+                href={`${chapterHref(classId, slug, "games")}/${game.id}`}
                 aria-label={`Game ${index + 1}. ${game.title}. ${game.objective}${
                   played ? ". Played" : ""
                 }`}

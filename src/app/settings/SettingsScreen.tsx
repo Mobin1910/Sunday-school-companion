@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import ClassSelector from "@/components/class/ClassSelector";
+import { displayName } from "@/classes/registry";
 import { greeting, readName, saveName, tidyName } from "@/local/child";
+import { useResolvedClass } from "@/local/class";
 import {
   applyMotion,
   readSettings,
@@ -34,6 +37,9 @@ import { forgetEverything } from "@/local/store";
 export default function SettingsScreen() {
   const [settings, setSettings] = useState<Settings>(DEFAULTS);
   const [name, setName] = useState("");
+  /** The class row is a row until it is asked to open, like the name row. */
+  const [changingClass, setChangingClass] = useState(false);
+  const { id: classId, settled: classSettled } = useResolvedClass();
   const [draft, setDraft] = useState("");
   const [editing, setEditing] = useState(false);
   const [cleared, setCleared] = useState(false);
@@ -134,6 +140,61 @@ export default function SettingsScreen() {
             {greeting(name)} &mdash; this is how Home will say hello.
           </p>
         ) : null}
+
+        {/*
+          The class, in the same place as the name, because it is the same
+          kind of fact: something the child told us once that decides what
+          the app is for them. It is the more consequential of the two —
+          the name changes a greeting, the class changes every chapter — so
+          it says plainly what switching does and does not cost.
+
+          The same selector onboarding and Home use. Three screens asking one
+          question have to ask it identically; see `ClassSelector`.
+        */}
+        {changingClass ? (
+          <div className="flex flex-col gap-3 px-1 py-3">
+            <p className="text-lg">Which class are you in?</p>
+
+            <ClassSelector
+              chosen={classId}
+              onChosen={() => setChangingClass(false)}
+            />
+
+            <button
+              type="button"
+              onClick={() => setChangingClass(false)}
+              className="min-h-14 self-start rounded-card px-5 text-lg text-ink-soft"
+            >
+              Cancel
+            </button>
+
+            <p className="text-sm text-ink-soft text-balance">
+              Every class keeps its own stories, places and streaks. Switching
+              does not delete anything &mdash; coming back brings it all with
+              you.
+            </p>
+          </div>
+        ) : (
+          <Row
+            label="Class"
+            value={
+              classSettled
+                ? classId
+                  ? displayName(classId)
+                  : "Not chosen"
+                : " "
+            }
+            hint="Which stories, games and verses this app shows."
+          >
+            <button
+              type="button"
+              onClick={() => setChangingClass(true)}
+              className="min-h-12 rounded-full px-3 text-base text-touchable"
+            >
+              {classId ? "Change" : "Choose"}
+            </button>
+          </Row>
+        )}
       </Group>
 
       <Group label="Experience">
@@ -164,7 +225,7 @@ export default function SettingsScreen() {
       <Group label="App">
         <Row
           label="Clear progress"
-          hint="Removes your name, your streaks and where you left off."
+          hint="Removes your name, your class, your streaks and where you left off — in every class."
         >
           {confirming ? (
             <span className="flex gap-2">

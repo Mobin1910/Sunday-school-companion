@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getChapters, type Card } from "@/content";
+import { everyChapter, type Card } from "@/content";
 
 import CurlBook from "./CurlBook";
 
@@ -28,7 +28,7 @@ export default function CurlPrototypePage() {
     depend on a particular chapter existing, which is a dependency it never
     needed. Any chapter has pages to turn.
   */
-  const [chapter] = getChapters();
+  const [chapter] = everyChapter();
   if (!chapter) notFound();
 
   return (

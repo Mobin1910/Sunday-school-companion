@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 
+import type { ClassId } from "@/classes/registry";
 import { rememberPlace, resumeAt } from "@/local/place";
 import { finishedStory } from "@/local/session";
 
@@ -76,6 +77,7 @@ import { PageProvider } from "./PageContext";
  */
 export default function ChapterReader({
   children,
+  classId,
   slug,
   hubHref,
   chapterTitle,
@@ -84,7 +86,8 @@ export default function ChapterReader({
   backs,
 }: {
   children: React.ReactNode;
-  /** Which chapter this is, for remembering the place in it. */
+  /** Which chapter this is, for remembering the place in it — both halves. */
+  classId: ClassId;
   slug: string;
   /** This chapter's Hub. Always reachable, from every page. */
   hubHref: string;
@@ -176,7 +179,7 @@ export default function ChapterReader({
     beginning, every time.
   */
   useEffect(() => {
-    const resume = resumeAt(slug, pages.length);
+    const resume = resumeAt(classId, slug, pages.length);
     if (resume === 0) return;
 
     position.current = resume;
@@ -202,7 +205,7 @@ export default function ChapterReader({
     read end to end costs one small write per page turned.
   */
   useEffect(() => {
-    rememberPlace({
+    rememberPlace(classId, {
       slug,
       section: "story",
       page: index,
@@ -219,8 +222,8 @@ export default function ChapterReader({
       can be derived from the other: a child who re-opens a finished chapter
       has a remembered place and has not read it again.
     */
-    if (index === lastPage) finishedStory(slug);
-  }, [slug, index, lastPage, pages.length]);
+    if (index === lastPage) finishedStory(classId, slug);
+  }, [classId, slug, index, lastPage, pages.length]);
 
   /*
     Finish a turn in the same frame the new page appears in.

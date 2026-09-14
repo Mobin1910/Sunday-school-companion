@@ -23,7 +23,7 @@ runtime fetch. Content is JSON on disk, validated at build time, imported as a
 typed module.
 
 ```
-content/*.story.json
+content/<class>/*.story.json
    → chapterSchema (Zod)          errors fail the build
    → toCards()                    sections flatten to one ordered card list
    → CardScreen                   one renderer per card kind

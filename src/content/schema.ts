@@ -350,6 +350,21 @@ const video = z.strictObject({
 });
 
 export const chapterSchema = z.strictObject({
+  /**
+   * Which class this chapter belongs to.
+   *
+   * Required, and checked against the directory the file was found in. The
+   * path is how a chapter is discovered; this field is what makes a file
+   * dragged into the wrong class folder fail the build instead of quietly
+   * becoming a different class's lesson. Two statements of the same fact,
+   * which is the point — one of them is a typo away from being wrong, and
+   * disagreeing is what we want to hear about.
+   *
+   * It is the class *id*, never the display name: `beginner`, not
+   * `Beginner`, and never `02 - Beginner`, which is a Drive folder's sort
+   * order rather than an identity.
+   */
+  class: z.string().regex(/^[a-z0-9-]+$/),
   title: z.string(),
   reference: z.string(),
 

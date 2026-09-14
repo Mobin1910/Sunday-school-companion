@@ -3,16 +3,26 @@
 import { useEffect, useState } from "react";
 
 import { readWelcomed } from "@/local/child";
+import { readClass } from "@/local/class";
 
+import AskClass from "./AskClass";
 import Welcome from "./Welcome";
 
 /**
  * Which screen `/` is.
  *
- * A child who has been welcomed gets Home. One who has not meets Halo. It
- * is the same route either way, deliberately: finishing the welcome should
- * put a child *on* Home rather than navigate them to it, so the last thing
- * they see of Halo is the same Halo, in the same place, on the same ground.
+ * A child who has been welcomed *and* told us their class gets Home. Anyone
+ * else meets Halo. It is the same route either way, deliberately: finishing
+ * the welcome should put a child *on* Home rather than navigate them to it,
+ * so the last thing they see of Halo is the same Halo, in the same place, on
+ * the same ground.
+ *
+ * Three screens rather than two, because Home has nothing to show without a
+ * class: every chapter, game and verse on it belongs to one. Someone who was
+ * welcomed before classes existed has a name and no class, and they meet the
+ * class question on its own rather than being introduced to Halo a second
+ * time — the meeting already happened, and replaying it would be the app
+ * forgetting them in the act of asking them something.
  *
  * The page is prerendered and the answer lives on the device, so both are
  * in the first frame and the stylesheet picks — see `DOORWAY_SCRIPT`, which
@@ -26,10 +36,17 @@ import Welcome from "./Welcome";
  * is the right fallback: the welcome is lovely, and the stories are the
  * point.
  */
-export default function Doorway({ children }: { children: React.ReactNode }) {
-  const [welcomed, setWelcomed] = useState<boolean | null>(null);
+/** Which of the three screens `/` is. Mirrors `data-welcomed` exactly. */
+type Door = "yes" | "class" | "no";
 
-  useEffect(() => setWelcomed(readWelcomed()), []);
+export default function Doorway({ children }: { children: React.ReactNode }) {
+  const [door, setDoor] = useState<Door | null>(null);
+
+  useEffect(() => {
+    const met = readWelcomed();
+    if (!met) return setDoor("no");
+    setDoor(readClass() === null ? "class" : "yes");
+  }, []);
 
   /*
     `data-welcomed` is a mirror of this state, and this is what keeps it one.
@@ -42,9 +59,9 @@ export default function Doorway({ children }: { children: React.ReactNode }) {
     flag covers both directions, and keeps one thing responsible for it.
   */
   useEffect(() => {
-    if (welcomed === null) return;
-    document.documentElement.dataset.welcomed = welcomed ? "yes" : "no";
-  }, [welcomed]);
+    if (door === null) return;
+    document.documentElement.dataset.welcomed = door;
+  }, [door]);
 
   /*
     Both branches keep the same position in the tree while the answer is
@@ -57,15 +74,21 @@ export default function Doorway({ children }: { children: React.ReactNode }) {
   */
   return (
     <>
-      {welcomed === false ? null : (
+      {door === "yes" || door === null ? (
         <div data-doorway="home">{children}</div>
-      )}
+      ) : null}
 
-      {welcomed === true ? null : (
+      {door === "no" || door === null ? (
         <div data-doorway="welcome">
-          <Welcome onDone={() => setWelcomed(true)} />
+          <Welcome onDone={() => setDoor("yes")} />
         </div>
-      )}
+      ) : null}
+
+      {door === "class" || door === null ? (
+        <div data-doorway="class">
+          <AskClass onDone={() => setDoor("yes")} />
+        </div>
+      ) : null}
     </>
   );
 }

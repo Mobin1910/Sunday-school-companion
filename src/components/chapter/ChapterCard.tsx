@@ -3,8 +3,9 @@
 import Link from "next/link";
 
 import Picture from "@/components/Picture";
-import type { Card } from "@/content";
-import { chapterDone, useSessionProgress } from "@/local/session";
+import type { ClassId } from "@/classes/registry";
+import { chapterHref, type Card } from "@/content/client";
+import { chapterDone, progressOf, useSessionProgress } from "@/local/session";
 
 /**
  * One chapter on the shelf.
@@ -41,12 +42,14 @@ import { chapterDone, useSessionProgress } from "@/local/session";
  *   is the opposite of what a shelf is for. See `local/session.ts`.
  */
 export default function ChapterCard({
+  classId,
   slug,
   number,
   title,
   cover,
   needs,
 }: {
+  classId: ClassId;
   slug: string;
   number: number;
   title: string;
@@ -59,11 +62,14 @@ export default function ChapterCard({
    */
   needs: { games: string[]; verse: boolean };
 }) {
-  const done = chapterDone(useSessionProgress()[slug], needs);
+  const done = chapterDone(
+    progressOf(useSessionProgress(), classId, slug),
+    needs,
+  );
 
   return (
     <Link
-      href={`/chapter/${slug}`}
+      href={chapterHref(classId, slug)}
       className={`surface relative flex min-h-30 items-center overflow-hidden ${
         done ? "chapter-done" : ""
       }`}

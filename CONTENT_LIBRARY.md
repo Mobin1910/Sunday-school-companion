@@ -148,7 +148,7 @@ One folder per game — `Game 01`, `Game 02` — holding artwork, references
 and drafts.
 
 The **structured game data lives in the repository**, not here. Drive is the
-creative asset library; `content/*.story.json` is where a game is actually
+creative asset library; `content/<class>/*.story.json` is where a game is actually
 defined. Keeping a second copy of the interaction data in Drive would create
 two answers to the same question.
 

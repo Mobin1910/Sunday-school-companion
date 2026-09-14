@@ -14,12 +14,14 @@ import type { AssetReference } from "./schema";
  * handed to components that run in the browser — an interaction's options are
  * rendered on the client and cannot reach the filesystem themselves.
  *
- * A chapter's artwork lives in two places and the split is deliberate:
+ * A chapter's artwork lives under its class, because a chapter's identity is
+ * its class and its slug together — two classes may both have a
+ * `wedding-at-cana` and they are different lessons with different pictures:
  *
- *   public/art/<chapter>/            the story. Panels, the cover, anything
- *                                    the chapter itself is made of.
- *   public/art/<chapter>/games/      artwork drawn for one game, under a
- *                                    folder named for that game.
+ *   public/art/<class>/<chapter>/            the story. Panels, the cover,
+ *                                            anything the chapter is made of.
+ *   public/art/<class>/<chapter>/games/      artwork drawn for one game,
+ *                                            under a folder named for it.
  *
  * Which one a reference means is stated in the reference, not guessed from
  * the name — so a game may point at a story panel and reuse it, and nothing
@@ -30,8 +32,8 @@ const EXTENSIONS = ["avif", "webp", "png", "jpg", "svg"] as const;
 
 const GAMES_DIR = "games";
 
-const artDirectory = (slug: string) =>
-  join(process.cwd(), "public", "art", slug);
+const artDirectory = (classId: string, slug: string) =>
+  join(process.cwd(), "public", "art", classId, slug);
 
 /**
  * A reference as one readable string.
@@ -44,13 +46,17 @@ export function assetName(ref: AssetReference): string {
   return ref.source === "story" ? ref.panelId : `${GAMES_DIR}/${ref.path}`;
 }
 
-export function resolveAsset(slug: string, ref: AssetReference): string | null {
+export function resolveAsset(
+  classId: string,
+  slug: string,
+  ref: AssetReference,
+): string | null {
   const name = assetName(ref);
 
   for (const extension of EXTENSIONS) {
     const file = `${name}.${extension}`;
-    if (existsSync(join(artDirectory(slug), file))) {
-      return `/art/${slug}/${file}`;
+    if (existsSync(join(artDirectory(classId, slug), file))) {
+      return `/art/${classId}/${slug}/${file}`;
     }
   }
   return null;
@@ -63,8 +69,8 @@ export function resolveAsset(slug: string, ref: AssetReference): string | null {
  * a reference would, so that a game asset nothing points at is reported the
  * same way an unused panel is.
  */
-export function drawnPictures(slug: string): string[] {
-  const root = artDirectory(slug);
+export function drawnPictures(classId: string, slug: string): string[] {
+  const root = artDirectory(classId, slug);
   if (!existsSync(root)) return [];
 
   const pictures = (directory: string, prefix: string): string[] =>

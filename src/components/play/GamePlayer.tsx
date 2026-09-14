@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import type { PlayInteraction } from "@/content";
+import type { ClassId } from "@/classes/registry";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
 import { readRun, writeRun } from "@/local/run";
 import { finishedGame } from "@/local/session";
@@ -58,6 +59,7 @@ const AFTER_SOLVING = 1600;
 
 export default function GamePlayer({
   interactions,
+  classId,
   slug,
   gameId,
   doneHref,
@@ -66,8 +68,13 @@ export default function GamePlayer({
   /**
    * Which chapter and which game, so that finishing counts towards this
    * chapter's shelf. Nothing about a child is recorded — only that this
-   * game, in this chapter, was played in this sitting.
+   * game, in this chapter, in this class, was played in this sitting.
+   *
+   * The class comes from the route rather than from the device, so a game
+   * opened from a shared link counts towards the chapter it actually
+   * belongs to.
    */
+  classId: ClassId;
   slug: string;
   gameId: string;
   /** Where finishing leads. The chapter's games shelf, always. */
@@ -83,7 +90,7 @@ export default function GamePlayer({
     right begins a new one, exactly as it would in free play.
   */
   const stumbled = useRef(false);
-  const streak = streakNamed("games");
+  const streak = streakNamed("games", classId);
 
   // A game left before the pause is up must not drag the next screen along
   // behind it.
@@ -112,7 +119,7 @@ export default function GamePlayer({
             that forgot it because they did not wait would be the app
             quietly disagreeing with what just happened on screen.
           */
-          if (last) finishedGame(slug, gameId);
+          if (last) finishedGame(classId, slug, gameId);
 
           /*
             A question reached without help carries the run forward. One

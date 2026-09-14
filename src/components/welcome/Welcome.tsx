@@ -2,16 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import ClassSelector from "@/components/class/ClassSelector";
 import { arrivalTaken, claimArrival } from "@/halo/arrival";
 import HaloPresence from "@/halo/HaloPresence";
 import { useDriftingMood } from "@/halo/mood";
 import type { HaloState } from "@/halo/state";
 import { markWelcomed, saveName, tidyName } from "@/local/child";
+import { useResolvedClass } from "@/local/class";
 
 /**
  * Meeting Halo.
  *
- * Four beats, one screen. Halo is mounted once and never remounts, so it
+ * Five beats, one screen. Halo is mounted once and never remounts, so it
  * arrives, settles, breathes and changes mood continuously while the words
  * around it change — which is the whole difference between a companion
  * introducing itself and four slides about a product. Nothing here is a
@@ -28,9 +30,26 @@ import { markWelcomed, saveName, tidyName } from "@/local/child";
  * what it can do, and it becomes happy the moment a child writes their name
  * — before the button is pressed, because that is when the meeting actually
  * happens.
+ *
+ * The class is asked here, after the name and before "ready", and that
+ * placement is the point rather than an ordering detail. It is not a setting
+ * and not a filter: it decides which curriculum exists at all, so the app has
+ * no honest first screen to show until it has been answered. Asking it as a
+ * beat of the meeting — Halo wanting to know which class you are in, the way
+ * it wanted to know your name — is what keeps it from reading as a form field
+ * standing between a child and the stories.
+ *
+ * There is no way past it and no default. Guessing would quietly hand a
+ * six-year-old somebody else's lessons, and "Beginner" is not a sensible
+ * fallback merely because it is the class that has content today. Choosing is
+ * the advance, so the beat has no button of its own.
+ *
+ * A child who has already met Halo but never been asked their class gets the
+ * question on its own, in `AskClass`, and never reaches this file. See the
+ * Doorway.
  */
 
-type Step = 0 | 1 | 2 | 3;
+type Step = 0 | 1 | 2 | 3 | 4;
 
 /** How long "Nice to meet you" is allowed to be its own moment. */
 const MEETING_MS = 1500;
@@ -59,6 +78,12 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
   const [meeting, setMeeting] = useState(false);
   const [nudge, setNudge] = useState(false);
   const [name, setName] = useState("");
+
+  /*
+    Marked rather than remembered: a child who walks back to this beat should
+    see which class they picked, and re-picking it is not a change.
+  */
+  const { id: chosen } = useResolvedClass();
 
   const [arriving] = useState(() => !arrivalTaken());
   useEffect(() => {
@@ -153,15 +178,18 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
   */
   const beat: HaloState = meeting
     ? "happy"
-    : step === 3
+    : step === 4
       ? "happy"
-      : step === 2
-        ? draft.trim()
-          ? "happy"
-          : "listening"
-        : step === 1
-          ? "curious"
-          : "listening";
+      : step === 3
+        ? // Halo has asked which class, and is waiting to be told.
+          "curious"
+        : step === 2
+          ? draft.trim()
+            ? "happy"
+            : "listening"
+          : step === 1
+            ? "curious"
+            : "listening";
 
   /*
     And then, where the beat is only waiting, Halo drifts.
@@ -275,6 +303,18 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
               {nudge ? "Tell me your name and we can start." : " "}
             </p>
           </>
+        ) : step === 3 ? (
+          <>
+            <h1 className="welcome-title">
+              What class are you in, {name || "friend"}?
+            </h1>
+            <p className="welcome-copy">
+              Every class has its own stories. Tell me yours and I&rsquo;ll
+              bring the right ones.
+            </p>
+
+            <ClassSelector chosen={chosen} onChosen={() => goTo(4)} autoFocus />
+          </>
         ) : (
           <>
             <h1 className="welcome-title">Ready, {name || "friend"}?</h1>
@@ -293,6 +333,14 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
           <Onward onClick={() => goTo(2)}>Let&rsquo;s explore →</Onward>
         ) : step === 2 ? (
           <Onward onClick={submitName}>That&rsquo;s me! →</Onward>
+        ) : step === 3 ? (
+          /*
+            No button. Tapping a class *is* the answer and the advance, so a
+            second control would only offer a way past a question that has
+            no default. The space is held rather than collapsed, so the words
+            above do not jump when the beat changes.
+          */
+          <span aria-hidden />
         ) : (
           <Onward onClick={finish}>Let&rsquo;s go! ✨</Onward>
         )}

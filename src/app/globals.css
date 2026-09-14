@@ -2988,8 +2988,16 @@ html[data-motion="reduce"] .pour-fall.is-running {
   display: contents;
 }
 
-html[data-welcomed="no"] [data-doorway="home"],
-html:not([data-welcomed="no"]) [data-doorway="welcome"] {
+/*
+  Three screens now, and the attribute names them: `yes` is Home, `no` is the
+  whole welcome, `class` is the class question alone — for a child who met
+  Halo before classes existed. Every rule is "hide the ones this is not", so
+  an attribute nobody set, which is what a browser running no JavaScript has,
+  still lands on Home.
+*/
+html[data-welcomed]:not([data-welcomed="yes"]) [data-doorway="home"],
+html:not([data-welcomed="no"]) [data-doorway="welcome"],
+html:not([data-welcomed="class"]) [data-doorway="class"] {
   display: none;
 }
 
@@ -3098,6 +3106,34 @@ html:not([data-welcomed="no"]) [data-doorway="welcome"] {
   */
   min-height: 0;
   overflow-y: auto;
+}
+
+/*
+  THE CLASS BEAT, which is a list and behaves like one.
+
+  Seven names is more than any other beat carries, and it is the one beat
+  where seeing all the options *is* the task. Measured inside the fixed
+  layout, the seventh sat 41px below the fold on a 390×844 phone and 153px
+  below on a 320×568 one — reachable by scrolling a box with no edge, no
+  scrollbar and nothing to suggest there was anything under it. A child
+  choosing from a list they cannot see the end of is choosing from six.
+
+  So this beat, and only this beat, gives up the fixed height and lets the
+  page scroll the way any list does. The rule it is breaking — the way
+  onward must never need looking for — does not apply here, because there is
+  no button: the options are the way onward, and the first of them is on
+  screen. Halo draws back a little at the same time, so on an ordinary phone
+  there is nothing to scroll for at all.
+*/
+.welcome[data-step="3"] {
+  --halo-room: clamp(5rem, 17vh, 11rem);
+  height: auto;
+  min-height: 100%;
+}
+
+.welcome[data-step="3"] .welcome-words {
+  /* The page scrolls now, so the box must not clip what the page would show. */
+  overflow-y: visible;
   /* Each beat arrives rather than cutting; see the keyframe below. */
   animation: welcome-beat 420ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
 

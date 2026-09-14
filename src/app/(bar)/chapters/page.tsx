@@ -1,5 +1,7 @@
-import ChapterCard from "@/components/chapter/ChapterCard";
-import { coverOf, gamesOf, getChapters, verseOf } from "@/content";
+import ChapterShelf, {
+  type ShelfChapter,
+} from "@/components/chapter/ChapterShelf";
+import { byClass, coverOf, gamesOf, verseOf } from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -10,6 +12,13 @@ import { canPlay } from "@/interactions/registry";
  * they have to scan, it stays one column at every width, and it does not get
  * worse as chapters are added — the twentieth chapter is one more row, not a
  * second screenful of tiles.
+ *
+ * It is one class's shelf, always. `Beginner / Chapter 01` and
+ * `Primary / Chapter 01` are different lessons that share a number, so a
+ * shelf holding both would be the single most confusing screen in the
+ * product — two rows called Chapter 01, and no way to tell which Sunday
+ * either of them came from. The class is chosen once and this screen obeys
+ * it; the numbers a child reads are their own class's, counted from one.
  *
  * The number a chapter shows is its place here, and nothing more. Order comes
  * from the content layer, so this screen never decides it.
@@ -22,34 +31,19 @@ import { canPlay } from "@/interactions/registry";
  * has happened is the browser's business; see `ChapterCard`.
  */
 export default function ChaptersPage() {
-  const chapters = getChapters();
-
-  return (
-      <div className="mx-auto flex max-w-2xl flex-col gap-6 px-6 py-10">
-        <h1 className="text-3xl">Chapters</h1>
-
-        {chapters.length === 0 ? (
-          <p className="text-lg text-ink-soft">Stories are on their way.</p>
-        ) : (
-          <ul className="flex flex-col gap-4">
-            {chapters.map((chapter, index) => (
-              <li key={chapter.slug}>
-                <ChapterCard
-                  slug={chapter.slug}
-                  number={index + 1}
-                  title={chapter.title}
-                  cover={coverOf(chapter)}
-                  needs={{
-                    games: gamesOf(chapter)
-                      .filter((game) => game.interactions.every(canPlay))
-                      .map((game) => game.id),
-                    verse: verseOf(chapter) !== undefined,
-                  }}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+  const shelves = byClass<ShelfChapter[]>((chapters) =>
+    chapters.map((chapter) => ({
+      slug: chapter.slug,
+      title: chapter.title,
+      cover: coverOf(chapter),
+      needs: {
+        games: gamesOf(chapter)
+          .filter((game) => game.interactions.every(canPlay))
+          .map((game) => game.id),
+        verse: verseOf(chapter) !== undefined,
+      },
+    })),
   );
+
+  return <ChapterShelf by={shelves} />;
 }

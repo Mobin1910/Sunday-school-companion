@@ -1,4 +1,6 @@
-import { getChapters, type Card } from "@/content";
+import { chapterKey, everyChapter, type Card } from "@/content";
+
+import DebugClass from "./DebugClass";
 
 /**
  * Milestone 2 scaffold.
@@ -6,6 +8,11 @@ import { getChapters, type Card } from "@/content";
  * Shows what every chapter file becomes once it is validated and flattened.
  * This exists to make the pipeline visible while there is nothing to play yet,
  * and it is not part of the product a child sees.
+ *
+ * Every class at once, which is the one place in the app that is true. A
+ * child's screens are scoped to their class; this is the pipeline's view, and
+ * its whole job is to show what is there — so a chapter is named by both
+ * halves of its identity, `beginner/wedding-at-cana`, never by its slug.
  */
 
 function summarise(card: Card): string {
@@ -31,7 +38,7 @@ function summarise(card: Card): string {
 }
 
 export default function DebugPage() {
-  const chapters = getChapters();
+  const chapters = everyChapter();
 
   return (
     <main className="mx-auto max-w-xl px-6 py-12">
@@ -41,11 +48,17 @@ export default function DebugPage() {
         content/
       </p>
 
+      <DebugClass />
+
       {chapters.map((chapter) => (
-        <section key={chapter.slug} className="mt-10">
+        <section
+          key={chapterKey(chapter.classId, chapter.slug)}
+          className="mt-10"
+        >
           <h2 className="text-2xl">{chapter.title}</h2>
           <p className="mt-1 text-base text-ink-soft">
-            {chapter.reference} · {chapter.cards.length} cards ·{" "}
+            {chapterKey(chapter.classId, chapter.slug)} · {chapter.reference} ·{" "}
+            {chapter.cards.length} cards ·{" "}
             {chapter.shipping ? "ships" : "draft"}
           </p>
 

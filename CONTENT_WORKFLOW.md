@@ -421,7 +421,7 @@ Vercel, not at runtime on a phone.
 
 | | |
 |---|---|
-| Runtime, in the app | `content/*.story.json`, `public/art/**`, `public/brand/**` — all bundled |
+| Runtime, in the app | `content/<class>/*.story.json`, `public/art/<class>/**`, `public/brand/**` — all bundled |
 | Build time, on Vercel | the same files. No network, no credentials |
 | Build time, on your machine | Drive and Sheets, for `content:pull` and `content:generate` |
 

@@ -2,7 +2,15 @@ import { notFound } from "next/navigation";
 
 import CardScreen from "@/components/reader/CardScreen";
 import ChapterReader from "@/components/reader/ChapterReader";
-import { gamesOf, getChapters, nextChapter, storyCards } from "@/content";
+import {
+  chapterHref,
+  chapterParams,
+  chapterWithin,
+  gamesOf,
+  getChapters,
+  nextChapter,
+  storyCards,
+} from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -18,19 +26,26 @@ import { canPlay } from "@/interactions/registry";
  */
 
 export function generateStaticParams() {
-  return getChapters().map(({ slug }) => ({ slug }));
+  return chapterParams();
 }
 
 export default async function ChapterStoryPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapters = getChapters();
-  const chapter = chapters.find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
+
+  /*
+    The next chapter is the next one *in this class*. Nothing in the reader
+    may reach across classes: a Beginner child finishing their last chapter
+    has finished, and must not be handed the first Primary lesson because it
+    happened to be the next thing the loader found.
+  */
+  const chapters = getChapters(chapter.classId);
 
   const pages = storyCards(chapter);
   const next = nextChapter(chapters, slug);
@@ -47,11 +62,16 @@ export default async function ChapterStoryPage({
 
   return (
     <ChapterReader
+      classId={chapter.classId}
       slug={slug}
-      hubHref={`/chapter/${slug}`}
+      hubHref={chapterHref(chapter.classId, slug)}
       chapterTitle={chapter.title}
-      {...(playable ? { gamesHref: `/chapter/${slug}/games` } : {})}
-      {...(next ? { nextChapterHref: `/chapter/${next.slug}` } : {})}
+      {...(playable
+        ? { gamesHref: chapterHref(chapter.classId, slug, "games") }
+        : {})}
+      {...(next
+        ? { nextChapterHref: chapterHref(next.classId, next.slug) }
+        : {})}
       /* The picture on each page, for the back of the sheet when it turns. */
       backs={pages.map((card) => ("art" in card && card.art ? card.art.src : null))}
     >

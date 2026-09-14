@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import SectionScreen from "@/components/chapter/SectionScreen";
 import WatchSection from "@/components/chapter/WatchSection";
-import { getChapters, videosOf } from "@/content";
+import { chapterHref, chapterParams, chapterWithin, videosOf } from "@/content";
 
 /**
  * Watching, as a section of a chapter.
@@ -20,16 +20,16 @@ import { getChapters, videosOf } from "@/content";
  * truth and is a page nothing in the app links to.
  */
 export function generateStaticParams() {
-  return getChapters().map(({ slug }) => ({ slug }));
+  return chapterParams();
 }
 
 export default async function ChapterWatchPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -40,7 +40,7 @@ export default async function ChapterWatchPage({
     <SectionScreen
       title="Watch"
       chapterTitle={chapter.title}
-      hubHref={`/chapter/${slug}`}
+      hubHref={chapterHref(chapter.classId, slug)}
     >
       {videos.map((video) => (
         <WatchSection key={video.youtubeId} video={video} />

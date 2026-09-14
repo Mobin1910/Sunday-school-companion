@@ -2,6 +2,9 @@
 
 import { useSyncExternalStore } from "react";
 
+import type { ClassId } from "@/classes/registry";
+import { chapterKey } from "@/content/key";
+
 /**
  * What a child has finished *today, in this sitting*.
  *
@@ -20,6 +23,13 @@ import { useSyncExternalStore } from "react";
  * It is not progress towards anything and it unlocks nothing. Nothing here
  * is counted, compared, or shown as a total — a chapter is either finished
  * in this sitting or it is not, and both are fine.
+ *
+ * Chapters are keyed by class *and* slug, like everything else that names a
+ * chapter. Without the class, a child who switched from Beginner to Primary
+ * mid-afternoon would find a Primary chapter already ticked because the
+ * Beginner one with the same slug had been read — a small bug with a large
+ * meaning, since the whole point of classes is that those are two different
+ * lessons.
  */
 
 const KEY = "ssc.session.chapters";
@@ -68,21 +78,40 @@ function write(next: Progress): void {
   for (const listen of listeners) listen();
 }
 
-function change(slug: string, edit: (was: ChapterProgress) => ChapterProgress) {
+function change(
+  key: string,
+  edit: (was: ChapterProgress) => ChapterProgress,
+) {
   const all = read();
-  write({ ...all, [slug]: edit(all[slug] ?? {}) });
+  write({ ...all, [key]: edit(all[key] ?? {}) });
 }
 
-export function finishedStory(slug: string): void {
-  change(slug, (was) => ({ ...was, story: true }));
+export function finishedStory(classId: ClassId, slug: string): void {
+  change(chapterKey(classId, slug), (was) => ({ ...was, story: true }));
 }
 
-export function finishedGame(slug: string, id: string): void {
-  change(slug, (was) => ({ ...was, games: { ...was.games, [id]: true } }));
+export function finishedGame(
+  classId: ClassId,
+  slug: string,
+  id: string,
+): void {
+  change(chapterKey(classId, slug), (was) => ({
+    ...was,
+    games: { ...was.games, [id]: true },
+  }));
 }
 
-export function finishedVerse(slug: string): void {
-  change(slug, (was) => ({ ...was, verse: true }));
+export function finishedVerse(classId: ClassId, slug: string): void {
+  change(chapterKey(classId, slug), (was) => ({ ...was, verse: true }));
+}
+
+/** One chapter's sitting, out of the whole record. */
+export function progressOf(
+  all: Progress,
+  classId: ClassId,
+  slug: string,
+): ChapterProgress | undefined {
+  return all[chapterKey(classId, slug)];
 }
 
 /**

@@ -2,7 +2,7 @@
 
 The app's own identity: the mark in a browser tab, the icon on a home
 screen, the picture a shared link shows. Chapter artwork is a different
-thing and lives in `public/art/` under `CONTENT_PIPELINE.md`; nothing here
+thing and lives in `public/art/<class>/<chapter>/` under `CONTENT_PIPELINE.md`; nothing here
 goes through the content pipeline and no chapter file ever references it.
 
 **Halo is the brand.** Not a mascot placed beside a logo — the mark itself.
@@ -40,7 +40,7 @@ public/
 
 `public/brand/` rather than `public/assets/brand/`, because this project
 already names public directories for what is in them — chapter artwork is
-`/art/<chapter>/…`, so the app's own identity is `/brand/…`.
+`/art/<class>/<chapter>/…`, so the app's own identity is `/brand/…`.
 
 **`favicon.ico` is the one exception and it is deliberate.** Browsers
 request `/favicon.ico` from the site root on their own, with no markup

@@ -4,7 +4,13 @@ import { notFound } from "next/navigation";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import VerseCard from "@/components/reader/VerseCard";
-import { getChapters, verseOf, versePracticeOf } from "@/content";
+import {
+  chapterHref,
+  chapterParams,
+  chapterWithin,
+  verseOf,
+  versePracticeOf,
+} from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -17,18 +23,16 @@ import { canPlay } from "@/interactions/registry";
 
 /** Only chapters that have a verse. See the practice route for why. */
 export function generateStaticParams() {
-  return getChapters()
-    .filter((chapter) => verseOf(chapter) !== undefined)
-    .map(({ slug }) => ({ slug }));
+  return chapterParams((chapter) => verseOf(chapter) !== undefined);
 }
 
 export default async function ChapterVersePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -41,7 +45,7 @@ export default async function ChapterVersePage({
     <SectionScreen
       title="Memory Verse"
       chapterTitle={chapter.title}
-      hubHref={`/chapter/${slug}`}
+      hubHref={chapterHref(chapter.classId, slug)}
     >
       <VerseCard text={verse.text} reference={verse.reference} />
 
@@ -55,7 +59,7 @@ export default async function ChapterVersePage({
       {practice ? (
         canPlay(practice.interaction) ? (
           <Link
-            href={`/chapter/${slug}/verse/practice`}
+            href={chapterHref(chapter.classId, slug, "verse/practice")}
             className="cta min-h-16 w-full max-w-sm px-6 text-xl"
           >
             Practise it

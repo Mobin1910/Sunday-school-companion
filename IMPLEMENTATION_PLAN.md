@@ -72,7 +72,7 @@ It delivers the information architecture in the constitution: the four global de
 
 **Deliverables**
 - Zod schema for the chapter format, per `CONTENT_MODEL.md`.
-- Loader that reads `content/*.story.json` at build time as typed modules.
+- Loader that reads `content/<class>/*.story.json` at build time as typed modules.
 - Section flattening: cover + story + activity + quiz + verse + celebration → one ordered card list.
 - Validation script that fails the build on invalid content.
 - A debug page listing every card in Stephen.

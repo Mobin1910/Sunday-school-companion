@@ -4,7 +4,13 @@ import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import GamePlayer from "@/components/play/GamePlayer";
 import RunMark from "@/components/play/RunMark";
-import { gameOf, gamesOf, getChapters } from "@/content";
+import {
+  chapterHref,
+  chapterWithin,
+  everyChapter,
+  gameOf,
+  gamesOf,
+} from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -31,18 +37,22 @@ import { canPlay } from "@/interactions/registry";
  */
 
 export function generateStaticParams() {
-  return getChapters().flatMap((chapter) =>
-    gamesOf(chapter).map((game) => ({ slug: chapter.slug, game: game.id })),
+  return everyChapter().flatMap((chapter) =>
+    gamesOf(chapter).map((game) => ({
+      class: chapter.classId,
+      slug: chapter.slug,
+      game: game.id,
+    })),
   );
 }
 
 export default async function ChapterGamePage({
   params,
 }: {
-  params: Promise<{ slug: string; game: string }>;
+  params: Promise<{ class: string; slug: string; game: string }>;
 }) {
-  const { slug, game: id } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug, game: id } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -53,7 +63,7 @@ export default async function ChapterGamePage({
     <SectionScreen
       title={game.title}
       chapterTitle="Let's Play!"
-      hubHref={`/chapter/${slug}/games`}
+      hubHref={chapterHref(chapter.classId, slug, "games")}
       /*
         The run, in the chrome, opposite the way back. It is drawn here
         rather than by the player because it belongs to the screen — see
@@ -65,9 +75,10 @@ export default async function ChapterGamePage({
       {game.interactions.every(canPlay) ? (
         <GamePlayer
           interactions={game.interactions}
+          classId={chapter.classId}
           slug={slug}
           gameId={id}
-          doneHref={`/chapter/${slug}/games`}
+          doneHref={chapterHref(chapter.classId, slug, "games")}
         />
       ) : (
         <NotReadyYet what="This game" />

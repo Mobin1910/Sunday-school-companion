@@ -5,9 +5,11 @@ import HaloPresence from "@/halo/HaloPresence";
 import Picture from "@/components/Picture";
 import BackLink from "@/components/chapter/BackLink";
 import {
+  chapterHref,
+  chapterParams,
+  chapterWithin,
   gamesOf,
   coverOf,
-  getChapters,
   storyCards,
   verseOf,
   videosOf,
@@ -31,16 +33,16 @@ import {
  */
 
 export function generateStaticParams() {
-  return getChapters().map(({ slug }) => ({ slug }));
+  return chapterParams();
 }
 
 export default async function ChapterHubPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -51,7 +53,7 @@ export default async function ChapterHubPage({
       key: "story",
       label: "Story",
       blurb: "Read it again",
-      href: `/chapter/${slug}/story`,
+      href: chapterHref(chapter.classId, slug, "story"),
       icon: BookIcon,
       present: storyCards(chapter).length > 0,
     },
@@ -59,7 +61,7 @@ export default async function ChapterHubPage({
       key: "watch",
       label: "Watch",
       blurb: "See the story told",
-      href: `/chapter/${slug}/watch`,
+      href: chapterHref(chapter.classId, slug, "watch"),
       icon: PlayIcon,
       present: videosOf(chapter).length > 0,
     },
@@ -67,7 +69,7 @@ export default async function ChapterHubPage({
       key: "games",
       label: "Games",
       blurb: playWith(gamesOf(chapter).length),
-      href: `/chapter/${slug}/games`,
+      href: chapterHref(chapter.classId, slug, "games"),
       icon: SparkIcon,
       present: gamesOf(chapter).length > 0,
     },
@@ -75,7 +77,7 @@ export default async function ChapterHubPage({
       key: "verse",
       label: "Memory Verse",
       blurb: "Words worth keeping",
-      href: `/chapter/${slug}/verse`,
+      href: chapterHref(chapter.classId, slug, "verse"),
       icon: HeartIcon,
       present: verseOf(chapter) !== undefined,
     },

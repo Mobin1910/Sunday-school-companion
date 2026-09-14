@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import type { ClassId } from "@/classes/registry";
+import { useMyClass } from "@/components/class/InClass";
+import { chapterHref } from "@/content/client";
 import { nextStep, readPlace, type ChapterBrief, type NextStep } from "@/local/place";
 
 /**
@@ -22,17 +25,57 @@ import { nextStep, readPlace, type ChapterBrief, type NextStep } from "@/local/p
  *
  * Nothing here is a measurement. "Continue" names a chapter; it does not say
  * how far through, how long ago, or how many are left.
+ *
+ * The chapters are this child's class's chapters, and the place is that
+ * class's place. Home ships one short list per class and this picks the
+ * child's, because there is no server to pick it — see `InClass`. A child who
+ * switches class on Home sees this line change, in place, to the story they
+ * left in the class they just moved to.
+ *
+ * Nothing at all is drawn while the class is unknown, and nothing is drawn
+ * when there is none: Home already asks that question — the doorway sends a
+ * child with no class to Halo — so a second asking here would be two screens
+ * talking over each other.
  */
 export default function ContinueLearning({
-  chapters,
+  by,
 }: {
-  chapters: ChapterBrief[];
+  by: Record<ClassId, ChapterBrief[]>;
 }) {
+  const mine = useMyClass(by);
+  const chapters = mine.state === "chosen" ? mine.mine : EMPTY;
+  const classId = mine.state === "chosen" ? mine.classId : null;
+
   const [step, setStep] = useState<NextStep | null>(() =>
     nextStep(null, chapters),
   );
 
-  useEffect(() => setStep(nextStep(readPlace(), chapters)), [chapters]);
+  useEffect(
+    () => setStep(classId ? nextStep(readPlace(classId), chapters) : null),
+    [classId, chapters],
+  );
+
+  if (!classId) return null;
+
+  /*
+    A class nobody has written yet. Six of the seven are in exactly this
+    state today, so it is the ordinary case rather than an error — and a
+    child who has correctly said which class they are in should be told the
+    truth about it, not shown an empty space or somebody else's chapters.
+  */
+  if (chapters.length === 0) {
+    return (
+      <section className="flex flex-col gap-2">
+        <p className="text-lg text-ink-soft text-balance">
+          Your class&rsquo;s stories are on their way.
+        </p>
+        <p className="text-base text-ink-soft text-balance">
+          Halo is still drawing them. Everything else is here to explore in
+          the meantime.
+        </p>
+      </section>
+    );
+  }
 
   if (!step) return null;
 
@@ -59,8 +102,8 @@ export default function ContinueLearning({
       <Link
         href={
           step.kind === "continue"
-            ? `/chapter/${chapter.slug}/story`
-            : `/chapter/${chapter.slug}`
+            ? chapterHref(classId, chapter.slug, "story")
+            : chapterHref(classId, chapter.slug)
         }
         className="surface surface-lit flex items-center gap-4 px-5 py-4"
       >
@@ -80,3 +123,6 @@ export default function ContinueLearning({
     </section>
   );
 }
+
+/** Stable between renders, so the effect below is not re-run for nothing. */
+const EMPTY: ChapterBrief[] = [];

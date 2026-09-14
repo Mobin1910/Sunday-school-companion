@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 
+import type { ClassId } from "@/classes/registry";
 import type { PlayInteraction } from "@/content";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
 import { readRun, writeRun } from "@/local/run";
@@ -40,6 +41,7 @@ export default function PractiseVerse({
   interaction,
   text,
   reference,
+  classId,
   slug,
   onwardHref,
   onwardLabel,
@@ -47,6 +49,12 @@ export default function PractiseVerse({
   interaction: PlayInteraction;
   text: string;
   reference: string;
+  /**
+   * Which class's verse streak this feeds. Always known — from the route in
+   * a chapter, and from the child's own class in free play — because a
+   * streak belongs to a class even when no chapter does.
+   */
+  classId: ClassId;
   /**
    * The chapter this verse belongs to, when a chapter sent the child here.
    * Absent in free play, which completes nothing.
@@ -58,7 +66,7 @@ export default function PractiseVerse({
   const [done, setDone] = useState(false);
   const once = useRef(false);
   const stumbled = useRef(false);
-  const streak = streakNamed("verse");
+  const streak = streakNamed("verse", classId);
 
   return done ? (
     <div className="flex w-full max-w-sm flex-col items-center gap-6 px-4">
@@ -85,7 +93,7 @@ export default function PractiseVerse({
       onComplete={() => {
         if (once.current) return;
         once.current = true;
-        if (slug) finishedVerse(slug);
+        if (slug) finishedVerse(classId, slug);
 
         const grown = stumbled.current
           ? readRun("verse")

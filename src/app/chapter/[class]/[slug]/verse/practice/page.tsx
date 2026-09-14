@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import SectionScreen from "@/components/chapter/SectionScreen";
 import PractiseVerse from "@/components/play/PractiseVerse";
 import RunMark from "@/components/play/RunMark";
-import { getChapters, versePracticeOf } from "@/content";
+import {
+  chapterHref,
+  chapterParams,
+  chapterWithin,
+  versePracticeOf,
+} from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -30,21 +35,19 @@ import { canPlay } from "@/interactions/registry";
  */
 
 export function generateStaticParams() {
-  return getChapters()
-    .filter((chapter) => {
-      const practice = versePracticeOf(chapter);
-      return practice !== undefined && canPlay(practice.interaction);
-    })
-    .map(({ slug }) => ({ slug }));
+  return chapterParams((chapter) => {
+    const practice = versePracticeOf(chapter);
+    return practice !== undefined && canPlay(practice.interaction);
+  });
 }
 
 export default async function VersePracticePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -55,7 +58,7 @@ export default async function VersePracticePage({
     <SectionScreen
       title="Practise"
       chapterTitle="Memory Verse"
-      hubHref={`/chapter/${slug}/verse`}
+      hubHref={chapterHref(chapter.classId, slug, "verse")}
       aside={<RunMark streak="verse" />}
       fit
     >
@@ -68,6 +71,7 @@ export default async function VersePracticePage({
         interaction={practice.interaction}
         text={practice.text}
         reference={practice.reference}
+        classId={chapter.classId}
         slug={slug}
         onwardHref="/chapters"
         onwardLabel="All chapters"

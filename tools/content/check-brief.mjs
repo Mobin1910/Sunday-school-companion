@@ -24,6 +24,13 @@ import {
  *   Does a shipped chapter have a brief?      a chapter nobody can trace back
  *   Is anything published while blocked?      the one rule that must not bend
  *
+ * `produces` is a slug, not a path, and it is resolved inside the brief's own
+ * class: `content/<classId>/<slug>.story.json`. The brief already says which
+ * class it is, so repeating it on every one of twenty rows would be twenty
+ * more chances for the two to disagree — and a slug is only unique within a
+ * class anyway, which is precisely why the class has to come from somewhere
+ * rather than be assumed.
+ *
  * The last of those is the point of the whole thing. "Do not invent missing
  * curriculum — flag it" is only a principle if something refuses to publish
  * over a blocking flag, so that refusal lives here.
@@ -71,12 +78,22 @@ if (!classes) {
 
 const known = new Map(classes.classes.map((c) => [c.id, c]));
 
-/** The chapter files that exist today, by slug. */
-const chapterSlugs = new Set(
+/**
+ * The chapter files that exist today, as `class/slug`.
+ *
+ * Walked per class directory rather than read flat out of `content/`, because
+ * that is where chapters live now: a slug alone cannot name one, since two
+ * classes may each have a `wedding-at-cana` and mean different lessons.
+ */
+const chapterKeys = new Set(
   existsSync(CONTENT)
-    ? readdirSync(CONTENT)
-        .filter((f) => f.endsWith(".story.json"))
-        .map((f) => f.slice(0, -".story.json".length))
+    ? readdirSync(CONTENT, { withFileTypes: true })
+        .filter((e) => e.isDirectory() && e.name !== "brief")
+        .flatMap((dir) =>
+          readdirSync(join(CONTENT, dir.name))
+            .filter((f) => f.endsWith(".story.json"))
+            .map((f) => `${dir.name}/${f.slice(0, -".story.json".length)}`),
+        )
     : [],
 );
 
@@ -88,7 +105,7 @@ if (briefFiles.length === 0) {
   console.log(amber("\nNo briefs in content/brief/ yet.\n"));
 }
 
-/** Every slug any brief claims to have produced, for the reverse check. */
+/** Every `class/slug` any brief claims to have produced, for the reverse check. */
 const produced = new Set();
 
 for (const file of briefFiles) {
@@ -136,10 +153,11 @@ for (const file of briefFiles) {
     }
 
     if (chapter.produces) {
-      produced.add(chapter.produces);
-      if (!chapterSlugs.has(chapter.produces)) {
+      const key = `${brief.classId}/${chapter.produces}`;
+      produced.add(key);
+      if (!chapterKeys.has(key)) {
         faults.push(
-          `${at}: produces "${chapter.produces}" but content/${chapter.produces}.story.json does not exist`,
+          `${at}: produces "${chapter.produces}" but content/${key}.story.json does not exist`,
         );
       }
     } else if (chapter.status === "published") {
@@ -168,9 +186,9 @@ for (const file of briefFiles) {
   A warning rather than a fault: the two chapters that predate this system
   are legitimately in that position, and it is recorded rather than hidden.
 */
-for (const slug of chapterSlugs) {
-  if (!produced.has(slug)) {
-    warnings.push(`content/${slug}.story.json has no brief pointing at it`);
+for (const key of chapterKeys) {
+  if (!produced.has(key)) {
+    warnings.push(`content/${key}.story.json has no brief pointing at it`);
   }
 }
 

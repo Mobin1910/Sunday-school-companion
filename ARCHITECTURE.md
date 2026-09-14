@@ -8,6 +8,11 @@ This document holds the technical structure and measurable constraints that enfo
 
 If this document ever contradicts the constitution, the constitution wins.
 
+**Classes are the one structural fact that cuts across everything here** —
+content identity, storage keys, routing and onboarding all carry a class.
+`CLASSES.md` is the whole of it in one place; this document states the rules
+that touch each area.
+
 ---
 
 # Stack
@@ -31,7 +36,7 @@ The application is fully static. Every network request at runtime is for the app
 # Content Pipeline
 
 ```
-content/*.story.json
+content/<class>/*.story.json
         │
         ▼
   schema validation  ──── fails ────▶ build fails
@@ -48,7 +53,7 @@ content/*.story.json
 
 Rules:
 
-- One JSON file per chapter, authored by hand, reviewed in pull requests.
+- One JSON file per chapter, in its class's directory, authored by hand and reviewed in pull requests. A chapter's identity is `class + slug`: `Beginner / Chapter 01` and `Primary / Chapter 01` are different lessons, and a slug is only unique inside its class. See `CLASSES.md`.
 - Content is validated against a Zod schema at build time.
 - **Invalid content fails the build.** A broken chapter never reaches a child.
 - Content is imported as a typed module — never fetched at runtime.

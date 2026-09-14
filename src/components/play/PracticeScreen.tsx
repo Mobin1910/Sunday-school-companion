@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import type { ClassId } from "@/classes/registry";
 import RunMark from "@/components/play/RunMark";
+import { chapterHref } from "@/content/client";
 import type { PoolQuestion } from "@/content/pools";
 import HaloPresence from "@/halo/HaloPresence";
 import InteractionPlayer from "@/interactions/InteractionPlayer";
@@ -46,9 +48,16 @@ import { streakNamed, type StreakName, type StreakRecord } from "@/local/streak"
  * The two streaks never meet. Which store this screen writes to is a prop,
  * and each caller passes its own — see `local/streak.ts` for why sharing one
  * would be dishonest.
+ *
+ * Neither do two classes. The pool is one class's questions, and the streak
+ * is that class's streak: a child who moves from Beginner to Primary starts
+ * a Primary run rather than carrying a run built on different material, and
+ * finds their Beginner one intact if they go back. The class is a prop for
+ * the same reason the streak is — this screen does not decide it.
  */
 export default function PracticeScreen({
   pool,
+  classId,
   streak: name,
   title,
   blurb,
@@ -58,6 +67,8 @@ export default function PracticeScreen({
   children,
 }: {
   pool: PoolQuestion[];
+  /** Whose questions these are, and whose streak they feed. */
+  classId: ClassId;
   /** Which store this screen's runs go into. See `local/streak.ts`. */
   streak: StreakName;
   title: string;
@@ -69,7 +80,7 @@ export default function PracticeScreen({
   /** Anything the landing shows below the start button. */
   children?: React.ReactNode;
 }) {
-  const streak = streakNamed(name);
+  const streak = streakNamed(name, classId);
 
   const [record, setRecord] = useState<StreakRecord | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -250,7 +261,7 @@ export default function PracticeScreen({
               Try another
             </button>
             <Link
-              href={`/chapter/${current.chapterSlug}`}
+              href={chapterHref(current.chapterClass, current.chapterSlug)}
               className="flex min-h-14 items-center justify-center rounded-card px-6 text-lg text-ink-soft"
             >
               Go to {current.chapterTitle}

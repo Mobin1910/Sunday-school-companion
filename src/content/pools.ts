@@ -1,3 +1,5 @@
+import type { ClassId } from "@/classes/registry";
+
 import type { Card, PlayInteraction } from "./cards";
 import type { LoadedChapter } from "./load";
 
@@ -9,14 +11,19 @@ import type { LoadedChapter } from "./load";
  * a game anywhere: an interaction is authored once, inside its chapter, and
  * a pool is a different way of reaching the same thing.
  *
- * Every entry keeps its chapter, because a question a child meets out of
- * context should always be able to lead back to the story it came from.
+ * Every entry keeps its chapter — both halves of it — because a question a
+ * child meets out of context should always be able to lead back to the story
+ * it came from, and a slug alone cannot find one. The pools themselves are
+ * built per class by the screens that use them: a Beginner child practising
+ * verses meets Beginner verses, and a question from a class they are not in
+ * would be a question about a story they have never been told.
  */
 
 export type PoolQuestion = {
   /** Stable across a session so the shuffler can avoid immediate repeats. */
   id: string;
   interaction: PlayInteraction;
+  chapterClass: ClassId;
   chapterSlug: string;
   chapterTitle: string;
 };
@@ -79,8 +86,9 @@ function poolOf(
         ? interactionsOf(card)
             .filter(eligibleForPlay)
             .map((interaction) => ({
-              id: `${chapter.slug}:${index}`,
+              id: `${chapter.classId}/${chapter.slug}:${index}`,
               interaction,
+              chapterClass: chapter.classId,
               chapterSlug: chapter.slug,
               chapterTitle: chapter.title,
             }))

@@ -174,11 +174,11 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
     });
   }
 
-  for (const name of drawnPictures(chapter.slug)) {
+  for (const name of drawnPictures(chapter.classId, chapter.slug)) {
     if (!referenced.has(name)) {
       advisories.push({
         level,
-        where: `public/art/${chapter.slug}`,
+        where: `public/art/${chapter.classId}/${chapter.slug}`,
         message: `${name} is drawn but no card uses it`,
       });
     }

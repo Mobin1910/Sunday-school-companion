@@ -1,3 +1,5 @@
+import type { ClassId } from "@/classes/registry";
+
 import { read, write, type Key } from "./store";
 
 /**
@@ -20,6 +22,12 @@ import { read, write, type Key } from "./store";
  * finding the other hard should see that as two separate honest facts
  * rather than as one blurred number. Sharing a store would also mean a run
  * ended in one place quietly resetting the other, which would be a lie.
+ *
+ * Both are also scoped by class, for the same reason the place is. A streak
+ * is built on a particular set of questions; carrying a Beginner streak into
+ * Primary would credit a child for work they did on different material, and
+ * resetting it on every switch would punish them for changing class. Neither
+ * is true, so each class keeps its own.
  */
 
 export type StreakRecord = {
@@ -104,11 +112,11 @@ export function streakUnder(key: Key): Streak {
  */
 export type StreakName = "games" | "verse";
 
-const STREAKS: Record<StreakName, Streak> = {
-  games: streakUnder("games.streak"),
-  verse: streakUnder("verse.streak"),
-};
-
-export function streakNamed(name: StreakName): Streak {
-  return STREAKS[name];
+/*
+  Built per call rather than from a fixed table, because the key now carries
+  a class and there is no table of every class-and-kind pair worth keeping.
+  A `Streak` is three closures over a string; making one is free.
+*/
+export function streakNamed(name: StreakName, classId: ClassId): Streak {
+  return streakUnder(`${name}.streak.${classId}`);
 }

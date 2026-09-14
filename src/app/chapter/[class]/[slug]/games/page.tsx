@@ -3,7 +3,13 @@ import { notFound } from "next/navigation";
 import GamesMenu from "@/components/chapter/GamesMenu";
 import NotReadyYet from "@/components/chapter/NotReadyYet";
 import SectionScreen from "@/components/chapter/SectionScreen";
-import { gamesOf, getChapters, verseOf } from "@/content";
+import {
+  chapterHref,
+  chapterParams,
+  chapterWithin,
+  gamesOf,
+  verseOf,
+} from "@/content";
 import { canPlay } from "@/interactions/registry";
 
 /**
@@ -28,18 +34,16 @@ import { canPlay } from "@/interactions/registry";
  */
 
 export function generateStaticParams() {
-  return getChapters()
-    .filter((chapter) => gamesOf(chapter).length > 0)
-    .map(({ slug }) => ({ slug }));
+  return chapterParams((chapter) => gamesOf(chapter).length > 0);
 }
 
 export default async function ChapterGamesPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ class: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const chapter = getChapters().find((c) => c.slug === slug);
+  const { class: classId, slug } = await params;
+  const chapter = chapterWithin(classId, slug);
 
   if (!chapter) notFound();
 
@@ -59,7 +63,7 @@ export default async function ChapterGamesPage({
     <SectionScreen
       title="Let's Play!"
       chapterTitle={chapter.title}
-      hubHref={`/chapter/${slug}`}
+      hubHref={chapterHref(chapter.classId, slug)}
       /*
         The shelf offers its own way onward once it is empty, so the link at
         the bottom stops competing with it and says what it is: the way back
@@ -71,6 +75,7 @@ export default async function ChapterGamesPage({
         <NotReadyYet what="These games" />
       ) : (
         <GamesMenu
+          classId={chapter.classId}
           slug={slug}
           games={games.map((game) => ({
             id: game.id,
@@ -79,7 +84,9 @@ export default async function ChapterGamesPage({
             ...(game.featured !== undefined && { featured: game.featured }),
             ...(game.art !== undefined && { art: game.art }),
           }))}
-          {...(verse ? { verseHref: `/chapter/${slug}/verse` } : {})}
+          {...(verse
+            ? { verseHref: chapterHref(chapter.classId, slug, "verse") }
+            : {})}
         />
       )}
     </SectionScreen>

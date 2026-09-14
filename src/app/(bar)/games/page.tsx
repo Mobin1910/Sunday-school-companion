@@ -1,6 +1,6 @@
-import PracticeScreen from "@/components/play/PracticeScreen";
-import { getChapters } from "@/content";
-import { gamePool } from "@/content/pools";
+import ClassPractice from "@/components/play/ClassPractice";
+import { byClass } from "@/content";
+import { gamePool, type PoolQuestion } from "@/content/pools";
 import { canPlay } from "@/interactions/registry";
 
 
@@ -21,24 +21,30 @@ import { canPlay } from "@/interactions/registry";
  *
  * The pool is built here, on the server, so the whole content layer stays
  * out of the browser bundle.
+ *
+ * One pool per class, and a child plays their own. "Every story you have" is
+ * the promise the note makes, and a Beginner child meeting a Junior question
+ * would be asked about a story nobody has ever told them — which is not a
+ * hard question, it is an unanswerable one. See `ClassPractice` for how one
+ * of the seven is picked without a server.
  */
 export default function GamesPage() {
-  const pool = gamePool(getChapters()).filter((question) =>
-    canPlay(question.interaction),
+  const pools = byClass<PoolQuestion[]>((chapters) =>
+    gamePool(chapters).filter((question) => canPlay(question.interaction)),
   );
 
   return (
-      <PracticeScreen
-        pool={pool}
-        streak="games"
-        title="Games"
-        blurb="Let's see what we remember together."
-        startLabel="Start game"
-        note="Questions from every story you have, shuffled."
-        empty={{
-          title: "No games yet.",
-          blurb: "They arrive with the stories.",
-        }}
-      />
+    <ClassPractice
+      pools={pools}
+      streak="games"
+      title="Games"
+      blurb="Let's see what we remember together."
+      startLabel="Start game"
+      note="Questions from every story you have, shuffled."
+      empty={{
+        title: "No games yet.",
+        blurb: "They arrive with the stories.",
+      }}
+    />
   );
 }
