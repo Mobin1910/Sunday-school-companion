@@ -26,8 +26,11 @@ function summarise(card: Card): string {
         .map((i) => `${i.type} — ${i.prompt ?? "no prompt"}`)
         .join(" · ");
     case "quiz":
-    case "practice":
       return `${card.interaction.type} — ${card.interaction.prompt ?? "no prompt"}`;
+    case "practice":
+      return card.interactions
+        .map((i) => `${i.type} — ${i.prompt ?? "no prompt"}`)
+        .join(" · ");
     case "verse":
       return `${card.text} (${card.reference})`;
     case "video":

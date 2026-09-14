@@ -124,6 +124,8 @@ export function chapterParams(
 }
 
 export type { LoadedChapter };
+export { toInteraction } from "./cards";
+export { interactionSchema } from "./schema";
 export { chapterHref, chapterKey } from "./key";
 export type { Art, Card, PlayInteraction, PlayItem } from "./cards";
 export {

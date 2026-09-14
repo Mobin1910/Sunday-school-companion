@@ -59,7 +59,20 @@ export type PlayInteraction =
     }
   | { type: "arrange-words"; prompt: string; words: string[]; hint?: string }
   | { type: "reveal"; prompt?: string; items: PlayItem[] }
-  | { type: "pouring"; prompt: string; then: string; during?: string };
+  | { type: "pouring"; prompt: string; then: string; during?: string }
+  /**
+   * The one answered with a keyboard. `answer` is the reference as the
+   * curriculum wrote it — the display form as well as the thing compared —
+   * and the comparison that forgives case, spacing and punctuation lives in
+   * `interactions/reference/match.ts`.
+   */
+  | {
+      type: "write-reference";
+      prompt: string;
+      answer: string;
+      hint: string;
+      shape?: string;
+    };
 
 export type Card =
   | { kind: "cover"; art: Art }
@@ -103,7 +116,11 @@ export type Card =
    */
   | {
       kind: "practice";
-      interaction: PlayInteraction;
+      /**
+       * The steps, in order. Usually one; Young Adult rebuilds the verse and
+       * then writes the reference, which is two. See `practice` in the schema.
+       */
+      interactions: PlayInteraction[];
       text: string;
       reference: string;
     }
@@ -170,7 +187,16 @@ function toItem(item: Item, resolve: Resolve): PlayItem {
   };
 }
 
-function toInteraction(
+/**
+ * Authored shape to played shape.
+ *
+ * Exported so that content produced outside a chapter file — the Memory Verse
+ * agent's drafts, previewed in `/debug` before anyone approves them — can be
+ * rendered through exactly the same conversion the real chapters go through.
+ * A preview that built its own runtime objects would be a preview of something
+ * other than what ships.
+ */
+export function toInteraction(
   interaction: Interaction,
   resolve: Resolve,
 ): PlayInteraction {
@@ -186,6 +212,15 @@ function toInteraction(
         ...(interaction.picture !== undefined && {
           art: toArt(interaction.picture, resolve),
         }),
+      };
+
+    case "write-reference":
+      return {
+        type: "write-reference",
+        prompt: interaction.prompt,
+        answer: interaction.answer,
+        hint: interaction.hint,
+        ...(interaction.shape !== undefined && { shape: interaction.shape }),
       };
 
     case "match":
@@ -299,7 +334,7 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
     if (chapter.verse.practice) {
       cards.push({
         kind: "practice",
-        interaction: toInteraction(chapter.verse.practice, resolve),
+        interactions: chapter.verse.practice.map((i) => toInteraction(i, resolve)),
         text: chapter.verse.text,
         reference: chapter.verse.reference,
       });

@@ -5,3 +5,19 @@ next-env.d.ts
 *.tsbuildinfo
 .DS_Store
 .vercel
+
+# Content-agent secrets and working files.
+#
+# `.env.local` holds the Gemini key and the Google OAuth credentials. It is
+# read only by `agents/shared/config.mjs`, which nothing in `src/` imports, so
+# none of it can reach the PWA bundle — the app is a static export that makes
+# no request to anything but its own assets.
+#
+# `.state/` caches extracted curriculum text and `.drafts/` holds generated
+# drafts. Both are a teacher's material before anyone has approved it, and
+# neither belongs in the repository or in `public/`.
+.env
+.env.local
+.env.*.local
+agents/.state/
+agents/.drafts/

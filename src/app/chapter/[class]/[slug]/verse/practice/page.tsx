@@ -37,7 +37,9 @@ import { canPlay } from "@/interactions/registry";
 export function generateStaticParams() {
   return chapterParams((chapter) => {
     const practice = versePracticeOf(chapter);
-    return practice !== undefined && canPlay(practice.interaction);
+    return (
+      practice !== undefined && practice.interactions.every((i) => canPlay(i))
+    );
   });
 }
 
@@ -52,7 +54,7 @@ export default async function VersePracticePage({
   if (!chapter) notFound();
 
   const practice = versePracticeOf(chapter);
-  if (!practice || !canPlay(practice.interaction)) notFound();
+  if (!practice || !practice.interactions.every((i) => canPlay(i))) notFound();
 
   return (
     <SectionScreen
@@ -68,7 +70,7 @@ export default async function VersePracticePage({
         the shelf — which is where a finished chapter leads.
       */}
       <PractiseVerse
-        interaction={practice.interaction}
+        interactions={practice.interactions}
         text={practice.text}
         reference={practice.reference}
         classId={chapter.classId}

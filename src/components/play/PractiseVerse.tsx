@@ -38,7 +38,7 @@ import { streakNamed } from "@/local/streak";
  * The two streaks stay apart — see `local/streak.ts`.
  */
 export default function PractiseVerse({
-  interaction,
+  interactions,
   text,
   reference,
   classId,
@@ -46,7 +46,12 @@ export default function PractiseVerse({
   onwardHref,
   onwardLabel,
 }: {
-  interaction: PlayInteraction;
+  /**
+   * The steps, in order. One for six of the seven classes; Young Adult
+   * rebuilds the verse and then writes down where it came from, which is two
+   * different acts of recall rather than one interaction with a tail.
+   */
+  interactions: PlayInteraction[];
   text: string;
   reference: string;
   /**
@@ -64,9 +69,42 @@ export default function PractiseVerse({
   onwardLabel: string;
 }) {
   const [done, setDone] = useState(false);
+  /** Which step is being played. Remounts the player, so each starts fresh. */
+  const [at, setAt] = useState(0);
   const once = useRef(false);
   const stumbled = useRef(false);
   const streak = streakNamed("verse", classId);
+
+  const step = interactions[at];
+  const last = at === interactions.length - 1;
+
+  /*
+    A step that is finished but not the last one.
+
+    The run and the streak are settled once, at the end, not once per step —
+    a child who rebuilds the verse and then writes the reference has practised
+    one verse, and counting it twice would make the oldest class's streak grow
+    at double the rate of everyone else's for doing the harder thing.
+  */
+  function finishStep() {
+    if (!last) {
+      setAt(at + 1);
+      return;
+    }
+
+    if (once.current) return;
+    once.current = true;
+    if (slug) finishedVerse(classId, slug);
+
+    const grown = stumbled.current
+      ? readRun("verse")
+      : readRun("verse") + 1;
+    writeRun("verse", grown);
+    streak.record(grown);
+
+    // After the celebration has had its moment, not instead of it.
+    window.setTimeout(() => setDone(true), 1800);
+  }
 
   return done ? (
     <div className="flex w-full max-w-sm flex-col items-center gap-6 px-4">
@@ -87,23 +125,16 @@ export default function PractiseVerse({
         {onwardLabel}
       </Link>
     </div>
-  ) : (
+  ) : step ? (
     <InteractionPlayer
-      interaction={interaction}
-      onComplete={() => {
-        if (once.current) return;
-        once.current = true;
-        if (slug) finishedVerse(classId, slug);
-
-        const grown = stumbled.current
-          ? readRun("verse")
-          : readRun("verse") + 1;
-        writeRun("verse", grown);
-        streak.record(grown);
-
-        // After the celebration has had its moment, not instead of it.
-        window.setTimeout(() => setDone(true), 1800);
-      }}
+      /*
+        Keyed by step, so the second interaction arrives as its own question
+        with its own assistance ladder rather than inheriting the rung the
+        child climbed to on the first one.
+      */
+      key={at}
+      interaction={step}
+      onComplete={finishStep}
       onMiss={() => {
         if (stumbled.current) return;
         stumbled.current = true;
@@ -113,5 +144,5 @@ export default function PractiseVerse({
         writeRun("verse", 0);
       }}
     />
-  );
+  ) : null;
 }

@@ -219,6 +219,37 @@ const pouring = z.strictObject({
   note,
 });
 
+/**
+ * Writing where a verse comes from.
+ *
+ * The only interaction a child answers by typing, and it exists for exactly
+ * one job: the oldest class is asked to recall the reference rather than
+ * recognise it among three. Offering "St Luke 2:30,31 / St Luke 3:30,31 /
+ * St John 2:30,31" to a fifteen-year-old is a spotting exercise, and spotting
+ * is the thing every rung below this one has already done.
+ *
+ * `answer` is the reference as the curriculum wrote it, and it is the display
+ * form too — what a child is shown at the end is what the teacher supplied,
+ * never a normalised rewrite of it. Matching is forgiving of the things that
+ * are not the answer (case, spacing, the difference between a comma and a
+ * hyphen in a verse range) and unforgiving of the things that are (which
+ * book, which chapter, which verses). The comparison lives in `reference.ts`
+ * beside the model, not here, because it is behaviour rather than shape.
+ *
+ * `hint` is required for the same reason Selection's is: the second try
+ * always comes with help, and a reference a child cannot begin to recall is
+ * exactly where that promise matters.
+ */
+const writeReference = z.strictObject({
+  type: z.literal("write-reference"),
+  prompt: z.string(),
+  answer: z.string().min(1),
+  hint: z.string().min(1),
+  /** What to show under the field — "Book chapter:verse", never the answer. */
+  shape: z.string().optional(),
+  note,
+});
+
 export const interactionSchema = z.discriminatedUnion("type", [
   multipleChoice,
   match,
@@ -226,6 +257,7 @@ export const interactionSchema = z.discriminatedUnion("type", [
   arrangeWords,
   reveal,
   pouring,
+  writeReference,
 ]);
 
 export type Interaction = z.infer<typeof interactionSchema>;
@@ -310,13 +342,32 @@ const storyCard = z
       "a card with a picture and no text needs alt, or the picture is silent",
   });
 
+/**
+ * The drill a verse carries.
+ *
+ * One interaction, or several done in order. It was one, and for six of the
+ * seven classes it still is — a single arrangement or a single choice is the
+ * whole of the practice. Young Adult is why this is a list: that class
+ * rebuilds the verse word by word *and then* writes down where it came from,
+ * and those are two different acts of recall rather than one interaction with
+ * a tail on it.
+ *
+ * A bare interaction is normalised to a list of one, so every chapter written
+ * before this existed means exactly what it meant, and nothing downstream has
+ * to ask which form it got. This is the same shape `game.interactions`
+ * already has, and `PractiseVerse` walks it the way `GamePlayer` walks that.
+ */
+const practice = z
+  .union([interactionSchema, z.array(interactionSchema).min(1)])
+  .transform((value) => (Array.isArray(value) ? value : [value]));
+
 const verse = z.strictObject({
   text: z.string(),
   reference: z.string(),
   translation: z.string(),
   attribution: z.string().optional(),
   picture: z.string().optional(),
-  practice: interactionSchema.optional(),
+  practice: practice.optional(),
   note,
 });
 

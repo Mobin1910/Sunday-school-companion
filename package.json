@@ -16,6 +16,8 @@
   "name": "sunday-school-companion",
   "private": true,
   "scripts": {
+    "agent:memory-verse": "node agents/memory-verse/run.mjs",
+    "agent:test": "node agents/memory-verse/selftest.mjs",
     "brand:check": "node tools/brand/check.mjs",
     "brand:derive": "node tools/brand/derive.mjs",
     "build": "next build",

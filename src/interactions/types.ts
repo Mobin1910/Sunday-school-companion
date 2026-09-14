@@ -34,3 +34,8 @@ export type ArrangeWords = Extract<PlayInteraction, { type: "arrange-words" }>;
 export type Discovery = Extract<PlayInteraction, { type: "reveal" }>;
 
 export type Pouring = Extract<PlayInteraction, { type: "pouring" }>;
+
+export type WriteReference = Extract<
+  PlayInteraction,
+  { type: "write-reference" }
+>;

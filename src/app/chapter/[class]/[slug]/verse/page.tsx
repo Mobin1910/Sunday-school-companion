@@ -57,7 +57,7 @@ export default async function ChapterVersePage({
         is placed here that would make a second one.
       */}
       {practice ? (
-        canPlay(practice.interaction) ? (
+        practice.interactions.every((i) => canPlay(i)) ? (
           <Link
             href={chapterHref(chapter.classId, slug, "verse/practice")}
             className="cta min-h-16 w-full max-w-sm px-6 text-xl"

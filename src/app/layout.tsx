@@ -163,7 +163,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    /*
+      `suppressHydrationWarning` because `DOORWAY_SCRIPT` deliberately sets
+      `data-welcomed` on this element before React exists — that is the whole
+      mechanism that decides which screen `/` is without a flash. React sees an
+      attribute on the client that was not in the server HTML and, quite
+      reasonably, says so. It is the one attribute in the app that is *meant*
+      to differ, so the warning is suppressed here and nowhere else.
+    */
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-dvh">
         {/*
           Runs before anything paints, so the first frame of the first screen

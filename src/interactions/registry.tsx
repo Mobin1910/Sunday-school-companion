@@ -5,6 +5,7 @@ import Pouring from "./pouring/Pouring";
 import Selection from "./selection/Selection";
 import Reveal from "./reveal/Reveal";
 import Sequence from "./sequence/Sequence";
+import WriteReference from "./reference/WriteReference";
 import Words from "./words/Words";
 import type { ModelProps } from "./types";
 
@@ -23,7 +24,8 @@ export function canPlay(interaction: PlayInteraction): boolean {
     interaction.type === "sequence" ||
     interaction.type === "arrange-words" ||
     interaction.type === "reveal" ||
-    interaction.type === "pouring"
+    interaction.type === "pouring" ||
+    interaction.type === "write-reference"
   );
 }
 
@@ -58,5 +60,8 @@ export function renderModel(props: ModelProps) {
 
     case "pouring":
       return <Pouring {...props} interaction={interaction} />;
+
+    case "write-reference":
+      return <WriteReference {...props} interaction={interaction} />;
   }
 }

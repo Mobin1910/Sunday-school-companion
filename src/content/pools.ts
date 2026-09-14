@@ -46,7 +46,19 @@ export type PoolQuestion = {
  * drifts, so it does not exist.
  */
 export function eligibleForPlay(interaction: PlayInteraction): boolean {
-  return interaction.type !== "reveal";
+  /*
+    Discovery (`reveal`) has no wrong answer. That is the whole point of it:
+    every tap is a discovery. An interaction with nothing to get right cannot
+    carry a streak, and rapid-fire is the wrong frame for something meant to
+    be wandered through — so it stays inside its chapter.
+
+    A written reference is excluded for a different reason: it is the second
+    half of a question whose first half is the verse. Inside a chapter a child
+    reaches it having just rebuilt the words; shuffled into a pool it arrives
+    as "where is this verse from?" with no verse anywhere on the screen, which
+    is not a hard question but an unanswerable one.
+  */
+  return interaction.type !== "reveal" && interaction.type !== "write-reference";
 }
 
 /**
@@ -69,8 +81,9 @@ function interactionsOf(card: Card): PlayInteraction[] {
     case "game":
       return card.interactions;
     case "quiz":
-    case "practice":
       return [card.interaction];
+    case "practice":
+      return card.interactions;
     default:
       return [];
   }

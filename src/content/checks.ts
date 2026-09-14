@@ -1,4 +1,5 @@
 import { drawnPictures } from "./art";
+import { sameReference } from "@/interactions/reference/match";
 import type { Art, Card, PlayInteraction, PlayItem } from "./cards";
 import type { LoadedChapter } from "./load";
 
@@ -48,6 +49,7 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
       return interaction.pairs.flatMap((pair) => [pair.from, pair.to]);
     case "arrange-words":
     case "pouring":
+    case "write-reference":
       return [];
   }
 }
@@ -60,8 +62,9 @@ function interactionsOf(card: Card): PlayInteraction[] {
     case "game":
       return card.interactions;
     case "quiz":
-    case "practice":
       return [card.interaction];
+    case "practice":
+      return card.interactions;
     default:
       return [];
   }
@@ -200,18 +203,46 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
   const verse = chapter.cards.find((card) => card.kind === "verse");
   const practice = chapter.cards.find((card) => card.kind === "practice");
 
-  if (
-    verse?.kind === "verse" &&
-    practice?.kind === "practice" &&
-    practice.interaction.type === "arrange-words"
-  ) {
-    const said = practice.interaction.words.join(" ");
-    if (tidy(said) !== tidy(verse.text)) {
-      advisories.push({
-        level,
-        where: chapter.file,
-        message: `the verse drill does not spell out the verse\n      verse:  "${verse.text}"\n      pieces: "${said}"`,
-      });
+  if (verse?.kind === "verse" && practice?.kind === "practice") {
+    /*
+      Every arranging step, not just the first. A drill can now be more than
+      one interaction, and the one that rebuilds the verse is not always the
+      one at the front — Young Adult arranges and then writes the reference.
+    */
+    for (const step of practice.interactions) {
+      if (step.type !== "arrange-words") continue;
+
+      const said = step.words.join(" ");
+      if (tidy(said) !== tidy(verse.text)) {
+        advisories.push({
+          level,
+          where: chapter.file,
+          message: `the verse drill does not spell out the verse\n      verse:  "${verse.text}"\n      pieces: "${said}"`,
+        });
+      }
+    }
+
+    /*
+      And a written reference has to be the chapter's actual reference.
+
+      The same failure as above in a different costume: a drill that asks a
+      child to write down where the verse comes from and then marks the
+      chapter's own reference wrong is worse than no drill at all. Compared
+      through the same forgiveness the model itself uses, so a reference that
+      would be accepted from a child is accepted from an author.
+    */
+    for (const step of practice.interactions) {
+      if (step.type !== "write-reference") continue;
+
+      if (!sameReference(step.answer, verse.reference)) {
+        advisories.push({
+          level,
+          where: chapter.file,
+          message:
+            `the written-reference drill does not match the verse\n` +
+            `      verse says:  "${verse.reference}"\n      drill wants: "${step.answer}"`,
+        });
+      }
     }
   }
 
