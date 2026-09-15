@@ -3438,3 +3438,237 @@ html[data-motion="reduce"] *::after {
     opacity: 1;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   FIND THE LOST COIN
+
+   The chapter's own game, and the second interaction in the product that is
+   built rather than illustrated (see `.pour-*` for the first). The parable is
+   a woman sweeping a dark house by lamplight, so the scene is a warm pool of
+   light on a dark floor with cloths lying in it — which is also, conveniently,
+   exactly the product's own colour scheme.
+
+   Everything here is shape and gradient. There is no cloth photograph and no
+   coin sprite: a child taps things that are unmistakably controls, and nothing
+   in a painting tells you which part of it answers touch. That lesson was
+   learned on Cana's jars and it is not being relearned here.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.finding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 34rem;
+  padding-inline: 1rem;
+}
+
+.finding-floor {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: var(--radius-card);
+  /* The floor: warmer and closer than the page, so the scene sits forward. */
+  background:
+    radial-gradient(
+      120% 90% at 50% 34%,
+      rgb(from var(--color-joy) r g b / 0.16),
+      transparent 68%
+    ),
+    linear-gradient(180deg, var(--color-ground-lit), var(--color-ground-raised));
+  border: 1px solid var(--color-edge);
+  overflow: hidden;
+}
+
+/* The lamp she lit. Off-centre, so the cloths cast their shadows one way. */
+.finding-lamp {
+  position: absolute;
+  inset: -30% 20% auto;
+  height: 70%;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(from var(--color-joy) r g b / 0.34),
+    transparent 70%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.finding-cloths {
+  display: grid;
+  /* Two rows of three at six cloths, two of four at eight. Never a long row:
+     a child's thumb has to reach all of them on a phone. */
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.5rem, 2.5vw, 0.9rem);
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.finding-floor[style*="--cloths: 8"] .finding-cloths,
+.finding-cloths:has(> :nth-child(7)) {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.finding-slot {
+  display: flex;
+}
+
+/*
+  The cloth.
+
+  A tall touch target — never below 56px, and on a phone considerably more —
+  because the whole game is tapping and the child is six. The fabric is a
+  separate layer from the button so it can lift without the target moving.
+*/
+.finding-cloth {
+  position: relative;
+  flex: 1;
+  min-height: clamp(3.5rem, 15vw, 5.5rem);
+  border: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  transition:
+    transform 200ms ease-out,
+    opacity 400ms ease-out;
+}
+
+.finding-cloth:disabled {
+  cursor: default;
+}
+
+/* Withdrawn: this one was empty and has been taken out of the search. */
+.finding-cloth[data-away] {
+  opacity: 0;
+  transform: scale(0.82) translateY(0.5rem);
+  pointer-events: none;
+}
+
+.finding-fabric {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.9rem 0.9rem 1.2rem 1.2rem / 1.1rem 1.1rem 1.4rem 1.4rem;
+  /* Folded linen in lamplight: warm on the lit side, cool in the shadow. */
+  background:
+    linear-gradient(150deg, #d8c39a 0%, #c0a67d 42%, #9b8360 78%, #7d6a4f 100%);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.22),
+    inset 0 -6px 12px rgb(0 0 0 / 0.26),
+    0 6px 14px rgb(0 0 0 / 0.38);
+  transform-origin: 50% 100%;
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    opacity 320ms ease-out;
+}
+
+/* Three creases, so it reads as folded rather than as a rounded rectangle. */
+.finding-fold {
+  position: absolute;
+  inset: 12% 0 18%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.16) 45%,
+    rgb(0 0 0 / 0.14) 56%,
+    transparent
+  );
+}
+.finding-fold:nth-child(1) { left: 14%; width: 26%; transform: rotate(-4deg); }
+.finding-fold:nth-child(2) { left: 40%; width: 22%; inset-block: 8% 12%; }
+.finding-fold:nth-child(3) { left: 63%; width: 24%; transform: rotate(3deg); }
+
+/* Lifted: the cloth folds back from its bottom edge and shows the floor. */
+.finding-cloth[data-open] .finding-fabric {
+  transform: rotateX(78deg) translateY(-14%);
+  opacity: 0.55;
+}
+
+/*
+  Stirring — the first and gentlest help.
+
+  Something under this cloth is moving. It never says "here", it says
+  "something". A child who has missed once looks again at a floor where one
+  cloth is breathing.
+*/
+.finding-cloth[data-stirring] .finding-fabric {
+  animation: finding-stir 1900ms ease-in-out infinite;
+}
+
+@keyframes finding-stir {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  30%      { transform: rotate(-1.4deg) translateY(-2px); }
+  65%      { transform: rotate(1.1deg) translateY(-1px); }
+}
+
+/* The coin. A silver disc with a rim and a struck face, drawn in CSS. */
+.finding-coin {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 260ms ease-out,
+    transform 320ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.finding-cloth[data-open] .finding-coin {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 160ms;
+}
+
+.finding-coin-face {
+  width: clamp(1.75rem, 7vw, 2.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(60% 60% at 36% 30%, #ffffff 0%, #e8edf6 34%, #b9c4d6 68%, #8d9ab1 100%);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.5),
+    inset 0 -3px 6px rgb(0 0 0 / 0.22),
+    0 0 18px rgb(from var(--color-joy) r g b / 0.5),
+    0 3px 8px rgb(0 0 0 / 0.4);
+}
+
+/* Found. One pulse of warmth, then still — restrained, not a firework. */
+.finding-cloth[data-found] .finding-coin-face {
+  animation: finding-found 900ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@keyframes finding-found {
+  0%   { transform: scale(0.8); }
+  45%  { transform: scale(1.14); box-shadow: 0 0 30px rgb(from var(--color-joy) r g b / 0.8); }
+  100% { transform: scale(1); }
+}
+
+.finding-round {
+  min-height: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+}
+
+/*
+  Reduced motion: the game still works, because none of its meaning is in the
+  movement. The cloths reorder instantly instead of sliding, the stirring
+  becomes a steady glow rather than a wobble, and the coin simply appears.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .finding-cloth[data-stirring] .finding-fabric {
+    animation: none;
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.22),
+      0 0 0 2px rgb(from var(--color-joy) r g b / 0.55),
+      0 6px 14px rgb(0 0 0 / 0.38);
+  }
+  .finding-cloth[data-found] .finding-coin-face {
+    animation: none;
+  }
+}

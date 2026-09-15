@@ -250,6 +250,44 @@ const writeReference = z.strictObject({
   note,
 });
 
+/**
+ * Searching for the lost coin.
+ *
+ * The chapter's own game, and — like `pouring` — one that is built rather
+ * than illustrated. The parable is a woman sweeping a dark house by lamplight
+ * until she finds one coin out of ten, so the interaction is a search: cloths
+ * on the floor, a coin under one of them, and a child looking.
+ *
+ * It is authored as almost nothing, because almost nothing about it is an
+ * editorial decision. How many cloths there are, how they move, how long the
+ * coin is shown, what Halo says when a child misses — all of that is
+ * behaviour, and behaviour lives in the model beside the component. What an
+ * author chooses is what the child is asked and how many rounds they are
+ * offered, because those are the two things that differ between meeting this
+ * inside the story and meeting it in the Games section.
+ *
+ * `rounds` is the whole of that difference. In the story it is 1: the search
+ * interrupts Panel 6, the child finds the coin, and Panel 7 says "She found
+ * it!" — a second round there would be a game the story is waiting for. In
+ * the Games section it is 2, and the second is played with eight cloths
+ * rather than six, which is the only difficulty this game has.
+ *
+ * There is no `hint` string. The help is the task getting easier — cloths
+ * withdraw, and the one covering the coin stirs — and a sentence cannot do
+ * that. See `finding/Finding.tsx`.
+ */
+const finding = z.strictObject({
+  type: z.literal("find-the-coin"),
+  prompt: z.string(),
+  /**
+   * How many searches are offered, in order, each with more cloths than the
+   * last. One inside the story, two in the Games section. Capped at two
+   * because a game a child cannot finish is not a game, it is a chore.
+   */
+  rounds: z.union([z.literal(1), z.literal(2)]).optional(),
+  note,
+});
+
 export const interactionSchema = z.discriminatedUnion("type", [
   multipleChoice,
   match,
@@ -257,6 +295,7 @@ export const interactionSchema = z.discriminatedUnion("type", [
   arrangeWords,
   reveal,
   pouring,
+  finding,
   writeReference,
 ]);
 
@@ -335,11 +374,31 @@ const storyCard = z
     text: z.string().optional(),
     alt: z.string().optional(),
     interaction: interactionSchema.optional(),
+    /**
+     * Whether the story waits here until the interaction is finished.
+     *
+     * Off by default, and deliberately so. Most asking panels are a pause the
+     * story offers — a child who would rather keep reading should be able to,
+     * because a comic that locks its own pages is a comic arguing with the
+     * reader. A gate is for the rare panel where the interaction *is* the
+     * next event in the plot: Chapter 3 asks a child to help search for the
+     * coin, and the panel after it says "She found it!". Letting a child turn
+     * past the search to be told the search succeeded tells them their part
+     * did not matter.
+     *
+     * Only ever holds a page a child has not finished, and only forward.
+     * Turning back is always allowed, because nothing is being prevented —
+     * something is being waited for.
+     */
+    gate: z.boolean().optional(),
     note,
   })
   .refine((card) => card.text !== undefined || card.alt !== undefined, {
     message:
       "a card with a picture and no text needs alt, or the picture is silent",
+  })
+  .refine((card) => !card.gate || card.interaction !== undefined, {
+    message: "a card can only gate on an interaction it actually has",
   });
 
 /**
@@ -397,6 +456,48 @@ const video = z.strictObject({
   description: z.string().optional(),
   picture: z.string().optional(),
   enabled: z.boolean().optional(),
+  note,
+});
+
+/**
+ * How a lesson closes: a decision, a song, and a prayer.
+ *
+ * Three sections rather than one, because they are three different acts. The
+ * curriculum ends every chapter this way and the app had nowhere to put any
+ * of it — the story simply stopped. They are optional, so the two chapters
+ * that predate them stay valid and unchanged.
+ *
+ * They become cards at the end of the story deck rather than doors on the
+ * Hub, which is the decision worth explaining. A child does not *navigate* to
+ * a prayer. These are the last beats of the lesson they have just read, in
+ * the order the lesson puts them, reached by turning the page like everything
+ * else. Giving them their own destinations would turn the quiet end of a
+ * story into three more things to go and do.
+ */
+const decision = z.strictObject({
+  /** The child's own words, first person, present tense. */
+  statement: z.string().min(1),
+  /** What it is a response to. One line, never a question to be answered. */
+  because: z.string().optional(),
+  note,
+});
+
+const song = z.strictObject({
+  title: z.string().optional(),
+  /**
+   * The lines exactly as the curriculum prints them, one per entry.
+   *
+   * Never translated and never completed. The Beginners book gives three
+   * lines of Malayalam in Latin script and permits an English song instead;
+   * what it does not permit is a fourth line invented to round it out.
+   */
+  lines: z.array(z.string().min(1)).min(1),
+  note,
+});
+
+const prayer = z.strictObject({
+  /** Word for word from the curriculum, including the Amen. */
+  text: z.string().min(1),
   note,
 });
 
@@ -470,6 +571,14 @@ export const chapterSchema = z.strictObject({
     an accepted field that renders nothing is how a content file quietly
     stops matching the app.
   */
+  /*
+    The close of the lesson, in the order the curriculum closes it. All
+    optional: a chapter written before these existed is still a whole chapter.
+  */
+  decision: decision.optional(),
+  song: song.optional(),
+  prayer: prayer.optional(),
+
   celebration: z.strictObject({ message: z.string(), note }),
 });
 

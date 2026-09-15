@@ -1,0 +1,131 @@
+{
+  "class": "beginner",
+  "title": "The Lost Coin",
+  "reference": "St. Luke 15:8-10",
+  "note": "Beginners, Chapter 3, from Beginners Mar Thoma Vol-1 p.20 (Sunday School Samajam). Twelve panels in three acts — Connect, Discover, Reflect — with the search interrupting the story at panel 6 rather than waiting in the Games section, because panel 7 says \"She found it!\" and a child who was not part of the finding has been told their part did not matter. ALT TEXT IS PROVISIONAL: each panel's alt currently records the words painted into that panel, which is true and useful, but it is not yet a description of the picture. It must be rewritten by someone who has looked at the artwork — see the note on panel 1.",
+  "cover": {
+    "picture": "cover",
+    "note": "Chapter 3's own cover, from 04 - Story Artwork / cover.png. Not a story panel: a first-class asset the artist made for the chapter card and the reader's first page. The title is painted into the artwork, so the reader lays no text over it."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "alt": "Act 1, Connect. The panel asks, “Have you ever lost something?”",
+      "note": "Alt text here, and on every panel below, is provisional: it records the words painted into the panel rather than describing the picture, because the artwork has not been seen yet — the Drive download is blocked on credentials. A screen reader currently hears what the panel says, which is honest and incomplete. Rewrite all twelve from the images before this chapter ships."
+    },
+    {
+      "picture": "panel-02",
+      "alt": "Act 2, Discover. Ten precious coins."
+    },
+    {
+      "picture": "panel-03",
+      "alt": "One coin is missing."
+    },
+    {
+      "picture": "panel-04",
+      "alt": "She lights the lamp."
+    },
+    {
+      "picture": "panel-05",
+      "alt": "She searches everywhere."
+    },
+    {
+      "picture": "panel-06",
+      "alt": "The panel asks the child to help her find the lost coin.",
+      "gate": true,
+      "interaction": {
+        "type": "find-the-coin",
+        "prompt": "Can you find the lost coin?",
+        "rounds": 1,
+        "note": "One round inside the story. The search is an event in the plot, not a game the plot is waiting on — a second round here would hold up panel 7. The Games section plays the same interaction with two rounds. `gate` is what stops a child turning past the search to be told it succeeded."
+      }
+    },
+    {
+      "picture": "panel-07",
+      "alt": "She found it!"
+    },
+    {
+      "picture": "panel-08",
+      "alt": "Rejoice!"
+    },
+    {
+      "picture": "panel-09",
+      "alt": "Act 3, Reflect. The panel asks, “Why did Jesus tell this story?”"
+    },
+    {
+      "picture": "panel-10",
+      "alt": "We can always come back to Jesus."
+    },
+    {
+      "picture": "panel-11",
+      "alt": "God rejoices when we return."
+    },
+    {
+      "picture": "panel-12",
+      "alt": "I belong to God."
+    }
+  ],
+  "games": [
+    {
+      "id": "find-the-lost-coin",
+      "picture": "panel-05",
+      "title": "Find the Lost Coin",
+      "objective": "Do what she did — look carefully, and keep looking until the coin is found.",
+      "featured": true,
+      "note": "The chapter's own game and the second in the product that is built rather than illustrated (Cana's jars were the first). Two rounds here where the story has one: six cloths, then eight. Help is mechanical rather than spoken — the cloth over the coin stirs, then empty cloths withdraw — because no sentence makes a search easier, and “look harder” is a verdict in a helpful voice. Shelf picture: her searching by lamplight, which is the thing this game asks a child to do.",
+      "interactions": [
+        {
+          "type": "find-the-coin",
+          "prompt": "Can you find the lost coin?",
+          "rounds": 2
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "For the Son of Man came to seek and to save the lost.",
+    "reference": "St. Luke 19:10",
+    "translation": "PLACEHOLDER",
+    "practice": {
+      "type": "arrange-words",
+      "prompt": "Put the verse back together",
+      "hint": "It begins with who came looking.",
+      "words": [
+        "For the Son of Man",
+        "came to seek",
+        "and to save",
+        "the lost."
+      ],
+      "note": "Four phrases, not thirteen words, and arrange-words rather than the single missing word the ladder generates for Beginner — because Chapter 1 ships arrange-words with phrase chunks and this class should meet the same shape twice before it meets a third. The chunks are the curriculum's own sense units. The build checks that they spell the verse exactly."
+    },
+    "note": "Read from 01 - Curriculum Source, cross-checked against nothing: the Sheet has no row for chapter 3. Translation is deliberately unresolved — the pages do not state it and guessing it is the same class of mistake as guessing the verse."
+  },
+  "video": {
+    "youtubeId": "2neKgobFMGs",
+    "title": "The Lost Coin",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen. Served through youtube-nocookie.com, which is what the video card already uses."
+  },
+  "decision": {
+    "statement": "I belong to God.",
+    "because": "He came to look for me, and He was glad when He found me.",
+    "note": "The curriculum's own My Decision line, first person and unchanged. A statement rather than a question with a yes: an affirmation is not improved by making a child tap to confirm it."
+  },
+  "song": {
+    "title": "Learn to sing",
+    "lines": [
+      "Yah nalla edayan",
+      "Ennumente Palakan",
+      "Ellenikku khedamonnume"
+    ],
+    "note": "Exactly the three lines the Beginners book prints, in its own Latin transliteration. Not translated and not extended; the curriculum also permits an English song in its place, which is a teacher's choice and not the app's."
+  },
+  "prayer": {
+    "text": "Lord Jesus, we pray that we who belong to you, may never be lost. Amen.",
+    "note": "Word for word from the curriculum, including the Amen."
+  },
+  "celebration": {
+    "message": "You were looked for, and you were found.",
+    "note": "Halo's own line, and the chapter's whole point said back to the child in the second person. Not a congratulation on finishing — the chapter is about being sought, and the last thing said should be that."
+  }
+}

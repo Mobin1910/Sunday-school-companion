@@ -1,5 +1,6 @@
 import type { PlayInteraction } from "@/content";
 
+import Finding from "./finding/Finding";
 import Pairing from "./pairing/Pairing";
 import Pouring from "./pouring/Pouring";
 import Selection from "./selection/Selection";
@@ -25,6 +26,7 @@ export function canPlay(interaction: PlayInteraction): boolean {
     interaction.type === "arrange-words" ||
     interaction.type === "reveal" ||
     interaction.type === "pouring" ||
+    interaction.type === "find-the-coin" ||
     interaction.type === "write-reference"
   );
 }
@@ -57,6 +59,9 @@ export function renderModel(props: ModelProps) {
 
     case "reveal":
       return <Reveal {...props} interaction={interaction} />;
+
+    case "find-the-coin":
+      return <Finding {...props} interaction={interaction} />;
 
     case "pouring":
       return <Pouring {...props} interaction={interaction} />;

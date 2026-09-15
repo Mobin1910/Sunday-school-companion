@@ -5,6 +5,7 @@ import CoverCard from "./CoverCard";
 import QuizCard from "./QuizCard";
 import StoryCard from "./StoryCard";
 import VerseCard from "./VerseCard";
+import { DecisionCard, PrayerCard, SongCard } from "./ClosingCards";
 
 /**
  * One full screen, whatever kind of card is on it.
@@ -80,6 +81,25 @@ function render(card: Card, title: string) {
 
     case "verse":
       return <VerseCard text={card.text} reference={card.reference} />;
+
+    case "decision":
+      return (
+        <DecisionCard
+          statement={card.statement}
+          {...(card.because !== undefined && { because: card.because })}
+        />
+      );
+
+    case "song":
+      return (
+        <SongCard
+          {...(card.title !== undefined && { title: card.title })}
+          lines={card.lines}
+        />
+      );
+
+    case "prayer":
+      return <PrayerCard text={card.text} />;
 
     case "celebration":
       return <CelebrationCard message={card.message} />;

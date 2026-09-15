@@ -58,7 +58,18 @@ export function eligibleForPlay(interaction: PlayInteraction): boolean {
     as "where is this verse from?" with no verse anywhere on the screen, which
     is not a hard question but an unanswerable one.
   */
-  return interaction.type !== "reveal" && interaction.type !== "write-reference";
+  /*
+    The coin search is excluded for a third reason: it takes time before it
+    can be answered at all. It shows the coin, covers it, and moves the
+    cloths, which is four seconds during which every tap is correctly
+    ignored. Inside its chapter that is the game. Shuffled into a rapid-fire
+    pool it reads as a screen that has stopped working.
+  */
+  return (
+    interaction.type !== "reveal" &&
+    interaction.type !== "write-reference" &&
+    interaction.type !== "find-the-coin"
+  );
 }
 
 /**

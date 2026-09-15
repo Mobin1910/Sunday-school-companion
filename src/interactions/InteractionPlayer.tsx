@@ -271,6 +271,7 @@ export default function InteractionPlayer({
       {renderModel({
         interaction,
         rung,
+        active,
         locked: done,
         onMiss: handleMiss,
         onArrive: handleArrive,

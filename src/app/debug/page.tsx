@@ -35,6 +35,12 @@ function summarise(card: Card): string {
       return `${card.text} (${card.reference})`;
     case "video":
       return `${card.title} — youtube:${card.youtubeId}`;
+    case "decision":
+      return `“${card.statement}”`;
+    case "song":
+      return card.lines.join(" / ");
+    case "prayer":
+      return card.text;
     case "celebration":
       return card.message;
   }

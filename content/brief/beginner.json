@@ -72,6 +72,48 @@
           "blocking": false
         }
       ]
+    },
+    {
+      "chapter": 3,
+      "title": "The Lost Coin",
+      "bibleReference": "St. Luke 15:8-10",
+      "curriculumNotes": "Read from the four curriculum photographs in Drive (Beginners / Chapter 03 / 01 - Curriculum Source), uploaded 2026-09-15. Beginners Mar Thoma Vol-1 p.20, Sunday School Samajam. The lesson is the parable of the lost coin; the memory verse is from a different passage (St. Luke 19:10), which is the curriculum's own pairing and not an error.",
+      "learningObjectives": [
+        {
+          "objective": "Recall that the woman searched until she found the one lost coin.",
+          "priority": "core"
+        },
+        {
+          "objective": "Understand that God looks for us in the same way, and is glad when we return.",
+          "priority": "core"
+        },
+        {
+          "objective": "Say the chapter's decision: I belong to God.",
+          "priority": "supporting"
+        }
+      ],
+      "memoryVerse": "For the Son of Man came to seek and to save the lost.",
+      "memoryVerseReference": "St. Luke 19:10",
+      "video": "https://www.youtube.com/watch?v=2neKgobFMGs",
+      "status": "draft",
+      "produces": "the-lost-coin",
+      "flags": [
+        {
+          "kind": "other",
+          "message": "Artwork not yet in the repository. The thirteen files (cover + twelve panels) exist in Drive under 04 - Story Artwork but could not be downloaded: there are no GOOGLE_OAUTH_* credentials, and the consumer download hosts are unreachable from the build environment. Run `npm run art:fetch -- --class beginner --chapter 03 --slug the-lost-coin` once credentials are set.",
+          "blocking": true
+        },
+        {
+          "kind": "other",
+          "message": "Alt text on all twelve panels is provisional: it records the words painted into each panel rather than describing the picture, because the artwork has not been seen. Rewrite from the images before publishing.",
+          "blocking": true
+        },
+        {
+          "kind": "incomplete-verse",
+          "message": "The memory verse translation is unresolved. The curriculum pages do not state one, and the Sheet has no row for chapter 3, so the verse was confirmed by a single reading of a single source.",
+          "blocking": true
+        }
+      ]
     }
   ]
 }

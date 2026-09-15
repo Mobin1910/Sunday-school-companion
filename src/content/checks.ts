@@ -49,6 +49,7 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
       return interaction.pairs.flatMap((pair) => [pair.from, pair.to]);
     case "arrange-words":
     case "pouring":
+    case "find-the-coin":
     case "write-reference":
       return [];
   }
@@ -90,8 +91,12 @@ function artOf(card: Card): Art[] {
     case "quiz":
     case "practice":
       return interactionsOf(card).flatMap(fromInteraction);
-    // The ending draws no picture: it is Halo celebrating with the child.
+    // These draw no picture. The ending is Halo celebrating with the child;
+    // the decision, the song and the prayer are words a child reads or says.
     case "verse":
+    case "decision":
+    case "song":
+    case "prayer":
     case "celebration":
       return [];
     case "video":

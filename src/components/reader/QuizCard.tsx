@@ -32,15 +32,25 @@ export default function QuizCard({
   */
   const page = usePage();
 
-  // Held so that a page already turned, or a chapter already left, cannot be
-  // followed by a page turn nobody is there for.
+  /*
+    Held so that a page already turned, or a chapter already left, cannot be
+    followed by a page turn nobody is there for.
+
+    Reset on mount as well as latched on unmount, and the reset is the part
+    that matters. The reader moves a page between two slots — the neighbour
+    waiting underneath and the one being read — which unmounts and remounts
+    it; React's development double-invoke does the same thing on the first
+    render. Either way the cleanup fired while the ref lived on, and the card
+    came back already believing it had been answered, so the page it was
+    sitting on could never turn itself again.
+  */
   const solved = useRef(false);
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    solved.current = false;
+    return () => {
       solved.current = true;
-    },
-    [],
-  );
+    };
+  }, []);
 
   return (
     <InteractionPlayer

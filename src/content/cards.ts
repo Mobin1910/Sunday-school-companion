@@ -60,6 +60,7 @@ export type PlayInteraction =
   | { type: "arrange-words"; prompt: string; words: string[]; hint?: string }
   | { type: "reveal"; prompt?: string; items: PlayItem[] }
   | { type: "pouring"; prompt: string; then: string; during?: string }
+  | { type: "find-the-coin"; prompt: string; rounds?: 1 | 2 }
   /**
    * The one answered with a keyboard. `answer` is the reference as the
    * curriculum wrote it — the display form as well as the thing compared —
@@ -82,6 +83,8 @@ export type Card =
       text?: string;
       alt?: string;
       interaction?: PlayInteraction;
+      /** The story waits on this page until the interaction is finished. */
+      gate?: boolean;
     }
   /**
    * A game: an interaction a child chose to play, rather than one the story
@@ -140,6 +143,9 @@ export type Card =
    * chapter that ends on artwork ends by pointing back at the story rather
    * than at the person who just read it.
    */
+  | { kind: "decision"; statement: string; because?: string }
+  | { kind: "song"; title?: string; lines: string[] }
+  | { kind: "prayer"; text: string }
   | { kind: "celebration"; message: string };
 
 type Resolve = (ref: AssetReference) => string | null;
@@ -270,6 +276,13 @@ export function toInteraction(
         then: interaction.then,
         ...(interaction.during !== undefined && { during: interaction.during }),
       };
+
+    case "find-the-coin":
+      return {
+        type: "find-the-coin",
+        prompt: interaction.prompt,
+        ...(interaction.rounds !== undefined && { rounds: interaction.rounds }),
+      };
   }
 }
 
@@ -291,6 +304,7 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
       ...(card.interaction !== undefined && {
         interaction: toInteraction(card.interaction, resolve),
       }),
+      ...(card.gate === true && { gate: true }),
     });
   }
 
@@ -358,6 +372,34 @@ export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
         art: toArt(panel(chapter.video.picture), resolve),
       }),
     });
+  }
+
+  /*
+    The lesson's own ending, before the app's. Decision, then song, then
+    prayer — the order the curriculum uses, and not one this file is free to
+    rearrange: a child says what they have decided, sings about it, and then
+    prays. Celebration still comes last, because that one is Halo's.
+  */
+  if (chapter.decision) {
+    cards.push({
+      kind: "decision",
+      statement: chapter.decision.statement,
+      ...(chapter.decision.because !== undefined && {
+        because: chapter.decision.because,
+      }),
+    });
+  }
+
+  if (chapter.song) {
+    cards.push({
+      kind: "song",
+      ...(chapter.song.title !== undefined && { title: chapter.song.title }),
+      lines: chapter.song.lines,
+    });
+  }
+
+  if (chapter.prayer) {
+    cards.push({ kind: "prayer", text: chapter.prayer.text });
   }
 
   cards.push({ kind: "celebration", message: chapter.celebration.message });

@@ -16,6 +16,17 @@ export type ModelProps<T extends PlayInteraction = PlayInteraction> = {
   rung: number;
   /** Already arrived. Nothing more should respond to touch. */
   locked: boolean;
+  /**
+   * Whether anyone is actually looking at this.
+   *
+   * The reader keeps the next page mounted so it can be revealed mid-drag, so
+   * a model that runs on its own clock — showing something, hiding it, moving
+   * it — would otherwise play its whole opening to an empty room and be
+   * half-finished by the time the child arrived. Models with no timers can
+   * ignore it. `InteractionPlayer` already knew this; it just had no way to
+   * say so.
+   */
+  active: boolean;
   onMiss: () => void;
   onArrive: () => void;
 };
@@ -34,6 +45,8 @@ export type ArrangeWords = Extract<PlayInteraction, { type: "arrange-words" }>;
 export type Discovery = Extract<PlayInteraction, { type: "reveal" }>;
 
 export type Pouring = Extract<PlayInteraction, { type: "pouring" }>;
+
+export type Finding = Extract<PlayInteraction, { type: "find-the-coin" }>;
 
 export type WriteReference = Extract<
   PlayInteraction,

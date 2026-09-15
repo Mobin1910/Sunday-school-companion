@@ -74,6 +74,13 @@ export default async function ChapterStoryPage({
         : {})}
       /* The picture on each page, for the back of the sheet when it turns. */
       backs={pages.map((card) => ("art" in card && card.art ? card.art.src : null))}
+      /*
+        Pages the story waits on. Read off the cards here, because the reader
+        is handed rendered pages and cannot see what is inside them.
+      */
+      gates={pages.flatMap((card, index) =>
+        card.kind === "story" && card.gate === true ? [index] : [],
+      )}
     >
       {pages.map((card, index) => (
         <CardScreen key={index} card={card} title={chapter.title} />

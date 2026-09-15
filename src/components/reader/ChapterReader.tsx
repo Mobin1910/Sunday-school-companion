@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   Children,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -84,6 +85,7 @@ export default function ChapterReader({
   gamesHref,
   nextChapterHref,
   backs,
+  gates,
 }: {
   children: React.ReactNode;
   /** Which chapter this is, for remembering the place in it — both halves. */
@@ -110,9 +112,40 @@ export default function ChapterReader({
    * back, which is what the back of a page of text looks like anyway.
    */
   backs?: (string | null)[];
+  /**
+   * Pages the story waits on: indices whose interaction must be finished
+   * before the child can turn past them.
+   *
+   * Passed in rather than discovered, because this component is handed
+   * rendered pages and has no idea what is inside them — which is exactly the
+   * separation that lets it be a page-turner and not a content reader.
+   */
+  gates?: number[];
 }) {
   const pages = useMemo(() => Children.toArray(children), [children]);
   const lastPage = pages.length - 1;
+
+  /*
+    A gate holds a page until the child finishes what it asks. Only forward,
+    and only once: `freed` records the gates already passed, so a child who
+    turns back to look at the picture again is never asked to do it twice.
+  */
+  const freed = useRef<number[]>([]);
+
+  /**
+   * The furthest page reachable right now.
+   *
+   * The first gate the child has not finished, or the last page when there
+   * is none. Every clamp in this file goes through here rather than through
+   * `lastPage`, so there is one answer to "how far may this turn go" and no
+   * way for the drag and the buttons to disagree about it.
+   */
+  const ceiling = useCallback(() => {
+    const held = (gates ?? [])
+      .filter((i) => !freed.current.includes(i))
+      .sort((a, b) => a - b)[0];
+    return held === undefined ? lastPage : Math.min(held, lastPage);
+  }, [gates, lastPage]);
 
   const stage = useRef<HTMLDivElement>(null);
   const fold = useRef<HTMLDivElement>(null);
@@ -266,7 +299,7 @@ export default function ChapterReader({
 
     const desiredUnder = Math.max(
       0,
-      Math.min(lastPage, anchor.current + (forward ? 1 : -1)),
+      Math.min(ceiling(), anchor.current + (forward ? 1 : -1)),
     );
     if (desiredUnder !== underIndexRef.current) {
       underIndexRef.current = desiredUnder;
@@ -404,7 +437,7 @@ export default function ChapterReader({
   }
 
   function settleTo(target: number) {
-    const clampedTarget = Math.max(0, Math.min(lastPage, target));
+    const clampedTarget = Math.max(0, Math.min(ceiling(), target));
     targetIndex.current = clampedTarget;
     const from = position.current;
     const distance = Math.abs(clampedTarget - from);
@@ -469,7 +502,19 @@ export default function ChapterReader({
     instant of the tap would trade one bad feeling for another.
   */
   function turnAfterSolving() {
-    window.setTimeout(() => goTo(targetIndex.current + 1), AFTER_SOLVING);
+    /*
+      A ref rather than state, and that is the whole of why this works.
+
+      The turn is asked for on a timer, so its callback closes over the render
+      it was created in. Freeing the gate through `setFreed` left that closure
+      looking at the old value — `ceiling()` still saw the page as held and
+      clamped the turn straight back onto it, so a child who solved the search
+      watched the page not move. Nothing renders from this, so a ref is both
+      correct and simpler: the gate is open the instant it is opened.
+    */
+    const here = targetIndex.current;
+    if (!freed.current.includes(here)) freed.current.push(here);
+    window.setTimeout(() => goTo(here + 1), AFTER_SOLVING);
   }
 
   function goTo(rawTarget: number, jump = false) {
@@ -477,7 +522,7 @@ export default function ChapterReader({
     setTurnedOnce(true);
     // Nobody took hold of this one, so put the crease where a thumb goes.
     grabAt.current = THUMB;
-    const target = Math.max(0, Math.min(lastPage, rawTarget));
+    const target = Math.max(0, Math.min(ceiling(), rawTarget));
     targetIndex.current = target;
     if (jump || reducedMotion) {
       position.current = target;
@@ -546,7 +591,13 @@ export default function ChapterReader({
     let next = startPosition.current - dx / width;
 
     if (next < 0) next = -(0 - next) / EDGE_RESISTANCE;
-    if (next > lastPage) next = lastPage + (next - lastPage) / EDGE_RESISTANCE;
+    /*
+      The same rubber-band the end of the book uses. A held page pushes back
+      when a thumb tries to leave it and springs home — which says "not yet"
+      in the language the reader already speaks, rather than with a message.
+    */
+    const top = ceiling();
+    if (next > top) next = top + (next - top) / EDGE_RESISTANCE;
 
     position.current = next;
     renderAt(next);

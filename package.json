@@ -18,6 +18,7 @@
   "scripts": {
     "agent:memory-verse": "node agents/memory-verse/run.mjs",
     "agent:test": "node agents/memory-verse/selftest.mjs",
+    "art:fetch": "node tools/art/fetch-chapter.mjs",
     "brand:check": "node tools/brand/check.mjs",
     "site:check": "node tools/brand/check-site.mjs",
     "brand:derive": "node tools/brand/derive.mjs",
