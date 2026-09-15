@@ -503,6 +503,23 @@ const prayer = z.strictObject({
 
 export const chapterSchema = z.strictObject({
   /**
+   * Which chapter this is, within its class.
+   *
+   * Authored, because it is a fact about the lesson and not about the
+   * repository. It used to be neither — the shelf numbered chapters by their
+   * position after sorting filenames, so "Chapter 02" meant "second
+   * alphabetically", and adding `the-lost-coin.story.json` to a folder that
+   * already held `wedding-at-cana.story.json` renamed Wedding at Cana to
+   * Chapter 03 without touching it. A number a child reads, and a teacher
+   * says out loud on a Sunday, cannot be a side effect of a filename.
+   *
+   * It is also the order the shelf is built in, so the two can never
+   * disagree. Numbers are unique within a class and start at 1; both are
+   * checked in `load.ts`, where every chapter of a class is visible at once.
+   */
+  chapter: z.number().int().min(1).max(60),
+
+  /**
    * Which class this chapter belongs to.
    *
    * Required, and checked against the directory the file was found in. The

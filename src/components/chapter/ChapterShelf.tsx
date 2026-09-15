@@ -24,6 +24,8 @@ import ChapterCard from "./ChapterCard";
 
 export type ShelfChapter = {
   slug: string;
+  /** Which chapter it is, as the lesson states — never its place in the list. */
+  chapter: number;
   title: string;
   cover: Extract<Card, { kind: "cover" }> | undefined;
   needs: { games: string[]; verse: boolean };
@@ -70,12 +72,18 @@ export default function ChapterShelf({
         </div>
       ) : (
         <ul className="flex flex-col gap-4">
-          {chapters.map((chapter, index) => (
+          {chapters.map((chapter) => (
             <li key={chapter.slug}>
               <ChapterCard
                 classId={classId}
                 slug={chapter.slug}
-                number={index + 1}
+                /*
+                  The chapter's own number, not its place in this list. They
+                  were the same thing until a third chapter was added between
+                  the first two alphabetically and quietly renamed Wedding at
+                  Cana to Chapter 03.
+                */
+                number={chapter.chapter}
                 title={chapter.title}
                 cover={chapter.cover}
                 needs={chapter.needs}

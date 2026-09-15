@@ -32,6 +32,8 @@ export type LoadedChapter = {
   classId: ClassId;
   slug: string;
   file: string;
+  /** Which chapter this is within its class. Authored, never positional. */
+  chapter: number;
   title: string;
   reference: string;
   cards: Card[];
@@ -106,7 +108,6 @@ export function loadChapters(): LoadedChapter[] {
 
     return readdirSync(directory)
       .filter((name) => name.endsWith(SUFFIX))
-      .sort()
       .map((name) => {
         const slug = name.slice(0, -SUFFIX.length);
         const file = `content/${classId}/${name}`;
@@ -136,6 +137,7 @@ export function loadChapters(): LoadedChapter[] {
           classId,
           slug,
           file,
+          chapter: parsed.data.chapter,
           title: parsed.data.title,
           reference: parsed.data.reference,
           cards: toCards(parsed.data, (ref) =>
@@ -145,6 +147,38 @@ export function loadChapters(): LoadedChapter[] {
         };
       });
   });
+
+  /*
+    Two chapters of one class cannot be the same chapter.
+
+    Checked here because this is the only place every chapter of a class is
+    visible at once — a file on its own cannot know that another file claims
+    its number. Without it the shelf would simply show the collision twice
+    and let a teacher work out which Sunday was which.
+  */
+  const seen = new Map<string, string>();
+  for (const chapter of chapters) {
+    const key = `${chapter.classId}/${chapter.chapter}`;
+    const already = seen.get(key);
+    if (already) {
+      throw new ContentError(
+        `  ${chapter.file}\n    is chapter ${chapter.chapter} of ${chapter.classId}, and so is ${already}`,
+      );
+    }
+    seen.set(key, chapter.file);
+  }
+
+  /*
+    Ordered by the number the lesson states, so the shelf and the curriculum
+    agree. This used to be the order `readdirSync` happened to return after
+    sorting filenames, which is how The Lost Coin arrived between Baby Jesus
+    and the Wedding at Cana and pushed Cana's number up by one.
+  */
+  chapters.sort((a, b) =>
+    a.classId === b.classId
+      ? a.chapter - b.chapter
+      : a.classId.localeCompare(b.classId),
+  );
 
   const known = new Set(chapters.map((c) => chapterKey(c.classId, c.slug)));
   for (const key of shipping) {

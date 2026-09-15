@@ -34,6 +34,7 @@ export default function ChaptersPage() {
   const shelves = byClass<ShelfChapter[]>((chapters) =>
     chapters.map((chapter) => ({
       slug: chapter.slug,
+      chapter: chapter.chapter,
       title: chapter.title,
       cover: coverOf(chapter),
       needs: {
