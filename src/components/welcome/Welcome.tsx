@@ -153,6 +153,26 @@ export default function Welcome({ onDone }: { onDone: () => void }) {
     setName(saveName(given));
     setNudge(false);
     setMeeting(true);
+
+    /*
+      Welcomed here, at the name, rather than on the last beat.
+
+      Everything a child answers is written down as they answer it — the name
+      now, the class when they pick it — but the *fact of having been
+      welcomed* used to be written only when they pressed the button on the
+      final "Ready?" beat, which asks nothing. So a child who was interrupted
+      anywhere after this point came back to a first-run introduction and was
+      asked their name and their class over again, both of which were sitting
+      in storage the whole time. On a phone, "interrupted" means a call, a
+      notification, or switching apps for a moment.
+
+      Being welcomed is having met Halo and told it your name, which has just
+      happened. What is still missing after this is the class, and the
+      doorway already has a branch for exactly that state: welcomed, but no
+      class, so ask only the class. Marking it here is what lets that branch
+      do its job instead of the whole introduction starting over.
+    */
+    markWelcomed();
   };
 
   // The meeting is a beat, not a screen. It ends on its own.
