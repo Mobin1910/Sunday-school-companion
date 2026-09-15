@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sunday-school-comapnion-kohl.vercel.app"
+        }
+      ],
+      "destination": "https://sunday-school-companion-kohl.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}

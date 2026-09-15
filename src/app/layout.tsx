@@ -7,6 +7,7 @@ import {
   BRAND_SHORT_NAME,
   brandAssets,
 } from "@/brand/assets";
+import { CANONICAL_ORIGIN } from "@/brand/site";
 import Preferences from "@/components/Preferences";
 import { DOORWAY_SCRIPT } from "@/local/child";
 
@@ -36,20 +37,18 @@ import "./globals.css";
  * `VERCEL_PROJECT_PRODUCTION_URL` was set at build time, and the chain had
  * nowhere better to land.
  *
- * So the last resort is now the production origin itself. A hardcoded domain
- * is a real cost — it is one more thing to remember on the day this moves —
- * but it is the *known* domain rather than a guess, and the alternative
- * failed silently in the one place nobody tests. The env vars still win when
- * they are set, which is how a custom domain takes over without touching
- * this file.
+ * So the last resort is the production origin itself, which lives in
+ * `brand/site.ts` — one place, checked against `vercel.json` at build time,
+ * because the first copy of it was misspelled and nothing noticed. The env
+ * vars still win when they are set, which is how a custom domain takes over
+ * without touching either file.
  */
-const PRODUCTION_ORIGIN = "https://sunday-school-comapnion-kohl.vercel.app";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : PRODUCTION_ORIGIN);
+    : CANONICAL_ORIGIN);
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
