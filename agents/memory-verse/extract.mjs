@@ -1,26 +1,31 @@
 import { GeminiProvider } from "../shared/providers/gemini.mjs";
 
 /**
- * Reading the teacher's curriculum, and knowing when not to.
+ * Reading the teacher's curriculum with Gemini. NOT CURRENTLY USED.
  *
- * This is the only place in the whole pipeline where an AI model is asked
- * anything, and it is asked exactly one question: *what does this page say the
- * memory verse is?* It is not asked to design a game, phrase a hint, pick a
- * difficulty or write anything at all. Everything a child eventually touches is
- * built from the answer by code that cannot improvise.
+ * The agent does not call this and no run requires GEMINI_API_KEY. Curriculum
+ * is read by Claude looking at the downloaded pages — a supervised step,
+ * described in agents/README.md. This module is kept, unreferenced and
+ * working, as the obvious starting point if an unattended pipeline is ever
+ * wanted.
  *
- * The reason is not only cost, though one request per chapter instead of seven
- * is most of what keeps this inside a free tier. It is that a model asked to
- * *transcribe* can be held to the source, and a model asked to *write* cannot.
- * Scripture is the one kind of content where a plausible paraphrase is worse
- * than no output: a child who learns a verse slightly wrong has learned it
- * wrong for years, and nobody will notice because it reads fine.
+ * What is worth keeping is the prompt. It is the distilled version of a lesson
+ * worth not relearning: exactly what has to be forbidden, in writing, before a
+ * model will transcribe instead of improve. The reasoning behind it outlived
+ * the provider and now governs the supervised step too —
  *
- * So the prompt forbids improvement in every form it can take, and the result
- * is treated as a claim to be checked rather than an answer to be used. When
- * the model is unsure, or the page has two candidate verses, or the photograph
- * is half-legible, the run stops and a human is asked. Guessing is the one
- * outcome that is never acceptable.
+ * A reader asked to *transcribe* can be held to the source; a reader asked to
+ * *write* cannot. Scripture is the one kind of content where a plausible
+ * paraphrase is worse than no output: a child who learns a verse slightly
+ * wrong has learned it wrong for years, and nobody notices, because it reads
+ * fine. So improvement is forbidden in every form it can take, and whatever
+ * comes back is treated as a claim to be checked rather than an answer to be
+ * used. When the reader is unsure, when the page has two candidate verses,
+ * when the photograph is half-legible — the run stops and a human is asked.
+ * Guessing is the one outcome that is never acceptable.
+ *
+ * The gates that enforce all of that moved to gates.mjs, so that applying them
+ * costs nobody an AI import.
  */
 
 export const EXTRACTION_PROMPT = `You are extracting curriculum data from Sunday School teaching material.
@@ -90,53 +95,12 @@ export const EXTRACTION_SCHEMA = {
   required: ["memoryVerse", "confidence", "reviewRequired"],
 };
 
-const tidy = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
-
-/**
- * Whether what came back can be used without a human.
- *
- * Four gates, and a claim has to pass all of them. Three are the model's own
- * report — it said it was unsure, it said review was needed, it offered more
- * than one candidate — and the fourth is ours: a verse that is one word long,
- * or a reference with no digits in it, is not a verse and not a reference
- * whatever the model says about its confidence. The model is allowed to be
- * wrong about being right.
- */
-export function judge(result) {
-  const text = tidy(result?.memoryVerse?.text);
-  const reference = tidy(result?.memoryVerse?.reference);
-
-  if (text === "" || reference === "") {
-    return { ok: false, reason: "no memory verse or reference was found in the pages" };
-  }
-  if (result.reviewRequired === true) {
-    return { ok: false, reason: tidy(result.reviewReason) || "the extractor asked for review" };
-  }
-  if (result.confidence !== "high") {
-    return {
-      ok: false,
-      reason: `extraction confidence was "${result.confidence}"` +
-        (result.reviewReason ? `: ${tidy(result.reviewReason)}` : ""),
-    };
-  }
-  if (Array.isArray(result.candidates) && result.candidates.length > 1) {
-    return {
-      ok: false,
-      reason: `the curriculum contains ${result.candidates.length} possible memory verses`,
-    };
-  }
-  if (text.split(" ").length < 3) {
-    return { ok: false, reason: `the extracted verse is too short to be a verse: "${text}"` };
-  }
-  if (!/\d/.test(reference)) {
-    return {
-      ok: false,
-      reason: `the extracted reference has no chapter or verse number: "${reference}"`,
-    };
-  }
-
-  return { ok: true, verse: { text, reference } };
-}
+/*
+  The gates live in gates.mjs, which imports no provider. Re-exported here
+  so that anything still reaching for them through this module keeps working,
+  and so that there is exactly one copy of them.
+*/
+export { judge } from "./gates.mjs";
 
 /**
  * One request, one chapter.

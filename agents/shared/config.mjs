@@ -43,6 +43,14 @@ function loadEnvFile(file) {
 loadEnvFile(join(ROOT, ".env.local"));
 
 export const config = {
+  /*
+    Optional, and not used by the Memory Verse agent.
+
+    Extraction is done by Claude looking at the pages — see agents/README.md.
+    This block stays because the provider behind it is cleanly isolated and
+    worth keeping for a future unattended pipeline, but nothing on the live
+    path reads it and no run requires a key.
+  */
   gemini: {
     key: process.env.GEMINI_API_KEY ?? "",
     /*
@@ -60,9 +68,21 @@ export const config = {
   },
   /** The library root in Drive. Found by name when not given. */
   driveRoot: process.env.DRIVE_LIBRARY_ROOT_ID ?? "",
+  /*
+    The editorial Sheet, where teachers type the verse as well as uploading
+    the pages. Optional: without it a run still works, and says in the draft
+    that the verse was confirmed by nobody but the page.
+  */
+  sheetId: process.env.SSC_SHEET_ID ?? "",
   paths: {
     root: ROOT,
     state: join(ROOT, "agents", ".state"),
+    /*
+      Curriculum pages, downloaded so that they can be looked at. Under
+      `.state/` and therefore git-ignored: these are photographs of a
+      teacher's book and they belong in neither the repository nor the app.
+    */
+    pages: join(ROOT, "agents", ".state", "pages"),
     drafts: join(ROOT, "agents", ".drafts"),
   },
 };

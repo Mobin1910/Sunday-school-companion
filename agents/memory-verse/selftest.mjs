@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { judge } from "./extract.mjs";
+import { asClaim, crossCheck, judge, readable, referenceSpelling, spelling } from "./gates.mjs";
 import { ladderFor } from "./ladder.mjs";
 import { phrases, tidy, words } from "./tokenize.mjs";
 
@@ -233,6 +233,79 @@ const gate = [
 for (const [what, input, expected] of gate) {
   check(what, judge(input).ok === expected);
 }
+
+console.log("Supervised extraction");
+
+const filled = {
+  verseText: "For my eyes have seen your salvation",
+  reference: "St Luke 2:30,31",
+  sourceFile: "page-01.png",
+  confidence: "high",
+  ambiguities: [],
+};
+
+const shapes = [
+  ["a filled-in extraction is readable", filled, true],
+  ["the untouched template is not", { ...filled, verseText: "", reference: "" }, false],
+  ["a confidence outside the three is not", { ...filled, confidence: "pretty sure" }, false],
+  ["a blank sourceFile is not", { ...filled, sourceFile: "" }, false],
+  ["ambiguities as a string is not", { ...filled, ambiguities: "none" }, false],
+];
+for (const [what, input, expected] of shapes) {
+  check(what, readable(input).ok === expected);
+}
+
+// The translation into the original gates is what makes an ambiguity stop a
+// run, so it is worth asserting rather than assuming.
+check(
+  "an ambiguity becomes reviewRequired",
+  asClaim({ ...filled, ambiguities: ["the second line is obscured"] }).reviewRequired === true,
+);
+check("no ambiguity does not", asClaim(filled).reviewRequired === false);
+check("and a clean one passes the gates", judge(asClaim(filled)).ok === true);
+check(
+  "an ambiguous one does not",
+  judge(asClaim({ ...filled, ambiguities: ["two candidates"] })).ok === false,
+);
+
+console.log("Two sources");
+
+const VERSE = "For my eyes have seen your salvation, which you have prepared in the presence of all peoples";
+const page = { text: VERSE, reference: "St Luke 2:30,31" };
+
+const pairs = [
+  ["identical", { text: VERSE, reference: "St Luke 2:30,31" }, "agrees"],
+  ["different case", { text: VERSE.toLowerCase(), reference: "st luke 2:30,31" }, "agrees"],
+  ["extra whitespace", { text: `   ${VERSE}   `, reference: " St Luke  2:30,31 " }, "agrees"],
+  ["a trailing full stop", { text: `${VERSE}.`, reference: "St Luke 2:30,31." }, "agrees"],
+  ["an em dash for a comma", { text: VERSE.replace(",", " —"), reference: "St Luke 2:30,31" }, "agrees"],
+  ["Saint spelled out", { text: VERSE, reference: "Saint Luke 2:30,31" }, "agrees"],
+  ["the honorific dropped", { text: VERSE, reference: "Luke 2:30,31" }, "agrees"],
+  ["a word missing", { text: VERSE.replace("For ", ""), reference: "St Luke 2:30,31" }, "disagrees"],
+  ["a different verse", { text: "Jesus wept and the people saw", reference: "St Luke 2:30,31" }, "disagrees"],
+  ["a different reference", { text: VERSE, reference: "Luke 2:30" }, "disagrees"],
+  ["a different book", { text: VERSE, reference: "St John 2:30,31" }, "disagrees"],
+];
+for (const [what, teacher, expected] of pairs) {
+  check(`${what} → ${expected}`, crossCheck(page, { available: true, ...teacher }).status === expected);
+}
+
+/*
+  The third outcome. A missing second opinion has to be its own status: if it
+  ever collapsed into "agrees", every chapter with no Sheet row would claim to
+  have been confirmed by a teacher who never saw it.
+*/
+check("no teacher entry is unavailable, not agreement", crossCheck(page, null).status === "unavailable");
+check(
+  "a blank teacher entry is unavailable too",
+  crossCheck(page, { available: true, text: "", reference: "" }).status === "unavailable",
+);
+
+// A hyphen inside a word is part of the word; one with space around it is not.
+check("hyphenated words survive folding", spelling("a God-fearing man") === "a god-fearing man");
+check("a dash used as punctuation does not", spelling("salvation — which") === spelling("salvation, which"));
+check("St and Saint fold together", referenceSpelling("St. Luke 2:30") === referenceSpelling("Saint Luke 2:30"));
+check("different chapters do not", referenceSpelling("Luke 2:30") !== referenceSpelling("Luke 3:30"));
 
 console.log(
   failures === 0

@@ -20,6 +20,13 @@ import { config, requireGeminiKey } from "../config.mjs";
  * its state saved. It does not fall back to another provider, it does not ask
  * for a card, and it does not sit in a retry loop burning the next day's
  * allowance the moment the clock rolls over.
+ *
+ * NOT CURRENTLY USED. The Memory Verse agent does not call this module and
+ * does not require GEMINI_API_KEY; curriculum is read by Claude looking at
+ * the downloaded pages, which is a supervised step and is described in
+ * agents/README.md. This is kept, unreferenced and working, as the obvious
+ * starting point if an unattended pipeline is ever wanted. Nothing imports
+ * it, so it costs nothing to keep and would cost a rewrite to delete.
  */
 
 export class QuotaExhausted extends Error {
@@ -31,19 +38,12 @@ export class QuotaExhausted extends Error {
 
 export class ProviderError extends Error {}
 
-/** What a source file has to look like to be sent. */
-export const SUPPORTED = new Map([
-  [".jpg", "image/jpeg"],
-  [".jpeg", "image/jpeg"],
-  [".png", "image/png"],
-  [".webp", "image/webp"],
-  [".pdf", "application/pdf"],
-]);
-
-export function mimeFor(name) {
-  const at = String(name).lastIndexOf(".");
-  return at === -1 ? undefined : SUPPORTED.get(name.slice(at).toLowerCase());
-}
+/*
+  Re-exported so that older callers keep working. The table itself lives in
+  `shared/files.mjs`, because deciding whether a file is a usable page has
+  nothing to do with AI and should not require importing an AI client.
+*/
+export { SUPPORTED, mimeFor } from "../files.mjs";
 
 /** Seconds Google asked us to wait, when it said. */
 function retryDelay(body) {

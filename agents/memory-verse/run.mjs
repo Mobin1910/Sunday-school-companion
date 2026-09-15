@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-import { readFileSync, readdirSync, statSync } from "node:fs";
-import { basename, join } from "node:path";
+import { mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
 
 import {
   CHAPTER_SUBFOLDERS,
@@ -8,7 +9,7 @@ import {
   classById,
   driveFolderFor,
 } from "../shared/classes.mjs";
-import { ConfigError, config } from "../shared/config.mjs";
+import { config } from "../shared/config.mjs";
 import {
   DriveAuthError,
   DriveError,
@@ -18,44 +19,57 @@ import {
   libraryRoot,
   upload,
 } from "../shared/drive/client.mjs";
-import {
-  GeminiProvider,
-  ProviderError,
-  QuotaExhausted,
-  mimeFor,
-} from "../shared/providers/gemini.mjs";
+import { teacherVerse } from "../shared/drive/sheet.mjs";
+import { mimeFor, supportedExtensions } from "../shared/files.mjs";
 import { provenanceFor } from "../shared/provenance/record.mjs";
 import { fingerprint, store } from "../shared/state/store.mjs";
-import { extractVerse, judge } from "./extract.mjs";
+import { asClaim, crossCheck, judge, readable } from "./gates.mjs";
 import { ladderFor } from "./ladder.mjs";
 
 /**
- * The Memory Verse agent.
+ * The Memory Verse agent, in two halves with a person in the middle.
  *
- *   Drive → download → Gemini (once) → verse → local generation → draft
+ *   --fetch            Drive → pages on disk + the teacher's Sheet row
+ *   (Claude looks)     reads the pages, writes what it sees
+ *   --from-extraction  gates → cross-check → ladder → draft
  *
- * One chapter per run, and one class named on the command line, because a
- * chapter's curriculum belongs to a class and `Beginner / Chapter 01` is not
- * the same content as `Primary / Chapter 01`. What comes out is a *draft*: it
- * is written to `06 - Memory Verse` in Drive and to `agents/.drafts/` on disk,
- * it is marked unapproved, and nothing about it touches the deployed app.
- * Publishing is a human act and stays one.
+ * The split exists because of what sits between the halves. Reading a
+ * photograph of a printed page is the one step that needs judgement, and the
+ * thing doing it is a Claude session, which is not a subprocess this script
+ * can call. So the seam between them is a file on disk, and the workflow is
+ * supervised rather than unattended.
  *
- *   node agents/memory-verse/run.mjs --class beginner --chapter 01
- *   node agents/memory-verse/run.mjs --class beginner --chapter 01 --source-dir ./pages
- *   node agents/memory-verse/run.mjs --class beginner --chapter 01 --dry-run
+ * That is a real cost — this cannot run on a cron — and it buys something
+ * worth more at this stage. Nothing is extracted without a reader that can be
+ * asked "are you sure?", and nothing reaches a child that a person has not
+ * looked at. No AI API is called at any point, by either half, and no API key
+ * of any kind is required.
+ *
+ * What comes out is a *draft*: written to `06 - Memory Verse` and to
+ * `agents/.drafts/`, marked unapproved, touching neither `07 - Approved
+ * Assets` nor `content/` nor the deployed app. Publishing is a human act and
+ * stays one.
+ *
+ *   node agents/memory-verse/run.mjs --class beginner --chapter 01 --fetch
+ *   node agents/memory-verse/run.mjs --class beginner --chapter 01 --from-extraction
+ *
+ * `--source-dir <path>` replaces Drive with a folder on this machine, for
+ * working without credentials. `--no-upload` keeps a Drive-sourced draft on
+ * disk only.
  */
 
 const red = (s) => `\x1b[31m${s}\x1b[0m`;
 const amber = (s) => `\x1b[33m${s}\x1b[0m`;
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
 const dim = (s) => `\x1b[2m${s}\x1b[0m`;
+const bold = (s) => `\x1b[1m${s}\x1b[0m`;
 
 function options(argv) {
-  const out = { dryRun: false, noUpload: false };
+  const out = { fetch: false, fromExtraction: false, noUpload: false };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === "--dry-run") out.dryRun = true;
+    if (arg === "--fetch") out.fetch = true;
+    else if (arg === "--from-extraction") out.fromExtraction = true;
     else if (arg === "--no-upload") out.noUpload = true;
     else if (arg === "--all-ready") out.allReady = true;
     else if (arg.startsWith("--")) out[arg.slice(2)] = argv[++i];
@@ -63,7 +77,7 @@ function options(argv) {
   return out;
 }
 
-/** Files a run will actually send, with the unsupported ones named and skipped. */
+/** Files a run will actually use, with the unsupported ones named and skipped. */
 function usable(entries) {
   const sent = [];
   const ignored = [];
@@ -73,6 +87,17 @@ function usable(entries) {
     else ignored.push(entry.name);
   }
   return { sent, ignored };
+}
+
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+
+/* ────────────────────────────────────────────────────────────────────────
+   Step 1 — fetch
+   ──────────────────────────────────────────────────────────────────────── */
+
+/** Where a chapter's pages are downloaded to. Git-ignored, under .state/. */
+function pagesDir(classId, chapter) {
+  return join(config.paths.pages, classId, chapter);
 }
 
 /** The curriculum, from Drive. Read-only — nothing is moved, renamed or removed. */
@@ -103,7 +128,7 @@ async function fromDrive(entry, chapter) {
   return {
     kind: "drive",
     folderId: sourceFolder.id,
-    draftFolderId: draftFolder?.id,
+    draftFolderId: draftFolder?.id ?? null,
     path: `${root.name} / ${classFolderName} / Chapter ${chapter} / ${CHAPTER_SUBFOLDERS.curriculumSource}`,
     entries: (await children(sourceFolder.id)).filter(
       (f) => f.mimeType !== "application/vnd.google-apps.folder",
@@ -129,6 +154,7 @@ function fromDirectory(dir) {
   return {
     kind: "local",
     localPath: dir,
+    draftFolderId: null,
     path: dir,
     entries,
     async bytes(file) {
@@ -137,31 +163,8 @@ function fromDirectory(dir) {
   };
 }
 
-async function main() {
-  const opts = options(process.argv.slice(2));
-
-  if (opts.allReady) {
-    console.log(
-      amber("--all-ready is not implemented yet.\n") +
-        "  One chapter at a time until the ladder has been reviewed.",
-    );
-    process.exit(2);
-  }
-
-  const entry = classById(opts.class ?? "");
-  if (!entry) {
-    console.log(
-      red(`--class is required, and must be one of the seven.\n`) +
-        `  ${["nursery", "beginner", "primary", "junior", "intermediate", "senior", "young-adult"].join(", ")}`,
-    );
-    process.exit(2);
-  }
-
-  const chapter = chapterNumber(opts.chapter ?? "");
-  const where = `${entry.display} / Chapter ${chapter}`;
-  console.log(`\nMemory Verse agent — ${where}\n`);
-
-  /* ── 1. the curriculum ─────────────────────────────────────────────── */
+async function doFetch(entry, chapter, opts) {
+  /* ── the pages ─────────────────────────────────────────────────────── */
 
   let source;
   try {
@@ -170,7 +173,7 @@ async function main() {
       : await fromDrive(entry, chapter);
   } catch (error) {
     if (error instanceof DriveAuthError) {
-      stop("drive-auth", `${error.message}`, { classId: entry.id, chapter });
+      stop("drive-auth", error.message, { classId: entry.id, chapter });
     }
     stop("drive", error.message, { classId: entry.id, chapter });
     return;
@@ -183,126 +186,223 @@ async function main() {
     console.log(amber(`  ignored (unsupported): ${name}`));
   }
 
+  /*
+    An empty source folder is not a failure of this tool.
+
+    It is the ordinary state of every chapter until a teacher gets to it, and
+    it will be the state of most of them for months. So it stops cleanly, says
+    whose move it is, and writes a resumable run record rather than an error.
+  */
   if (sent.length === 0) {
     stop(
       "no-source",
-      `There is no curriculum to read in ${source.path}.\n` +
-        `  Supported: ${[...new Set([...mimeTypes()])].join(", ")}\n` +
-        "  Ask the teacher to upload the curriculum pages, then run this again.",
+      `There is no curriculum to read in ${source.path} yet.\n` +
+        `  Supported: ${supportedExtensions().join(", ")}\n` +
+        "  This is the expected state until a teacher uploads the pages.\n" +
+        "  Run this again once they have.",
       { classId: entry.id, chapter },
     );
     return;
   }
 
-  console.log(dim(`  ${sent.length} page(s): ${sent.map((f) => f.name).join(", ")}`));
+  const dir = pagesDir(entry.id, chapter);
+  mkdirSync(dir, { recursive: true });
 
-  /* ── 2. the verse: cache first, Gemini only if we must ──────────────── */
+  const downloaded = [];
+  for (const file of sent) {
+    let bytes;
+    try {
+      bytes = await source.bytes(file);
+    } catch (error) {
+      stop("download", `${file.name}: ${error.message}`, { classId: entry.id, chapter });
+      return;
+    }
+    const at = join(dir, file.name);
+    writeFileSync(at, bytes);
+    downloaded.push({ ...file, path: at, sha256: sha256(bytes), size: bytes.length });
+    console.log(dim(`  ${file.name} → ${at} (${(bytes.length / 1024).toFixed(0)} KB)`));
+  }
 
-  const print = fingerprint(sent);
-  let extraction = store.readExtraction(entry.id, chapter, print);
-  let cached = Boolean(extraction);
+  /* ── the teacher's own entry, if the Sheet has one ──────────────────── */
 
-  if (cached) {
-    console.log(green(`  extraction: cached (no Gemini request)`));
-  } else if (opts.dryRun) {
-    stop(
-      "dry-run",
-      "Nothing is cached for these pages and --dry-run will not call Gemini.",
-      { classId: entry.id, chapter },
-    );
-    return;
+  let teacher = { available: false, reason: "not read" };
+  if (opts["source-dir"] && !config.sheetId) {
+    teacher.reason = "running from a local folder with no Sheet configured";
   } else {
-    /*
-      Asked for before a byte is downloaded.
-
-      The provider would raise the same thing a moment later, but by then the
-      pages have been pulled out of Drive for a request that was never going
-      to be made. Checking here costs nothing and means a machine that has
-      not been set up yet is told so immediately.
-    */
-    if (!config.gemini.key) {
-      stop(
-        "config",
-        "GEMINI_API_KEY is not set, and nothing is cached for these pages.\n" +
-          "  Put it in .env.local (git-ignored):\n" +
-          "    GEMINI_API_KEY=...\n" +
-          "  Get a free-tier key at https://aistudio.google.com/apikey — create it\n" +
-          "  in a project with no billing account attached. See agents/README.md.",
-        { classId: entry.id, chapter },
-      );
-      return;
-    }
-
-    let files;
     try {
-      files = await Promise.all(
-        sent.map(async (file) => ({ ...file, bytes: await source.bytes(file) })),
-      );
+      teacher = await teacherVerse(entry, chapter);
     } catch (error) {
-      stop("download", error.message, { classId: entry.id, chapter });
-      return;
-    }
-
-    try {
-      console.log(dim(`  asking ${GeminiProvider.model} to read the pages…`));
-      const read = await extractVerse(files);
-      extraction = { ...read, fingerprint: print };
-      store.writeExtraction(entry.id, chapter, extraction);
-    } catch (error) {
-      if (error instanceof QuotaExhausted) {
-        stop(
-          "quota",
-          `${error.message}\n` +
-            (error.retryAfterSeconds
-              ? `  Google asked for ${Math.ceil(error.retryAfterSeconds)}s.\n`
-              : "") +
-            "  Nothing has been lost. Run the same command again when the free\n" +
-            "  tier resets; the pages will be read then.",
-          { classId: entry.id, chapter },
-        );
-        return;
-      }
-      if (error instanceof ConfigError) {
-        stop("config", error.message, { classId: entry.id, chapter });
-        return;
-      }
-      if (error instanceof ProviderError) {
-        stop("provider", error.message, { classId: entry.id, chapter });
-        return;
-      }
-      throw error;
+      teacher = { available: false, reason: `the Sheet could not be read: ${error.message}` };
     }
   }
 
-  /* ── 3. is it good enough to use? ───────────────────────────────────── */
+  if (teacher.available) {
+    console.log(green(`  teacher's Sheet entry found in tab "${teacher.tab}"`));
+    console.log(dim(`    verse:     ${teacher.text || "(blank)"}`));
+    console.log(dim(`    reference: ${teacher.reference || "(blank)"}`));
+  } else {
+    console.log(amber(`  no teacher entry: ${teacher.reason}`));
+  }
 
-  const verdict = judge(extraction.result);
+  /* ── the request Claude fills in ────────────────────────────────────── */
+
+  const request = {
+    kind: "memory-verse-extraction-request",
+    version: 1,
+    class: { id: entry.id, display: entry.display },
+    chapter,
+    source: {
+      kind: source.kind,
+      driveFolderId: source.folderId ?? null,
+      driveFolderPath: source.kind === "drive" ? source.path : null,
+      localPath: source.kind === "local" ? source.path : null,
+      draftFolderId: source.draftFolderId ?? null,
+      pagesDir: dir,
+      fingerprint: fingerprint(downloaded),
+      files: downloaded.map((f) => ({
+        name: f.name,
+        path: f.path,
+        id: f.id ?? null,
+        mimeType: f.mimeType,
+        size: f.size,
+        md5Checksum: f.md5Checksum ?? null,
+        sha256: f.sha256,
+      })),
+    },
+    teacher,
+    fetchedAt: new Date().toISOString(),
+    instructions: INSTRUCTIONS,
+    /*
+      Empty, and left empty by this command. Filling these in is the
+      supervised step: a Claude session opens the files listed above, looks at
+      them, and writes down what it can actually see on the page.
+    */
+    extraction: {
+      verseText: "",
+      reference: "",
+      sourceFile: "",
+      confidence: "",
+      ambiguities: [],
+    },
+  };
+
+  const requestPath = store.writeStateFile(
+    "extractions",
+    `${entry.id}-chapter-${chapter}.request.json`,
+    `${JSON.stringify(request, null, 2)}\n`,
+  );
+
+  store.writeRun(entry.id, chapter, {
+    stage: "fetched",
+    resumable: true,
+    pages: downloaded.length,
+    request: requestPath,
+  });
+
+  console.log(`\n${green(`${downloaded.length} page(s) ready to read.`)}`);
+  console.log(dim(`  request: ${requestPath}`));
+  console.log(`\n${bold("Next — the supervised step:")}`);
+  console.log("  1. Open each page listed in the request and look at it.");
+  console.log("  2. Write what you see into the file's `extraction` block:");
+  console.log(dim("       verseText, reference, sourceFile, confidence, ambiguities"));
+  console.log("  3. Then run:");
+  console.log(
+    dim(
+      `       npm run agent:memory-verse -- --class ${entry.id} --chapter ${chapter} --from-extraction`,
+    ),
+  );
+  console.log(dim("\n  No AI API was called. Nothing in Drive was changed.\n"));
+}
+
+/** The rules the supervised reader works under, carried in the request itself. */
+const INSTRUCTIONS = [
+  "Look at every page listed in source.files before answering.",
+  "Preserve the exact wording visible on the page, character for character.",
+  "Preserve the reference exactly as printed, including any honorific such as 'St'.",
+  "Do NOT correct, complete, modernise or re-punctuate the verse using Bible knowledge.",
+  "Do NOT substitute a translation you recognise as more standard.",
+  "Do NOT infer a word that is obscured — say it is obscured.",
+  "Do NOT choose between multiple candidate verses — list them in ambiguities and stop.",
+  "sourceFile must name the page the verse was actually read from.",
+  "confidence is 'high' only when the verse and reference are plainly legible.",
+  "Anything at all uncertain goes in ambiguities. A non-empty ambiguities list stops the run.",
+];
+
+/* ────────────────────────────────────────────────────────────────────────
+   Step 3 — generate
+   ──────────────────────────────────────────────────────────────────────── */
+
+async function doGenerate(entry, chapter, opts) {
+  const where = `${entry.display} / Chapter ${chapter}`;
+
+  const requestPath = store.stateFile(
+    "extractions",
+    `${entry.id}-chapter-${chapter}.request.json`,
+  );
+  const request = store.readJsonAt(requestPath);
+
+  if (!request) {
+    stop(
+      "no-request",
+      `Nothing has been fetched for ${where}.\n` +
+        `  Run --fetch first:\n` +
+        `    npm run agent:memory-verse -- --class ${entry.id} --chapter ${chapter} --fetch`,
+      { classId: entry.id, chapter },
+    );
+    return;
+  }
+
+  const extraction = request.extraction ?? {};
+
+  /* ── 1. is the file filled in at all? ───────────────────────────────── */
+
+  const complete = readable(extraction);
+  if (!complete.ok) {
+    stop("extraction", `${complete.reason}\n\n  ${requestPath}`, {
+      classId: entry.id,
+      chapter,
+    });
+    return;
+  }
+
+  console.log(dim(`  read from: ${extraction.sourceFile}`));
+  console.log(dim(`  confidence: ${extraction.confidence}`));
+
+  /* ── 2. the existing gates, on the supervised reading ───────────────── */
+
+  const claim = asClaim(extraction);
+  const verdict = judge(claim);
 
   if (!verdict.ok) {
-    const files = extraction.result?.sourceFiles?.length
-      ? extraction.result.sourceFiles
-      : sent.map((f) => f.name);
-
-    const note =
-      `HUMAN REVIEW REQUIRED\n\n` +
-      `Chapter: ${where}\n\n` +
-      `Reason:\n${verdict.reason}\n\n` +
-      `Source:\n${files.join("\n")}\n\n` +
-      `What the extractor returned:\n${JSON.stringify(extraction.result, null, 2)}\n`;
-
-    const path = store.writeDraft(entry.id, chapter, "REVIEW-REQUIRED.txt", note);
-
-    console.log(`\n${amber("HUMAN REVIEW REQUIRED")}\n`);
-    console.log(`  ${verdict.reason}`);
-    console.log(dim(`\n  written to ${path}`));
-    console.log(dim("  No practice was generated. Nothing was guessed.\n"));
-
-    store.writeRun(entry.id, chapter, {
-      stage: "review",
-      resumable: true,
+    review(entry, chapter, where, {
       reason: verdict.reason,
+      request,
+      extraction,
+      crossCheck: null,
     });
-    process.exit(3);
+    return;
+  }
+
+  /* ── 3. the second opinion ──────────────────────────────────────────── */
+
+  const agreement = crossCheck(verdict.verse, request.teacher);
+
+  if (agreement.status === "disagrees") {
+    review(entry, chapter, where, {
+      reason:
+        "the curriculum page and the teacher's Sheet entry do not agree.\n" +
+        "  This is never resolved automatically — a person decides which is right.",
+      request,
+      extraction,
+      crossCheck: agreement,
+    });
+    return;
+  }
+
+  if (agreement.status === "agrees") {
+    console.log(green("  the teacher's Sheet entry agrees with the page"));
+  } else {
+    console.log(amber(`  no second opinion: ${agreement.reason}`));
   }
 
   console.log(green(`  verse:     “${verdict.verse.text}”`));
@@ -335,12 +435,23 @@ async function main() {
       classId: entry.id,
       className: entry.display,
       chapter,
-      source,
-      files: sent,
-      model: extraction.model,
-      confidence: extraction.result.confidence,
-      extractedAt: extraction.at,
-      cached,
+      source: { ...request.source, kind: request.source.kind },
+      files: request.source.files,
+      extraction: {
+        text: verdict.verse.text,
+        reference: verdict.verse.reference,
+        sourceFile: extraction.sourceFile,
+        confidence: extraction.confidence,
+        ambiguities: extraction.ambiguities ?? [],
+        at: request.fetchedAt,
+      },
+      teacher: request.teacher,
+      crossCheck: agreement,
+      validation: {
+        passed: true,
+        gates: ["readable", "judge", "crossCheck"],
+        reason: null,
+      },
       review: { status: "draft", required: false },
     }),
   };
@@ -355,13 +466,13 @@ async function main() {
 
   /* ── 5. the draft goes to Drive, and only to 06 - Memory Verse ──────── */
 
-  if (source.kind === "drive" && !opts.noUpload && !opts.dryRun) {
-    if (!source.draftFolderId) {
+  if (request.source.kind === "drive" && !opts.noUpload) {
+    if (!request.source.draftFolderId) {
       console.log(amber(`    could not find "${CHAPTER_SUBFOLDERS.memoryVerse}" — not uploaded`));
     } else {
       try {
         const put = await upload({
-          parentId: source.draftFolderId,
+          parentId: request.source.draftFolderId,
           name,
           mimeType: "application/json",
           body,
@@ -380,30 +491,153 @@ async function main() {
   console.log(dim(`  class's practice into content/<class>/<slug>.story.json by hand.\n`));
 }
 
-function mimeTypes() {
-  return [".jpg", ".jpeg", ".png", ".webp", ".pdf"];
+/**
+ * Stop and hand it to a person, with both readings in front of them.
+ *
+ * The one thing this must never do is pick. A conflict between the page and
+ * the teacher is information — it usually means the book and the person read
+ * two different things, and which of those the children should learn is an
+ * editorial decision that belongs to whoever owns the curriculum. Resolving it
+ * silently would destroy the very signal that the two-source check exists to
+ * produce.
+ */
+function review(entry, chapter, where, { reason, request, extraction, crossCheck: agreement }) {
+  const lines = [
+    "HUMAN REVIEW REQUIRED",
+    "",
+    `Chapter: ${where}`,
+    `Fetched: ${request.fetchedAt}`,
+    "",
+    "Reason:",
+    reason,
+    "",
+  ];
+
+  if (agreement?.status === "disagrees") {
+    lines.push("The two sources disagree:", "");
+    for (const d of agreement.differences) {
+      lines.push(
+        `  ${d.field}`,
+        `    curriculum page : ${d.page}`,
+        `    teacher's Sheet : ${d.teacher}`,
+        "",
+      );
+    }
+    lines.push(
+      "Neither has been chosen. Decide which is right, correct the other at",
+      "source, and run --from-extraction again.",
+      "",
+    );
+  }
+
+  lines.push(
+    "What was read from the page:",
+    JSON.stringify(extraction, null, 2),
+    "",
+    "What the teacher's Sheet says:",
+    JSON.stringify(request.teacher, null, 2),
+    "",
+    "Pages:",
+    ...request.source.files.map((f) => `  ${f.name}  (sha256 ${f.sha256?.slice(0, 16)}…)`),
+    "",
+  );
+
+  const path = store.writeDraft(entry.id, chapter, "REVIEW-REQUIRED.txt", `${lines.join("\n")}\n`);
+
+  console.log(`\n${amber("HUMAN REVIEW REQUIRED")}\n`);
+  console.log(`  ${reason}`);
+  if (agreement?.status === "disagrees") {
+    for (const d of agreement.differences) {
+      console.log(`\n  ${d.field}`);
+      console.log(dim(`    curriculum page : ${d.page}`));
+      console.log(dim(`    teacher's Sheet : ${d.teacher}`));
+    }
+  }
+  console.log(dim(`\n  written to ${path}`));
+  console.log(dim("  No practice was generated. Nothing was guessed.\n"));
+
+  store.writeRun(entry.id, chapter, { stage: "review", resumable: true, reason });
+  process.exit(3);
+}
+
+/* ────────────────────────────────────────────────────────────────────── */
+
+async function main() {
+  const opts = options(process.argv.slice(2));
+
+  if (opts.allReady) {
+    console.log(
+      amber("--all-ready is not implemented yet.\n") +
+        "  One chapter at a time until the ladder has been reviewed.",
+    );
+    process.exit(2);
+  }
+
+  const entry = classById(opts.class ?? "");
+  if (!entry) {
+    console.log(
+      red(`--class is required, and must be one of the seven.\n`) +
+        `  ${["nursery", "beginner", "primary", "junior", "intermediate", "senior", "young-adult"].join(", ")}`,
+    );
+    process.exit(2);
+  }
+
+  const chapter = chapterNumber(opts.chapter ?? "");
+
+  if (opts.fetch === opts.fromExtraction) {
+    console.log(
+      red("Say which half to run: --fetch or --from-extraction.\n") +
+        "\n  1. download the pages and the teacher's Sheet row:\n" +
+        dim(`       --class ${entry.id} --chapter ${chapter} --fetch\n`) +
+        "\n  2. look at the pages, fill in the extraction block, then:\n" +
+        dim(`       --class ${entry.id} --chapter ${chapter} --from-extraction\n`),
+    );
+    process.exit(2);
+  }
+
+  console.log(`\nMemory Verse agent — ${entry.display} / Chapter ${chapter}\n`);
+
+  if (opts.fetch) await doFetch(entry, chapter, opts);
+  else await doGenerate(entry, chapter, opts);
 }
 
 function readme(draft, where) {
+  const p = draft.provenance;
+  const agreed = p.crossCheck.status;
+
   return `# Memory Verse draft — ${where}
 
 **This is a draft. It has not been approved and nothing has been published.**
 
-Verse, as extracted from the curriculum:
+Verse, as read from the curriculum:
 
 > ${draft.verse.text}
 >
 > — ${draft.verse.reference}
 
-Read by ${draft.provenance.extraction.model} on ${draft.provenance.extraction.at}
-from ${draft.provenance.source.files.length} page(s) in
-\`${draft.provenance.source.driveFolderPath ?? draft.provenance.source.localPath}\`.
+Read by **${p.extraction.extractedBy}** from \`${p.extraction.sourceFile}\`
+on ${p.extraction.at}, confidence **${p.extraction.confidence}**,
+out of ${p.source.files.length} page(s) in
+\`${p.source.driveFolderPath ?? p.source.localPath}\`.
+
+## Second opinion
+
+${
+  agreed === "agrees"
+    ? `The teacher's own entry in the Sheet (tab "${p.teacher.tab}") says the same
+thing. Two independent sources agree on this verse.`
+    : `**None.** ${p.crossCheck.reason}
+
+This verse was read once, by one reader, and confirmed by nobody. That is a
+weaker guarantee than the workflow is designed to give — check it against the
+page yourself with more than usual care.`
+}
 
 ## Before approving
 
-1. Check the verse word for word against the curriculum page. The extractor is
+1. Check the verse word for word against the curriculum page. The reader is
    told never to paraphrase, but a photograph of printed text is still a
-   photograph being read by a machine.
+   photograph being read.
 2. Check the reference, including the honorific ("St Luke" vs "Luke").
 3. Fill in \`verse.translation\` — the agent does not guess it.
 4. Play each class's practice and judge the difficulty, not just the output.
@@ -412,8 +646,9 @@ from ${draft.provenance.source.files.length} page(s) in
 
 Copy the verse and the class's \`practice\` array into the matching
 \`content/<class>/<slug>.story.json\`. The build validates that any
-arrange-words drill spells the verse exactly, so a mistake there fails the
-build rather than reaching a child.
+arrange-words drill spells the verse exactly, and that a written-reference
+drill matches the verse's own reference, so a mistake there fails the build
+rather than reaching a child.
 `;
 }
 

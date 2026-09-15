@@ -22,7 +22,7 @@ const FOLDER = "application/vnd.google-apps.folder";
 
 let cachedToken = null;
 
-async function accessToken() {
+export async function accessToken() {
   if (cachedToken && cachedToken.until > Date.now() + 30_000) {
     return cachedToken.value;
   }

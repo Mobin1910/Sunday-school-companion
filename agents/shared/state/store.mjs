@@ -9,12 +9,15 @@ import { config } from "../config.mjs";
  *
  * Two things are stored, and they are stored for different reasons.
  *
- * **The extraction cache** exists because Gemini costs quota and the free tier
- * is small. A successful read of a chapter's curriculum is written down and
- * re-used, so running the agent twice on an unchanged chapter costs one
- * request, not two. The key includes a fingerprint of the source files, so
- * *changed* curriculum is read again — the cache can go stale in only one
- * direction, and it is the safe one.
+ * **The extraction request** is the seam between the agent's two halves.
+ * `--fetch` writes it with empty fields; a Claude session looking at the
+ * downloaded pages fills them in; `--from-extraction` reads it back. It is a
+ * file rather than a function call because the reader is a person-shaped
+ * thing and not a subprocess.
+ *
+ * It carries a fingerprint of the source files, so that a chapter whose pages
+ * changed after they were read can be told from one whose pages did not — the
+ * staleness can only go in the safe direction.
  *
  * **The run record** exists because things fail in the middle. A download that
  * dies, a quota wall, an extraction that needs a human — each leaves a note
@@ -23,8 +26,8 @@ import { config } from "../config.mjs";
  * resets" a real instruction rather than a shrug.
  *
  * Everything lives under `agents/.state/`, which is git-ignored: it holds
- * extracted curriculum text, which is a teacher's material and does not belong
- * in the repository or in the deployed app.
+ * downloaded curriculum pages and the text read off them, which are a
+ * teacher's material and belong in neither the repository nor the app.
  */
 
 function file(...parts) {
@@ -62,6 +65,24 @@ export function fingerprint(files) {
 const slug = (classId, chapter) => `${classId}-chapter-${chapter}`;
 
 export const store = {
+  /** A path under `.state/`, without writing anything. */
+  stateFile(...parts) {
+    return file(...parts);
+  },
+
+  /** Any JSON under `.state/`, or undefined if it is absent or unparseable. */
+  readJsonAt(path) {
+    return readJson(path);
+  },
+
+  /** Write a file under `.state/`, creating the directories it needs. */
+  writeStateFile(dir, name, body) {
+    const path = file(dir, name);
+    mkdirSync(dirname(path), { recursive: true });
+    writeFileSync(path, body, "utf8");
+    return path;
+  },
+
   readExtraction(classId, chapter, print) {
     const found = readJson(file("extractions", `${slug(classId, chapter)}.json`));
     if (!found) return undefined;
