@@ -91,6 +91,7 @@ export default function MemoryVersePreviewPage() {
       from={from}
       caveats={draft?.caveats ?? []}
       reviewRequired={draft?.reviewRequired ?? false}
+      ownClass={draft?.classId ?? chapter?.classId}
     />
   );
 }

@@ -21,6 +21,8 @@ import { join } from "node:path";
 export type DraftVerse = {
   text: string;
   reference: string;
+  /** The class whose curriculum this verse came out of. */
+  classId?: string;
   /** Where it came from, for the heading. */
   from: string;
   /** Why a reviewer should look harder than usual, if there is a reason. */
@@ -77,7 +79,7 @@ export function newestDraft(): DraftVerse | undefined {
     const draft = parsed as {
       verse?: { text?: unknown; reference?: unknown };
       provenance?: {
-        class?: { display?: unknown };
+        class?: { id?: unknown; display?: unknown };
         chapter?: unknown;
         caveats?: unknown;
         review?: { required?: unknown };
@@ -92,9 +94,12 @@ export function newestDraft(): DraftVerse | undefined {
     const display = draft.provenance?.class?.display;
     const chapter = draft.provenance?.chapter;
 
+    const id = draft.provenance?.class?.id;
+
     return {
       text,
       reference,
+      classId: typeof id === "string" ? id : undefined,
       from:
         typeof display === "string" && typeof chapter === "string"
           ? `${display} / Chapter ${chapter} (agent draft)`

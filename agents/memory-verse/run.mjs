@@ -24,7 +24,7 @@ import { mimeFor, supportedExtensions } from "../shared/files.mjs";
 import { provenanceFor } from "../shared/provenance/record.mjs";
 import { fingerprint, store } from "../shared/state/store.mjs";
 import { asClaim, crossCheck, judge, readable } from "./gates.mjs";
-import { ladderFor } from "./ladder.mjs";
+import { practiceFor } from "./ladder.mjs";
 
 /**
  * The Memory Verse agent, in two halves with a person in the middle.
@@ -414,13 +414,30 @@ async function doGenerate(entry, chapter, opts) {
   console.log(green(`  verse:     “${verdict.verse.text}”`));
   console.log(green(`  reference: ${verdict.verse.reference}`));
 
-  /* ── 4. the seven variants, generated here and not asked for ────────── */
+  /* ── 4. this class's practice, generated here and not asked for ─────── */
 
-  const { practice, skipped } = ladderFor(verdict.verse);
+  /*
+    One class, because a chapter's curriculum belongs to one class. The verse
+    on these pages came out of the Beginner book; what Primary practises comes
+    out of the Primary book and is a different lesson entirely. Generating all
+    seven rungs here would file this verse under six classes it is not from.
+  */
+  const made = practiceFor(entry.id, verdict.verse);
 
-  for (const [classId, why] of Object.entries(skipped)) {
-    console.log(amber(`  ${classId}: not generated — ${why}`));
+  if (made.skipped) {
+    review(entry, chapter, where, {
+      reason: `no practice could be generated for ${entry.display}: ${made.skipped}`,
+      request,
+      extraction,
+      crossCheck: agreement,
+    });
+    return;
   }
+
+  const practice = made.steps;
+  console.log(
+    dim(`  practice: ${practice.map((s) => s.type).join(" → ")} (${entry.display} only)`),
+  );
 
   /*
     Everything true about how this draft came to exist that a reviewer would
@@ -448,8 +465,12 @@ async function doGenerate(entry, chapter, opts) {
       */
       translation: "PLACEHOLDER — confirm the translation before approving",
     },
+    /*
+      The steps, in order, shaped exactly as `verse.practice` in a chapter
+      file — so reviewing this draft ends in a copy and paste rather than a
+      translation.
+    */
     practice,
-    notGenerated: skipped,
     provenance: provenanceFor({
       classId: entry.id,
       className: entry.display,
@@ -639,6 +660,9 @@ function readme(draft, where) {
 
 **This is a draft. It has not been approved and nothing has been published.**
 
+Practice for **${p.class.display}** only — Chapter ${p.chapter}'s curriculum
+belongs to this class and speaks for no other.
+
 Verse, as read from the curriculum:
 
 > ${draft.verse.text}
@@ -681,8 +705,11 @@ page yourself with more than usual care.`
 
 ## Then
 
-Copy the verse and the class's \`practice\` array into the matching
-\`content/<class>/<slug>.story.json\`. The build validates that any
+Copy the verse and the \`practice\` array straight into
+\`content/${p.class.id}/<slug>.story.json\` as \`verse.practice\`. It is already
+in the right shape and it is for this class only — ${p.class.display} Chapter
+${p.chapter}'s curriculum says nothing about what any other class practises.
+The build validates that any
 arrange-words drill spells the verse exactly, and that a written-reference
 drill matches the verse's own reference, so a mistake there fails the build
 rather than reaching a child.

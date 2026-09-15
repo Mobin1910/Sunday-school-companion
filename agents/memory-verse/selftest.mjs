@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { asClaim, crossCheck, judge, readable, referenceSpelling, spelling } from "./gates.mjs";
-import { ladderFor } from "./ladder.mjs";
+import { ladderFor, practiceFor } from "./ladder.mjs";
 import { phrases, tidy, words } from "./tokenize.mjs";
 
 /**
@@ -232,6 +232,46 @@ const gate = [
 ];
 for (const [what, input, expected] of gate) {
   check(what, judge(input).ok === expected);
+}
+
+console.log("One class at a time");
+
+/*
+  The mistake this guards against: a Beginner chapter's verse producing
+  practice for all seven classes. A chapter's curriculum belongs to one class,
+  and the other six have their own books and their own chapter 3.
+*/
+{
+  const verse = {
+    text: "For the Son of Man came to seek and to save the lost.",
+    reference: "St. Luke 19:10",
+  };
+
+  const one = practiceFor("beginner", verse);
+  check("a class asks for its own practice and gets steps", Array.isArray(one.steps));
+  check("and nothing is keyed by class", one.steps !== undefined && one.steps[0].type !== undefined);
+
+  // Each class gets a different shape of question from the same verse.
+  const shapes = ["nursery", "beginner", "primary", "junior", "intermediate", "senior", "young-adult"]
+    .map((id) => practiceFor(id, verse).steps?.map((s) => s.type).join("+"));
+  check("every class builds something", shapes.every(Boolean));
+  check("the rungs are not all the same shape", new Set(shapes).size > 1);
+
+  check(
+    "an unknown class builds nothing rather than guessing",
+    practiceFor("reception", verse).skipped !== undefined,
+  );
+
+  // ladderFor is the comparison tool and still covers all seven.
+  const all = ladderFor(verse);
+  check("ladderFor still spans the classes", Object.keys(all.practice).length === 7);
+  check(
+    "and agrees with practiceFor on each one",
+    Object.entries(all.practice).every(
+      ([id, steps]) =>
+        JSON.stringify(steps) === JSON.stringify(practiceFor(id, verse).steps),
+    ),
+  );
 }
 
 console.log("Supervised extraction");

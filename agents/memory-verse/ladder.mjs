@@ -431,37 +431,80 @@ const BUILDERS = {
 };
 
 /**
- * Every class's practice for one verse.
+ * The pieces a drill is made of have to add back up to the verse.
+ *
+ * The promise `checks.ts` enforces at build time, checked here as well so a
+ * bad generator is caught in the agent rather than three steps later in the
+ * app, where the error names a chapter file nobody edited.
+ */
+function mustSpellTheVerse(classId, steps, text) {
+  for (const step of steps) {
+    if (step.type === "arrange-words" && step.words.join(" ") !== text) {
+      throw new Error(
+        `${classId}: the pieces do not spell the verse\n  verse:  ${text}\n  pieces: ${step.words.join(" ")}`,
+      );
+    }
+  }
+}
+
+/**
+ * One class's practice for one verse. **This is what the agent uses.**
+ *
+ * A chapter's curriculum belongs to a class. `Beginner / Chapter 03` is The
+ * Lost Coin out of the Beginners book; `Primary / Chapter 03` is a different
+ * lesson out of a different book, with its own verse. So a verse read off the
+ * Beginner pages has nothing to say about what Primary should practise, and
+ * generating the other six rungs from it would attach this verse to six
+ * classes whose curriculum it is not from.
+ *
+ * The other generators are not wasted — each is used when *its own* class's
+ * curriculum is processed. They exist together so that the difficulty
+ * progression can be compared across them (see `ladderFor`), not so that one
+ * chapter can be spread across all seven.
+ *
+ * @param {string} classId
+ * @param {{ text: string, reference: string }} verse
+ * @returns {{ steps?: object[], skipped?: string }}
+ */
+export function practiceFor(classId, verse) {
+  const build = BUILDERS[classId];
+  if (!build) return { skipped: `no generator for the class "${classId}"` };
+
+  const text = tidy(verse.text);
+  const reference = tidy(verse.reference);
+
+  const made = build({ text, reference });
+  if (!made) {
+    return {
+      skipped: `the verse is too short to ask this class honestly (${words(text).length} words)`,
+    };
+  }
+
+  const steps = Array.isArray(made) ? made : [made];
+  mustSpellTheVerse(classId, steps, text);
+  return { steps };
+}
+
+/**
+ * Every class's practice for one verse — for *comparing* the rungs.
+ *
+ * Not what a chapter's draft is built from. This exists so that the
+ * difficulty progression can be judged end to end on a single verse, which is
+ * the thing about the ladder that is easy to get wrong and impossible to see
+ * one rung at a time. Running a real chapter through it would produce content
+ * for six classes that chapter does not belong to.
  *
  * @param {{ text: string, reference: string }} verse
  * @returns {{ practice: Record<string, object[]>, skipped: Record<string,string> }}
  */
 export function ladderFor(verse) {
-  const text = tidy(verse.text);
-  const reference = tidy(verse.reference);
-
   const practice = {};
   const skipped = {};
 
-  for (const [classId, build] of Object.entries(BUILDERS)) {
-    const made = build({ text, reference });
-    if (!made) {
-      skipped[classId] =
-        `the verse is too short to ask this class honestly (${words(text).length} words)`;
-      continue;
-    }
-    const steps = Array.isArray(made) ? made : [made];
-
-    // The promise checks.ts enforces, checked here too so a bad generator is
-    // caught in the agent rather than at build time in the app.
-    for (const step of steps) {
-      if (step.type === "arrange-words" && step.words.join(" ") !== text) {
-        throw new Error(
-          `${classId}: the pieces do not spell the verse\n  verse:  ${text}\n  pieces: ${step.words.join(" ")}`,
-        );
-      }
-    }
-    practice[classId] = steps;
+  for (const classId of Object.keys(BUILDERS)) {
+    const made = practiceFor(classId, verse);
+    if (made.skipped) skipped[classId] = made.skipped;
+    else practice[classId] = made.steps;
   }
 
   return { practice, skipped };
