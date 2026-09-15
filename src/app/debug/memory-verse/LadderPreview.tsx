@@ -30,10 +30,15 @@ export default function LadderPreview({
   rungs,
   verse,
   from,
+  caveats = [],
+  reviewRequired = false,
 }: {
   rungs: Rung[];
   verse: { text: string; reference: string };
   from: string;
+  /** Why this particular verse deserves a harder look, if there is a reason. */
+  caveats?: string[];
+  reviewRequired?: boolean;
 }) {
   const [at, setAt] = useState(0);
   const [step, setStep] = useState(0);
@@ -69,6 +74,27 @@ export default function LadderPreview({
           {verse.text}
         </p>
         <p className="text-sm text-ink-soft">{verse.reference}</p>
+
+        {/*
+          Shown above the ladder rather than below it, because somebody who
+          scrolls straight to the rungs and starts judging difficulty should
+          already know if the verse itself is unconfirmed. A good ladder over
+          the wrong words is still the wrong words.
+        */}
+        {caveats.length > 0 ? (
+          <div className="mt-2 flex flex-col gap-2 rounded-card border border-edge bg-ground-raised p-4">
+            <p className="text-sm font-medium text-ink">
+              {reviewRequired
+                ? "This draft needs review before it is used"
+                : "Worth knowing about this draft"}
+            </p>
+            <ul className="flex list-disc flex-col gap-1 pl-5 text-sm leading-relaxed text-ink-soft">
+              {caveats.map((caveat) => (
+                <li key={caveat}>{caveat}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </header>
 
       {/* Which rung. Ordered youngest to oldest, which is the whole claim. */}

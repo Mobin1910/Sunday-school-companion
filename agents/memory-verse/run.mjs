@@ -271,6 +271,12 @@ async function doFetch(entry, chapter, opts) {
     },
     teacher,
     fetchedAt: new Date().toISOString(),
+    /*
+      Circumstances worth recording that are not doubts about the verse. Empty
+      from a clean fetch; a page that would not download, or a reading taken
+      some way other than looking at the files, belongs here.
+    */
+    caveats: [],
     instructions: INSTRUCTIONS,
     /*
       Empty, and left empty by this command. Filling these in is the
@@ -416,6 +422,19 @@ async function doGenerate(entry, chapter, opts) {
     console.log(amber(`  ${classId}: not generated — ${why}`));
   }
 
+  /*
+    Everything true about how this draft came to exist that a reviewer would
+    want to know and the verse itself cannot tell them.
+  */
+  const caveats = [...(request.caveats ?? [])];
+  if (agreement.status !== "agrees") {
+    caveats.push(`No second opinion: ${agreement.reason}`);
+  }
+
+  for (const caveat of caveats) {
+    console.log(amber(`  caveat: ${caveat}`));
+  }
+
   const draft = {
     kind: "memory-verse-draft",
     version: 1,
@@ -443,6 +462,8 @@ async function doGenerate(entry, chapter, opts) {
         sourceFile: extraction.sourceFile,
         confidence: extraction.confidence,
         ambiguities: extraction.ambiguities ?? [],
+        extractedBy: extraction.extractedBy,
+        method: extraction.method,
         at: request.fetchedAt,
       },
       teacher: request.teacher,
@@ -452,7 +473,16 @@ async function doGenerate(entry, chapter, opts) {
         gates: ["readable", "judge", "crossCheck"],
         reason: null,
       },
-      review: { status: "draft", required: false },
+      caveats,
+      /*
+        A caveat does not stop the run, but it does mean nobody may skim this
+        one. `required` is the difference between a draft a reviewer may glance
+        at and one they have to sit down with, and it is set by the
+        circumstances rather than by whoever is in a hurry.
+      */
+      review: caveats.length
+        ? { status: "draft", required: true, reason: caveats.join("; ") }
+        : { status: "draft", required: false },
     }),
   };
 
@@ -619,6 +649,13 @@ Read by **${p.extraction.extractedBy}** from \`${p.extraction.sourceFile}\`
 on ${p.extraction.at}, confidence **${p.extraction.confidence}**,
 out of ${p.source.files.length} page(s) in
 \`${p.source.driveFolderPath ?? p.source.localPath}\`.
+
+Method: ${p.extraction.method}
+${
+  p.caveats.length
+    ? `\n## Read this before using it\n\n${p.caveats.map((c) => `- ${c}`).join("\n")}\n`
+    : ""
+}
 
 ## Second opinion
 

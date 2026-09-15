@@ -28,6 +28,7 @@ export function provenanceFor({
   teacher,
   crossCheck,
   validation,
+  caveats,
   review,
 }) {
   return {
@@ -35,8 +36,16 @@ export function provenanceFor({
     chapter,
     source: {
       kind: source.kind,
-      driveFolderId: source.folderId ?? null,
-      driveFolderPath: source.path ?? null,
+      /*
+        Both spellings accepted. A live Drive listing calls these `folderId`
+        and `path`; the request file that --fetch writes has already renamed
+        them to say which kind of place they point at. This is the seam
+        between the two, and reading only one side of it silently dropped the
+        Drive folder out of every draft's provenance — which is the one field
+        that makes a draft traceable back to the pages it came from.
+      */
+      driveFolderId: source.driveFolderId ?? source.folderId ?? null,
+      driveFolderPath: source.driveFolderPath ?? source.path ?? null,
       localPath: source.localPath ?? null,
       files: files.map((f) => ({
         name: f.name,
@@ -57,8 +66,16 @@ export function provenanceFor({
         Worth distinguishing in the record, because the two have different
         failure modes and a reviewer should know which one they are checking.
       */
-      extractedBy: "claude-agent",
-      method: "visual inspection of the downloaded curriculum pages",
+      extractedBy: extraction.extractedBy ?? "claude-agent",
+      /*
+        How it was read, not merely that it was. The difference between
+        looking at a page and running OCR over it is the difference between
+        two error profiles, and a reviewer deciding how hard to check needs
+        to know which one produced this. Defaulted rather than assumed, so a
+        record can never quietly claim the stronger of the two.
+      */
+      method:
+        extraction.method ?? "visual inspection of the downloaded curriculum pages",
       at: extraction.at,
       sourceFile: extraction.sourceFile ?? null,
       confidence: extraction.confidence,
@@ -88,6 +105,16 @@ export function provenanceFor({
       gates: validation?.gates ?? [],
       reason: validation?.reason ?? null,
     },
+    /*
+      Things that are true about this draft and are not faults in it.
+
+      Distinct from `ambiguities`, which are doubts about the verse itself and
+      stop the run. A caveat is a doubt about the *circumstances* — a page
+      that could not be read, a second opinion that did not exist. Neither
+      makes the verse wrong, and both change how hard a reviewer should look,
+      so they travel with the draft and force `review.required`.
+    */
+    caveats: caveats ?? [],
     generation: {
       by: "agents/memory-verse",
       at: new Date().toISOString(),

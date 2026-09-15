@@ -2,6 +2,7 @@ import { CLASSES } from "@/classes/registry";
 import { everyChapter, verseOf } from "@/content";
 import { playableFromDraft } from "@/content/preview";
 import { ladderFor } from "../../../../agents/memory-verse/ladder";
+import { newestDraft } from "./draft";
 
 import LadderPreview, { type Rung } from "./LadderPreview";
 
@@ -22,23 +23,41 @@ import LadderPreview, { type Rung } from "./LadderPreview";
  * `InteractionPlayer` with the real assistance and the real Halo. There is no
  * preview-only rendering path anywhere in it.
  *
- * The verse is read from `content/` rather than written here, because a
- * hard-coded verse in a preview is a hard-coded verse that will one day
- * disagree with the chapter it claims to be showing.
+ * The verse is never written here. It comes from the newest agent draft if
+ * there is one, and from the content library otherwise — because the ladder
+ * most worth judging is usually the one that has just been generated and is
+ * not content yet. A hard-coded verse in a preview is a hard-coded verse that
+ * will one day disagree with the chapter it claims to be showing.
  *
- * Dev only. `/debug` is not linked from anywhere a child can reach, and this
- * page renders nothing in a production build — see `LadderPreview`.
+ * Dev only, and the guard is *here* rather than only in the client component
+ * underneath it. A component that returns null in production still receives
+ * its props, and props to a client component are serialised into the payload
+ * the browser downloads — so returning null down there while reading a draft
+ * up here shipped an unapproved verse, and the reviewer notes attached to it,
+ * inside the bundle. Stopping before the read is the only version of this
+ * that is actually private.
  */
 export default function MemoryVersePreviewPage() {
+  if (process.env.NODE_ENV === "production") return null;
+
   /*
     Any chapter that has a verse will do; the ladder does not care which, and
     naming one here would make this page depend on a particular chapter
     existing — the mistake `/prototype/curl` made and had to be rescued from.
   */
-  const chapter = everyChapter().find((c) => verseOf(c) !== undefined);
-  const verse = chapter ? verseOf(chapter) : undefined;
+  const draft = newestDraft();
 
-  if (!chapter || !verse) {
+  const chapter = everyChapter().find((c) => verseOf(c) !== undefined);
+  const shipped = chapter ? verseOf(chapter) : undefined;
+
+  const verse = draft ?? shipped;
+  const from = draft
+    ? draft.from
+    : chapter
+      ? `${chapter.classId}/${chapter.slug}`
+      : "";
+
+  if (!verse) {
     return (
       <main className="mx-auto max-w-xl px-6 py-12">
         <h1 className="text-3xl">Memory Verse ladder</h1>
@@ -69,7 +88,9 @@ export default function MemoryVersePreviewPage() {
     <LadderPreview
       rungs={rungs}
       verse={{ text: verse.text, reference: verse.reference }}
-      from={`${chapter.classId}/${chapter.slug}`}
+      from={from}
+      caveats={draft?.caveats ?? []}
+      reviewRequired={draft?.reviewRequired ?? false}
     />
   );
 }
