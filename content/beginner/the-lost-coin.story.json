@@ -3,67 +3,67 @@
   "chapter": 3,
   "title": "The Lost Coin",
   "reference": "St. Luke 15:8-10",
-  "note": "Beginners, Chapter 3, from Beginners Mar Thoma Vol-1 p.20 (Sunday School Samajam). Twelve panels in three acts — Connect, Discover, Reflect — with the search interrupting the story at panel 6 rather than waiting in the Games section, because panel 7 says \"She found it!\" and a child who was not part of the finding has been told their part did not matter. ALT TEXT IS PROVISIONAL: each panel's alt currently records the words painted into that panel, which is true and useful, but it is not yet a description of the picture. It must be rewritten by someone who has looked at the artwork — see the note on panel 1.",
+  "note": "Beginners, Chapter 3, from Beginners Mar Thoma Vol-1 p.20 (Sunday School Samajam). Twelve panels in three acts — Connect, Discover, Reflect — with the search interrupting the story at panel 6 rather than waiting in the Games section, because panel 7 says “At last, she found the missing coin!” and a child who was not part of the finding has been told their part did not matter. Artwork downloaded from Drive and read panel by panel; every alt below describes the picture it belongs to.",
   "cover": {
     "picture": "cover",
-    "note": "Chapter 3's own cover, from 04 - Story Artwork / cover.png. Not a story panel: a first-class asset the artist made for the chapter card and the reader's first page. The title is painted into the artwork, so the reader lays no text over it."
+    "note": "Chapter 3's own cover, from 04 - Story Artwork / cover.png — a first-class asset, not a story panel. The woman kneels on her floor lifting the corner of a rug by lamplight while the lost coin shines on the stones beneath it, Halo beside her. “CHAPTER 03”, the title and “I belong to God.” are painted into the artwork, so the reader lays no text over it."
   },
   "story": [
     {
       "picture": "panel-01",
-      "alt": "Act 1, Connect. The panel asks, “Have you ever lost something?”",
-      "note": "Alt text here, and on every panel below, is provisional: it records the words painted into the panel rather than describing the picture, because the artwork has not been seen yet — the Drive download is blocked on credentials. A screen reader currently hears what the panel says, which is honest and incomplete. Rewrite all twelve from the images before this chapter ships."
+      "alt": "A boy kneels on his bedroom floor and lifts the edge of his quilt to look under the bed, surrounded by a stuffed dog, a toy car and a lost shoe. Halo floats beside him. The panel asks, “Have you ever lost something that was important to you?”"
     },
     {
       "picture": "panel-02",
-      "alt": "Act 2, Discover. Ten precious coins."
+      "alt": "A woman in a red robe sits at a lamplit table, holding one silver coin up between her fingers while nine more lie on a woven mat in front of her. Halo glows at her shoulder. “A woman had ten silver coins that were very precious to her.”"
     },
     {
       "picture": "panel-03",
-      "alt": "One coin is missing."
+      "alt": "The same woman rests her cheek on one hand and counts the coins on the mat with the other. Her smile is gone. “But one day, she counted her coins and found that one was missing.”"
     },
     {
       "picture": "panel-04",
-      "alt": "She lights the lamp."
+      "alt": "She stands in her darkened house holding a small clay oil lamp out in front of her, peering into the shadows between the jars. “She lit a lamp and began to search every corner of her house.”"
     },
     {
       "picture": "panel-05",
-      "alt": "She searches everywhere."
+      "alt": "Bent low over a straw broom, she sweeps the floor of her house and watches the ground as she goes. “She searched every corner of her house. She swept the whole house and kept looking.”"
     },
     {
       "picture": "panel-06",
-      "alt": "The panel asks the child to help her find the lost coin.",
+      "alt": "Lying down on the floor, she holds her lamp under the table and looks into the dark beneath it. “She looked under the table, behind the jars and in every corner.”",
       "gate": true,
       "interaction": {
         "type": "find-the-coin",
         "prompt": "Can you find the lost coin?",
         "rounds": 1,
         "note": "One round inside the story. The search is an event in the plot, not a game the plot is waiting on — a second round here would hold up panel 7. The Games section plays the same interaction with two rounds. `gate` is what stops a child turning past the search to be told it succeeded."
-      }
+      },
+      "note": "The panel's own words are narrative — “She looked under the table, behind the jars and in every corner.” — not a question to the child. The asking is the interaction's, laid over the dimmed panel, which is why the search belongs here and not three pages later."
     },
     {
       "picture": "panel-07",
-      "alt": "She found it!"
+      "alt": "She reaches down and lifts the silver coin off the stone floor, beaming, her lamp still burning in her other hand. “At last, she found the missing coin!”"
     },
     {
       "picture": "panel-08",
-      "alt": "Rejoice!"
+      "alt": "She holds the coin up for her friends and neighbours, who have crowded into the doorway with their hands raised. “She was so happy! She called her friends and neighbours to tell them, ‘I have found my coin!’”"
     },
     {
       "picture": "panel-09",
-      "alt": "Act 3, Reflect. The panel asks, “Why did Jesus tell this story?”"
+      "alt": "Jesus sits under an olive tree telling the story, hands open, to people gathered on the ground around him. Halo rests on the rock at his side. “Jesus told this story to show us how much God loves us. Every person is precious to Him.”"
     },
     {
       "picture": "panel-10",
-      "alt": "We can always come back to Jesus."
+      "alt": "Jesus talks with two children at sunset, the town on the hillside behind them, while Halo sits on the rock beside the children. “Just like the woman looked for her lost coin, God always looks for us when we are far away. We can always come back to Him.”"
     },
     {
       "picture": "panel-11",
-      "alt": "God rejoices when we return."
+      "alt": "Jesus holds a child in a long hug, eyes closed, while friends and neighbours clap around them in the evening light. Halo beams beside them. “God is so happy when we come back to Him! He rejoices because every person is precious.”"
     },
     {
       "picture": "panel-12",
-      "alt": "I belong to God."
+      "alt": "Jesus stands with three children on a hillside at sunset beside a small wooden sign reading “A New Beginning”. Halo smiles at the children's side. “I belong to God. He knows me. He loves me. He is always with me. I can always come back to Him.”"
     }
   ],
   "games": [

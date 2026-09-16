@@ -77,7 +77,7 @@
       "chapter": 3,
       "title": "The Lost Coin",
       "bibleReference": "St. Luke 15:8-10",
-      "curriculumNotes": "Read from the four curriculum photographs in Drive (Beginners / Chapter 03 / 01 - Curriculum Source), uploaded 2026-09-15. Beginners Mar Thoma Vol-1 p.20, Sunday School Samajam. The lesson is the parable of the lost coin; the memory verse is from a different passage (St. Luke 19:10), which is the curriculum's own pairing and not an error.",
+      "curriculumNotes": "Read from the four curriculum photographs in Drive (Beginners / Chapter 03 / 01 - Curriculum Source), uploaded 2026-09-15. Beginners Mar Thoma Vol-1 p.20, Sunday School Samajam. The lesson is the parable of the lost coin; the memory verse is from a different passage (St. Luke 19:10), which is the curriculum's own pairing and not an error. Artwork fetched from 04 - Story Artwork on 2026-09-16: cover plus twelve panels, all 941×1672 except panel 12, converted PNG→WebP with no resize or crop. Every panel was read before its alt text was written.",
       "learningObjectives": [
         {
           "objective": "Recall that the woman searched until she found the one lost coin.",
@@ -100,13 +100,8 @@
       "flags": [
         {
           "kind": "other",
-          "message": "Artwork not yet in the repository. The thirteen files (cover + twelve panels) exist in Drive under 04 - Story Artwork but could not be downloaded: there are no GOOGLE_OAUTH_* credentials, and the consumer download hosts are unreachable from the build environment. Run `npm run art:fetch -- --class beginner --chapter 03 --slug the-lost-coin` once credentials are set.",
-          "blocking": true
-        },
-        {
-          "kind": "other",
-          "message": "Alt text on all twelve panels is provisional: it records the words painted into each panel rather than describing the picture, because the artwork has not been seen. Rewrite from the images before publishing.",
-          "blocking": true
+          "message": "Panel 12 is 941×1671 — one pixel shorter than the other twelve and the cover, which are all 941×1672. Converted without distortion rather than stretched; the difference is invisible and the aspect is unchanged to four decimal places. Left as the artist made it.",
+          "blocking": false
         },
         {
           "kind": "incomplete-verse",
