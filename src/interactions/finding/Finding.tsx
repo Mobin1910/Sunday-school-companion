@@ -81,8 +81,17 @@ export default function Finding({
     the cloths shuffled, in the effect below — after mount, where randomness
     is safe and where the child is looking anyway.
   */
-  /** Which cloth hides the coin. Never revealed except by lifting it. */
-  const [coin, setCoin] = useState(0);
+  /**
+   * Which cloth hides the coin, or `null` until one has been chosen.
+   *
+   * Null rather than 0, and that is a bug fix rather than tidiness. Starting
+   * at 0 meant the first cloth was drawn holding the coin for the frames
+   * between the first paint and the effect below placing it for real — so a
+   * child opening the game saw the coin appear under cloth 1, then a second
+   * coin appear somewhere else, and the round they were told to watch had
+   * already lied to them once. No cloth holds it until one does.
+   */
+  const [coin, setCoin] = useState<number | null>(null);
   /** The order cloths sit in, so shuffling is a reorder and not a redraw. */
   const [order, setOrder] = useState<number[]>(() => [0, 1, 2, 3, 4, 5]);
   /** The one a child has lifted and found empty, until it settles back. */
@@ -221,6 +230,19 @@ export default function Finding({
   /** The cloth covering the coin stirs from the first miss onward. */
   const stirring = misses >= 1 && phase === "asking";
 
+  /** Three across at six cloths, four at eight. Always two rows. */
+  const columns = count > 6 ? 4 : 3;
+
+  /*
+    Where each cloth currently sits. `order` says which cloth is in which
+    slot; this inverts it, because the list is drawn by cloth and each one
+    needs to know its slot in order to move to it. A cloth the current order
+    has not caught up with yet — the frame after a round grows from six
+    cloths to eight — falls back to its own number, which is where it would
+    have started anyway.
+  */
+  const slotOf = new Map(order.map((cloth, at) => [cloth, at]));
+
   const asking =
     phase === "showing" || phase === "covering"
       ? "Here it is — watch where it goes."
@@ -243,15 +265,26 @@ export default function Finding({
         parable's own image and the reason the cloths read as cloth: they are
         lit from one side by something the child can see.
       */}
-      <div
-        className="finding-floor"
-        data-phase={phase}
-        style={{ "--cloths": count } as React.CSSProperties}
-      >
+      <div className="finding-floor" data-phase={phase}>
         <div className="finding-lamp" aria-hidden />
 
-        <ul className="finding-cloths">
-          {order.map((cloth, at) => {
+        <ul
+          className="finding-cloths"
+          style={{ "--cols": columns } as React.CSSProperties}
+        >
+          {/*
+            Drawn in a fixed order and *moved* by CSS, never reordered.
+
+            `order` used to be mapped straight into the list, which meant a
+            shuffle was a reordering of the DOM — and a grid places an item
+            where it sits in the list, so the cloths blinked into their new
+            places with nothing travelling between. "Watch where it goes" was
+            an instruction a child could not obey, and the game came down to
+            guessing one in six. So the list stays still, each cloth is told
+            which slot it is in, and the slot slides.
+          */}
+          {Array.from({ length: count }, (_, cloth) => {
+            const at = slotOf.get(cloth) ?? cloth;
             const away = gone.includes(cloth);
             const open =
               (phase === "showing" && cloth === coin) ||
@@ -262,7 +295,12 @@ export default function Finding({
               <li
                 key={cloth}
                 className="finding-slot"
-                style={{ "--at": at } as React.CSSProperties}
+                style={
+                  {
+                    "--col": at % columns,
+                    "--row": Math.floor(at / columns),
+                  } as React.CSSProperties
+                }
               >
                 <button
                   type="button"
@@ -281,10 +319,22 @@ export default function Finding({
                         : `Look under cloth ${at + 1}`
                   }
                 >
-                  {/* The coin, under the cloth. Drawn, never photographed. */}
-                  <span className="finding-coin" aria-hidden>
-                    <span className="finding-coin-face" />
-                  </span>
+                  {/*
+                    The coin, under the one cloth that has it.
+
+                    This used to be rendered inside every cloth and hidden by
+                    opacity, which made the game unplayable in the most
+                    disheartening way available: lifting an empty cloth opened
+                    it, the coin under it faded *in*, faded out again as the
+                    cloth settled back, and Halo said that was not it. A child
+                    was shown the coin and then told they had not found it.
+                    An empty cloth has nothing under it, so it draws nothing.
+                  */}
+                  {cloth === coin ? (
+                    <span className="finding-coin" aria-hidden>
+                      <span className="finding-coin-face" />
+                    </span>
+                  ) : null}
 
                   {/* The cloth itself: three folds and a shadow, in CSS. */}
                   <span className="finding-fabric" aria-hidden>

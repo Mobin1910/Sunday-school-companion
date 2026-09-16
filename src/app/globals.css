@@ -3497,25 +3497,56 @@ html[data-motion="reduce"] *::after {
   pointer-events: none;
 }
 
+/*
+  The floor the cloths lie on, and the reason it is not a grid.
+
+  It was a grid, and a grid places an item where it sits in the list — so
+  shuffling, which reorders the list, teleported every cloth into its new
+  place with nothing travelling in between. The child is told "watch where it
+  goes" and then nothing goes anywhere, which leaves finding the coin to luck.
+
+  So the cloths are drawn in a fixed order and positioned by transform. Each
+  one is handed the slot it is in, as `--col` and `--row`, and moving a cloth
+  is a transition rather than a reflow. The component works those two out,
+  because CSS `mod()` and `round()` are newer than some of the phones this
+  has to run on.
+
+  Two rows, always: three across at six cloths, four across at eight. Never
+  one long row — a six-year-old's thumb has to reach all of them.
+*/
 .finding-cloths {
-  display: grid;
-  /* Two rows of three at six cloths, two of four at eight. Never a long row:
-     a child's thumb has to reach all of them on a phone. */
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.5rem, 2.5vw, 0.9rem);
+  --gap: clamp(0.5rem, 2.5vw, 0.9rem);
+  --cloth-height: clamp(3.5rem, 15vw, 5.5rem);
+  position: relative;
   width: 100%;
+  height: calc(2 * var(--cloth-height) + var(--gap));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.finding-floor[style*="--cloths: 8"] .finding-cloths,
-.finding-cloths:has(> :nth-child(7)) {
-  grid-template-columns: repeat(4, 1fr);
-}
-
 .finding-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
+  width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  height: var(--cloth-height);
+  /*
+    One step sideways is one cloth plus one gap, and a percentage in a
+    translate is of the element's own width — which is exactly one cloth.
+  */
+  transform: translate(
+    calc(var(--col) * (100% + var(--gap))),
+    calc(var(--row) * (var(--cloth-height) + var(--gap)))
+  );
+  /*
+    Slower than it looks. A pass of the shuffle is 900ms with 260ms of stillness
+    after it, so a cloth has the whole pass to make its journey and still comes
+    to rest before the next one starts. Fast enough to be one movement, slow
+    enough to be followed on purpose — which is the entire game.
+  */
+  transition: transform 760ms cubic-bezier(0.33, 0, 0.2, 1);
 }
 
 /*
@@ -3661,6 +3692,9 @@ html[data-motion="reduce"] *::after {
   becomes a steady glow rather than a wobble, and the coin simply appears.
 */
 @media (prefers-reduced-motion: reduce) {
+  .finding-slot {
+    transition: none;
+  }
   .finding-cloth[data-stirring] .finding-fabric {
     animation: none;
     box-shadow:
