@@ -245,13 +245,14 @@
     },
     {
       "id": "help-moses-lead-the-way",
+      "picture": "panel-05",
       "title": "Help Moses Lead the Way",
       "objective": "Name the one God sent — and then see the people start walking.",
       "answers": [
         2,
         7
       ],
-      "note": "Question 2, and statement 7, which is the same fact asked twice by the curriculum. A `journey`: the column stands still until the child picks the one God sent, and then it walks. The brief asked for Moses to be dragged onto a path; this taps instead, because the same brief forbids precision tapping for six-year-olds and a drag target small enough to sit on a path is precisely that. All four choices are words and none has a picture. Moses briefly had panel 5 on his card and it was wrong twice over: it was the only illustrated option, so it answered the question by itself, and panel 5 is mostly the boy watching from the rocks — Moses is a small figure at the far right of it. A picture that gives away the answer and shows the wrong person is worse than no picture.",
+      "note": "Question 2, and statement 7, which is the same fact asked twice by the curriculum. A `journey`: the column stands still until the child picks the one God sent, and then it walks. The brief asked for Moses to be dragged onto a path; this taps instead, because the same brief forbids precision tapping for six-year-olds and a drag target small enough to sit on a path is precisely that. All four choices are words and none has a picture. Moses briefly had panel 5 on his card and it was wrong twice over: it was the only illustrated option, so it answered the question by itself, and panel 5 is mostly the boy watching from the rocks — Moses is a small figure at the far right of it. A picture that gives away the answer and shows the wrong person is worse than no picture. The shelf picture is panel 5 — the column coming down the valley behind Moses — which is the right picture for this game and was the wrong one inside it. On a card a child is choosing between games it says what the game is about; on an option beside three others it would have said which option to press.",
       "interactions": [
         {
           "type": "journey",
