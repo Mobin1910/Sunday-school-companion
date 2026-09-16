@@ -66,6 +66,57 @@
       "alt": "Jesus stands with three children on a hillside at sunset beside a small wooden sign reading “A New Beginning”. Halo smiles at the children's side. “I belong to God. He knows me. He loves me. He is always with me. I can always come back to Him.”"
     }
   ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 03 “The Lost Coin”, p.19 — “Answer the Questions”",
+    "note": "The seven questions the Beginners book prints in the yellow panel at the end of the chapter, transcribed from the curriculum photographs in 01 - Curriculum Source and left exactly as printed — including “parable (story) of lost coin”, which is the book's own phrasing and not a typo introduced here. Each `answer` is quoted from the lesson text on p.18 rather than reasoned out, so this block records what the curriculum says and never a second opinion about it. Questions 6 and 7 are the two the lesson answers in its closing paragraph rather than in the story, and their notes say which sentence each one rests on. Every question is covered by a game; the schema fails the build if one is not.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "How many coins did the woman have?",
+        "objective": "Recall that the woman had ten coins and kept them like a treasure.",
+        "answer": "Ten. “A woman had ten drachmas (Silver coin, Greek) with her. She kept it like a treasure.” (p.18)"
+      },
+      {
+        "n": 2,
+        "question": "How many coins were lost?",
+        "objective": "Recall that exactly one of the ten went missing — and that one was enough to send her searching.",
+        "answer": "One. “One day, she counted her coins and found only nine of them. One coin was missing.” (p.18)"
+      },
+      {
+        "n": 3,
+        "question": "What did the woman do to find the lost coin?",
+        "objective": "Name what she actually did: lit a lamp, searched every corner, swept the whole house, and kept on searching.",
+        "answer": "“She lit a lamp and searched every corner of her house. But didn’t get it. Then she swept the whole house and searched… She kept on searching for her lost coin.” (p.18)",
+        "note": "The lesson lists the lamp and the corners before the sweeping; the story panels draw the sweeping (panel-05) before the corners (panel-06). Neither source is wrong — the lesson is not narrating a strict order — so no game in this chapter asks a child to put those two in sequence. What is unambiguous in both is that the lamp came first, and that is what the game asks."
+      },
+      {
+        "n": 4,
+        "question": "What did she do when she got her coin back?",
+        "objective": "Recall that her first act on finding it was to call other people and ask them to be glad with her.",
+        "answer": "“She called together all her friends and neighbors, saying, ‘Rejoice with me, for I have found the coin that I had lost.’” (p.18)"
+      },
+      {
+        "n": 5,
+        "question": "Who told the parable (story) of lost coin?",
+        "objective": "Know that this is Jesus’ own story, and that He told it to show how much God loves us.",
+        "answer": "Jesus. “This story was told by Jesus.” (p.18)"
+      },
+      {
+        "n": 6,
+        "question": "What should we do to avoid falling away from God’s love?",
+        "objective": "Understand that we are precious to Jesus, and that it is sin that walks us away from Him.",
+        "answer": "Turn away from sin. “We are precious treasures of the Lord Jesus. When we sin, we walk away from Jesus.” (p.18)",
+        "note": "The lesson states the cause — sin — rather than printing an instruction, so the answer here is the lesson’s sentence turned to face the question, and nothing more. The game asks what walks us away and what keeps us near; it does not hand a six-year-old a list of rules the curriculum never wrote."
+      },
+      {
+        "n": 7,
+        "question": "What must be done to come back to Jesus?",
+        "objective": "Know that coming back is confessing — and that Jesus is already searching, the way the woman searched.",
+        "answer": "Confess our sins and come back. “Jesus continues to search for us, until we confess our sins and come back.” (p.18)",
+        "note": "“Confess our sins” is said to this class as “say sorry for what we did wrong”, which is the register the rest of the chapter is written in. The meaning is the curriculum’s; the words are the ones a five-year-old has."
+      }
+    ]
+  },
   "games": [
     {
       "id": "find-the-lost-coin",
@@ -73,12 +124,295 @@
       "title": "Find the Lost Coin",
       "objective": "Do what she did — look carefully, and keep looking until the coin is found.",
       "featured": true,
-      "note": "The chapter's own game and the second in the product that is built rather than illustrated (Cana's jars were the first). Two rounds here where the story has one: six cloths, then eight. Help is mechanical rather than spoken — the cloth over the coin stirs, then empty cloths withdraw — because no sentence makes a search easier, and “look harder” is a verdict in a helpful voice. Shelf picture: her searching by lamplight, which is the thing this game asks a child to do.",
+      "answers": [
+        3
+      ],
+      "note": "The chapter's own game and the second in the product that is built rather than illustrated (Cana's jars were the first). Two rounds here where the story has one: six cloths, then eight. Help is mechanical rather than spoken — the cloth over the coin stirs, then empty cloths withdraw — because no sentence makes a search easier, and “look harder” is a verdict in a helpful voice. Shelf picture: her searching by lamplight, which is the thing this game asks a child to do. It answers question 3 the way the parable does: by searching, not by saying.",
       "interactions": [
         {
           "type": "find-the-coin",
           "prompt": "Can you find the lost coin?",
           "rounds": 2
+        }
+      ]
+    },
+    {
+      "id": "count-the-coins",
+      "picture": "panel-02",
+      "title": "Count the Coins",
+      "objective": "Ten coins, and one of them missing — the two numbers the whole parable turns on.",
+      "answers": [
+        1,
+        2
+      ],
+      "note": "Questions 1 and 2 of the book, in the book's order, as two questions of one game rather than two games: “how many were there” and “how many were lost” are one thought with a pause in it. Both use the panel the child has already read the number off — nine on the mat and one held up, then the same mat being counted with her smile gone. The wrong options are other counts, never other subjects, so a child who is counting is answering the question that was asked.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "How many coins did the woman have?",
+          "hint": "She is holding one up, and nine are lying on the mat.",
+          "options": [
+            {
+              "label": "Ten",
+              "correct": true
+            },
+            {
+              "label": "Five"
+            },
+            {
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "How many coins were lost?",
+          "hint": "She counted them and found only nine.",
+          "options": [
+            {
+              "label": "One",
+              "correct": true
+            },
+            {
+              "label": "Nine"
+            },
+            {
+              "label": "All ten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "search-every-corner",
+      "title": "Search Every Corner",
+      "objective": "Name what she did to find it — a lamp, a broom, and every corner of the house.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3 asks for a list, so the first half of this game is a `reveal` — the one interaction with no wrong answer in it. Four things she did, tapped in any order, because the lesson lists them and does not number them, and the two sources disagree about whether the sweeping came before the corners (see the note on question 3). Asking a child to sort a thing the curriculum never sorted would be inventing an answer and then marking them against it. The second half asks the one ordering both sources agree on: the lamp came first. This is the first use `reveal` has had in any chapter. Shelf picture: none named, so it takes the reveal's first item — her lamp in the dark, which is where the search starts.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "What did she do to find it?",
+          "items": [
+            {
+              "picture": "panel-04",
+              "label": "She lit a lamp"
+            },
+            {
+              "picture": "panel-06",
+              "label": "She searched every corner"
+            },
+            {
+              "picture": "panel-05",
+              "label": "She swept the house"
+            },
+            {
+              "label": "She kept on searching"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What did she do first?",
+          "hint": "The house was dark. She needed to see.",
+          "options": [
+            {
+              "label": "She lit a lamp",
+              "correct": true
+            },
+            {
+              "label": "She went to sleep"
+            },
+            {
+              "label": "She bought a new coin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rejoice-with-me",
+      "picture": "panel-08",
+      "title": "Rejoice With Me",
+      "objective": "Finding it was not the end — she called everyone she knew and asked them to be glad with her.",
+      "answers": [
+        4
+      ],
+      "note": "Question 4, in two parts, because the book's answer has two: what she did (called her friends and neighbours) and what she said (“Rejoice with me”). The second question's correct option is the curriculum's own words, which is why it keeps the exclamation mark and is not softened into “she was happy”. Shelf picture: the doorway crowded with neighbours, which is the answer drawn.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did she do when she found it?",
+          "hint": "She could not keep this to herself.",
+          "options": [
+            {
+              "label": "Called her friends",
+              "correct": true
+            },
+            {
+              "label": "Hid it away"
+            },
+            {
+              "label": "Said nothing"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What did she say to them?",
+          "hint": "She asked them to be glad along with her.",
+          "options": [
+            {
+              "label": "Rejoice with me!",
+              "correct": true
+            },
+            {
+              "label": "Go away!"
+            },
+            {
+              "label": "Come back later"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-told-this-story",
+      "picture": "panel-09",
+      "title": "Who Told This Story?",
+      "objective": "Know that the parable is Jesus’ own, and that He told it to show how much God loves us.",
+      "answers": [
+        5
+      ],
+      "note": "Question 5. The second interaction is the “why” the book supplies in the same breath — “Jesus told this story to show us how much God loves us” — because a child who can name the teller and not the point has answered a trivia question. The wrong options are about the props of the story rather than about other people, so nothing here teaches a name that does not belong to this parable.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who told the story of the lost coin?",
+          "hint": "He sat under a tree and taught the people.",
+          "options": [
+            {
+              "label": "Jesus",
+              "correct": true
+            },
+            {
+              "label": "The woman"
+            },
+            {
+              "label": "The neighbours"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did He tell it?",
+          "hint": "It is a story about how much God loves us.",
+          "options": [
+            {
+              "label": "God loves every person",
+              "correct": true
+            },
+            {
+              "label": "To teach sweeping"
+            },
+            {
+              "label": "To teach counting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "precious-to-god",
+      "picture": "panel-11",
+      "title": "Precious to God",
+      "objective": "We are His precious treasures — and it is sin, not distance, that walks us away from Him.",
+      "answers": [
+        6
+      ],
+      "note": "Question 6. The book's suggested game title for this slot was “Why Was the Coin Precious?”, which is not a question the curriculum asks — the nearest thing it has is this one, and the sentence it rests on is “We are precious treasures of the Lord Jesus.” So the game keeps the meaning and follows the actual question: who is precious, and what walks us away. The wrong options in the second question are objects from the story rather than rival sins, because a five-year-old choosing between two plausible ways of failing God is not a game.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who is as precious as that coin?",
+          "hint": "Jesus calls us His precious treasures.",
+          "options": [
+            {
+              "label": "Every person",
+              "correct": true
+            },
+            {
+              "label": "Only rich people"
+            },
+            {
+              "label": "Nobody at all"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What walks us away from Jesus?",
+          "hint": "The lesson says we walk away when we sin.",
+          "options": [
+            {
+              "label": "Doing what is wrong",
+              "correct": true
+            },
+            {
+              "label": "Losing a coin"
+            },
+            {
+              "label": "Sweeping the house"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coming-back-to-jesus",
+      "picture": "panel-10",
+      "title": "Coming Back to Jesus",
+      "objective": "Say sorry and come back — and know He is already looking, the way she looked.",
+      "answers": [
+        7
+      ],
+      "note": "Question 7, and the last one the book asks, so it is the last game on the shelf. The second interaction is the half of the curriculum's sentence that is easy to drop: “Jesus continues to search for us”. A chapter that told a child only to confess would have taught the parable backwards — the whole story is about the one doing the searching. Shelf picture: Jesus with the two children at sunset, which is panel 10's own line about always being able to come back.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What must we do to come back to Jesus?",
+          "hint": "The lesson says we confess our sins and come back.",
+          "options": [
+            {
+              "label": "Say sorry for wrongs",
+              "correct": true
+            },
+            {
+              "label": "Pretend nothing happened"
+            },
+            {
+              "label": "Stay far away"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What does Jesus do while we are away?",
+          "hint": "Like the woman with her lamp, He does not stop.",
+          "options": [
+            {
+              "label": "He keeps looking",
+              "correct": true
+            },
+            {
+              "label": "He forgets us"
+            },
+            {
+              "label": "He goes home"
+            }
+          ]
         }
       ]
     }

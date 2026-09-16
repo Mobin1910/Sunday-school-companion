@@ -91,6 +91,24 @@ const multipleChoice = z
       one option is not a question.
     */
     options: z.array(item).min(2).max(4),
+    /**
+     * A picture for the question itself — and a warning about it.
+     *
+     * **Nothing draws this yet.** `Selection` renders the prompt and the
+     * options and no picture between them, so the only effect setting it has
+     * is on `firstPicture` in cards.ts, which may then pick it for the shelf.
+     * Chapter 3 was written with one of these on every counting question,
+     * on the reasonable assumption that a question about ten coins would show
+     * the ten coins, and they were removed again rather than left sitting in
+     * the file looking like they did something.
+     *
+     * It is kept because it is the right shape for the thing and the schema
+     * is where that shape belongs — but a question screen already carries
+     * Halo above the prompt, and a picture under it pushes the choices off
+     * a phone. Whoever draws this has a layout to solve first, not a field
+     * to add. Until then: put the picture on the *options*, which `Selection`
+     * does render, or on the game, which the shelf does.
+     */
     picture: assetReference.optional(),
     note,
   })
@@ -361,12 +379,92 @@ const game = z.strictObject({
     which is the whole reason a reference says where it comes from.
   */
   picture: assetReference.optional(),
+
+  /*
+    Which of the chapter's own review questions this game answers.
+
+    Numbers into `curriculum.questions`, and the reason it is a list of
+    numbers rather than the questions themselves is that the question must
+    exist in exactly one place. A game that restated it would be a second
+    copy of the curriculum's words, free to drift from the book by a comma
+    and then by a meaning.
+
+    Optional, because a game does not have to come from a question — the
+    chapter's search is the parable happening rather than a question being
+    asked. But a chapter that *has* a curriculum block must answer every
+    question in it, which is checked on the chapter below. That is the whole
+    point of writing the block: it is not documentation, it is the list of
+    things this chapter is required to have covered before it ships.
+  */
+  answers: z.array(z.number().int().min(1)).min(1).optional(),
   note,
 });
 
 export type Game = z.infer<typeof game>;
 
 /* Chapter sections */
+
+/**
+ * The review questions the curriculum prints at the end of the chapter, and
+ * what each one is for.
+ *
+ * This is the chapter's contract with the book it came from. The Beginners
+ * volume ends The Lost Coin with seven numbered questions under "Answer the
+ * Questions", and those questions — not a paraphrase of them, and not a
+ * likelier-sounding set invented to suit a game — are what the games have to
+ * cover. Writing them down here is what makes "we built games for chapter 3"
+ * a checkable claim rather than an assertion.
+ *
+ * Four things live on each question and they are deliberately four different
+ * kinds of thing:
+ *
+ *   `question`   the book's wording, verbatim, including its own punctuation
+ *   `objective`  what a child should be able to do, in the teacher's register
+ *   `answer`     the answer *the curriculum itself gives*, with where it says it
+ *   `n`          the number the book prints beside it
+ *
+ * `answer` is quoted from the lesson rather than reasoned out, because the
+ * moment an answer is composed here instead of found in the source, this
+ * block stops being a record of the curriculum and starts being a second
+ * opinion about it. Where the lesson does not answer its own question in so
+ * many words, the note says so.
+ *
+ * Nothing here reaches a child. It is dropped in `cards.ts` along with the
+ * notes — a six-year-old is not shown the learning objective for the thing
+ * they are playing, and a browser should not download it.
+ */
+const curriculumQuestion = z.strictObject({
+  /** The number the book prints. Questions are 1..n with none missing. */
+  n: z.number().int().min(1),
+  /** The book's own wording. Never tidied, never shortened. */
+  question: z.string().min(1),
+  /** What a child should be able to do, said for the grown-up. */
+  objective: z.string().min(1),
+  /** The curriculum's answer, quoted, with where it comes from. */
+  answer: z.string().min(1),
+  note,
+});
+
+const curriculum = z
+  .strictObject({
+    /** Book, chapter and page. Specific enough to open and check. */
+    source: z.string().min(1),
+    questions: z.array(curriculumQuestion).min(1),
+    note,
+  })
+  .refine(
+    (c) => {
+      const seen = new Set<number>(c.questions.map((q) => q.n));
+      return (
+        seen.size === c.questions.length &&
+        [...seen].every((n) => n >= 1 && n <= c.questions.length)
+      );
+    },
+    {
+      message:
+        "question numbers must be exactly 1..n — each printed once, none missing, none repeated",
+    },
+  );
 
 const storyCard = z
   .strictObject({
@@ -553,6 +651,14 @@ export const chapterSchema = z.strictObject({
   story: z.array(storyCard).min(1),
 
   /*
+    The end-of-chapter review questions, from the book. Optional, because the
+    two chapters written before this existed did not record theirs — and
+    binding, because a chapter that does record them must answer all of them.
+    See `curriculum` above, and the refinements under this object.
+  */
+  curriculum: curriculum.optional(),
+
+  /*
     A chapter's games, each named and each with its point written down. Ids
     must be unique inside a chapter, because an id is a route.
   */
@@ -597,7 +703,58 @@ export const chapterSchema = z.strictObject({
   prayer: prayer.optional(),
 
   celebration: z.strictObject({ message: z.string(), note }),
-});
+})
+  /*
+    Every question is answered by something.
+
+    This is the rule the curriculum block exists for. A chapter that writes
+    down seven review questions and builds games for five of them has a gap
+    that nothing else in this repository could see: all five games are valid,
+    the build is green, and the two questions a teacher will actually ask on
+    Sunday are simply not in the app. So it fails here, by number, saying
+    which.
+
+    "Answered by at least one game" rather than exactly one: a question can
+    be worth meeting twice, and Chapter 3 meets "what did she do to find it?"
+    both as a list to discover and as the search itself.
+  */
+  .superRefine((chapter, ctx) => {
+    const numbers = new Set<number>(
+      (chapter.curriculum?.questions ?? []).map((q) => q.n),
+    );
+
+    for (const [index, game] of (chapter.games ?? []).entries()) {
+      for (const n of game.answers ?? []) {
+        if (!numbers.has(n)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["games", index, "answers"],
+            message: chapter.curriculum
+              ? `question ${n} is not one of the chapter's review questions`
+              : `answers question ${n}, but the chapter has no curriculum block to answer from`,
+          });
+        }
+      }
+    }
+
+    if (!chapter.curriculum) return;
+
+    const answered = new Set<number>(
+      (chapter.games ?? []).flatMap((game) => game.answers ?? []),
+    );
+    const unanswered = [...numbers].filter((n) => !answered.has(n)).sort((a, b) => a - b);
+
+    if (unanswered.length > 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["curriculum", "questions"],
+        message:
+          `no game answers question${unanswered.length > 1 ? "s" : ""} ` +
+          `${unanswered.join(", ")} — every review question the chapter ` +
+          `records has to be covered by a game that names it in \`answers\``,
+      });
+    }
+  });
 
 export type Chapter = z.infer<typeof chapterSchema>;
 

@@ -13,8 +13,14 @@ import { gamesDone, progressOf, useSessionProgress } from "@/local/session";
  * Two across, and square. A story panel is portrait, so a wide card could
  * only ever show a band across its middle — the one stripe of an
  * illustration with no faces in it. A square keeps two thirds of the panel's
- * height, which is enough to hold whoever is in it, and two squares to a row
- * put every game a chapter has on one screen without a scroll.
+ * height, which is enough to hold whoever is in it.
+ *
+ * Two to a row used to mean a whole chapter on one screen. Chapter 3 has
+ * seven games — one per review question the curriculum prints — so that is
+ * no longer true, and the grid scrolls. It is left as it is deliberately:
+ * shrinking the cards to fit an arbitrary number would make every chapter
+ * pay for the longest one, and a shelf that scrolls is a shelf, whereas a
+ * card too small to recognise a picture on is nothing.
  *
  * One game may be marked as the one the chapter leads with. It catches more
  * light, which is what `surface-lit` already means everywhere else. Either
