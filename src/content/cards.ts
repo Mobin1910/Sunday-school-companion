@@ -73,6 +73,38 @@ export type PlayInteraction =
       answer: string;
       hint: string;
       shape?: string;
+    }
+  /** Chapter 4: choose who leads, and the people walk. */
+  | {
+      type: "journey";
+      prompt: string;
+      hint: string;
+      choices: { label: string; art?: Art; correct?: true }[];
+      then: string;
+    }
+  /** Chapter 4: morning bread, then evening meat. */
+  | {
+      type: "provision";
+      phases: {
+        time: "morning" | "evening";
+        falls: "manna" | "quail";
+        prompt: string;
+        hint: string;
+        options: { label: string; correct?: true }[];
+        then: string;
+      }[];
+      closing: string;
+    }
+  /**
+   * Chapter 4: the curriculum's right/wrong statements, asked as questions.
+   * `source` stays in the content and is deliberately not carried here — it
+   * is the book's wording for whoever edits the chapter, and a child is
+   * shown the question, not the sentence it was made from.
+   */
+  | {
+      type: "true-or-not";
+      prompt?: string;
+      statements: { ask: string; answer: boolean; because: string }[];
     };
 
 export type Card =
@@ -147,6 +179,36 @@ export type Card =
   | { kind: "song"; title?: string; lines: string[] }
   | { kind: "prayer"; text: string }
   | { kind: "celebration"; message: string };
+
+/**
+ * Every line of a prompt a child actually reads, whatever shape it is in.
+ *
+ * Most interactions have one `prompt` and callers used to reach for it
+ * directly. `provision` broke that: it has no single question, because it is
+ * two halves of a day with a question in each, and a top-level prompt would
+ * have been a field invented to keep a `.prompt` working. `true-or-not` is
+ * the mirror image — its prompt is optional and its real asking is one line
+ * per statement.
+ *
+ * So the question "what does this interaction say to a child?" is answered
+ * here, once, and the copy checks and the debug listing both ask it rather
+ * than each knowing the shape of every interaction.
+ */
+export function promptsOf(interaction: PlayInteraction): string[] {
+  switch (interaction.type) {
+    case "provision":
+      return interaction.phases.map((phase) => phase.prompt);
+    case "true-or-not":
+      return [
+        ...(interaction.prompt ? [interaction.prompt] : []),
+        ...interaction.statements.map((statement) => statement.ask),
+      ];
+    case "reveal":
+      return interaction.prompt ? [interaction.prompt] : [];
+    default:
+      return [interaction.prompt];
+  }
+}
 
 type Resolve = (ref: AssetReference) => string | null;
 
@@ -282,6 +344,50 @@ export function toInteraction(
         type: "find-the-coin",
         prompt: interaction.prompt,
         ...(interaction.rounds !== undefined && { rounds: interaction.rounds }),
+      };
+
+    case "journey":
+      return {
+        type: "journey",
+        prompt: interaction.prompt,
+        hint: interaction.hint,
+        then: interaction.then,
+        choices: interaction.choices.map((choice) => ({
+          label: choice.label,
+          ...(choice.picture !== undefined && {
+            art: toArt(choice.picture, resolve),
+          }),
+          ...(choice.correct !== undefined && { correct: choice.correct }),
+        })),
+      };
+
+    case "provision":
+      return {
+        type: "provision",
+        closing: interaction.closing,
+        phases: interaction.phases.map((phase) => ({
+          time: phase.time,
+          falls: phase.falls,
+          prompt: phase.prompt,
+          hint: phase.hint,
+          then: phase.then,
+          options: phase.options.map((option) => ({
+            label: option.label,
+            ...(option.correct !== undefined && { correct: option.correct }),
+          })),
+        })),
+      };
+
+    case "true-or-not":
+      return {
+        type: "true-or-not",
+        ...(interaction.prompt !== undefined && { prompt: interaction.prompt }),
+        // `source` is dropped on purpose — see the type above.
+        statements: interaction.statements.map((statement) => ({
+          ask: statement.ask,
+          answer: statement.answer,
+          because: statement.because,
+        })),
       };
   }
 }

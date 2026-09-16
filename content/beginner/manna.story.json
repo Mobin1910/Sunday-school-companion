@@ -1,0 +1,438 @@
+{
+  "class": "beginner",
+  "chapter": 4,
+  "title": "Manna",
+  "reference": "Exodus 16:13-14",
+  "note": "Beginners, Chapter 4. Fifteen panels in three movements: a boy at his own kitchen table, the wilderness, and the same table again. The frame is the artwork's, not an invention here — panels 1-4 and 14-15 are the child's kitchen and 5-13 are the desert, so the chapter answers “what if there was no food at all?” by going and looking. Artwork downloaded from Drive (Beginner / Chapter 04 / 04 - Story Artwork) and read panel by panel; every alt below describes the picture it belongs to, and every line quoted in an alt is lettered into the artwork itself. The brief asked for fourteen panels; the folder holds fifteen and all fifteen are part of the story, so all fifteen ship — see the report.",
+  "cover": {
+    "picture": "cover",
+    "note": "Chapter 4's own cover. A man bends to drink from an oasis pool with both hands while the camp crowds the far bank — palms, a loaded camel, children washing at the water's edge. “SUNDAY SCHOOL COMPANION”, “Manna”, “God takes care of His people” and “CHAPTER 04” are painted into the artwork, so the reader lays no text over it."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "alt": "A boy sits at his kitchen table with his chin on his hand and an empty white plate in front of him, a dinosaur mug and a bowl of fruit beside it. Halo floats by the fridge. The boy says, “Halo, I'm hungry!” and Halo asks, “What do you do when you're hungry?”"
+    },
+    {
+      "picture": "panel-02",
+      "alt": "The boy stands with a finger to his chin, smiling up at Halo in front of an open kitchen cupboard. He says, “I would ask my amma.” Halo asks, “And would amma bring you food?”"
+    },
+    {
+      "picture": "panel-03",
+      "alt": "His mother leans in and sets down a plate of rice and curry while the boy presses his hands together and beams. He says, “Thank you, Amma!” Halo says, “Your Amma takes care of you! Isn't that amazing?”"
+    },
+    {
+      "picture": "panel-04",
+      "alt": "The boy looks up at a bare cupboard with empty shelves and asks, “What if there was no food at all?” Halo answers, “That sounds hard! Do you know who we can learn from?” — and a glowing cloud opens beside them showing a long line of people walking into the desert behind a man with a staff."
+    },
+    {
+      "picture": "panel-05",
+      "alt": "The boy, now wearing a small backpack, stands among the desert rocks and watches a long column of people come down the valley with their bundles and animals, an old man in a red cloak leading with a staff. Halo says, “They have been travelling for many days.” The boy says, “They look tired.”"
+    },
+    {
+      "picture": "panel-06",
+      "alt": "In the camp, a woman tips an empty woven basket towards us while a boy sits with his chin in his hands and a girl leans on her hand beside him. An empty sack and a toppled clay jar lie in the sand. “After many days of travelling, all their food was gone. The children were very hungry and tired.”",
+      "note": "The panel that Game 3 is built on: the empty basket, the empty sack and the tipped-over jar are all in this one frame."
+    },
+    {
+      "picture": "panel-07",
+      "alt": "A crowd presses around Moses between the tents, hands open and empty baskets held up. One man calls, “Give us food!” Moses stands to the right with his staff, listening. “The people were very hungry and began to grumble against Moses.”"
+    },
+    {
+      "picture": "panel-08",
+      "alt": "Away from the camp, Moses kneels on the rocks with his hands clasped and his head bowed, his staff laid on the ground beside him, the sun going down over the mountains and the tents small in the valley below. “Moses moved away from the people and knelt down to pray.”"
+    },
+    {
+      "picture": "panel-09",
+      "alt": "Still kneeling, Moses lifts his face to the sky as light breaks through the clouds over the mountains. “Then God said to Moses, ‘Don't be afraid. I will feed them every day.’”"
+    },
+    {
+      "picture": "panel-10",
+      "alt": "At sunrise the desert floor is covered in small white flakes. A boy crouches and lifts one to his mouth, a girl beside him holds another, and a woman fills her hands while Moses watches from behind. Someone asks, “What is it?” “The next morning, the ground was filled with bread.”"
+    },
+    {
+      "picture": "panel-11",
+      "alt": "Moses sits among the children with a handful of white flakes held out towards them, baskets of it around his feet. He says, “This is manna, God-given bread from heaven.” “Filled with surprise, they asked one another, ‘What is it?’”"
+    },
+    {
+      "picture": "panel-12",
+      "alt": "The sky is orange and birds are coming down over the camp. A boy holds a quail in both hands, a girl reaches for another beside her basket, and a woman gathers more into hers while a cooking fire burns behind. “In the evening, quails would fall on the ground. They would cook those birds.”"
+    },
+    {
+      "picture": "panel-13",
+      "alt": "The whole camp eats together in daylight — children sitting in the manna holding pieces to their mouths, baskets full beside them, meat roasting on a frame over a fire, Moses standing among the tents. “During their journey through the desert, God provided them with bread and meat without fail.”"
+    },
+    {
+      "picture": "panel-14",
+      "alt": "Back at his own table with a full plate in front of him, the boy rests his chin on his hand and thinks, “God gave the Israelites food…” Halo glows beside the fridge and asks, “What do you think that means for you?”"
+    },
+    {
+      "picture": "panel-15",
+      "alt": "The boy sits up with both fists raised and a wide grin, his dinner in front of him and Halo bright at his shoulder. He says, “God takes care of me too!”"
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 04 “Manna” — “Answer the Questions” and the right/wrong statements",
+    "note": "Supplied in the chapter brief rather than read from the book: Drive's “01 - Curriculum Source” for Chapter 04 is empty, so unlike Chapter 3 these were not transcribed from a photograph of the page. The wording is the brief's, unchanged. Each `answer` is taken from the story as the chapter's own panels tell it, with the panel that says so named, because the panels are the only primary source this chapter has. Questions 1-5 are the “Answer the Questions” set; 6-10 are the five right/wrong statements, kept as questions in the same list so that one rule — every question is covered by a game — covers both halves of the exercise.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "To whom did God give bread and meat from heaven?",
+        "objective": "Know that the bread and meat were given to the people of Israel, travelling in the desert.",
+        "answer": "To His people, the Israelites, on their journey through the desert. “During their journey through the desert, God provided them with bread and meat without fail.” (panel 13)"
+      },
+      {
+        "n": 2,
+        "question": "Whom did God send to deliver his people?",
+        "objective": "Name Moses as the one God sent to lead the people out and through the wilderness.",
+        "answer": "Moses. He is the one leading the column out of Egypt (panel 4), walking at the head of the people (panel 5), and the one the people come to (panel 7)."
+      },
+      {
+        "n": 3,
+        "question": "Why did people complain?",
+        "objective": "Understand that the complaint had a real cause — the food had run out and the children were hungry.",
+        "answer": "Their food had run out and they were hungry. “After many days of travelling, all their food was gone. The children were very hungry and tired.” (panel 6)"
+      },
+      {
+        "n": 4,
+        "question": "What did Moses do, at that time?",
+        "objective": "Recall that Moses answered the grumbling by going away and praying, not by arguing back.",
+        "answer": "He moved away from the people and knelt down to pray. “Moses moved away from the people and knelt down to pray.” (panel 8)"
+      },
+      {
+        "n": 5,
+        "question": "How did God take care of his people?",
+        "objective": "Know both halves of the provision: bread on the ground in the morning, meat in the evening, every day.",
+        "answer": "He sent bread in the morning and meat in the evening. “The next morning, the ground was filled with bread.” (panel 10) and “In the evening, quails would fall on the ground.” (panel 12)"
+      },
+      {
+        "n": 6,
+        "question": "The people of Israel were living as slaves in Egypt.",
+        "objective": "Know that this is true — the journey began because they were being brought out of slavery.",
+        "answer": "True. Stated in the chapter brief as a right/wrong statement whose answer is right.",
+        "note": "The one statement of the five that the chapter's own panels do not show — the artwork begins with the people already travelling. The game asks it as a yes/no about where they had been, and the reason given says only what the brief says, with nothing added about Egypt beyond it."
+      },
+      {
+        "n": 7,
+        "question": "God sent Moses to deliver the people.",
+        "objective": "Confirm Moses as God's choice — the same fact as question 2, met a second time.",
+        "answer": "True. The same answer as question 2."
+      },
+      {
+        "n": 8,
+        "question": "There was no problem for the people in their journey through the desert.",
+        "objective": "Know that this is false — the journey was hard and their food ran out.",
+        "answer": "False. “After many days of travelling, all their food was gone.” (panel 6)"
+      },
+      {
+        "n": 9,
+        "question": "When people grumbled, Moses prayed.",
+        "objective": "Confirm prayer as what Moses did — the same fact as question 4, met a second time.",
+        "answer": "True. “Moses moved away from the people and knelt down to pray.” (panel 8)"
+      },
+      {
+        "n": 10,
+        "question": "God was angry, and thus did not feed them.",
+        "objective": "Know that this is false, and that the opposite is what happened — He fed them every day without fail.",
+        "answer": "False. “Don't be afraid. I will feed them every day.” (panel 9), and “God provided them with bread and meat without fail.” (panel 13)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "god-provided",
+      "picture": "panel-10",
+      "title": "God Provided!",
+      "objective": "Both halves of one day — bread on the ground in the morning, meat in the evening.",
+      "featured": true,
+      "answers": [
+        5,
+        10
+      ],
+      "note": "The chapter's own game and the third in the product that is built rather than illustrated (Cana's jars, then the Lost Coin's cloths). Question 5 has a two-part answer and a two-part answer is exactly what a single multiple-choice cannot hold: “bread and meat” said once is a fact, whereas a sunrise that fills the ground under your hand and then a sunset that brings the quails is the day the Israelites actually lived. It also answers statement 10 — a child who has just watched God feed them twice does not need to be told He did not refuse. Shelf picture: the morning the ground was filled with bread.",
+      "interactions": [
+        {
+          "type": "provision",
+          "closing": "God gave them bread and meat, every day.",
+          "phases": [
+            {
+              "time": "morning",
+              "falls": "manna",
+              "prompt": "What did God send in the morning?",
+              "hint": "It lay all over the ground, white and small.",
+              "then": "The ground was filled with bread.",
+              "options": [
+                {
+                  "label": "Bread from heaven",
+                  "correct": true
+                },
+                {
+                  "label": "Rain"
+                },
+                {
+                  "label": "Nothing at all"
+                }
+              ]
+            },
+            {
+              "time": "evening",
+              "falls": "quail",
+              "prompt": "What did God send in the evening?",
+              "hint": "They came down out of the sky, and could be cooked.",
+              "then": "Quails came down over the camp.",
+              "options": [
+                {
+                  "label": "Birds to eat",
+                  "correct": true
+                },
+                {
+                  "label": "More bread"
+                },
+                {
+                  "label": "Nothing at all"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-did-god-provide-for",
+      "picture": "panel-13",
+      "title": "Who Did God Provide For?",
+      "objective": "Know who was fed in the desert — God's own people, on their journey.",
+      "answers": [
+        1
+      ],
+      "note": "Question 1. Options are words rather than pictures on purpose: the brief suggested Egyptians, Roman soldiers and a modern family beside the Israelites, and none of those three has been drawn for this chapter. Drawing them was not an option either — this product generates no artwork — and the nearest thing on disk to “a modern family” is panel 1, which is the boy this chapter is *about*. Marking his own kitchen wrong two screens before panel 15 says “God takes care of me too!” would contradict the chapter. So the wrong options are other people in other places, and the question stays the curriculum's.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who did God feed in the desert?",
+          "hint": "Think about the people who were travelling for many days.",
+          "options": [
+            {
+              "label": "God's own people",
+              "correct": true
+            },
+            {
+              "label": "The people of Egypt"
+            },
+            {
+              "label": "Soldiers"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Where were they when God fed them?",
+          "hint": "They had been walking a long way from home.",
+          "options": [
+            {
+              "label": "In the desert",
+              "correct": true
+            },
+            {
+              "label": "At home"
+            },
+            {
+              "label": "In a city"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "help-moses-lead-the-way",
+      "title": "Help Moses Lead the Way",
+      "objective": "Name the one God sent — and then see the people start walking.",
+      "answers": [
+        2,
+        7
+      ],
+      "note": "Question 2, and statement 7, which is the same fact asked twice by the curriculum. A `journey`: the column stands still until the child picks the one God sent, and then it walks. The brief asked for Moses to be dragged onto a path; this taps instead, because the same brief forbids precision tapping for six-year-olds and a drag target small enough to sit on a path is precisely that. All four choices are words and none has a picture. Moses briefly had panel 5 on his card and it was wrong twice over: it was the only illustrated option, so it answered the question by itself, and panel 5 is mostly the boy watching from the rocks — Moses is a small figure at the far right of it. A picture that gives away the answer and shows the wrong person is worse than no picture.",
+      "interactions": [
+        {
+          "type": "journey",
+          "prompt": "Who did God choose to lead His people?",
+          "hint": "He led God's people through the desert.",
+          "then": "God sent Moses, and the people followed him.",
+          "choices": [
+            {
+              "label": "Moses",
+              "correct": true
+            },
+            {
+              "label": "A boy from the camp"
+            },
+            {
+              "label": "The king of Egypt"
+            },
+            {
+              "label": "Nobody"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-were-they-hungry",
+      "title": "Why Were They Hungry?",
+      "objective": "Find the cause for yourself — the baskets and jars were empty, and the food was gone.",
+      "answers": [
+        3,
+        8
+      ],
+      "note": "Question 3, and statement 8 — “there was no problem in their journey” is the same fact turned over. A `reveal` first, because the answer is something to be found rather than recalled: the empty basket, the empty sack and the tipped-over jar are all drawn in panel 6, and tapping them one at a time is the discovery the brief asked for. Nothing in a reveal can be wrong, so a child cannot fail at looking. The question that follows is the curriculum's own.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "What was left in the camp?",
+          "items": [
+            {
+              "picture": "panel-06",
+              "label": "An empty basket"
+            },
+            {
+              "label": "An empty sack"
+            },
+            {
+              "label": "A jar on its side"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Why were the people worried?",
+          "hint": "Look at what is left in the baskets.",
+          "options": [
+            {
+              "label": "Their food was gone",
+              "correct": true
+            },
+            {
+              "label": "They were lost"
+            },
+            {
+              "label": "It was raining"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-did-moses-do",
+      "picture": "panel-08",
+      "title": "What Did Moses Do?",
+      "objective": "Moses answered the grumbling by praying — and then put that beat in its place in the story.",
+      "answers": [
+        4,
+        9
+      ],
+      "note": "Question 4 and statement 9, which the curriculum asks twice. Two interactions: the choice the brief describes — shout, run away, or kneel and pray — and then a `sequence` that puts prayer where it belongs between the grumbling and God's answer. The two wrong options are deliberately things Moses might plausibly have done rather than silly ones, because the point of the question is that he did none of them. Shelf picture: Moses kneeling on the rocks at sunset.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "The people were worried. What did Moses do?",
+          "hint": "He moved away from the people first.",
+          "options": [
+            {
+              "label": "He knelt and prayed",
+              "correct": true
+            },
+            {
+              "label": "He shouted at them"
+            },
+            {
+              "label": "He ran away"
+            }
+          ]
+        },
+        {
+          "type": "sequence",
+          "prompt": "Put that day back in order.",
+          "hint": "It starts with the people asking for food.",
+          "items": [
+            {
+              "picture": "panel-07",
+              "label": "The people grumbled",
+              "position": 1
+            },
+            {
+              "picture": "panel-08",
+              "label": "Moses knelt to pray",
+              "position": 2
+            },
+            {
+              "picture": "panel-09",
+              "label": "God answered him",
+              "position": 3
+            },
+            {
+              "picture": "panel-10",
+              "label": "Bread on the ground",
+              "position": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "true-or-not",
+      "picture": "panel-11",
+      "title": "True or Not?",
+      "objective": "The five statements from the book, asked as questions — with the reason given every time.",
+      "answers": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "note": "The curriculum's five right/wrong statements, in the book's own order. Each becomes a question a child can answer yes or no to, and each answer is followed by the reason rather than by a verdict — see `true-or-not` in the schema for why that is the whole design. Statements 7, 8, 9 and 10 are each also covered by the game that answers their matching question, which is deliberate: the book asks them twice, so the child meets them twice, once as a thing to do and once as a thing to say. Shelf picture: Moses explaining the manna, which is the sentence most of these reasons come back to.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "The people of Israel were living as slaves in Egypt.",
+              "ask": "Were God's people slaves in Egypt?",
+              "answer": true,
+              "because": "Yes. They had been slaves in Egypt, and God brought them out."
+            },
+            {
+              "source": "God sent Moses to deliver the people.",
+              "ask": "Did God send Moses to lead them?",
+              "answer": true,
+              "because": "Yes. God chose Moses to lead His people out and through the desert."
+            },
+            {
+              "source": "There was no problem for the people in their journey through the desert.",
+              "ask": "Was the journey easy for them?",
+              "answer": false,
+              "because": "No. After many days their food was gone, and the children were hungry and tired."
+            },
+            {
+              "source": "When people grumbled, Moses prayed.",
+              "ask": "Did Moses pray when the people grumbled?",
+              "answer": true,
+              "because": "Yes. He moved away from the people and knelt down to pray."
+            },
+            {
+              "source": "God was angry, and thus did not feed them.",
+              "ask": "Did God stop feeding them?",
+              "answer": false,
+              "because": "No. God said, “I will feed them every day” — and He sent bread and meat without fail."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "celebration": {
+    "message": "God takes care of His people. And He takes care of you.",
+    "note": "The chapter's last panel said in the second person — the artwork's own “God takes care of me too!” turned back towards the child who just read it."
+  }
+}

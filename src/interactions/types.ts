@@ -52,3 +52,9 @@ export type WriteReference = Extract<
   PlayInteraction,
   { type: "write-reference" }
 >;
+
+export type Journey = Extract<PlayInteraction, { type: "journey" }>;
+
+export type Provision = Extract<PlayInteraction, { type: "provision" }>;
+
+export type TrueOrNot = Extract<PlayInteraction, { type: "true-or-not" }>;

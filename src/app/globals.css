@@ -3706,3 +3706,374 @@ html[data-motion="reduce"] *::after {
     animation: none;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Chapter 4 — Manna
+
+   Three presentations, all built rather than illustrated, and all drawn
+   from the tokens the rest of the app already uses: `--color-joy` for the
+   light God sends, `--color-touchable` for anything a thumb may press,
+   `--radius-card` for every corner. No new colours are invented here, and
+   nothing below has a hex value that is not a shade of the desert itself.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/*
+  "True or Not?" — yes and no, as two large cards.
+
+  Deliberately not a tick and a cross. Those are the marks on a worksheet,
+  and a child who has just been asked a question about God should not be
+  answering into a marking scheme. Two words, each with its own warmth, and
+  neither of them coloured like a verdict: yes is the blue everything
+  touchable is, no is the same card in the same family. The green and amber
+  the app keeps for arriving and for trying again are not spent here,
+  because neither answer is either of those things until the reason is read.
+*/
+.truth-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.5rem;
+  border: 2px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  background: var(--color-ground-raised);
+  color: var(--color-ink);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition:
+    transform 120ms ease-out,
+    border-color 160ms ease-out,
+    background-color 160ms ease-out;
+}
+
+.truth-card:active {
+  transform: scale(0.97);
+}
+
+.truth-yes {
+  border-color: rgb(from var(--color-touchable) r g b / 0.55);
+  background: linear-gradient(
+    180deg,
+    rgb(from var(--color-touchable) r g b / 0.16),
+    var(--color-ground-raised)
+  );
+}
+
+.truth-no {
+  border-color: rgb(from var(--color-ink-soft) r g b / 0.4);
+  background: linear-gradient(
+    180deg,
+    rgb(from var(--color-ink-soft) r g b / 0.12),
+    var(--color-ground-raised)
+  );
+}
+
+/*
+  The reason. Warm, because it is the part that teaches, and set larger than
+  body copy because it is the only thing on the screen at the moment it
+  appears.
+*/
+.truth-because {
+  padding: 1rem 1.15rem;
+  border: 1px solid rgb(from var(--color-joy) r g b / 0.4);
+  border-radius: var(--radius-card);
+  background: rgb(from var(--color-joy) r g b / 0.1);
+  color: var(--color-ink);
+  font-size: 1.125rem;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ── "Help Moses Lead the Way" ─────────────────────────────────────────── */
+
+/*
+  The road, and the people on it.
+
+  A band of desert under a wide sky, with the column standing still until
+  somebody has been sent to lead them. The people are shapes rather than
+  artwork: at this size a cropped story panel would be three faces and a
+  blur, and what the moment needs is something that visibly *goes*.
+*/
+.journey-road {
+  position: relative;
+  height: clamp(6.5rem, 26vw, 9rem);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-edge);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #2a3a63 0%, #4a4a63 42%, #8a6f4e 42%, #6d573d 100%);
+}
+
+.journey-sun {
+  position: absolute;
+  top: 14%;
+  right: 12%;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(from var(--color-joy) r g b / 0.95),
+    rgb(from var(--color-joy) r g b / 0) 70%
+  );
+}
+
+.journey-people {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(0.3rem, 1.6vw, 0.6rem);
+  transition: transform 2000ms cubic-bezier(0.4, 0, 0.35, 1);
+}
+
+/* Sent. The column crosses the road. */
+.journey-road[data-going] .journey-people {
+  transform: translateX(min(48vw, 12.5rem));
+}
+
+/*
+  A person, at the size a person is when six of them have to fit across a
+  phone. A robe and a head — without the head these were pale rounded
+  rectangles standing in a row, which reads as stones in a desert rather
+  than as people about to walk through one.
+*/
+.journey-walker {
+  position: relative;
+  width: clamp(0.7rem, 3vw, 1rem);
+  height: clamp(1.5rem, 6vw, 2.1rem);
+  border-radius: 38% 38% 16% 16%;
+  background: linear-gradient(180deg, #efe3cd, #c9b492);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.35);
+}
+
+.journey-walker::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * clamp(0.36rem, 1.5vw, 0.5rem));
+  left: 50%;
+  width: clamp(0.36rem, 1.5vw, 0.5rem);
+  height: clamp(0.36rem, 1.5vw, 0.5rem);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #6f5a41;
+}
+
+.journey-child {
+  height: clamp(0.95rem, 4vw, 1.4rem);
+  background: linear-gradient(180deg, #e3d3b6, #b9a482);
+}
+
+/* The one who leads: a dark red cloak, the colour he wears in every panel. */
+.journey-leader {
+  background: linear-gradient(180deg, #e8d9bd 34%, #9d4f43 34%);
+}
+
+.journey-leader::before {
+  background: #d8d2c6;
+}
+
+.journey-staff {
+  position: absolute;
+  top: -35%;
+  right: -45%;
+  width: 2px;
+  height: 150%;
+  border-radius: 2px;
+  background: #6b4c2f;
+}
+
+/* A choice that was not the one, standing aside rather than being marked. */
+.journey-choice,
+.option-card.is-aside,
+.journey-choice.is-aside {
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+}
+
+.journey-choice {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--color-edge);
+  border-radius: 1rem;
+  background: rgb(from var(--color-ground-raised) r g b / 0.85);
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.journey-choice:active {
+  transform: scale(0.98);
+}
+
+.is-aside {
+  opacity: 0.32;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+/* ── "God Provided!" ───────────────────────────────────────────────────── */
+
+/*
+  The desert, at two times of one day.
+
+  `data-time` is the whole of the difference between morning and evening —
+  one attribute, two skies — and the turn between them is a transition, so
+  the child watches the day move rather than being shown a second picture.
+*/
+.provision-scene {
+  position: relative;
+  height: clamp(8rem, 34vw, 12rem);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-edge);
+  overflow: hidden;
+}
+
+.provision-sky {
+  position: absolute;
+  inset: 0;
+  transition: background 1200ms ease-in-out;
+}
+
+.provision-scene[data-time="morning"] .provision-sky {
+  background: linear-gradient(180deg, #8fc4ef 0%, #cfe4f5 55%, #e9d8b4 100%);
+}
+
+.provision-scene[data-time="evening"] .provision-sky {
+  background: linear-gradient(180deg, #43356b 0%, #b55a54 55%, #e08a4a 100%);
+}
+
+.provision-sun {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(from var(--color-joy) r g b / 1),
+    rgb(from var(--color-joy) r g b / 0) 72%
+  );
+  transition:
+    top 1200ms ease-in-out,
+    right 1200ms ease-in-out;
+}
+
+.provision-scene[data-time="morning"] .provision-sun {
+  top: 14%;
+  right: 14%;
+}
+
+.provision-scene[data-time="evening"] .provision-sun {
+  top: 46%;
+  right: 8%;
+}
+
+/* The hills behind, and the ground the food lands on. */
+.provision-hills {
+  position: absolute;
+  inset: 44% 0 0;
+  background: linear-gradient(180deg, #9a7a54 0%, #7b6142 30%, #6a5238 100%);
+  clip-path: polygon(0 24%, 18% 8%, 34% 22%, 52% 4%, 72% 20%, 88% 10%, 100% 22%, 100% 100%, 0 100%);
+}
+
+.provision-ground {
+  position: absolute;
+  inset: 58% 0 0;
+}
+
+/*
+  Manna, and quails. Both start invisible and arrive together when the
+  ground fills, each a little after the one before it, so it reads as
+  falling rather than as a picture being swapped.
+*/
+.provision-manna,
+.provision-quail {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+  opacity: 0;
+  transform: translateY(-140%) scale(0.5);
+  transition:
+    opacity 420ms ease-out,
+    transform 620ms cubic-bezier(0.25, 0.9, 0.35, 1);
+  transition-delay: var(--delay);
+}
+
+.provision-manna {
+  width: clamp(0.4rem, 1.8vw, 0.6rem);
+  height: clamp(0.4rem, 1.8vw, 0.6rem);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #e6e8ea 60%, #c3c8cf);
+  box-shadow: 0 0 6px rgb(255 255 255 / 0.6);
+}
+
+/*
+  A quail. A body, and then a head — without the head these read as stones
+  on the ground rather than as birds, which is the one thing this half of
+  the day has to say. Drawn rather than illustrated, like everything else in
+  this scene.
+*/
+.provision-quail {
+  width: clamp(0.8rem, 3.2vw, 1.15rem);
+  height: clamp(0.5rem, 2vw, 0.7rem);
+  border-radius: 60% 45% 45% 55%;
+  background: linear-gradient(150deg, #b08d61, #6f5637);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+}
+
+.provision-quail::before {
+  content: "";
+  position: absolute;
+  top: -42%;
+  left: -12%;
+  width: 42%;
+  height: 62%;
+  border-radius: 55% 60% 30% 40%;
+  background: linear-gradient(160deg, #b08d61, #7d6140);
+}
+
+/* A tail, so the bird has a direction as well as a head. */
+.provision-quail::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: -22%;
+  width: 34%;
+  height: 34%;
+  border-radius: 20% 60% 40% 20%;
+  background: #5d4a30;
+}
+
+.provision-scene[data-filled] .provision-manna,
+.provision-scene[data-filled] .provision-quail {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.provision-closing {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-card);
+  background: rgb(from var(--color-joy) r g b / 0.12);
+  color: var(--color-ink);
+  font-size: 1.05rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/*
+  Reduced motion. The day still turns and the ground still fills, because
+  both are the content — they simply stop being journeys and become facts.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .journey-people,
+  .provision-sky,
+  .provision-sun,
+  .provision-manna,
+  .provision-quail {
+    transition-duration: 1ms;
+  }
+}

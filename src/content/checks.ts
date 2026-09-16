@@ -1,4 +1,5 @@
 import { drawnPictures } from "./art";
+import { promptsOf } from "./cards";
 import { sameReference } from "@/interactions/reference/match";
 import type { Art, Card, PlayInteraction, PlayItem } from "./cards";
 import type { LoadedChapter } from "./load";
@@ -47,10 +48,18 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
       return interaction.items;
     case "match":
       return interaction.pairs.flatMap((pair) => [pair.from, pair.to]);
+    case "journey":
+      return interaction.choices.map((choice) => ({
+        label: choice.label,
+        ...(choice.art !== undefined && { art: choice.art }),
+        ...(choice.correct !== undefined && { correct: choice.correct }),
+      }));
     case "arrange-words":
     case "pouring":
     case "find-the-coin":
     case "write-reference":
+    case "provision":
+    case "true-or-not":
       return [];
   }
 }
@@ -145,8 +154,8 @@ function copyAdvisories(cards: Card[]): { where: string; message: string }[] {
     }
 
     for (const interaction of interactionsOf(card)) {
-      if (interaction.prompt) {
-        tooLong(at, interaction.prompt, LIMITS.promptWords, "prompt");
+      for (const prompt of promptsOf(interaction)) {
+        if (prompt) tooLong(at, prompt, LIMITS.promptWords, "prompt");
       }
       for (const item of itemsOf(interaction)) {
         if (item.label) {

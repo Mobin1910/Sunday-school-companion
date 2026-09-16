@@ -306,6 +306,145 @@ const finding = z.strictObject({
   note,
 });
 
+/**
+ * Choosing who leads, and then watching them go.
+ *
+ * Chapter 4's second game, and the reason it is a presentation rather than
+ * another multiple-choice: the question is "whom did God send to deliver his
+ * people?", and a child who taps a name on a list has answered a quiz about
+ * Moses. A child who picks him and then sees the column of Israelites start
+ * walking has *done* the sentence. The answer causes something.
+ *
+ * It is deliberately a tap and not a drag. The brief described dragging Moses
+ * onto the path, and dragging a small target is precision tapping, which the
+ * same brief rules out for six-year-olds. So the choice is a large card and
+ * the journey is what a correct choice produces.
+ *
+ * `then` is what is said once they are moving — the story's own line, not a
+ * congratulation. Nothing here counts anything.
+ */
+const journey = z
+  .strictObject({
+    type: z.literal("journey"),
+    prompt: z.string(),
+    hint: z.string().min(1),
+    choices: z
+      .array(
+        z.strictObject({
+          label: z.string().min(1),
+          picture: assetReference.optional(),
+          correct: z.literal(true).optional(),
+          note,
+        }),
+      )
+      .min(2)
+      .max(4),
+    /** Said once the people are walking. */
+    then: z.string().min(1),
+    note,
+  })
+  .refine((i) => i.choices.filter((c) => c.correct).length === 1, {
+    message: "needs exactly one choice marked correct",
+  });
+
+/**
+ * Morning, and then evening.
+ *
+ * The chapter's own game. Exodus gives bread in the morning and meat in the
+ * evening, and that shape — the same God, twice, at two ends of one day — is
+ * the answer to "how did God take care of his people?". A single question
+ * with three buttons can state that. It cannot let a child watch an empty
+ * desert floor fill with manna at sunrise and then quails arrive at sunset,
+ * which is the thing they will actually remember.
+ *
+ * So it is built rather than illustrated, like `pouring` and `find-the-coin`
+ * before it: two phases, each with its own sky, its own question and its own
+ * thing that lands on the ground. What an author writes is the words and
+ * which of the two gifts falls; the sky, the light and the falling are
+ * behaviour and live in the component.
+ *
+ * `phases` is exactly two and the first is always morning, because that is
+ * the order the curriculum tells it in and not a preference.
+ */
+const provision = z
+  .strictObject({
+    type: z.literal("provision"),
+    phases: z
+      .array(
+        z.strictObject({
+          time: z.enum(["morning", "evening"]),
+          /** What lands on the ground when the child gets there. */
+          falls: z.enum(["manna", "quail"]),
+          prompt: z.string(),
+          hint: z.string().min(1),
+          options: z
+            .array(
+              z.strictObject({
+                label: z.string().min(1),
+                correct: z.literal(true).optional(),
+                note,
+              }),
+            )
+            .min(2)
+            .max(3),
+          /** The story's line, once the ground has filled. */
+          then: z.string().min(1),
+          note,
+        }),
+      )
+      .length(2),
+    /** What is said when both halves of the day are done. */
+    closing: z.string().min(1),
+    note,
+  })
+  .refine(
+    (i) => i.phases.every((p) => p.options.filter((o) => o.correct).length === 1),
+    { message: "each phase needs exactly one option marked correct" },
+  )
+  .refine((i) => i.phases[0]?.time === "morning" && i.phases[1]?.time === "evening", {
+    message: "morning comes first and evening second — that is the story's order",
+  });
+
+/**
+ * The curriculum's right/wrong statements, asked as questions.
+ *
+ * The Beginners book prints five statements to be marked right or wrong. A
+ * five-year-old cannot mark anything, and "wrong" is a word this product does
+ * not say to a child, so each statement becomes a question they can answer
+ * yes or no to — and every answer is followed by the *reason*, which is the
+ * part that teaches.
+ *
+ * That is why `because` is required and why there is no "correct"/"incorrect"
+ * anywhere in this shape. A child who says no to "did God stop feeding them?"
+ * and a child who says yes both get told what actually happened. The one who
+ * had it the other way round is not told they failed; they are told the
+ * story, and asked again.
+ *
+ * `source` carries the book's own wording beside the question it became, so
+ * the rewording can be checked against the original without opening the book.
+ */
+const trueOrNot = z.strictObject({
+  type: z.literal("true-or-not"),
+  prompt: z.string().optional(),
+  statements: z
+    .array(
+      z.strictObject({
+        /** Asked the way a child can answer it: yes, or no. */
+        ask: z.string().min(1),
+        /** The curriculum's statement, verbatim. */
+        source: z.string().min(1),
+        /** Whether the statement is true. */
+        answer: z.boolean(),
+        /** Why. Said after either answer, and never as a verdict. */
+        because: z.string().min(1),
+        note,
+      }),
+    )
+    .min(2)
+    .max(6),
+  note,
+});
+
 export const interactionSchema = z.discriminatedUnion("type", [
   multipleChoice,
   match,
@@ -315,6 +454,9 @@ export const interactionSchema = z.discriminatedUnion("type", [
   pouring,
   finding,
   writeReference,
+  journey,
+  provision,
+  trueOrNot,
 ]);
 
 export type Interaction = z.infer<typeof interactionSchema>;

@@ -1,4 +1,4 @@
-import { chapterKey, everyChapter, type Card } from "@/content";
+import { chapterKey, everyChapter, promptsOf, type Card } from "@/content";
 
 import DebugClass from "./DebugClass";
 
@@ -23,13 +23,13 @@ function summarise(card: Card): string {
       return card.text ?? `(wordless) ${card.art.name}`;
     case "game":
       return card.interactions
-        .map((i) => `${i.type} — ${i.prompt ?? "no prompt"}`)
+        .map((i) => `${i.type} — ${promptsOf(i)[0] ?? "no prompt"}`)
         .join(" · ");
     case "quiz":
-      return `${card.interaction.type} — ${card.interaction.prompt ?? "no prompt"}`;
+      return `${card.interaction.type} — ${promptsOf(card.interaction)[0] ?? "no prompt"}`;
     case "practice":
       return card.interactions
-        .map((i) => `${i.type} — ${i.prompt ?? "no prompt"}`)
+        .map((i) => `${i.type} — ${promptsOf(i)[0] ?? "no prompt"}`)
         .join(" · ");
     case "verse":
       return `${card.text} (${card.reference})`;

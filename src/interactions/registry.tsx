@@ -1,11 +1,14 @@
 import type { PlayInteraction } from "@/content";
 
 import Finding from "./finding/Finding";
+import Journey from "./journey/Journey";
+import Provision from "./provision/Provision";
 import Pairing from "./pairing/Pairing";
 import Pouring from "./pouring/Pouring";
 import Selection from "./selection/Selection";
 import Reveal from "./reveal/Reveal";
 import Sequence from "./sequence/Sequence";
+import TrueOrNot from "./truth/TrueOrNot";
 import WriteReference from "./reference/WriteReference";
 import Words from "./words/Words";
 import type { ModelProps } from "./types";
@@ -27,7 +30,10 @@ export function canPlay(interaction: PlayInteraction): boolean {
     interaction.type === "reveal" ||
     interaction.type === "pouring" ||
     interaction.type === "find-the-coin" ||
-    interaction.type === "write-reference"
+    interaction.type === "write-reference" ||
+    interaction.type === "journey" ||
+    interaction.type === "provision" ||
+    interaction.type === "true-or-not"
   );
 }
 
@@ -38,8 +44,11 @@ export function canPlay(interaction: PlayInteraction): boolean {
  * type as it goes — each model receives exactly the shape it handles, checked
  * by the compiler rather than asserted.
  *
- * Version 1 built five presentations. All five are here, and so is the
- * sixth — see `pouring` in the schema for why a scene earned its own place.
+ * Version 1 built five presentations. All five are here, and so are the ones
+ * that came after: `pouring` and `find-the-coin`, where a scene earned its own
+ * place rather than being illustrated, and Chapter 4's three — `journey`,
+ * `provision` and `true-or-not`. Adding one means editing this file twice, in
+ * the switch and in `canPlay`, and nowhere else.
  */
 export function renderModel(props: ModelProps) {
   const { interaction } = props;
@@ -68,5 +77,14 @@ export function renderModel(props: ModelProps) {
 
     case "write-reference":
       return <WriteReference {...props} interaction={interaction} />;
+
+    case "journey":
+      return <Journey {...props} interaction={interaction} />;
+
+    case "provision":
+      return <Provision {...props} interaction={interaction} />;
+
+    case "true-or-not":
+      return <TrueOrNot {...props} interaction={interaction} />;
   }
 }

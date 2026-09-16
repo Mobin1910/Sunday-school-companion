@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 
 import { children, childNamed, download, libraryRoot } from "../../agents/shared/drive/client.mjs";
 import { CHAPTER_SUBFOLDERS, chapterNumber, classById, driveFolderFor } from "../../agents/shared/classes.mjs";
@@ -12,6 +12,16 @@ import { CHAPTER_SUBFOLDERS, chapterNumber, classById, driveFolderFor } from "..
  *
  * Read-only against Drive: it downloads from `04 - Story Artwork` and writes
  * nothing back. The teacher's files are never moved, renamed or touched.
+ *
+ * `--from-dir` reads a local folder instead of Drive:
+ *
+ *   node tools/art/fetch-chapter.mjs --class beginner --slug manna --from-dir ./downloaded
+ *
+ * Same rules, same checks, same output — only where the bytes come from
+ * changes. It exists because Drive can be reached two ways: these agents'
+ * OAuth refresh token, and a connected Drive integration that hands the files
+ * over already downloaded. The second must not mean re-implementing panel
+ * matching in a throwaway script, because the panel matching *is* the job.
  *
  * Two things here are not conveniences, they are the job.
  *
@@ -76,22 +86,40 @@ async function main() {
     process.exit(2);
   }
 
-  const root = await libraryRoot();
-  const classFolder = await childNamed(root.id, driveFolderFor(entry));
-  if (!classFolder) throw new Error(`No "${driveFolderFor(entry)}" in the library.`);
+  /*
+    Where the bytes come from. Each entry is a name and a way to read it, so
+    everything below this point is identical for Drive and for a folder on
+    disk — including which file is which panel, which is the part that has
+    actually gone wrong before.
+  */
+  let files;
+  let where;
 
-  const chapterFolder = await childNamed(classFolder.id, `Chapter ${chapter}`);
-  if (!chapterFolder) throw new Error(`No "Chapter ${chapter}" in ${driveFolderFor(entry)}.`);
+  if (opts["from-dir"]) {
+    const dir = resolve(opts["from-dir"]);
+    files = readdirSync(dir, { withFileTypes: true })
+      .filter((e) => e.isFile() && /\.(png|jpe?g|webp)$/i.test(e.name))
+      .map((e) => ({ name: e.name, read: () => readFileSync(join(dir, e.name)) }));
+    where = dir;
+  } else {
+    const root = await libraryRoot();
+    const classFolder = await childNamed(root.id, driveFolderFor(entry));
+    if (!classFolder) throw new Error(`No "${driveFolderFor(entry)}" in the library.`);
 
-  const artFolder = await childNamed(chapterFolder.id, CHAPTER_SUBFOLDERS.storyArtwork);
-  if (!artFolder) throw new Error(`No "${CHAPTER_SUBFOLDERS.storyArtwork}" in Chapter ${chapter}.`);
+    const chapterFolder = await childNamed(classFolder.id, `Chapter ${chapter}`);
+    if (!chapterFolder) throw new Error(`No "Chapter ${chapter}" in ${driveFolderFor(entry)}.`);
 
-  const files = (await children(artFolder.id)).filter(
-    (f) => f.mimeType !== "application/vnd.google-apps.folder",
-  );
+    const artFolder = await childNamed(chapterFolder.id, CHAPTER_SUBFOLDERS.storyArtwork);
+    if (!artFolder) throw new Error(`No "${CHAPTER_SUBFOLDERS.storyArtwork}" in Chapter ${chapter}.`);
+
+    files = (await children(artFolder.id))
+      .filter((f) => f.mimeType !== "application/vnd.google-apps.folder")
+      .map((f) => ({ name: f.name, read: () => download(f.id) }));
+    where = CHAPTER_SUBFOLDERS.storyArtwork;
+  }
 
   console.log(`\n${entry.display} / Chapter ${chapter} → public/art/${entry.id}/${slug}\n`);
-  console.log(dim(`  ${files.length} file(s) in ${CHAPTER_SUBFOLDERS.storyArtwork}`));
+  console.log(dim(`  ${files.length} file(s) in ${where}`));
 
   /* ── work out what each file is, and refuse anything ambiguous ──────── */
 
@@ -147,7 +175,7 @@ async function main() {
   ];
 
   for (const { file, out } of jobs) {
-    const bytes = await download(file.id);
+    const bytes = await file.read();
     const image = sharp(bytes);
     const { width, height } = await image.metadata();
 
