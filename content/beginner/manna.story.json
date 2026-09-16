@@ -487,18 +487,15 @@
       {
         "type": "arrange-words",
         "prompt": "Now build the whole verse",
-        "hint": "Start with the word you tasted.",
+        "hint": "Start with the word you taste.",
         "words": [
           "Taste",
-          "and",
-          "see",
-          "that",
-          "the",
-          "Lord",
-          "is",
+          "and see",
+          "that the",
+          "Lord is",
           "good"
         ],
-        "note": "Stage 4, full reconstruction. The same verse as stage 2, one word at a time instead of three phrases — which is the whole of the difference between the two stages."
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. It was eight single words for a while and that was wrong twice over: the brief asks for reconstruction “from chunks”, and this class has only ever met phrase chunks (Chapters 1 and 3 both ship four). Eight buttons also runs off the bottom of a phone. The build checks that these five spell the verse exactly."
       },
       {
         "type": "multiple-choice",
