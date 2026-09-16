@@ -56,6 +56,18 @@ export default function TrueOrNot({
    * can actually get. Help changes the task, never the child.
    */
   const [looked, setLooked] = useState(false);
+  /**
+   * How many times this statement has been looked at again.
+   *
+   * The reason alone is a good first rung — every one of them opens with the
+   * word the answer is — but it is the *only* rung, and a child who is
+   * tapping rather than reading can sit on one statement indefinitely. So
+   * from the second look the answer that is not the answer steps aside, the
+   * way a cloth withdraws in the Lost Coin's search and a choice steps aside
+   * in `journey`. The question becomes a one-answer question and the child
+   * still taps it. The task gets smaller; the child is never told off.
+   */
+  const [looks, setLooks] = useState(0);
 
   const statement = interaction.statements[at];
   if (!statement) return null;
@@ -66,6 +78,14 @@ export default function TrueOrNot({
     either of them being told they were right or wrong.
   */
   const agreed = said !== null && said === statement.answer;
+
+  /*
+    From the second look, only the answer is still answerable. `aside` is the
+    same affordance the other built interactions use — the option does not
+    disappear and is not marked wrong, it simply steps out of the way.
+  */
+  const narrowed = looks >= 2;
+  const stepsAside = (value: boolean) => narrowed && value !== statement.answer;
 
   function answer(value: boolean) {
     if (locked || said !== null) return;
@@ -79,6 +99,7 @@ export default function TrueOrNot({
       // in front of them. Never a penalty: nothing is counted, and the ask
       // that follows is an easier one than the ask that came before it.
       setLooked(true);
+      setLooks((n) => n + 1);
       setSaid(null);
       return;
     }
@@ -86,6 +107,7 @@ export default function TrueOrNot({
       setAt(at + 1);
       setSaid(null);
       setLooked(false);
+      setLooks(0);
     } else {
       onArrive();
     }
@@ -119,17 +141,17 @@ export default function TrueOrNot({
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
-            className="truth-card truth-yes"
+            className={`truth-card truth-yes${stepsAside(true) ? " is-aside" : ""}`}
             onClick={() => answer(true)}
-            disabled={locked}
+            disabled={locked || stepsAside(true)}
           >
             Yes
           </button>
           <button
             type="button"
-            className="truth-card truth-no"
+            className={`truth-card truth-no${stepsAside(false) ? " is-aside" : ""}`}
             onClick={() => answer(false)}
-            disabled={locked}
+            disabled={locked || stepsAside(false)}
           >
             No
           </button>
