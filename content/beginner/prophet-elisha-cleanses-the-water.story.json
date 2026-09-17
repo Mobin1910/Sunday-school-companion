@@ -3,59 +3,63 @@
   "chapter": 5,
   "title": "Prophet Elisha Cleanses the Water",
   "reference": "2 Kings 2:19-22",
-  "note": "Beginners, Chapter 5, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 27–30. **This chapter is a draft: no story artwork exists yet.** Drive's “04 - Story Artwork” for Chapter 05 is empty, so the twelve panels below carry the lesson's own words and name the pictures still to be drawn. They have no `alt`, because alt text describes a picture and none of these has been drawn — writing it now would be describing something nobody has seen. The build reports the missing artwork as a warning, which is what a chapter in this state should do.\n\nThe story beats are the curriculum's sentences, split where a page turn falls, rather than a retelling. That is deliberate: this is the breakdown an illustrator draws from, so it belongs to the chapter before the artwork does.\n\nThe games came from the Game Builder agent (`npm run agent:games`) and the verse practice from the Memory Verse agent. Both are drafts in `agents/.drafts/`; what is here was reviewed and copied in.",
+  "note": "Beginners, Chapter 5, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 27–30. Thirteen panels in three movements: a boy at a littered stream near his home (1–2), Jericho (3–10), and his own street again (11–13). The frame is the artwork's, not an invention here — the chapter answers “what if we didn't have clean water?” by going and looking, and comes back to a tap.\n\nArtwork downloaded from Drive (Beginner / Chapter 05 / 04 - Story Artwork) and read panel by panel; every alt below describes the picture it belongs to, and every line quoted in an alt is lettered into the artwork itself. PNG to WebP at native size — no resize, no crop, nothing regenerated.\n\nThe games came from the Game Builder agent (`npm run agent:games`) and the verse practice from the Memory Verse agent, both before the artwork arrived. What the artwork changed is the pictures: the four-step sequence in “What Elisha Did” is now the story's own panels rather than four text cards, which is the shape that mechanic wanted all along.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The curriculum's own chapter opener shows Elisha carrying the bowl of salt to the spring while the people of Jericho watch."
+    "note": "Chapter 5's own cover. Elisha tips a bowl of salt into the spring while the people of Jericho watch, the city's walls and gate behind him. “PROPHET ELISHA CLEANSES THE WATER” and “05” are painted into the artwork, so the reader lays no text over it."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Elisha was God's prophet. He came to the city of Jericho."
+      "alt": "A boy in a backpack crouches on the rocks beside a shallow stream and looks at the rubbish caught in it — a crumpled can, a plastic bottle, dead leaves. Halo floats beside him. The boy asks, “What if we didn't have clean water?” and Halo answers, “That would be a big problem.”"
     },
     {
       "picture": "panel-02",
-      "text": "The people of the city came to him."
+      "alt": "The boy sits back on a rock with his chin on his hand, looking up. He asks, “Has this happened before?” Halo answers, “Yes. A long time ago, people in Jericho had a problem with their water too,” and a bright cloud opens behind them showing a walled city above a dry riverbed."
     },
     {
       "picture": "panel-03",
-      "text": "“Our water is bad. Nothing grows on our land.”"
+      "alt": "Elisha stands with his staff outside the walls of Jericho while a group of townspeople press towards him — one man with his hands open, a woman holding a clay jar. “Long ago, God's prophet Elisha was in the city of Jericho. The people of the city came to him.”"
     },
     {
       "picture": "panel-04",
-      "text": "“Please help us,” they said to the prophet."
+      "alt": "The man at the front spreads both hands as he speaks to Elisha, the others gathered close behind him. “As you know, this is a fine city, but the water is bad and nothing grows on the land.” Another voice adds, “Please help us.”"
     },
     {
       "picture": "panel-05",
-      "text": "“Bring me a new bowl, and put salt in it.”"
+      "alt": "Elisha lifts one hand as he answers, the people watching him closely. “Elisha knew what to do.” He says, “Bring me a new bowl, and put salt in it.”"
     },
     {
       "picture": "panel-06",
-      "text": "So they brought the bowl to Elisha."
+      "alt": "A man holds out a shallow clay bowl heaped with white salt, and Elisha reaches out to take it. “So, they brought him a new bowl with salt in it.”"
     },
     {
       "picture": "panel-07",
-      "text": "He carried it to the spring of water."
+      "alt": "Elisha walks down the stony path towards the water, the bowl of salt in one hand and his staff in the other, the people following behind. “With that bowl, the prophet went to a spring of water.”"
     },
     {
       "picture": "panel-08",
-      "text": "He threw the salt into the water."
+      "alt": "Seen from behind, Elisha stands at the edge of a green, clouded pool holding the bowl, while the townspeople watch from the far bank. “The water in the spring was bad.”"
     },
     {
       "picture": "panel-09",
-      "text": "“In the name of the Lord,” he said."
+      "alt": "Elisha tips the bowl and the salt falls in a bright stream into the pool. “Then Elisha threw the salt into the water.” He says, “In the name of the Lord, let this water be pure.”"
     },
     {
       "picture": "panel-10",
-      "text": "“Let this water be pure.”"
+      "alt": "The pool runs clear and blue over its stones. Elisha kneels smiling among the people, a girl cups the water in her hands, and Halo glows beside them. “And the water became pure.”"
     },
     {
       "picture": "panel-11",
-      "text": "The water became pure. It has been pure ever since."
+      "alt": "Back in his own street, the boy sits on a low wall with his chin on his hands, a water bottle beside him lettered “Clean Water Brighter Tomorrows” and a stack of books at his feet. Halo floats above him. “Water is a precious gift from God.”"
     },
     {
       "picture": "panel-12",
-      "text": "Water is God's gift. We keep it clean."
+      "alt": "The boy looks up at Halo beside a stone trough with water pouring into it, a small painted sign propped nearby reading “Clean Water Happier Tomorrow”. He asks, “So I should take care of water too?” Halo answers, “Yes. We have a responsibility to keep it clean.”"
+    },
+    {
+      "picture": "panel-13",
+      "alt": "The boy reaches up and turns off a brass tap on the wall, grinning, with Halo beaming beside him and a board reading “Small Actions Keep Our World Beautiful”. He says, “I will keep the water clean.”"
     }
   ],
   "curriculum": {
@@ -111,7 +115,7 @@
         1,
         2
       ],
-      "note": "Questions 1 and 2. The pairs name the three things the lesson names — the prophet, the city, the spring — and the question that follows is the people's own complaint, which the lesson gives as one trouble with two halves rather than two troubles.",
+      "note": "Questions 1 and 2. The pairs name the three things the lesson names — the prophet, the city, the spring — and the question that follows is the people's own complaint, which the lesson gives as one trouble with two halves rather than two troubles. Shelf picture: the people of Jericho coming to Elisha, which is the moment this game asks about.",
       "interactions": [
         {
           "type": "match",
@@ -161,7 +165,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-03"
     },
     {
       "id": "what-elisha-did",
@@ -171,7 +176,7 @@
         3,
         4
       ],
-      "note": "Questions 3 and 4. The sequence is the lesson's own order — a new bowl, salt in it, thrown in the spring, the water pure. The reveal that follows is where question 4 lands, and see the chapter's curriculum note: the lesson never says what salt is like, so those three items are ordinary facts about salt rather than anything the page claims.",
+      "note": "Questions 3 and 4. The four steps are the story's own panels now — the bowl handed over, carried down to the spring, the salt going in, the water running clear — which is what `sequence` wanted all along: at four cards across a phone a picture carries the order and a line of text does not. The reveal that follows is where question 4 lands, and see the chapter's curriculum note: the lesson never says what salt is like, so those three items are ordinary facts about salt rather than anything the page claims.",
       "interactions": [
         {
           "type": "sequence",
@@ -179,18 +184,22 @@
           "hint": "He asked for something new to carry it in.",
           "items": [
             {
-              "label": "A new bowl",
+              "picture": "panel-06",
+              "label": "A new bowl of salt",
               "position": 1
             },
             {
-              "label": "Salt in the bowl",
+              "picture": "panel-07",
+              "label": "Carried to the spring",
               "position": 2
             },
             {
-              "label": "Thrown in the spring",
+              "picture": "panel-09",
+              "label": "Thrown in the water",
               "position": 3
             },
             {
+              "picture": "panel-10",
               "label": "The water was pure",
               "position": 4
             }
@@ -211,7 +220,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-09"
     },
     {
       "id": "what-salt-is-for",
@@ -220,7 +230,7 @@
       "answers": [
         5
       ],
-      "note": "Question 5. The first two pairs are the kitchen; the third is the story. Putting them in one game is the point: the thing in the cupboard is the thing the prophet asked for.",
+      "note": "Question 5. The first two pairs are the kitchen; the third is the story. Putting them in one game is the point: the thing in the cupboard is the thing the prophet asked for. Shelf picture: the bowl of salt itself, which is the thing the whole game is about.",
       "interactions": [
         {
           "type": "match",
@@ -253,7 +263,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-06"
     },
     {
       "id": "and-ever-since",
@@ -263,7 +274,7 @@
       "answers": [
         6
       ],
-      "note": "Question 6, in two halves, because the lesson's answer has two: the water became pure, and “the water has been pure ever since”. A chapter that taught only the first half would have taught a trick rather than a gift.",
+      "note": "Question 6, in two halves, because the lesson's answer has two: the water became pure, and “the water has been pure ever since”. A chapter that taught only the first half would have taught a trick rather than a gift. Shelf picture: the spring running clear. The chapter also draws the pool *before* (panel 8) and the pair is tempting as a two-picture question — it is left alone because illustrating one option and not the others answers the question for the child.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -299,7 +310,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-10"
     }
   ],
   "verse": {
