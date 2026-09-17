@@ -1,0 +1,405 @@
+{
+  "class": "beginner",
+  "chapter": 5,
+  "title": "Prophet Elisha Cleanses the Water",
+  "reference": "2 Kings 2:19-22",
+  "note": "Beginners, Chapter 5, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 27–30. **This chapter is a draft: no story artwork exists yet.** Drive's “04 - Story Artwork” for Chapter 05 is empty, so the twelve panels below carry the lesson's own words and name the pictures still to be drawn. They have no `alt`, because alt text describes a picture and none of these has been drawn — writing it now would be describing something nobody has seen. The build reports the missing artwork as a warning, which is what a chapter in this state should do.\n\nThe story beats are the curriculum's sentences, split where a page turn falls, rather than a retelling. That is deliberate: this is the breakdown an illustrator draws from, so it belongs to the chapter before the artwork does.\n\nThe games came from the Game Builder agent (`npm run agent:games`) and the verse practice from the Memory Verse agent. Both are drafts in `agents/.drafts/`; what is here was reviewed and copied in.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The curriculum's own chapter opener shows Elisha carrying the bowl of salt to the spring while the people of Jericho watch."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Elisha was God's prophet. He came to the city of Jericho."
+    },
+    {
+      "picture": "panel-02",
+      "text": "The people of the city came to him."
+    },
+    {
+      "picture": "panel-03",
+      "text": "“Our water is bad. Nothing grows on our land.”"
+    },
+    {
+      "picture": "panel-04",
+      "text": "“Please help us,” they said to the prophet."
+    },
+    {
+      "picture": "panel-05",
+      "text": "“Bring me a new bowl, and put salt in it.”"
+    },
+    {
+      "picture": "panel-06",
+      "text": "So they brought the bowl to Elisha."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He carried it to the spring of water."
+    },
+    {
+      "picture": "panel-08",
+      "text": "He threw the salt into the water."
+    },
+    {
+      "picture": "panel-09",
+      "text": "“In the name of the Lord,” he said."
+    },
+    {
+      "picture": "panel-10",
+      "text": "“Let this water be pure.”"
+    },
+    {
+      "picture": "panel-11",
+      "text": "The water became pure. It has been pure ever since."
+    },
+    {
+      "picture": "panel-12",
+      "text": "Water is God's gift. We keep it clean."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 05 “Prophet Elisha Cleanses the Water”, p.28 — “Answer the Questions”",
+    "note": "Transcribed from the curriculum photographs in Drive's “01 - Curriculum Source”, pages 27, 28 and 30. Page 29 was not photographed; nothing below depends on it, but a right/wrong exercise, if this chapter has one, would be there. Six questions, no right/wrong set among the pages supplied.\n\nQuestions 4 and 5 are the ones to look at. The lesson asks what salt is like and what it is used for, and then never answers either — the page has the prophet ask for salt and says nothing about it. Their `answer` fields say so rather than quoting something that is not there, and the games that cover them use ordinary facts about salt, which is general knowledge a teacher supplies and not a claim this chapter makes.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Who is the prophet mentioned in this lesson?",
+        "objective": "Name Elisha as God's prophet, and know he is the one the people of Jericho came to.",
+        "answer": "Elisha. “Friends, when God's prophet Elisha was in the city of Jericho, people of the city came to him.” (p.28)"
+      },
+      {
+        "n": 2,
+        "question": "What was problem that people of Jericho were facing?",
+        "objective": "Know the trouble in one piece: the water was bad, so nothing grew on the land.",
+        "answer": "The water was bad and nothing grew. “As you know, this is a fine city, but the water is bad and nothing grows on land. Please help us.” (p.28)"
+      },
+      {
+        "n": 3,
+        "question": "What did prophet Elisha do to purify water?",
+        "objective": "Retrace what he did, in order: a new bowl, salt in it, thrown into the spring, in the name of the Lord.",
+        "answer": "“Bring me a new bowl, and put salt in it.” … “the prophet went to a spring of water. Then he threw the salt into the water, saying, ‘In the name of the Lord, let this water be pure.’” (p.28)"
+      },
+      {
+        "n": 4,
+        "question": "What are the properties of salt?",
+        "objective": "Know what salt is like — that it dissolves away into water, keeps food from spoiling, and gives it taste.",
+        "answer": "Not stated in the lesson. See the note.",
+        "note": "The lesson never says what salt is like — it only has the prophet ask for it. So the game's three items are ordinary facts about salt (it dissolves, it preserves, it seasons), which is general knowledge a teacher supplies and not something this page claims. Flagged rather than dressed up as curriculum."
+      },
+      {
+        "n": 5,
+        "question": "For what purposes is salt used?",
+        "objective": "Know what salt is for at home, and that this everyday thing is what God used at Jericho.",
+        "answer": "Not stated in the lesson. See the note.",
+        "note": "Same as question 4: the lesson does not answer it. The game pairs two everyday uses with the one the story gives, so the child meets the answer as “the thing in your kitchen is the thing the prophet asked for” rather than as a fact to be recited."
+      },
+      {
+        "n": 6,
+        "question": "What happened to the water when salt was put in the spring?",
+        "objective": "Know the outcome and that it lasted: the water became pure, and has been pure ever since.",
+        "answer": "It became pure, and stayed so. “And, the water has been pure ever since.” (p.28)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "who-and-what-was-wrong",
+      "title": "Who Asked for Help?",
+      "objective": "Name Elisha, and know the one trouble Jericho had: bad water, and nothing growing.",
+      "answers": [
+        1,
+        2
+      ],
+      "note": "Questions 1 and 2. The pairs name the three things the lesson names — the prophet, the city, the spring — and the question that follows is the people's own complaint, which the lesson gives as one trouble with two halves rather than two troubles.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Who is who in this story?",
+          "hint": "The prophet is the one they came to.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Elisha"
+              },
+              "to": {
+                "label": "God's prophet"
+              }
+            },
+            {
+              "from": {
+                "label": "Jericho"
+              },
+              "to": {
+                "label": "The city"
+              }
+            },
+            {
+              "from": {
+                "label": "The spring"
+              },
+              "to": {
+                "label": "Where the water was"
+              }
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What was wrong in Jericho?",
+          "hint": "They said nothing would grow on the land.",
+          "options": [
+            {
+              "label": "The water was bad",
+              "correct": true
+            },
+            {
+              "label": "It was too hot"
+            },
+            {
+              "label": "There were no houses"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-elisha-did",
+      "title": "What Elisha Did",
+      "objective": "Retrace his four steps in order, and know what salt is like.",
+      "answers": [
+        3,
+        4
+      ],
+      "note": "Questions 3 and 4. The sequence is the lesson's own order — a new bowl, salt in it, thrown in the spring, the water pure. The reveal that follows is where question 4 lands, and see the chapter's curriculum note: the lesson never says what salt is like, so those three items are ordinary facts about salt rather than anything the page claims.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Elisha's steps in order.",
+          "hint": "He asked for something new to carry it in.",
+          "items": [
+            {
+              "label": "A new bowl",
+              "position": 1
+            },
+            {
+              "label": "Salt in the bowl",
+              "position": 2
+            },
+            {
+              "label": "Thrown in the spring",
+              "position": 3
+            },
+            {
+              "label": "The water was pure",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "What is salt like?",
+          "items": [
+            {
+              "label": "It dissolves in water"
+            },
+            {
+              "label": "It keeps food fresh"
+            },
+            {
+              "label": "It makes food tasty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-salt-is-for",
+      "title": "What Is Salt For?",
+      "objective": "Know what salt is used for at home — and that God used that everyday thing at Jericho.",
+      "answers": [
+        5
+      ],
+      "note": "Question 5. The first two pairs are the kitchen; the third is the story. Putting them in one game is the point: the thing in the cupboard is the thing the prophet asked for.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "What do we use salt for?",
+          "hint": "One of these is what Elisha used it for.",
+          "pairs": [
+            {
+              "from": {
+                "label": "On our food"
+              },
+              "to": {
+                "label": "To make it tasty"
+              }
+            },
+            {
+              "from": {
+                "label": "On fish"
+              },
+              "to": {
+                "label": "To keep it fresh"
+              }
+            },
+            {
+              "from": {
+                "label": "At Jericho"
+              },
+              "to": {
+                "label": "To make water pure"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "and-ever-since",
+      "title": "And Ever Since",
+      "objective": "Know what happened to the water, and that it lasted.",
+      "featured": true,
+      "answers": [
+        6
+      ],
+      "note": "Question 6, in two halves, because the lesson's answer has two: the water became pure, and “the water has been pure ever since”. A chapter that taught only the first half would have taught a trick rather than a gift.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What happened to the water?",
+          "hint": "Elisha said, “Let this water be pure.”",
+          "options": [
+            {
+              "label": "It became pure",
+              "correct": true
+            },
+            {
+              "label": "It dried up"
+            },
+            {
+              "label": "It turned to salt"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "How long did it stay pure?",
+          "hint": "The lesson says it never went bad again.",
+          "options": [
+            {
+              "label": "Ever since that day",
+              "correct": true
+            },
+            {
+              "label": "Only one day"
+            },
+            {
+              "label": "Only until night"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "He lets me rest in fields of green grass, and leads me to quiet pools of fresh water.",
+    "reference": "Psalm 23:2",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does He let me rest?",
+        "hint": "It is somewhere soft and green.",
+        "options": [
+          {
+            "label": "In fields of green grass",
+            "correct": true
+          },
+          {
+            "label": "On a high mountain"
+          },
+          {
+            "label": "Beside a big city"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary places, not invented scripture."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with what He lets me do.",
+        "words": [
+          "He lets me rest",
+          "in fields of green grass,",
+          "and leads me",
+          "to quiet pools of fresh water."
+        ],
+        "note": "Stage 2, phrase ordering. Four chunks broken where the sense breathes; the build checks they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "He ______ me rest",
+        "hint": "The missing word starts with “l”.",
+        "options": [
+          {
+            "label": "lets",
+            "correct": true
+          },
+          {
+            "label": "rest"
+          },
+          {
+            "label": "water"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent's Beginner ladder and used exactly as it came out."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with the one who lets me rest.",
+        "words": [
+          "He lets me",
+          "rest in fields",
+          "of green grass,",
+          "and leads me to",
+          "quiet pools of",
+          "fresh water."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 2 had four, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 23",
+            "correct": true
+          },
+          {
+            "label": "2 Kings 2"
+          },
+          {
+            "label": "Exodus 16"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. The distractors are references this child has met: 2 Kings 2 is this chapter's own Bible portion and Exodus 16 was Chapter 4."
+      }
+    ],
+    "note": "Read from page 30 through the Memory Verse agent: `--fetch --source-dir` over the three curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited. Printed with its comma after “green grass,” and its full stop after “fresh water.”, both kept. Translation is unresolved: page 30 does not name one, which is where the other four Beginner chapters stand."
+  },
+  "decision": {
+    "statement": "I will keep the water clean.",
+    "note": "The curriculum's own My Decision line from page 30, first person and unchanged."
+  },
+  "prayer": {
+    "text": "Dear Lord Jesus, thank you for your divine gift of water. Help us Lord, not to pollute the water, it's resources and to keep it clean. Lord Jesus please help us. Amen.",
+    "note": "The Concluding Prayer from page 30, word for word including its “it's” and its Amen. The chapter also opens with a prayer on page 27 — “God, we praise you for knowing our needs and helping us. Amen” — which has nowhere to go in the card order."
+  },
+  "celebration": {
+    "message": "God gave us water. We keep it clean.",
+    "note": "The lesson's own closing thought said back to the child, and the decision they have just made, in the second person."
+  }
+}

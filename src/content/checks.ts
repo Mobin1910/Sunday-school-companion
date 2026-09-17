@@ -36,8 +36,18 @@ const words = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
 /** One shape for comparing two spellings of the same sentence. */
 const tidy = (text: string) => text.replace(/\s+/g, " ").trim();
 
+/*
+  How many sentences, ignoring the punctuation that trails one.
+
+  Splitting on terminal punctuation leaves the closing quote of a spoken line
+  stranded as its own fragment, so `“Our water is bad. Nothing grows on our
+  land.”` counted as three sentences and tripped the two-sentence limit on a
+  card that has two. A fragment with no letter or digit in it is punctuation,
+  not a sentence, and the story cards that quote somebody are exactly the
+  ones this used to punish.
+*/
 const sentences = (text: string) =>
-  text.split(/[.!?]+/).filter((part) => part.trim().length > 0).length;
+  text.split(/[.!?]+/).filter((part) => /[\p{L}\p{N}]/u.test(part)).length;
 
 function itemsOf(interaction: PlayInteraction): PlayItem[] {
   switch (interaction.type) {

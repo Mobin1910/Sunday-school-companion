@@ -293,3 +293,104 @@ judged; only the chapter's own class is real content.)
 | Intermediate | rebuild the whole verse from single words |
 | Senior | rebuild it, then recognise the reference among four |
 | Young Adult | rebuild it, then type the reference from memory |
+
+---
+
+# The Game Builder agent
+
+Curriculum in, a chapter's games out. Same shape as the Memory Verse agent
+above — two halves with a person in the middle, no AI API, no key, nothing
+written to Drive — and the same posture: what comes out is a **draft**.
+
+```
+npm run agent:games -- --class beginner --chapter 05 --plan
+#   reads the chapter's curriculum questions, decides the set,
+#   writes agents/.state/game-plans/<class>-chapter-<nn>.plan.json
+
+#   … a Claude session reads the lesson and writes the words into the plan …
+
+npm run agent:games -- --class beginner --chapter 05 --from-plan
+#   gates → agents/.drafts/<class>/chapter-<nn>/game-draft-*.json
+```
+
+Two more commands, both read-only:
+
+```
+npm run agent:games -- --check    # the catalogue against the app's registry
+npm run agent:games -- --bands    # the difficulty ladder, end to end
+npm run agent:games:test          # the selftest
+```
+
+## Why the seam is where it is
+
+Choosing *how* to ask something is bookkeeping — over skills, bands, variety
+and coverage — and it is exactly the job a person does badly at eleven at
+night. Writing the actual question is not: it needs somebody who has read the
+lesson and knows that "the water is bad" and "nothing grows on the land" are
+one trouble and not two.
+
+So the first half decides the *set* and leaves the words blank, and the
+second half checks what a person wrote. Neither half calls a model.
+
+## The four pieces
+
+| file | what it holds |
+|---|---|
+| `catalogue.mjs` | every mechanic the app can play, and the skills each exercises |
+| `bands.mjs` | the ladder: what each of the seven classes may be asked, and its copy budget |
+| `plan.mjs` | curriculum → what each question is *for* → a mechanic each |
+| `gates.mjs` | coverage, variety, the choose-one-of-N cap, band fit, copy budget |
+
+`--check` is the one to run after touching `src/interactions/registry.tsx`.
+The catalogue is the agent's contract with the running app, and a plan that
+proposes a mechanic the app cannot play produces a chapter that does not
+build.
+
+## What it will not do
+
+**It never turns a question into a multiple-choice by default.** `plan.mjs`
+reads what the answer's *shape* is — an identity, a cause, a process, a list
+of attributes — and hands that to a mechanic that exercises the matching
+skill. The choose-one-of-N cap is enforced in the planner rather than
+reported afterwards, so "not every game is a quiz" is a property of the
+output instead of a hope about it.
+
+**It never invents a bespoke scene.** Cana's jars, the Lost Coin's cloths and
+Manna's morning and evening are in the catalogue because the registry can play
+them, and the planner will never *choose* one: "the jars" is not a mechanic,
+it is that story, drawn. What the plan does instead is say so — every plan
+carries a `bespokeSuggestion` asking whether this chapter has one physical
+action worth building a scene for. A person builds it and names it in the
+chapter.
+
+**It never fills in what the curriculum does not say.** Chapter 5 asks what
+the properties of salt are and then never answers; the plan covers the
+question and the chapter's note records that the lesson is silent. Same rule
+as the verse gates: report, do not guess.
+
+## The ladder
+
+Difficulty is *which cognitive skills are in range*, not option counts or
+font sizes. A band is a ceiling for the young and a floor for the old:
+
+```
+nursery       recognition
+beginner      recognition · recall · sequencing
+primary       recall · sequencing · understanding
+junior        + application
+intermediate  + reasoning
+senior        recall · understanding · application · reasoning
+young-adult   the only band where writing a reference from memory is fair
+```
+
+`--bands` prints this with each band's mechanics, game count and copy budget,
+so the progression can be judged end to end rather than one rung at a time.
+`agent:games:test` plans the same six questions for all seven classes and
+prints the result for the same reason.
+
+## What the agent does not store
+
+No scores. `src/local/session.ts` records that a game was finished and nothing
+else, and the games this agent produces change none of that — there is no
+best score, no attempt count and no tally anywhere in the product. A count of
+attempts is a count of failures wearing a neutral name.
