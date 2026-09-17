@@ -518,6 +518,12 @@
     ],
     "note": "Read from 01 - Curriculum Source, page 26 of the Beginners book, through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. The draft it produced is at agents/.drafts/beginner/chapter-04/ and stage 3 below is its output unedited.\n\nPrinted as “Psalm 34:8 (a)” with no closing full stop, because it is a partial verse — the (a) is the book's own. Both are reproduced as printed. The verse is not completed to the end of verse 8 and no punctuation is added, which would be the same class of mistake as guessing it.\n\nTranslation is deliberately unresolved: page 26 does not state one, and the wording does not match a translation confidently enough to name it. Same position as the other three Beginner chapters."
   },
+  "video": {
+    "youtubeId": "yJlC8yVpTlI",
+    "title": "Manna",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "decision": {
     "statement": "I understand that God sustains me.",
     "note": "The curriculum's own My Decision line from page 26, first person and unchanged."
