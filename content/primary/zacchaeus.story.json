@@ -3,89 +3,99 @@
   "chapter": 3,
   "title": "Zacchaeus",
   "reference": "St. Luke 19: 1 - 10",
-  "note": "Primary, Chapter 3, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 17–20. The first chapter in this library that is not a Beginner's, and the first written to a band above the youngest — so the whole of it is calibrated one rung up: four options where Beginner gets three, a six-step sequence where Beginner gets four, wrong answers that are true sentences about the same story rather than obviously wrong ones, and a memory verse practice that begins where Beginner's ends.\n\nThat last point is not a figure of speech. St. Luke 19: 10 is also the memory verse of Beginner Chapter 3, The Lost Coin, so the two classes can be laid side by side on the same words — which is exactly what was done, and is why the agent's own Primary rung was set aside here. See the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 03`): the planner read the three curriculum questions, classified them attributes / cause / identity, and assigned reveal, multiple-choice and match. Those three are its work. The fourth and fifth are added by hand because three questions is below the Primary band's four-to-five, and padding the three into five would have been the worse answer; what they cover is written in their notes.\n\nNo artwork. `04 - Story Artwork` for this chapter is empty in Drive, so the story is eighteen text cards and no game carries a picture. The panel names are written anyway, in the ordinary convention, so the artwork can arrive without this file changing.\n\nTwo copy warnings are left standing on purpose. The lesson’s line “And if I have cheated anybody out of anything, I will pay back four times the amount” is one seventeen-word sentence, and the verse practice’s gap-fill prompt is the verse itself with a hole in it. Both are quotations; where a budget and a quotation disagree the quotation wins, and the budget reports it rather than being widened to hide it.\n\nThe book spells the name “Zacchaeus” throughout the lesson and “Zaccheus” once, in the last sentence of p.18. The dominant spelling is used here and the variant is not propagated.",
+  "note": "Primary, Chapter 3, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 17–20. The first chapter in this library that is not a Beginner’s, and the first written to a band above the youngest — so the whole of it is calibrated one rung up: four options where Beginner gets three, a six-step sequence where Beginner gets four, wrong answers that are true sentences about the same story rather than obviously wrong ones, and a memory verse practice that begins where Beginner’s ends.\n\nThat last point is not a figure of speech. St. Luke 19: 10 is also the memory verse of Beginner Chapter 3, The Lost Coin, so the two classes can be laid side by side on the same words — which is exactly what was done, and is why the agent’s own Primary rung was set aside here. See the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 03`): the planner read the three curriculum questions, classified them attributes / cause / identity, and assigned reveal, multiple-choice and match. Those three are its work. The fourth and fifth are added by hand because three questions is below the Primary band’s four-to-five, and padding the three into five would have been the worse answer; what they cover is written in their notes.\n\nArtwork downloaded from Drive (Primary / Chapter 03 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Seventeen files: a portrait cover, a landscape cover and fifteen panels. Panels 6, 7 and 8 are 941×1671, 941×1671 and 942×1670 rather than the canonical 941×1672 — one or two pixels, converted without distortion and recorded rather than silently fixed.\n\nThe artwork brought a frame the draft did not have. It opens on a boy in a present-day market who cannot see over the crowd (panels 1–3), tells Zacchaeus (4–12), and returns to the same boy (13–15), where Halo asks him what he can do when he makes a wrong choice and the last panel answers it. So the eighteen text cards written before the artwork arrived are gone, replaced by the fifteen panels the chapter actually has; the narration is lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel.\n\nOne copy warning is left standing on purpose: the verse practice’s gap-fill prompt is the verse itself with a hole in it, and shortening it would mean altering the verse. Where a budget and a quotation disagree the quotation wins, and the budget reports it rather than being widened to hide it.\n\nThe book spells the name “Zacchaeus” throughout the lesson and “Zaccheus” once, in the last sentence of p.18. The artwork spells it “Zacchaeus” everywhere, which is the spelling used here.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. Named so that dropping `cover.webp` into public/art/primary/zacchaeus/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 3’s own cover, drawn twice. The portrait is 941×1672 with “3” and “ZACCHAEUS” painted into it, so the story reader lays no text over it. The landscape is the same scene at 1672×941 and carries no title, which is what the two screens that crop a cover actually need — the chapter hub and the shelf row both draw their own heading, and both were throwing most of the portrait away to fit a wide box. Zacchaeus leans out of the sycamore-fig at the left and Jesus, in the street below, reaches up towards him; Jericho’s walls and market stand behind. Same moment, same characters, two crops of one picture — never two different covers, or a child meets one on the shelf and another inside."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Zacchaeus was a chief tax collector who lived in Jericho. He was a wealthy man.",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel that has not been drawn. The names are the ordinary panel-NN convention, so when the teacher uploads the artwork `npm run art:fetch -- --from-dir` drops it in with nothing here to edit."
+      "alt": "A crowded street market in bright sun — fruit stalls, bunting, a stage far off with musicians on it. A small boy in a blue T-shirt and backpack stands hemmed in by grown-ups, one hand on a man's back, craning up. Halo glows beside his shoulder. The boy says, “I can’t see!” A chalkboard behind him reads “Good Food Brighter Days”.",
+      "note": "The chapter does not open in Jericho. The artwork frames the lesson with a boy in a present-day market who cannot see over the crowd — panels 1 to 3 — goes to Zacchaeus in panels 4 to 12, and comes back to the same boy in panels 13 to 15, where the lesson lands as something he can do. That frame is the artwork’s, not an invention here, and it is the same shape Beginner Chapter 5 turned out to have."
     },
     {
       "picture": "panel-02",
-      "text": "The people considered him a sinner. They believed he had become rich by taxing them as he wanted."
+      "alt": "The same market. The boy has turned round, chin resting on his fist, thinking. Halo floats by the mango baskets and asks, “What could you do?” Just past his shoulder a hand-painted sign on the pavement reads “Better View This Way!” with an arrow."
     },
     {
       "picture": "panel-03",
-      "text": "This made the people resentful of a man who was cheating them."
+      "alt": "The boy has climbed onto a low stone wall, hands on the edge, and now he can see the stage over everyone’s heads. He is beaming. Halo, above him, says, “Someone in the Bible wanted to see Jesus like this too.”"
     },
     {
       "picture": "panel-04",
-      "text": "Zacchaeus had heard about Jesus and wished to see Him. Once, Jesus was passing through Jericho."
+      "alt": "A narration box reads, “Zacchaeus lived in Jericho. He was a chief tax collector and a wealthy man. One day, he heard that Jesus was passing through the city.” Zacchaeus sits at a tax table in a dark red robe and embroidered cap, a pen in his ringed hand, stacks of coins, scales and money chests in front of him. A cloth sign above reads “TAX COLLECTION” over a pair of scales. In the street beyond, a man throws up an arm and calls, “Jesus is passing through Jericho!” Halo hovers at the stall."
     },
     {
       "picture": "panel-05",
-      "text": "He hurried on the path that Jesus was coming along."
+      "alt": "“But there was a big crowd, and Zacchaeus was too short to see over the people.” We are behind Zacchaeus in the crowd: shoulders and turbans tower over him on every side, his hands pressed against two backs, his face tilted up. Far down the street, small between the heads, Jesus walks towards the city gate."
     },
     {
       "picture": "panel-06",
-      "text": "However, there was a big crowd. Zacchaeus was of short stature and could not get a glimpse of Him."
+      "alt": "“Zacchaeus was determined to see Jesus. He ran ahead of the crowd and climbed up a sycamore-fig tree.” Zacchaeus is halfway up a broad, rough-barked trunk, one sandal braced on a low wall, robe swinging, both hands gripping the bark. Below and behind him the crowd streams on towards the gate without him."
     },
     {
       "picture": "panel-07",
-      "text": "He was determined to see Jesus. He ran ahead of the crowd."
+      "alt": "“He sat on a branch, looking out for Jesus who would pass below.” Seen from up in the leaves: Zacchaeus sits astride a thick branch, looking down into the street. Jesus is walking through the middle of the crowd below, clearly visible now, people on every side of him."
     },
     {
       "picture": "panel-08",
-      "text": "He climbed up a sycamore-fig tree. He sat on a branch, looking out for Jesus."
+      "alt": "“Suddenly, Jesus looked up at Zacchaeus.” Jesus stands in the street with one hand raised towards the tree, face turned up and smiling. Zacchaeus leans out along the branch above, eyes wide, caught. Jesus says, “Zacchaeus, come down immediately. I must stay at your house today.”"
     },
     {
       "picture": "panel-09",
-      "text": "He caught sight of Jesus walking among the thronging crowd."
+      "alt": "“Zacchaeus came down at once and gladly welcomed Jesus to his home.” The two walk side by side along a sunlit street, Zacchaeus half a step ahead with one arm flung out towards his doorway, looking up at Jesus and talking. The crowd follows behind them, smiling."
     },
     {
       "picture": "panel-10",
-      "text": "Suddenly, Jesus looked up at Zacchaeus and called to him."
+      "alt": "“Zacchaeus was overjoyed. After his encounter with Jesus, he was transformed.” Inside the house: Jesus sits on a cushioned bench, Zacchaeus stands before him with both hands clasped at his chest. Shelves of chests, coins and brass vessels line the wall behind, and a low table is set with fruit."
     },
     {
       "picture": "panel-11",
-      "text": "“Zacchaeus, come down immediately. I must stay at your house today.”"
+      "alt": "“Zacchaeus stood up and said to the Lord, ‘Look, Lord! Here and now, I give half of my possessions to the poor.’” Zacchaeus stands with one hand on his chest and the other open in front of him, speaking. Jesus sits listening, and the backs of several seated guests fill the foreground."
     },
     {
       "picture": "panel-12",
-      "text": "He came down at once and gladly welcomed Jesus to his home."
+      "alt": "“‘And if I have cheated anybody out of anything, I will pay back four times the amount.’” Zacchaeus holds out a cloth money pouch with both hands to a seated man, who reaches up to take it. Zacchaeus says, “I will pay back four times the amount.” Jesus stands smiling behind him."
     },
     {
       "picture": "panel-13",
-      "text": "Zacchaeus was overjoyed. After his encounter with Jesus, he was transformed."
+      "alt": "Back in the market. The boy sits on a stone block, chin on his fist, looking up. In a thought cloud above him, Zacchaeus stands with his hands clasped, facing Jesus. The narration reads, “Meeting Jesus changed Zacchaeus. He wanted to make things right.” Halo asks, “What do you think changed Zacchaeus?” A chalkboard beside him reads “Kind People Brighter Places”."
     },
     {
       "picture": "panel-14",
-      "text": "“Look, Lord! Here and now, I give half of my possessions to the poor.”"
+      "alt": "“Zacchaeus showed that he was sorry by choosing to make things right.” The boy is still thinking. Three thought clouds float above him, each with a small scene and a label: “Take something that isn’t mine”, “Hurt a friend’s feelings”, and “Tell a lie”. Halo asks, “What can you do when you make a wrong choice?” A sign nearby reads “Be Kind Be Honest Be Brave”.",
+      "interaction": {
+        "type": "multiple-choice",
+        "prompt": "What can you do when you make a wrong choice?",
+        "hint": "Zacchaeus did not only feel sorry. He did something.",
+        "options": [
+          {
+            "label": "Say sorry and make it right",
+            "correct": true
+          },
+          {
+            "label": "Hope nobody notices"
+          },
+          {
+            "label": "Blame somebody else"
+          },
+          {
+            "label": "Pretend it never happened"
+          }
+        ],
+        "note": "Halo asks this question in the artwork itself and panel 15 answers it, so the question is the page’s own and not one added on top of it. Ungated: a child who would rather turn the page may. The three wrong options are the three easy ways out of an apology, which is what makes them worth naming out loud."
+      }
     },
     {
       "picture": "panel-15",
-      "text": "“And if I have cheated anybody out of anything, I will pay back four times the amount.”"
-    },
-    {
-      "picture": "panel-16",
-      "text": "Jesus blessed Zacchaeus and his family."
-    },
-    {
-      "picture": "panel-17",
-      "text": "Dear children, do you wish to see Jesus? If you try, you can see Him in your heart."
-    },
-    {
-      "picture": "panel-18",
-      "text": "Jesus is omnipresent. He is everywhere, and He can see you wherever you are."
+      "alt": "“When we make a wrong choice, we can say sorry and try to make things right.” The boy stands with his palms pressed together in apology in front of another boy who sits on a step with his arms round his knees, looking up at him. A red toy car lies on the cobbles between them. Halo says, “You can make things right, too.” A banner behind reads “A Better You A Brighter Tomorrow”."
     }
   ],
   "curriculum": {
     "source": "Primary Mar Thoma Vol-1, Chapter 03 “ZACCHAEUS”, p.19 — “ANSWER THE QUESTIONS”",
-    "note": "The three questions the Primary book prints at the end of the chapter, transcribed from the curriculum photographs in 01 - Curriculum Source and left exactly as printed — including “mee” in question 2, which is the book's own typo and is not corrected here. Three is all the book asks; the Primary band wants four to five games, so the fourth and fifth cover the part of the lesson the question set leaves out (what Zacchaeus did afterwards, and the closing teaching on p.19) and say so in their own notes.\n\nThe page carries the teacher's own answer key in blue pen: ① brackets the sinner/taxing sentences, ② underlines “there was a big crowd and Zacchaeus being of short stature could not get a glimpse of Him”, and ③ underlines “sycamore-fig tree”. Each `answer` below is the sentence that mark points at, quoted from p.18 rather than reasoned out, so this block records what the curriculum says and never a second opinion about it.",
+    "note": "The three questions the Primary book prints at the end of the chapter, transcribed from the curriculum photographs in 01 - Curriculum Source and left exactly as printed — including “mee” in question 2, which is the book’s own typo and is not corrected here. Three is all the book asks; the Primary band wants four to five games, so the fourth and fifth cover the part of the lesson the question set leaves out (what Zacchaeus did afterwards, and the closing teaching on p.19) and say so in their own notes.\n\nThe page carries the teacher’s own answer key in blue pen: ① brackets the sinner/taxing sentences, ② underlines “there was a big crowd and Zacchaeus being of short stature could not get a glimpse of Him”, and ③ underlines “sycamore-fig tree”. Each `answer` below is the sentence that mark points at, quoted from p.18 rather than reasoned out, so this block records what the curriculum says and never a second opinion about it.",
     "questions": [
       {
         "n": 1,
@@ -118,7 +128,8 @@
       "answers": [
         1
       ],
-      "note": "Question 1. A reveal rather than a quiz, because “what were his shortcomings” has more than one answer and a question with one right box teaches the opposite. Nothing here is correct or incorrect; four cards are turned over and each one says what the lesson says. The fourth is the consequence rather than a shortcoming, and it is included because the lesson gives it in the same breath.",
+      "picture": "panel-04",
+      "note": "Question 1. A reveal rather than a quiz, because “what were his shortcomings” has more than one answer and a question with one right box teaches the opposite. Nothing here is correct or incorrect; four cards are turned over and each one says what the lesson says. The fourth is the consequence rather than a shortcoming, and it is included because the lesson gives it in the same breath. Shelf picture: the tax table in panel 4, with the scales, the coin stacks and the “TAX COLLECTION” sign — the only panel that shows the job and the wealth this game is about. The cards themselves stay words: three of the four have nothing drawn for them, and illustrating one of four is a hint, not artwork.",
       "interactions": [
         {
           "type": "reveal",
@@ -147,7 +158,8 @@
       "answers": [
         2
       ],
-      "note": "Question 2. The lesson gives one sentence with two causes in it, and the two wrong options are each exactly half of that sentence — a child who remembers only the crowd, or only his height, finds an option waiting for them and has to notice it is short of the answer. Nothing in the labels flags which is which. The fourth is a thing that never happened. Four options is the Primary band's ceiling; Beginner's is three.",
+      "picture": "panel-05",
+      "note": "Question 2. The lesson gives one sentence with two causes in it, and the two wrong options are each exactly half of that sentence — a child who remembers only the crowd, or only his height, finds an option waiting for them and has to notice it is short of the answer. Nothing in the labels flags which is which. The fourth is a thing that never happened. Four options is the Primary band’s ceiling; Beginner’s is three.\n\nShelf picture: panel 5, which is this question drawn — the view from behind Zacchaeus with the crowd towering over him and Jesus tiny in the distance. It shows both causes at once and names neither, which is exactly what the shelf should do.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -178,7 +190,8 @@
       "answers": [
         3
       ],
-      "note": "Question 3, in two halves: the match names the things in the story, and the choice that follows asks the *why* the question's objective also wants. Both wrong options in the choice are true sentences about this story — he did sit on a branch, and it was a fig tree — which makes the question “which of these was the reason” rather than “which of these happened”. That is the discrimination Primary is for.",
+      "picture": "panel-06",
+      "note": "Question 3, in two halves: the match names the things in the story, and the choice that follows asks the *why* the question’s objective also wants. Both wrong options in the choice are true sentences about this story — he did sit on a branch, and it was a fig tree — which makes the question “which of these was the reason” rather than “which of these happened”. That is the discrimination Primary is for.\n\nShelf picture: panel 6, the climb. The pairs stay words on purpose — putting the tree’s picture on the “Sycamore-fig” card would let a child match it to “The tree he climbed” without reading either, which is the opposite of what a matching game is for.",
       "interactions": [
         {
           "type": "match",
@@ -244,8 +257,9 @@
     {
       "id": "what-happened-that-day",
       "title": "What Happened That Day",
-      "objective": "Put the day in order, from hearing that Jesus was near to promising to pay back what he took.",
-      "note": "The book asks three questions and the Primary band wants four to five games, so this one covers what the questions leave out: the shape of the day. Six steps, because the band's own note says a sequence may run longer than four here, and because six is what the lesson actually has. It answers no curriculum question and is not pretending to.",
+      "objective": "Put the day in order, from hearing that Jesus was near to paying back what he took.",
+      "picture": "panel-09",
+      "note": "The book asks three questions and the Primary band wants four to five games, so this one covers what the questions leave out: the shape of the day. Six steps, because the band’s own note says a sequence may run longer than four here, and because six is what the lesson actually has. It answers no curriculum question and is not pretending to.\n\nEvery step is one of the chapter’s own panels, in the order the artwork tells it — the tax table, the crowd, the climb, Jesus looking up, the walk home, the money paid back. This is the one game the artwork changed outright: it was six text cards before the panels arrived, and ordering pictures is what this mechanic wanted all along. The labels stay as captions so a child who reads gets both.\n\nShelf picture named rather than left to fall out of the game: without it the shelf takes the first picture the game uses, which is panel 4 — already game 1’s card, so two of the five rows were the same tax table. Panel 9, the walk home, is this game’s own middle and belongs to no other card.",
       "interactions": [
         {
           "type": "sequence",
@@ -253,27 +267,33 @@
           "hint": "It starts before he ever saw Jesus.",
           "items": [
             {
+              "picture": "panel-04",
               "label": "He heard Jesus was coming",
               "position": 1
             },
             {
-              "label": "He ran ahead of the crowd",
+              "picture": "panel-05",
+              "label": "He could not see Jesus",
               "position": 2
             },
             {
-              "label": "He climbed the sycamore-fig tree",
+              "picture": "panel-06",
+              "label": "He climbed a sycamore-fig tree",
               "position": 3
             },
             {
+              "picture": "panel-08",
               "label": "Jesus called him down",
               "position": 4
             },
             {
-              "label": "He welcomed Jesus to his home",
+              "picture": "panel-09",
+              "label": "He welcomed Jesus home",
               "position": 5
             },
             {
-              "label": "He promised to pay back",
+              "picture": "panel-12",
+              "label": "He paid back four times",
               "position": 6
             }
           ]
@@ -284,7 +304,8 @@
       "id": "true-or-not",
       "title": "True or Not?",
       "objective": "Test what the lesson actually says against what it is easy to assume — including its closing teaching, that Jesus can see you wherever you are.",
-      "note": "The fifth game, and the only one that reaches past the story into the lesson's own closing paragraph on p.19. Every false statement carries its reason immediately after it, so nothing untrue is ever left standing on the screen. The reasons are the lesson's own sentences rather than a commentary on them.",
+      "picture": "panel-10",
+      "note": "The fifth game, and the only one that reaches past the story into the lesson’s own closing paragraph on p.19. Every false statement carries its reason immediately after it, so nothing untrue is ever left standing on the screen. The reasons are the lesson’s own sentences rather than a commentary on them. Shelf picture: panel 10, Zacchaeus standing in his own house with his hands clasped — the moment the lesson calls transformed, which is what most of these statements circle.",
       "interactions": [
         {
           "type": "true-or-not",
@@ -329,6 +350,7 @@
     "text": "For the Son of Man came to seek and to save the lost.",
     "reference": "St. Luke 19: 10",
     "translation": "PLACEHOLDER",
+    "picture": "panel-08",
     "practice": [
       {
         "type": "arrange-words",
@@ -414,14 +436,14 @@
             "label": "St. Luke 10: 19"
           }
         ],
-        "note": "Stage 5, the reference — recognised, not typed; the Primary band does not write references yet. Three options rather than Beginner's three different books: 19: 1 is where this chapter's own Bible portion begins, printed on p.17, and 10: 19 is the same two numbers the other way round. The field is narrower than Beginner's and the discrimination is much finer, which is where the difficulty moved to."
+        "note": "Stage 5, the reference — recognised, not typed; the Primary band does not write references yet. Three options rather than Beginner’s three different books: 19: 1 is where this chapter’s own Bible portion begins, printed on p.17, and 10: 19 is the same two numbers the other way round. The field is narrower than Beginner’s and the discrimination is much finer, which is where the difficulty moved to."
       }
     ],
-    "note": "Read from p.20 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Printed on the page inside quotation marks and with the space in “19: 10”, both kept as printed.\n\nThe agent's Primary rung produced a three-piece arrange-words — “For the Son / of Man came to seek and / to save the lost.” — and it is not used, because Beginner Chapter 3 carries this exact verse as a four-piece arrange-words and a Primary child would have met an easier task than a Beginner. That is the one thing this ladder must never do. What ships instead is five stages that start at Beginner's ceiling and climb: the agent's rung is the floor here, not the whole of it. Translation is unresolved: p.20 does not name one, which is where every other chapter in this library stands."
+    "note": "Read from p.20 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Printed on the page inside quotation marks and with the space in “19: 10”, both kept as printed.\n\nThe agent’s Primary rung produced a three-piece arrange-words — “For the Son / of Man came to seek and / to save the lost.” — and it is not used, because Beginner Chapter 3 carries this exact verse as a four-piece arrange-words and a Primary child would have met an easier task than a Beginner. That is the one thing this ladder must never do. What ships instead is five stages that start at Beginner’s ceiling and climb: the agent’s rung is the floor here, not the whole of it. Translation is unresolved: p.20 does not name one, which is where every other chapter in this library stands.\n\nPicture: panel 8, Jesus looking up into the tree and calling Zacchaeus down — the verse’s own sentence happening, rather than an illustration chosen to decorate it."
   },
   "decision": {
     "statement": "I will always try to see Jesus and live according to His will.",
-    "note": "The curriculum's own My Decision line from p.20, first person and unchanged."
+    "note": "The curriculum’s own My Decision line from p.20, first person and unchanged."
   },
   "song": {
     "lines": [
@@ -437,7 +459,7 @@
     "note": "The closing Prayer from p.20, word for word. The chapter also opens with a prayer on p.17 — “Lord Jesus, who comes in search of us, give us the grace to learn about You. Amen.” — which has nowhere to go in this shape and is recorded here rather than lost."
   },
   "celebration": {
-    "message": "Jesus came to look for us. He can see you wherever you are.",
-    "note": "The memory verse and the lesson's closing line, said back to the child."
+    "message": "Jesus came to look for us. You can make things right, too.",
+    "note": "The memory verse and Halo’s own last line from panel 15, said back to the child."
   }
 }

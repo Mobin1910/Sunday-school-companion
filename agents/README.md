@@ -420,6 +420,29 @@ own closing teaching — and say so in their notes. The gates flag them
 ("answers no curriculum question — is it earning its place?") and that flag is
 meant to be answered in a note, not silenced.
 
+## Artwork is content, and it can outrank the draft
+
+Primary Chapter 3 was written, gated and committed before any artwork existed,
+then rewritten when it arrived. Three things came out of that.
+
+**The artwork may carry the chapter's structure.** Zacchaeus arrived as fifteen
+panels that frame the lesson with a boy in a present-day market who cannot see
+over a crowd (1–3), tell the Bible story (4–12), and come back to the boy
+(13–15) with Halo asking him what he can do when he makes a wrong choice. The
+eighteen text cards written from the lesson alone were simply wrong about the
+shape of the chapter, and were replaced rather than reconciled. Beginner
+Chapter 5 did the same thing. Assume a text-only draft's card list is
+provisional until the panels land.
+
+**A sequence wants pictures.** "What Happened That Day" was six text labels and
+is now six of the chapter's own panels with those labels as captions — the
+same change Beginner Chapter 5's sequence went through, for the same reason.
+Where a game orders events the chapter has drawn, order the drawings.
+
+**Name a game's shelf picture once more than one game could want it.** A game
+with no `picture` takes the first picture it uses, which put the same tax
+table on two of five rows here.
+
 ## What the agent does not store
 
 No scores. `src/local/session.ts` records that a game was finished and nothing

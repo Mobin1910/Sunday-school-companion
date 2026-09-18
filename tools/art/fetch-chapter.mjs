@@ -69,6 +69,24 @@ function panelNumber(name) {
   return hit ? Number(hit[1]) : undefined;
 }
 
+/**
+ * A wide version of the cover, for the surfaces that crop one.
+ *
+ * The chapter hub and the shelf card both show the cover in a landscape box
+ * and `object-cover` it, so a 9:16 portrait loses most of itself to the crop.
+ * Where an artist supplies a wide master it goes here, beside the portrait
+ * rather than instead of it: the story reader still opens on the tall one,
+ * which is the one with the chapter's title painted into it.
+ *
+ * Checked before `isCover`, because "landscape cover.png" contains the word
+ * "cover" and would otherwise be a second cover — which is exactly what it
+ * was, and it stopped this script dead with "Expected exactly one cover,
+ * found 2" the first time a chapter had both.
+ */
+const isLandscapeCover = (name) =>
+  /(?:^|[^a-z])(landscape|wide)(?:\W|_)*cover(?:\D|$)/i.test(name) ||
+  /(?:^|[^a-z])cover(?:\W|_)*(landscape|wide)(?:\D|$)/i.test(name);
+
 const isCover = (name) => /(?:^|[^a-z])cover(?:\D|$)/i.test(name);
 
 async function main() {
@@ -125,9 +143,14 @@ async function main() {
 
   const panels = new Map();
   const covers = [];
+  const landscapes = [];
   const unknown = [];
 
   for (const file of files) {
+    if (isLandscapeCover(file.name)) {
+      landscapes.push(file);
+      continue;
+    }
     if (isCover(file.name)) {
       covers.push(file);
       continue;
@@ -151,6 +174,11 @@ async function main() {
     process.exit(1);
   }
 
+  if (landscapes.length > 1) {
+    console.log(red(`\n  Expected at most one landscape cover, found ${landscapes.length}.`));
+    process.exit(1);
+  }
+
   const numbers = [...panels.keys()].sort((a, b) => a - b);
   const missing = [];
   for (let n = 1; n <= Math.max(...numbers); n++) if (!panels.has(n)) missing.push(n);
@@ -168,6 +196,7 @@ async function main() {
   const odd = [];
   const jobs = [
     { file: covers[0], out: "cover.webp" },
+    ...(landscapes.length ? [{ file: landscapes[0], out: "cover-landscape.webp" }] : []),
     ...numbers.map((n) => ({
       file: panels.get(n),
       out: `panel-${String(n).padStart(2, "0")}.webp`,
@@ -184,8 +213,19 @@ async function main() {
     writeFileSync(join(dir, out), webp);
 
     const size = `${width}×${height}`;
-    const right = width === EXPECTED.width && height === EXPECTED.height;
-    if (!right) odd.push(`${file.name} is ${size}`);
+    /*
+      A landscape cover is the same canvas turned on its side, so it is
+      correct at exactly the transposed size and wrong at any other. Judging
+      it against the portrait dimensions reported it as odd every single run,
+      which is a warning that means "this file is the shape it is supposed to
+      be" — the fastest way to teach someone to stop reading warnings.
+    */
+    const wanted =
+      out === "cover-landscape.webp"
+        ? { width: EXPECTED.height, height: EXPECTED.width }
+        : EXPECTED;
+    const right = width === wanted.width && height === wanted.height;
+    if (!right) odd.push(`${file.name} is ${size}, expected ${wanted.width}×${wanted.height}`);
 
     console.log(
       `  ${right ? green("✓") : amber("!")} ${file.name.padEnd(20)} → ${out.padEnd(15)} ${size}  ${(webp.length / 1024).toFixed(0)} KB`,
@@ -197,7 +237,7 @@ async function main() {
   if (odd.length) {
     console.log(
       amber(
-        `\n  ${odd.length} file(s) are not ${EXPECTED.width}×${EXPECTED.height}:\n` +
+        `\n  ${odd.length} file(s) are not the size they should be:\n` +
           odd.map((o) => `    ${o}`).join("\n") +
           "\n  Converted without distortion. Decide whether the artwork or the\n" +
           "  expectation is wrong; this script will not resize either.",

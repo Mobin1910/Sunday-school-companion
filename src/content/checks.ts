@@ -190,7 +190,9 @@ function artOf(card: Card): Art[] {
 
   switch (card.kind) {
     case "cover":
-      return [card.art];
+      // Both crops, so the wide one is neither reported as an orphan nor
+      // allowed to go missing quietly.
+      return card.wide ? [card.art, card.wide] : [card.art];
     case "story":
       return [
         card.art,

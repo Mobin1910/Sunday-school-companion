@@ -92,9 +92,11 @@ export default async function ChapterHubPage({
           {cover ? (
             <div className="flex w-full max-w-xs justify-center">
               <Picture
-                art={cover.art}
+                art={cover.wide ?? cover.art}
                 alt={chapter.title}
-                className="hub-cover rounded-card object-cover"
+                className={`hub-cover rounded-card object-cover ${
+                  cover.wide ? "hub-cover--wide" : ""
+                }`}
               />
             </div>
           ) : null}

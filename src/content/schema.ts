@@ -789,7 +789,26 @@ export const chapterSchema = z.strictObject({
 
   // Exactly one cover and exactly one celebration, guaranteed by the shape
   // rather than by a rule someone has to remember.
-  cover: z.strictObject({ picture: z.string(), note }),
+  cover: z.strictObject({
+    picture: z.string(),
+
+    /**
+     * A wide version of the same cover, for the screens that crop one.
+     *
+     * The chapter hub draws the cover in a 4:3 box and the shelf card in a
+     * tall 46%-wide strip, both with `object-cover`, so a 9:16 portrait is
+     * mostly thrown away on both. Optional, and falls back to `picture`
+     * everywhere it is missing, so this changes nothing for a chapter that
+     * does not have one.
+     *
+     * It is a second crop of one picture, never a second picture: the two
+     * must show the same scene, or a child meets one cover on the shelf and
+     * a different one inside. The portrait is the one the story opens on,
+     * because it is the one with the chapter's name painted into it.
+     */
+    landscape: z.string().optional(),
+    note,
+  }),
   story: z.array(storyCard).min(1),
 
   /*

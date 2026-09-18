@@ -108,7 +108,7 @@ export type PlayInteraction =
     };
 
 export type Card =
-  | { kind: "cover"; art: Art }
+  | { kind: "cover"; art: Art; wide?: Art }
   | {
       kind: "story";
       art: Art;
@@ -398,7 +398,13 @@ export function toInteraction(
  */
 export function toCards(chapter: Chapter, resolve: Resolve): Card[] {
   const cards: Card[] = [
-    { kind: "cover", art: toArt(panel(chapter.cover.picture), resolve) },
+    {
+      kind: "cover",
+      art: toArt(panel(chapter.cover.picture), resolve),
+      wide: chapter.cover.landscape
+        ? toArt(panel(chapter.cover.landscape), resolve)
+        : undefined,
+    },
   ];
 
   for (const card of chapter.story) {

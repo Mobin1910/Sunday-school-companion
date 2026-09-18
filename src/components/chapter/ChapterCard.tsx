@@ -76,7 +76,18 @@ export default function ChapterCard({
     >
       {cover ? (
         <div className="absolute inset-y-0 right-0 w-[46%]" aria-hidden>
-          <Picture art={cover.art} alt="" className="size-full object-cover" />
+          {/*
+            The wide crop where the chapter has one. This strip is 46% of the
+            card and full height, so a 9:16 portrait arrives here as a sliver
+            of its own middle; the landscape master was drawn for exactly
+            this. Falls back to the portrait, which is what every chapter
+            written before the field existed still uses.
+          */}
+          <Picture
+            art={cover.wide ?? cover.art}
+            alt=""
+            className="size-full object-cover"
+          />
           {/* The artwork arrives out of the card rather than being stuck on it. */}
           <div className="shelf-fade absolute inset-0" />
         </div>

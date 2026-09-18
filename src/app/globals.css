@@ -1450,6 +1450,19 @@ html[data-motion="reduce"] .pour-fall.is-running {
 }
 
 /*
+  A cover drawn wide is shown wide.
+
+  The 4:3 box above is a sensible crop of a 9:16 portrait, which is all this
+  ever had. Given a 16:9 master it becomes a crop of a crop — a quarter of the
+  width thrown away, and on this chapter that quarter is the tree Zacchaeus is
+  sitting in. So a chapter with a landscape cover gets the shape it was drawn
+  at, and everything else keeps the box it has always had.
+*/
+.hub-cover--wide {
+  aspect-ratio: 16 / 9;
+}
+
+/*
   A screen held to exactly one fold.
 
   Only where a fold is actually big enough to hold one. Below that the page
