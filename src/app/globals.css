@@ -1350,6 +1350,21 @@ html[data-motion="reduce"] .pour-fall.is-running {
   The green stays. Arriving is worth keeping on the screen, and it is on the
   card the child chose, so it reads as "that one" rather than as a mark.
 */
+/*
+  Turned over already.
+
+  A reveal has no right answer in it, so it must not borrow `.is-right`: the
+  green ring means "that one" and there is no "that one" here. This is the
+  quieter touchable ring `.step-card.is-filled` wears, moved onto the cream
+  card so a text-only reveal can say the same thing — you have had this one —
+  without saying you were correct.
+*/
+.option-card.is-found {
+  box-shadow:
+    0 0 0 2px var(--color-touchable),
+    0 0 18px -6px rgb(from var(--color-touchable) r g b / 0.55);
+}
+
 .is-right {
   box-shadow:
     0 0 0 2px var(--color-right),

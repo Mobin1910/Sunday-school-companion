@@ -129,11 +129,11 @@
         1
       ],
       "picture": "panel-04",
-      "note": "Question 1. A reveal rather than a quiz, because “what were his shortcomings” has more than one answer and a question with one right box teaches the opposite. Nothing here is correct or incorrect; four cards are turned over and each one says what the lesson says. The fourth is the consequence rather than a shortcoming, and it is included because the lesson gives it in the same breath. Shelf picture: the tax table in panel 4, with the scales, the coin stacks and the “TAX COLLECTION” sign — the only panel that shows the job and the wealth this game is about. The cards themselves stay words: three of the four have nothing drawn for them, and illustrating one of four is a hint, not artwork.",
+      "note": "Question 1. A reveal rather than a quiz, because “what were his shortcomings” has more than one answer and a question with one right box teaches the opposite. Nothing here is correct or incorrect; four cards are turned over and each one says what the lesson says. The fourth is the consequence rather than a shortcoming, and it is included because the lesson gives it in the same breath. The prompt says tap rather than turn over: these cards carry words and nothing is hidden behind them, so “turn over” promised a flip the screen never performs. Shelf picture: the tax table in panel 4, with the scales, the coin stacks and the “TAX COLLECTION” sign — the only panel that shows the job and the wealth this game is about. The cards themselves stay words: three of the four have nothing drawn for them, and illustrating one of four is a hint, not artwork.",
       "interactions": [
         {
           "type": "reveal",
-          "prompt": "Turn over what the people said about him.",
+          "prompt": "Tap each thing the people said about him.",
           "items": [
             {
               "label": "A chief tax collector"
