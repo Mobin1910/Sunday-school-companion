@@ -388,6 +388,38 @@ so the progression can be judged end to end rather than one rung at a time.
 `agent:games:test` plans the same six questions for all seven classes and
 prints the result for the same reason.
 
+## The ladder is a floor as well as a ceiling
+
+Primary Chapter 3 is the first chapter written for a class above Beginner, and
+it caught two things that only show up once a second class exists.
+
+**A rung must never be softer than the one below it.** St. Luke 19: 10 is the
+memory verse of *both* Beginner Chapter 3 (The Lost Coin) and Primary Chapter
+3 (Zacchaeus) — the same words, two classes apart. The verse ladder's Primary
+generator cut it into three phrases; the shipped Beginner chapter cuts it into
+four. A Primary child would have been handed the easier task. The generator is
+not wrong in general — the Beginner chapter overrides *its* rung too — but a
+generated rung is a starting point, and the check that matters is against what
+the class below actually ships, not against the table. Where a verse appears
+in two classes, play both before writing either.
+
+**The app's copy budgets were one class's.** `src/content/checks.ts` held a
+single set of word limits, and they were Beginner's, because Beginner was all
+there was. The first Primary chapter arrived with twenty warnings and not one
+of them was a defect — including labels flagged at six words that are inside
+the Primary band's own six-word ceiling. Those limits are now a ladder in the
+same file, mirroring `maxPromptWords` and `maxLabelWords` here, so the agent
+and the build cannot disagree about what a class can read. Nursery and
+Beginner keep the exact numbers they had.
+
+**Three questions, five games.** The Primary band asks for four to five games
+and the book asks three questions. The planner covers the three and stops,
+which is right: it will not invent curriculum. The other two were written by
+hand, cover what the question set omits — the transformation, and the lesson's
+own closing teaching — and say so in their notes. The gates flag them
+("answers no curriculum question — is it earning its place?") and that flag is
+meant to be answered in a note, not silenced.
+
 ## What the agent does not store
 
 No scores. `src/local/session.ts` records that a game was finished and nothing

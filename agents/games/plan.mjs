@@ -39,7 +39,27 @@ export function classify(question) {
   if (has("who is", "who was", "whom did", "who did", "who helped", "who told")) {
     return { asks: "identity", skill: "recall" };
   }
-  if (has("properties of", "for what purposes", "what is ... used")) {
+  /*
+    "Which tree did he climb?" names a thing out of a set, which is the same
+    job as naming a person. Primary's Zacchaeus chapter is where this was
+    missing: every one of its three questions fell through to `unsure`, and
+    the planner did the honest thing and said so — and then gave two of the
+    three a multiple-choice, which is the outcome this whole file exists to
+    avoid. The flag was right; the table was short.
+  */
+  if (/^\s*which\b/.test(q) || has("which tree", "which of")) {
+    return { asks: "identity", skill: "recall" };
+  }
+  /*
+    "What were the shortcomings of X?" asks for a list of things true about
+    somebody — the same shape as "what are the properties of salt?", and the
+    same mechanics suit it.
+  */
+  if (
+    has("properties of", "for what purposes", "what is ... used") ||
+    /what (were|are|was) the .*\bof\b/.test(q) ||
+    has("shortcomings", "qualities of")
+  ) {
     return { asks: "attributes", skill: "understanding" };
   }
   if (/^\s*\d*\.?\s*what (was|were) .*(problem|wrong|the matter)/.test(q) || has("why did", "why were", "why was")) {

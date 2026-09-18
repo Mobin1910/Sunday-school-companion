@@ -1,0 +1,443 @@
+{
+  "class": "primary",
+  "chapter": 3,
+  "title": "Zacchaeus",
+  "reference": "St. Luke 19: 1 - 10",
+  "note": "Primary, Chapter 3, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 17–20. The first chapter in this library that is not a Beginner's, and the first written to a band above the youngest — so the whole of it is calibrated one rung up: four options where Beginner gets three, a six-step sequence where Beginner gets four, wrong answers that are true sentences about the same story rather than obviously wrong ones, and a memory verse practice that begins where Beginner's ends.\n\nThat last point is not a figure of speech. St. Luke 19: 10 is also the memory verse of Beginner Chapter 3, The Lost Coin, so the two classes can be laid side by side on the same words — which is exactly what was done, and is why the agent's own Primary rung was set aside here. See the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 03`): the planner read the three curriculum questions, classified them attributes / cause / identity, and assigned reveal, multiple-choice and match. Those three are its work. The fourth and fifth are added by hand because three questions is below the Primary band's four-to-five, and padding the three into five would have been the worse answer; what they cover is written in their notes.\n\nNo artwork. `04 - Story Artwork` for this chapter is empty in Drive, so the story is eighteen text cards and no game carries a picture. The panel names are written anyway, in the ordinary convention, so the artwork can arrive without this file changing.\n\nTwo copy warnings are left standing on purpose. The lesson’s line “And if I have cheated anybody out of anything, I will pay back four times the amount” is one seventeen-word sentence, and the verse practice’s gap-fill prompt is the verse itself with a hole in it. Both are quotations; where a budget and a quotation disagree the quotation wins, and the budget reports it rather than being widened to hide it.\n\nThe book spells the name “Zacchaeus” throughout the lesson and “Zaccheus” once, in the last sentence of p.18. The dominant spelling is used here and the variant is not propagated.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. Named so that dropping `cover.webp` into public/art/primary/zacchaeus/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Zacchaeus was a chief tax collector who lived in Jericho. He was a wealthy man.",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel that has not been drawn. The names are the ordinary panel-NN convention, so when the teacher uploads the artwork `npm run art:fetch -- --from-dir` drops it in with nothing here to edit."
+    },
+    {
+      "picture": "panel-02",
+      "text": "The people considered him a sinner. They believed he had become rich by taxing them as he wanted."
+    },
+    {
+      "picture": "panel-03",
+      "text": "This made the people resentful of a man who was cheating them."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Zacchaeus had heard about Jesus and wished to see Him. Once, Jesus was passing through Jericho."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He hurried on the path that Jesus was coming along."
+    },
+    {
+      "picture": "panel-06",
+      "text": "However, there was a big crowd. Zacchaeus was of short stature and could not get a glimpse of Him."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He was determined to see Jesus. He ran ahead of the crowd."
+    },
+    {
+      "picture": "panel-08",
+      "text": "He climbed up a sycamore-fig tree. He sat on a branch, looking out for Jesus."
+    },
+    {
+      "picture": "panel-09",
+      "text": "He caught sight of Jesus walking among the thronging crowd."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Suddenly, Jesus looked up at Zacchaeus and called to him."
+    },
+    {
+      "picture": "panel-11",
+      "text": "“Zacchaeus, come down immediately. I must stay at your house today.”"
+    },
+    {
+      "picture": "panel-12",
+      "text": "He came down at once and gladly welcomed Jesus to his home."
+    },
+    {
+      "picture": "panel-13",
+      "text": "Zacchaeus was overjoyed. After his encounter with Jesus, he was transformed."
+    },
+    {
+      "picture": "panel-14",
+      "text": "“Look, Lord! Here and now, I give half of my possessions to the poor.”"
+    },
+    {
+      "picture": "panel-15",
+      "text": "“And if I have cheated anybody out of anything, I will pay back four times the amount.”"
+    },
+    {
+      "picture": "panel-16",
+      "text": "Jesus blessed Zacchaeus and his family."
+    },
+    {
+      "picture": "panel-17",
+      "text": "Dear children, do you wish to see Jesus? If you try, you can see Him in your heart."
+    },
+    {
+      "picture": "panel-18",
+      "text": "Jesus is omnipresent. He is everywhere, and He can see you wherever you are."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 03 “ZACCHAEUS”, p.19 — “ANSWER THE QUESTIONS”",
+    "note": "The three questions the Primary book prints at the end of the chapter, transcribed from the curriculum photographs in 01 - Curriculum Source and left exactly as printed — including “mee” in question 2, which is the book's own typo and is not corrected here. Three is all the book asks; the Primary band wants four to five games, so the fourth and fifth cover the part of the lesson the question set leaves out (what Zacchaeus did afterwards, and the closing teaching on p.19) and say so in their own notes.\n\nThe page carries the teacher's own answer key in blue pen: ① brackets the sinner/taxing sentences, ② underlines “there was a big crowd and Zacchaeus being of short stature could not get a glimpse of Him”, and ③ underlines “sycamore-fig tree”. Each `answer` below is the sentence that mark points at, quoted from p.18 rather than reasoned out, so this block records what the curriculum says and never a second opinion about it.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What were the shortcomings of Zacchaeus?",
+        "objective": "Name the two things the lesson holds against him: he was considered a sinner, and he was believed to have grown rich by taxing people as he wanted.",
+        "answer": "“He was considered a sinner by the people, as it was believed that Zacchaeus had become rich by using his position to tax people as he wanted. This made the people resentful of this man who was cheating them.” (p.18)",
+        "note": "Marked ① on the page. The lesson gives this as what people *believed* about him, and the game keeps that framing rather than upgrading it to a verdict."
+      },
+      {
+        "n": 2,
+        "question": "Why was it difficult for Zacchaeus to mee Jesus?",
+        "objective": "Hold both causes at once — a big crowd, and his own short stature. Neither one alone is the answer the lesson gives.",
+        "answer": "“However, there was a big crowd and Zacchaeus being of short stature could not get a glimpse of Him.” (p.18)",
+        "note": "Marked ② on the page. “mee” is printed in the book; it is not a typo introduced here."
+      },
+      {
+        "n": 3,
+        "question": "Which tree did Zacchaeus climb to see Jesus?",
+        "objective": "Name the sycamore-fig tree, and know why he climbed it — he ran ahead of the crowd to see Jesus pass below.",
+        "answer": "“He ran ahead of the crowd and climbed up a sycamore-fig tree. He sat on a branch, looking out for Jesus who would pass below.” (p.18)",
+        "note": "Marked ③ on the page."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "what-they-held-against-him",
+      "title": "What They Held Against Him",
+      "objective": "Name the two things the lesson holds against Zacchaeus — that he was considered a sinner, and that he was believed to have grown rich by taxing people as he wanted.",
+      "answers": [
+        1
+      ],
+      "note": "Question 1. A reveal rather than a quiz, because “what were his shortcomings” has more than one answer and a question with one right box teaches the opposite. Nothing here is correct or incorrect; four cards are turned over and each one says what the lesson says. The fourth is the consequence rather than a shortcoming, and it is included because the lesson gives it in the same breath.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the people said about him.",
+          "items": [
+            {
+              "label": "A chief tax collector"
+            },
+            {
+              "label": "A wealthy man"
+            },
+            {
+              "label": "Considered a sinner"
+            },
+            {
+              "label": "Believed to be cheating them"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-he-could-not-see",
+      "title": "Why He Could Not See",
+      "objective": "Hold both causes at once: the crowd was big and Zacchaeus was short. Either one on its own is only half the lesson's answer.",
+      "answers": [
+        2
+      ],
+      "note": "Question 2. The lesson gives one sentence with two causes in it, and the two wrong options are each exactly half of that sentence — a child who remembers only the crowd, or only his height, finds an option waiting for them and has to notice it is short of the answer. Nothing in the labels flags which is which. The fourth is a thing that never happened. Four options is the Primary band's ceiling; Beginner's is three.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why could Zacchaeus not see Jesus?",
+          "hint": "The lesson gives two reasons in one sentence, not one.",
+          "options": [
+            {
+              "label": "The crowd, and his short stature",
+              "correct": true
+            },
+            {
+              "label": "The big crowd"
+            },
+            {
+              "label": "His short stature"
+            },
+            {
+              "label": "He arrived too late"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-tree-he-climbed",
+      "title": "The Tree He Climbed",
+      "objective": "Name the sycamore-fig tree, and know why he climbed it — to see Jesus pass below, not to hide, rest or pick fruit.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3, in two halves: the match names the things in the story, and the choice that follows asks the *why* the question's objective also wants. Both wrong options in the choice are true sentences about this story — he did sit on a branch, and it was a fig tree — which makes the question “which of these was the reason” rather than “which of these happened”. That is the discrimination Primary is for.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what it was.",
+          "hint": "One of them is the tree.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Sycamore-fig"
+              },
+              "to": {
+                "label": "The tree he climbed"
+              }
+            },
+            {
+              "from": {
+                "label": "Jericho"
+              },
+              "to": {
+                "label": "The town he lived in"
+              }
+            },
+            {
+              "from": {
+                "label": "Chief tax collector"
+              },
+              "to": {
+                "label": "His job"
+              }
+            },
+            {
+              "from": {
+                "label": "A branch"
+              },
+              "to": {
+                "label": "Where he sat to watch"
+              }
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did he climb it?",
+          "hint": "He ran ahead so he could see Jesus pass below.",
+          "options": [
+            {
+              "label": "To see Jesus pass below",
+              "correct": true
+            },
+            {
+              "label": "To sit on a branch"
+            },
+            {
+              "label": "To pick some figs"
+            },
+            {
+              "label": "To hide from the crowd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-happened-that-day",
+      "title": "What Happened That Day",
+      "objective": "Put the day in order, from hearing that Jesus was near to promising to pay back what he took.",
+      "note": "The book asks three questions and the Primary band wants four to five games, so this one covers what the questions leave out: the shape of the day. Six steps, because the band's own note says a sequence may run longer than four here, and because six is what the lesson actually has. It answers no curriculum question and is not pretending to.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the day in order.",
+          "hint": "It starts before he ever saw Jesus.",
+          "items": [
+            {
+              "label": "He heard Jesus was coming",
+              "position": 1
+            },
+            {
+              "label": "He ran ahead of the crowd",
+              "position": 2
+            },
+            {
+              "label": "He climbed the sycamore-fig tree",
+              "position": 3
+            },
+            {
+              "label": "Jesus called him down",
+              "position": 4
+            },
+            {
+              "label": "He welcomed Jesus to his home",
+              "position": 5
+            },
+            {
+              "label": "He promised to pay back",
+              "position": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "true-or-not",
+      "title": "True or Not?",
+      "objective": "Test what the lesson actually says against what it is easy to assume — including its closing teaching, that Jesus can see you wherever you are.",
+      "note": "The fifth game, and the only one that reaches past the story into the lesson's own closing paragraph on p.19. Every false statement carries its reason immediately after it, so nothing untrue is ever left standing on the screen. The reasons are the lesson's own sentences rather than a commentary on them.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Zacchaeus was a poor man with nothing of his own.",
+              "ask": "Was Zacchaeus poor?",
+              "answer": false,
+              "because": "No. He was a chief tax collector, and the lesson calls him a wealthy man."
+            },
+            {
+              "source": "Zacchaeus climbed a tree to see Jesus.",
+              "ask": "Did he climb a tree?",
+              "answer": true,
+              "because": "Yes. He ran ahead of the crowd and climbed up a sycamore-fig tree."
+            },
+            {
+              "source": "Jesus walked past and would not go to his house.",
+              "ask": "Did Jesus pass him by?",
+              "answer": false,
+              "because": "No. Jesus looked up and said He must stay at his house that day."
+            },
+            {
+              "source": "After meeting Jesus, Zacchaeus kept everything he had.",
+              "ask": "Did he keep it all?",
+              "answer": false,
+              "because": "No. He gave half of his possessions to the poor, and promised to pay back four times what he had taken."
+            },
+            {
+              "source": "Jesus can see you wherever you are.",
+              "ask": "Can Jesus see you wherever you are?",
+              "answer": true,
+              "because": "Yes. The lesson says Jesus is omnipresent — He is everywhere, and He can see you wherever you are."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "For the Son of Man came to seek and to save the lost.",
+    "reference": "St. Luke 19: 10",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with who came.",
+        "words": [
+          "For the Son of Man",
+          "came to seek",
+          "and to save",
+          "the lost."
+        ],
+        "note": "Stage 1, and deliberately the whole of what a Beginner is asked for this same verse in Beginner Chapter 3. Primary starts where Beginner finishes."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "For the Son of ______ came to seek and to save the lost.",
+        "hint": "The missing word starts with “M”.",
+        "options": [
+          {
+            "label": "Man",
+            "correct": true
+          },
+          {
+            "label": "Son"
+          },
+          {
+            "label": "seek"
+          },
+          {
+            "label": "lost"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole on both sides of it. Four options where Beginner gets three, and every one of them a real word of this verse — nothing here invents scripture to be wrong with."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "For the Son of Man came to ______",
+        "hint": "Two things follow: seeking comes before saving.",
+        "options": [
+          {
+            "label": "seek",
+            "correct": true
+          },
+          {
+            "label": "save"
+          },
+          {
+            "label": "Man"
+          },
+          {
+            "label": "lost"
+          }
+        ],
+        "note": "Stage 3, the same question with the right-hand side taken away. This is the real step up from Beginner: “save” reads perfectly well in that gap and is wrong, and the only thing that separates them is remembering the verse forwards rather than reading around a hole."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with the one who came.",
+        "words": [
+          "For the",
+          "Son of Man",
+          "came to",
+          "seek and",
+          "to save",
+          "the lost."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four, which is the whole of the difference between the two stages. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is the last verse of this chapter's Bible portion.",
+        "options": [
+          {
+            "label": "St. Luke 19: 10",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 19: 1"
+          },
+          {
+            "label": "St. Luke 10: 19"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed; the Primary band does not write references yet. Three options rather than Beginner's three different books: 19: 1 is where this chapter's own Bible portion begins, printed on p.17, and 10: 19 is the same two numbers the other way round. The field is narrower than Beginner's and the discrimination is much finer, which is where the difficulty moved to."
+      }
+    ],
+    "note": "Read from p.20 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Printed on the page inside quotation marks and with the space in “19: 10”, both kept as printed.\n\nThe agent's Primary rung produced a three-piece arrange-words — “For the Son / of Man came to seek and / to save the lost.” — and it is not used, because Beginner Chapter 3 carries this exact verse as a four-piece arrange-words and a Primary child would have met an easier task than a Beginner. That is the one thing this ladder must never do. What ships instead is five stages that start at Beginner's ceiling and climb: the agent's rung is the floor here, not the whole of it. Translation is unresolved: p.20 does not name one, which is where every other chapter in this library stands."
+  },
+  "decision": {
+    "statement": "I will always try to see Jesus and live according to His will.",
+    "note": "The curriculum's own My Decision line from p.20, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Yesuve kanuvan",
+      "Nee ninacheedukil",
+      "Yesuve nee kanum",
+      "Ninne avan cherkkum"
+    ],
+    "note": "The Song from p.20, in the Latin script the book prints it in, line for line."
+  },
+  "prayer": {
+    "text": "Jesus, please forgive my sins and keep me close to you. Amen.",
+    "note": "The closing Prayer from p.20, word for word. The chapter also opens with a prayer on p.17 — “Lord Jesus, who comes in search of us, give us the grace to learn about You. Amen.” — which has nowhere to go in this shape and is recorded here rather than lost."
+  },
+  "celebration": {
+    "message": "Jesus came to look for us. He can see you wherever you are.",
+    "note": "The memory verse and the lesson's closing line, said back to the child."
+  }
+}

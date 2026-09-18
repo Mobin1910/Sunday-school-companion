@@ -14,7 +14,7 @@
 
 import { BANDS } from "./bands.mjs";
 import { GENERAL } from "./catalogue.mjs";
-import { planFor } from "./plan.mjs";
+import { classify, planFor } from "./plan.mjs";
 import { check } from "./gates.mjs";
 
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
@@ -31,6 +31,21 @@ const QUESTIONS = [
   { n: 6, question: "What happened to the water when salt was put in the spring?" },
 ];
 
+/*
+  Questions whose shape the classifier once missed. Primary's Zacchaeus
+  chapter sent all three of its questions to `unsure`, and an unsure question
+  becomes a multiple-choice — so a gap in the table quietly turns into the
+  one outcome this agent exists to prevent.
+*/
+const CLASSIFIES = [
+  ["Which tree did Zacchaeus climb to see Jesus?", "identity"],
+  ["What were the shortcomings of Zacchaeus?", "attributes"],
+  ["Why was it difficult for Zacchaeus to mee Jesus?", "cause"],
+  ["What are the properties of salt?", "attributes"],
+  ["Who is the prophet mentioned in this lesson?", "identity"],
+  ["What happened to the water when salt was put in the spring?", "outcome"],
+];
+
 let failures = 0;
 const fail = (m) => {
   console.log(red(`  ✗ ${m}`));
@@ -39,6 +54,15 @@ const fail = (m) => {
 const pass = (m) => console.log(green(`  ✓ ${m}`));
 
 console.log("\nGame Builder selftest\n");
+
+/* ── 0. the classifier reads each question's shape ───────────────────── */
+for (const [question, want] of CLASSIFIES) {
+  const got = classify(question).asks;
+  if (got !== want) fail(`"${question}" classified as ${got}, expected ${want}`);
+}
+if (CLASSIFIES.every(([question, want]) => classify(question).asks === want)) {
+  pass(`the classifier reads all ${CLASSIFIES.length} question shapes`);
+}
 
 /* ── 1. every class plans without error, and covers every question ───── */
 const plans = {};

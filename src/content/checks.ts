@@ -22,7 +22,35 @@ export type Advisory = {
   message: string;
 };
 
-const LIMITS = {
+type Limits = {
+  storyWords: number;
+  storySentences: number;
+  sentenceWords: number;
+  promptWords: number;
+  labelWords: number;
+  celebrationWords: number;
+};
+
+/**
+ * How much reading a class can carry.
+ *
+ * These were one set of numbers, and they were Beginner's, because Beginner
+ * was the only class with content in it. The first Primary chapter arrived
+ * with twenty warnings, none of which were defects: an eight-year-old reading
+ * a twelve-word sentence is not a problem, and a six-word label is *inside*
+ * the Primary band's own ceiling. A checker that cries about correct work
+ * teaches people to stop reading it, which is worse than having no checker.
+ *
+ * So the ladder lives here too. The numbers mirror `agents/games/bands.mjs`,
+ * which is where the Game Builder gets `maxPromptWords` and `maxLabelWords`
+ * from — the agent and the build should not be able to disagree about what a
+ * class can read. Story and celebration lengths are this file's own, scaled on
+ * the same curve.
+ *
+ * Nursery and Beginner keep the exact numbers this file has always had, so no
+ * chapter written before today changes its advisories by one word.
+ */
+const BEGINNER: Limits = {
   storyWords: 15,
   storySentences: 2,
   sentenceWords: 10,
@@ -30,6 +58,68 @@ const LIMITS = {
   labelWords: 5,
   celebrationWords: 15,
 };
+
+const LADDER: Record<string, Limits> = {
+  nursery: {
+    storyWords: 12,
+    storySentences: 2,
+    sentenceWords: 7,
+    promptWords: 6,
+    labelWords: 3,
+    celebrationWords: 12,
+  },
+  beginner: BEGINNER,
+  primary: {
+    storyWords: 20,
+    storySentences: 3,
+    sentenceWords: 14,
+    promptWords: 12,
+    labelWords: 6,
+    celebrationWords: 18,
+  },
+  junior: {
+    storyWords: 28,
+    storySentences: 3,
+    sentenceWords: 18,
+    promptWords: 16,
+    labelWords: 8,
+    celebrationWords: 22,
+  },
+  intermediate: {
+    storyWords: 36,
+    storySentences: 4,
+    sentenceWords: 22,
+    promptWords: 20,
+    labelWords: 10,
+    celebrationWords: 26,
+  },
+  senior: {
+    storyWords: 44,
+    storySentences: 4,
+    sentenceWords: 26,
+    promptWords: 24,
+    labelWords: 12,
+    celebrationWords: 30,
+  },
+  "young-adult": {
+    storyWords: 52,
+    storySentences: 5,
+    sentenceWords: 30,
+    promptWords: 28,
+    labelWords: 14,
+    celebrationWords: 34,
+  },
+};
+
+/**
+ * A class with no rung of its own is held to Beginner's.
+ *
+ * Unknown classes cannot happen — `classes.json` is the list and `load.ts`
+ * checks a chapter against the directory it was found in — but the strict
+ * reading is the safe one to fall back to: a new class arrives held to the
+ * tightest sensible budget and someone has to widen it deliberately.
+ */
+const limitsFor = (classId: string): Limits => LADDER[classId] ?? BEGINNER;
 
 const words = (text: string) => text.trim().split(/\s+/).filter(Boolean).length;
 
@@ -123,7 +213,10 @@ function artOf(card: Card): Art[] {
   }
 }
 
-function copyAdvisories(cards: Card[]): { where: string; message: string }[] {
+function copyAdvisories(
+  cards: Card[],
+  LIMITS: Limits,
+): { where: string; message: string }[] {
   const found: { where: string; message: string }[] = [];
 
   const tooLong = (where: string, text: string, limit: number, unit: string) => {
@@ -322,7 +415,10 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
     });
   }
 
-  for (const { where, message } of copyAdvisories(chapter.cards)) {
+  for (const { where, message } of copyAdvisories(
+    chapter.cards,
+    limitsFor(chapter.classId),
+  )) {
     advisories.push({ level, where: `${chapter.file} → ${where}`, message });
   }
 
