@@ -49,10 +49,15 @@ const amber = (s) => `\x1b[33m${s}\x1b[0m`;
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
 const dim = (s) => `\x1b[2m${s}\x1b[0m`;
 
+/** Flags that stand alone rather than taking the next word as a value. */
+const BARE = new Set(["partial"]);
+
 function options(argv) {
   const out = {};
   for (let i = 0; i < argv.length; i++) {
-    if (argv[i].startsWith("--")) out[argv[i].slice(2)] = argv[++i];
+    if (!argv[i].startsWith("--")) continue;
+    const name = argv[i].slice(2);
+    out[name] = BARE.has(name) ? true : argv[++i];
   }
   return out;
 }
@@ -169,8 +174,33 @@ async function main() {
 
   for (const name of unknown) console.log(amber(`  ignored (not a panel or cover): ${name}`));
 
-  if (covers.length !== 1) {
+  /*
+    A folder that is one more file rather than a whole chapter.
+
+    The two guards below are what catch a botched import: a chapter with no
+    cover, or with panel 7 missing because it never finished uploading. They
+    are worth keeping and they are exactly wrong for the case where an artist
+    sends a single extra file for a chapter that is already in — which has now
+    happened twice, first with Primary Chapter 3's landscape cover and then
+    with five Beginner chapters' at once.
+
+    So the guards stay on by default and `--partial` turns them off. It is a
+    flag rather than a guess because "this folder has no panels in it" and
+    "this import lost its panels" look identical from here, and only the
+    person running it knows which one they meant. Everything else is
+    unchanged: same naming rules, same native-size conversion, same report.
+  */
+  const partial = opts.partial === true;
+
+  if (!partial && covers.length !== 1) {
     console.log(red(`\n  Expected exactly one cover, found ${covers.length}.`));
+    console.log(dim("  If this folder is an addition to a chapter already imported,"));
+    console.log(dim("  pass --partial and only the files present will be written."));
+    process.exit(1);
+  }
+
+  if (covers.length > 1) {
+    console.log(red(`\n  Expected at most one cover, found ${covers.length}.`));
     process.exit(1);
   }
 
@@ -180,10 +210,17 @@ async function main() {
   }
 
   const numbers = [...panels.keys()].sort((a, b) => a - b);
-  const missing = [];
-  for (let n = 1; n <= Math.max(...numbers); n++) if (!panels.has(n)) missing.push(n);
-  if (missing.length) {
-    console.log(red(`\n  Missing panel(s): ${missing.join(", ")}`));
+  if (!partial && numbers.length) {
+    const missing = [];
+    for (let n = 1; n <= Math.max(...numbers); n++) if (!panels.has(n)) missing.push(n);
+    if (missing.length) {
+      console.log(red(`\n  Missing panel(s): ${missing.join(", ")}`));
+      process.exit(1);
+    }
+  }
+
+  if (!partial && !numbers.length) {
+    console.log(red("\n  No panels found. Pass --partial if that is deliberate."));
     process.exit(1);
   }
 
@@ -195,7 +232,7 @@ async function main() {
 
   const odd = [];
   const jobs = [
-    { file: covers[0], out: "cover.webp" },
+    ...(covers.length ? [{ file: covers[0], out: "cover.webp" }] : []),
     ...(landscapes.length ? [{ file: landscapes[0], out: "cover-landscape.webp" }] : []),
     ...numbers.map((n) => ({
       file: panels.get(n),

@@ -801,10 +801,25 @@ export const chapterSchema = z.strictObject({
      * everywhere it is missing, so this changes nothing for a chapter that
      * does not have one.
      *
-     * It is a second crop of one picture, never a second picture: the two
-     * must show the same scene, or a child meets one cover on the shelf and
-     * a different one inside. The portrait is the one the story opens on,
-     * because it is the one with the chapter's name painted into it.
+     * Two rules, and the first one was wrong when it was written here. It
+     * said the landscape had to be a re-crop of the portrait — the same
+     * instant, differently framed — which is what Primary Chapter 3's pair
+     * happened to be. Five Beginner chapters then arrived where it is not:
+     * Chapter 1's portrait is Mary and Joseph holding the baby and its
+     * landscape is Simeon holding him; Chapter 3's portrait is the woman
+     * searching and its landscape is the moment she finds the coin, with the
+     * neighbours already rejoicing. Those are better pictures for a wide box
+     * than a re-crop would have been, and the rule was describing one
+     * chapter rather than the thing that matters.
+     *
+     * What matters: **the same chapter, drawn the same way.** Same story,
+     * same characters, same hand — so that the shelf and the inside feel
+     * like one book rather than two. Which moment it shows is the artist's.
+     *
+     * And **no title lettered into it.** The hub and the shelf row both draw
+     * their own heading over or beside this, so a cover carrying the chapter
+     * name would say it twice. That is the other half of why the portrait
+     * stays on the story reader: it is the one with the name painted in.
      */
     landscape: z.string().optional(),
     note,

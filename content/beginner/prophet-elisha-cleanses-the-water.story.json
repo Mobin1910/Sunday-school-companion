@@ -6,7 +6,8 @@
   "note": "Beginners, Chapter 5, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 27–30. Thirteen panels in three movements: a boy at a littered stream near his home (1–2), Jericho (3–10), and his own street again (11–13). The frame is the artwork's, not an invention here — the chapter answers “what if we didn't have clean water?” by going and looking, and comes back to a tap.\n\nArtwork downloaded from Drive (Beginner / Chapter 05 / 04 - Story Artwork) and read panel by panel; every alt below describes the picture it belongs to, and every line quoted in an alt is lettered into the artwork itself. PNG to WebP at native size — no resize, no crop, nothing regenerated.\n\nThe games came from the Game Builder agent (`npm run agent:games`) and the verse practice from the Memory Verse agent, both before the artwork arrived. What the artwork changed is the pictures: the four-step sequence in “What Elisha Did” is now the story's own panels rather than four text cards, which is the shape that mechanic wanted all along.",
   "cover": {
     "picture": "cover",
-    "note": "Chapter 5's own cover. Elisha tips a bowl of salt into the spring while the people of Jericho watch, the city's walls and gate behind him. “PROPHET ELISHA CLEANSES THE WATER” and “05” are painted into the artwork, so the reader lays no text over it."
+    "landscape": "cover-landscape",
+    "note": "Chapter 5's own cover. Elisha tips a bowl of salt into the spring while the people of Jericho watch, the city's walls and gate behind him. “PROPHET ELISHA CLEANSES THE WATER” and “05” are painted into the artwork, so the reader lays no text over it.\n\nThe landscape cover is the same moment from the water's side: Elisha, staff in one hand, casts the salt from the other into a spring running clear over tiled stone, a boy and the townspeople leaning in to watch, Jericho on the hillside behind. No title lettered into it."
   },
   "story": [
     {
