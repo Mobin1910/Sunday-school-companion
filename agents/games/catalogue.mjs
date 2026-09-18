@@ -97,14 +97,6 @@ export const CATALOGUE = [
     art: "none",
   },
   {
-    mechanic: "journey",
-    name: "Send them on",
-    skills: ["recall", "understanding"],
-    reading: "low",
-    shape: "prompt + hint + 2–4 choices, one correct + the line said after",
-    art: "optional on choices",
-  },
-  {
     mechanic: "write-reference",
     name: "Write where it comes from",
     skills: ["recall"],
@@ -114,6 +106,28 @@ export const CATALOGUE = [
   },
 
   /* ── bespoke scenes: playable, never auto-chosen ──────────────────────── */
+  /*
+    `journey` reads generic and is not.
+
+    Its schema is a prompt, some choices and a line said afterwards, which is
+    why it sat here among the general mechanics — and the planner duly
+    offered it to Beginner Chapter 6 for "What else can we see in the sky at
+    night?". What the component actually draws is a column of Israelites in
+    robes, with staffs, walking: the answer causes the exodus to start. A
+    night sky question would have set them walking across it.
+
+    A mechanic is general when its *rendering* is general, not when its
+    schema is. This one is Moses'.
+  */
+  {
+    mechanic: "journey",
+    name: "Send them on",
+    skills: ["recall", "understanding"],
+    reading: "low",
+    shape: "prompt + hint + 2–4 choices, one correct + the line said after",
+    art: "built in CSS",
+    bespoke: "Moses and the Manna",
+  },
   {
     mechanic: "pouring",
     name: "Fill the jars",

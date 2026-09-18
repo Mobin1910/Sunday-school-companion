@@ -44,6 +44,20 @@ const CLASSIFIES = [
   ["What are the properties of salt?", "attributes"],
   ["Who is the prophet mentioned in this lesson?", "identity"],
   ["What happened to the water when salt was put in the spring?", "outcome"],
+
+  /* Beginner Chapter 6 — every one of these fell through to `unsure`. */
+  ["Who created everything?", "identity"],
+  ["What gives us light in the day?", "identity"],
+  ["What else can we see in the sky at night?", "identity"],
+  ["Name two flowers you like", "personal"],
+  ["Name two animals you like", "personal"],
+  ["How do we give thanks to creator God?", "ways"],
+
+  /* The rules the new ones must not have swallowed. */
+  ["What did the woman do to find the lost coin?", "process"],
+  ["What happened when Moses prayed?", "outcome"],
+  ["Where did Jesus go?", "place"],
+  ["How many coins did she have?", "quantity"],
 ];
 
 let failures = 0;

@@ -443,6 +443,38 @@ Where a game orders events the chapter has drawn, order the drawings.
 with no `picture` takes the first picture it uses, which put the same tax
 table on two of five rows here.
 
+## A question whose answer is the child's
+
+Beginner Chapter 6 asks "Name two flowers you like", and then asks it twice
+more about animals and birds. Nothing in the table fitted, because every
+other entry assumes the answer exists in the lesson and the job is to recall
+it. Here the curriculum names no flowers and has no opinion about which two
+are right — a multiple-choice would mark a six-year-old wrong for liking a
+different flower.
+
+So `personal` is its own `asks`, and its `PREFERENCE` lists exactly one
+mechanic: `reveal`, the only model that refuses to mark anything. Everything
+else in that table offers alternatives; this one must not.
+
+A reveal completes when every card has been touched, so what the screen asks
+for is a look at all of them. The *choosing* is the child saying out loud
+which two they like — which is the answer the book wants and the one a
+teacher will actually hear. Write the prompt so it asks for both: "Tap each
+flower. Which do you like?"
+
+## A mechanic is general when its rendering is, not its schema
+
+The same chapter's plan offered `journey` for "What else can we see in the
+sky at night?". Its schema is a prompt, some choices and a line said
+afterwards — perfectly generic — which is why it was sitting among the
+general mechanics. What the component draws is a column of Israelites in
+robes, with staffs, walking: the correct answer starts the exodus. It would
+have set them walking across a question about stars.
+
+`journey` is now marked `bespoke`, beside `pouring`, `find-the-coin` and
+`provision`. Before adding a mechanic to the general set, read the component,
+not the schema.
+
 ## What the agent does not store
 
 No scores. `src/local/session.ts` records that a game was finished and nothing

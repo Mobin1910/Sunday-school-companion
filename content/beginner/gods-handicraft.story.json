@@ -1,0 +1,420 @@
+{
+  "class": "beginner",
+  "chapter": 6,
+  "title": "God's Handicraft",
+  "reference": "Genesis 1:1-15, Psalm 8",
+  "note": "Beginners, Chapter 6, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 31–34. Not a story: the lesson is the sky and what is in it, and the chapter's whole argument is that looking up should make you think of who made it.\n\nEight questions, more than any chapter here has had, and three of them are a shape this library had never met: “Name two flowers you like” asks the child rather than the lesson. They are covered by reveals, which is the one mechanic with no wrong answer in it. See the curriculum note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 06`). Its first run sent all eight questions to `unsure` and handed back four multiple-choices — the outcome that agent exists to prevent — so the classifier gained “who…”, “what gives…”, “what else…”, “how do we…” and a new `personal` category, with the whole set in the selftest’s regression table. Its second run planned the four games below. One mechanic was overridden by hand and the reason is in that game’s note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture. The panel names are written anyway so the artwork can arrive without this file changing.\n\nThe book prints “Learn to sing (song)” followed by “(Sing a suitable song)” and names none, so this chapter has no `song` block. Choosing one would be putting words in the curriculum’s mouth, which is the same class of mistake as guessing a verse.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The book’s own chapter opening is a man standing among fruit trees under the title “GOD’S HANDICRAFT 06”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/beginner/gods-handicraft/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Look up at the sky in the day. What do you see?",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so these sixteen cards are words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Chapter 5 and Primary Chapter 3 were both written from the lesson alone and both were rewritten when the artwork arrived carrying a shape the text did not have — a present-day frame around the Bible story, in both cases. If that happens again, the panels win."
+    },
+    {
+      "picture": "panel-02",
+      "text": "Moving clouds, and the sun!"
+    },
+    {
+      "picture": "panel-03",
+      "text": "The sun gives light all around us."
+    },
+    {
+      "picture": "panel-04",
+      "text": "We call that time day."
+    },
+    {
+      "picture": "panel-05",
+      "text": "When the sun sets, darkness comes in. We call this time night."
+    },
+    {
+      "picture": "panel-06",
+      "text": "Have you looked at the sky at night?"
+    },
+    {
+      "picture": "panel-07",
+      "text": "We see the moon, and many twinkling stars."
+    },
+    {
+      "picture": "panel-08",
+      "text": "Have you seen a rainbow? What a beautiful sight!"
+    },
+    {
+      "picture": "panel-09",
+      "text": "The beautiful views in the sky are endless."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Now look around you."
+    },
+    {
+      "picture": "panel-11",
+      "text": "Plants, animals and water, in so many kinds!"
+    },
+    {
+      "picture": "panel-12",
+      "text": "Who created all these? God!"
+    },
+    {
+      "picture": "panel-13",
+      "text": "When we see nature, we remember God who made it."
+    },
+    {
+      "picture": "panel-14",
+      "text": "We should always be grateful to God."
+    },
+    {
+      "picture": "panel-15",
+      "text": "We worship and glorify God the creator."
+    },
+    {
+      "picture": "panel-16",
+      "text": "And we keep our nature beautiful."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 06 “GOD’S HANDICRAFT”, p.33 — “ANSWER THE QUESTIONS”",
+    "note": "The eight questions the Beginners book prints on p.33, transcribed from the curriculum photographs in 01 - Curriculum Source and left exactly as printed — including questions 4, 5 and 6, which have no full stop and no question mark in the book.\n\nThree of the eight are unlike anything this library has held before. “Name two flowers you like” is not a question about the lesson: the curriculum names no flowers and has no opinion about which two are right. Their `answer` says so rather than inventing one, and the game that covers them is a reveal — the one mechanic with no wrong answer in it — where the child touches each thing and says out loud which they like. A multiple-choice would have marked a six-year-old wrong for liking a different flower.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What gives us light in the day?",
+        "objective": "Name the sun, and know that the time we can see it is what we call day.",
+        "answer": "The sun. “The sun gives light all around us. We call the time when we can see the sun as day.” (p.32)"
+      },
+      {
+        "n": 2,
+        "question": "What gives us light in the night?",
+        "objective": "Name the moon — what the lesson says we see once the sun has set.",
+        "answer": "The moon. “We see the moon, many small and big twinkling stars, etc. at night.” (p.32)"
+      },
+      {
+        "n": 3,
+        "question": "What else can we see in the sky at night?",
+        "objective": "Name the stars, small and big — and the rainbow, among the sky’s endless sights.",
+        "answer": "“Many small and big twinkling stars, etc. at night.” The lesson also asks, “Have you seen the rainbow in the sky?” (p.32)"
+      },
+      {
+        "n": 4,
+        "question": "Name two flowers you like",
+        "objective": "The child’s own answer, said out loud. The point is looking at creation, not recalling a list.",
+        "answer": "The lesson names no flowers. It says only “Many varieties of plants, animals, and water bodies…!” (p.32), so the answer here is the child’s and the book does not supply one.",
+        "note": "Not a gap in the transcription. The book is asking the child, not testing them."
+      },
+      {
+        "n": 5,
+        "question": "Name two animals you like",
+        "objective": "The child’s own answer, said out loud.",
+        "answer": "The lesson names no animals — see question 4. The answer is the child’s."
+      },
+      {
+        "n": 6,
+        "question": "Name two birds you like",
+        "objective": "The child’s own answer, said out loud.",
+        "answer": "The lesson names no birds — see question 4. The answer is the child’s."
+      },
+      {
+        "n": 7,
+        "question": "Who created everything?",
+        "objective": "God. The lesson’s own one-word answer, and the point the whole chapter turns on.",
+        "answer": "God. “Who created all these? God!” (p.32)"
+      },
+      {
+        "n": 8,
+        "question": "How do we give thanks to creator God?",
+        "objective": "Remember Him when we see nature, be grateful, worship and glorify Him — and keep nature beautiful.",
+        "answer": "“We should remember the creator God. We should always be grateful to God, who created everything. We should worship and glorify God the creator. Along with that, it is our responsibility to keep our nature beautiful.” (p.32)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "day-and-night",
+      "title": "Day and Night",
+      "objective": "Name what lights the day and what lights the night, and know why the two are called what they are.",
+      "answers": [
+        1,
+        2
+      ],
+      "note": "Questions 1 and 2, which are the same question asked twice, so they belong in one game rather than two. The third pair is the lesson’s own sentence about why night is called night, and it is what turns a two-pair match into something worth playing.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what it is.",
+          "hint": "One of them shines while you are asleep.",
+          "pairs": [
+            {
+              "from": {
+                "label": "The sun"
+              },
+              "to": {
+                "label": "Light in the day"
+              }
+            },
+            {
+              "from": {
+                "label": "The moon"
+              },
+              "to": {
+                "label": "Light in the night"
+              }
+            },
+            {
+              "from": {
+                "label": "Darkness"
+              },
+              "to": {
+                "label": "When the sun sets"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-the-night-sky",
+      "title": "In the Night Sky",
+      "objective": "Name the twinkling stars — what the lesson says we see at night besides the moon.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3. Both wrong options are real things from this same lesson — the sun and the moving clouds are what it lists for the *day* — so the question is which belongs to the night, not which is a thing in the sky at all. Three options is the Beginner band’s ceiling.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What else can we see at night?",
+          "hint": "They are small and big, and they twinkle.",
+          "options": [
+            {
+              "label": "Twinkling stars",
+              "correct": true
+            },
+            {
+              "label": "The bright sun"
+            },
+            {
+              "label": "Moving clouds"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "things-you-like",
+      "title": "Things You Like",
+      "objective": "Look at what God made and say which ones you like — flowers, animals and birds, with no right answer among them.",
+      "answers": [
+        4,
+        5,
+        6
+      ],
+      "note": "Questions 4, 5 and 6, which the book asks of the child rather than about the lesson. Three reveals, one per question, because the book asks three times and merging them into one basket would lose what it is doing.\n\nA reveal completes when every card has been touched, so what the screen asks for is a look at all of them; the *choosing* is the child saying out loud which two they like, which is the answer the book actually wants and the one a Sunday School teacher will hear. Nothing here is correct and nothing is wrong — the model refuses to mark any of it, which is why it is the only honest mechanic for these three.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Tap each flower. Which do you like?",
+          "items": [
+            {
+              "label": "Rose"
+            },
+            {
+              "label": "Sunflower"
+            },
+            {
+              "label": "Jasmine"
+            },
+            {
+              "label": "Lotus"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Tap each animal. Which do you like?",
+          "items": [
+            {
+              "label": "Elephant"
+            },
+            {
+              "label": "Cat"
+            },
+            {
+              "label": "Rabbit"
+            },
+            {
+              "label": "Cow"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Tap each bird. Which do you like?",
+          "items": [
+            {
+              "label": "Peacock"
+            },
+            {
+              "label": "Parrot"
+            },
+            {
+              "label": "Sparrow"
+            },
+            {
+              "label": "Crow"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-made-it-all",
+      "title": "Who Made It All",
+      "objective": "Answer the chapter's own question — God created everything — and name the ways the lesson says we thank Him for it.",
+      "answers": [
+        7,
+        8
+      ],
+      "note": "Questions 7 and 8. The planner offered a match for question 7; a match needs pairs and “Who created everything?” has one answer for every single thing in the chapter, so every pair would have pointed at God and the game would have been a formality. A choice of three is the honest shape, and the two wrong options are things from this lesson rather than invented ones.\n\nQuestion 8 is a reveal because the lesson gives four ways and means all four at once; asking a child to pick the right one would be asking them to pick the wrong three. Each card is one of the lesson’s own sentences, shortened to fit a card and not rewritten.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who created everything?",
+          "hint": "The lesson answers with one word.",
+          "options": [
+            {
+              "label": "God",
+              "correct": true
+            },
+            {
+              "label": "The sun"
+            },
+            {
+              "label": "The people"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "How do we thank God?",
+          "items": [
+            {
+              "label": "Remember God who made it"
+            },
+            {
+              "label": "Be grateful to God"
+            },
+            {
+              "label": "Worship and glorify God"
+            },
+            {
+              "label": "Keep nature beautiful"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "The heavens declare the glory of God; the skies proclaim the work of his hands",
+    "reference": "Psalm 19:1",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What declares the glory of God?",
+        "hint": "Look up.",
+        "options": [
+          {
+            "label": "The heavens",
+            "correct": true
+          },
+          {
+            "label": "The moon and stars"
+          },
+          {
+            "label": "The plants and trees"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are other things from this chapter’s own lesson rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with what is above you.",
+        "words": [
+          "The heavens declare",
+          "the glory of God;",
+          "the skies proclaim",
+          "the work of his hands"
+        ],
+        "note": "Stage 2, phrase ordering. Four chunks, cut at the verse’s own semicolon and at the places it breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "The ______ declare the glory of God;",
+        "hint": "The missing word starts with “h”.",
+        "options": [
+          {
+            "label": "heavens",
+            "correct": true
+          },
+          {
+            "label": "declare"
+          },
+          {
+            "label": "hands"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner rung and used exactly as it came out — prompt, hint and all three options unedited."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with what is above you.",
+        "words": [
+          "The heavens",
+          "declare the glory",
+          "of God;",
+          "the skies proclaim",
+          "the work",
+          "of his hands"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 2 had four, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 19",
+            "correct": true
+          },
+          {
+            "label": "Psalm 8"
+          },
+          {
+            "label": "Genesis 1"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. Both distractors are this chapter’s own Bible Portion, printed on p.31: Genesis 1:1-15 and Psalm 8. A child who has read the chapter has met all three references, which is what makes choosing between them a question rather than a guess."
+      }
+    ],
+    "note": "Read from p.34 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\nPrinted with a semicolon after “God” and — deliberately kept — **no full stop at the end**. The page ends the line at “hands” with no punctuation, so neither does this. Translation is unresolved: p.34 does not name one, which is where every chapter in this library stands."
+  },
+  "decision": {
+    "statement": "I will love God's creation.",
+    "note": "The curriculum’s own My Decision line from p.34, unchanged."
+  },
+  "prayer": {
+    "text": "Praise be to God, whose glory fills the heavens and the earth. We thank you for this graceful opportunity to learn about your creation. We, your creation, give ourselves into your hands. Bless us. Amen",
+    "note": "The Concluding Prayer from p.34, word for word including its Amen with no full stop. The chapter also opens with a prayer on p.31 — “Praise be to God who made the sky and the earth. Today, give us your grace to learn about your creation. Amen” — which has nowhere to go in this shape and is recorded here rather than lost."
+  },
+  "celebration": {
+    "message": "God made the sky and all of it. You can keep it beautiful.",
+    "note": "The lesson’s closing thought and the decision, said back to the child."
+  }
+}

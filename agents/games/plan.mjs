@@ -36,8 +36,35 @@ export function classify(question) {
 
   const has = (...words) => words.some((w) => q.includes(w));
 
-  if (has("who is", "who was", "whom did", "who did", "who helped", "who told")) {
+  /*
+    Anything beginning "who". It was a list of six openings and it missed
+    "Who created everything?" — the question Beginner Chapter 6 turns on.
+    A list of the ways a sentence can start asking about a person will
+    always be one short; the word itself is the signal.
+  */
+  if (/^\s*\d*\.?\s*who\b/.test(q) || has("whom did", "who helped", "who told")) {
     return { asks: "identity", skill: "recall" };
+  }
+
+  /*
+    Asking the child for their own answer.
+
+    "Name two flowers you like" is not a question about the lesson at all —
+    the curriculum names no flowers and has no opinion about which are the
+    right two. Everything else in this table assumes an answer exists to be
+    recalled; this is the one shape where the answer is the child's, and a
+    multiple-choice would mark a five-year-old wrong for liking a different
+    flower. Its only mechanic is `reveal`, which is the one built to have no
+    wrong answer in it.
+
+    Beginner Chapter 6 asks three of these in a row and is where the gap
+    showed up.
+  */
+  if (
+    /^\s*\d*\.?\s*name\b/.test(q) ||
+    has("you like", "your favourite", "your favorite", "do you like")
+  ) {
+    return { asks: "personal", skill: "recognition" };
   }
   /*
     "Which tree did he climb?" names a thing out of a set, which is the same
@@ -71,6 +98,26 @@ export function classify(question) {
   if (has("what did", "how did", "what must", "what should")) {
     return { asks: "process", skill: "sequencing" };
   }
+  /*
+    "What gives us light in the day?" and "What else can we see in the sky at
+    night?" ask a child to name a thing the lesson named — the same job as
+    naming a person, and `identity` is where that already lives. These sit
+    after the `what did` / `what happened` rules above so they cannot steal a
+    process or an outcome question.
+  */
+  if (has("what gives", "what can we see", "what do we see", "what else")) {
+    return { asks: "identity", skill: "recall" };
+  }
+
+  /*
+    "How do we give thanks to creator God?" wants the ways, not the steps.
+    `process` would have handed it a sequence and invented an order the
+    lesson never gives; what it actually has is a handful of things that are
+    all true at once, which is `reveal`'s shape.
+  */
+  if (has("how do we", "how can we", "how should we", "in what ways")) {
+    return { asks: "ways", skill: "understanding" };
+  }
   if (has("where")) return { asks: "place", skill: "recall" };
   if (has("how many", "how much")) return { asks: "quantity", skill: "recall" };
   if (has("what can we learn", "what do we learn")) {
@@ -89,6 +136,14 @@ export function classify(question) {
  */
 const PREFERENCE = {
   identity: ["match", "journey", "multiple-choice"],
+  /*
+    One mechanic, deliberately. Every other entry here offers alternatives
+    because the question has an answer and more than one way of asking for
+    it. A question whose answer is the child's own has exactly one honest
+    treatment: a set of things to touch, none of them correct.
+  */
+  personal: ["reveal"],
+  ways: ["reveal", "true-or-not", "multiple-choice"],
   attributes: ["reveal", "match", "multiple-choice"],
   cause: ["reveal", "multiple-choice", "true-or-not"],
   outcome: ["true-or-not", "multiple-choice", "reveal"],
