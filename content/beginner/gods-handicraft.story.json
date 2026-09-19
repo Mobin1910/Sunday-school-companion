@@ -3,76 +3,53 @@
   "chapter": 6,
   "title": "God's Handicraft",
   "reference": "Genesis 1:1-15, Psalm 8",
-  "note": "Beginners, Chapter 6, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 31–34. Not a story: the lesson is the sky and what is in it, and the chapter's whole argument is that looking up should make you think of who made it.\n\nEight questions, more than any chapter here has had, and three of them are a shape this library had never met: “Name two flowers you like” asks the child rather than the lesson. They are covered by reveals, which is the one mechanic with no wrong answer in it. See the curriculum note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 06`). Its first run sent all eight questions to `unsure` and handed back four multiple-choices — the outcome that agent exists to prevent — so the classifier gained “who…”, “what gives…”, “what else…”, “how do we…” and a new `personal` category, with the whole set in the selftest’s regression table. Its second run planned the four games below. One mechanic was overridden by hand and the reason is in that game’s note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture. The panel names are written anyway so the artwork can arrive without this file changing.\n\nThe book prints “Learn to sing (song)” followed by “(Sing a suitable song)” and names none, so this chapter has no `song` block. Choosing one would be putting words in the curriculum’s mouth, which is the same class of mistake as guessing a verse.",
+  "note": "Beginners, Chapter 6, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 31–34. Not a story: the lesson is the sky and what is in it, and the chapter's whole argument is that looking up should make you think of who made it.\n\nEight questions, more than any chapter here has had, and three of them are a shape this library had never met: “Name two flowers you like” asks the child rather than the lesson. They are covered by reveals, which is the one mechanic with no wrong answer in it. See the curriculum note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 06`). Its first run sent all eight questions to `unsure` and handed back four multiple-choices — the outcome that agent exists to prevent — so the classifier gained “who…”, “what gives…”, “what else…”, “how do we…” and a new `personal` category, with the whole set in the selftest’s regression table. Its second run planned the four games below. One mechanic was overridden by hand and the reason is in that game’s note.\n\nArtwork downloaded from Drive (Beginner / Chapter 06 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. The narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel. The sixteen text cards written before the artwork arrived are gone.\n\n**Two panels are missing from Drive and this chapter ships with the gap.** The artwork numbers 1 to 12; the folder holds 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, and its “Panel 3.png” is a byte-for-byte copy of panel 2 rather than a panel. What panel 3 almost certainly says is “We call this time day”, so as it stands a child is told what night is called and never what day is called — in a chapter whose first game is Day and Night. Panel 5 sits where the lesson asks “Have you looked at the sky at night?” and its absence does not show. Adding them later is additive: cards name their picture, so nothing renumbers.\n\nThe portrait cover is 981×1602 rather than the canonical 941×1672 — a squarer frame than every other cover in the library. Converted without distortion and recorded rather than silently fixed; it is cropped by both screens that show a cover anyway.\n\nThe book prints “Learn to sing (song)” followed by “(Sing a suitable song)” and names none, so this chapter has no `song` block. Choosing one would be putting words in the curriculum’s mouth, which is the same class of mistake as guessing a verse.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The book’s own chapter opening is a man standing among fruit trees under the title “GOD’S HANDICRAFT 06”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/beginner/gods-handicraft/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 6’s own cover, drawn twice. The portrait has the boy sitting under his tree above a valley of waterfalls, mountains, deer, rabbit and dolphins, with “SUNDAY SCHOOL COMPANION”, “GOD’S HANDICRAFT” and “06” painted onto a wooden sign across the top — so the story reader lays no text over it. The landscape is the same hillside and the same boy with Halo beside him, wider and with no lettering, which is what the chapter hub and the shelf row need since both draw their own heading."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Look up at the sky in the day. What do you see?",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so these sixteen cards are words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Chapter 5 and Primary Chapter 3 were both written from the lesson alone and both were rewritten when the artwork arrived carrying a shape the text did not have — a present-day frame around the Bible story, in both cases. If that happens again, the panels win."
+      "alt": "A boy in a red T-shirt sits on a grassy hillside under a leafy tree, arms round his knees, looking up at a bright blue sky full of clouds. A lake and a village lie below him, mountains beyond, a butterfly and daisies at his feet. Halo floats beside him and says, “Look up!” The boy answers, “Wow!” The caption reads, “What do you see in the sky?”",
+      "note": "Ten cards, not twelve. The artwork numbers its panels 1 to 12 and Drive holds 1, 2, 4, 6, 7, 8, 9, 10, 11 and 12 — panel 3 and panel 5 are not there. Panel 3’s file is in the folder but it is a byte-for-byte copy of panel 2, which is an upload that did not take rather than a panel that looks similar; `art:fetch` now refuses a chapter with two identical panels for exactly this reason, and the copy was left out rather than written in as panel 3.\n\nThe gap is visible in the reading. The lesson on p.32 says “We call the time when we can see the sun as day” and then “When the sun sets… We call this time as night”; here the child is told what night is called and never what day is called, because that is what panel 3 almost certainly is. Panel 5 sits between “now it is night” and “what do we see at night”, where the lesson asks “Have you looked at the sky at night?” — its absence does not show.\n\nNothing here needs renumbering when they arrive. Cards name their picture, so `panel-03.webp` and `panel-05.webp` drop into public/art/beginner/gods-handicraft/ and two cards go in beside them."
     },
     {
       "picture": "panel-02",
-      "text": "Moving clouds, and the sun!"
-    },
-    {
-      "picture": "panel-03",
-      "text": "The sun gives light all around us."
+      "alt": "The boy is on his feet on the same hillside, pointing up at the sun blazing above the clouds, birds crossing the sky and a squirrel on the fence behind him. He says, “Look! The Sun!” and Halo answers, “Yes! And the clouds!” The caption reads, “The Sun gives us light all around us.”"
     },
     {
       "picture": "panel-04",
-      "text": "We call that time day."
-    },
-    {
-      "picture": "panel-05",
-      "text": "When the sun sets, darkness comes in. We call this time night."
+      "alt": "The same hillside at dusk. The sun has dropped behind the mountains, the sky is orange fading to deep blue, a thin crescent moon and the first stars are out, and the lights of the town are coming on along the lake. The boy says, “The Sun is gone!” and Halo says, “Now it is night.” The caption reads, “When the Sun sets, darkness comes. We call this time night.”"
     },
     {
       "picture": "panel-06",
-      "text": "Have you looked at the sky at night?"
+      "alt": "Full night. A big round moon and a sky thick with stars over the dark mountains, the town glittering by the water. The boy points up and says, “The Moon and stars!” after Halo asks, “What do we see at night?” The caption reads, “At night, we see the Moon and many twinkling stars.”"
     },
     {
       "picture": "panel-07",
-      "text": "We see the moon, and many twinkling stars."
+      "alt": "Daylight again, and the boy has turned away from the sky. He stands with both arms open beside a stream, a rainbow arching over the mountains behind him, a deer drinking, a rabbit in the grass, a butterfly and flowers around his feet. Halo says, “The sky is beautiful! But look around you…” and the boy answers, “Wow! So many things!” The caption reads, “Look around! We can see many kinds of plants, animals, and water.”"
     },
     {
       "picture": "panel-08",
-      "text": "Have you seen a rainbow? What a beautiful sight!"
+      "alt": "The boy stands by the waterfall with a hand on his chin, thinking. A squirrel watches from the branch above, a rabbit sits in the flowers, a deer drinks downstream. He asks, “Who made all these?” and Halo says, “Hmm… who do you think?” The caption reads, “Who created all these?”"
     },
     {
       "picture": "panel-09",
-      "text": "The beautiful views in the sky are endless."
+      "alt": "The boy throws both arms wide, beaming, in front of the waterfall and the mountains. Halo says, “God!” and the boy says, “Yes! God created all these!” The caption reads, “God created everything.”"
     },
     {
       "picture": "panel-10",
-      "text": "Now look around you."
+      "alt": "The boy kneels and drops a plastic bottle into a green recycling bin beside the stream; more litter lies on the ground and a rabbit watches. A small wooden sign reads “A clean earth is a happy home!” Halo asks, “God made this beautiful world. How can we take care of it?” and the boy answers, “We can keep it clean!” The caption reads, “We should take care of God’s beautiful creation.”"
     },
     {
       "picture": "panel-11",
-      "text": "Plants, animals and water, in so many kinds!"
+      "alt": "The boy stands with both arms flung wide beside the waterfall, a deer and a rabbit nearby. He says, “I will love God’s creation!” and Halo adds, “And take good care of it!” The caption reads, “We can love God by caring for His creation.”"
     },
     {
       "picture": "panel-12",
-      "text": "Who created all these? God!"
-    },
-    {
-      "picture": "panel-13",
-      "text": "When we see nature, we remember God who made it."
-    },
-    {
-      "picture": "panel-14",
-      "text": "We should always be grateful to God."
-    },
-    {
-      "picture": "panel-15",
-      "text": "We worship and glorify God the creator."
-    },
-    {
-      "picture": "panel-16",
-      "text": "And we keep our nature beautiful."
+      "alt": "The boy sits on the hillside again at sunset, Halo beside him, and above them float seven little thought clouds holding everything he has seen: the sun, a night sky with the moon and stars, a rainbow, a waterfall, flowers, a bluebird and a deer. He says, “Wow! We discovered so many wonderful things!” Halo says, “God made them all!” and then, “Let’s see what you remember!” The caption reads, “God made the beautiful world around us.”"
     }
   ],
   "curriculum": {
@@ -139,7 +116,8 @@
         1,
         2
       ],
-      "note": "Questions 1 and 2, which are the same question asked twice, so they belong in one game rather than two. The third pair is the lesson’s own sentence about why night is called night, and it is what turns a two-pair match into something worth playing.",
+      "picture": "panel-04",
+      "note": "Questions 1 and 2, which are the same question asked twice, so they belong in one game rather than two. The third pair is the lesson’s own sentence about why night is called night, and it is what turns a two-pair match into something worth playing.\n\nShelf picture: panel 4, the sun going down behind the mountains with the first stars out — the one panel that is about the turn from day to night rather than about either one. The pairs stay words: panel 2 is the sun and panel 6 is the moon, so putting them on the cards would let a child match without reading a word, which is the opposite of what a matching game is for.",
       "interactions": [
         {
           "type": "match",
@@ -181,7 +159,8 @@
       "answers": [
         3
       ],
-      "note": "Question 3. Both wrong options are real things from this same lesson — the sun and the moving clouds are what it lists for the *day* — so the question is which belongs to the night, not which is a thing in the sky at all. Three options is the Beginner band’s ceiling.",
+      "picture": "panel-06",
+      "note": "Question 3. Both wrong options are real things from this same lesson — the sun and the moving clouds are what it lists for the *day* — so the question is which belongs to the night, not which is a thing in the sky at all. Three options is the Beginner band’s ceiling.\n\nShelf picture: panel 6, the full moon over a sky thick with stars. The options stay words for the same reason as the match above — this panel *is* the answer.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -211,7 +190,8 @@
         5,
         6
       ],
-      "note": "Questions 4, 5 and 6, which the book asks of the child rather than about the lesson. Three reveals, one per question, because the book asks three times and merging them into one basket would lose what it is doing.\n\nA reveal completes when every card has been touched, so what the screen asks for is a look at all of them; the *choosing* is the child saying out loud which two they like, which is the answer the book actually wants and the one a Sunday School teacher will hear. Nothing here is correct and nothing is wrong — the model refuses to mark any of it, which is why it is the only honest mechanic for these three.",
+      "picture": "panel-07",
+      "note": "Questions 4, 5 and 6, which the book asks of the child rather than about the lesson. Three reveals, one per question, because the book asks three times and merging them into one basket would lose what it is doing.\n\nA reveal completes when every card has been touched, so what the screen asks for is a look at all of them; the *choosing* is the child saying out loud which two they like, which is the answer the book actually wants and the one a Sunday School teacher will hear. Nothing here is correct and nothing is wrong — the model refuses to mark any of it, which is why it is the only honest mechanic for these three.\n\nShelf picture: panel 7, the boy with his arms open at the stream — a deer, a rabbit, a butterfly, flowers and a rainbow in one frame, which is this game’s whole subject. The cards stay words because no flower, animal or bird here is drawn on its own.",
       "interactions": [
         {
           "type": "reveal",
@@ -277,7 +257,8 @@
         7,
         8
       ],
-      "note": "Questions 7 and 8. The planner offered a match for question 7; a match needs pairs and “Who created everything?” has one answer for every single thing in the chapter, so every pair would have pointed at God and the game would have been a formality. A choice of three is the honest shape, and the two wrong options are things from this lesson rather than invented ones.\n\nQuestion 8 is a reveal because the lesson gives four ways and means all four at once; asking a child to pick the right one would be asking them to pick the wrong three. Each card is one of the lesson’s own sentences, shortened to fit a card and not rewritten.",
+      "picture": "panel-09",
+      "note": "Questions 7 and 8. The planner offered a match for question 7; a match needs pairs and “Who created everything?” has one answer for every single thing in the chapter, so every pair would have pointed at God and the game would have been a formality. A choice of three is the honest shape, and the two wrong options are things from this lesson rather than invented ones.\n\nQuestion 8 is a reveal because the lesson gives four ways and means all four at once; asking a child to pick the right one would be asking them to pick the wrong three. Each card is one of the lesson’s own sentences, shortened to fit a card and not rewritten.\n\nShelf picture: panel 9, the boy with his arms wide in front of the waterfall under the caption “God created everything” — this game’s first question, drawn.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -321,6 +302,7 @@
     "text": "The heavens declare the glory of God; the skies proclaim the work of his hands",
     "reference": "Psalm 19:1",
     "translation": "PLACEHOLDER",
+    "picture": "panel-01",
     "practice": [
       {
         "type": "multiple-choice",
@@ -403,18 +385,18 @@
         "note": "Stage 5, the reference — recognised, not typed. Both distractors are this chapter’s own Bible Portion, printed on p.31: Genesis 1:1-15 and Psalm 8. A child who has read the chapter has met all three references, which is what makes choosing between them a question rather than a guess."
       }
     ],
-    "note": "Read from p.34 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\nPrinted with a semicolon after “God” and — deliberately kept — **no full stop at the end**. The page ends the line at “hands” with no punctuation, so neither does this. Translation is unresolved: p.34 does not name one, which is where every chapter in this library stands."
+    "note": "Read from p.34 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\nPrinted with a semicolon after “God” and — deliberately kept — **no full stop at the end**. The page ends the line at “hands” with no punctuation, so neither does this. Translation is unresolved: p.34 does not name one, which is where every chapter in this library stands.\n\nPicture: panel 1, the boy looking up into a sky full of cloud and light under the words “What do you see in the sky?” — which is this verse in a sentence a six-year-old already has."
   },
   "decision": {
     "statement": "I will love God's creation.",
-    "note": "The curriculum’s own My Decision line from p.34, unchanged."
+    "note": "The curriculum’s own My Decision line from p.34, unchanged. Panel 11 says it in the artwork too."
   },
   "prayer": {
     "text": "Praise be to God, whose glory fills the heavens and the earth. We thank you for this graceful opportunity to learn about your creation. We, your creation, give ourselves into your hands. Bless us. Amen",
     "note": "The Concluding Prayer from p.34, word for word including its Amen with no full stop. The chapter also opens with a prayer on p.31 — “Praise be to God who made the sky and the earth. Today, give us your grace to learn about your creation. Amen” — which has nowhere to go in this shape and is recorded here rather than lost."
   },
   "celebration": {
-    "message": "God made the sky and all of it. You can keep it beautiful.",
-    "note": "The lesson’s closing thought and the decision, said back to the child."
+    "message": "God made the beautiful world around us. You can keep it beautiful.",
+    "note": "Panel 12's own caption and the decision, said back to the child."
   }
 }

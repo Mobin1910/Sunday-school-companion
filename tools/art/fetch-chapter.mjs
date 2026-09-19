@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
@@ -207,6 +208,41 @@ async function main() {
   if (landscapes.length > 1) {
     console.log(red(`\n  Expected at most one landscape cover, found ${landscapes.length}.`));
     process.exit(1);
+  }
+
+  /*
+    Two panels that are the same file.
+
+    A gap in the numbering is caught below; this is the other half of the
+    same mistake and it was not caught at all. Beginner Chapter 6 arrived
+    with `Panel 3.png` a byte-for-byte copy of `Panel 2.png` — the real panel
+    3 had simply not uploaded — and nothing here would have noticed, because
+    every number was present and every file was a valid image. It would have
+    shipped as a chapter that says the same thing twice and never says the
+    thing it lost.
+
+    Checked on content, not on size: two different panels can happen to be
+    the same number of bytes, and two copies of one panel always hash alike.
+    It stops the run even under `--partial`, because a duplicate is never
+    what anybody meant.
+  */
+  {
+    const byHash = new Map();
+    for (const [n, file] of panels) {
+      const digest = createHash("sha256").update(await file.read()).digest("hex");
+      if (byHash.has(digest)) {
+        const other = byHash.get(digest);
+        console.log(
+          red(
+            `\n  Panels ${other.n} and ${n} are the same file:\n` +
+              `    "${other.file.name}" and "${file.name}" are byte for byte identical.`,
+          ),
+        );
+        console.log(dim("  One of them did not upload. Re-export it and run this again."));
+        process.exit(1);
+      }
+      byHash.set(digest, { n, file });
+    }
   }
 
   const numbers = [...panels.keys()].sort((a, b) => a - b);
