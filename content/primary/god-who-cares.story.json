@@ -1,0 +1,251 @@
+{
+  "class": "primary",
+  "chapter": 1,
+  "title": "God Who Cares",
+  "reference": "St. Matthew 2:13 - 21",
+  "note": "Primary, Chapter 1, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 9–11. The flight into Egypt, told as a chapter about God seeing trouble before it arrives.\n\n**This chapter has no memory verse yet, and that is not an omission here.** Three pages are in 01 - Curriculum Source — the title page, the lesson with its questions, and the colouring page — and the fourth, which is where this book prints My Decision, the Song, the Memory Verse and the Concluding Prayer, is not among them. Primary Chapter 3 has all four (pages 17 to 20), so the shape is known and the page simply has not been photographed. Guessing a verse is the one thing the Memory Verse agent exists to prevent, so this chapter ships without one and the Memory Verse door does not appear.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 01`). Its first run could not read two of the three questions: “To which place…” reached the generic “which” rule and came out `unsure` although the word “place” is in it, and “When did…” had no rule at all. Both went to multiple-choice by default, which is the outcome that agent exists to prevent. The classifier now reads places before sets and has a `time` category; the second run planned reveal, multiple-choice and sequence, which is what ships.\n\nThe fourth game is written by hand: three questions is below the Primary band’s four to five, and what it covers is the closing paragraph the question set skips.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The book’s own chapter opening is Mary on a donkey with baby Jesus reaching out and Joseph leading, under the title “GOD WHO CARES 1”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/god-who-cares/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "You have learnt that Jesus was born in Bethlehem.",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Beginner Chapter 5, Beginner Chapter 6 and Primary Chapter 3 were all written from the lesson alone and all three were rewritten when the artwork arrived carrying a shape the text did not have. If that happens again, the panels win."
+    },
+    {
+      "picture": "panel-02",
+      "text": "King Herod did not like the news of His birth. Do you know why?"
+    },
+    {
+      "picture": "panel-03",
+      "text": "Herod was afraid. Jesus was born to be the King of the Jews."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Herod thought Jesus would take away his throne."
+    },
+    {
+      "picture": "panel-05",
+      "text": "So he sent his people to find and kill baby Jesus."
+    },
+    {
+      "picture": "panel-06",
+      "text": "Joseph and Mary knew nothing of this. They stayed in Bethlehem with baby Jesus."
+    },
+    {
+      "picture": "panel-07",
+      "text": "But God had foreseen Herod’s plan. So He sent an angel to Joseph."
+    },
+    {
+      "picture": "panel-08",
+      "text": "The angel told him to flee to Egypt with Mary and baby Jesus."
+    },
+    {
+      "picture": "panel-09",
+      "text": "In complete obedience to God, they fled that night itself."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Herod’s people could not find baby Jesus. They were saved from danger."
+    },
+    {
+      "picture": "panel-11",
+      "text": "They lived in Egypt safely for some time."
+    },
+    {
+      "picture": "panel-12",
+      "text": "After king Herod died, an angel appeared before Joseph again."
+    },
+    {
+      "picture": "panel-13",
+      "text": "The angel told him to return to Nazareth."
+    },
+    {
+      "picture": "panel-14",
+      "text": "So Joseph, Mary and baby Jesus went to Nazareth."
+    },
+    {
+      "picture": "panel-15",
+      "text": "God foresees our troubles in life."
+    },
+    {
+      "picture": "panel-16",
+      "text": "As God cares for us, He will help us overcome them. We must obey Him."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 01 “GOD WHO CARES”, p.10 — “ANSWER THE QUESTIONS”",
+    "note": "The three questions the Primary book prints under the lesson on p.10, transcribed from the curriculum photographs in 01 - Curriculum Source.\n\nThe page carries the teacher’s own answer key in pen: ① brackets “King Herod was afraid that Jesus, who was born to be the King of the Jews, would take away his throne. So he sent his people to find and kill baby Jesus.”, the word “Egypt” is written beside question 2, and ③ brackets “After the death of king Herod, an angel appeared before Joseph and told him to return to Nazareth. So Joseph, Mary and baby Jesus went to Nazareth.” Each `answer` below is the sentence that mark points at, quoted from p.10 rather than reasoned out.\n\nThree questions is below the Primary band’s four to five games, so a fourth was written by hand for the lesson’s closing paragraph — which the question set does not ask about at all, and which is the whole reason the chapter is called God Who Cares.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Why did king Herod want to kill baby Jesus?",
+        "objective": "Herod was afraid that Jesus, born to be King of the Jews, would take away his throne.",
+        "answer": "“King Herod was afraid that Jesus, who was born to be the King of the Jews, would take away his throne. So he sent his people to find and kill baby Jesus.” (p.10)",
+        "note": "Marked ① on the page."
+      },
+      {
+        "n": 2,
+        "question": "To which place did the angel tell Joseph to go?",
+        "objective": "Egypt — and that they went that same night, in complete obedience to God.",
+        "answer": "Egypt. “The angel told him to flee to Egypt with Mary and baby Jesus. In complete obedience to God, they fled to Egypt that night itself.” (p.10)",
+        "note": "The teacher has written “Egypt” beside this question in pen."
+      },
+      {
+        "n": 3,
+        "question": "When did the family of Jesus come back to Nazareth?",
+        "objective": "After king Herod died, when an angel appeared to Joseph a second time and told him to return.",
+        "answer": "“After the death of king Herod, an angel appeared before Joseph and told him to return to Nazareth. So Joseph, Mary and baby Jesus went to Nazareth.” (p.10)",
+        "note": "Marked ③ on the page."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "why-herod-was-afraid",
+      "title": "Why Herod Was Afraid",
+      "objective": "Follow the chain the lesson gives: Jesus was born King of the Jews, Herod feared for his throne, and so he sent his men.",
+      "answers": [
+        1
+      ],
+      "note": "Question 1. A reveal rather than a quiz, because the lesson’s answer is not one fact but a chain of four, and a question with one right box would make a child choose between links that all belong. Nothing here is correct or incorrect; the four cards are the four steps in the order the page gives them.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the lesson says about Herod.",
+          "items": [
+            {
+              "label": "Jesus was born in Bethlehem"
+            },
+            {
+              "label": "Born King of the Jews"
+            },
+            {
+              "label": "Herod feared for his throne"
+            },
+            {
+              "label": "He sent men to kill Him"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "where-the-angel-sent-them",
+      "title": "Where the Angel Sent Them",
+      "objective": "Name Egypt — the place the angel told Joseph to flee to, and not one of the other three the chapter names.",
+      "answers": [
+        2
+      ],
+      "note": "Question 2. Every wrong option is a real place in this same chapter — Bethlehem is where they were living, Nazareth is where they went afterwards, Jerusalem is Herod’s city — so the question is which one the angel named, not which one sounds like a place. That is the discrimination Primary is for; a Beginner’s version would put somewhere from a different story in the list. Four options is the band’s ceiling.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did the angel tell Joseph to go?",
+          "hint": "They went that same night, in complete obedience.",
+          "options": [
+            {
+              "label": "Egypt",
+              "correct": true
+            },
+            {
+              "label": "Bethlehem"
+            },
+            {
+              "label": "Nazareth"
+            },
+            {
+              "label": "Jerusalem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-they-went-home",
+      "title": "When They Went Home",
+      "objective": "Put the escape and the return in order, so that \"after Herod died\" is something the child has placed rather than recited.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3 asks *when*, and when is a position rather than a fact — the lesson’s answer is “after the death of king Herod”, which only means anything next to what came before it. So the child puts five events in order and the answer falls out of the ordering. Five steps, because the Primary band’s note says a sequence may run longer than four here.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the journey in order.",
+          "hint": "It begins with a warning in the night.",
+          "items": [
+            {
+              "label": "An angel warned Joseph",
+              "position": 1
+            },
+            {
+              "label": "They fled to Egypt",
+              "position": 2
+            },
+            {
+              "label": "King Herod died",
+              "position": 3
+            },
+            {
+              "label": "An angel came again",
+              "position": 4
+            },
+            {
+              "label": "They went to Nazareth",
+              "position": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-who-cares",
+      "title": "God Who Cares",
+      "objective": "Hold the lesson's closing paragraph — God foresees our troubles, He helps us overcome them, and we must obey Him.",
+      "note": "The fourth game, written by hand because the book asks three questions and the Primary band wants four to five. What it covers is the paragraph the questions skip — the one the chapter is named after, and the only part of the page that is about the child rather than about Herod. Every false statement carries its reason immediately after it, and each reason is the lesson’s own sentence.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "God did not know what Herod was planning.",
+              "ask": "Did God know Herod’s plan?",
+              "answer": false,
+              "because": "No. God had foreseen the plan of king Herod to kill Jesus, so He sent an angel to Joseph."
+            },
+            {
+              "source": "Joseph waited until morning before leaving.",
+              "ask": "Did Joseph wait until morning?",
+              "answer": false,
+              "because": "No. In complete obedience to God, they fled to Egypt that night itself."
+            },
+            {
+              "source": "God foresees our troubles in life.",
+              "ask": "Does God see our troubles coming?",
+              "answer": true,
+              "because": "Yes. The lesson says God foresees our troubles in life."
+            },
+            {
+              "source": "God cares for us and helps us overcome our troubles.",
+              "ask": "Does God help us through them?",
+              "answer": true,
+              "because": "Yes. As God cares for us, He will help us overcome them — and we must obey Him."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "celebration": {
+    "message": "God saw the trouble coming, and He kept them safe.",
+    "note": "The lesson’s closing thought, said back to the child."
+  },
+  "prayer": {
+    "text": "Thank you Lord, for caring for us always. Bless us that we may live in obedience to You. Amen.",
+    "note": "The opening Prayer from p.9, word for word. This book also prints a Concluding Prayer on each chapter’s last page; that page is not in Drive for this chapter, so the opening prayer is the only one recorded here."
+  }
+}

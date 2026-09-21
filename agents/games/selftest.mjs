@@ -53,10 +53,17 @@ const CLASSIFIES = [
   ["Name two animals you like", "personal"],
   ["How do we give thanks to creator God?", "ways"],
 
+  /* Primary Chapters 1 and 2 — two `unsure`, and one confidently wrong. */
+  ["To which place did the angel tell Joseph to go?", "place"],
+  ["When did the family of Jesus come back to Nazareth?", "time"],
+  ["What did the parents see when they found Jesus?", "scene"],
+  ["What was Jesus' reply when His parents asked Him about making them anxious?", "saying"],
+
   /* The rules the new ones must not have swallowed. */
   ["What did the woman do to find the lost coin?", "process"],
   ["What happened when Moses prayed?", "outcome"],
   ["Where did Jesus go?", "place"],
+  ["What did prophet Elisha do to purify water?", "process"],
   ["How many coins did she have?", "quantity"],
 ];
 

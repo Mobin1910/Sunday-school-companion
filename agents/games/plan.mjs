@@ -67,6 +67,31 @@ export function classify(question) {
     return { asks: "personal", skill: "recognition" };
   }
   /*
+    Anywhere a question asks for a place.
+
+    This used to sit near the bottom as a bare `has("where")`, which meant
+    "To which place did the angel tell Joseph to go?" reached the generic
+    "which" rule above it and came out `unsure` — the question was not even
+    asking about a *thing*, it was asking about a place, and the word "place"
+    is right there in it. It runs before the "which" rule now, because
+    "which place" and "which city" are places first and sets second.
+  */
+  if (has("where", "which place", "what place", "which city", "which town", "which country")) {
+    return { asks: "place", skill: "recall" };
+  }
+
+  /*
+    "When did the family of Jesus come back to Nazareth?"
+
+    A point in time, which nothing in this table could read. The lesson's
+    answer is a relative one — after Herod died — so the mechanics that suit
+    it are the ones that can hold two events and their order.
+  */
+  if (/^\s*\d*\.?\s*when\b/.test(q) || has("how long", "at what time", "in which year")) {
+    return { asks: "time", skill: "sequencing" };
+  }
+
+  /*
     "Which tree did he climb?" names a thing out of a set, which is the same
     job as naming a person. Primary's Zacchaeus chapter is where this was
     missing: every one of its three questions fell through to `unsure`, and
@@ -95,6 +120,41 @@ export function classify(question) {
   if (has("what happened to", "what happened when", "what happened")) {
     return { asks: "outcome", skill: "understanding" };
   }
+  /*
+    What somebody said back.
+
+    "What was Jesus' reply when His parents asked Him?" has a quotation for
+    an answer, and a quotation is the one answer shape that can be taken
+    apart and put back together. It runs before the `what did` rule because
+    "what did he say" would otherwise be read as a procedure.
+  */
+  if (has("reply", "replied", "answered", "did he say", "did she say", "did they say", "did jesus say")) {
+    return { asks: "saying", skill: "recall" };
+  }
+
+  /*
+    What somebody saw is not what somebody did.
+
+    `what did` was catching both, and "What did the parents see when they
+    found Jesus?" came out `process` — which handed it a sequence and asked a
+    child to put a single glimpse into order. The lesson's answer is one
+    scene with several things in it at once: Jesus in the temple courts,
+    sitting among the teachers, listening, asking questions. That is a list,
+    and `reveal` is the mechanic for a list.
+  */
+  /*
+    "do" decides it. "What did the woman do to find the lost coin?" is a
+    procedure whose *purpose* is finding, and the perception rule below
+    claimed it on the word "find" alone until this line went in front. Where
+    the sentence says somebody did something, it is a process, whatever comes
+    after.
+  */
+  if (/what did .*\bdo\b/.test(q)) {
+    return { asks: "process", skill: "sequencing" };
+  }
+  if (/what did .*\b(see|saw|find|found|notice|hear|heard|observe)\b/.test(q)) {
+    return { asks: "scene", skill: "understanding" };
+  }
   if (has("what did", "how did", "what must", "what should")) {
     return { asks: "process", skill: "sequencing" };
   }
@@ -118,7 +178,6 @@ export function classify(question) {
   if (has("how do we", "how can we", "how should we", "in what ways")) {
     return { asks: "ways", skill: "understanding" };
   }
-  if (has("where")) return { asks: "place", skill: "recall" };
   if (has("how many", "how much")) return { asks: "quantity", skill: "recall" };
   if (has("what can we learn", "what do we learn")) {
     return { asks: "lesson", skill: "application" };
@@ -144,6 +203,16 @@ const PREFERENCE = {
   */
   personal: ["reveal"],
   ways: ["reveal", "true-or-not", "multiple-choice"],
+  time: ["sequence", "multiple-choice"],
+  scene: ["reveal", "multiple-choice", "match"],
+  /*
+    `arrange-words` first, and only where a band allows it. Putting a
+    remembered sentence back together is the closest this product comes to
+    saying it out loud, and a quotation is the one answer that survives being
+    cut into pieces. Nursery and Beginner forbid the mechanic, so their bands
+    filter it out and the choice below takes over.
+  */
+  saying: ["arrange-words", "multiple-choice", "match"],
   attributes: ["reveal", "match", "multiple-choice"],
   cause: ["reveal", "multiple-choice", "true-or-not"],
   outcome: ["true-or-not", "multiple-choice", "reveal"],

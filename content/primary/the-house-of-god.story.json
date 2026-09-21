@@ -1,0 +1,278 @@
+{
+  "class": "primary",
+  "chapter": 2,
+  "title": "The House of God",
+  "reference": "St. Luke 2: 41 - 52",
+  "note": "Primary, Chapter 2, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 13–15. The boy Jesus left behind in Jerusalem, told as a chapter about the Church being the House of God.\n\n**This chapter has no memory verse yet, and that is not an omission here.** Three pages are in 01 - Curriculum Source — the title page, the lesson with its questions, and the colouring page — and the fourth, which is where this book prints My Decision, the Song, the Memory Verse and the Concluding Prayer, is not among them. Primary Chapter 3 has all four (pages 17 to 20), so the shape is known and the page simply has not been photographed. Guessing a verse is the one thing the Memory Verse agent exists to prevent, so this chapter ships without one and the Memory Verse door does not appear.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 02`). Its first run mis-read question 3 — “What did the parents *see*…” was filed as a process and handed a sequence, which would have asked a child to put a single glimpse into order — and could not read question 4 at all. The classifier now separates what somebody saw from what somebody did, and reads a quoted reply as its own shape; the second run planned reveal, multiple-choice, match and a choice for the reply. One mechanic was changed by hand after that and the reason is in that game’s note.\n\nThe page also carries the teacher’s Qurbana vocabulary in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty — which belongs to the class rather than to any question. It is recorded in the curriculum note and used nowhere.\n\nQuestion 4’s last word is cut off by the edge of the photograph. See the curriculum note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is twenty-two text cards and no game carries a picture. The book’s colouring page also sets an activity — “Make a list of words that are related to Church” — which is a pencil-and-paper task for the class and has no game here.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The book’s own chapter opening is the Passover crowd setting out for Jerusalem, under the title “THE HOUSE OF GOD 2”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/the-house-of-god/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Little Jesus was loved by his relatives and neighbours.",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Beginner Chapter 5, Beginner Chapter 6 and Primary Chapter 3 were all written from the lesson alone and all three were rewritten when the artwork arrived carrying a shape the text did not have. If that happens again, the panels win."
+    },
+    {
+      "picture": "panel-02",
+      "text": "He went to worship God regularly with his parents and relatives."
+    },
+    {
+      "picture": "panel-03",
+      "text": "Every year His parents went to Jerusalem for the Festival of the Passover."
+    },
+    {
+      "picture": "panel-04",
+      "text": "They walked together with friends and relatives for many days. It was a joyous journey."
+    },
+    {
+      "picture": "panel-05",
+      "text": "When Jesus was twelve years old, they went to Jerusalem as usual."
+    },
+    {
+      "picture": "panel-06",
+      "text": "After the festival, His parents set out for home."
+    },
+    {
+      "picture": "panel-07",
+      "text": "But the boy Jesus stayed behind in Jerusalem."
+    },
+    {
+      "picture": "panel-08",
+      "text": "His parents did not know. They thought He was with their relatives."
+    },
+    {
+      "picture": "panel-09",
+      "text": "They travelled for a whole day before they began looking for Him."
+    },
+    {
+      "picture": "panel-10",
+      "text": "They looked among their relatives and friends, and did not find Him."
+    },
+    {
+      "picture": "panel-11",
+      "text": "So they went back to Jerusalem to look for Him."
+    },
+    {
+      "picture": "panel-12",
+      "text": "After three days they found Him in the temple courts."
+    },
+    {
+      "picture": "panel-13",
+      "text": "He was sitting among the teachers, listening to them and asking questions."
+    },
+    {
+      "picture": "panel-14",
+      "text": "His mother said, “Son, why have you treated us like this?”"
+    },
+    {
+      "picture": "panel-15",
+      "text": "“Your father and I have been anxiously searching for you.”"
+    },
+    {
+      "picture": "panel-16",
+      "text": "He asked her, “Why were you searching for me?”"
+    },
+    {
+      "picture": "panel-17",
+      "text": "“Didn’t you know I had to be in my Father’s house?”"
+    },
+    {
+      "picture": "panel-18",
+      "text": "When they heard this, they did not say anything."
+    },
+    {
+      "picture": "panel-19",
+      "text": "Then Jesus went down to Nazareth and grew up in obedience to them."
+    },
+    {
+      "picture": "panel-20",
+      "text": "The Church is the House of God, our Father."
+    },
+    {
+      "picture": "panel-21",
+      "text": "Jesus teaches us to go to church and take part in all it does."
+    },
+    {
+      "picture": "panel-22",
+      "text": "Even as we follow God, we should also obey our earthly parents."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 02 “THE HOUSE OF GOD”, p.14 — “ANSWER THE QUESTIONS”",
+    "note": "The four questions the Primary book prints under the lesson on p.14, transcribed from the curriculum photographs in 01 - Curriculum Source.\n\nThe page carries the teacher’s own answer key in pen, ① to ④, and each `answer` below is the sentence its mark points at, quoted from p.14 rather than reasoned out. The same page carries a second set of handwritten notes in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty and their meanings — which are the teacher’s own Qurbana vocabulary for the class and belong to no question here. They are recorded in this note and nowhere else.\n\n**Question 4’s last word is cut off by the edge of the photograph.** The line reads “What was Jesus’ reply when His parents asked Him about making them anxio…” and the page edge falls there. It is written out as “anxious” below, which is the only word that fits and matches the mother’s own “anxiously searching” three lines above — but it is a completion, not a reading, and a re-photograph of p.14 with its right margin would settle it.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Why were Jesus’ parents unaware of His absence on their return journey?",
+        "objective": "They assumed He was with their relatives, and travelled a whole day before they began looking.",
+        "answer": "“But His parents did not know about it. Thinking that He was with his relatives, they travelled for a day.” (p.14)",
+        "note": "Marked ① on the page."
+      },
+      {
+        "n": 2,
+        "question": "Where did the parents go in search of Jesus who was missing?",
+        "objective": "Back to Jerusalem — after looking among their relatives and friends and not finding Him.",
+        "answer": "“Then they began looking for Him among their relatives and friends. Since they did not find Him, they went back to Jerusalem to look for Him.” (p.14)",
+        "note": "Marked ② on the page."
+      },
+      {
+        "n": 3,
+        "question": "What did the parents see when they found Jesus?",
+        "objective": "Jesus in the temple courts, sitting among the teachers, listening to them and asking them questions.",
+        "answer": "“After three days they found Him in the temple courts, sitting among the teachers, listening to them and asking questions.” (p.14)",
+        "note": "Marked ③ on the page."
+      },
+      {
+        "n": 4,
+        "question": "What was Jesus’ reply when His parents asked Him about making them anxious?",
+        "objective": "“Why were you searching for me? Didn’t you know I had to be in my Father’s house?”",
+        "answer": "“He asked her, ‘Why were you searching for me? Didn’t you know I had to be in my Father’s house?’” (p.14)",
+        "note": "Marked ④ on the page. The question’s last word is cut off by the photograph’s edge — see the block note."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "why-they-did-not-know",
+      "title": "Why They Did Not Know",
+      "objective": "Hold the whole of the lesson's answer: they assumed He was with their relatives, and a full day passed before they looked.",
+      "answers": [
+        1
+      ],
+      "note": "Question 1. A reveal, because the lesson gives the answer as a small chain rather than one fact — a crowd of relatives, an assumption, a day’s walking, and only then a search. A quiz would make a child pick one link and call the rest wrong.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over how it happened.",
+          "items": [
+            {
+              "label": "They travelled in a big group"
+            },
+            {
+              "label": "They thought He was with relatives"
+            },
+            {
+              "label": "They travelled a whole day"
+            },
+            {
+              "label": "Then they began to look"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "where-they-looked",
+      "title": "Where They Looked",
+      "objective": "Name Jerusalem — where they went back to, after the people around them turned out not to have Him.",
+      "answers": [
+        2
+      ],
+      "note": "Question 2. Two of the wrong options are the places they had already been — among their relatives, and on the road home — so a child who remembers the searching but not its ending has somewhere to go wrong. Nazareth is where the chapter ends rather than where they searched.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did they go to look for Jesus?",
+          "hint": "They turned round and went back.",
+          "options": [
+            {
+              "label": "Back to Jerusalem",
+              "correct": true
+            },
+            {
+              "label": "Among their relatives"
+            },
+            {
+              "label": "On the road home"
+            },
+            {
+              "label": "On to Nazareth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-they-found",
+      "title": "What They Found",
+      "objective": "Picture the scene the lesson describes — where He was, who He was with, and the two things He was doing.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3. The lesson answers it with one scene that has four things in it at once, so the game pairs each thing with what it was — the place, the company, and both halves of what He was doing. The planner first read this question as a *process* and offered a sequence, which would have asked a child to put a single glimpse into order; the classifier now separates what somebody saw from what somebody did, and this is the question that taught it.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what it was.",
+          "hint": "He was doing two things, not one.",
+          "pairs": [
+            {
+              "from": {
+                "label": "The temple courts"
+              },
+              "to": {
+                "label": "Where they found Him"
+              }
+            },
+            {
+              "from": {
+                "label": "The teachers"
+              },
+              "to": {
+                "label": "Who He sat among"
+              }
+            },
+            {
+              "from": {
+                "label": "Listening"
+              },
+              "to": {
+                "label": "What He was doing"
+              }
+            },
+            {
+              "from": {
+                "label": "Asking questions"
+              },
+              "to": {
+                "label": "And what else He did"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-jesus-said",
+      "title": "What Jesus Said",
+      "objective": "Put Jesus' own reply back together, word group by word group, so that the sentence is remembered rather than recognised.",
+      "answers": [
+        4
+      ],
+      "note": "Question 4. The planner offered a multiple-choice and the mechanic was changed by hand to `arrange-words`, which is what the preference table lists first for a quotation and what the Primary band allows. A reply is the one answer shape that can be taken apart and put back together, and rebuilding it is much closer to saying it out loud than picking it off a list of three.\n\nThe pieces are cut at the quotation’s own sentence and clause boundaries, and they spell His reply exactly as p.14 prints it.",
+      "interactions": [
+        {
+          "type": "arrange-words",
+          "prompt": "Put Jesus’ answer back together.",
+          "hint": "He answered her question with a question.",
+          "words": [
+            "Why were you searching for me?",
+            "Didn’t you know",
+            "I had to be",
+            "in my Father’s house?"
+          ]
+        }
+      ]
+    }
+  ],
+  "celebration": {
+    "message": "Jesus loved His Father’s house. You can love it too.",
+    "note": "The lesson’s own application — the Church is the House of God — said back to the child."
+  },
+  "prayer": {
+    "text": "Jesus, help us to understand about Your visit to the house of God in Your childhood. Amen.",
+    "note": "The opening Prayer from p.13, word for word. The Concluding Prayer is on the chapter’s last page, which is not in Drive."
+  }
+}

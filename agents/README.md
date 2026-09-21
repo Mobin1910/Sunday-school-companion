@@ -475,6 +475,47 @@ have set them walking across a question about stars.
 `provision`. Before adding a mechanic to the general set, read the component,
 not the schema.
 
+## `unsure` is a good failure. A confident wrong answer is not.
+
+Primary Chapters 1 and 2 produced both, and the difference is worth stating.
+
+Two questions came out `unsure` — "To which place did the angel tell Joseph to
+go?" reached the generic "which" rule although the word *place* is in it, and
+"When did the family of Jesus come back to Nazareth?" had no rule at all. That
+failure is loud: the planner says so, falls back to multiple-choice, and the
+supervised step fixes it.
+
+One came out **wrong**. "What did the parents *see* when they found Jesus?"
+matched `what did` and was filed as a `process`, which handed it a sequence —
+a child asked to put a single glimpse into order. Nothing flagged it, because
+the classifier was sure. That is the failure mode to fear, and the fix was to
+make the rule narrower rather than to add another: what somebody *did* is a
+process, what somebody *saw* is a scene, and where both words appear the verb
+"do" decides. "What did the woman do to find the lost coin?" is still a
+process, which is what the regression table now pins.
+
+Four categories came out of those two chapters: `place` (moved above the
+"which" rule, because "which city" is a place first and a set second), `time`,
+`scene`, and `saying` — a quoted reply, whose first mechanic is
+`arrange-words`, because a sentence is the one answer shape that can be taken
+apart and put back together, and rebuilding it is closer to saying it aloud
+than picking it off a list.
+
+## Two things a chapter can be missing
+
+**The verse page.** Both these chapters have three curriculum pages and not the
+fourth — the one this book prints My Decision, the Song, the Memory Verse and
+the Concluding Prayer on. There is nothing to run the Memory Verse agent
+against, so both ship with no `verse` block at all and no Memory Verse door.
+A chapter without one is valid; a chapter with a guessed one is the single
+worst thing this library could contain.
+
+**A word off the edge of the photograph.** Chapter 2's fourth question ends
+"…making them anxio" where the page edge falls. It is written out as
+"anxious", which is the only word that fits, and the curriculum note says
+plainly that this is a completion rather than a reading. Record the doubt
+where the next person will see it.
+
 ## What the agent does not store
 
 No scores. `src/local/session.ts` records that a game was finished and nothing
