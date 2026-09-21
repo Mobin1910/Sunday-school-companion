@@ -501,20 +501,47 @@ Four categories came out of those two chapters: `place` (moved above the
 apart and put back together, and rebuilding it is closer to saying it aloud
 than picking it off a list.
 
-## Two things a chapter can be missing
+## Look in `06 - Memory Verse` before concluding a chapter has none
 
-**The verse page.** Both these chapters have three curriculum pages and not the
-fourth — the one this book prints My Decision, the Song, the Memory Verse and
-the Concluding Prayer on. There is nothing to run the Memory Verse agent
-against, so both ship with no `verse` block at all and no Memory Verse door.
-A chapter without one is valid; a chapter with a guessed one is the single
-worst thing this library could contain.
+Primary Chapters 1 and 2 shipped once with no verse at all, because
+`01 - Curriculum Source` holds three pages for each — the title page, the
+lesson, the colouring page — and not the fourth, which is where this book
+prints My Decision, the Song, the Memory Verse and the Concluding Prayer.
+That page was in `06 - Memory Verse`, a folder every chapter has and the
+agent's `--source-dir` run had never been pointed at. The conclusion "this
+chapter has no verse" was wrong, and it was wrong in the safe direction —
+but the check is cheap, so make it: a chapter is missing a verse only once
+both folders have been looked in.
 
-**A word off the edge of the photograph.** Chapter 2's fourth question ends
-"…making them anxio" where the page edge falls. It is written out as
-"anxious", which is the only word that fits, and the curriculum note says
-plainly that this is a completion rather than a reading. Record the doubt
-where the next person will see it.
+## A verse with speech in it needs cutting at the speech
+
+Chapter 2's memory verse is St. Luke 2: 49, which is two quotations with
+"he asked." between them. The ladder's Primary rung cuts on word counts
+where a verse has no usable punctuation, and here it produced a piece that
+began in the middle of one quotation and ended in the middle of the next,
+with the quotation marks split across the join. The pieces are cut by hand
+in that chapter and the verse note says so. When a verse contains speech,
+read the generated rung before trusting it.
+
+## The verse and the games have to be planned together
+
+That same verse is Jesus' reply — which is also what question 4 of the same
+chapter asks about. The game for question 4 had been overridden to
+`arrange-words`, which is the right mechanic for a quotation; the verse
+practice then rebuilds that identical sentence twice, at four pieces and at
+six. Three arrangements of one sentence in one chapter is a single task
+wearing three names, so the game went back to asking what the reply *said*
+and the practice kept its words.
+
+Where a chapter's memory verse is a sentence from its own lesson, check the
+games against it before settling the mechanics.
+
+## A word off the edge of the photograph
+
+Chapter 2's fourth question ends "…making them anxio" where the page edge
+falls. It is written out as "anxious", which is the only word that fits, and
+the curriculum note says plainly that this is a completion rather than a
+reading. Record the doubt where the next person will see it.
 
 ## What the agent does not store
 

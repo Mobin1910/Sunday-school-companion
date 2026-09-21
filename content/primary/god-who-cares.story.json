@@ -3,7 +3,7 @@
   "chapter": 1,
   "title": "God Who Cares",
   "reference": "St. Matthew 2:13 - 21",
-  "note": "Primary, Chapter 1, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 9–11. The flight into Egypt, told as a chapter about God seeing trouble before it arrives.\n\n**This chapter has no memory verse yet, and that is not an omission here.** Three pages are in 01 - Curriculum Source — the title page, the lesson with its questions, and the colouring page — and the fourth, which is where this book prints My Decision, the Song, the Memory Verse and the Concluding Prayer, is not among them. Primary Chapter 3 has all four (pages 17 to 20), so the shape is known and the page simply has not been photographed. Guessing a verse is the one thing the Memory Verse agent exists to prevent, so this chapter ships without one and the Memory Verse door does not appear.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 01`). Its first run could not read two of the three questions: “To which place…” reached the generic “which” rule and came out `unsure` although the word “place” is in it, and “When did…” had no rule at all. Both went to multiple-choice by default, which is the outcome that agent exists to prevent. The classifier now reads places before sets and has a `time` category; the second run planned reveal, multiple-choice and sequence, which is what ships.\n\nThe fourth game is written by hand: three questions is below the Primary band’s four to five, and what it covers is the closing paragraph the question set skips.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture.",
+  "note": "Primary, Chapter 1, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 9–11. The flight into Egypt, told as a chapter about God seeing trouble before it arrives.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 01`). Its first run could not read two of the three questions: “To which place…” reached the generic “which” rule and came out `unsure` although the word “place” is in it, and “When did…” had no rule at all. Both went to multiple-choice by default, which is the outcome that agent exists to prevent. The classifier now reads places before sets and has a `time` category; the second run planned reveal, multiple-choice and sequence, which is what ships.\n\nThe fourth game is written by hand: three questions is below the Primary band’s four to five, and what it covers is the closing paragraph the question set skips.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture.",
   "cover": {
     "picture": "cover",
     "note": "Not drawn yet. The book’s own chapter opening is Mary on a donkey with baby Jesus reaching out and Joseph leading, under the title “GOD WHO CARES 1”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/god-who-cares/ is the only step left."
@@ -244,8 +244,114 @@
     "message": "God saw the trouble coming, and He kept them safe.",
     "note": "The lesson’s closing thought, said back to the child."
   },
+  "verse": {
+    "text": "The Lord will keep you from all harm, He will watch over your life.",
+    "reference": "Psalms 121: 7",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with who keeps you.",
+        "words": [
+          "The Lord will keep you",
+          "from all harm,",
+          "He will watch over your life."
+        ],
+        "note": "Stage 1, phrase ordering — the Memory Verse agent’s Primary rung, used exactly as it came out. It cut the verse at its own comma, which is where it breathes."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "The Lord will keep you from all ______,",
+        "hint": "The missing word starts with “h”.",
+        "options": [
+          {
+            "label": "harm",
+            "correct": true
+          },
+          {
+            "label": "Lord"
+          },
+          {
+            "label": "watch"
+          },
+          {
+            "label": "life"
+          }
+        ],
+        "note": "Stage 2, the missing word with the clause whole around it. Four options where a Beginner gets three, and every one a real word of this verse."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "The Lord will keep you from all harm, He will ______",
+        "hint": "What does a shepherd do from the hillside?",
+        "options": [
+          {
+            "label": "watch",
+            "correct": true
+          },
+          {
+            "label": "keep"
+          },
+          {
+            "label": "harm"
+          },
+          {
+            "label": "life"
+          }
+        ],
+        "note": "Stage 3, the same question with the right-hand side taken away. “keep” reads perfectly well in that gap and is the verse’s own earlier verb, so the only thing separating them is remembering the sentence forwards."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with who keeps you.",
+        "words": [
+          "The Lord",
+          "will keep you",
+          "from all harm,",
+          "He will",
+          "watch over",
+          "your life."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had three, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalms 121",
+            "correct": true
+          },
+          {
+            "label": "Psalms 21"
+          },
+          {
+            "label": "St. Matthew 2"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed; the Primary band does not write references yet. St. Matthew 2 is this chapter’s own Bible Portion, printed on p.9, and Psalms 21 is the same number with a digit missing."
+      }
+    ],
+    "note": "Read from the chapter’s last page through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs, the supervised read, then `--from-extraction`. That page lives in `06 - Memory Verse` rather than in `01 - Curriculum Source`, which is why this chapter first shipped without a verse at all — the agent was pointed at the wrong folder, not at a gap.\n\nFive stages in the shape Primary Chapter 3 uses: phrase ordering, a gap with the sentence whole on both sides of it, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses. Translation is unresolved: the page does not name one, which is where every chapter in this library stands.\n\nPrinted as “Psalms 121: 7” — plural, with a space after the colon — and both are kept as printed."
+  },
+  "decision": {
+    "statement": "God cares for me. I will obey his words.",
+    "note": "The curriculum’s own My Decision line from p.12, unchanged, including its lower-case “his”."
+  },
+  "song": {
+    "lines": [
+      "Karuthunnavan njanallayo",
+      "Kalangunnath enthinu nee",
+      "Kannuneerinte thazhvarayil",
+      "Kaividukayilla njan nine."
+    ],
+    "note": "The Song from p.12, in the Latin script the book prints it in, line for line."
+  },
   "prayer": {
-    "text": "Thank you Lord, for caring for us always. Bless us that we may live in obedience to You. Amen.",
-    "note": "The opening Prayer from p.9, word for word. This book also prints a Concluding Prayer on each chapter’s last page; that page is not in Drive for this chapter, so the opening prayer is the only one recorded here."
+    "text": "Caring Lord, help me to obey Your will in my life. Amen",
+    "note": "The closing Prayer from p.12, word for word including its Amen with no full stop. The chapter also opens with a prayer on p.9 — “Thank you Lord, for caring for us always. Bless us that we may live in obedience to You. Amen.” — which has nowhere to go in this shape and is recorded here rather than lost."
   }
 }

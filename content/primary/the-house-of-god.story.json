@@ -3,7 +3,7 @@
   "chapter": 2,
   "title": "The House of God",
   "reference": "St. Luke 2: 41 - 52",
-  "note": "Primary, Chapter 2, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 13–15. The boy Jesus left behind in Jerusalem, told as a chapter about the Church being the House of God.\n\n**This chapter has no memory verse yet, and that is not an omission here.** Three pages are in 01 - Curriculum Source — the title page, the lesson with its questions, and the colouring page — and the fourth, which is where this book prints My Decision, the Song, the Memory Verse and the Concluding Prayer, is not among them. Primary Chapter 3 has all four (pages 17 to 20), so the shape is known and the page simply has not been photographed. Guessing a verse is the one thing the Memory Verse agent exists to prevent, so this chapter ships without one and the Memory Verse door does not appear.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 02`). Its first run mis-read question 3 — “What did the parents *see*…” was filed as a process and handed a sequence, which would have asked a child to put a single glimpse into order — and could not read question 4 at all. The classifier now separates what somebody saw from what somebody did, and reads a quoted reply as its own shape; the second run planned reveal, multiple-choice, match and a choice for the reply. One mechanic was changed by hand after that and the reason is in that game’s note.\n\nThe page also carries the teacher’s Qurbana vocabulary in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty — which belongs to the class rather than to any question. It is recorded in the curriculum note and used nowhere.\n\nQuestion 4’s last word is cut off by the edge of the photograph. See the curriculum note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is twenty-two text cards and no game carries a picture. The book’s colouring page also sets an activity — “Make a list of words that are related to Church” — which is a pencil-and-paper task for the class and has no game here.",
+  "note": "Primary, Chapter 2, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 13–15. The boy Jesus left behind in Jerusalem, told as a chapter about the Church being the House of God.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 02`). Its first run mis-read question 3 — “What did the parents *see*…” was filed as a process and handed a sequence, which would have asked a child to put a single glimpse into order — and could not read question 4 at all. The classifier now separates what somebody saw from what somebody did, and reads a quoted reply as its own shape; the second run planned reveal, multiple-choice, match and a choice for the reply. One mechanic was changed by hand after that and the reason is in that game’s note.\n\nThe page also carries the teacher’s Qurbana vocabulary in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty — which belongs to the class rather than to any question. It is recorded in the curriculum note and used nowhere.\n\nQuestion 4’s last word is cut off by the edge of the photograph. See the curriculum note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is twenty-two text cards and no game carries a picture. The book’s colouring page also sets an activity — “Make a list of words that are related to Church” — which is a pencil-and-paper task for the class and has no game here.",
   "cover": {
     "picture": "cover",
     "note": "Not drawn yet. The book’s own chapter opening is the Passover crowd setting out for Jerusalem, under the title “THE HOUSE OF GOD 2”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/the-house-of-god/ is the only step left."
@@ -247,21 +247,30 @@
     {
       "id": "what-jesus-said",
       "title": "What Jesus Said",
-      "objective": "Put Jesus' own reply back together, word group by word group, so that the sentence is remembered rather than recognised.",
+      "objective": "Name what Jesus said He had to be doing — the answer He gave His parents instead of an apology.",
       "answers": [
         4
       ],
-      "note": "Question 4. The planner offered a multiple-choice and the mechanic was changed by hand to `arrange-words`, which is what the preference table lists first for a quotation and what the Primary band allows. A reply is the one answer shape that can be taken apart and put back together, and rebuilding it is much closer to saying it out loud than picking it off a list of three.\n\nThe pieces are cut at the quotation’s own sentence and clause boundaries, and they spell His reply exactly as p.14 prints it.",
+      "note": "Question 4, and the mechanic changed twice. The planner offered a multiple-choice; it was overridden to `arrange-words`, which is what the preference table lists first for a quotation and much closer to saying a sentence out loud than picking it off a list — and then it was changed back, because this chapter’s memory verse turned out to be that exact sentence. St. Luke 2: 49 *is* Jesus’ reply, and the verse practice rebuilds it twice, at four pieces and at six. A game that rebuilt it a third time would be the same task wearing a different name.\n\nSo the game asks what the reply *said* and the practice handles its words. The third wrong option is what His parents had assumed, and the fourth is the apology He did not give. Four options is the Primary band’s ceiling.\n\nWorth remembering when planning: the verse and the games have to be laid out together, because a chapter whose memory verse is a sentence from its own lesson can end up drilling it twice.",
       "interactions": [
         {
-          "type": "arrange-words",
-          "prompt": "Put Jesus’ answer back together.",
-          "hint": "He answered her question with a question.",
-          "words": [
-            "Why were you searching for me?",
-            "Didn’t you know",
-            "I had to be",
-            "in my Father’s house?"
+          "type": "multiple-choice",
+          "prompt": "Jesus said He had to be where?",
+          "hint": "He answered their question with a question.",
+          "options": [
+            {
+              "label": "In my Father’s house",
+              "correct": true
+            },
+            {
+              "label": "With our relatives"
+            },
+            {
+              "label": "On the road home"
+            },
+            {
+              "label": "Lost in Jerusalem"
+            }
           ]
         }
       ]
@@ -271,8 +280,115 @@
     "message": "Jesus loved His Father’s house. You can love it too.",
     "note": "The lesson’s own application — the Church is the House of God — said back to the child."
   },
+  "verse": {
+    "text": "“Why were you searching for me?” he asked. “Didn’t you know I had to be in my Father’s house?”",
+    "reference": "St. Luke 2: 49",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "He answered their question with a question.",
+        "words": [
+          "“Why were you searching for me?”",
+          "he asked.",
+          "“Didn’t you know I had to be",
+          "in my Father’s house?”"
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand rather than by the agent. Its Primary rung cut this verse at even word counts and produced “for me?” he asked. “Didn’t” — a piece that begins in the middle of one quotation and ends in the middle of the next, with the quotation marks split across the join. A verse with speech in it needs cutting at the speech, so these four pieces break where the quotation marks do. The build checks they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "“Why were you ______ for me?” he asked.",
+        "hint": "It is what His parents had been doing for three days.",
+        "options": [
+          {
+            "label": "searching",
+            "correct": true
+          },
+          {
+            "label": "asked"
+          },
+          {
+            "label": "know"
+          },
+          {
+            "label": "house"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. Four options, all real words of this verse."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "he asked. “Didn’t you know I had to be in my ______",
+        "hint": "Whose house did Jesus call it?",
+        "options": [
+          {
+            "label": "Father’s",
+            "correct": true
+          },
+          {
+            "label": "house"
+          },
+          {
+            "label": "searching"
+          },
+          {
+            "label": "asked"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. The word is the point of the whole verse — He called the temple His Father’s house — so it is the one worth supplying from memory rather than reading around."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Two questions, and three words between them.",
+        "words": [
+          "“Why were you searching",
+          "for me?”",
+          "he asked.",
+          "“Didn’t you know",
+          "I had to be in",
+          "my Father’s house?”"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four. Each quotation mark still travels with the words it belongs to."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter's own Bible portion.",
+        "options": [
+          {
+            "label": "St. Luke 2: 49",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 2: 41"
+          },
+          {
+            "label": "St. Luke 2: 52"
+          }
+        ],
+        "note": "Stage 5, the reference. All three are inside this chapter’s own portion, St. Luke 2: 41 - 52, printed on p.13 — 41 is where it begins and 52 is where it ends. A child who has read the chapter has met all three, which is what makes choosing between them a question rather than a guess."
+      }
+    ],
+    "note": "Read from the chapter’s last page through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs, the supervised read, then `--from-extraction`. That page lives in `06 - Memory Verse` rather than in `01 - Curriculum Source`, which is why this chapter first shipped without a verse at all — the agent was pointed at the wrong folder, not at a gap.\n\nFive stages in the shape Primary Chapter 3 uses: phrase ordering, a gap with the sentence whole on both sides of it, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses. Translation is unresolved: the page does not name one, which is where every chapter in this library stands.\n\nThis verse is Jesus’ own reply, which is also what question 4 of this chapter asks about — so the fourth game was changed to ask what the reply *said* rather than rebuild its words a third time. See that game’s note.\n\nPrinted with curly quotation marks around both halves of the speech and “he asked.” between them; all of it is kept, and every arrangement above spells it exactly."
+  },
+  "decision": {
+    "statement": "The Church is the House of God. I will go to church and participate in the worship.",
+    "note": "The curriculum’s own My Decision line from p.16, unchanged."
+  },
+  "song": {
+    "lines": [
+      "Palliyil pokanam,",
+      "Yesuve kananam",
+      "Sankadangal chollanam,",
+      "Modamayi poranam."
+    ],
+    "note": "The Song from p.16, in the Latin script the book prints it in, line for line."
+  },
   "prayer": {
-    "text": "Jesus, help us to understand about Your visit to the house of God in Your childhood. Amen.",
-    "note": "The opening Prayer from p.13, word for word. The Concluding Prayer is on the chapter’s last page, which is not in Drive."
+    "text": "Loving Father, train me to go to church regularly. Amen.",
+    "note": "The closing Prayer from p.16, word for word. The chapter also opens with a prayer on p.13 — “Jesus, help us to understand about Your visit to the house of God in Your childhood. Amen.” — which is recorded here rather than lost."
   }
 }
