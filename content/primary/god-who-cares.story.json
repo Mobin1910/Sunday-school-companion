@@ -3,76 +3,57 @@
   "chapter": 1,
   "title": "God Who Cares",
   "reference": "St. Matthew 2:13 - 21",
-  "note": "Primary, Chapter 1, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 9–11. The flight into Egypt, told as a chapter about God seeing trouble before it arrives.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 01`). Its first run could not read two of the three questions: “To which place…” reached the generic “which” rule and came out `unsure` although the word “place” is in it, and “When did…” had no rule at all. Both went to multiple-choice by default, which is the outcome that agent exists to prevent. The classifier now reads places before sets and has a `time` category; the second run planned reveal, multiple-choice and sequence, which is what ships.\n\nThe fourth game is written by hand: three questions is below the Primary band’s four to five, and what it covers is the closing paragraph the question set skips.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards and no game carries a picture.",
+  "note": "Primary, Chapter 1, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 9–11. The flight into Egypt, told as a chapter about God seeing trouble before it arrives.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 01`). Its first run could not read two of the three questions: “To which place…” reached the generic “which” rule and came out `unsure` although the word “place” is in it, and “When did…” had no rule at all. Both went to multiple-choice by default, which is the outcome that agent exists to prevent. The classifier now reads places before sets and has a `time` category; the second run planned reveal, multiple-choice and sequence, which is what ships.\n\nThe fourth game is written by hand: three questions is below the Primary band’s four to five, and what it covers is the closing paragraph the question set skips.\n\nArtwork downloaded from Drive (Primary / Chapter 01 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Thirteen files — both covers and panels 1 to 11, contiguous, no duplicates, and every one of them exactly 941×1672 or its transpose. The first folder in this library to import with no warning of any kind.\n\nThe artwork brought a frame the text draft did not have; see the story note. Every game names a shelf picture, and “When They Went Home” is played on the chapter’s own panels rather than on text cards.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The book’s own chapter opening is Mary on a donkey with baby Jesus reaching out and Joseph leading, under the title “GOD WHO CARES 1”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/god-who-cares/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 1’s own cover, drawn twice. The portrait has Joseph leading the donkey with Mary and the baby along a sunlit road, the Nile and the pyramids behind them, and “1” and “GOD WHO CARES” painted onto a label across the top — so the story reader lays no text over it. The landscape is the same journey at night and with no lettering: Herod scowls down from his balcony at the left with soldiers behind him, the family crosses the foreground, and the pyramids and one bright star stand at the right. Same chapter, same hand, and the one the chapter hub and the shelf row need since both draw their own heading."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "You have learnt that Jesus was born in Bethlehem.",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Beginner Chapter 5, Beginner Chapter 6 and Primary Chapter 3 were all written from the lesson alone and all three were rewritten when the artwork arrived carrying a shape the text did not have. If that happens again, the panels win."
+      "alt": "Night in a child’s bedroom. A boy sits up in bed clutching a dark blue blanket patterned with gold stars, a teddy and books on the shelf behind him and a full moon at the window. Halo glows beside him. The boy says, “Halo… I had a nightmare. I’m scared.” Halo answers, “Oh no… That sounds scary!”",
+      "note": "The chapter does not open in Bethlehem. The artwork frames the lesson with a boy waking from a nightmare in his own bed — panels 1 to 3 — crosses into the story at panel 4 with the boy still in the picture, tells the flight to Egypt and the return through panel 9, and comes back to the same bedroom in panels 10 and 11, in morning light, where the lesson lands as something the child can do. That frame is the artwork’s, and this is the fourth chapter in this library to turn out to have one.\n\nThe narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel. “Amma” and “Appa” are the artwork’s own words and are left as they are.\n\nEleven panels where the text draft had sixteen cards. The draft is gone rather than reconciled, which is what happened to Beginner Chapters 5 and 6 and to Primary Chapter 3 as well."
     },
     {
       "picture": "panel-02",
-      "text": "King Herod did not like the news of His birth. Do you know why?"
+      "alt": "The same room. The boy has both hands on the blanket and is looking up. He says, “I wish Amma was here.” Halo, floating level with him, says, “Amma and Appa care for you very much.”"
     },
     {
       "picture": "panel-03",
-      "text": "Herod was afraid. Jesus was born to be the King of the Jews."
+      "alt": "The boy has brightened, a hand at his chin. He says, “Amma and Appa care for me. Who else cares for me?” and then, “How do I know?” Halo answers, “God does. He cares for you wherever you are.”"
     },
     {
       "picture": "panel-04",
-      "text": "Herod thought Jesus would take away his throne."
+      "alt": "The stable at Bethlehem, warm with lamplight. Mary sits on the straw with the swaddled baby in her arms and Joseph kneels beside her; a donkey looks over the rail and a lamb lies in the foreground, the town and one bright star beyond. The boy is in the scene now, in his pyjamas, watching. He asks, “Who are they?” and Halo says, “This is Mary, Joseph and baby Jesus.” The caption reads, “Long ago, Joseph, Mary and baby Jesus lived in Bethlehem.”"
     },
     {
       "picture": "panel-05",
-      "text": "So he sent his people to find and kill baby Jesus."
+      "alt": "King Herod on his throne in a red and gold hall, a crown on his head and a scroll in one hand, jabbing a finger at a man who stands before him with his head bowed. Soldiers with spears line the wall under a banner with a gold lion on it. Herod says, “Find the child!” The caption reads, “King Herod heard that Jesus had been born. He was afraid that Jesus would become King and take his throne.”"
     },
     {
       "picture": "panel-06",
-      "text": "Joseph and Mary knew nothing of this. They stayed in Bethlehem with baby Jesus."
+      "alt": "Joseph asleep on a low bed, propped on one elbow and looking up, wide awake now. An angel in white leans towards him out of a warm light with one hand open; Mary and the baby sleep on behind. The angel says, “Get up! Take Jesus and Mary and go to Egypt,” and Joseph answers, “I will obey God.” The caption reads, “God knew that Jesus was in danger. So He sent an angel to warn Joseph.”"
     },
     {
       "picture": "panel-07",
-      "text": "But God had foreseen Herod’s plan. So He sent an angel to Joseph."
+      "alt": "Out on the road at night. Joseph walks ahead with a bag over his shoulder, leading the donkey by its rein; Mary rides with the baby held close. Palms, a lit doorway and the moon behind them. Joseph says, “Come, Mary. We must leave now,” and Mary answers, “Yes, Joseph. Let’s go.” The caption reads, “Joseph obeyed God. That very night, he took Mary and baby Jesus and left for Egypt.”"
     },
     {
       "picture": "panel-08",
-      "text": "The angel told him to flee to Egypt with Mary and baby Jesus."
+      "alt": "The angel a second time, in the same warm light over Joseph’s bed, Mary and the child asleep behind. The angel says, “Get up! Take Jesus and Mary and go back,” and Joseph answers again, “I will obey God.” The caption reads, “After King Herod died, God sent an angel to Joseph again.”"
     },
     {
       "picture": "panel-09",
-      "text": "In complete obedience to God, they fled that night itself."
+      "alt": "Daylight, and the road home. Joseph walks with his staff and his bag, leading the donkey; Mary rides with the child, who is old enough now to look out at the road. A wooden signpost reads “Nazareth” and the hill town rises behind it among olive trees and flowers. The caption reads, “Joseph, Mary and Jesus returned from Egypt. They went to Nazareth and lived there. God cared for them every step of the way.”"
     },
     {
       "picture": "panel-10",
-      "text": "Herod’s people could not find baby Jesus. They were saved from danger."
+      "alt": "Morning in the bedroom, the curtains open and sunlight on the quilt. The boy sits up smiling with Halo beside him; a hand-made poster on the wall reads “GOD IS WITH ME” under a red heart. The boy asks, “So God cared for Jesus and His family?” and Halo answers, “Yes. And God cares for you too.” The caption reads, “God knows when we are afraid. He cares for us.”"
     },
     {
       "picture": "panel-11",
-      "text": "They lived in Egypt safely for some time."
-    },
-    {
-      "picture": "panel-12",
-      "text": "After king Herod died, an angel appeared before Joseph again."
-    },
-    {
-      "picture": "panel-13",
-      "text": "The angel told him to return to Nazareth."
-    },
-    {
-      "picture": "panel-14",
-      "text": "So Joseph, Mary and baby Jesus went to Nazareth."
-    },
-    {
-      "picture": "panel-15",
-      "text": "God foresees our troubles in life."
-    },
-    {
-      "picture": "panel-16",
-      "text": "As God cares for us, He will help us overcome them. We must obey Him."
+      "alt": "The boy sits on the edge of his bed in star-patterned pyjamas, holding a Holy Bible against his chest with both arms, a rocket and a stack of books on the bedside table. He says, “When I am scared, I can trust God!” and Halo answers, “Yes! God cares for you, and you can obey Him.” The caption reads, “God cares for me. I will trust and obey Him.”"
     }
   ],
   "curriculum": {
@@ -110,7 +91,7 @@
       "answers": [
         1
       ],
-      "note": "Question 1. A reveal rather than a quiz, because the lesson’s answer is not one fact but a chain of four, and a question with one right box would make a child choose between links that all belong. Nothing here is correct or incorrect; the four cards are the four steps in the order the page gives them.",
+      "note": "Question 1. A reveal rather than a quiz, because the lesson’s answer is not one fact but a chain of four, and a question with one right box would make a child choose between links that all belong. Nothing here is correct or incorrect; the four cards are the four steps in the order the page gives them.\n\nShelf picture: panel 5, Herod on his throne pointing and saying “Find the child!” — this game’s question drawn. The cards stay words: the panel’s own caption gives the whole answer, so putting it on a card would end the game before it began.",
       "interactions": [
         {
           "type": "reveal",
@@ -130,7 +111,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-05"
     },
     {
       "id": "where-the-angel-sent-them",
@@ -139,7 +121,7 @@
       "answers": [
         2
       ],
-      "note": "Question 2. Every wrong option is a real place in this same chapter — Bethlehem is where they were living, Nazareth is where they went afterwards, Jerusalem is Herod’s city — so the question is which one the angel named, not which one sounds like a place. That is the discrimination Primary is for; a Beginner’s version would put somewhere from a different story in the list. Four options is the band’s ceiling.",
+      "note": "Question 2. Every wrong option is a real place in this same chapter — Bethlehem is where they were living, Nazareth is where they went afterwards, Jerusalem is Herod’s city — so the question is which one the angel named, not which one sounds like a place. That is the discrimination Primary is for; a Beginner’s version would put somewhere from a different story in the list. Four options is the band’s ceiling.\n\nShelf picture: panel 7, the family on the road at night. Panel 6 is the obvious choice and the wrong one — the angel’s speech bubble in it says “go to Egypt”, which is the answer printed on the shelf card. Panel 7 shows the leaving without naming where. The options stay words for the same reason.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -161,7 +143,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-07"
     },
     {
       "id": "when-they-went-home",
@@ -170,42 +153,48 @@
       "answers": [
         3
       ],
-      "note": "Question 3 asks *when*, and when is a position rather than a fact — the lesson’s answer is “after the death of king Herod”, which only means anything next to what came before it. So the child puts five events in order and the answer falls out of the ordering. Five steps, because the Primary band’s note says a sequence may run longer than four here.",
+      "note": "Question 3 asks *when*, and when is a position rather than a fact — the lesson’s answer is “after the death of king Herod”, which only means anything next to what came before it. So the child puts five moments in order and the answer falls out of the ordering. Five steps, because the Primary band’s note says a sequence may run longer than four here.\n\nThis is the game the artwork changed. It was five text cards, and every step is now one of the chapter’s own panels in the order the artwork tells it — Herod on his throne, the first angel, the night road, the second angel, the signpost to Nazareth. Ordering pictures is what this mechanic wanted all along. The labels stay as captions so a child who reads gets both.\n\n“King Herod died” was a step of its own in the text version and is not one here, because nothing in the artwork draws it — panel 8 reports it in its caption. The fact has moved into the hint, which is where the assistance ladder puts what a child needs rather than what they must already know.\n\nShelf picture: panel 8, the second angel — the moment question 3 is actually about, and not a picture either of the other games uses.\n\nWorth knowing before a Sunday: panels 6 and 8 are nearly the same picture. The artist drew both angel visits identically — same angel, same room, Joseph giving the same answer — so shuffled side by side they cannot be told apart by looking. The captions are what separate them, which makes this a reading task as much as an ordering one. That suits Primary, where the band asks for understanding rather than recognition, and it would not suit Beginner at all.",
       "interactions": [
         {
           "type": "sequence",
           "prompt": "Put the journey in order.",
-          "hint": "It begins with a warning in the night.",
+          "hint": "The second angel came after Herod died.",
           "items": [
             {
-              "label": "An angel warned Joseph",
+              "picture": "panel-05",
+              "label": "Herod wanted to find Him",
               "position": 1
             },
             {
-              "label": "They fled to Egypt",
+              "picture": "panel-06",
+              "label": "An angel warned Joseph",
               "position": 2
             },
             {
-              "label": "King Herod died",
+              "picture": "panel-07",
+              "label": "They left for Egypt",
               "position": 3
             },
             {
-              "label": "An angel came again",
+              "picture": "panel-08",
+              "label": "The angel came again",
               "position": 4
             },
             {
+              "picture": "panel-09",
               "label": "They went to Nazareth",
               "position": 5
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-08"
     },
     {
       "id": "god-who-cares",
       "title": "God Who Cares",
       "objective": "Hold the lesson's closing paragraph — God foresees our troubles, He helps us overcome them, and we must obey Him.",
-      "note": "The fourth game, written by hand because the book asks three questions and the Primary band wants four to five. What it covers is the paragraph the questions skip — the one the chapter is named after, and the only part of the page that is about the child rather than about Herod. Every false statement carries its reason immediately after it, and each reason is the lesson’s own sentence.",
+      "note": "The fourth game, written by hand because the book asks three questions and the Primary band wants four to five. What it covers is the paragraph the questions skip — the one the chapter is named after, and the only part of the page that is about the child rather than about Herod. Every false statement carries its reason immediately after it, and each reason is the lesson’s own sentence.\n\nShelf picture: panel 10, the boy back in his own bed in the morning under “God cares for you too” — which is this game’s subject, and the only panel that is about the child rather than about Herod.",
       "interactions": [
         {
           "type": "true-or-not",
@@ -237,7 +226,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-10"
     }
   ],
   "celebration": {
@@ -335,7 +325,8 @@
         "note": "Stage 5, the reference — recognised, not typed; the Primary band does not write references yet. St. Matthew 2 is this chapter’s own Bible Portion, printed on p.9, and Psalms 21 is the same number with a digit missing."
       }
     ],
-    "note": "Read from the chapter’s last page through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs, the supervised read, then `--from-extraction`. That page lives in `06 - Memory Verse` rather than in `01 - Curriculum Source`, which is why this chapter first shipped without a verse at all — the agent was pointed at the wrong folder, not at a gap.\n\nFive stages in the shape Primary Chapter 3 uses: phrase ordering, a gap with the sentence whole on both sides of it, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses. Translation is unresolved: the page does not name one, which is where every chapter in this library stands.\n\nPrinted as “Psalms 121: 7” — plural, with a space after the colon — and both are kept as printed."
+    "note": "Read from the chapter’s last page through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs, the supervised read, then `--from-extraction`. That page lives in `06 - Memory Verse` rather than in `01 - Curriculum Source`, which is why this chapter first shipped without a verse at all — the agent was pointed at the wrong folder, not at a gap.\n\nFive stages in the shape Primary Chapter 3 uses: phrase ordering, a gap with the sentence whole on both sides of it, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses. Translation is unresolved: the page does not name one, which is where every chapter in this library stands.\n\nPrinted as “Psalms 121: 7” — plural, with a space after the colon — and both are kept as printed.\n\nPicture: panel 9, the road to Nazareth under the words “God cared for them every step of the way” — which is this verse in the chapter’s own sentence.",
+    "picture": "panel-09"
   },
   "decision": {
     "statement": "God cares for me. I will obey his words.",
