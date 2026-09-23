@@ -431,11 +431,33 @@ const trueOrNot = z.strictObject({
       z.strictObject({
         /** Asked the way a child can answer it: yes, or no. */
         ask: z.string().min(1),
-        /** The curriculum's statement, verbatim. */
+        /**
+         * The sentence the statement was made from — the curriculum's own
+         * words where it has them, otherwise a claim written for the game,
+         * which may deliberately be a false one.
+         *
+         * Not sent to the browser; `cards.ts` drops it. Editorial only.
+         */
         source: z.string().min(1),
-        /** Whether the statement is true. */
+        /**
+         * The honest answer to `ask` — not to `source`.
+         *
+         * The distinction is the whole trap. A statement made from a false
+         * `source` has `answer: false`, and its `ask` has to be phrased so a
+         * child's honest yes-or-no is still no. Primary Chapter 1 shipped an
+         * `ask` that had quietly dropped the source's negation, so the child
+         * was asked the opposite question and told the source's answer. Since
+         * `source` never reaches the browser, nothing but reading the two
+         * sentences side by side shows it.
+         */
         answer: z.boolean(),
-        /** Why. Said after either answer, and never as a verdict. */
+        /**
+         * Why. Said after either answer, and never as a verdict.
+         *
+         * Opens with the answer — "Yes." or "No." — because the mechanic marks
+         * nothing, so that word is the only place the child is told which way
+         * it went. `checks.ts` holds it to that.
+         */
         because: z.string().min(1),
         note,
       }),

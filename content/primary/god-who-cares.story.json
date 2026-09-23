@@ -201,10 +201,11 @@
           "prompt": "Say what you think. Then we will look.",
           "statements": [
             {
-              "source": "God did not know what Herod was planning.",
+              "source": "God had foreseen the plan of king Herod.",
               "ask": "Did God know Herod’s plan?",
-              "answer": false,
-              "because": "No. God had foreseen the plan of king Herod to kill Jesus, so He sent an angel to Joseph."
+              "answer": true,
+              "because": "Yes. God had foreseen the plan of king Herod to kill Jesus, so He sent an angel to Joseph.",
+              "note": "Written back to front at first, and reported by the teacher. The statement was the false claim “God did not know what Herod was planning”, which made `answer` false — but the question asked the opposite way round, so a child answering “Did God know Herod’s plan?” was told No and then given a reason saying God had foreseen it. `source` never reaches the browser, so nothing but reading the two sentences together would show it. The statement now says what the lesson says, and the answer is yes."
             },
             {
               "source": "Joseph waited until morning before leaving.",

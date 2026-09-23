@@ -417,6 +417,64 @@ export function checkChapter(chapter: LoadedChapter): Advisory[] {
     });
   }
 
+  /*
+    A yes-or-no reason has to begin with the answer it is explaining.
+
+    `true-or-not` is the one mechanic that shows a child a reason after either
+    answer, and every statement in the library opens that reason with the
+    verdict — "Yes. He ran ahead of the crowd…", "No. He gave half of his
+    possessions…". That is not a house style. `TrueOrNot.tsx` builds its help
+    on it: a child who answered the other way round is asked the same
+    statement again with the reason left on the screen above the buttons, and
+    the reason opening with the word the answer is, is the entire reason that
+    second ask is answerable rather than a coin toss. The component says so in
+    its own comments, twice.
+
+    So a `because` that opens "No." under `answer: true` does not just read
+    oddly — it turns the one rung of help into a push in the wrong direction,
+    and nothing else in the build would notice: both fields are non-empty
+    strings and the game plays.
+
+    What this does not catch is a reason whose *opening* agrees with `answer`
+    while its sentence argues the other way — Primary Chapter 1 shipped
+    exactly that and it took the teacher to find it. No checker can read a
+    sentence. This catches the half that is mechanical; the other half is why
+    `ask`, `answer` and `because` are read together out loud before a
+    true-or-not game is written down.
+  */
+  for (const [index, card] of chapter.cards.entries()) {
+    for (const interaction of interactionsOf(card)) {
+      if (interaction.type !== "true-or-not") continue;
+
+      interaction.statements.forEach((statement, n) => {
+        const opens = /^(yes|no)\b/i.exec(statement.because.trim())?.[1];
+        const wanted = statement.answer ? "yes" : "no";
+
+        if (opens === undefined) {
+          advisories.push({
+            level,
+            where: `${chapter.file} → card ${index} (${card.kind}), statement ${n + 1}`,
+            message:
+              `the reason does not open with the answer — a child is never told ` +
+              `which way it went\n      ask:     "${statement.ask}"\n` +
+              `      because: "${statement.because}"`,
+          });
+          return;
+        }
+
+        if (opens.toLowerCase() !== wanted) {
+          advisories.push({
+            level,
+            where: `${chapter.file} → card ${index} (${card.kind}), statement ${n + 1}`,
+            message:
+              `the answer is ${statement.answer} but the reason opens "${opens}"\n` +
+              `      ask:     "${statement.ask}"\n      because: "${statement.because}"`,
+          });
+        }
+      });
+    }
+  }
+
   for (const { where, message } of copyAdvisories(
     chapter.cards,
     limitsFor(chapter.classId),

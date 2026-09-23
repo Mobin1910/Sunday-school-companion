@@ -168,6 +168,73 @@ if (wanted.every((w) => bad.problems.some((p) => p.includes(w)))) {
   pass(`the gates caught all ${wanted.length} planted faults`);
 }
 
+/* ── 5b. the three sentences of a true-or-not ────────────────────────── */
+/*
+  The bug this exists for: Primary Chapter 1 shipped a statement whose `ask`
+  was the opposite polarity to its `source`, so the child was asked one
+  question and told the other one's answer. `source` never reaches the browser,
+  so nothing showed it.
+
+  Two gates, at two strengths. The verdict is exact and is a problem. The
+  polarity is a hint and is a note, because it fires on sound statements too.
+*/
+const tin = check({
+  classId: "primary",
+  questions: [{ n: 1 }],
+  games: [
+    {
+      id: "yes-or-no", objective: "Know what God knew", answers: [1],
+      interactions: [{
+        type: "true-or-not",
+        prompt: "Say what you think.",
+        statements: [
+          // The shipped bug, exactly: negated statement, un-negated question.
+          { source: "God did not know the plan.", ask: "Did God know the plan?", answer: false, because: "No. God had foreseen it." },
+          // Verdict the wrong way round.
+          { source: "Joseph obeyed God.", ask: "Did Joseph obey?", answer: true, because: "No. He left that night." },
+          // No verdict at all.
+          { source: "They went to Egypt.", ask: "Did they go to Egypt?", answer: true, because: "They left that very night." },
+        ],
+      }],
+    },
+  ],
+});
+if (!tin.problems.some((p) => p.includes('the reason opens'))) {
+  fail("the gates missed a reason that opens against its answer");
+} else if (!tin.problems.some((p) => p.includes('does not open'))) {
+  fail("the gates missed a reason with no verdict in it");
+} else if (!tin.notes.some((n) => n.includes("one of these negates"))) {
+  fail("the gates missed the polarity the teacher had to find");
+} else if (tin.problems.some((p) => p.includes("negates"))) {
+  fail("the polarity hint is a problem — it fires on sound statements and must be a note");
+} else {
+  pass("a true-or-not statement is held to all three of its sentences");
+}
+
+const sound = check({
+  classId: "primary",
+  questions: [{ n: 1 }],
+  games: [
+    {
+      id: "yes-or-no", objective: "Know what God knew", answers: [1],
+      interactions: [{
+        type: "true-or-not",
+        statements: [
+          { source: "God had foreseen the plan.", ask: "Did God know the plan?", answer: true, because: "Yes. He sent an angel." },
+          { source: "Joseph waited until morning.", ask: "Did Joseph wait?", answer: false, because: "No. They left that night." },
+        ],
+      }],
+    },
+  ],
+});
+if (sound.problems.length || sound.notes.some((n) => n.includes("negates"))) {
+  for (const p of [...sound.problems, ...sound.notes.filter((n) => n.includes("negates"))]) {
+    fail(`a sound true-or-not was flagged: ${p}`);
+  }
+} else {
+  pass("a sound true-or-not passes silently");
+}
+
 /* ── 6. a good set passes cleanly ────────────────────────────────────── */
 const good = check({
   classId: "beginner",

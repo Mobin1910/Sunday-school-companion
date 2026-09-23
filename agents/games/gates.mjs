@@ -142,6 +142,51 @@ export function check({ classId, questions, games }) {
     }
   }
 
+  /* ── true-or-not: the three sentences have to agree ────────────────── */
+  /*
+    `source` is what the statement was made from, `ask` is what the child
+    reads, `answer` is the honest answer *to `ask`*, and `because` opens with
+    that answer. `source` never reaches the browser, so an `ask` written the
+    wrong way round is invisible in the app — Primary Chapter 1 shipped one and
+    the teacher found it.
+
+    The verdict check is exact. The negation check is a hint and says so: a
+    statement built from a false sentence usually negates somewhere, and the
+    question almost never does, so it fires on perfectly good statements too
+    (“Zacchaeus was a poor man with nothing of his own” / “Was Zacchaeus
+    poor?”). It is a note rather than a problem for that reason — one re-read
+    of two short sentences, at the one moment a person is already reading them.
+  */
+  const NEGATES = /\b(not|no|never|nothing|none|without|n['’]t|stop(?:ped|s)?|refus\w*|fail\w*)\b/i;
+
+  for (const g of games) {
+    for (const i of g.interactions ?? []) {
+      if (i.type !== "true-or-not") continue;
+
+      (i.statements ?? []).forEach((s, n) => {
+        const at = `"${g.id}" statement ${n + 1}`;
+        const opens = /^(yes|no)\b/i.exec((s.because ?? "").trim())?.[1]?.toLowerCase();
+        const wanted = s.answer ? "yes" : "no";
+
+        if (opens === undefined) {
+          problems.push(`${at}: the reason does not open “Yes.” or “No.” — “${s.because}”`);
+        } else if (opens !== wanted) {
+          problems.push(
+            `${at}: answer is ${s.answer} but the reason opens “${opens}” — “${s.because}”`,
+          );
+        }
+
+        if (NEGATES.test(s.source ?? "") !== NEGATES.test(s.ask ?? "")) {
+          notes.push(
+            `${at}: one of these negates and the other does not — read them together, ` +
+              `and check that “${s.ask}” really answers ${wanted}\n` +
+              `      statement: “${s.source}”`,
+          );
+        }
+      });
+    }
+  }
+
   /* ── count: a range, and never padded to reach it ──────────────────── */
   const [floor, ceiling] = band.games;
   if (games.length < floor) {

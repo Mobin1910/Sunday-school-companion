@@ -543,6 +543,38 @@ falls. It is written out as "anxious", which is the only word that fits, and
 the curriculum note says plainly that this is a completion rather than a
 reading. Record the doubt where the next person will see it.
 
+## A `true-or-not` statement is three sentences that have to agree
+
+`source` is the sentence the statement was made from. `ask` is what the child
+reads. `answer` is the honest answer **to `ask`** — not to `source` — and
+`because` is the reason, opening with that answer.
+
+`source` never reaches the browser. `src/content/cards.ts` drops it on purpose:
+it is the wording for whoever edits the chapter, and a child is shown a
+question, not the sentence it came from. Which means a mismatch between `ask`
+and `source` is invisible in the app and invisible in review.
+
+Primary Chapter 1 shipped one. The statement was the false claim *"God did not
+know what Herod was planning"*, so `answer` was `false` and `because` opened
+"No." — all correct about `source`. But `ask` was written the other way round,
+*"Did God know Herod's plan?"*, which a child answers **yes**. The game told
+them no and then gave them a reason saying God had foreseen it. The teacher
+found it, not the build.
+
+So: a statement written from a *false* sentence needs its `ask` phrased so the
+honest answer is still `no`. Either invert the question — "Was God surprised by
+Herod's plan?" — or, better where the lesson has its own words for it, make the
+statement the true one and let the answer be yes. Never leave a negation in
+`source` that `ask` has quietly dropped.
+
+Read the three aloud in order before writing them down: *statement, question,
+answer, reason.* If the reason argues against the answer, it is wrong, however
+well it matches the source.
+
+`src/content/checks.ts` now catches the mechanical half — a `because` whose
+opening verdict disagrees with `answer`. It cannot catch this one. Nothing can
+read a sentence for you.
+
 ## What the agent does not store
 
 No scores. `src/local/session.ts` records that a game was finished and nothing
