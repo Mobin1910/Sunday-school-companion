@@ -501,6 +501,52 @@ body {
   }
 
   /*
+    And the same dark, gone, when there is no longer anything to make legible.
+
+    The scrim exists for the chrome. A child who has tapped the panel to put
+    the controls away has asked for the picture, and a band of ground colour
+    across the bottom third of it is the interface still standing in the
+    frame after the thing it was standing there for has left. It fades on the
+    same curve and over the same time as the buttons, so one tap reads as one
+    event rather than two.
+
+    Not `display: none` — the gradient must be able to come back with the
+    controls, and it must animate while it does.
+  */
+  .reader-page[data-chrome="hidden"] .cover-scrim {
+    opacity: 0;
+  }
+
+  .cover-scrim {
+    transition: opacity 240ms ease;
+  }
+
+  /*
+    The controls themselves.
+
+    Opacity and nothing else. The chrome is not moved, slid or scaled out of
+    the way, because it floats over a page that must not appear to move: the
+    artwork underneath is the whole point of hiding it, and a picture that
+    shifts when the buttons go is a picture that shifts back when they
+    return. `inert` on the element is what actually takes the buttons out of
+    reach — this only stops them being seen.
+  */
+  .reader-chrome {
+    transition: opacity 240ms ease;
+  }
+
+  .reader-chrome[data-gone="true"] {
+    opacity: 0;
+  }
+
+  /*
+    Stillness is not handled here. The blanket rule at the foot of this file
+    flattens every transition to nothing under both routes — the device
+    asking and the child asking in Settings — and a second rule here would
+    catch only the first of those while looking like it caught both.
+  */
+
+  /*
     The edge where a chapter's cover meets its row on the shelf.
 
     The artwork runs off the right of the card and dissolves into the surface

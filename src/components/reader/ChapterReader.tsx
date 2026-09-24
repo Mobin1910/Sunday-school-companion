@@ -63,6 +63,20 @@ import { PageProvider } from "./PageContext";
  * reaches it as an ordinary click, because we never called
  * `setPointerCapture` or `preventDefault` on it.
  *
+ * That same "below the deadzone" branch is where a **tap on the page** lands,
+ * and a tap puts the reader's controls away: the way back up, the page count,
+ * Back and Next all fade out, together with the scrim a comic panel draws to
+ * keep them legible. Tapping again brings them back, and so does any key
+ * press. Nothing moves — the page does not resize and the artwork does not
+ * shift — because whatever is uncovered would otherwise shift back the moment
+ * the controls returned.
+ *
+ * Only on the story panels. The cover keeps its controls because its single
+ * lit button is the whole of what a new reader knows to do, the ending keeps
+ * its three ways onward because they *are* that page, and a reader without
+ * JavaScript keeps everything because there the buttons are not one way of
+ * turning a page among several — they are the only one.
+ *
  * Trade-off worth naming: because only two pages are ever in the DOM, a
  * screen reader can no longer browse the whole chapter as a list the way
  * the old scroll-snap `<ol>` allowed — only the current page and the
@@ -195,6 +209,21 @@ export default function ChapterReader({
   /** The swipe guide is for a child who has not yet turned a page. Once. */
   const [turnedOnce, setTurnedOnce] = useState(false);
 
+  /**
+   * Whether the child has tapped the page to put the controls away.
+   *
+   * A finished comic panel fills the whole screen, so the only thing between
+   * a child and the picture is the reader's own chrome. Tapping the page
+   * clears it; tapping again brings it back. Nothing else changes — the page
+   * does not move, the artwork does not resize, and every gesture that
+   * turned a page still turns one.
+   *
+   * It is deliberately not persisted. A reader opened fresh has its controls,
+   * because a child who has never seen them cannot tap to find out they were
+   * there.
+   */
+  const [chromeHidden, setChromeHidden] = useState(false);
+
   const [enhanced, setEnhanced] = useState(false);
   useEffect(() => setEnhanced(true), []);
 
@@ -282,6 +311,37 @@ export default function ChapterReader({
 
   const onFirstPage = index === 0;
   const onLastPage = index === lastPage;
+
+  /*
+    Where the controls may be put away, and where they may not.
+
+    The story panels, and only those. The cover is excluded because it is the
+    one screen whose single lit button is a child's whole vocabulary for what
+    to do next, and the ending because its three ways onward *are* the page —
+    hiding them would leave a child at a finished chapter with no way out of
+    it. Both are also excluded by the plainest reading of what was asked for:
+    they are not story panels.
+
+    And only in the enhanced reader. Without JavaScript the page does not turn
+    to a swipe, so the buttons are not one way of moving among several — they
+    are the only one, and nothing may take them away.
+  */
+  const canHideChrome = enhanced && !onFirstPage && !onLastPage;
+  const chromeGone = chromeHidden && canHideChrome;
+
+  /*
+    Arriving at the cover or the ending brings the controls back, and leaves
+    them back.
+
+    The alternative is remembering the tap across those pages, so that a child
+    who walks back to the cover sees the chrome return and then vanish again
+    on the next turn — a reappearance nobody asked for, followed by a
+    disappearance nobody asked for either. This way the rule is one sentence:
+    controls you can see stay until you tap them.
+  */
+  useEffect(() => {
+    if (!canHideChrome && chromeHidden) setChromeHidden(false);
+  }, [canHideChrome, chromeHidden]);
 
   function widthOf(): number {
     return stage.current?.clientWidth ?? window.innerWidth;
@@ -609,9 +669,34 @@ export default function ChapterReader({
     }
   }
 
-  function onPointerUp() {
+  function onPointerUp(event?: React.PointerEvent) {
+    const wasPressed = pressed.current;
     pressed.current = false;
-    if (!dragging.current) return;
+
+    /*
+      A press that never became a drag is a tap, and a tap puts the controls
+      away — or brings them back.
+
+      This is the branch a tap already fell down: `dragging` is only set once
+      a finger has travelled past the deadzone, so everything short of that
+      arrives here having done nothing. `verticalLocked` is excluded because
+      a child scrolling a question is not tapping the page, and a target
+      inside a control is excluded because the controls are what a tap is
+      steering — a tap on an answer must answer, not dim the room.
+    */
+    if (!dragging.current) {
+      if (
+        wasPressed &&
+        !verticalLocked.current &&
+        canHideChrome &&
+        event !== undefined &&
+        !(event.target instanceof Element && event.target.closest(TAPPABLE))
+      ) {
+        setChromeHidden((hidden) => !hidden);
+      }
+      return;
+    }
+
     dragging.current = false;
 
     const progress = position.current - anchor.current;
@@ -643,7 +728,17 @@ export default function ChapterReader({
   const showGuide = enhanced && !turnedOnce && pages.length > 1;
 
   return (
-    <div className="reader-page relative flex h-dvh flex-col" data-enhanced={enhanced}>
+    <div
+      className="reader-page relative flex h-dvh flex-col"
+      data-enhanced={enhanced}
+      /*
+        Read by the scrim. A finished comic panel darkens its own bottom so
+        the chrome is legible over the artwork; with the chrome gone that
+        darkening is shading nothing, so it fades out with it and the panel
+        is finally shown whole. See `.cover-scrim` in globals.css.
+      */
+      data-chrome={chromeGone ? "hidden" : "shown"}
+    >
       {/*
         The way up a level, floating over the page rather than above it.
 
@@ -653,7 +748,11 @@ export default function ChapterReader({
         a child is in the chapter is said at the bottom, next to the button
         that moves them.
       */}
-      <div className="absolute inset-x-0 top-0 z-[6] flex items-center px-4 pt-3">
+      <div
+        className="reader-chrome absolute inset-x-0 top-0 z-[6] flex items-center px-4 pt-3"
+        data-gone={chromeGone}
+        inert={chromeGone}
+      >
         <Link
           href={hubHref}
           aria-label={`Back to ${chapterTitle}`}
@@ -682,13 +781,20 @@ export default function ChapterReader({
         aria-roledescription="story page"
         aria-label={`Page ${index + 1} of ${pages.length}`}
         onKeyDown={(event) => {
+          /*
+            A key press brings the controls back. Putting them away is a tap,
+            and a keyboard cannot tap — so without this, a child reading with
+            the arrow keys could inherit a hidden chrome from a stray touch
+            and have no way at all to get it back.
+          */
+          setChromeHidden(false);
           if (event.key === "ArrowRight") goTo(targetIndex.current + 1);
           if (event.key === "ArrowLeft") goTo(targetIndex.current - 1);
         }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerCancel={() => onPointerUp()}
         className="relative flex-1 touch-pan-y select-none overflow-hidden outline-none"
       >
         <div
@@ -747,7 +853,11 @@ export default function ChapterReader({
         illustration; CardScreen keeps every other kind of card clear of this
         band so nothing is ever covered by it.
       */}
-      <div className="absolute inset-x-0 bottom-0 z-[6]">
+      <div
+        className="reader-chrome absolute inset-x-0 bottom-0 z-[6]"
+        data-gone={chromeGone}
+        inert={chromeGone}
+      >
         {/* Shown until the first page turn, then never again this reading.
             It floats above the row rather than joining it so that nothing
             moves when it goes — a child who has just learned the gesture
@@ -828,6 +938,16 @@ export default function ChapterReader({
  */
 const useSameFrame =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+/*
+  What a tap must not land on for it to count as a tap on the page.
+
+  The reader's own chrome sits outside the stage and never reaches this
+  handler, so this is about what the *cards* contain: the options of a
+  question laid over a panel, and any link a card carries. A child answering a
+  question is not asking for the room to be dimmed.
+*/
+const TAPPABLE = 'a, button, input, select, textarea, label, [role="button"]';
 
 const DEADZONE = 8;
 const THRESHOLD = 0.32;
