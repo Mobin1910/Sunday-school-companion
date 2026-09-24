@@ -543,6 +543,39 @@ falls. It is written out as "anxious", which is the only word that fits, and
 the curriculum note says plainly that this is a completion rather than a
 reading. Record the doubt where the next person will see it.
 
+## A shelf picture is read beside its neighbours
+
+Every game names the picture that goes on its card in `Let's Play!`. The rule
+that is easy to get right is the obvious one: a card must not letter its own
+game's answer. Primary Chapter 2 is where the other half of the rule showed
+up, because that chapter's artwork has the narration painted into it.
+
+Panel 8 reads "So they went back to Jerusalem to look for Him", and Mary says
+"We must go back to Jerusalem" in a bubble. That is game 2's answer, so panel 8
+was kept off game 2 — and put on game 3, which it does not answer at all. The
+four cards then went up in a 2×2 grid and game 3's card sat directly under
+game 2's, answering it in legible type.
+
+So: choose the shelf pictures against the **whole shelf**, once, not one game
+at a time. Four of that chapter's thirteen panels are the obvious picture for
+one game each and ended up on none of them.
+
+The panels that survive this are usually the ones with no speech in them. It
+is worth noticing which those are while reading the artwork, before any game
+has a picture assigned.
+
+## Artwork with the words painted in cuts both ways
+
+The same chapter shows the good side of it. Panel 10 letters Mary's speech as
+"Your father and I have been *anxiously* searching for you" — and question 4 on
+the curriculum photograph runs off the page edge at "making them anxio". The
+artist had the page this agent could not read.
+
+It narrows the doubt without closing it: "anxiously" is the sentence three
+lines above the question, which is what made it the likely completion in the
+first place, and not the question's own cut-off word. Record what the artwork
+settles and what it only corroborates, and keep them apart.
+
 ## A `true-or-not` statement is three sentences that have to agree
 
 `source` is the sentence the statement was made from. `ask` is what the child

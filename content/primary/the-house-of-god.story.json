@@ -3,105 +3,73 @@
   "chapter": 2,
   "title": "The House of God",
   "reference": "St. Luke 2: 41 - 52",
-  "note": "Primary, Chapter 2, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 13–15. The boy Jesus left behind in Jerusalem, told as a chapter about the Church being the House of God.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 02`). Its first run mis-read question 3 — “What did the parents *see*…” was filed as a process and handed a sequence, which would have asked a child to put a single glimpse into order — and could not read question 4 at all. The classifier now separates what somebody saw from what somebody did, and reads a quoted reply as its own shape; the second run planned reveal, multiple-choice, match and a choice for the reply. One mechanic was changed by hand after that and the reason is in that game’s note.\n\nThe page also carries the teacher’s Qurbana vocabulary in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty — which belongs to the class rather than to any question. It is recorded in the curriculum note and used nowhere.\n\nQuestion 4’s last word is cut off by the edge of the photograph. See the curriculum note.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is twenty-two text cards and no game carries a picture. The book’s colouring page also sets an activity — “Make a list of words that are related to Church” — which is a pencil-and-paper task for the class and has no game here.",
+  "note": "Primary, Chapter 2, from the Mar Thoma Sunday School Samajam Primary Vol-1, pages 13–15. The boy Jesus left behind in Jerusalem, told as a chapter about the Church being the House of God.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class primary --chapter 02`). Its first run mis-read question 3 — “What did the parents *see*…” was filed as a process and handed a sequence, which would have asked a child to put a single glimpse into order — and could not read question 4 at all. The classifier now separates what somebody saw from what somebody did, and reads a quoted reply as its own shape; the second run planned reveal, multiple-choice, match and a choice for the reply. One mechanic was changed by hand after that and the reason is in that game’s note.\n\nThe page also carries the teacher’s Qurbana vocabulary in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty — which belongs to the class rather than to any question. It is recorded in the curriculum note and used nowhere.\n\nQuestion 4’s last word is cut off by the edge of the photograph, and the artwork now corroborates the completion. See the curriculum note.\n\nArtwork downloaded from Drive (Primary / Chapter 02 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Fifteen files — both covers and panels 1 to 13, contiguous, no duplicates. Panels 4 and 5 are 941×1671, one pixel shorter than the other eleven and both covers; converted without distortion and left as the artist made them, the same call Beginner Chapter 3’s panel 12 got.\n\nThe artwork brought a frame the text draft did not have; see the story note. Every game names a shelf picture, and question 1’s reveal is turned over on the chapter’s own panels.\n\nThe four shelf pictures are chosen against the whole shelf, not one game at a time. Panels 6, 8, 9 and 11 are the obvious picture for one game each and are on none of them, because this chapter letters its answers into its artwork: panel 8 says “We must go back to Jerusalem”, which is game 2’s answer, and a shelf card is read on the same screen as its neighbours — so putting it on game 3 would have answered game 2 from the card beside it. The book’s colouring page also sets an activity — “Make a list of words that are related to Church” — which is a pencil-and-paper task for the class and has no game here.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The book’s own chapter opening is the Passover crowd setting out for Jerusalem, under the title “THE HOUSE OF GOD 2”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/primary/the-house-of-god/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 2’s own cover, drawn twice. The portrait is the boy Jesus on the Temple steps among the teachers, talking with one hand raised, with “2” and “The House of God” painted onto a scroll across the top — so the story reader lays no text over it. The landscape is a different moment and carries no lettering: Mary, the boy Jesus and Joseph crossing the Temple court in the evening light, the golden doors and the steps behind them. Same chapter, same hand, and the one the chapter hub and the shelf row need, since both draw their own heading."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Little Jesus was loved by his relatives and neighbours.",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is words only and every `picture` names a panel nobody has drawn. The names follow the ordinary convention so `npm run art:fetch -- --from-dir` can drop the panels in with nothing here to edit.\n\nTreat the card list as provisional. Beginner Chapter 5, Beginner Chapter 6 and Primary Chapter 3 were all written from the lesson alone and all three were rewritten when the artwork arrived carrying a shape the text did not have. If that happens again, the panels win."
+      "alt": "Outside a church on a bright morning. A boy in a white shirt and a blue backpack walks up the path pointing towards the door, where families are going in; a cross stands on the roof and a stained-glass window fills the arch. Halo glows beside him. The caption reads, “Have you ever wondered why we go to church? It is a special place where we come together to worship God, learn about Him, and grow together.” Halo asks, “Where do we go to worship God?” and the boy answers, “To church!”",
+      "note": "The chapter does not open in Jerusalem. The artwork frames the lesson in a church today — panels 1 to 3 — crosses into the past at panel 3 with a ribbon of light, tells the Passover journey and the three days through panel 12, and comes back to the same church in panel 13, where the lesson lands as something the child can do. That frame is the artwork’s, and this is the fifth chapter in this library to turn out to have one.\n\nThe narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel.\n\nThirteen panels where the text draft had twenty-two cards. The draft is gone rather than reconciled, which is what happened to Beginner Chapters 5 and 6 and to Primary Chapters 1 and 3 as well."
     },
     {
       "picture": "panel-02",
-      "text": "He went to worship God regularly with his parents and relatives."
+      "alt": "Inside the church. Children fill the pews, a worship team sings at the front with a guitar, and a woman at the lectern holds an open Bible; a wooden cross, a banner with a dove, and a screen showing a crown above an open book. The boy looks up at Halo from his pew. The caption reads, “At church, we come together to worship God, learn His Word, and grow together.” Halo says, “That’s right! Look at all the ways we can be part of God’s house!” A girl beside him says, “We can pray, sing, listen and learn!” and Halo asks, “Exactly! And do you know who loved being in God’s house too?”"
     },
     {
       "picture": "panel-03",
-      "text": "Every year His parents went to Jerusalem for the Festival of the Passover."
+      "alt": "Still in the church, with the past opening underneath. The boy asks, “Jesus?” and Halo answers, “Yes! Jesus,” and then, “Let’s go back in time and see what happened.” A ribbon of golden light sweeps down into a second scene along the foot of the panel: Mary, the boy Jesus and Joseph walking together towards Jerusalem, the city on its hill behind them. The caption reads, “Jesus loved going to God’s house too. When Jesus was twelve years old, something special happened in Jerusalem.”"
     },
     {
       "picture": "panel-04",
-      "text": "They walked together with friends and relatives for many days. It was a joyous journey."
+      "alt": "Jerusalem at festival time. Market stalls with baskets of grapes and clay pots, red banners with menorahs on them, and crowds climbing the steps of the golden Temple. Mary walks with a woven bag on her shoulder, the boy Jesus between his parents, Joseph with his staff. The caption reads, “Jesus and His family arrived in Jerusalem for the Festival of the Passover. They travelled together with their relatives and friends and spent the festival in Jerusalem.”"
     },
     {
       "picture": "panel-05",
-      "text": "When Jesus was twelve years old, they went to Jerusalem as usual."
+      "alt": "The road home. A crowd of travellers with bundles and a loaded donkey heads away down a stony path among olive trees; Mary and Joseph walk in the middle of the group, seen from behind, with Jerusalem and the Temple on the hill behind them. The caption reads, “After the festival was over, Mary and Joseph began the journey home with their relatives and friends. They thought Jesus was travelling with the group.”"
     },
     {
       "picture": "panel-06",
-      "text": "After the festival, His parents set out for home."
+      "alt": "The group has stopped among the trees. Mary turns to a woman beside her, alarmed, and asks, “Where is Jesus?” Joseph, a hand to his head, looks out over the crowd and says, “Let’s look for Him among our relatives and friends.” Travellers sit around them with their bundles. The caption reads, “After travelling for a day, Mary and Joseph realized that Jesus was not with them. They began looking for Him among their relatives and friends.”"
     },
     {
       "picture": "panel-07",
-      "text": "But the boy Jesus stayed behind in Jerusalem."
+      "alt": "The searching itself. Mary and Joseph move through the camp among awnings, barrels and a donkey, both scanning the crowd; children and travellers fill the slope around them.",
+      "note": "This panel carries the same lettered caption as panel 6, word for word — “After travelling for a day, Mary and Joseph realized that Jesus was not with them. They began looking for Him among their relatives and friends.” The pictures are different and both belong: panel 6 is the moment they realise, with Mary and Joseph speaking, and panel 7 is the search going on, with no speech at all. The caption is not quoted twice in the alt text, because a screen reader would then read the same three lines back to back; it is recorded here instead. Not a duplicated file — the two are different images, and the importer checks for identical bytes."
     },
     {
       "picture": "panel-08",
-      "text": "His parents did not know. They thought He was with their relatives."
+      "alt": "Back up the road. Mary and Joseph walk together against the flow of travellers, Jerusalem and the Temple ahead of them on the hill. Mary says, “We must go back to Jerusalem,” and Joseph answers, “Yes. We will find Him.” The caption reads, “They could not find Jesus among their relatives and friends. So they went back to Jerusalem to look for Him.”"
     },
     {
       "picture": "panel-09",
-      "text": "They travelled for a whole day before they began looking for Him."
+      "alt": "The Temple courts, between tall columns. The boy Jesus sits on the steps among bearded teachers in turbans, talking with his hands open; scrolls lie on a low table in front of them. Mary and Joseph have just come round a column at the left and stopped. The caption reads, “After three days, they found Him in the Temple courts, sitting among the teachers, listening to them and asking questions.”"
     },
     {
       "picture": "panel-10",
-      "text": "They looked among their relatives and friends, and did not find Him."
+      "alt": "Mary has reached him and put a hand on his shoulder; Joseph stands behind her and the teachers watch. She says, “Son, why have you treated us like this?” and “Your father and I have been anxiously searching for you.” The caption reads, “When His parents saw Him, they were amazed. Mary spoke to Jesus.”",
+      "note": "The word the curriculum photograph cuts off is painted into this panel. See the curriculum note."
     },
     {
       "picture": "panel-11",
-      "text": "So they went back to Jerusalem to look for Him."
+      "alt": "The boy Jesus on the Temple steps, both hands open as he answers. He says, “Why were you searching for me?” and “Didn’t you know I had to be in my Father’s house?” — the last words painted in blue. Mary sits facing him and Joseph stands behind her. The caption reads, “Jesus answered His mother.”",
+      "note": "The chapter’s memory verse is the sentence in this panel’s second bubble. St. Luke 2: 49 is lettered into the artwork, which is the same thing that is true of Beginner Chapter 2 — a verse painted into a panel cannot have its translation changed later without the panel being redrawn."
     },
     {
       "picture": "panel-12",
-      "text": "After three days they found Him in the temple courts."
+      "alt": "The three of them quiet on the steps, Mary and Jesus looking at each other and Joseph standing behind with a hand at his chin, scrolls on the tables around them. Two captions: “When they heard this, they did not say anything,” and along the bottom, “Jesus went down to Nazareth with His parents.”"
     },
     {
       "picture": "panel-13",
-      "text": "He was sitting among the teachers, listening to them and asking questions."
-    },
-    {
-      "picture": "panel-14",
-      "text": "His mother said, “Son, why have you treated us like this?”"
-    },
-    {
-      "picture": "panel-15",
-      "text": "“Your father and I have been anxiously searching for you.”"
-    },
-    {
-      "picture": "panel-16",
-      "text": "He asked her, “Why were you searching for me?”"
-    },
-    {
-      "picture": "panel-17",
-      "text": "“Didn’t you know I had to be in my Father’s house?”"
-    },
-    {
-      "picture": "panel-18",
-      "text": "When they heard this, they did not say anything."
-    },
-    {
-      "picture": "panel-19",
-      "text": "Then Jesus went down to Nazareth and grew up in obedience to them."
-    },
-    {
-      "picture": "panel-20",
-      "text": "The Church is the House of God, our Father."
-    },
-    {
-      "picture": "panel-21",
-      "text": "Jesus teaches us to go to church and take part in all it does."
-    },
-    {
-      "picture": "panel-22",
-      "text": "Even as we follow God, we should also obey our earthly parents."
+      "alt": "Back in church today. The boy sits in a pew in a blue hoodie with an open book on his lap, looking up at Halo; a priest in black vestments preaches from the pulpit under a wooden cross, with children in the pews around him. The caption reads, “Jesus loved being in His Father’s house and learning about God. We can also take part in God’s house.” Halo says, “Just like Jesus, we can learn, worship, and take part in church,” and the boy answers, “I can be part of God’s house too!”"
     }
   ],
   "curriculum": {
     "source": "Primary Mar Thoma Vol-1, Chapter 02 “THE HOUSE OF GOD”, p.14 — “ANSWER THE QUESTIONS”",
-    "note": "The four questions the Primary book prints under the lesson on p.14, transcribed from the curriculum photographs in 01 - Curriculum Source.\n\nThe page carries the teacher’s own answer key in pen, ① to ④, and each `answer` below is the sentence its mark points at, quoted from p.14 rather than reasoned out. The same page carries a second set of handwritten notes in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty and their meanings — which are the teacher’s own Qurbana vocabulary for the class and belong to no question here. They are recorded in this note and nowhere else.\n\n**Question 4’s last word is cut off by the edge of the photograph.** The line reads “What was Jesus’ reply when His parents asked Him about making them anxio…” and the page edge falls there. It is written out as “anxious” below, which is the only word that fits and matches the mother’s own “anxiously searching” three lines above — but it is a completion, not a reading, and a re-photograph of p.14 with its right margin would settle it.",
+    "note": "The four questions the Primary book prints under the lesson on p.14, transcribed from the curriculum photographs in 01 - Curriculum Source.\n\nThe page carries the teacher’s own answer key in pen, ① to ④, and each `answer` below is the sentence its mark points at, quoted from p.14 rather than reasoned out. The same page carries a second set of handwritten notes in the margins — Thurible, Qurbana, Madbaha, Dhoopakutty and their meanings — which are the teacher’s own Qurbana vocabulary for the class and belong to no question here. They are recorded in this note and nowhere else.\n\n**Question 4’s last word is cut off by the edge of the photograph.** The line reads “What was Jesus’ reply when His parents asked Him about making them anxio…” and the page edge falls there. It is written out as “anxious” below, which is the only word that fits and matches the mother’s own “anxiously searching” three lines above — but it is a completion, not a reading, and a re-photograph of p.14 with its right margin would settle it.\n\nThe artwork that arrived afterwards corroborates it without closing it: panel 10 letters Mary’s speech as “Your father and I have been *anxiously* searching for you.” That is the lesson’s own word in the artist’s hand, so “anxious” is very probably right — but it is the sentence three lines above the question, which is what made it the likely completion in the first place, and not the question’s own cut-off word. The doubt is narrower, not gone.",
     "questions": [
       {
         "n": 1,
@@ -141,27 +109,32 @@
       "answers": [
         1
       ],
-      "note": "Question 1. A reveal, because the lesson gives the answer as a small chain rather than one fact — a crowd of relatives, an assumption, a day’s walking, and only then a search. A quiz would make a child pick one link and call the rest wrong.",
+      "note": "Question 1. A reveal, because the lesson gives the answer as a small chain rather than one fact — a crowd of relatives, an assumption, a day’s walking, and only then a search. A quiz would make a child pick one link and call the rest wrong.\n\nShelf picture: The group on the road home, which is the whole of this answer’s middle. Its caption sits above the crop.\n\nPlayed on the artwork. The four cards were written before there was any, and the chapter turned out to have one panel for each of them — the family arriving in the crowd, the group setting off home thinking He is with them, the day’s walking, and the searching. A reveal is the one mechanic that can take pictures without giving anything away, because it has no right answer: a child turns a card over and finds the moment.\n\nPanels 6 and 7 carry the same caption as each other and are used here for what their pictures differ in — realising, then looking. Be aware that at card size they also look alike: the same two figures, the same poses, the same hand at Joseph’s brow. Nothing is lost by it, because a reveal has no right answer and the labels carry the meaning — but if these two are ever redrawn, they are the pair to pull apart.",
       "interactions": [
         {
           "type": "reveal",
           "prompt": "Turn over how it happened.",
           "items": [
             {
-              "label": "They travelled in a big group"
+              "label": "They travelled in a big group",
+              "picture": "panel-04"
             },
             {
-              "label": "They thought He was with relatives"
+              "label": "They thought He was with relatives",
+              "picture": "panel-05"
             },
             {
-              "label": "They travelled a whole day"
+              "label": "They travelled a whole day",
+              "picture": "panel-06"
             },
             {
-              "label": "Then they began to look"
+              "label": "Then they began to look",
+              "picture": "panel-07"
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-05"
     },
     {
       "id": "where-they-looked",
@@ -170,7 +143,7 @@
       "answers": [
         2
       ],
-      "note": "Question 2. Two of the wrong options are the places they had already been — among their relatives, and on the road home — so a child who remembers the searching but not its ending has somewhere to go wrong. Nazareth is where the chapter ends rather than where they searched.",
+      "note": "Question 2. Two of the wrong options are the places they had already been — among their relatives, and on the road home — so a child who remembers the searching but not its ending has somewhere to go wrong. Nazareth is where the chapter ends rather than where they searched.\n\nShelf picture: The searching itself — the one panel in the chapter with no speech in it at all, so it shows them looking without naming anywhere. Panel 8 is the obvious picture for this game and is the one it must not have: the answer is lettered into it twice, in the caption and in Mary’s own “We must go back to Jerusalem.”",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -192,7 +165,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-07"
     },
     {
       "id": "what-they-found",
@@ -201,7 +175,7 @@
       "answers": [
         3
       ],
-      "note": "Question 3. The lesson answers it with one scene that has four things in it at once, so the game pairs each thing with what it was — the place, the company, and both halves of what He was doing. The planner first read this question as a *process* and offered a sequence, which would have asked a child to put a single glimpse into order; the classifier now separates what somebody saw from what somebody did, and this is the question that taught it.",
+      "note": "Question 3. The lesson answers it with one scene that has four things in it at once, so the game pairs each thing with what it was — the place, the company, and both halves of what He was doing. The planner first read this question as a *process* and offered a sequence, which would have asked a child to put a single glimpse into order; the classifier now separates what somebody saw from what somebody did, and this is the question that taught it.\n\nShelf picture: The steps afterwards, with the three of them sitting in silence. Panel 9 is this game’s own scene and spells out all four of its pairs in its caption, so it stays in the story where a child is meant to read it.",
       "interactions": [
         {
           "type": "match",
@@ -242,7 +216,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-12"
     },
     {
       "id": "what-jesus-said",
@@ -251,7 +226,7 @@
       "answers": [
         4
       ],
-      "note": "Question 4, and the mechanic changed twice. The planner offered a multiple-choice; it was overridden to `arrange-words`, which is what the preference table lists first for a quotation and much closer to saying a sentence out loud than picking it off a list — and then it was changed back, because this chapter’s memory verse turned out to be that exact sentence. St. Luke 2: 49 *is* Jesus’ reply, and the verse practice rebuilds it twice, at four pieces and at six. A game that rebuilt it a third time would be the same task wearing a different name.\n\nSo the game asks what the reply *said* and the practice handles its words. The third wrong option is what His parents had assumed, and the fourth is the apology He did not give. Four options is the Primary band’s ceiling.\n\nWorth remembering when planning: the verse and the games have to be laid out together, because a chapter whose memory verse is a sentence from its own lesson can end up drilling it twice.",
+      "note": "Question 4, and the mechanic changed twice. The planner offered a multiple-choice; it was overridden to `arrange-words`, which is what the preference table lists first for a quotation and much closer to saying a sentence out loud than picking it off a list — and then it was changed back, because this chapter’s memory verse turned out to be that exact sentence. St. Luke 2: 49 *is* Jesus’ reply, and the verse practice rebuilds it twice, at four pieces and at six. A game that rebuilt it a third time would be the same task wearing a different name.\n\nSo the game asks what the reply *said* and the practice handles its words. The third wrong option is what His parents had assumed, and the fourth is the apology He did not give. Four options is the Primary band’s ceiling.\n\nWorth remembering when planning: the verse and the games have to be laid out together, because a chapter whose memory verse is a sentence from its own lesson can end up drilling it twice.\n\nShelf picture: Mary asking the question Jesus is about to answer. Panel 11 has the reply painted into it in blue, which is this game’s only right option.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -273,7 +248,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-10"
     }
   ],
   "celebration": {
