@@ -3,68 +3,82 @@
   "chapter": 8,
   "title": "Ark of Love",
   "reference": "Genesis 6:13-22",
-  "note": "Beginner, Chapter 8, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 39–42. Noah and the ark, told as a chapter about obeying God and about the promise that followed the flood.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 08 --plan`). Its first run mis-read question 3. “The ark had __________ storeys.” has no question mark, so the statement rule written one chapter ago for Beginner 7’s Right/Wrong set claimed it and offered `true-or-not` — which would have asked a child whether a sentence with a hole in it was Right or Wrong. A fill-in-the-blank is the one shape that looks like a statement and is not, and the tell is the blank itself; the classifier reads one now and hands it the mechanic that asks for the missing word. This is the first blank the books have printed.\n\nOne mechanic was changed by hand after the second run, and the reason is in that game’s note. A fourth game is written by hand: three questions is at the floor of the Beginner band, and what the question set leaves out is the whole closing paragraph — the promise, and the rainbow as its sign — which is what the chapter is named for.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is fourteen text cards, the cover is not drawn, and no game carries a picture. When the artwork arrives those cards go, as they did for Beginner 5, 6 and 7 and for Primary 1, 2 and 3.\n\nTwo things the book leaves to the teacher and this chapter therefore leaves out: the opening prayer on p.39 is printed as “(any one may pray)” with no words at all, and “Learn to sing” on p.42 is “(Sing a suitable song)” with no lines. Neither is invented here.",
+  "note": "Beginner, Chapter 8, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 39–42. Noah and the ark, told as a chapter about obeying God and about the promise that followed the flood.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 08 --plan`). Its first run mis-read question 3. “The ark had __________ storeys.” has no question mark, so the statement rule written one chapter ago for Beginner 7’s Right/Wrong set claimed it and offered `true-or-not` — which would have asked a child whether a sentence with a hole in it was Right or Wrong. A fill-in-the-blank is the one shape that looks like a statement and is not, and the tell is the blank itself; the classifier reads one now and hands it the mechanic that asks for the missing word. This is the first blank the books have printed.\n\nOne mechanic was changed by hand after the second run, and the reason is in that game’s note. A fourth game is written by hand: three questions is at the floor of the Beginner band, and what the question set leaves out is the whole closing paragraph — the promise, and the rainbow as its sign — which is what the chapter is named for.\n\nArtwork downloaded from Drive (Beginner / Chapter 08 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Nineteen files — both covers and panels 1 to 17, contiguous, no duplicates. The largest folder in this library so far, and every panel exactly 941×1672; only the portrait cover is off-canvas, at 982×1602, which the cover note explains.\n\nThe artwork brought a frame the text draft did not have; see the story note. Every game names a shelf picture, and the closing sequence is played on the chapter’s own panels.\n\nTwo things the book leaves to the teacher and this chapter therefore leaves out: the opening prayer on p.39 is printed as “(any one may pray)” with no words at all, and “Learn to sing” on p.42 is “(Sing a suitable song)” with no lines. Neither is invented here.\n\nOne game could take the artwork inside it, and it is the hand-written one. The two place-and-thing questions are answered by panels that letter their answers; the who-went-in reveal would need Noah, his family and the creatures drawn apart, and the chapter always draws them together; and a count has no picture. The sequence had four unmistakable panels waiting for it, one per step, and took them — which is a fair reward for the game the gates keep asking to justify.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The book’s own chapter opening is Noah directing the building of the ark, men carrying beams up its side, under the title “ARK OF LOVE 08”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/beginner/ark-of-love/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 8’s own cover, drawn twice. The portrait is Noah with his family under a rainbow, his hand raised towards it, the ark behind them with the animals still walking up the ramp, and “ARK OF LOVE” and “08” painted onto a cream label across the top — so the story reader lays no text over it. The landscape is the same moment framed wide and with no lettering at all, with more of the valley, the waterfalls and the animals in it. Same chapter, same hand, and the one the chapter hub and the shelf row need, since both draw their own heading.\n\n**The portrait is 982×1602 rather than the library’s 941×1672.** Not a rounding — it is a different shape, a little squarer, and it is the first file in this library that is. Converted without distortion and left as the artist made it.\n\nIt costs nothing that matters, and it was worth checking rather than assuming: the story reader draws a cover with `object-contain`, not `object-cover`, so **nothing is cropped**. The whole painting is shown and the page pads it with the ground colour — top and bottom here, because this one is squarer than the page rather than taller. On a phone at 390×844 that is a band of about a hundred pixels at each end, and the reader is built to look like a page laid on a table, so it reads as margin. A 941×1672 cover fills the height instead. If this is ever redrawn, that is the canvas."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "More and more people lived on the earth. They sinned.",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is the lesson from p.40 cut into Beginner-sized pieces and named for a panel that has not been drawn. Fourteen cards is the shape of the text, not a decision about the art: when the artwork arrives it will have its own number of panels and its own frame, and these go."
+      "alt": "A boy at a sunlit table building a small wooden boat, loose strips of wood all around him and an instruction sheet open beside it. His mother leans in and points at the sheet; Halo glows at his shoulder. The caption reads, “The boy was building a small boat, but he was not sure why he had to follow the instructions.” The boy asks, “But Amma, why do I have to do it that way?” and his mother answers, “Because I want you to follow the instructions first.”",
+      "note": "The chapter does not open with Noah. The artwork frames the lesson around a boy building a model boat who wants to know why he has to follow the instructions — panels 1 to 3 — crosses into the Bible at panel 3, tells Noah’s story through panel 14, and comes back to the same room in panels 15 to 17, where the boy answers his own question. This is the seventh chapter in this library to arrive with a present-day frame and the first where the frame is a *question* the story is the answer to, rather than a bookend either side of it.\n\nThe narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel.\n\nSeventeen panels where the text draft had fourteen cards — the first chapter whose artwork is longer than its draft. The draft is gone rather than reconciled, as in every chapter before this one.\n\n“Amma” is the artwork’s own word and is left as it is, as it was in Primary Chapter 1."
     },
     {
       "picture": "panel-02",
-      "text": "So God was angry. He decided to destroy the earth with a flood."
+      "alt": "The same table, his mother working in the background now. The boy rests his chin on his fist, holding a strip of wood, and looks up at Halo. The caption reads, “The boy was still wondering. He wanted to know why he had to follow the instructions.” He asks, “But what if I don’t understand why?” and Halo asks back, “Would you still follow the instructions?”"
     },
     {
       "picture": "panel-03",
-      "text": "But God was kind to Noah, who was righteous."
+      "alt": "A big illustrated Bible lies open on the table, showing the ark on one page and a rainbow on the other. The caption reads, “The boy thought about Halo’s question. Had anyone in the Bible ever faced something like this?” The boy asks, “Has that ever happened in the Bible?” Halo answers, “Yes! Someone in the Bible had a very big instruction to follow,” and the boy asks, “Who?”"
     },
     {
       "picture": "panel-04",
-      "text": "God told Noah to build an ark of gopher wood."
+      "alt": "A crowded town in the sunshine, and it has gone wrong: men arguing with their hands up, one seizing a boy by the arm, others watching from a rooftop. Noah stands apart at the front with his staff, looking up. The caption reads, “Long ago, people had increased on the earth. But they had turned away from God and sinned.”"
     },
     {
       "picture": "panel-05",
-      "text": "He built a great ark with three storeys."
+      "alt": "Noah sitting on a low wall outside his house, light breaking through the cloud above him and the valley beyond. The caption reads, “But God was kind to Noah. He told Noah about the flood and gave him an important command.” Out of the light come the words, “Noah, I am going to send a great flood,” and “Build an ark.” Noah answers, “I will listen, Lord.”"
     },
     {
       "picture": "panel-06",
-      "text": "God told Noah to go in with his family."
+      "alt": "The ark half-built on its scaffolding, workers up on the frame and at the saw-benches. Noah carries a long beam on his shoulder, coming towards us. The caption reads, “Noah obeyed God. He began to build a great ark out of gopher wood.” Noah says, “God has asked me to build an ark. I will obey.”"
     },
     {
       "picture": "panel-07",
-      "text": "He also took two of every living creature."
+      "alt": "The ark finished, huge against a blue sky, its ramp down. Noah stands with his hands on his hips looking up at it, his family behind him. The caption reads, “Noah built the ark just as God had commanded him.” Noah says, “I have done what God asked me to do.”"
     },
     {
       "picture": "panel-08",
-      "text": "One male and one female of each. Noah did as God said."
+      "alt": "The animals coming. Elephants, zebras, giraffes, lions, sheep, deer and two rabbits move up the ramp and in at the door, birds flying in above them. Noah points and his family watch. The caption reads, “Then God told Noah to bring the animals into the ark, two of each kind, male and female.” Noah says, “Look! They are coming to the ark,” and the girl beside him says, “Just as God said!”"
     },
     {
       "picture": "panel-09",
-      "text": "It rained for forty days. The waters rose higher and higher."
+      "alt": "Seen from inside the doorway, looking out. Noah stands in the opening with his staff and one arm out in welcome; his family and the animals come up the ramp behind them, the green hills beyond. The caption reads, “Noah, his family, and the animals entered the ark, just as God had commanded.” Noah says, “Come, everyone. It is time to enter the ark.”"
     },
     {
       "picture": "panel-10",
-      "text": "Everything on the earth was destroyed."
+      "alt": "Night, and the rain coming down hard. The ark’s windows are lit and the water is rising over the rocks against its side. Noah and his family look out of an upper window. The caption reads, “Then the rain began to fall. It rained for forty days and forty nights.” From the window comes, “God will keep us safe.”"
     },
     {
       "picture": "panel-11",
-      "text": "But everyone in the ark was safe."
+      "alt": "The ark alone on a dark flooded sea, waves breaking against it and broken timber in the water, mountaintops just showing through the rain. Its windows are warm and lit. The caption reads, “The waters rose, and the earth was covered by the flood. But Noah, his family, and the animals were safe in the ark.”"
     },
     {
       "picture": "panel-12",
-      "text": "After the flood, God made Noah a promise."
+      "alt": "Inside the ark by lamplight. Noah sits on the straw with his family; lions, sheep, rabbits, deer, elephants and giraffes rest all around them and two parrots and two doves sit up on the beams. Rain runs down the window behind. The caption reads, “But Noah, his family, and all the animals were safe inside the ark.” Noah says, “God has kept us safe.”"
     },
     {
       "picture": "panel-13",
-      "text": "There would never be another flood like it."
+      "alt": "The great door open on a green valley in the morning, and everyone coming out — Noah first with his staff, his family behind, then the elephants, giraffes, zebras, lions and sheep down the slope. The caption reads, “After the flood, the waters went down, and Noah and his family came out of the ark.” Noah says, “The flood is over. God has brought us through.”"
     },
     {
       "picture": "panel-14",
-      "text": "A rainbow in the cloud would be the sign."
+      "alt": "A rainbow across the whole sky over the valley, the ark small on the hill behind and the animals spread out over the grass. Noah and his family stand together looking up. The caption reads, “God made a promise to Noah: there would not be another flood to destroy the earth. He placed a rainbow in the cloud as a sign of His promise.” Noah says, “God has kept His promise.”"
+    },
+    {
+      "picture": "panel-15",
+      "alt": "Back in the boy’s bedroom, his half-built boat on the desk. He rests his chin on his fist and thinks. The caption reads, “The boy remembered the question he had asked at the beginning.” Halo asks, “Remember what you wondered?” The boy says, “Would I still obey if I didn’t understand why?” and Halo asks, “What do you think Noah’s story teaches us?”"
+    },
+    {
+      "picture": "panel-16",
+      "alt": "A thought cloud opens above the desk showing Noah up on the ark’s frame with a mallet in his hand. The caption reads, “The boy thought about Noah. Noah obeyed God, even when he did not know what would happen next.” The boy says, “Noah obeyed God even when he didn’t know what would happen,” Halo answers, “Yes. He trusted God’s command,” and the boy says, “I can do that too!”"
+    },
+    {
+      "picture": "panel-17",
+      "alt": "The boy fitting the little house onto the deck of his finished boat, smiling. The caption reads, “The boy made his decision. He would obey God’s commands, just as Noah did.” He says, “I will obey God’s command, just as Noah did,” and Halo answers, “I’ll be with you as you learn and grow.”",
+      "note": "The chapter’s My Decision line is painted into this panel, all but word for word. The decision card carries p.42’s version, so a child meets it twice — once in the artist’s hand at the end of the story and once as the card. Same as Beginner Chapter 7’s panel 8, and with the same consequence: this sentence cannot be reworded later without the panel being redrawn."
     }
   ],
   "curriculum": {
@@ -107,7 +121,7 @@
         1,
         2
       ],
-      "note": "Questions 1 and 2. A match rather than two quizzes, because the two answers belong to one sentence on p.40 — “God commanded Noah to build an ark out of gopher wood” — and pairing them keeps them together the way the lesson has them.\n\nTwo pairs, where this library’s other matches have three. There is no honest third: the only other fact of that shape in the lesson is the three storeys, and that is the next game’s answer. Two real pairs beat three with one padded.",
+      "note": "Questions 1 and 2. A match rather than two quizzes, because the two answers belong to one sentence on p.40 — “God commanded Noah to build an ark out of gopher wood” — and pairing them keeps them together the way the lesson has them.\n\nTwo pairs, where this library’s other matches have three. There is no honest third: the only other fact of that shape in the lesson is the three storeys, and that is the next game’s answer. Two real pairs beat three with one padded.\n\nShelf picture: The world that had turned away, which is why God spoke to Noah at all. Panel 6 is the obvious picture for this game and is the one it must not have: “He began to build a great ark out of gopher wood” letters both of its pairs at once.",
       "interactions": [
         {
           "type": "match",
@@ -132,7 +146,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-04"
     },
     {
       "id": "how-many-storeys",
@@ -141,7 +156,7 @@
       "answers": [
         3
       ],
-      "note": "Question 3, which the book prints as a blank to fill rather than a question. The blank becomes a question a child can read aloud; the answer is unchanged.\n\nBoth wrong options are numbers the lesson actually says, and that is the whole point of them: “two” is how many of each creature went in and “forty” is how many days it rained. A child who remembers the numbers but not what each one counts has somewhere to go wrong, which is what makes this a question rather than a guess.",
+      "note": "Question 3, which the book prints as a blank to fill rather than a question. The blank becomes a question a child can read aloud; the answer is unchanged.\n\nBoth wrong options are numbers the lesson actually says, and that is the whole point of them: “two” is how many of each creature went in and “forty” is how many days it rained. A child who remembers the numbers but not what each one counts has somewhere to go wrong, which is what makes this a question rather than a guess.\n\nShelf picture: The ark alone on the flood — the whole vessel, which is what the question is about, and no number anywhere near it. No panel in this chapter letters the three storeys; the artwork never mentions them.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -160,7 +175,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-11"
     },
     {
       "id": "who-went-in",
@@ -169,7 +185,7 @@
       "answers": [
         4
       ],
-      "note": "Question 4. The planner offered a second match; it was changed to a reveal, because the lesson answers this with a *list* rather than a pairing — Noah, his family, two of every creature, male and female — and a reveal is the mechanic for a list. It also keeps the chapter from opening with two matches in a row, which is the “Matching 1, Matching 2” repetition the planner exists to prevent.\n\nFour cards for what p.40 says in two sentences, cut so that no card repeats another: who he was, who came with him, how many of each creature, and which two.",
+      "note": "Question 4. The planner offered a second match; it was changed to a reveal, because the lesson answers this with a *list* rather than a pairing — Noah, his family, two of every creature, male and female — and a reveal is the mechanic for a list. It also keeps the chapter from opening with two matches in a row, which is the “Matching 1, Matching 2” repetition the planner exists to prevent.\n\nFour cards for what p.40 says in two sentences, cut so that no card repeats another: who he was, who came with him, how many of each creature, and which two.\n\nShelf picture: Everyone coming out again, which shows the company without listing who entered. Panels 8 and 9 both letter this game’s answer — “two of each kind, male and female” and “Noah, his family, and the animals entered the ark”.",
       "interactions": [
         {
           "type": "reveal",
@@ -189,13 +205,14 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-13"
     },
     {
       "id": "the-rainbow-promise",
       "title": "The Rainbow Promise",
       "objective": "Follow the lesson from God’s command to God’s promise, and land on the rainbow — which is where the chapter ends and where the question set never goes.",
-      "note": "Written by hand, and it answers no curriculum question — which the gates will say, and which is the point. Three questions is at the floor of the Beginner band, and what the question set leaves out is the last third of the lesson: the rain, the saving, the promise, and the rainbow as its sign. That is the paragraph the chapter is named for, and a child who finished this chapter without meeting it would have missed the part that makes it an ark *of love*. Primary Chapter 1 is where this library first wrote a game for a skipped closing paragraph.\n\nA sequence, because the closing is a chain of events in an order the lesson gives plainly. Nothing here is invented: each step is a sentence from p.40.",
+      "note": "Written by hand, and it answers no curriculum question — which the gates will say, and which is the point. Three questions is at the floor of the Beginner band, and what the question set leaves out is the last third of the lesson: the rain, the saving, the promise, and the rainbow as its sign. That is the paragraph the chapter is named for, and a child who finished this chapter without meeting it would have missed the part that makes it an ark *of love*. Primary Chapter 1 is where this library first wrote a game for a skipped closing paragraph.\n\nA sequence, because the closing is a chain of events in an order the lesson gives plainly. Nothing here is invented: each step is a sentence from p.40.\n\nShelf picture: The boy opening the Bible at the ark and the rainbow, which is the moment this game is: let us hear Noah’s story. Panel 14 is its last step and would hand a child the ending before they began.\n\nPlayed on the artwork. The four steps were written before there was any, and the chapter turned out to have one panel for each of them, unmistakably: God speaking out of the light, everyone coming up the ramp, the rain at night, and the rainbow over the valley. Nothing had to be re-cut to fit — which is not how Chapter 7 went — because these four are the beats the artist chose to draw as well as the ones the lesson stresses.\n\nStep 1 is panel 5, God giving the command, rather than panel 6, Noah building. The label says “God told Noah to build”, and it is the telling that comes first.",
       "interactions": [
         {
           "type": "sequence",
@@ -204,23 +221,28 @@
           "items": [
             {
               "label": "God told Noah to build",
-              "position": 1
+              "position": 1,
+              "picture": "panel-05"
             },
             {
               "label": "They all went inside",
-              "position": 2
+              "position": 2,
+              "picture": "panel-09"
             },
             {
               "label": "It rained forty days",
-              "position": 3
+              "position": 3,
+              "picture": "panel-10"
             },
             {
               "label": "God sent a rainbow",
-              "position": 4
+              "position": 4,
+              "picture": "panel-14"
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-03"
     }
   ],
   "verse": {
@@ -309,7 +331,8 @@
         "note": "Stage 5, the reference — recognised, not typed. “Genesis 6” is this chapter’s own Bible Portion, printed on p.39; “Psalm 111” is Chapter 7’s memory verse. Both are references a child working through this book has actually met."
       }
     ],
-    "note": "Read from p.42 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**Thirty-one words, and the longest verse in this library by more than double.** That is the book’s choice, not this chapter’s, and the practice is built to carry it rather than to trim it: stage 2 cuts it into four large chunks and stage 4 into six, where a shorter verse would get three and five.\n\nIt is also the verse that caught a gap in the agent. The Beginner rung grows its line until the gap has words on both sides, and had never been asked to fit a budget — every earlier verse opened with a phrase short enough to print. This one did not, and the rung came out eleven words long against a budget of nine. The generator now windows the line down around the gap, so the rung above is what it produced rather than what was left of it after an edit here.\n\nPrinted with a comma after “dwelling” and — deliberately kept — **no full stop at the end**. The page ends the line at “rock” with no punctuation, so neither does this, which is the same call Chapter 6’s verse got. Translation is unresolved: p.42 does not name one, which is where every chapter in this library stands.\n\nNo picture: this chapter has no artwork yet."
+    "note": "Read from p.42 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**Thirty-one words, and the longest verse in this library by more than double.** That is the book’s choice, not this chapter’s, and the practice is built to carry it rather than to trim it: stage 2 cuts it into four large chunks and stage 4 into six, where a shorter verse would get three and five.\n\nIt is also the verse that caught a gap in the agent. The Beginner rung grows its line until the gap has words on both sides, and had never been asked to fit a budget — every earlier verse opened with a phrase short enough to print. This one did not, and the rung came out eleven words long against a budget of nine. The generator now windows the line down around the gap, so the rung above is what it produced rather than what was left of it after an edit here.\n\nPrinted with a comma after “dwelling” and — deliberately kept — **no full stop at the end**. The page ends the line at “rock” with no punctuation, so neither does this, which is the same call Chapter 6’s verse got. Translation is unresolved: p.42 does not name one, which is where every chapter in this library stands.\n\nPicture: panel 12, Noah and his family and every animal resting by lamplight inside the ark with the rain running down the window behind them — which is “in the day of trouble He will keep me safe in His dwelling” as a six-year-old can see it.",
+    "picture": "panel-12"
   },
   "decision": {
     "statement": "I will obey God’s command as Noah did.",
@@ -320,7 +343,7 @@
     "note": "The Concluding Prayer from p.42, word for word including the Amen. The chapter’s opening prayer on p.39 is printed as “(any one may pray)” and has no words to quote, so there is nothing here to record but that."
   },
   "celebration": {
-    "message": "Noah obeyed God, and everyone in the ark was safe.",
-    "note": "The lesson’s own turn — “Noah did as God said… those in the ark were saved” — said to the child who has just read it."
+    "message": "Noah obeyed God. God kept him safe, and kept His promise.",
+    "note": "Rewritten against the artwork’s own close. Panel 14 ends on “God has kept His promise” and panel 12 on “God has kept us safe”; this says both to the child who has just read them. It replaces a line written before there was any artwork."
   }
 }
