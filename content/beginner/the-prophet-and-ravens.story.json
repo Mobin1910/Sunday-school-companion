@@ -3,76 +3,48 @@
   "chapter": 7,
   "title": "The Prophet and Ravens",
   "reference": "1 Kings 17:1-7",
-  "note": "Beginner, Chapter 7, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 35–38. Elijah fed by ravens at the brook of Kerith, told as a chapter about God providing.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 07 --plan`). The first run read the four “Mark it as Right or Wrong” statements as questions, because everything in the classifier assumed it was reading one: “When Ahab was the king of Samaria…” opens with the word “When”, so the time rule claimed it and handed it a *sequence*, and the other three fell through to `unsure` and were given multiple-choices by default. The classifier now reads a statement as a statement, `true-or-not` is no longer scored as above a six-year-old's band, and a printed Right/Wrong set stays in one game. The second run planned what ships.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards, the cover is not drawn, and no game carries a picture. The book's “Colour the picture” page also sets a pencil activity, which has no game here.\n\nThe page prints “Learn to sing (Sing a suitable song)” and gives no lines, so this chapter ships without a song rather than with one chosen for it.",
+  "note": "Beginner, Chapter 7, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 35–38. Elijah fed by ravens at the brook of Kerith, told as a chapter about God providing.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 07 --plan`). The first run read the four “Mark it as Right or Wrong” statements as questions, because everything in the classifier assumed it was reading one: “When Ahab was the king of Samaria…” opens with the word “When”, so the time rule claimed it and handed it a *sequence*, and the other three fell through to `unsure` and were given multiple-choices by default. The classifier now reads a statement as a statement, `true-or-not` is no longer scored as above a six-year-old's band, and a printed Right/Wrong set stays in one game. The second run planned what ships.\n\nArtwork downloaded from Drive (Beginner / Chapter 07 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Ten files — both covers and panels 1 to 8, contiguous, no duplicates, and every one of them exactly 941×1672 or its transpose. The second folder in this library to import with no warning of any kind.\n\nThe artwork brought a frame the text draft did not have; see the story note. Every game names a shelf picture, and question 4's sequence is played on the chapter's own panels. The book's “Colour the picture” page also sets a pencil activity, which has no game here.\n\nThe page prints “Learn to sing (Sing a suitable song)” and gives no lines, so this chapter ships without a song rather than with one chosen for it.\n\nOnly one game could take the artwork inside it, and that is a fact about this chapter rather than a shortfall. The two place questions are answered by panels that letter their answers; the who-was-who match would need Elijah, Ahab and the ravens apart and the chapter never draws them apart; and `true-or-not` has nowhere to put a picture. The sequence had three distinct panels waiting for it, and took them.",
   "cover": {
     "picture": "cover",
-    "note": "Not drawn yet. The book's own chapter opening is Elijah sitting among the rocks with two ravens beside him under the title “THE PROPHET AND RAVENS 07”; what gets drawn is the artist's call. Named so that dropping `cover.webp` into public/art/beginner/the-prophet-and-ravens/ is the only step left."
+    "landscape": "cover-landscape",
+    "note": "Chapter 7’s own cover, drawn twice. The portrait is Elijah sitting on the rocks by the brook with his hands open, two ravens bringing bread and meat down to him and a third watching from a stone, with “THE PROPHET AND RAVENS” and “07” painted onto a purple label across the top — so the story reader lays no text over it. The landscape is the same moment framed wide and with no lettering at all: the tree and the ravens at the left, Elijah in the middle, and the brook falling away to the right. Same chapter, same hand, and the one the chapter hub and the shelf row need, since both draw their own heading."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "A prophet named Elijah lived in the city of Samaria.",
-      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is the lesson from p.36 cut into Beginner-sized pieces and named for a panel that has not been drawn. Sixteen cards is the shape of the text, not a decision about the art: when the artwork arrives it will have its own number of panels and its own frame, and these go, the way Beginner 5 and 6 and Primary 1, 2 and 3 all did."
+      "alt": "A girl at a sunlit table, chin on her hands, looking up at Halo. In front of her a plate of flatbread and salad, a clay cup, and a bowl of grapes and fruit; shelves of pots behind her and an open window onto green hills. The caption reads, “Sometimes we wonder who takes care of us and gives us what we need.” The girl asks, “Who takes care of us?” and Halo asks back, “Who do you think provides you with everything you need?”",
+      "note": "The chapter does not open in Samaria. The artwork frames the lesson at a child’s own table — panels 1 and 2 — crosses into the past at panel 2 through a thought cloud, tells Elijah’s story through panel 7, and comes back to the same table in panel 8, where the lesson lands as something the child can say. That frame is the artwork’s, and this is the sixth chapter in this library to turn out to have one.\n\nThe narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel.\n\nEight panels where the text draft had sixteen cards. The draft is gone rather than reconciled, which is what happened to Beginner Chapters 5 and 6 and to Primary Chapters 1, 2 and 3 as well."
     },
     {
       "picture": "panel-02",
-      "text": "King Ahab ruled Samaria at that time. He never obeyed God."
+      "alt": "The same table. A thought cloud opens above her: a bearded man in a red-brown cloak walking with a staff beside a rocky brook, a black raven on a stone behind him. The girl asks, “Is it God?” and “How does He help?” Halo answers, “Let’s see how God helped his prophet Elijah!”"
     },
     {
       "picture": "panel-03",
-      "text": "So God was angry. Elijah told the king about God’s anger."
+      "alt": "Samaria. Elijah stands on the palace steps with his staff and one hand open, facing King Ahab in a gold crown and a purple and crimson robe; soldiers with spears and a red banner with a gold lion stand behind them, and the walled city rises on the hill beyond. The caption reads, “Elijah was a prophet of God who lived in Samaria. At that time, King Ahab was ruling the land.” Elijah says, “God has told me that it will not rain in this land anymore, unless I say so.”",
+      "note": "The caption says Ahab “was ruling the land” where p.36 says he “was ruling Samaria”. Same king, same time; the artist’s wording is kept because it is what the panel says, and the curriculum block keeps the book’s."
     },
     {
       "picture": "panel-04",
-      "text": "Elijah said, “It will not rain in this land.”"
+      "alt": "The land dried out. Cracked earth runs to the horizon between withered corn, with a stone well and a toppled jar in the middle distance and people gathering what little there is — a woman with a basket, a child beside her, another woman carrying a pot on her head. Elijah stands at the left with his staff under a white sun. The caption reads, “As God had said, it did not rain. Everyone suffered without rain. There was drought and famine in the land.”"
     },
     {
       "picture": "panel-05",
-      "text": "As God had said, it did not rain."
+      "alt": "The brook. Elijah kneels on the rocks and drinks from his cupped hands, water running bright between the stones with green leaves overhanging and red cliffs beyond. Two captions: “But God prepared a way to protect Prophet Elijah from hunger and thirst,” and “God told Elijah to go and hide near the Brook Kerith. There he could drink water from the brook.”",
+      "note": "The artwork spells it “Brook Kerith”; p.36 says “brook of Kerith”. Both spellings are now in this chapter — the panels have the artist’s and the curriculum block and the games have the book’s — because neither is wrong and quietly changing a painted caption is not this importer’s job."
     },
     {
       "picture": "panel-06",
-      "text": "Everyone suffered without rain. There was drought and famine in the land."
+      "alt": "Two ravens come down out of the trees, one carrying a round loaf and the other a piece of meat. Elijah sits on the rocks with both hands raised to take it, the brook running past below. Captions: “But what would Elijah do when he was hungry? God prepared ravens for that,” and “They brought bread and meat to the prophet in the morning and in the evening.” Elijah says, “God has provided for me!”"
     },
     {
       "picture": "panel-07",
-      "text": "But God prepared a way to protect His prophet."
+      "alt": "The same place, gone quiet. The brook is a thin trickle between cracked stones now, and Elijah sits back against the tree with his staff beside him, looking down at it. The caption reads, “The prophet stayed comfortably near the brook, until the water ran out.”"
     },
     {
       "picture": "panel-08",
-      "text": "God told him to hide near the brook of Kerith."
-    },
-    {
-      "picture": "panel-09",
-      "text": "There, the prophet could drink water from the brook."
-    },
-    {
-      "picture": "panel-10",
-      "text": "But what would he do when he was hungry?"
-    },
-    {
-      "picture": "panel-11",
-      "text": "God prepared ravens for that."
-    },
-    {
-      "picture": "panel-12",
-      "text": "They brought him bread and meat in the morning."
-    },
-    {
-      "picture": "panel-13",
-      "text": "They brought bread and meat again in the evening."
-    },
-    {
-      "picture": "panel-14",
-      "text": "Ravens usually steal food from people. God used them to help."
-    },
-    {
-      "picture": "panel-15",
-      "text": "God will protect those who obey Him, in any difficulty."
-    },
-    {
-      "picture": "panel-16",
-      "text": "He stayed by the brook until the water ran out."
+      "alt": "Back at the table, and it is full now — a basket of bread, a bowl of soup, apples and grapes, a jug and a cup. The girl smiles up at Halo and says, “God takes care of me too!” Halo answers, “Yes! We can be thankful for all He provides.” The caption reads, “God took care of Elijah. He provides for us too,” and a banner along the bottom reads, “I will be grateful to God who provides me with food, clothing and shelter.”",
+      "note": "The chapter’s My Decision line is painted into this panel. The decision card carries the same sentence, from p.38, so a child meets it twice — once in the artist’s hand at the end of the story and once as the card. That is the same thing that is true of Beginner Chapter 2’s memory verse, and it has the same consequence: this sentence cannot be reworded later without the panel being redrawn."
     }
   ],
   "curriculum": {
@@ -139,7 +111,7 @@
         1,
         3
       ],
-      "note": "Questions 1 and 3. Two places, so two asks in one game — the shape Manna's “Who Did God Provide For?” already uses for a pair of questions that belong together.\n\nEvery wrong option is somewhere else in this chapter rather than somewhere else in the Bible. “A mountain” is the book's own wrong answer, printed as statement 2 of “Mark it as Right or Wrong”, so a child meets the same mistake twice and is told the same thing about it both times.",
+      "note": "Questions 1 and 3. Two places, so two asks in one game — the shape Manna's “Who Did God Provide For?” already uses for a pair of questions that belong together.\n\nEvery wrong option is somewhere else in this chapter rather than somewhere else in the Bible. “A mountain” is the book's own wrong answer, printed as statement 2 of “Mark it as Right or Wrong”, so a child meets the same mistake twice and is told the same thing about it both times.\n\nShelf picture: The drought, which is why the prophet had to go anywhere at all. Panels 3 and 5 are this game's two answers and both letter them — “lived in Samaria” and “hide near the Brook Kerith” — so neither can be here.",
       "interactions": [
         {
           "type": "multiple-choice",
@@ -175,7 +147,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-04"
     },
     {
       "id": "who-was-who",
@@ -184,7 +157,7 @@
       "answers": [
         2
       ],
-      "note": "Question 2, which asks only for Ahab's name. A match rather than a quiz, because naming the king is worth nothing on its own — the point of the question is that there are two men in this story and only one of them obeyed God, and a pair is the smallest thing that shows a difference.\n\nThe ravens are the third pair. “The birds God sent” is p.36's own “God prepared ravens for that”, and nothing here calls them helpers or messengers, which the lesson does not.",
+      "note": "Question 2, which asks only for Ahab's name. A match rather than a quiz, because naming the king is worth nothing on its own — the point of the question is that there are two men in this story and only one of them obeyed God, and a pair is the smallest thing that shows a difference.\n\nThe ravens are the third pair. “The birds God sent” is p.36's own “God prepared ravens for that”, and nothing here calls them helpers or messengers, which the lesson does not.\n\nShelf picture: The prophet and the king face to face, which is this game in one picture. Its caption names them both and sits above the crop; what shows is the two men, which is the question rather than the answer.",
       "interactions": [
         {
           "type": "match",
@@ -217,41 +190,42 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-03"
     },
     {
       "id": "how-god-fed-him",
       "title": "How God Fed Him",
-      "objective": "Hold both halves of God's care, and the order the lesson gives them in: the brook to drink from, then bread and meat morning and evening.",
+      "objective": "Hold what God did for His prophet at the brook, in the order the lesson gives it: water to drink, then bread and meat, until the brook ran dry.",
       "answers": [
         4
       ],
-      "note": "Question 4. A sequence, because the lesson's answer is not one fact but a day with a shape to it — he goes, he drinks, the ravens come in the morning, the ravens come again in the evening. A quiz would make a child pick one of those and call the other three wrong.\n\nSteps 3 and 4 differ by one word, which is deliberate: “in the morning and in the evening” is the phrase p.36 repeats and the one the Right/Wrong exercise tests.",
+      "note": "Question 4. A sequence, because the lesson's answer is not one fact but a stay with a shape to it — a quiz would make a child pick one part of it and call the rest wrong.\n\n**Re-cut when the artwork arrived, and the artwork is why it is better.** It had four text steps, two of which — “Ravens brought food that morning” and “Ravens brought food that evening” — differed by a single word, and at card size they read as the same card twice. The chapter draws that stay as three distinct panels: coming to the brook, the ravens arriving, the water gone. Three pictures a six-year-old can tell apart beats four labels they cannot, and morning-and-evening is not lost — it is lettered into panel 6 and it is game 4's third statement.\n\nShelf picture: The brook run dry — after the feeding rather than during it, so the card does not pre-empt the order the game asks for. Panel 6 is the game's middle step and letters “in the morning and in the evening”, which is also game 4's third statement.",
       "interactions": [
         {
           "type": "sequence",
-          "prompt": "Put the prophet’s day in order.",
+          "prompt": "Put the brook story in order.",
           "hint": "He had to get there first.",
           "items": [
             {
-              "label": "He went to the brook",
+              "picture": "panel-05",
+              "label": "He came to the brook",
               "position": 1
             },
             {
-              "label": "He drank from the brook",
+              "picture": "panel-06",
+              "label": "Ravens brought him food",
               "position": 2
             },
             {
-              "label": "Ravens brought food that morning",
+              "picture": "panel-07",
+              "label": "The water ran out",
               "position": 3
-            },
-            {
-              "label": "Ravens brought food that evening",
-              "position": 4
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-07"
     },
     {
       "id": "true-or-not",
@@ -263,7 +237,7 @@
         7,
         8
       ],
-      "note": "The whole of “Mark it as Right or Wrong” from p.37, in one game — which is what it is on the page: one exercise, in one box. The planner used to break a set like this across two games and hand each half a multiple-choice; that was fixed while building this chapter, and Manna's five statements now plan as one game too.\n\nStatement 4 is the one the lesson does not spell out. Its `because` says only what p.36 says — that God protects those who obey Him — and adds nothing about creation at large. See the curriculum note on question 8.",
+      "note": "The whole of “Mark it as Right or Wrong” from p.37, in one game — which is what it is on the page: one exercise, in one box. The planner used to break a set like this across two games and hand each half a multiple-choice; that was fixed while building this chapter, and Manna's five statements now plan as one game too.\n\nStatement 4 is the one the lesson does not spell out. Its `because` says only what p.36 says — that God protects those who obey Him — and adds nothing about creation at large. See the curriculum note on question 8.\n\nShelf picture: The girl asking who takes care of her, which is the question all four statements circle. It letters nobody's answer.",
       "interactions": [
         {
           "type": "true-or-not",
@@ -295,7 +269,8 @@
             }
           ]
         }
-      ]
+      ],
+      "picture": "panel-01"
     }
   ],
   "verse": {
@@ -382,7 +357,8 @@
         "note": "Stage 5, the reference — recognised, not typed. “1 Kings 17” is this chapter's own Bible Portion, printed on p.35; “Psalm 19” is Chapter 6's memory verse. Both are references a child working through this book has actually met, which is what makes choosing between them a question rather than a guess."
       }
     ],
-    "note": "Read from p.38 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference is kept as the book prints it — “Psalm 111:5 (a)”.** The (a) marks the first half of verse 5, and the half is all the page gives; normalising it to “Psalm 111:5” would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm rather than the half, which is the part a six-year-old can look up.\n\nPrinted with a full stop and a lowercase “him”, both kept. Translation is unresolved: p.38 does not name one, which is where every chapter in this library stands.\n\nNo picture: this chapter has no artwork yet."
+    "note": "Read from p.38 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference is kept as the book prints it — “Psalm 111:5 (a)”.** The (a) marks the first half of verse 5, and the half is all the page gives; normalising it to “Psalm 111:5” would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm rather than the half, which is the part a six-year-old can look up.\n\nPrinted with a full stop and a lowercase “him”, both kept. Translation is unresolved: p.38 does not name one, which is where every chapter in this library stands.\n\nPicture: panel 6, the ravens coming down with bread and meat while Elijah holds his hands up for it — which is “He provides food for those who fear him” as a six-year-old can see it.",
+    "picture": "panel-06"
   },
   "decision": {
     "statement": "I will be grateful to God who provides me with food, clothing and shelter.",
@@ -393,7 +369,7 @@
     "note": "The Concluding Prayer from p.38, word for word including the Amen. The chapter also opens with a short prayer on p.35 — “Gracious God, thank you for your love that sustains us all. Help us to learn about your prophet. Amen” — which is the teacher's to pray at the start of the class and is recorded here rather than shown."
   },
   "celebration": {
-    "message": "God fed His prophet by the brook. He takes care of you too.",
-    "note": "The lesson's own close — “God will protect those who obey Him” — turned towards the child who just read it."
+    "message": "God took care of Elijah. He takes care of you too.",
+    "note": "The artwork's own close — panel 8's “God took care of Elijah. He provides for us too.” — turned towards the child who has just read it. It replaces a line written before there was any artwork, which said the same thing about the brook."
   }
 }
