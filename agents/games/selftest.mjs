@@ -59,6 +59,11 @@ const CLASSIFIES = [
   ["What did the parents see when they found Jesus?", "scene"],
   ["What was Jesus' reply when His parents asked Him about making them anxious?", "saying"],
 
+  /* Beginner Chapter 8 — a blank is a question, not a Right/Wrong statement.
+     It has no question mark, so the statement rule had claimed it. */
+  ["The ark had __________ storeys.", "blank"],
+  ["The ______ declare the glory of God;", "blank"],
+
   /* Beginner Chapter 7 — a name is an identity, not a list of attributes. */
   ["What was the name of the King who never obeyed God?", "identity"],
 

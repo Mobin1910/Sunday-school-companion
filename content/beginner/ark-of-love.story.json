@@ -1,0 +1,326 @@
+{
+  "class": "beginner",
+  "chapter": 8,
+  "title": "Ark of Love",
+  "reference": "Genesis 6:13-22",
+  "note": "Beginner, Chapter 8, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 39–42. Noah and the ark, told as a chapter about obeying God and about the promise that followed the flood.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 08 --plan`). Its first run mis-read question 3. “The ark had __________ storeys.” has no question mark, so the statement rule written one chapter ago for Beginner 7’s Right/Wrong set claimed it and offered `true-or-not` — which would have asked a child whether a sentence with a hole in it was Right or Wrong. A fill-in-the-blank is the one shape that looks like a statement and is not, and the tell is the blank itself; the classifier reads one now and hands it the mechanic that asks for the missing word. This is the first blank the books have printed.\n\nOne mechanic was changed by hand after the second run, and the reason is in that game’s note. A fourth game is written by hand: three questions is at the floor of the Beginner band, and what the question set leaves out is the whole closing paragraph — the promise, and the rainbow as its sign — which is what the chapter is named for.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is fourteen text cards, the cover is not drawn, and no game carries a picture. When the artwork arrives those cards go, as they did for Beginner 5, 6 and 7 and for Primary 1, 2 and 3.\n\nTwo things the book leaves to the teacher and this chapter therefore leaves out: the opening prayer on p.39 is printed as “(any one may pray)” with no words at all, and “Learn to sing” on p.42 is “(Sing a suitable song)” with no lines. Neither is invented here.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The book’s own chapter opening is Noah directing the building of the ark, men carrying beams up its side, under the title “ARK OF LOVE 08”; what gets drawn is the artist’s call. Named so that dropping `cover.webp` into public/art/beginner/ark-of-love/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "More and more people lived on the earth. They sinned.",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is the lesson from p.40 cut into Beginner-sized pieces and named for a panel that has not been drawn. Fourteen cards is the shape of the text, not a decision about the art: when the artwork arrives it will have its own number of panels and its own frame, and these go."
+    },
+    {
+      "picture": "panel-02",
+      "text": "So God was angry. He decided to destroy the earth with a flood."
+    },
+    {
+      "picture": "panel-03",
+      "text": "But God was kind to Noah, who was righteous."
+    },
+    {
+      "picture": "panel-04",
+      "text": "God told Noah to build an ark of gopher wood."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He built a great ark with three storeys."
+    },
+    {
+      "picture": "panel-06",
+      "text": "God told Noah to go in with his family."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He also took two of every living creature."
+    },
+    {
+      "picture": "panel-08",
+      "text": "One male and one female of each. Noah did as God said."
+    },
+    {
+      "picture": "panel-09",
+      "text": "It rained for forty days. The waters rose higher and higher."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Everything on the earth was destroyed."
+    },
+    {
+      "picture": "panel-11",
+      "text": "But everyone in the ark was safe."
+    },
+    {
+      "picture": "panel-12",
+      "text": "After the flood, God made Noah a promise."
+    },
+    {
+      "picture": "panel-13",
+      "text": "There would never be another flood like it."
+    },
+    {
+      "picture": "panel-14",
+      "text": "A rainbow in the cloud would be the sign."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 08 “ARK OF LOVE”, p.40 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the four curriculum photographs in Drive’s “01 - Curriculum Source”, read at full size after rotating them upright. All four pages are complete — nothing runs off an edge — and there are no teacher’s pen marks anywhere in this chapter, so every `answer` below is quoted from the printed lesson on p.40 rather than from an answer key.\n\n**Question 3 is a fill-in-the-blank, not a question.** The page prints “The ark had __________ storeys.” with a ruled line, and it is kept here exactly that way, with the blank written as the run of underscores this library already uses for one. It is the first the books have printed and it is what taught the planner to tell a blank from a statement; see the chapter note.\n\nOnly one exercise set. This chapter has no “Mark it as Right or Wrong”. p.41 sets two pencil-and-paper tasks instead — “LET’S WORK: Make a boat using any of these – Paper/Plastic/Wood” and “Noah’s Ark – Draw a picture in your imagination” — and a “Colour the picture” of the ark with the animals walking up to it. All three are for the class table and none has a game here.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Who did God command to build the ark?",
+        "objective": "Name Noah as the one God commanded.",
+        "answer": "Noah. “But God was kind to the righteous Noah. God commanded Noah to build an ark out of gopher wood.” (p.40)"
+      },
+      {
+        "n": 2,
+        "question": "Which wood was used to make the ark?",
+        "objective": "Name gopher wood as what the ark was built from.",
+        "answer": "Gopher wood. “God commanded Noah to build an ark out of gopher wood.” (p.40)"
+      },
+      {
+        "n": 3,
+        "question": "The ark had __________ storeys.",
+        "objective": "Know that the ark was three-storeyed.",
+        "answer": "Three. “He built a great three-storeyed ark.” (p.40)",
+        "note": "Printed with a ruled blank rather than a question mark. Kept as the page has it."
+      },
+      {
+        "n": 4,
+        "question": "Who should enter the ark?",
+        "objective": "Know all of who went in: Noah, his family, and two of every living creature, male and female.",
+        "answer": "“God asked Noah to get himself and his family into the ark. Similarly, from all the living creatures on earth, he was told to put two each, male and female, into the ark.” (p.40)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "who-and-what",
+      "title": "Who and What",
+      "objective": "Name both things the lesson gives about the building of the ark — who God told, and what he built it from.",
+      "answers": [
+        1,
+        2
+      ],
+      "note": "Questions 1 and 2. A match rather than two quizzes, because the two answers belong to one sentence on p.40 — “God commanded Noah to build an ark out of gopher wood” — and pairing them keeps them together the way the lesson has them.\n\nTwo pairs, where this library’s other matches have three. There is no honest third: the only other fact of that shape in the lesson is the three storeys, and that is the next game’s answer. Two real pairs beat three with one padded.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Who built it, and from what?",
+          "hint": "One is a person, one is a wood.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Noah"
+              },
+              "to": {
+                "label": "The one God told"
+              }
+            },
+            {
+              "from": {
+                "label": "Gopher wood"
+              },
+              "to": {
+                "label": "What it was made of"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how-many-storeys",
+      "title": "How Many Storeys",
+      "objective": "Know that the ark had three storeys — and that the other numbers in this lesson belong to other things.",
+      "answers": [
+        3
+      ],
+      "note": "Question 3, which the book prints as a blank to fill rather than a question. The blank becomes a question a child can read aloud; the answer is unchanged.\n\nBoth wrong options are numbers the lesson actually says, and that is the whole point of them: “two” is how many of each creature went in and “forty” is how many days it rained. A child who remembers the numbers but not what each one counts has somewhere to go wrong, which is what makes this a question rather than a guess.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "The ark had how many storeys?",
+          "hint": "The lesson calls it a great ark.",
+          "options": [
+            {
+              "label": "Three",
+              "correct": true
+            },
+            {
+              "label": "Two"
+            },
+            {
+              "label": "Forty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-went-in",
+      "title": "Who Went In",
+      "objective": "Hold the whole of who entered the ark, not one of them — Noah, his family, and two of every living creature, one male and one female.",
+      "answers": [
+        4
+      ],
+      "note": "Question 4. The planner offered a second match; it was changed to a reveal, because the lesson answers this with a *list* rather than a pairing — Noah, his family, two of every creature, male and female — and a reveal is the mechanic for a list. It also keeps the chapter from opening with two matches in a row, which is the “Matching 1, Matching 2” repetition the planner exists to prevent.\n\nFour cards for what p.40 says in two sentences, cut so that no card repeats another: who he was, who came with him, how many of each creature, and which two.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over who went into the ark.",
+          "items": [
+            {
+              "label": "Noah himself"
+            },
+            {
+              "label": "All his family"
+            },
+            {
+              "label": "Two of every creature"
+            },
+            {
+              "label": "One male, one female"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-rainbow-promise",
+      "title": "The Rainbow Promise",
+      "objective": "Follow the lesson from God’s command to God’s promise, and land on the rainbow — which is where the chapter ends and where the question set never goes.",
+      "note": "Written by hand, and it answers no curriculum question — which the gates will say, and which is the point. Three questions is at the floor of the Beginner band, and what the question set leaves out is the last third of the lesson: the rain, the saving, the promise, and the rainbow as its sign. That is the paragraph the chapter is named for, and a child who finished this chapter without meeting it would have missed the part that makes it an ark *of love*. Primary Chapter 1 is where this library first wrote a game for a skipped closing paragraph.\n\nA sequence, because the closing is a chain of events in an order the lesson gives plainly. Nothing here is invented: each step is a sentence from p.40.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Noah’s story in order.",
+          "hint": "It begins before the rain.",
+          "items": [
+            {
+              "label": "God told Noah to build",
+              "position": 1
+            },
+            {
+              "label": "They all went inside",
+              "position": 2
+            },
+            {
+              "label": "It rained forty days",
+              "position": 3
+            },
+            {
+              "label": "God sent a rainbow",
+              "position": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "For in the day of trouble He will keep me safe in His dwelling, He will hide me in the shelter of His tabernacle and set me high upon a rock",
+    "reference": "Psalm 27:5",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What will He do in trouble?",
+        "hint": "The verse says it twice over.",
+        "options": [
+          {
+            "label": "Keep me safe",
+            "correct": true
+          },
+          {
+            "label": "Send a flood"
+          },
+          {
+            "label": "Build an ark"
+          }
+        ],
+        "note": "Stage 1, recognition. Both wrong options are from this chapter’s own lesson — the flood God sent and the ark Noah built — rather than invented scripture."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins on the day of trouble.",
+        "words": [
+          "For in the day of trouble",
+          "He will keep me safe in His dwelling,",
+          "He will hide me in the shelter of His tabernacle",
+          "and set me high upon a rock"
+        ],
+        "note": "Stage 2, phrase ordering. Four chunks for thirty-one words — the longest verse in this library by more than double — cut at the verse’s own comma and at the two places it turns. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "For in the ______ of trouble He will keep",
+        "hint": "The missing word starts with “d”.",
+        "options": [
+          {
+            "label": "day",
+            "correct": true
+          },
+          {
+            "label": "trouble"
+          },
+          {
+            "label": "rock"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner rung and used exactly as it came out — prompt, hint and all three options unedited. This is the verse that taught that rung to respect the band’s prompt budget; see the verse note."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start on the day of trouble.",
+        "words": [
+          "For in the day of trouble",
+          "He will keep me safe",
+          "in His dwelling,",
+          "He will hide me",
+          "in the shelter of His tabernacle",
+          "and set me high upon a rock"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 2 had four, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 27",
+            "correct": true
+          },
+          {
+            "label": "Genesis 6"
+          },
+          {
+            "label": "Psalm 111"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. “Genesis 6” is this chapter’s own Bible Portion, printed on p.39; “Psalm 111” is Chapter 7’s memory verse. Both are references a child working through this book has actually met."
+      }
+    ],
+    "note": "Read from p.42 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**Thirty-one words, and the longest verse in this library by more than double.** That is the book’s choice, not this chapter’s, and the practice is built to carry it rather than to trim it: stage 2 cuts it into four large chunks and stage 4 into six, where a shorter verse would get three and five.\n\nIt is also the verse that caught a gap in the agent. The Beginner rung grows its line until the gap has words on both sides, and had never been asked to fit a budget — every earlier verse opened with a phrase short enough to print. This one did not, and the rung came out eleven words long against a budget of nine. The generator now windows the line down around the gap, so the rung above is what it produced rather than what was left of it after an edit here.\n\nPrinted with a comma after “dwelling” and — deliberately kept — **no full stop at the end**. The page ends the line at “rock” with no punctuation, so neither does this, which is the same call Chapter 6’s verse got. Translation is unresolved: p.42 does not name one, which is where every chapter in this library stands.\n\nNo picture: this chapter has no artwork yet."
+  },
+  "decision": {
+    "statement": "I will obey God’s command as Noah did.",
+    "note": "The curriculum’s own My Decision line from p.42, first person and unchanged."
+  },
+  "prayer": {
+    "text": "Dear Lord Jesus, help us to obey your commands as Noah did. Amen.",
+    "note": "The Concluding Prayer from p.42, word for word including the Amen. The chapter’s opening prayer on p.39 is printed as “(any one may pray)” and has no words to quote, so there is nothing here to record but that."
+  },
+  "celebration": {
+    "message": "Noah obeyed God, and everyone in the ark was safe.",
+    "note": "The lesson’s own turn — “Noah did as God said… those in the ark were saved” — said to the child who has just read it."
+  }
+}

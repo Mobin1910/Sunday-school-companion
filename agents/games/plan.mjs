@@ -67,6 +67,28 @@ export function classify(question) {
     return { asks: "personal", skill: "recognition" };
   }
   /*
+    A blank to fill, which is a question wearing a statement's clothes.
+
+    "The ark had __________ storeys." is question 3 of Beginner Chapter 8, and
+    it has no question mark — so the statement rule below claimed it and
+    offered `true-or-not`, which would have asked a child whether a sentence
+    with a hole in it was Right or Wrong. That rule was written one chapter
+    ago against a "Mark it as Right or Wrong" set; this is the first
+    fill-in-the-blank the books have printed, and it is the one shape that
+    looks like a statement and is not.
+
+    The tell is the blank itself, and this library already writes one the same
+    way everywhere it appears — a run of underscores, in Chapter 6's verse
+    drill ("The ______ declare the glory of God;") and in Zacchaeus's
+    ("For the Son of ______ came to seek and to save the lost."). What it
+    wants back is the one word that goes in the hole, which is choosing, not
+    weighing.
+  */
+  if (/_{2,}/.test(q)) {
+    return { asks: "blank", skill: "recall" };
+  }
+
+  /*
     Not a question at all.
 
     "Mark it as Right or Wrong" prints statements, not questions, and the
@@ -279,6 +301,12 @@ const PREFERENCE = {
     it, and which no book has yet handed a Right/Wrong set to.
   */
   statement: ["true-or-not", "multiple-choice"],
+  /*
+    One word goes in the hole. `match` is the fallback only so that a band
+    which somehow forbids multiple-choice still gets something that asks for
+    a word rather than a verdict.
+  */
+  blank: ["multiple-choice", "match"],
   unsure: ["multiple-choice"],
 };
 

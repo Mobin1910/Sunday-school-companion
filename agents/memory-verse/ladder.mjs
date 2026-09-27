@@ -1,4 +1,17 @@
+import { BANDS } from "../games/bands.mjs";
 import { bare, chunks, opening, phrases, tidy, words } from "./tokenize.mjs";
+
+/*
+  How much a class can be asked to read in one prompt.
+
+  Read from `bands.mjs` rather than restated here, because that file is
+  already the one place the ladder lives for games and `src/content/checks.ts`
+  already mirrors it — three copies of the same number is two too many, and
+  the build enforces the third.
+*/
+const PROMPT_WORDS = Object.fromEntries(
+  Object.entries(BANDS).map(([id, band]) => [id, band.maxPromptWords]),
+);
 
 /**
  * One verse, seven ways of asking for it back.
@@ -150,7 +163,7 @@ function nursery({ text }) {
  *
  * The gap is always a word that carries meaning. Blanking "the" asks nothing.
  */
-function beginner({ text }) {
+function beginner({ text, classOf = "beginner" }) {
   const all = words(text);
   const parts = phrases(text);
 
@@ -182,6 +195,31 @@ function beginner({ text }) {
     }
   }
   if (!line || at === -1) return null;
+
+  /*
+    And the line a six-year-old is asked to read has a length.
+
+    The rung above grows the line until the gap has words on both sides of it,
+    and until Psalm 27:5 that was the only pressure on it — every verse in the
+    library opened with a phrase short enough to print. That one opens "For in
+    the day of trouble He will keep me safe in His dwelling," and the gap
+    landed on "day", so the rung came out eleven words long against Beginner's
+    budget of ten and would have shipped a copy warning on its own generated
+    content.
+
+    So the line is windowed down to the budget around the gap, keeping at
+    least one word either side — which is the rung's whole point, and the part
+    that must survive. A verse whose phrases already fit is untouched: the
+    window only closes when there is more line than budget.
+  */
+  const budget = PROMPT_WORDS[classOf] ?? Infinity;
+  if (line.length > budget) {
+    const room = budget - 1;
+    let start = Math.max(0, Math.min(at - Math.floor(room / 2), line.length - budget));
+    if (start > at - 1) start = at - 1;
+    line = line.slice(start, start + budget);
+    at -= start;
+  }
 
   const answer = line[at];
   const shown = [...line];
@@ -473,7 +511,7 @@ export function practiceFor(classId, verse) {
   const text = tidy(verse.text);
   const reference = tidy(verse.reference);
 
-  const made = build({ text, reference });
+  const made = build({ text, reference, classOf: classId });
   if (!made) {
     return {
       skipped: `the verse is too short to ask this class honestly (${words(text).length} words)`,

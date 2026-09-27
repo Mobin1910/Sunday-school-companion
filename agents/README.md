@@ -576,6 +576,48 @@ lines above the question, which is what made it the likely completion in the
 first place, and not the question's own cut-off word. Record what the artwork
 settles and what it only corroborates, and keep them apart.
 
+## A blank is a question, and it is the one that looks like a statement
+
+The rule below says a curriculum item with no question mark is a statement to
+be marked Right or Wrong. One chapter later that was already too broad.
+
+Beginner Chapter 8 prints, as question 3, `The ark had __________ storeys.` —
+a ruled blank with no question mark. The statement rule claimed it and offered
+`true-or-not`, which would have asked a child whether a sentence with a hole
+in it was Right or Wrong. It is the first fill-in-the-blank the books have
+printed and it is the one shape that looks like a statement and is not.
+
+The tell is the blank, and this library already writes one the same way
+everywhere it appears — a run of underscores, in Chapter 6's verse drill and
+in Zacchaeus's. So the blank rule runs *before* the statement rule, and what a
+blank wants back is the one word that goes in the hole: choosing, not
+weighing.
+
+The wider lesson, which is now two for two: **a rule written against one
+chapter's exercise will meet a shape that chapter did not have.** Both times
+the failure was the same kind — a confident wrong answer rather than an
+`unsure` — and both times the fix was a narrower test in front of the broad
+one, not a broader one behind it.
+
+## The verse ladder has a copy budget too
+
+`bands.mjs` gives every class a `maxPromptWords`, the gates hold games to it
+and `src/content/checks.ts` holds the built chapter to it. The memory-verse
+ladder did not know about it at all.
+
+It went unnoticed for seven chapters because every verse so far opened with a
+phrase short enough to print. Psalm 27:5 does not: at thirty-one words it is
+the longest in this library by more than double, and the Beginner rung — which
+grows its line until the gap has words on both sides — came out eleven words
+long against a budget of nine. The agent would have written a copy warning
+into its own generated content.
+
+The rung now windows its line down around the gap, keeping at least one word
+either side, which is the part that must survive. A verse whose phrases
+already fit is untouched: the window only closes when there is more line than
+budget. The number is read from `bands.mjs` rather than restated, because
+three copies of it would be two too many.
+
 ## "Mark it as Right or Wrong" is not a question set
 
 The Samajam books print two exercises per chapter: "Answer the Questions", and
