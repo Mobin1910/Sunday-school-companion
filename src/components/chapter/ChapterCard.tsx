@@ -11,12 +11,25 @@ import { chapterDone, progressOf, useSessionProgress } from "@/local/session";
  * One chapter on the shelf.
  *
  * A row rather than a tile, so a shelf of twenty is a list a child can run
- * down rather than a wall they have to scan. The cover is still the label —
- * a six-year-old who cannot yet read the title should be able to find the
- * story they were told on Sunday by its picture — but it now sits at the end
- * of the row and bleeds off the edge of the card, fading into it rather than
- * stopping at a border. That is what keeps the artwork feeling like a window
- * into the chapter instead of a thumbnail pasted onto a panel.
+ * down rather than a wall they have to scan. The cover is the label — a
+ * six-year-old who cannot yet read the title should be able to find the story
+ * they were told on Sunday by its picture.
+ *
+ * **The picture is the card.** It was a strip down the right-hand 46%, faded
+ * into the card colour from the left so the artwork "arrived out of" the
+ * surface rather than being pasted onto it. That fade was the problem: on a
+ * row 120px tall, a 46% strip already showed only a sliver of a wide painting,
+ * and then a gradient washed the left half of that sliver away. Roughly a
+ * fifth of each cover survived to be looked at.
+ *
+ * So the artwork now fills the card and the heading is drawn over it. That is
+ * what the landscape masters were drawn for: `schema.ts` requires them to
+ * carry no lettering of their own precisely because "the hub and the shelf row
+ * both draw their own heading over or beside this". Over, here.
+ *
+ * Nothing is laid across the picture except a scrim along the bottom edge,
+ * and that is there to make one line of text legible rather than to blend the
+ * artwork into anything. The top two-thirds of every cover is untouched.
  *
  * The number is the chapter's place on this shelf, not an identifier: it is
  * where the list puts it, and it is here because "Chapter 2" is how a child
@@ -70,35 +83,39 @@ export default function ChapterCard({
   return (
     <Link
       href={chapterHref(classId, slug)}
-      className={`surface relative flex min-h-30 items-center overflow-hidden ${
-        done ? "chapter-done" : ""
-      }`}
+      className={`shelf-card surface relative flex flex-col justify-end overflow-hidden ${
+        cover ? "aspect-2/1" : "min-h-30"
+      } ${done ? "chapter-done" : ""}`}
     >
       {cover ? (
-        <div className="absolute inset-y-0 right-0 w-[46%]" aria-hidden>
+        <div className="absolute inset-0" aria-hidden>
           {/*
-            The wide crop where the chapter has one. This strip is 46% of the
-            card and full height, so a 9:16 portrait arrives here as a sliver
-            of its own middle; the landscape master was drawn for exactly
-            this. Falls back to the portrait, which is what every chapter
-            written before the field existed still uses.
+            The wide master where the chapter has one, and the portrait where
+            it does not. A 9:16 portrait in a 2:1 box is a hard crop — it
+            keeps a band across its middle — which is the cost of a chapter
+            whose cover has not been drawn wide, and is why `landscape` exists.
           */}
           <Picture
             art={cover.wide ?? cover.art}
             alt=""
             className="size-full object-cover"
           />
-          {/* The artwork arrives out of the card rather than being stuck on it. */}
-          <div className="shelf-fade absolute inset-0" />
+          {/*
+            Legibility for one line of text, and nothing else. It reaches
+            barely past halfway and is only near-opaque in the last few
+            percent, so the part of a cover an artist composed — the faces,
+            the sky, the thing happening — is never under it.
+          */}
+          <div className="shelf-scrim absolute inset-0" />
         </div>
       ) : null}
 
-      <div className="relative flex flex-col gap-1 py-5 pr-2 pl-5">
+      <div className="relative flex flex-col gap-1 px-5 pt-5 pb-4">
         <span className="flex items-center gap-2 text-xs tracking-[0.08em] text-ink-soft">
           Chapter {String(number).padStart(2, "0")}
           {done ? <span className="done-pill">Done</span> : null}
         </span>
-        <h2 className="max-w-[9.5em] text-xl leading-snug text-balance">
+        <h2 className="max-w-[12em] text-xl leading-snug text-balance">
           {title}
         </h2>
       </div>

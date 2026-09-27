@@ -547,21 +547,55 @@ body {
   */
 
   /*
-    The edge where a chapter's cover meets its row on the shelf.
+    The dark a chapter's title is legible against, on the shelf.
 
-    The artwork runs off the right of the card and dissolves into the surface
-    on its left, so the picture reads as a window into the chapter rather than
-    a thumbnail pasted onto a panel. The card colour, not black — a fade to
-    black on a dark blue card is a smudge, and this has to disappear into the
-    exact surface it sits on.
+    This replaces `.shelf-fade`, which ran the other way — left to right,
+    across the artwork — and dissolved the cover into the card so the picture
+    would read as a window rather than a thumbnail. It did read that way. It
+    also meant that of a painting already cropped to a 46% strip, the left half
+    of what was left was washed out, and about a fifth of each cover actually
+    reached the child.
+
+    So the picture is the card now and this only has to carry one line of text.
+    It is doing a job the `.cover-scrim` in the story reader already does:
+    nothing until past halfway, then the ground colour arriving in the last
+    third. Above that line the artwork is untouched.
+
+    The card colour rather than black — a fade to black on a dark blue card is
+    a smudge, and this has to land on the exact surface it sits on.
   */
-  .shelf-fade {
+  .shelf-scrim {
     background-image: linear-gradient(
-      to right,
+      to top,
       var(--color-ground-raised) 0%,
-      rgb(from var(--color-ground-raised) r g b / 0.72) 34%,
-      rgb(from var(--color-ground-raised) r g b / 0) 78%
+      rgb(from var(--color-ground-raised) r g b / 0.94) 26%,
+      rgb(from var(--color-ground-raised) r g b / 0.66) 42%,
+      rgb(from var(--color-ground-raised) r g b / 0.22) 58%,
+      rgb(from var(--color-ground-raised) r g b / 0) 74%
     );
+  }
+
+  /*
+    A shelf card carries its own picture edge to edge, so the diagonal sheen
+    every other `.surface` wears would be painted underneath it and never
+    seen — except on a chapter with no cover drawn yet, where it is exactly
+    right. Left alone for that reason; `overflow-hidden` on the card is what
+    keeps the artwork inside the rounded corners.
+  */
+  .shelf-card > .relative {
+    text-shadow: 0 1px 10px rgb(from var(--color-ground) r g b / 0.7);
+  }
+
+  /*
+    `text-ink-soft` is a grey chosen to sit quietly on a flat card. Over a
+    painting it stops being quiet and starts being hard to read — "Chapter 01"
+    fell across a sunlit pillar and very nearly vanished. On a shelf card the
+    same line is drawn in the full ink colour and asked to stay quiet by being
+    small and letter-spaced instead, which is a thing type can do over any
+    background.
+  */
+  .shelf-card .text-ink-soft {
+    color: rgb(from var(--color-ink) r g b / 0.92);
   }
 }
 
