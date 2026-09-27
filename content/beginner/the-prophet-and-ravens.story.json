@@ -1,0 +1,399 @@
+{
+  "class": "beginner",
+  "chapter": 7,
+  "title": "The Prophet and Ravens",
+  "reference": "1 Kings 17:1-7",
+  "note": "Beginner, Chapter 7, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 35–38. Elijah fed by ravens at the brook of Kerith, told as a chapter about God providing.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 07 --plan`). The first run read the four “Mark it as Right or Wrong” statements as questions, because everything in the classifier assumed it was reading one: “When Ahab was the king of Samaria…” opens with the word “When”, so the time rule claimed it and handed it a *sequence*, and the other three fell through to `unsure` and were given multiple-choices by default. The classifier now reads a statement as a statement, `true-or-not` is no longer scored as above a six-year-old's band, and a printed Right/Wrong set stays in one game. The second run planned what ships.\n\nNo artwork: `04 - Story Artwork` for this chapter is empty in Drive, so the story is sixteen text cards, the cover is not drawn, and no game carries a picture. The book's “Colour the picture” page also sets a pencil activity, which has no game here.\n\nThe page prints “Learn to sing (Sing a suitable song)” and gives no lines, so this chapter ships without a song rather than with one chosen for it.",
+  "cover": {
+    "picture": "cover",
+    "note": "Not drawn yet. The book's own chapter opening is Elijah sitting among the rocks with two ravens beside him under the title “THE PROPHET AND RAVENS 07”; what gets drawn is the artist's call. Named so that dropping `cover.webp` into public/art/beginner/the-prophet-and-ravens/ is the only step left."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "A prophet named Elijah lived in the city of Samaria.",
+      "note": "No artwork exists for this chapter yet — `04 - Story Artwork` in Drive is empty, so every card here is the lesson from p.36 cut into Beginner-sized pieces and named for a panel that has not been drawn. Sixteen cards is the shape of the text, not a decision about the art: when the artwork arrives it will have its own number of panels and its own frame, and these go, the way Beginner 5 and 6 and Primary 1, 2 and 3 all did."
+    },
+    {
+      "picture": "panel-02",
+      "text": "King Ahab ruled Samaria at that time. He never obeyed God."
+    },
+    {
+      "picture": "panel-03",
+      "text": "So God was angry. Elijah told the king about God’s anger."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Elijah said, “It will not rain in this land.”"
+    },
+    {
+      "picture": "panel-05",
+      "text": "As God had said, it did not rain."
+    },
+    {
+      "picture": "panel-06",
+      "text": "Everyone suffered without rain. There was drought and famine in the land."
+    },
+    {
+      "picture": "panel-07",
+      "text": "But God prepared a way to protect His prophet."
+    },
+    {
+      "picture": "panel-08",
+      "text": "God told him to hide near the brook of Kerith."
+    },
+    {
+      "picture": "panel-09",
+      "text": "There, the prophet could drink water from the brook."
+    },
+    {
+      "picture": "panel-10",
+      "text": "But what would he do when he was hungry?"
+    },
+    {
+      "picture": "panel-11",
+      "text": "God prepared ravens for that."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They brought him bread and meat in the morning."
+    },
+    {
+      "picture": "panel-13",
+      "text": "They brought bread and meat again in the evening."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Ravens usually steal food from people. God used them to help."
+    },
+    {
+      "picture": "panel-15",
+      "text": "God will protect those who obey Him, in any difficulty."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He stayed by the brook until the water ran out."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 07 “THE PROPHET AND RAVENS”, pp.36–37 — “ANSWER THE QUESTIONS” and “MARK IT AS RIGHT OR WRONG”",
+    "note": "Transcribed from the four curriculum photographs in Drive’s “01 - Curriculum Source”, read at full size after rotating them upright. All four pages are complete — nothing runs off an edge — and there are no teacher’s pen marks anywhere in this chapter, so every `answer` below is quoted from the printed lesson on p.36 rather than from an answer key.\n\nQuestions 1–4 are “Answer the Questions”; 5–8 are the four “Mark it as Right or Wrong” statements, kept as questions in the same list so that one rule — every question is covered by a game — covers both halves of the exercise. Manna is where that convention started.\n\np.37 also sets “Colour the picture”: Elijah by the brook with two ravens bringing food. That is a pencil-and-paper task for the class and has no game here.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where did the prophet Elijah live?",
+        "objective": "Name Samaria as the city Elijah lived in.",
+        "answer": "“Once upon a time, there lived a prophet named Elijah in the city of Samaria.” (p.36)"
+      },
+      {
+        "n": 2,
+        "question": "What was the name of the King who never obeyed God?",
+        "objective": "Name Ahab as the king who never obeyed God.",
+        "answer": "Ahab. “King Ahab was ruling Samaria at that time. King Ahab never obeyed God.” (p.36)"
+      },
+      {
+        "n": 3,
+        "question": "Where did God tell the prophet to go when there was drought and famine?",
+        "objective": "Name the brook of Kerith as the place God sent him to hide.",
+        "answer": "“God told his prophet to go and hide near brook of Kerith.” (p.36)"
+      },
+      {
+        "n": 4,
+        "question": "How did God take care of his prophet there?",
+        "objective": "Know both halves of the care: water from the brook, and ravens bringing bread and meat morning and evening.",
+        "answer": "“There, the prophet could drink water from the brook… God prepared ravens for that. They brought bread and meat to the prophet in the morning and in the evening.” (p.36)"
+      },
+      {
+        "n": 5,
+        "question": "When Ahab was the king of Samaria, there was famine and drought.",
+        "objective": "Know that this is Right — the drought came while Ahab was king.",
+        "answer": "Right. “As God had said, it did not rain… Also, there was drought and famine in the land.” (p.36)"
+      },
+      {
+        "n": 6,
+        "question": "God told the prophet Elijah to go to a mountain.",
+        "objective": "Know that this is Wrong — God sent him to the brook of Kerith.",
+        "answer": "Wrong. “God told his prophet to go and hide near brook of Kerith.” (p.36)"
+      },
+      {
+        "n": 7,
+        "question": "The ravens brought bread and meat to the prophet, in the morning and evening.",
+        "objective": "Know that this is Right — bread and meat, twice a day.",
+        "answer": "Right. “They brought bread and meat to the prophet in the morning and in the evening.” (p.36)"
+      },
+      {
+        "n": 8,
+        "question": "God nourishes and cares for the creatures of nature.",
+        "objective": "Know that this is Right — the book prints it as a statement to be marked Right.",
+        "answer": "Right, as the book has it.",
+        "note": "The one statement the lesson does not spell out. p.36 never says God cares for the creatures of nature; what it says is “God will protect those who obey Him, in any difficulty”, and it makes the point through ravens — birds it describes as thieves — being the ones God feeds His prophet with. The statement is the book’s and its answer is Right; the reason the game gives says only what the lesson says, and adds nothing about creation at large."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "where-elijah-went",
+      "title": "Where Elijah Went",
+      "objective": "Name both places the lesson puts the prophet in — the city he lived in, and the brook God sent him to.",
+      "answers": [
+        1,
+        3
+      ],
+      "note": "Questions 1 and 3. Two places, so two asks in one game — the shape Manna's “Who Did God Provide For?” already uses for a pair of questions that belong together.\n\nEvery wrong option is somewhere else in this chapter rather than somewhere else in the Bible. “A mountain” is the book's own wrong answer, printed as statement 2 of “Mark it as Right or Wrong”, so a child meets the same mistake twice and is told the same thing about it both times.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did the prophet Elijah live?",
+          "hint": "It is a city.",
+          "options": [
+            {
+              "label": "Samaria",
+              "correct": true
+            },
+            {
+              "label": "The brook of Kerith"
+            },
+            {
+              "label": "A mountain"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did God send the prophet?",
+          "hint": "God told him to hide there.",
+          "options": [
+            {
+              "label": "The brook of Kerith",
+              "correct": true
+            },
+            {
+              "label": "Samaria"
+            },
+            {
+              "label": "A mountain"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-was-who",
+      "title": "Who Was Who",
+      "objective": "Tell the three the lesson names apart: the prophet, the king, and the birds God sent.",
+      "answers": [
+        2
+      ],
+      "note": "Question 2, which asks only for Ahab's name. A match rather than a quiz, because naming the king is worth nothing on its own — the point of the question is that there are two men in this story and only one of them obeyed God, and a pair is the smallest thing that shows a difference.\n\nThe ravens are the third pair. “The birds God sent” is p.36's own “God prepared ravens for that”, and nothing here calls them helpers or messengers, which the lesson does not.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what it is.",
+          "hint": "One obeyed God, and one did not.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Elijah"
+              },
+              "to": {
+                "label": "The prophet"
+              }
+            },
+            {
+              "from": {
+                "label": "Ahab"
+              },
+              "to": {
+                "label": "The king"
+              }
+            },
+            {
+              "from": {
+                "label": "The ravens"
+              },
+              "to": {
+                "label": "The birds God sent"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how-god-fed-him",
+      "title": "How God Fed Him",
+      "objective": "Hold both halves of God's care, and the order the lesson gives them in: the brook to drink from, then bread and meat morning and evening.",
+      "answers": [
+        4
+      ],
+      "note": "Question 4. A sequence, because the lesson's answer is not one fact but a day with a shape to it — he goes, he drinks, the ravens come in the morning, the ravens come again in the evening. A quiz would make a child pick one of those and call the other three wrong.\n\nSteps 3 and 4 differ by one word, which is deliberate: “in the morning and in the evening” is the phrase p.36 repeats and the one the Right/Wrong exercise tests.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the prophet’s day in order.",
+          "hint": "He had to get there first.",
+          "items": [
+            {
+              "label": "He went to the brook",
+              "position": 1
+            },
+            {
+              "label": "He drank from the brook",
+              "position": 2
+            },
+            {
+              "label": "Ravens brought food that morning",
+              "position": 3
+            },
+            {
+              "label": "Ravens brought food that evening",
+              "position": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "true-or-not",
+      "title": "True or Not?",
+      "objective": "Meet the book's own four Right/Wrong statements, and get the reason after either answer.",
+      "answers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "note": "The whole of “Mark it as Right or Wrong” from p.37, in one game — which is what it is on the page: one exercise, in one box. The planner used to break a set like this across two games and hand each half a multiple-choice; that was fixed while building this chapter, and Manna's five statements now plan as one game too.\n\nStatement 4 is the one the lesson does not spell out. Its `because` says only what p.36 says — that God protects those who obey Him — and adds nothing about creation at large. See the curriculum note on question 8.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "When Ahab was the king of Samaria, there was famine and drought.",
+              "ask": "Was there famine when Ahab was king?",
+              "answer": true,
+              "because": "Yes. It did not rain, and there was drought and famine in the land."
+            },
+            {
+              "source": "God told the prophet Elijah to go to a mountain.",
+              "ask": "Did God send him to a mountain?",
+              "answer": false,
+              "because": "No. God told him to hide near the brook of Kerith."
+            },
+            {
+              "source": "The ravens brought bread and meat to the prophet, in the morning and evening.",
+              "ask": "Did ravens bring him bread and meat?",
+              "answer": true,
+              "because": "Yes. They brought bread and meat in the morning and in the evening."
+            },
+            {
+              "source": "God nourishes and cares for the creatures of nature.",
+              "ask": "Does God care for what He made?",
+              "answer": true,
+              "because": "Yes. God will protect those who obey Him, in any difficulty. He even sent birds to feed His prophet."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "He provides food for those who fear him.",
+    "reference": "Psalm 111:5 (a)",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "Who does God give food to?",
+        "hint": "The verse says who.",
+        "options": [
+          {
+            "label": "Those who fear him",
+            "correct": true
+          },
+          {
+            "label": "Only the ravens"
+          },
+          {
+            "label": "Only the king"
+          }
+        ],
+        "note": "Stage 1, recognition. Both wrong options are from this chapter's own lesson — the ravens that carried the food and the king who never obeyed God — rather than invented scripture."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with who gives the food.",
+        "words": [
+          "He provides food",
+          "for those",
+          "who fear him."
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks for eight words, cut where the line breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "He ______ food",
+        "hint": "The missing word starts with “p”.",
+        "options": [
+          {
+            "label": "provides",
+            "correct": true
+          },
+          {
+            "label": "food"
+          },
+          {
+            "label": "fear"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent's Beginner rung and used exactly as it came out — prompt, hint and all three options unedited."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with who gives the food.",
+        "words": [
+          "He",
+          "provides",
+          "food",
+          "for those",
+          "who fear him."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 111",
+            "correct": true
+          },
+          {
+            "label": "1 Kings 17"
+          },
+          {
+            "label": "Psalm 19"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. “1 Kings 17” is this chapter's own Bible Portion, printed on p.35; “Psalm 19” is Chapter 6's memory verse. Both are references a child working through this book has actually met, which is what makes choosing between them a question rather than a guess."
+      }
+    ],
+    "note": "Read from p.38 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference is kept as the book prints it — “Psalm 111:5 (a)”.** The (a) marks the first half of verse 5, and the half is all the page gives; normalising it to “Psalm 111:5” would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm rather than the half, which is the part a six-year-old can look up.\n\nPrinted with a full stop and a lowercase “him”, both kept. Translation is unresolved: p.38 does not name one, which is where every chapter in this library stands.\n\nNo picture: this chapter has no artwork yet."
+  },
+  "decision": {
+    "statement": "I will be grateful to God who provides me with food, clothing and shelter.",
+    "note": "The curriculum's own My Decision line from p.38, first person and unchanged."
+  },
+  "prayer": {
+    "text": "Heavenly Father, protect us with Your grace, as You protected Prophet Elijah. Amen.",
+    "note": "The Concluding Prayer from p.38, word for word including the Amen. The chapter also opens with a short prayer on p.35 — “Gracious God, thank you for your love that sustains us all. Help us to learn about your prophet. Amen” — which is the teacher's to pray at the start of the class and is recorded here rather than shown."
+  },
+  "celebration": {
+    "message": "God fed His prophet by the brook. He takes care of you too.",
+    "note": "The lesson's own close — “God will protect those who obey Him” — turned towards the child who just read it."
+  }
+}

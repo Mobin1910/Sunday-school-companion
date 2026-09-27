@@ -67,6 +67,38 @@ export function classify(question) {
     return { asks: "personal", skill: "recognition" };
   }
   /*
+    Not a question at all.
+
+    "Mark it as Right or Wrong" prints statements, not questions, and the
+    Samajam books carry that exercise alongside "Answer the Questions" in the
+    same chapter. Manna keeps its five in the same numbered list as its five
+    questions, so that one rule — every question is covered by a game —
+    covers both halves of the exercise; Beginner Chapter 7 has four more.
+
+    Everything below this line assumes it is reading a question, and on a
+    statement it guesses. Beginner Chapter 7 showed how badly: "When Ahab was
+    the king of Samaria, there was famine and drought." opens with the word
+    "When", so the `time` rule claimed it and handed it a *sequence* — a
+    confidently wrong answer, which this file exists to prevent, and worse
+    than the `unsure` the other three fell through to. Manna's "When people
+    grumbled, Moses prayed." would have gone the same way.
+
+    The test is the question mark, and the library says it is safe: of the
+    forty-one curriculum items written so far, thirty-three end in one and
+    every single one of the other eight is either a Right/Wrong statement or
+    a "Name two flowers you like" — and those are caught by the `personal`
+    rule immediately above, which is why this sits here and not higher.
+
+    `recall` rather than `understanding`, because holding a printed sentence
+    against what the lesson said is remembering, and because `recall` is in
+    every band from Beginner up — a statement set must not become unaskable
+    for the six-year-olds whose book actually prints it.
+  */
+  if (!q.includes("?")) {
+    return { asks: "statement", skill: "recall" };
+  }
+
+  /*
     Anywhere a question asks for a place.
 
     This used to sit near the bottom as a bare `has("where")`, which meant
@@ -103,13 +135,34 @@ export function classify(question) {
     return { asks: "identity", skill: "recall" };
   }
   /*
+    "What was the name of the King who never obeyed God?" wants one word back.
+    Asking for somebody's name is the plainest identity question there is, and
+    it had no rule of its own — it was being caught by the attributes pattern
+    above, which now steps aside for it.
+  */
+  if (has("the name of", "what is his name", "what is her name", "named")) {
+    return { asks: "identity", skill: "recall" };
+  }
+  /*
     "What were the shortcomings of X?" asks for a list of things true about
     somebody — the same shape as "what are the properties of salt?", and the
     same mechanics suit it.
   */
   if (
     has("properties of", "for what purposes", "what is ... used") ||
-    /what (were|are|was) the .*\bof\b/.test(q) ||
+    /*
+      "of" is doing a lot of work in this pattern, and it over-reached.
+      "What was the name of the King who never obeyed God?" is Beginner
+      Chapter 7's second question, and it matched — a question whose answer
+      is one word, Ahab, filed as a list of things true about somebody. The
+      mechanic it landed on happened to be the one `identity` prefers anyway,
+      so nothing shipped wrong; the label was still a confident wrong answer,
+      and the label is what decides which questions share a game.
+
+      Naming is identity, so naming is excluded here and falls through to the
+      identity rules below.
+    */
+    (/what (were|are|was) the .*\bof\b/.test(q) && !has("the name of")) ||
     has("shortcomings", "qualities of")
   ) {
     return { asks: "attributes", skill: "understanding" };
@@ -220,6 +273,12 @@ const PREFERENCE = {
   place: ["multiple-choice", "match"],
   quantity: ["multiple-choice"],
   lesson: ["true-or-not", "multiple-choice"],
+  /*
+    One mechanic and a fallback. A statement a child marks Right or Wrong is
+    what `true-or-not` is; the fallback exists only for Nursery, which forbids
+    it, and which no book has yet handed a Right/Wrong set to.
+  */
+  statement: ["true-or-not", "multiple-choice"],
   unsure: ["multiple-choice"],
 };
 
@@ -250,10 +309,23 @@ export function planFor({ classId, questions }) {
   const read = questions.map((q) => ({ ...q, ...classify(q.question) }));
 
   /* ── 2. group questions that want the same treatment ───────────────── */
+  /*
+    Two questions to a group, except for a Right/Wrong set.
+
+    The cap of two is what stops a game becoming a grab-bag of whatever
+    happened to share a shape. A printed "Mark it as Right or Wrong" exercise
+    is the opposite of a grab-bag — it is one exercise, in one box, on one
+    page — and `true-or-not` holds two to six statements by schema, which is
+    the range those exercises come in. Split across two games it stops being
+    the thing the book set: Beginner Chapter 7's four came out as two
+    multiple-choices of two, and Manna's five would have made three games.
+  */
+  const roomIn = (g) => (g.asks[0] === "statement" ? 6 : 2);
+
   let groups = [];
   for (const q of read) {
     const mate = groups.find(
-      (g) => g.asks === q.asks && g.questions.length < 2 && q.asks !== "unsure",
+      (g) => g.asks[0] === q.asks && g.questions.length < roomIn(g) && q.asks !== "unsure",
     );
     if (mate) mate.questions.push(q);
     else groups.push({ asks: [q.asks], skill: q.skill, questions: [q] });

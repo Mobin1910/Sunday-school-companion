@@ -86,7 +86,23 @@ export const CATALOGUE = [
   {
     mechanic: "true-or-not",
     name: "Yes or no",
-    skills: ["understanding", "reasoning"],
+    /*
+      `recall` belongs here, and leaving it out kept this mechanic away from
+      the one class whose book prints the exercise it *is*.
+
+      How much a statement asks depends on the statement. "God was angry, and
+      thus did not feed them" has to be weighed against the lesson, which is
+      understanding; "The ravens brought bread and meat to the prophet, in the
+      morning and evening" is remembering a sentence, and nothing more. The
+      Samajam Beginners book prints four or five of these per chapter.
+
+      Without `recall` the planner scored it as above a six-year-old's band
+      and handed Beginner Chapter 7's four Right/Wrong statements to
+      multiple-choice instead. Beginner is the only band this changes: every
+      other band that can play the mechanic already had `understanding` or
+      `reasoning` among its top two skills.
+    */
+    skills: ["recall", "understanding", "reasoning"],
     reading: "medium",
     /*
       Carries its own teaching: every answer is followed by the reason, so it

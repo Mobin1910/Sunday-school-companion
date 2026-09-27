@@ -576,6 +576,61 @@ lines above the question, which is what made it the likely completion in the
 first place, and not the question's own cut-off word. Record what the artwork
 settles and what it only corroborates, and keep them apart.
 
+## "Mark it as Right or Wrong" is not a question set
+
+The Samajam books print two exercises per chapter: "Answer the Questions", and
+a handful of statements to be marked Right or Wrong. Both go into the chapter's
+one `questions` list, numbered straight through, so that the single rule —
+every question is covered by a game — covers both halves. Manna started that
+convention; Beginner Chapter 7 is the second to use it.
+
+Everything in `plan.mjs` below the `personal` rule assumes it is reading a
+*question*, and on a statement it guesses. Chapter 7 showed how badly: "When
+Ahab was the king of Samaria, there was famine and drought." opens with the
+word "When", so the `time` rule claimed it and handed it a **sequence** — a
+confidently wrong answer, which is worse than the `unsure` the other three fell
+through to. Manna's "When people grumbled, Moses prayed." would have gone the
+same way.
+
+The test is the question mark, and the library says it is safe: of the
+forty-one curriculum items written so far, thirty-three end in one, and every
+one of the other eight is either a Right/Wrong statement or a "Name two flowers
+you like" — and those are caught by the `personal` rule first, which is why the
+statement rule sits directly after it and not higher.
+
+Three things had to change together before the mechanic that *is* this
+exercise could reach the class whose book prints it:
+
+- **`plan.mjs`** reads a statement as a `statement`, whose one honest
+  treatment is `true-or-not`.
+- **`catalogue.mjs`** gives `true-or-not` `recall` alongside `understanding`
+  and `reasoning`. How much a statement asks depends on the statement —
+  weighing "God was angry, and thus did not feed them" is understanding;
+  "The ravens brought bread and meat, in the morning and evening" is
+  remembering a sentence. Without `recall` the planner scored the mechanic as
+  above a six-year-old's band and gave the statements to multiple-choice.
+  Beginner is the only band this changes.
+- **the grouping cap** lets a statement group hold up to six, because a
+  printed Right/Wrong exercise is one exercise, in one box, on one page, and
+  `true-or-not` holds two to six by schema. Split across two games it stops
+  being the thing the book set.
+
+The last of those uncovered an older bug worth knowing about: the group-mate
+test compared an array to a string and so had never matched, which meant step
+2 of the planner had never grouped anything and the folding step was doing all
+of it. Fixing it changed four of the seven committed chapters' plans, every one
+of them for the better — most visibly Manna, whose five statements now plan as
+the single `true-or-not` it was actually hand-built with.
+
+## A name is an identity, not a list of attributes
+
+"What was the name of the King who never obeyed God?" matched the attributes
+pattern, because that pattern leans on the word "of" and this question has one.
+Its answer is a single word. The mechanic it landed on happened to be the one
+`identity` prefers anyway, so nothing shipped wrong — but the label is what
+decides which questions share a game, so a wrong label is a wrong game set
+waiting to happen. Naming now has a rule of its own.
+
 ## A `true-or-not` statement is three sentences that have to agree
 
 `source` is the sentence the statement was made from. `ask` is what the child

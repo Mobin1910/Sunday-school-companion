@@ -59,12 +59,27 @@ const CLASSIFIES = [
   ["What did the parents see when they found Jesus?", "scene"],
   ["What was Jesus' reply when His parents asked Him about making them anxious?", "saying"],
 
+  /* Beginner Chapter 7 — a name is an identity, not a list of attributes. */
+  ["What was the name of the King who never obeyed God?", "identity"],
+
+  /* Beginner Chapter 7 — "Mark it as Right or Wrong" is not a question set.
+     The first two are the ones that came out *confidently wrong*: both open
+     with a word the question rules claim, and both were handed a sequence. */
+  ["When Ahab was the king of Samaria, there was famine and drought.", "statement"],
+  ["When people grumbled, Moses prayed.", "statement"],
+  ["God told the prophet Elijah to go to a mountain.", "statement"],
+  ["The ravens brought bread and meat to the prophet, in the morning and evening.", "statement"],
+  ["God nourishes and cares for the creatures of nature.", "statement"],
+  ["There was no problem for the people in their journey through the desert.", "statement"],
+
   /* The rules the new ones must not have swallowed. */
   ["What did the woman do to find the lost coin?", "process"],
   ["What happened when Moses prayed?", "outcome"],
   ["Where did Jesus go?", "place"],
   ["What did prophet Elisha do to purify water?", "process"],
   ["How many coins did she have?", "quantity"],
+  /* No question mark either — and `personal` runs first, so it keeps them. */
+  ["Name two birds you like", "personal"],
 ];
 
 let failures = 0;
