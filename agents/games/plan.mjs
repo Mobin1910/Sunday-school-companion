@@ -130,7 +130,18 @@ export function classify(question) {
     is right there in it. It runs before the "which" rule now, because
     "which place" and "which city" are places first and sets second.
   */
-  if (has("where", "which place", "what place", "which city", "which town", "which country")) {
+  /*
+    "In which pool did Jesus say to go and wash?" is Beginner Chapter 9's
+    fifth question, and it fell past this rule to `saying` — because it
+    contains "did Jesus say" and nothing here knew that a pool is a place.
+    Naming the kinds of place the books actually ask about is narrower than a
+    bare "in which", which would steal "in which year" from the `time` rule
+    two blocks below.
+  */
+  if (
+    has("where", "which place", "what place", "which city", "which town", "which country") ||
+    /\bin which (pool|river|lake|sea|well|spring|town|city|village|land|country|house|garden|temple|mountain|place)\b/.test(q)
+  ) {
     return { asks: "place", skill: "recall" };
   }
 
@@ -203,7 +214,22 @@ export function classify(question) {
     apart and put back together. It runs before the `what did` rule because
     "what did he say" would otherwise be read as a procedure.
   */
-  if (has("reply", "replied", "answered", "did he say", "did she say", "did they say", "did jesus say")) {
+  /*
+    Words somebody said — including the words of a question.
+
+    Beginner Chapter 9 asks three of these in a row and two of them missed.
+    "What did the disciples ask Jesus when they saw the blind man?" went to
+    `scene`, because the perception rule below reads the word "saw" and this
+    one did not know that asking is speech; the answer is the sentence the
+    disciples spoke, not the sight they saw. "What was Jesus' answer to them?"
+    reached no rule at all and came out `unsure` — "answered" was here, the
+    noun "answer" was not.
+  */
+  if (
+    has("reply", "replied", "answered", "answer to", "answer was",
+        "did he say", "did she say", "did they say", "did jesus say") ||
+    /what did .*\bask/.test(q)
+  ) {
     return { asks: "saying", skill: "recall" };
   }
 
@@ -252,6 +278,14 @@ export function classify(question) {
   */
   if (has("how do we", "how can we", "how should we", "in what ways")) {
     return { asks: "ways", skill: "understanding" };
+  }
+  /*
+    What a word means. Beginner Chapter 9 asks for the meaning of "Siloam",
+    which is not a person, a place, a process or a list — it is a definition,
+    and what it wants back is one word. Nothing in this table could read it.
+  */
+  if (has("the meaning of", "what does the word", "what is meant by")) {
+    return { asks: "meaning", skill: "recall" };
   }
   if (has("how many", "how much")) return { asks: "quantity", skill: "recall" };
   if (has("what can we learn", "what do we learn")) {
@@ -307,6 +341,11 @@ const PREFERENCE = {
     a word rather than a verdict.
   */
   blank: ["multiple-choice", "match"],
+  /*
+    A definition wants one word back, the same as a blank does — so the same
+    two mechanics, and for the same reason.
+  */
+  meaning: ["multiple-choice", "match"],
   unsure: ["multiple-choice"],
 };
 

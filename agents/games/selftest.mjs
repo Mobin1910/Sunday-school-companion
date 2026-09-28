@@ -59,6 +59,14 @@ const CLASSIFIES = [
   ["What did the parents see when they found Jesus?", "scene"],
   ["What was Jesus' reply when His parents asked Him about making them anxious?", "saying"],
 
+  /* Beginner Chapter 9 — asking is speech; a pool is a place; a definition
+     is neither. Two of these came out `scene` and `saying`, one `unsure`. */
+  ["What did the disciples ask Jesus when they saw the blind man?", "saying"],
+  ["What was Jesus' answer to them?", "saying"],
+  ["In which pool did Jesus say to go and wash?", "place"],
+  ["What is the meaning of the word 'Siloam'?", "meaning"],
+  ["What did he say to those who asked about his vision?", "saying"],
+
   /* Beginner Chapter 8 — a blank is a question, not a Right/Wrong statement.
      It has no question mark, so the statement rule had claimed it. */
   ["The ark had __________ storeys.", "blank"],

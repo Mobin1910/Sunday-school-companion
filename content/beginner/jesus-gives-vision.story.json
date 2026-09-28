@@ -1,0 +1,398 @@
+{
+  "class": "beginner",
+  "chapter": 9,
+  "title": "Jesus Gives Vision",
+  "reference": "St. John 9:1-12",
+  "note": "Beginner, Chapter 9, from the Mar Thoma Sunday School Samajam Beginners Vol-1, pages 43–46. The man born blind, told as a chapter about what to do with a question you cannot answer.\n\n**The first chapter in this library built against its curriculum and its artwork at the same time.** Every one before it got its games written from text and then rebuilt when the art arrived; this one was planned once, with both in hand, which is why no game here had to be re-cut.\n\nMemory verse and five-stage practice from the Memory Verse agent; see the verse note.\n\nGames from the Game Builder agent (`npm run agent:games -- --class beginner --chapter 09 --plan`). Its first run mis-read four of the seven questions, which is the worst run the classifier has had and the most it has been taught in one chapter: asking is speech (“What did the disciples ask Jesus when they saw the blind man?” went to `scene`, because the perception rule reads the word “saw”); the noun “answer” is speech too (“What was Jesus’ answer to them?” reached no rule at all); a pool is a place (“In which pool did Jesus say to go and wash?” went to `saying`, because it contains “did Jesus say”); and a definition is none of those (“What is the meaning of the word ‘Siloam’?” had no category). The second run planned what ships.\n\nOne mechanic was changed by hand, and the reason is in that game’s note.\n\nArtwork downloaded from Drive (Beginner / Chapter 09 / 04 - Story Artwork) and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Fifteen files — both covers and panels 1 to 13, contiguous, no duplicates, every panel exactly 941×1672. Only the portrait cover is off-canvas, at 982×1602, which is the second chapter running; see the cover note.\n\nThe book’s “Colour the picture” page sets a pencil task, which has no game here.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Chapter 9’s own cover, drawn twice. The portrait is Jesus laying the mud across the blind man’s eyes at the edge of the pool, the disciples behind and Jerusalem’s gate beyond, with “JESUS GIVES VISION” and “09” painted onto a green label across the top — so the story reader lays no text over it. The landscape is the moment after, framed wide and with no lettering: the man looking up into Jesus’ face with both hands raised, the pool running away to the right. Same chapter, same hand.\n\n**The portrait is 982×1602 again**, as Chapter 8’s was — so that is the artist’s canvas now rather than a one-off, and worth saying plainly. It costs nothing: the story reader draws a cover with `object-contain`, so the whole painting shows and the page pads it top and bottom with the ground colour. The library’s own canvas is 941×1672 and every panel here is on it; if the covers are ever redrawn, that is the size."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "alt": "A boy sits cross-legged on a patterned rug with a big book open in front of him, the evening sun through the window behind. A thought cloud above shows a man in ragged clothes sitting against a stone wall with a staff. Halo glows beside him. The caption reads, “Sometimes we wonder why difficult things happen to people.” The boy asks, “Why do some people have to suffer, Halo?” and Halo answers, “Let’s discover what Jesus teaches us about that.”",
+      "note": "The chapter does not open on the road to Jerusalem. The artwork frames the lesson with a boy asking why people suffer — panels 1 and 2 — goes into the story through the book in his lap, tells it through panel 11, and comes back to the same room in panels 12 and 13, where he answers his own question. Eighth chapter in this library to arrive with a present-day frame.\n\n**The frame asks the lesson’s own closing question.** p.44 ends “Children, sometimes we may ask, ‘why did God give me this suffering?’ But remember God has some Objectives for it.” The artist put that question in the boy’s mouth on page one and let the story answer it, which is a better shape than the book’s own — the book asks it at the end, when the lesson is over.\n\nThe narration and the speech are lettered into the art, so no card carries `text` and every alt quotes the words painted on its own panel."
+    },
+    {
+      "picture": "panel-02",
+      "alt": "The book open on the rug and glowing, and the scene inside it fills the page: Jesus in a red mantle and His disciples walking a stony road up towards the walls and gate of Jerusalem. The boy watches over the top of the page. The caption reads, “Long ago, Jesus and His disciples were travelling to Jerusalem.” Halo says, “Come, let’s see what happened,” and the boy asks, “What happened to the man?”"
+    },
+    {
+      "picture": "panel-03",
+      "alt": "A man in worn clothes sits against a sunlit wall with a wooden staff and a clay bowl beside him, his face turned up and his eyes unfocused. Jesus comes along the street with His disciples, one of them pointing. The caption reads, “On the way, Jesus and His disciples met a man who had been blind since birth.” A disciple says, “Look, Teacher. There is a blind man.”"
+    },
+    {
+      "picture": "panel-04",
+      "alt": "The disciples gathered close around Jesus, one with his hand out, asking. The blind man sits on the steps behind them with his staff. The caption reads, “The disciples wondered why the man had been born blind.” The disciple asks, “Teacher, why was this man born without sight?”"
+    },
+    {
+      "picture": "panel-05",
+      "alt": "Jesus answering, both hands open, the disciples listening around Him and the blind man still on the steps behind. The caption reads, “Jesus told them that the man’s blindness was not because he or his parents had sinned.” Jesus says, “No one has sinned. But now you will know how God gives him vision.”"
+    },
+    {
+      "picture": "panel-06",
+      "alt": "Jesus kneeling on the ground, both hands in the dust, making mud. The man sits beside Him holding his staff, head turned towards the sound; three disciples watch from behind. The caption reads, “Then Jesus spat on the ground. He made mud with His hands.” The man asks, “What are You doing, Lord?”"
+    },
+    {
+      "picture": "panel-07",
+      "alt": "Jesus with both hands at the man’s face, laying the mud across his eyes. The disciples stand behind. The caption reads, “Jesus rubbed the mud on both of the man’s eyes.” Jesus says, “Now go and wash your face in the Pool of Siloam,” and the man answers, “Yes, Lord. I will go.”"
+    },
+    {
+      "picture": "panel-08",
+      "alt": "Seen from behind: the man walks down a stone alley with his staff, one hand on the wall, towards a wide green pool with steps down into it and people sitting at its edge. The caption reads, “The man went to the Pool of Siloam and washed his face.” He thinks, “I will trust Jesus.”"
+    },
+    {
+      "picture": "panel-09",
+      "alt": "At the water’s edge, the man kneeling with water running off his face and hands at his open eyes, laughing. People on the steps behind point at him. The caption reads, “When he washed the mud away, he could see!” He cries, “I can see! I can see!” and a woman behind says, “He can see!”"
+    },
+    {
+      "picture": "panel-10",
+      "alt": "The man kneeling in front of Jesus with his hands held in both of Jesus’, looking up at Him; the disciples smiling around them. The caption reads, “The man came back to Jesus and thanked Him. He knelt down before Jesus.” The man says, “Thank You, Jesus!”"
+    },
+    {
+      "picture": "panel-11",
+      "alt": "Jesus standing among the seated disciples with His hands open, the healed man sitting beside them with his hand raised. The caption reads, “Jesus then asked His disciples if they were convinced that God can heal anyone.” Jesus asks, “Are you now convinced that God can heal anyone?”"
+    },
+    {
+      "picture": "panel-12",
+      "alt": "Back in the room, the boy sitting with the open Bible in his lap, chin on his hands, looking up at Halo; a cross on the bookshelf behind and a star-printed curtain at the window. The caption reads, “Sometimes we may not understand why difficult things happen.” The boy asks, “So even when I don’t understand, I can trust God?” and Halo answers, “Yes. God can bring light into our darkness.”",
+      "note": "Halo’s answer here is this chapter’s memory verse in a six-year-old’s words. Psalm 18:28(b) is “My God turns my darkness into light”, and the artist has landed on it without quoting it, which is why this is the verse’s picture."
+    },
+    {
+      "picture": "panel-13",
+      "alt": "The boy sitting with his eyes closed and a wide smile, hugging a brown Bible with a gold cross to his chest; Halo beside him with its eyes closed too. The caption reads, “When I don’t understand everything, I can still trust God.” The boy says, “I will trust God and follow His light.”"
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 09 “JESUS GIVES VISION”, p.45 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the four curriculum photographs in Drive’s “01 - Curriculum Source”, read at full size after rotating them upright. All four pages are complete and there are no teacher’s pen marks anywhere in this chapter, so every `answer` below is quoted from the printed lesson on p.44 rather than from an answer key.\n\n**Seven questions — the most any Beginner chapter has had — and the last two run past the end of the lesson.** p.44 stops when the healed man kneels to thank Jesus. Question 6 asks what ‘Siloam’ means and the lesson never says; question 7 asks what he said to those who asked about his vision, and the lesson has no such scene. Both are in the chapter’s own Bible Portion, St. John 9:1-12 — the meaning is in verse 7 and the neighbours’ questions are verses 8 to 12 — but they are not in the words a child reads. Each is answered here as “Not stated in the lesson”, and each game says in its note where its answer comes from. Beginner Chapter 5 is where this library first met a question its lesson does not answer.\n\nThe artwork tells the same story and stops in the same place, which is corroboration rather than coincidence: panel 11 is Jesus asking the disciples whether they are convinced, and there is no panel of anyone asking the man about his sight.\n\np.45 also sets “Colour the picture” — the man with his hands at his eyes — which is a pencil task for the class and has no game here.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where were Jesus and the disciples going?",
+        "objective": "Name Jerusalem as where they were travelling.",
+        "answer": "Jerusalem. “Once Jesus and his disciples were travelling to Jerusalem.” (p.44)"
+      },
+      {
+        "n": 2,
+        "question": "What did the disciples ask Jesus when they saw the blind man?",
+        "objective": "Recall the disciples’ own question — why was this man born without sight?",
+        "answer": "“Teacher, why was this man born without sight?” (p.44)"
+      },
+      {
+        "n": 3,
+        "question": "What was Jesus’ answer to them?",
+        "objective": "Recall Jesus’ answer — no one has sinned, and now they will see how God gives him vision.",
+        "answer": "“No one has sinned. But now you will know how God gives him vision.” (p.44)"
+      },
+      {
+        "n": 4,
+        "question": "How did Jesus heal him?",
+        "objective": "Hold the whole of what Jesus did, in order: made mud from the ground, rubbed it on both eyes, sent him to wash, and he could see.",
+        "answer": "“Jesus spat on ground. Then He took that mud, kneaded it in His hands and rubbed it on both the eyes of the blind man… ‘Now go and wash your face in the Pool of Siloam.’ So, the man went and washed his face… He began to see with his own eyes.” (p.44)"
+      },
+      {
+        "n": 5,
+        "question": "In which pool did Jesus say to go and wash?",
+        "objective": "Name the Pool of Siloam.",
+        "answer": "The Pool of Siloam. “Now go and wash your face in the Pool of Siloam.” (p.44)"
+      },
+      {
+        "n": 6,
+        "question": "What is the meaning of the word ‘Siloam’?",
+        "objective": "The lesson never says. See the note.",
+        "answer": "Not stated in the lesson. See the note.",
+        "note": "p.44 names the Pool of Siloam twice and never translates it. The meaning is in this chapter’s own Bible Portion — St. John 9:7 glosses it “Sent” — and that is where the game takes it from, said so in the game’s note. Not dressed up as something the lesson says."
+      },
+      {
+        "n": 7,
+        "question": "What did he say to those who asked about his vision?",
+        "objective": "The lesson never says. See the note.",
+        "answer": "Not stated in the lesson. See the note.",
+        "note": "The lesson has no scene of anyone asking him. It ends with him kneeling before Jesus to thank Him; the neighbours’ questions are St. John 9:8-12, inside the Bible Portion but outside the words a child reads. The artwork stops in the same place. The game asks the one thing his answer there turns on — who he said had healed him — and its note says where that comes from."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "where-they-went",
+      "title": "Where They Went",
+      "objective": "Name both places the lesson puts in this story — the city they were walking to, and the pool Jesus sent the man to.",
+      "answers": [
+        1,
+        5
+      ],
+      "picture": "panel-03",
+      "note": "Questions 1 and 5. Two places, so two asks in one game — the shape Manna’s “Who Did God Provide For?” and Chapter 7’s “Where Elijah Went” both use.\n\nEvery wrong option is somewhere else a child meets in this book rather than somewhere else in the Bible: Bethlehem and Nazareth are Primary Chapter 1’s two ends, and Jordan and Kerith are the water in Beginner Chapters 5 and 7.\n\nShelf picture: panel 3, meeting the man on the road. Panels 2, 7 and 8 all letter one of this game’s two answers — “travelling to Jerusalem”, “the Pool of Siloam” twice over — so none of them can be the card.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where were Jesus and the disciples going?",
+          "hint": "It is a big city.",
+          "options": [
+            {
+              "label": "Jerusalem",
+              "correct": true
+            },
+            {
+              "label": "Bethlehem"
+            },
+            {
+              "label": "Nazareth"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did Jesus send him to wash?",
+          "hint": "Jesus named the pool.",
+          "options": [
+            {
+              "label": "The Pool of Siloam",
+              "correct": true
+            },
+            {
+              "label": "The river Jordan"
+            },
+            {
+              "label": "The brook of Kerith"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-they-said",
+      "title": "What They Said",
+      "objective": "Hold both halves of the conversation: what the disciples asked about the man, and what Jesus answered them.",
+      "answers": [
+        2,
+        3
+      ],
+      "picture": "panel-11",
+      "note": "Questions 2 and 3. A match rather than two quizzes, because the two answers are one exchange — a question and the reply to it — and pairing them keeps them the way p.44 has them.\n\nTwo pairs, where most of this library’s matches have three. The only other speech in the lesson is the man’s thanks, and putting that here would make the game a list of quotations instead of one conversation.\n\nBoth halves are shortened to fit a six-year-old’s line, and both keep the lesson’s own words: “why was this man born without sight?” and “No one has sinned.”\n\nShelf picture: panel 11, Jesus asking the disciples a question of His own. It is speech, which is what this game is about, and it is the one speaking panel that letters neither of the two answers — panels 4 and 5 letter one each.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Who said it?",
+          "hint": "One asked, and one answered.",
+          "pairs": [
+            {
+              "from": {
+                "label": "The disciples asked"
+              },
+              "to": {
+                "label": "Why was he born blind?"
+              }
+            },
+            {
+              "from": {
+                "label": "Jesus answered"
+              },
+              "to": {
+                "label": "No one has sinned"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how-jesus-healed-him",
+      "title": "How Jesus Healed Him",
+      "objective": "Hold the whole of the healing in the order the lesson gives it — the mud, the eyes, the washing, the seeing — and meet what the pool’s name means.",
+      "answers": [
+        4,
+        6
+      ],
+      "picture": "panel-10",
+      "note": "Question 4, and question 6 after it.\n\n**The sequence is played on the artwork.** The lesson gives the healing as four things in a row and the chapter draws one panel for each of them: Jesus making mud on the ground, the mud going onto the man’s eyes, the walk down to the pool, and the moment he can see. Nothing had to be re-cut to fit.\n\nQuestion 6 sits here because its word is in step 3. **The lesson never says what ‘Siloam’ means** — it names the pool twice and translates it nowhere. “Sent” comes from this chapter’s own Bible Portion, St. John 9:7, and is offered as a thing the teacher supplies rather than a fact this page claims. The two wrong options are the two things a child might reasonably guess from the story itself, which is what makes it a question rather than a trick.\n\nShelf picture: panel 10, the man kneeling to thank Jesus. It is after the healing and shows none of its order; panels 6 to 9 are the four steps themselves.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the healing in order.",
+          "hint": "It begins on the ground.",
+          "items": [
+            {
+              "picture": "panel-06",
+              "label": "Jesus made mud",
+              "position": 1
+            },
+            {
+              "picture": "panel-07",
+              "label": "Mud on the man’s eyes",
+              "position": 2
+            },
+            {
+              "picture": "panel-08",
+              "label": "He washed in the pool",
+              "position": 3
+            },
+            {
+              "picture": "panel-09",
+              "label": "He could see!",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What does the word Siloam mean?",
+          "hint": "It is what Jesus did to the man.",
+          "options": [
+            {
+              "label": "Sent",
+              "correct": true
+            },
+            {
+              "label": "Water"
+            },
+            {
+              "label": "Light"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "who-healed-him",
+      "title": "Who Healed Him",
+      "objective": "Know who the man himself said had given him his sight — not the water he washed in, but Jesus who sent him to it.",
+      "answers": [
+        7
+      ],
+      "picture": "panel-13",
+      "note": "Question 7, and **the lesson never answers it.** p.44 ends with the man kneeling before Jesus to thank Him; there is no scene of anyone asking him about his sight. That is St. John 9:8-12, inside this chapter’s Bible Portion but outside the words a child reads, and the artwork stops in the same place.\n\nSo the game asks the one thing his answer there turns on, and the one thing the lesson itself does make plain: it was Jesus who healed him. “The man they call Jesus made some mud… I went and washed, and then I could see” is St. John 9:11, and that is where this comes from.\n\n“The pool water” is the wrong option worth having. A child who has just watched him wash and come up seeing might well land on it, and the whole point of the chapter is that it was not the water.\n\nShelf picture: panel 13, the boy holding his Bible at the end. Panel 10 is the thanking and belongs to the game before this one.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who did he say healed him?",
+          "hint": "Not the water he washed in.",
+          "options": [
+            {
+              "label": "Jesus",
+              "correct": true
+            },
+            {
+              "label": "The pool water"
+            },
+            {
+              "label": "The disciples"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "My God turns my darkness into light",
+    "reference": "Psalm 18:28(b)",
+    "translation": "PLACEHOLDER",
+    "picture": "panel-12",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What does my God turn my darkness into?",
+        "hint": "The blind man saw it at the pool.",
+        "options": [
+          {
+            "label": "Light",
+            "correct": true
+          },
+          {
+            "label": "Water"
+          },
+          {
+            "label": "Mud"
+          }
+        ],
+        "note": "Stage 1, recognition. Both wrong options are from this chapter’s own lesson — the pool he washed in and the mud on his eyes — rather than invented scripture."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with whose God He is.",
+        "words": [
+          "My God turns",
+          "my darkness",
+          "into light"
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks for seven words, cut where the line turns. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "My ______ turns my darkness into light",
+        "hint": "The missing word starts with “g”.",
+        "options": [
+          {
+            "label": "God",
+            "correct": true
+          },
+          {
+            "label": "turns"
+          },
+          {
+            "label": "light"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner rung and used exactly as it came out — prompt, hint and all three options unedited."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Start with whose God He is.",
+        "words": [
+          "My",
+          "God",
+          "turns",
+          "my darkness",
+          "into light"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 18",
+            "correct": true
+          },
+          {
+            "label": "St. John 9"
+          },
+          {
+            "label": "Psalm 27"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. “St. John 9” is this chapter’s own Bible Portion, printed on p.43; “Psalm 27” is Chapter 8’s memory verse. Both are references a child working through this book has actually met."
+      }
+    ],
+    "note": "Read from p.46 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference keeps the book’s “(b)”**, marking the second half of verse 28 — the same call Chapter 7’s “Psalm 111:5 (a)” got, and for the same reason: the half is all the page gives, and normalising it would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm, which is the part a six-year-old can look up.\n\nPrinted with no full stop at the end, and none is added. Translation is unresolved: p.46 does not name one.\n\nPicture: panel 12, where Halo tells the boy “God can bring light into our darkness” — which is this verse in a six-year-old’s words, arrived at by the artist without quoting it."
+  },
+  "decision": {
+    "statement": "I dedicate myself to fulfil God’s Objectives.",
+    "note": "The curriculum’s own My Decision line from p.46, first person and unchanged — including its capital O on “Objectives”, which is how p.44 writes it too."
+  },
+  "song": {
+    "title": "Learn to sing",
+    "lines": [
+      "Yesuve nee valiyavan",
+      "Yesuve nee parisudhan",
+      "Yesuve nee Nallavan",
+      "Yesuve nee Vallabhan"
+    ],
+    "note": "Exactly the four lines p.46 prints, in its own Latin transliteration and with its own capitals. Not translated, not completed. The first Beginner chapter since Manna to print a song rather than “(Sing a suitable song)”."
+  },
+  "prayer": {
+    "text": "Lord Jesus, heal the sick among us just as you have healed the blind man by the roadside. Amen.",
+    "note": "The Concluding Prayer from p.46, word for word including the Amen. The chapter also opens with a short prayer on p.43 — “Dear God, help us to understand the miracles that Jesus did. Amen” — which is the teacher’s to pray at the start of the class."
+  },
+  "celebration": {
+    "message": "Jesus gave him light. God can bring light into your darkness.",
+    "note": "Panel 12’s own line — Halo's “God can bring light into our darkness” — turned towards the child who has just read it, and the memory verse in the same breath."
+  }
+}

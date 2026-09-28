@@ -576,6 +576,65 @@ lines above the question, which is what made it the likely completion in the
 first place, and not the question's own cut-off word. Record what the artwork
 settles and what it only corroborates, and keep them apart.
 
+## Four misreads in one chapter, and what they had in common
+
+Beginner Chapter 9 asks seven questions — the most of any chapter here — and
+the classifier got four of them wrong on the first run. It is the worst run it
+has had and the most it has been taught at once:
+
+| question | came out | should be |
+|---|---|---|
+| "What did the disciples **ask** Jesus when they **saw** the blind man?" | `scene` | `saying` |
+| "What was Jesus' **answer** to them?" | `unsure` | `saying` |
+| "**In which pool** did Jesus **say** to go and wash?" | `saying` | `place` |
+| "What is the **meaning of** the word 'Siloam'?" | `unsure` | `meaning` |
+
+Three of the four are the same mistake: **a rule fired on a word that was not
+what the question was about.** "saw" is in the second question but the answer
+is the sentence the disciples spoke, not the sight they saw. "did Jesus say"
+is in the fifth but the answer is a pool. The `saying` rule knew the verb
+"answered" and not the noun "answer", and nothing at all knew what a
+definition was.
+
+The fix in each case was a narrower test in the right place rather than a
+broader one anywhere: asking is speech, so `/what did .*\bask/` joins the
+`saying` triggers, which already run before the perception rule; a pool is a
+place, so the `place` rule names the kinds of place the books actually ask
+about, which is safer than a bare "in which" that would steal "in which year"
+from `time`; and `meaning` is a category of its own, because a definition
+wants one word back and nothing else in the table does.
+
+That is now three chapters running where a rule written against one book's
+exercise met a shape that book did not have — Right/Wrong statements, then a
+fill-in-the-blank, now these. The pattern is stable enough to plan for: **each
+new chapter should be assumed to contain at least one question shape the
+classifier has never seen,** and the first plan should be read with that in
+mind rather than trusted.
+
+## A question its lesson does not answer
+
+Beginner Chapter 5 asks what salt is like and never says. Chapter 9 does it
+twice: what 'Siloam' means, and what the healed man told the people who asked
+about his sight. Its lesson stops when he kneels to thank Jesus — the
+neighbours' questions are St. John 9:8-12, inside the chapter's own Bible
+Portion but outside the words a child reads. The artwork stops in the same
+place, which is corroboration rather than coincidence.
+
+The coverage gate makes an uncovered question a *problem*, so these cannot
+simply be dropped. What the chapter does instead, and what Chapter 5 did
+first:
+
+- the curriculum block answers it "Not stated in the lesson. See the note";
+- the note says where the answer does come from, and that it is a thing a
+  teacher supplies rather than a claim this page makes;
+- the game asks the nearest thing the lesson *does* make plain. For "what did
+  he say to those who asked", that is who he said had healed him — which is
+  the point of the whole chapter, and has "the pool water" as the wrong option
+  worth having.
+
+Report, do not guess, and do not quietly widen the lesson to cover the
+question.
+
 ## A blank is a question, and it is the one that looks like a statement
 
 The rule below says a curriculum item with no question mark is a statement to
