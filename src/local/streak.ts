@@ -113,10 +113,37 @@ export function streakUnder(key: Key): Streak {
 export type StreakName = "games" | "verse";
 
 /*
-  Built per call rather than from a fixed table, because the key now carries
+  Built on demand rather than from a fixed table, because the key now carries
   a class and there is no table of every class-and-kind pair worth keeping.
   A `Streak` is three closures over a string; making one is free.
+
+  Built *once* per key, though, and that part is not an optimisation.
+
+  A `Streak` holds no state of its own — it is closures over a string, and two
+  built from the same key are interchangeable in every way except identity.
+  Identity is the one thing React can see. A caller that puts one in a
+  dependency array gets a new object on every render, and an effect that reads
+  the record and stores it then re-runs on every render, sets state, and
+  renders again: a loop at about fifteen thousand renders a second, which
+  drains a child's battery and — because the App Router navigates inside a
+  transition — silently kills every link on the screen.
+
+  That is not hypothetical. It is exactly what `PracticeScreen` did on Games
+  and Memory Verse, and the symptom reported was "the bottom bar does not
+  work", four steps away from the cause and with nothing in the console.
+
+  Caching by key makes the identity stable, so the mistake cannot be made
+  again from any call site. The map is bounded by the number of streak kinds
+  times the number of classes — fourteen — and every entry is immutable.
 */
+const built = new Map<Key, Streak>();
+
 export function streakNamed(name: StreakName, classId: ClassId): Streak {
-  return streakUnder(`${name}.streak.${classId}`);
+  const key: Key = `${name}.streak.${classId}`;
+  const had = built.get(key);
+  if (had) return had;
+
+  const made = streakUnder(key);
+  built.set(key, made);
+  return made;
 }
