@@ -28,6 +28,7 @@
     "dev": "next dev",
     "site:check": "node tools/brand/check-site.mjs",
     "start": "npx serve out",
+    "test": "node --experimental-strip-types --import ./tests/resolve.mjs --test \"tests/**/*.test.ts\"",
     "typecheck": "tsc --noEmit"
   }
 }

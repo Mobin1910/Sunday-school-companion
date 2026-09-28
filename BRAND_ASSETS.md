@@ -248,3 +248,11 @@ install the app until there is a service worker with a fetch handler.**
 That is Milestone 11 in `IMPLEMENTATION_PLAN.md`, along with precaching the
 shell and chapters. No service worker exists yet and this work does not add
 one. When it lands, nothing in this document changes.
+
+The *invitation* to install does exist — see **Install Invitation** in
+`ARCHITECTURE.md`. It is live on iOS and iPadOS, where Add to Home Screen
+needs no service worker, and its Android path is written and dormant: it
+listens for `beforeinstallprompt`, which Chrome will not fire until that
+worker exists, and shows nothing rather than offering a button it cannot
+honour. The day the worker lands, Android starts working with no change to
+this document or to that feature.

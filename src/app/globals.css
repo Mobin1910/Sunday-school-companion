@@ -4185,3 +4185,271 @@ html[data-motion="reduce"] *::after {
     transition-duration: 1ms;
   }
 }
+
+/*
+  THE INSTALL INVITATION.
+
+  A sheet that rises from the bottom edge, for the one adult-facing moment this
+  product has. It borrows everything: `surface` draws it, `cta` lights its one
+  primary action, `btn-quiet` sits beside it, and the only colours here are the
+  tokens at the top of this file. Nothing below invents a palette, a radius or
+  a shadow language for this feature.
+
+  It covers the bottom of the screen and no more. What is behind it stays
+  visible on purpose — the story or the shelf a child was on is still there, so
+  the sheet reads as something offered alongside rather than a gate across.
+
+  Motion: one rise, once, and the blanket reduced-motion rule near the top of
+  this file collapses it to nothing without a word being added here. There is
+  no loop, no pulse and nothing that repeats — a sheet that keeps moving while
+  an adult reads it is the interface tapping them on the shoulder.
+*/
+.install-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  /* The sheet handles its own pointer events; the layer must not swallow the
+     screen behind it any wider than the sheet itself does. */
+  pointer-events: none;
+}
+
+/*
+  A wash over what is behind, not a blackout.
+
+  It reaches from the sheet's top edge and fades out upward, so the sheet sits
+  in its own pool of shade and the screen above stays legible. A flat 60% black
+  across everything would put the product behind a curtain to ask a question
+  about a home screen icon.
+
+  It does take pointer events, and that is not a contradiction of being able to
+  see through it. The sheet declares `aria-modal`, so a screen reader is already
+  told the rest of the page is out of reach; letting a thumb through would make
+  that a lie, and worse — a tap landing on "Continue learning" behind the scrim
+  would start a story with the sheet still open on top of it.
+
+  Taking the taps is not the same as acting on them. There is no handler here,
+  so tapping outside does nothing at all: the two answers are both buttons, and
+  a stray thumb must never be able to spend a week of quiet by accident.
+*/
+.install-scrim {
+  pointer-events: auto;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(var(--color-ground-rgb) / 0.82) 0%,
+    rgb(var(--color-ground-rgb) / 0.55) 34%,
+    rgb(var(--color-ground-rgb) / 0) 72%
+  );
+}
+
+.install-sheet {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+
+  /* The bottom corners are the screen's, so they are not rounded. */
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  padding: 0.75rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  /*
+    A little light gathered under the top edge — the same trick the lit surface
+    uses — so the sheet reads as having come forward rather than been pasted on.
+  */
+  box-shadow:
+    0 -1px 0 rgb(from var(--color-touchable) r g b / 0.18),
+    0 -18px 46px -22px rgb(from var(--color-cta-mid) r g b / 0.5),
+    0 -2px 30px rgb(6 10 26 / 0.7);
+
+  animation: install-rise 320ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes install-rise {
+  from {
+    transform: translateY(14%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* The mark that says a sheet, not a card. Decoration, and told so in the markup. */
+.install-grip {
+  width: 2.25rem;
+  height: 0.25rem;
+  margin: 0 auto 0.25rem;
+  border-radius: 999px;
+  background: var(--color-edge);
+}
+
+.install-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.install-mark {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px rgb(from var(--color-cta-mid) r g b / 0.45));
+}
+
+/*
+  Who the sheet is talking to, said before anything else.
+
+  The smallest type on the sheet and the only thing above the heading, because
+  a child glancing at it should be able to tell in one look that this is not
+  for them. Colour is not carrying it — the words say it outright.
+*/
+.install-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.install-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.install-body {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.install-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0.15rem 0 0.1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.install-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/*
+  A step's mark. Square, edged, unlit — a surface at the scale of an icon, so
+  the three steps read as a sequence of places rather than three bullets.
+*/
+.install-step-mark {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-edge);
+  border-radius: 0.65rem;
+  background: rgb(from var(--color-ground-lit) r g b / 0.6);
+  color: var(--color-ink);
+}
+
+.install-steps strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/*
+  The two answers, side by side and equally reachable.
+
+  Both are full height and both are real. The primary one is lit and the other
+  is quiet, which is hierarchy; neither is hidden, shrunk, greyed or made to
+  look like a mistake, which would be coercion. "Not now" is an answer this
+  product is happy to receive.
+*/
+.install-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.15rem;
+}
+
+.install-btn {
+  /* 48px, so a thumb on a phone is never the reason an answer went wrong. */
+  flex: 1;
+  min-height: 3rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.install-btn:disabled {
+  opacity: 0.6;
+}
+
+/*
+  The sheet takes focus when it opens so a screen reader announces the dialog,
+  its heading and its body before reaching the buttons. It is `tabindex="-1"`
+  and no keyboard user can ever land on it deliberately, so the browser's own
+  ring around the whole sheet is noise — a thick outline tracing the entire
+  panel, which reads as an error state rather than as focus.
+
+  Only the container. Every control inside it keeps a real, visible ring below,
+  which is the part a keyboard user actually needs.
+*/
+.install-sheet:focus {
+  outline: none;
+}
+
+.install-sheet :focus-visible {
+  outline: 2px solid var(--color-touchable);
+  outline-offset: 2px;
+}
+
+/*
+  The short screen. At 320×568 with the keyboard-less browser chrome of an old
+  iPhone SE there is about 460px of room, and the sheet must not become the
+  whole of it — so the type tightens rather than the sheet growing.
+*/
+@media (max-height: 600px) {
+  .install-sheet {
+    gap: 0.65rem;
+    padding-top: 0.6rem;
+  }
+
+  .install-title {
+    font-size: 1rem;
+  }
+
+  .install-body,
+  .install-steps {
+    font-size: 0.9rem;
+  }
+}
+
+/*
+  Landscape on a phone, which is where a bottom sheet is most at risk of being
+  taller than the screen. It becomes scrollable rather than clipped, and the
+  steps keep their marks.
+*/
+@media (max-height: 460px) {
+  .install-sheet {
+    max-height: 92dvh;
+    overflow-y: auto;
+  }
+}

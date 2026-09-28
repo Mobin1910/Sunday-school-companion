@@ -30,12 +30,19 @@ const PREFIX = "ssc.";
  * others — which is the whole of how progress survives a switch and back.
  *
  * `class` itself is not scoped. It is the thing doing the scoping.
+ *
+ * `pwa-install` is the one key here that is not about a child at all. It
+ * remembers whether this app has been installed on this device and whether a
+ * grown-up has already been asked, which is why it is not per-class: the home
+ * screen belongs to the device, not to a curriculum. It is still inside the
+ * namespace, so "clear everything" reaches it — see `forgetEverything`.
  */
 export type Key =
   | "child"
   | "welcomed"
   | "settings"
   | "class"
+  | "pwa-install"
   | `place.${string}`
   | `games.streak.${string}`
   | `verse.streak.${string}`;
@@ -88,6 +95,12 @@ export function forget(key: Key): void {
  * The namespace is what keeps the scan honest. Everything this product
  * writes begins `ssc.` and nothing else in `localStorage` does, so this
  * cannot reach another app's data on a shared origin.
+ *
+ * It clears the install record too, which is the one entry here that is not
+ * the child's. That is the right side to err on: the record's only lasting
+ * content is "already asked, don't ask again", and a device that forgets it
+ * will re-derive the important half — whether the app is installed — from the
+ * next launch, because an installed app says so every time it opens.
  *
  * It clears the chosen class too, and that is deliberate rather than
  * overlooked. This is the full reset behind a confirmation — it forgets the

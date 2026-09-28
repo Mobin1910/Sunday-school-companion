@@ -9,6 +9,7 @@ import {
 } from "@/brand/assets";
 import { CANONICAL_ORIGIN } from "@/brand/site";
 import Preferences from "@/components/Preferences";
+import InstallInvitation from "@/components/pwa/InstallInvitation";
 import { DOORWAY_SCRIPT } from "@/local/child";
 
 import "./globals.css";
@@ -182,6 +183,17 @@ export default function RootLayout({
 
         <Preferences />
         {children}
+
+        {/*
+          The install invitation, for a grown-up, after five minutes of the app
+          actually being used — and at most once a week if the answer is no.
+
+          Here rather than in any route because that is the whole design: it
+          renders nothing until this device has earned an invitation *and* the
+          child is on a calm screen, so no story, game or verse has a line of
+          code about it. See `src/pwa/`.
+        */}
+        <InstallInvitation />
       </body>
     </html>
   );

@@ -397,6 +397,7 @@ Everything the product remembers lives in `src/local/`, under the `ssc.` namespa
 | `ssc.place` | `{ v, slug, section, page, pages, done, at }` |
 | `ssc.games.streak` | `{ best, todayBest, day }` |
 | `ssc.verse.streak` | the same shape, and never the same store |
+| `ssc.pwa-install` | `{ v, status, activeUseMs, lastPromptShownAt, lastDismissedAt, dismissedUntil }` — the only entry here that is about the device rather than the child |
 
 - **Being welcomed is its own fact**, kept apart from the name. A child may reach the end without giving one, or clear their name later, and neither should mean being introduced to Halo again. It is also why this is a flag rather than a check for stored data: a returning child with nothing else saved has still been met.
 - **Which screen `/` is gets decided before the first paint.** A blocking inline script (`DOORWAY_SCRIPT`) reads the flag and sets an attribute; the stylesheet hides the other branch. Both are in the prerendered HTML, and React drops the unwanted one once it knows. With no JavaScript at all, nothing is hidden and Home is what shows — the right fallback, because the welcome is lovely and the stories are the point.
@@ -406,6 +407,122 @@ Everything the product remembers lives in `src/local/`, under the `ssc.` namespa
 - All reads and writes are wrapped in try/catch — localStorage throws in private mode and can be evicted on iOS. A storage failure degrades the experience, never breaks it: every screen is written so that *this device has no memory* is an ordinary state.
 - Stored data outlives the code that wrote it, so nothing downstream assumes it is well-formed. Each reader is handed the raw value and must repair it or return the fallback.
 - **Content is never locked behind progress.** Losing progress is disappointing, never devastating — which is what makes localStorage sufficient.
+
+---
+
+# Install Invitation
+
+The product has one adult-facing moment, and the constitution is specific about it: *"The parent is not a user. The parent is the door"*, and what the door gets is *"an install moment written for an adult, not a child."* This is that moment. It is an invitation, never a requirement, and nothing in the product is withheld from anyone who ignores it.
+
+Everything lives in `src/pwa/`, plus one line in `layout.tsx` and one record in `src/local/install.ts`. **No route knows it exists.** The reader, the game player and the verse practice did not gain a prop, a callback or a line of state between them.
+
+## When it appears
+
+Three things must be true at once, and they are decided in three different places.
+
+| | Decided by | Rule |
+|---|---|---|
+| **Earned** | `pwa/invitation.ts` | five minutes of *active* use, no cooldown running, not installed |
+| **A calm screen** | `pwa/moment.ts` | Home, Chapters, Games, Verses, a chapter hub, or a chapter's games shelf |
+| **Settled** | `components/pwa/InstallInvitation.tsx` | that screen has been the current screen for 1.5s |
+
+Reaching five minutes almost always happens mid-story or mid-question, so eligibility waits — with no time limit. A child who never leaves the story is never asked, which is the correct outcome.
+
+`moment.ts` is an **allow-list**, and the direction is deliberate. Forgetting to add a new calm screen costs a later invitation; forgetting to add a new immersive screen to a deny-list costs an interruption mid-game. Between those, there is no contest.
+
+## Active use
+
+Not a five-minute timeout from page load, which measures how long a tab has been open — a number about the tablet rather than about anyone using it.
+
+A stretch of active use is time during which the document is visible, the window has focus, and somebody has interacted within `ACTIVE_IDLE_MS`. The clock is a single interval that exists **only** while all of that holds; it is cleared on hide and on blur, so nothing wakes in the background. Time accrues in memory and reaches storage every `PERSIST_EVERY_MS`, on `pagehide`, and immediately on crossing the threshold — never on a pointer event.
+
+Two guards, for two different lies a clock can tell: the idle rule handles a person who has stopped, and a per-tick ceiling handles a machine that was asleep and fires one tick carrying hours.
+
+The arithmetic is pure (`pwa/activeUse.ts`); the browser events that drive it are in `pwa/manager.ts`. That split is why "hidden time does not count" is a test rather than a hope.
+
+## Not every five minutes
+
+Five minutes is the **first** eligibility point, not a recurring alarm. On "Not now":
+
+- `lastDismissedAt` is stamped and `dismissedUntil` is set a week out (`INSTALL_PROMPT_DISMISS_COOLDOWN_MS`).
+- `activeUseMs` goes back to **zero**.
+- Nothing else changes — not the installation status, not progress, not a streak.
+
+That reset is the line that makes this a cooldown rather than a snooze. Without it the counter would sit at the threshold all week and the invitation would reappear in the first second after the cooldown lapsed. The clock is also switched off entirely during a cooldown, so the week banks nothing: after it lapses, another five active minutes must be earned. Declining the browser's own native prompt takes the same path — refusing in Chrome's dialog rather than in ours is the same answer.
+
+## Installation state
+
+`unknown` · `not-installed` · `installed`, and the first one earns its place: a browser too old to answer must not be read as having said "not installed", because that is the answer that leads to asking.
+
+Detected on every startup, from several signals because no single one is available everywhere:
+
+- `matchMedia` on `display-mode`, checking **`standalone`, `fullscreen` and `minimal-ui`** — Android hands back `minimal-ui` when the app was installed from the browser menu, so checking only `standalone` keeps inviting an installed app to install itself.
+- `navigator.standalone`, Apple's own signal and the only reliable one on iOS.
+- `appinstalled`, taken when it arrives but never depended upon — several platforms never fire it.
+
+The record is **sticky at `installed`**: an installed app opened in a browser tab truthfully reports `not-installed` about *that launch*, and letting it overwrite the record would invite a grown-up to install what is already on the home screen. The cost is that uninstalling is invisible here, and that is the right way round — the failure mode is "never asked again", not "asked forever".
+
+**Dismissal is never read as installation.** Neither is having visited, or having played anything.
+
+## Android and Chromium
+
+`beforeinstallprompt` is captured at **module evaluation**, not in a React effect: the event is not replayed, so a listener that only exists once a component has mounted is a listener that can miss it. `preventDefault()` suppresses the browser's mini-infobar so the offer is made at a moment this product chose. The event is held **in memory only** — it is a live object with a promise on it, and nothing derived from it is ever stored.
+
+`requestInstall()` opens it, awaits `userChoice`, and drops the event either way, because it is single-use. Accepted marks installed; dismissed starts the cooldown.
+
+> **Today this path is dormant.** Chrome will not fire `beforeinstallprompt` until the app has a service worker with a fetch handler, and there is not one yet — see *Offline Strategy* and Milestone 11. Until then Android falls into the case below and is shown nothing. The code is correct and lights up on its own the day the worker lands; nothing here changes.
+
+## iOS and iPadOS
+
+No `beforeinstallprompt` has ever existed here, but Add to Home Screen is real and documented, so instructions are the honest offer. Two stages: the invitation, then **Show me how** → Share, Add to Home Screen, Add, with a Back and a Close.
+
+The steps name what to look for rather than where it is. The Share button has moved between iOS versions and sits in different corners on iPhone and iPad, and a sheet that says "bottom of the screen" is wrong on an iPad and wrong again next September.
+
+iPadOS is why `pwa/platform.ts` exists at all: since iPadOS 13 Safari reports itself as a Mac, so `userAgent.includes("iPad")` alone would send every modern iPad down the silent path — on the one platform where the instructions *are* the feature. The tell is `navigator.platform === "MacIntel"` **plus** `maxTouchPoints > 1`.
+
+## Anything else
+
+Every other browser with no native prompt is **shown nothing**. The app never promises an installation action it cannot actually trigger, and never invents instructions for a menu it has not seen — a grown-up who follows made-up steps and finds nothing learns that this app does not know what it is talking about.
+
+## Failing safely
+
+- No storage at all: the feature works for the sitting and simply cannot remember afterwards. Nothing throws.
+- Malformed or hand-edited storage: every field is repaired or discarded. `NaN` is the one worth naming — `NaN < threshold` is false, so an unchecked one would mean the invitation never appears again and nothing would look broken.
+- A second tab: a `storage` listener picks up an answer given elsewhere, so nobody is asked twice. Only the visible tab accrues time.
+- No `window` at all (prerender): the server snapshot is always quiet, so no install sheet is ever baked into exported HTML.
+
+## Configuration
+
+All of it in `src/pwa/config.ts`, and nowhere else:
+
+| | Default | |
+|---|---|---|
+| `INSTALL_PROMPT_ACTIVE_MS` | 5 min | what earns the invitation |
+| `INSTALL_PROMPT_DISMISS_COOLDOWN_MS` | 7 days | what "Not now" buys |
+| `ACTIVE_TICK_MS` | 5s | how often active time accrues |
+| `ACTIVE_IDLE_MS` | 90s | how long after a tap the app still counts as in use |
+| `PERSIST_EVERY_MS` | 30s | how often accrued time is written down |
+| `SETTLE_MS` | 1.5s | how long a calm screen stays calm first |
+
+## Testing it locally
+
+`npm test` covers the rules, the arithmetic, the platform probe and the manager driven through a fake browser. To see the sheet without waiting five minutes, seed the record **before the page loads** — a live page owns its record and settles it on `pagehide`, so writing it into a running tab is overwritten:
+
+```js
+// devtools console, then reload
+localStorage.setItem("ssc.pwa-install", JSON.stringify({
+  v: 1, status: "not-installed", activeUseMs: 5 * 60 * 1000,
+  lastPromptShownAt: null, lastDismissedAt: null, dismissedUntil: null,
+}));
+```
+
+Then navigate to Home, Chapters, or a chapter hub and wait 1.5s. `localStorage.removeItem("ssc.pwa-install")` resets everything, including a cooldown.
+
+Safari on iOS is the one path that cannot be fully checked on a desktop: `navigator.standalone` and a real Add to Home Screen need the device.
+
+## What it deliberately does not do
+
+No analytics, no telemetry, no count of refusals, no escalation, no shorter second cooldown, no device model, no session count, no backend, and no third-party package. The record holds six fields and every one of them is needed for the arithmetic above.
 
 ---
 
@@ -423,6 +540,7 @@ A chapter with a video is not a chapter that needs the internet. The player is *
 
 # Testing
 
+- `npm test` — the unit suites in `tests/`, run by Node's own test runner with its own type stripping. No test framework is installed and none is needed; the agent self-tests in `agents/` make the same bargain. `tests/resolve.mjs` teaches Node the `@/` alias and the missing file extensions so the app's modules can be imported unchanged.
 - Schema validation runs on every content change.
 - One smoke test per card type.
 - Interaction engines have unit coverage for their state machines.

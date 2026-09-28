@@ -278,7 +278,7 @@ It delivers the information architecture in the constitution: the four global de
 
 **Deliverables**
 - Service worker: shell and current chapter precached, played chapters cached on visit.
-- Manifest, icons, install prompt aimed at the adult.
+- ~~Manifest, icons, install prompt aimed at the adult.~~ **Done ahead of this milestone.** The manifest and icons shipped with the brand work; the install invitation shipped separately and is described under *Install Invitation* in `ARCHITECTURE.md`. It is live on iOS and iPadOS. Its Android path is written and waiting on the service worker below — Chrome does not fire `beforeinstallprompt` without one — and until then it shows Android nothing rather than a button it cannot honour. **Adding the worker is what switches Android on; no change to that feature is needed.**
 - Offline state for an uncached chapter — a character and a way back, never an error.
 
 **Acceptance criteria**
