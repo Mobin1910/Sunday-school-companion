@@ -403,6 +403,13 @@
     ],
     "note": "Read from page 30 through the Memory Verse agent: `--fetch --source-dir` over the three curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited. Printed with its comma after “green grass,” and its full stop after “fresh water.”, both kept. Translation is unresolved: page 30 does not name one, which is where the other four Beginner chapters stand."
   },
+  "video": {
+    "youtubeId": "iLAFoEPRQls",
+    "title": "Prophet Elisha Cleanses the Water",
+    "description": "Watch the story told.",
+    "picture": "panel-07",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children’s app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch, so opening this chapter contacts YouTube not at all.\n\nPicture: panel 7, Elisha carrying the bowl of salt down the stony path towards the water with the people following — the chapter’s own artwork rather than a YouTube thumbnail, which would reach a third party before the child had asked for anything. It is the walk to the spring rather than the moment at it: the poster should promise the story, not spend it, and panels 9 and 10 are both the miracle itself. They are also already carrying games 2 and 4, so this keeps the Watch screen from showing a picture a child has just met on the games shelf."
+  },
   "decision": {
     "statement": "I will keep the water clean.",
     "note": "The curriculum's own My Decision line from page 30, first person and unchanged."

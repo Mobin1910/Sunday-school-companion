@@ -360,6 +360,13 @@
     "note": "Read from p.38 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference is kept as the book prints it — “Psalm 111:5 (a)”.** The (a) marks the first half of verse 5, and the half is all the page gives; normalising it to “Psalm 111:5” would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm rather than the half, which is the part a six-year-old can look up.\n\nPrinted with a full stop and a lowercase “him”, both kept. Translation is unresolved: p.38 does not name one, which is where every chapter in this library stands.\n\nPicture: panel 6, the ravens coming down with bread and meat while Elijah holds his hands up for it — which is “He provides food for those who fear him” as a six-year-old can see it.",
     "picture": "panel-06"
   },
+  "video": {
+    "youtubeId": "L3-MtVHkboM",
+    "title": "The Prophet and Ravens",
+    "description": "Watch the story told.",
+    "picture": "panel-02",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children’s app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch, so opening this chapter contacts YouTube not at all.\n\nPicture: panel 2, the thought cloud opening above the girl’s table onto Elijah walking beside the brook with a raven on the stone behind him — the chapter’s own artwork rather than a YouTube thumbnail, which would reach a third party before the child had asked for anything.\n\nIt is the one panel in the chapter that is literally a story being opened, which is what a poster for a told story should be. The panels that show what happens — the ravens arriving, the brook run dry, the full table at the end — would spend it, and panel 6 is the verse’s picture besides. Games 1 to 4 hold panels 4, 3, 7 and 1, so this leaves the Watch screen showing something a child has not just met on the games shelf."
+  },
   "decision": {
     "statement": "I will be grateful to God who provides me with food, clothing and shelter.",
     "note": "The curriculum's own My Decision line from p.38, first person and unchanged."

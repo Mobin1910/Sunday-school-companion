@@ -373,6 +373,13 @@
     ],
     "note": "Read from p.46 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\n**The reference keeps the book’s “(b)”**, marking the second half of verse 28 — the same call Chapter 7’s “Psalm 111:5 (a)” got, and for the same reason: the half is all the page gives, and normalising it would claim the chapter teaches a whole verse it does not. Stage 5 asks for the Psalm, which is the part a six-year-old can look up.\n\nPrinted with no full stop at the end, and none is added. Translation is unresolved: p.46 does not name one.\n\nPicture: panel 12, where Halo tells the boy “God can bring light into our darkness” — which is this verse in a six-year-old’s words, arrived at by the artist without quoting it."
   },
+  "video": {
+    "youtubeId": "X4qZ2KSbdxI",
+    "title": "Jesus Gives Vision",
+    "description": "Watch the story told.",
+    "picture": "panel-02",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children’s app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch, so opening this chapter contacts YouTube not at all.\n\nPicture: panel 2, the book open and glowing on the rug with Jesus and His disciples walking the street inside it — the chapter’s own artwork rather than a YouTube thumbnail, which would reach a third party before the child had asked for anything.\n\nThe story being opened, which is what a poster for a told story should be. Every panel that shows what happens would answer something: panels 6 and 7 are the mud, which is game 3’s question; panel 8 is the pool, which is game 1’s; and panel 9 is the man seeing, which is the whole point of the video. Games 1 to 4 hold panels 3, 11, 10 and 13, and the verse holds panel 12, so this is a picture the Watch screen shares with nothing."
+  },
   "decision": {
     "statement": "I dedicate myself to fulfil God’s Objectives.",
     "note": "The curriculum’s own My Decision line from p.46, first person and unchanged — including its capital O on “Objectives”, which is how p.44 writes it too."

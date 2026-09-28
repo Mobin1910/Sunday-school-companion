@@ -387,6 +387,13 @@
     ],
     "note": "Read from p.34 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is its Beginner rung, unedited.\n\nPrinted with a semicolon after “God” and — deliberately kept — **no full stop at the end**. The page ends the line at “hands” with no punctuation, so neither does this. Translation is unresolved: p.34 does not name one, which is where every chapter in this library stands.\n\nPicture: panel 1, the boy looking up into a sky full of cloud and light under the words “What do you see in the sky?” — which is this verse in a sentence a six-year-old already has."
   },
+  "video": {
+    "youtubeId": "teu7BCZTgDs",
+    "title": "God's Handicraft",
+    "description": "Watch the story told.",
+    "picture": "panel-02",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children’s app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch, so opening this chapter contacts YouTube not at all.\n\nPicture: panel 2, the boy on his feet on the hillside pointing up at the sun with the birds crossing and the squirrel watching — the chapter’s own artwork rather than a YouTube thumbnail, which would reach a third party before the child had asked for anything.\n\nIt is the looking rather than the answer. Panel 9 is where the boy says “God created everything!” and panels 11 and 12 are the chapter’s close, so any of the three would give the lesson away on a poster. This one is the wondering that the video is about to answer. It is also the only daylight panel of the creation sequence not already carrying a game or the verse — games 1 to 4 hold panels 4, 6, 7 and 9, and the verse holds panel 1."
+  },
   "decision": {
     "statement": "I will love God's creation.",
     "note": "The curriculum’s own My Decision line from p.34, unchanged. Panel 11 says it in the artwork too."

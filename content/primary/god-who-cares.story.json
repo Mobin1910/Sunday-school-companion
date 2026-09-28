@@ -329,6 +329,13 @@
     "note": "Read from the chapter’s last page through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs, the supervised read, then `--from-extraction`. That page lives in `06 - Memory Verse` rather than in `01 - Curriculum Source`, which is why this chapter first shipped without a verse at all — the agent was pointed at the wrong folder, not at a gap.\n\nFive stages in the shape Primary Chapter 3 uses: phrase ordering, a gap with the sentence whole on both sides of it, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses. Translation is unresolved: the page does not name one, which is where every chapter in this library stands.\n\nPrinted as “Psalms 121: 7” — plural, with a space after the colon — and both are kept as printed.\n\nPicture: panel 9, the road to Nazareth under the words “God cared for them every step of the way” — which is this verse in the chapter’s own sentence.",
     "picture": "panel-09"
   },
+  "video": {
+    "youtubeId": "GLZTVMVga4M",
+    "title": "God Who Cares",
+    "description": "Watch the story told.",
+    "picture": "panel-04",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children’s app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch, so opening this chapter contacts YouTube not at all.\n\nPicture: panel 4, the stable at Bethlehem with Mary holding the child and the boy standing in the scene watching — the chapter’s own artwork rather than a YouTube thumbnail, which would reach a third party before the child had asked for anything.\n\nWhere the story starts, rather than anything it arrives at. Panel 6 is the obvious alternative and is the one panel that must not be used: the angel’s speech is lettered into it as “Get up! Take Jesus and Mary and go to Egypt”, which is word for word the answer to game 2, “Where did the angel tell Joseph to go?”. Games 1 to 4 hold panels 5, 7, 8 and 10 and the verse holds panel 9, so of the panels that show the Bible story this is the only one free — and it is also the right one, because it is the picture a child recognises before the chapter has told them anything."
+  },
   "decision": {
     "statement": "God cares for me. I will obey his words.",
     "note": "The curriculum’s own My Decision line from p.12, unchanged, including its lower-case “his”."
