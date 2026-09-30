@@ -3,80 +3,69 @@
   "chapter": 10,
   "title": "Pillar of Cloud and Fire",
   "reference": "Exodus 13:20-22",
-  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 10, read at full size after rotating them upright. The four pages are the chapter opener (p.47), the lesson (p.48), the exercises (p.49) and the close (p.50); all four are complete and nothing runs off an edge.\n\n**No artwork yet.** `04 - Story Artwork` for this chapter is empty in Drive, so the story is seventeen text cards, the cover is not drawn, and no game carries a picture. That is where Chapters 5 to 9 each started, and each was rebuilt against its panels when they arrived — the story cards are the ones to expect to lose.\n\nThe lesson frames itself in the present day before it reaches the desert — a walk in the sun with your parents — and comes back to the child at the end. Cards 1 to 3 and card 17 are that frame, and they are the book’s own, not an addition.\n\nThe book’s “LET’S WORK: Fill the missing Letters/Words” has no game here. It is a pencil-and-paper task — writing D into ⬚AY and G into NI⬚HT — and Chapter 8 set the precedent that those stay on the page they are printed on.",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 10, read at full size after rotating them upright: the opener (p.47), the lesson (p.48), the exercises (p.49) and the close (p.50). All four pages are complete and nothing runs off an edge.\n\nArtwork downloaded from “04 - Story Artwork” and read panel by panel before a word of alt text was written; PNG to WebP at native size, no resize and no crop. Every file is exactly 941×1672 or its transpose.\n\n**One panel is missing and it is not a mistake in this file.** Drive holds sixteen files, but “panel 3.png” is byte for byte identical to “panel 2.png”, so one of the two never uploaded and fifteen were imported with `--partial`. The story runs 1, 2, 4 … 14. Which of the pair is the real one is settled by the panels either side; see the note on panel 2. Chapter 6 lost a panel the same way.\n\nThe artwork brought the book’s present-day frame with it — a walk in the sun, a flashlight at dusk, and the boy’s own street at the end — where the text draft had only gestured at it. The seventeen text cards are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 9 and to Primary 1 to 3.\n\nEvery game names a shelf picture and none carries artwork inside it. That is a fact about this chapter rather than a shortfall: panels 6, 8, 10 and 11 each letter an answer to one of the four games, and the match’s third pair — manna and quail — is a recall of Chapter 4 that this chapter never draws, so a half-illustrated match would have been worse than a plain one.\n\nThe book’s “LET’S WORK: Fill the missing Letters/Words” has no game here. It is a pencil-and-paper task — writing D into ⬚AY and G into NI⬚HT — and Chapter 8 set the precedent that those stay on the page they are printed on.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Chapter 10’s own cover, drawn twice. The portrait puts both pillars behind the column — cloud on the left in daylight, fire on the right against the night — with the man leading on his staff, and “PILLAR OF CLOUD AND FIRE” and “10” on a red label across the top, so the story reader lays no text over it. The landscape is the same moment framed wide and with no lettering at all, which is the one the chapter hub and the shelf row need, since both draw their own heading."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Have you walked in the hot sun?"
+      "alt": "A boy walking a sunlit street with his mother, a backpack on his shoulders and one hand up to shade his eyes; bougainvillea over a wall, palms beyond, and the sun blazing in the corner. The boy says, “It’s so hot!” and Halo, floating beside him, asks, “What helps you when the sun is hot?”",
+      "note": "The chapter does not open in the desert. The artwork frames the lesson in the present day — a walk in the sun with a parent, panels 1 to 5 — crosses into the past at panel 5 through a vision, tells the Israelites’ story through panel 11, and comes back to the boy’s own street for panels 12 to 14. That frame is the book’s: p.48 opens “Have you ever gone for a walk with your parents when it was sunny?” and closes on the child’s own journey. It is the seventh chapter in this library to have one."
     },
     {
       "picture": "panel-02",
-      "text": "You get tired. Who keeps you cool?"
-    },
-    {
-      "picture": "panel-03",
-      "text": "And at night? What helps you see?"
+      "alt": "The two of them sitting on a low wall in the shade of a big tree, the mother holding a water bottle. The boy grins up and says, “Ahh! The shade feels nice!” and Halo answers, “Yes! Shade helps protect us from the hot sun.”",
+      "note": "**Panel 3 is missing.** Drive holds a “panel 3.png” that is byte for byte identical to “panel 2.png”, so one of the two never uploaded; the importer refuses a duplicate outright and the run was repeated with `--partial`. Reading the panels either side settles which is which: this shade panel answers panel 1’s question about the sun, and panel 4 opens with the boy already saying “A flashlight!” — an answer to a question nothing now asks. So the image is panel 2 and the gap is panel 3, which will have asked what helps when it is dark.\n\nThe story still reads: it simply becomes evening between here and panel 4. This is the second time in this class — Chapter 6 lost its panel 3 the same way, to the same duplicate."
     },
     {
       "picture": "panel-04",
-      "text": "Long ago God helped people on a journey."
+      "alt": "Dusk, the sky orange over the rooftops. The mother crouches with a lit flashlight and the boy crouches beside her in its beam. He says, “A flashlight!” and Halo says, “Yes! A light helps us see in the dark.”"
     },
     {
       "picture": "panel-05",
-      "text": "They were the Israelites. Moses prayed for them."
+      "alt": "The same street at nightfall, and a vision opens across the top of the panel: a long line of robed travellers winding through red desert mountains. The mother, chin on her hand, says, “I wonder what people did long ago…”, Halo asks, “Would you like to find out?” and the boy answers, “Yes!”",
+      "note": "The door into the past, and the one panel in the chapter that shows the journey without naming anybody on it."
     },
     {
       "picture": "panel-06",
-      "text": "Once they had no food. God sent manna and quail."
+      "alt": "The desert itself. A great column of people winds away over the hills — a bearded man leading with a staff, a child holding his hand, women carrying bundles, a donkey loaded with wood — and the line runs on to the horizon. The caption reads, “Long ago, God’s people, the Israelites, were travelling through a great desert.”"
     },
     {
       "picture": "panel-07",
-      "text": "Their journey went on for many years."
+      "alt": "The same march under a white sun, and everybody is shielding their eyes. The man at the front has a hand to his brow, a child squints, a woman covers a smaller child’s head. The caption reads, “The desert was very hot. There were no trees to give them shade.”"
     },
     {
       "picture": "panel-08",
-      "text": "They walked through a great desert."
+      "alt": "An enormous white cloud rolls across the sky above the column, and the people look up at it — one child pointing, the faces no longer screwed up against the light. The caption reads, “So, God sent them a cloud. The cloud reduced the heat of the sun.”"
     },
     {
       "picture": "panel-09",
-      "text": "No trees grew there. There was no shade."
+      "alt": "Night over the mountains, a full moon, and the column walking on in the dark. The caption reads, “But at night, they needed light.”"
     },
     {
       "picture": "panel-10",
-      "text": "So God sent them a pillar of cloud."
+      "alt": "A pillar of fire stands in the night sky, lighting the whole valley orange, and the people walk on looking up at it with their faces lit. The caption reads, “Then God prepared a pillar of fire to give them light.”"
     },
     {
       "picture": "panel-11",
-      "text": "It gave them shade. The heat grew less."
+      "alt": "Both at once, and the panel is split between them: the white pillar of cloud standing in a bright sky on the left, the pillar of fire burning against the night on the right, and the column walking between. Two captions: “The pillar of cloud and the pillar of fire continued to lead them,” and “God was with them.”",
+      "note": "Both pillars in one frame, which is Psalm 105:39 drawn — a cloud as a covering and a fire to give light at night. It is the chapter's verse as a picture, and the only panel that holds both at once."
     },
     {
       "picture": "panel-12",
-      "text": "At night they had no light."
+      "alt": "Back on the boy’s own front steps at night, the porch lamp on behind him. He sits with his chin on his hand and says, “God took care of the Israelites…”, and Halo asks, “Do you think God cares for you too?”"
     },
     {
       "picture": "panel-13",
-      "text": "So God sent a pillar of fire."
+      "alt": "The same steps a moment later. The boy has both fists up and is beaming. He says, “Yes! God is with me too!” and Halo answers, “Just like He cared for the Israelites.”"
     },
     {
       "picture": "panel-14",
-      "text": "It shone in the sky. Now they could see."
-    },
-    {
-      "picture": "panel-15",
-      "text": "They knew God loved them and kept them safe."
-    },
-    {
-      "picture": "panel-16",
-      "text": "The cloud and fire led them all the way."
-    },
-    {
-      "picture": "panel-17",
-      "text": "God shades your day. God lights your dark."
+      "alt": "The boy walking home along a lamplit pavement with his backpack on, Halo bright beside him. He says, “I will not forget God who is with me as support and shade,” and Halo says, “And He guides you every day.”",
+      "note": "The chapter’s My Decision line is painted into this panel. The decision card carries the same sentence from p.50, so a child meets it twice — once in the artist’s hand at the end of the story and once as the card. The same is true of Beginner Chapters 2 and 7, and it has the same consequence: this sentence cannot be reworded later without the panel being redrawn."
     }
   ],
   "curriculum": {
@@ -161,7 +150,8 @@
           ]
         }
       ],
-      "note": "Question 1. A name, so a choice: the lesson says who they were once and the rest of the chapter calls them “they”.\n\nThe two wrong options are peoples rather than nonsense, so the question is answered by remembering rather than by spotting the odd one out."
+      "note": "Question 1. A name, so a choice: the lesson says who they were once and the rest of the chapter calls them “they”.\n\nThe two wrong options are peoples rather than nonsense, so the question is answered by remembering rather than by spotting the odd one out.\n\nShelf picture: The vision opening over the boy’s street — travellers on a journey, and the only panel that shows them without naming them.",
+      "picture": "panel-05"
     },
     {
       "id": "cloud-and-fire",
@@ -204,7 +194,8 @@
           ]
         }
       ],
-      "note": "Questions 2 and 3, held together on purpose.\n\nThey are the chapter’s one fact in two halves — a cloud for the day, a fire for the night — and the book asks about them four separate times across its two exercises. Asking each half as its own quiz would make four questions out of one idea, and a child could get both right while knowing only that God sent *something*. A match cannot be answered that way: the pairing is the answer.\n\nThe third pair, manna and quail, is the lesson’s own recall of Chapter 4 — “God answering the prayer with Manna and Quail? (Lesson 4)” on p.48. It is here rather than as decoration: with two pairs a match is a coin flip, and it makes the game about the shape of the whole chapter, which is that every trouble on the journey met a provision.\n\nThis chapter’s memory verse — “He spread out a cloud as a covering, and a fire to give light at night.” — says the same thing in Psalm 105’s words, so the verse practice drills it once more. That is the third ask and the ceiling; it is why questions 2 and 3 share one game instead of taking two."
+      "note": "Questions 2 and 3, held together on purpose.\n\nThey are the chapter’s one fact in two halves — a cloud for the day, a fire for the night — and the book asks about them four separate times across its two exercises. Asking each half as its own quiz would make four questions out of one idea, and a child could get both right while knowing only that God sent *something*. A match cannot be answered that way: the pairing is the answer.\n\nThe third pair, manna and quail, is the lesson’s own recall of Chapter 4 — “God answering the prayer with Manna and Quail? (Lesson 4)” on p.48. It is here rather than as decoration: with two pairs a match is a coin flip, and it makes the game about the shape of the whole chapter, which is that every trouble on the journey met a provision.\n\nThis chapter’s memory verse — “He spread out a cloud as a covering, and a fire to give light at night.” — says the same thing in Psalm 105’s words, so the verse practice drills it once more. That is the third ask and the ceiling; it is why questions 2 and 3 share one game instead of taking two.\n\nShelf picture: The boy in the hot sun with Halo asking “What helps you when the sun is hot?” — the chapter’s own framing question, and the same question this game asks of the desert.",
+      "picture": "panel-01"
     },
     {
       "id": "how-they-knew",
@@ -232,7 +223,8 @@
           ]
         }
       ],
-      "note": "Question 4, and the planner got this one wrong.\n\nIt read the opening “How” as a process and offered a `sequence`, which would have asked a six-year-old to put “recognising God’s presence” in order. There is no order in it: the answer is the two pillars, which is a thing to name. The plan was overridden by hand and the reason is here rather than in a commit message.\n\nIt asks what *showed* them, where game 2 asks which pillar did which job, so the two do not collapse into each other."
+      "note": "Question 4, and the planner got this one wrong.\n\nIt read the opening “How” as a process and offered a `sequence`, which would have asked a six-year-old to put “recognising God’s presence” in order. There is no order in it: the answer is the two pillars, which is a thing to name. The plan was overridden by hand and the reason is here rather than in a commit message.\n\nIt asks what *showed* them, where game 2 asks which pillar did which job, so the two do not collapse into each other.\n\nShelf picture: The column walking under a full moon, captioned “But at night, they needed light.” It states a need and no remedy, and shows neither pillar.\n\nThe four cards are read beside each other, so the rule this chapter needed was stricter than “does it answer *this* game”: **only a panel that letters a question or a trouble may sit on the shelf — never one that letters a remedy or a name.** Exactly four panels qualify (1, 5, 7, 9) and there are exactly four games.\n\nIt was needed. This game first took panel 12, the boy asking “Do you think God cares for you too?” — a question, and safe on its own. But its other bubble reads “God took care of *the Israelites*…”, which is game 1’s answer, and in the 2×2 grid it sat directly beneath game 1. Panels 6 and 13 name them too; 2, 4, 8, 10 and 11 each letter a remedy.",
+      "picture": "panel-09"
     },
     {
       "id": "true-or-not",
@@ -276,7 +268,8 @@
           ]
         }
       ],
-      "note": "Questions 5 to 8 — the book’s own “MARK IT AS RIGHT OR WRONG”, all four, in the order it prints them.\n\nStatement 1 is written from a false sentence, so its `ask` keeps the same polarity the page has and the honest answer stays “no”. That is the fault Primary Chapter 1 shipped and a teacher found: an `ask` phrased the other way round from its `source` reads correct in the file and tells a child the opposite of the reason underneath it."
+      "note": "Questions 5 to 8 — the book’s own “MARK IT AS RIGHT OR WRONG”, all four, in the order it prints them.\n\nStatement 1 is written from a false sentence, so its `ask` keeps the same polarity the page has and the honest answer stays “no”. That is the fault Primary Chapter 1 shipped and a teacher found: an `ask` phrased the other way round from its `source` reads correct in the file and tells a child the opposite of the reason underneath it.\n\nShelf picture: The march under a white sun, everybody shielding their eyes: “The desert was very hot. There were no trees to give them shade.” Another trouble with no remedy in it, and the trouble is already printed on game 2’s own label.",
+      "picture": "panel-07"
     }
   ],
   "verse": {
@@ -302,7 +295,8 @@
         ]
       }
     ],
-    "note": "Read from p.50 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. The practice is its Beginner rung, unedited.\n\nPrinted with its comma after “covering,” and its full stop after “night.”, both kept.\n\nTranslation is unresolved: p.50 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion. The teacher’s editorial Sheet was not available for this run, so the verse has one origin — the photograph — rather than two. The agent recorded that caveat in its draft and it is repeated here, because a verse confirmed by nobody is a weaker claim than one two sources agree on."
+    "note": "Read from p.50 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. The practice is its Beginner rung, unedited.\n\nPrinted with its comma after “covering,” and its full stop after “night.”, both kept.\n\nTranslation is unresolved: p.50 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion. The teacher’s editorial Sheet was not available for this run, so the verse has one origin — the photograph — rather than two. The agent recorded that caveat in its draft and it is repeated here, because a verse confirmed by nobody is a weaker claim than one two sources agree on.\n\n`picture` names panel 11 — both pillars in one frame, which is this verse drawn — and it is worth knowing that **nothing renders it today**. `VerseCard` draws no picture on purpose: the verse screen is the one page in the chapter where the words are the point, and `cards.ts` does not carry the field through. Six other chapters in this library set it too. It is recorded as the artist's answer to “which panel is the verse”, for whenever something wants one — not as a thing that shows.",
+    "picture": "panel-11"
   },
   "decision": {
     "statement": "I will not forget God who is with me as support and shade.",
@@ -323,6 +317,6 @@
   },
   "celebration": {
     "message": "God led them all the way. He is with you too.",
-    "note": "The chapter’s own ending turned towards the child who has just read it: p.48 closes on the pillars leading them “Till the journey’s end”, and p.49’s Life Lesson is “Life is like a long journey. God’s love protects us in all of life’s experiences.”"
+    "note": "The chapter’s own ending turned towards the child who has just read it. Panel 11 closes the desert on “God was with them”, and panel 13 has the boy answer it for himself: “Yes! God is with me too!”"
   }
 }
