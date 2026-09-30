@@ -1,0 +1,328 @@
+{
+  "class": "beginner",
+  "chapter": 10,
+  "title": "Pillar of Cloud and Fire",
+  "reference": "Exodus 13:20-22",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 10, read at full size after rotating them upright. The four pages are the chapter opener (p.47), the lesson (p.48), the exercises (p.49) and the close (p.50); all four are complete and nothing runs off an edge.\n\n**No artwork yet.** `04 - Story Artwork` for this chapter is empty in Drive, so the story is seventeen text cards, the cover is not drawn, and no game carries a picture. That is where Chapters 5 to 9 each started, and each was rebuilt against its panels when they arrived — the story cards are the ones to expect to lose.\n\nThe lesson frames itself in the present day before it reaches the desert — a walk in the sun with your parents — and comes back to the child at the end. Cards 1 to 3 and card 17 are that frame, and they are the book’s own, not an addition.\n\nThe book’s “LET’S WORK: Fill the missing Letters/Words” has no game here. It is a pencil-and-paper task — writing D into ⬚AY and G into NI⬚HT — and Chapter 8 set the precedent that those stay on the page they are printed on.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Have you walked in the hot sun?"
+    },
+    {
+      "picture": "panel-02",
+      "text": "You get tired. Who keeps you cool?"
+    },
+    {
+      "picture": "panel-03",
+      "text": "And at night? What helps you see?"
+    },
+    {
+      "picture": "panel-04",
+      "text": "Long ago God helped people on a journey."
+    },
+    {
+      "picture": "panel-05",
+      "text": "They were the Israelites. Moses prayed for them."
+    },
+    {
+      "picture": "panel-06",
+      "text": "Once they had no food. God sent manna and quail."
+    },
+    {
+      "picture": "panel-07",
+      "text": "Their journey went on for many years."
+    },
+    {
+      "picture": "panel-08",
+      "text": "They walked through a great desert."
+    },
+    {
+      "picture": "panel-09",
+      "text": "No trees grew there. There was no shade."
+    },
+    {
+      "picture": "panel-10",
+      "text": "So God sent them a pillar of cloud."
+    },
+    {
+      "picture": "panel-11",
+      "text": "It gave them shade. The heat grew less."
+    },
+    {
+      "picture": "panel-12",
+      "text": "At night they had no light."
+    },
+    {
+      "picture": "panel-13",
+      "text": "So God sent a pillar of fire."
+    },
+    {
+      "picture": "panel-14",
+      "text": "It shone in the sky. Now they could see."
+    },
+    {
+      "picture": "panel-15",
+      "text": "They knew God loved them and kept them safe."
+    },
+    {
+      "picture": "panel-16",
+      "text": "The cloud and fire led them all the way."
+    },
+    {
+      "picture": "panel-17",
+      "text": "God shades your day. God lights your dark."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 10 “PILLAR OF CLOUD AND FIRE”, p.49 — “TELL THE ANSWERS” and “MARK IT AS RIGHT OR WRONG”",
+    "note": "Transcribed from the curriculum photographs, read at full size after rotating them upright. Both printed exercises go into this one list, numbered straight through — questions 1 to 4 from “TELL THE ANSWERS”, statements 5 to 8 from “MARK IT AS RIGHT OR WRONG” — so that the one rule, every question covered by a game, covers both halves.\n\nQuestion 2 is printed exactly as it reads here, “How they were protected from the heat/sun, during the day?”. The missing “were” is the book’s and is kept.\n\nEvery answer below is quoted from the printed lesson on p.48. There is no answer key in these pages and there are no teacher’s pen marks anywhere in this chapter.\n\nFour of the eight items are about the same pair of facts — the cloud by day and the fire by night. That is the chapter, and it is why game 2 holds the pair *as a pair* rather than asking each half on its own; see its note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Who were the people that traveled through the desert for a long time?",
+        "objective": "Name the Israelites as the people on the journey.",
+        "answer": "The Israelites. “…the Israelites were left with no food in the desert… These people continued this journey for many years.” (p.48)"
+      },
+      {
+        "n": 2,
+        "question": "How they were protected from the heat/sun, during the day?",
+        "objective": "Know that God sent the cloud, and that it shaded them by day.",
+        "answer": "God sent them the clouds. “So, God sent them the clouds. The clouds reduced the heat of the day.” (p.48)",
+        "note": "Printed without its “were”. Kept as the page has it."
+      },
+      {
+        "n": 3,
+        "question": "How was the ‘pillar of fire’ helpful to them?",
+        "objective": "Know that the pillar of fire gave them light at night.",
+        "answer": "It gave them light at night. “God prepared blazes in the sky, pillar of fire to give them light.” (p.48)"
+      },
+      {
+        "n": 4,
+        "question": "How did the Israelites recognize God’s presence?",
+        "objective": "Know that the pillar of cloud and the pillar of fire were the signs of God being with them.",
+        "answer": "By the pillar of cloud and the pillar of fire. “They understood that God would love, care for and protect His people.” (p.48), and p.49 prints it outright: “The Pillar of Cloud and Pillar of Fire were seen as the signs of God’s presence, by the Israelites.”"
+      },
+      {
+        "n": 5,
+        "question": "The Israelites traveled in the desert for only a few days.",
+        "objective": "Know that this is Wrong — the journey went on for many years.",
+        "answer": "Wrong. “These people continued this journey for many years.” (p.48)"
+      },
+      {
+        "n": 6,
+        "question": "A Pillar of Cloud protected them during the day in the desert.",
+        "objective": "Know that this is Right — the cloud is the daytime half of the pair.",
+        "answer": "Right. “So, God sent them the clouds. The clouds reduced the heat of the day.” (p.48)"
+      },
+      {
+        "n": 7,
+        "question": "A Pillar of Fire helped them at night.",
+        "objective": "Know that this is Right — the fire is the night-time half of the pair.",
+        "answer": "Right. “…pillar of fire to give them light.” (p.48)"
+      },
+      {
+        "n": 8,
+        "question": "The Pillar of Cloud and Pillar of Fire were seen as the signs of God’s presence, by the Israelites.",
+        "objective": "Know that this is Right — the two pillars are how they knew God was with them.",
+        "answer": "Right. The statement is the book’s own, printed on p.49."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "who-went-through-the-desert",
+      "title": "Who Went?",
+      "objective": "Name the Israelites as the people on the long journey.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who travelled through the desert?",
+          "hint": "Moses prayed to God for them.",
+          "options": [
+            {
+              "label": "The Israelites",
+              "correct": true
+            },
+            {
+              "label": "The Egyptians"
+            },
+            {
+              "label": "The Romans"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1. A name, so a choice: the lesson says who they were once and the rest of the chapter calls them “they”.\n\nThe two wrong options are peoples rather than nonsense, so the question is answered by remembering rather than by spotting the odd one out."
+    },
+    {
+      "id": "cloud-and-fire",
+      "title": "Day and Night",
+      "objective": "Hold the pair as a pair: the cloud shaded the day, the fire lit the night.",
+      "answers": [
+        2,
+        3
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each trouble to God's help.",
+          "hint": "One of them only helps once the sun is down.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Hot sun by day"
+              },
+              "to": {
+                "label": "A cloud for shade"
+              }
+            },
+            {
+              "from": {
+                "label": "Dark at night"
+              },
+              "to": {
+                "label": "A fire for light"
+              }
+            },
+            {
+              "from": {
+                "label": "No food to eat"
+              },
+              "to": {
+                "label": "Manna and quail"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Questions 2 and 3, held together on purpose.\n\nThey are the chapter’s one fact in two halves — a cloud for the day, a fire for the night — and the book asks about them four separate times across its two exercises. Asking each half as its own quiz would make four questions out of one idea, and a child could get both right while knowing only that God sent *something*. A match cannot be answered that way: the pairing is the answer.\n\nThe third pair, manna and quail, is the lesson’s own recall of Chapter 4 — “God answering the prayer with Manna and Quail? (Lesson 4)” on p.48. It is here rather than as decoration: with two pairs a match is a coin flip, and it makes the game about the shape of the whole chapter, which is that every trouble on the journey met a provision.\n\nThis chapter’s memory verse — “He spread out a cloud as a covering, and a fire to give light at night.” — says the same thing in Psalm 105’s words, so the verse practice drills it once more. That is the third ask and the ceiling; it is why questions 2 and 3 share one game instead of taking two."
+    },
+    {
+      "id": "how-they-knew",
+      "title": "How Did They Know?",
+      "objective": "Know that the two pillars were how the Israelites knew God was with them.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What showed God was with them?",
+          "hint": "Look up, by day and by night.",
+          "options": [
+            {
+              "label": "The cloud and the fire",
+              "correct": true
+            },
+            {
+              "label": "The desert sand"
+            },
+            {
+              "label": "Their tents"
+            }
+          ]
+        }
+      ],
+      "note": "Question 4, and the planner got this one wrong.\n\nIt read the opening “How” as a process and offered a `sequence`, which would have asked a six-year-old to put “recognising God’s presence” in order. There is no order in it: the answer is the two pillars, which is a thing to name. The plan was overridden by hand and the reason is here rather than in a commit message.\n\nIt asks what *showed* them, where game 2 asks which pillar did which job, so the two do not collapse into each other."
+    },
+    {
+      "id": "true-or-not",
+      "title": "True or Not?",
+      "objective": "Meet the book's own four Right/Wrong statements, and get the reason after either answer.",
+      "answers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "The Israelites traveled in the desert for only a few days.",
+              "ask": "Did they travel for only a few days?",
+              "answer": false,
+              "because": "No. They travelled through the desert for many years."
+            },
+            {
+              "source": "A Pillar of Cloud protected them during the day in the desert.",
+              "ask": "Did a cloud shade them by day?",
+              "answer": true,
+              "because": "Yes. God sent the clouds, and they reduced the heat of the day."
+            },
+            {
+              "source": "A Pillar of Fire helped them at night.",
+              "ask": "Did a fire help them at night?",
+              "answer": true,
+              "because": "Yes. God prepared a pillar of fire to give them light."
+            },
+            {
+              "source": "The Pillar of Cloud and Pillar of Fire were seen as the signs of God's presence, by the Israelites.",
+              "ask": "Did the two pillars show God was there?",
+              "answer": true,
+              "because": "Yes. They understood that God would love, care for and protect His people."
+            }
+          ]
+        }
+      ],
+      "note": "Questions 5 to 8 — the book’s own “MARK IT AS RIGHT OR WRONG”, all four, in the order it prints them.\n\nStatement 1 is written from a false sentence, so its `ask` keeps the same polarity the page has and the honest answer stays “no”. That is the fault Primary Chapter 1 shipped and a teacher found: an `ask` phrased the other way round from its `source` reads correct in the file and tells a child the opposite of the reason underneath it."
+    }
+  ],
+  "verse": {
+    "text": "He spread out a cloud as a covering, and a fire to give light at night.",
+    "reference": "Psalm 105:39",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "He ______ out a",
+        "hint": "The missing word starts with “s”.",
+        "options": [
+          {
+            "label": "spread",
+            "correct": true
+          },
+          {
+            "label": "out"
+          },
+          {
+            "label": "night"
+          }
+        ]
+      }
+    ],
+    "note": "Read from p.50 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`. The practice is its Beginner rung, unedited.\n\nPrinted with its comma after “covering,” and its full stop after “night.”, both kept.\n\nTranslation is unresolved: p.50 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion. The teacher’s editorial Sheet was not available for this run, so the verse has one origin — the photograph — rather than two. The agent recorded that caveat in its draft and it is repeated here, because a verse confirmed by nobody is a weaker claim than one two sources agree on."
+  },
+  "decision": {
+    "statement": "I will not forget God who is with me as support and shade.",
+    "note": "The curriculum’s own My Decision line from p.50, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Marubhoomi thalarathe njan",
+      "Marunnu nin kripayaal",
+      "Oru naalum piriathenne",
+      "Karuthunnu kanmannipol"
+    ],
+    "note": "The four lines of the “Learn to sing” song on p.50, in the Latin script the book prints them in. Not translated and not completed — see the schema."
+  },
+  "prayer": {
+    "text": "Heavenly Father, guide us day by day. Amen.",
+    "note": "The Concluding Prayer from p.50, word for word."
+  },
+  "celebration": {
+    "message": "God led them all the way. He is with you too.",
+    "note": "The chapter’s own ending turned towards the child who has just read it: p.48 closes on the pillars leading them “Till the journey’s end”, and p.49’s Life Lesson is “Life is like a long journey. God’s love protects us in all of life’s experiences.”"
+  }
+}
