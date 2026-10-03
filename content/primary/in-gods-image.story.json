@@ -1,0 +1,391 @@
+{
+  "class": "primary",
+  "chapter": 6,
+  "title": "In God’s Image",
+  "reference": "Genesis 1: 26 - 31; Genesis 2: 7 - 8",
+  "note": "Built from the two curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 06 — the opener (p.31) and the lesson with its four questions (p.32) — and the memory-verse page (p.34) in “06 - Memory Verse”.\n\np.33 is not in Drive. Going by the shape of the other chapters it is the activity page, which sets a pencil task and has no game here, so nothing in this chapter depends on it. Worth a second photograph all the same.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-two text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change.\n\np.32 carries the teacher’s pen marks — an underline and three bracketed sections numbered 2, 3 and 4 — lining up with the four questions. A reading aid, not an answer key; every answer below is quoted from the printed lesson.\n\nThe chapter has two prayers. The opener on p.31 is “Thank you Almighty God for creating us. Help us to understand Your story of creation. Amen.”; the close on p.34 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "God made a beautiful garden, and He called it Eden."
+    },
+    {
+      "picture": "panel-02",
+      "text": "He filled it with flowers and tall trees."
+    },
+    {
+      "picture": "panel-03",
+      "text": "He made rivers run through it."
+    },
+    {
+      "picture": "panel-04",
+      "text": "He made the birds of the sky and the fish of the sea."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He made the animals, the large ones and the small ones."
+    },
+    {
+      "picture": "panel-06",
+      "text": "After everything else, on the sixth day, God made man."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He made man differently from all His other creations."
+    },
+    {
+      "picture": "panel-08",
+      "text": "God took the dust of the ground and formed him."
+    },
+    {
+      "picture": "panel-09",
+      "text": "Then He breathed into his nostrils the breath of life."
+    },
+    {
+      "picture": "panel-10",
+      "text": "And man became a living being."
+    },
+    {
+      "picture": "panel-11",
+      "text": "God took the man and put him in the Garden of Eden."
+    },
+    {
+      "picture": "panel-12",
+      "text": "He was to work it and take care of it."
+    },
+    {
+      "picture": "panel-13",
+      "text": "There was one more speciality in the making of man."
+    },
+    {
+      "picture": "panel-14",
+      "text": "God made man in His own image and likeness."
+    },
+    {
+      "picture": "panel-15",
+      "text": "No other creature was made that way."
+    },
+    {
+      "picture": "panel-16",
+      "text": "They would rule over the fish in the sea."
+    },
+    {
+      "picture": "panel-17",
+      "text": "They would rule over the birds in the sky."
+    },
+    {
+      "picture": "panel-18",
+      "text": "They would rule over the livestock and the wild animals."
+    },
+    {
+      "picture": "panel-19",
+      "text": "They would rule over the creatures that move along the ground."
+    },
+    {
+      "picture": "panel-20",
+      "text": "God made man in a special way because He loves us."
+    },
+    {
+      "picture": "panel-21",
+      "text": "He wants us to be caretakers of all He has made."
+    },
+    {
+      "picture": "panel-22",
+      "text": "So let us look after our beautiful world."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 06 “IN GOD’S IMAGE”, p.32 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the curriculum photograph, read at full size. Four questions and no “Mark it as Right or Wrong”. Every answer is quoted from the printed lesson on p.32.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Whom did God create at last?",
+        "objective": "Know that man was created last, on the sixth day, after everything else.",
+        "answer": "Man. “It was after God created everything else that he created man on the sixth day.” (p.32)"
+      },
+      {
+        "n": 2,
+        "question": "How did God create man?",
+        "objective": "Know that God formed man from the dust of the ground and breathed the breath of life into him.",
+        "answer": "From the dust. “He formed man from the dust of the ground and breathed into His nostrils the breath of life and man became a living being. Then God took the man and put him in the Garden of Eden to work it and take care of it.” (p.32)"
+      },
+      {
+        "n": 3,
+        "question": "Why did God create man in his own image?",
+        "objective": "Know that it was so that they may rule over the fish, the birds, the livestock, the wild animals and every creature that moves along the ground.",
+        "answer": "To rule over His creatures. “So that they may rule over the fish in the sea and the birds in the sky, over the livestock and all the wild animals, and over all the creatures that move along the ground.” (Genesis 1:26, quoted p.32)"
+      },
+      {
+        "n": 4,
+        "question": "Why did God create man?",
+        "objective": "Know that God wants us to be responsible caretakers of all His creation, and that He created man in a special way because He loves us so much.",
+        "answer": "To care for creation, and because He loves us. “God wants us to be responsible caretakers of all His creation.” and “Thus God created man in a special way because He loves us so much.” (p.32)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "whom-god-made-last",
+      "title": "The Last One Made",
+      "objective": "Know that man was created last, on the sixth day, after everything else.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Whom did God create at last?",
+          "hint": "Everything else had already been made.",
+          "options": [
+            {
+              "label": "Man, on the sixth day",
+              "correct": true
+            },
+            {
+              "label": "The birds in the sky"
+            },
+            {
+              "label": "The fish in the sea"
+            },
+            {
+              "label": "The trees and the flowers"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game this band allows in four. Every wrong option is something God really did make in this lesson — birds, fish, trees — so the question is answered by remembering the *order* of the making rather than by spotting an invented option."
+    },
+    {
+      "id": "how-god-made-man",
+      "title": "From the Dust",
+      "objective": "Know that God formed man from the dust of the ground and breathed the breath of life into him.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the making of man in order.",
+          "hint": "The breath came after the dust.",
+          "items": [
+            {
+              "label": "God formed man from the dust",
+              "position": 1
+            },
+            {
+              "label": "He breathed into his nostrils",
+              "position": 2
+            },
+            {
+              "label": "Man became a living being",
+              "position": 3
+            },
+            {
+              "label": "God put him in Eden",
+              "position": 4
+            },
+            {
+              "label": "He took care of the garden",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The lesson's answer is a sequence and not a fact: dust, then breath, then life, then the garden. A child who has the order has the answer, and the order is what makes the breath mean something."
+    },
+    {
+      "id": "what-man-would-rule",
+      "title": "In His Own Image",
+      "objective": "Know that it was so that they may rule over the fish, the birds, the livestock, the wild animals and every creature that moves along the ground.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what God gave man to rule.",
+          "items": [
+            {
+              "label": "The fish in the sea"
+            },
+            {
+              "label": "The birds in the sky"
+            },
+            {
+              "label": "The livestock"
+            },
+            {
+              "label": "All the wild animals"
+            },
+            {
+              "label": "Creatures that move along the ground"
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A `reveal`, because the answer is the whole list Genesis 1:26 gives — fish, birds, livestock, wild animals, and everything that moves along the ground. Making a child pick one of the five and calling the other four wrong would teach the opposite of what the verse says."
+    },
+    {
+      "id": "why-god-made-man",
+      "title": "True or Not?",
+      "objective": "Know that God wants us to be responsible caretakers of all His creation, and that He created man in a special way because He loves us so much.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "God wants us to be responsible caretakers of all His creation.",
+              "ask": "Does God want us to care for His creation?",
+              "answer": true,
+              "because": "Yes. God wants us to be responsible caretakers of all His creation."
+            },
+            {
+              "source": "Thus God created man in a special way because He loves us so much.",
+              "ask": "Did God make man in a special way?",
+              "answer": true,
+              "because": "Yes. He made man in a special way because He loves us so much."
+            },
+            {
+              "source": "God made man the same as all His other creations.",
+              "ask": "Did God make man the same as everything else?",
+              "answer": false,
+              "because": "No. God made man differently from all His other creations."
+            },
+            {
+              "source": "We can forget the environment, because God looks after it Himself.",
+              "ask": "Should we forget to look after the environment?",
+              "answer": false,
+              "because": "No. The lesson says not to forget our beautiful environment."
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. Both halves of the printed answer are here: that God wants us to be responsible caretakers of all His creation, and that He made man in a special way because He loves us so much.\n\nStatements 3 and 4 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”. Statement 4 carries the lesson's closing line about looking after our beautiful environment, which no question asks about."
+    }
+  ],
+  "verse": {
+    "text": "So God created mankind in his own image, in the image of God he created them; male and female he created them.",
+    "reference": "Genesis 1: 27",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It says the same thing three times over.",
+        "words": [
+          "So God created mankind",
+          "in his own image,",
+          "in the image of God he created them;",
+          "male and female he created them."
+        ],
+        "note": "Stage 1, phrase ordering. The agent’s Primary rung cuts on word counts; these four pieces break where the verse’s own clauses do, so no join lands inside a phrase. The build checks they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "So God created ______ in his own image,",
+        "hint": "The verse’s own word for all of us.",
+        "options": [
+          {
+            "label": "mankind",
+            "correct": true
+          },
+          {
+            "label": "man"
+          },
+          {
+            "label": "Adam"
+          },
+          {
+            "label": "people"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Man” is the near miss worth having: it is the word the lesson uses on the facing page, and it is not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "male and ______ he created them.",
+        "hint": "The verse names two, and this is the second.",
+        "options": [
+          {
+            "label": "female",
+            "correct": true
+          },
+          {
+            "label": "woman"
+          },
+          {
+            "label": "mother"
+          },
+          {
+            "label": "daughter"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. All three near misses are true of someone the verse is about, which is why only the verse’s own word will do."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Created, created, created — three times.",
+        "words": [
+          "So God created mankind",
+          "in his own image,",
+          "in the image of God",
+          "he created them;",
+          "male and female",
+          "he created them."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "Genesis 1: 27",
+            "correct": true
+          },
+          {
+            "label": "Genesis 1: 26"
+          },
+          {
+            "label": "Genesis 2: 7"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion — 1:26 is the verse the lesson quotes, and 2:7 is where the dust and the breath come from."
+      }
+    ],
+    "note": "Read from p.34 through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs and the memory-verse page, the supervised read, then `--from-extraction`. That page lives in “06 - Memory Verse” rather than with the lesson, which is this class’s arrangement.\n\nFive stages in the shape Primary Chapters 2, 3, 4 and 5 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nTranslation is unresolved: p.34 does not name one. The wording is the NIV’s, but the book does not say so and this importer does not guess.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will do everything I can to protect God’s creations.",
+    "note": "The curriculum’s own My Decision from p.34, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Ente budhiyum ente sakthiyum",
+      "Nee Enikku thanna thokkayum",
+      "Sarvavum yeshu nadhanai samarpanam",
+      "Cheythidunnu snehamode njan"
+    ],
+    "note": "The four lines of the Song on p.34, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Creator God, You have made me in Your own image. Help me to understand Your love. Help me protect Your creation. Amen.",
+    "note": "The closing Prayer from p.34, word for word."
+  },
+  "celebration": {
+    "message": "God made you in His own image, and He loves you.",
+    "note": "The lesson’s own reason, from p.32: God created man in a special way because He loves us so much."
+  }
+}
