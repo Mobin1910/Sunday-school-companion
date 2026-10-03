@@ -1,0 +1,438 @@
+{
+  "class": "primary",
+  "chapter": 8,
+  "title": "Canaan, Land of Milk and Honey",
+  "reference": "Exodus 3: 7 - 10",
+  "note": "Built from the two curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 08 — the opener (p.41) and the lesson with its four questions (p.42) — and the memory-verse page (p.44) in “06 - Memory Verse”.\n\n**p.42 was not read by eye.** The photograph is 7.3 MB, which is past what the Drive connector can hand over to this session, so its text came from Drive’s own extraction of the image instead. That text is complete and legible, but two words come back damaged and are reconstructed here: “a land flowing with milk and hone Canaan” is read as “… milk and honey — Canaan”, and “Thus God through Mose- saved the Israelites” as “… through Moses …”. Both are settled by the chapter’s own title and by the sentence before. Nothing else in the lesson is in doubt, and the memory verse does not come from this page. **A smaller re-photograph of p.42 would let it be checked by eye.**\n\np.43 is not in Drive. By the shape of the other chapters it is the activity page, which sets a pencil task and has no game here.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-two text cards and nothing carries a picture.\n\n“Pharoah” is the book’s spelling and is kept.\n\nThe chapter has two prayers. The opener on p.41 is “God, give us the grace to learn about the exodus of the Israelites to Canaan. Amen.”; the close on p.44 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "The Israelites were God’s people, and He loved them."
+    },
+    {
+      "picture": "panel-02",
+      "text": "There was famine in their land."
+    },
+    {
+      "picture": "panel-03",
+      "text": "So they came to Egypt."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Joseph was in charge of Egypt at that time."
+    },
+    {
+      "picture": "panel-05",
+      "text": "King Pharoah was very kind to the children of Israel."
+    },
+    {
+      "picture": "panel-06",
+      "text": "As the years passed, the Israelites grew in number."
+    },
+    {
+      "picture": "panel-07",
+      "text": "Then the old king died."
+    },
+    {
+      "picture": "panel-08",
+      "text": "A new king came to power who did not know Joseph."
+    },
+    {
+      "picture": "panel-09",
+      "text": "The Egyptians were afraid the Israelites might become very powerful."
+    },
+    {
+      "picture": "panel-10",
+      "text": "So the new king made them slaves."
+    },
+    {
+      "picture": "panel-11",
+      "text": "He was cruel to them and made them work hard."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They suffered extreme poverty."
+    },
+    {
+      "picture": "panel-13",
+      "text": "Then the Israelites cried to their God for deliverance."
+    },
+    {
+      "picture": "panel-14",
+      "text": "God heard their cry."
+    },
+    {
+      "picture": "panel-15",
+      "text": "One day God appeared to Moses."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He told him He had heard the cry of the Israelites."
+    },
+    {
+      "picture": "panel-17",
+      "text": "He was going to save them."
+    },
+    {
+      "picture": "panel-18",
+      "text": "God promised to take them to a good and spacious land."
+    },
+    {
+      "picture": "panel-19",
+      "text": "A land flowing with milk and honey — Canaan."
+    },
+    {
+      "picture": "panel-20",
+      "text": "He sent Moses to lead the exodus."
+    },
+    {
+      "picture": "panel-21",
+      "text": "So God, through Moses, saved them and brought them to Canaan."
+    },
+    {
+      "picture": "panel-22",
+      "text": "God hears our cry because He loves us."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 08 “CANAAN, LAND OF MILK AND HONEY”, p.42 — “ANSWER THE QUESTIONS”",
+    "note": "Four questions and no “Mark it as Right or Wrong”. Every answer is from the printed lesson on p.42, except the parenthesis in question 4, which is the teacher’s handwriting and is marked as such.\n\n**p.42 was read by Drive’s own text extraction rather than by eye** — see the chapter note. Two words in the lesson come back damaged and are reconstructed there; neither of them is inside an answer below.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Why did Israelites move to Egypt?",
+        "objective": "Know that there was famine in their land, so they came to Egypt.",
+        "answer": "Because of famine. “When there was famine in their land they had come to Egypt.” (p.42)"
+      },
+      {
+        "n": 2,
+        "question": "Why did Israelites cry to God?",
+        "objective": "Know that a new king made them slaves, was cruel to them and made them work hard, and they suffered extreme poverty.",
+        "answer": "Because they were slaves. “So the new king made them slaves. He was cruel to them and made them work hard. They suffered extreme poverty. Then the Israelites cried to their God for deliverance.” (p.42)"
+      },
+      {
+        "n": 3,
+        "question": "What is special about Canaan?",
+        "objective": "Know that it is a good and spacious land, a land flowing with milk and honey.",
+        "answer": "Milk and honey. “God promised to take the Israelites to a good and spacious land, a land flowing with milk and honey — Canaan.” (p.42)"
+      },
+      {
+        "n": 4,
+        "question": "Who led the Israelites to Canaan?",
+        "objective": "Know that God led them, through Moses, whom He sent to lead the exodus.",
+        "answer": "God. “Thus God through Moses saved the Israelites and brought them to Canaan.” (p.42) The teacher’s hand writes the same thing beside the question: “God (through Moses)”."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "why-they-went-to-egypt",
+      "title": "Down to Egypt",
+      "objective": "Know that famine in their own land is what brought the Israelites to Egypt.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did the Israelites go to Egypt?",
+          "hint": "Something had gone wrong at home.",
+          "options": [
+            {
+              "label": "There was famine in their land",
+              "correct": true
+            },
+            {
+              "label": "Joseph was in charge there"
+            },
+            {
+              "label": "They were made slaves there"
+            },
+            {
+              "label": "God had promised them Egypt"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in five. Every wrong option is true of this lesson somewhere — Joseph really was in charge, they really were made slaves — so the question is answered by remembering *why they set out*, which came before all of it, rather than by spotting an invented option."
+    },
+    {
+      "id": "why-they-cried-to-god",
+      "title": "From Kindness to Chains",
+      "objective": "Follow the slide from a kind king to slavery, which is what made the Israelites cry out to God.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put their years in Egypt in order.",
+          "hint": "Kindness came first.",
+          "items": [
+            {
+              "label": "Pharaoh was kind to them",
+              "position": 1
+            },
+            {
+              "label": "The Israelites grew in number",
+              "position": 2
+            },
+            {
+              "label": "The old king died",
+              "position": 3
+            },
+            {
+              "label": "A new king made them slaves",
+              "position": 4
+            },
+            {
+              "label": "They cried to God for help",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The printed answer is not a fact but a slide, and the slide is the point: Egypt began kindly, and it was a change of king, not a change of heart in the Israelites, that turned it. A child who holds the order holds the answer."
+    },
+    {
+      "id": "what-canaan-was-like",
+      "title": "Milk and Honey",
+      "objective": "Know what God promised about Canaan: a good and spacious land, flowing with milk and honey.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what God promised about Canaan.",
+          "items": [
+            {
+              "label": "A good land"
+            },
+            {
+              "label": "A spacious land"
+            },
+            {
+              "label": "Flowing with milk"
+            },
+            {
+              "label": "Flowing with honey"
+            },
+            {
+              "label": "The land God promised them"
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A `reveal`, because the promise is a run of things said about one land and not a question with one right answer among four. Every item is the lesson’s own wording."
+    },
+    {
+      "id": "who-is-who-in-egypt",
+      "title": "Who Did What",
+      "objective": "Know that God led the Israelites to Canaan, and that He did it through Moses — and tell the four figures of this lesson apart.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what they did.",
+          "hint": "Two helped them, and one did not.",
+          "pairs": [
+            {
+              "from": {
+                "label": "God"
+              },
+              "to": {
+                "label": "Heard their cry and saved them"
+              }
+            },
+            {
+              "from": {
+                "label": "Moses"
+              },
+              "to": {
+                "label": "Was sent to lead the exodus"
+              }
+            },
+            {
+              "from": {
+                "label": "Joseph"
+              },
+              "to": {
+                "label": "Was in charge of Egypt"
+              }
+            },
+            {
+              "from": {
+                "label": "The new king"
+              },
+              "to": {
+                "label": "Made the Israelites slaves"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. The printed answer is “God”, and the teacher’s own hand adds “(through Moses)” on p.42. Both are here, and so are the other two figures a child is likely to confuse them with — Joseph, who was in charge long before, and the new king, who was the trouble rather than the rescue."
+    },
+    {
+      "id": "land-of-milk-and-honey",
+      "title": "True or Not?",
+      "objective": "Hold the lesson's own close — that God hears our cry because He loves us, and that the Israelites did not stay in Egypt.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Then the Israelites cried to their God for deliverance, God heard their cry.",
+              "ask": "Did God hear them when they cried?",
+              "answer": true,
+              "because": "Yes. The Israelites cried out, and God heard their cry."
+            },
+            {
+              "source": "The new king knew Joseph well and was kind to the Israelites.",
+              "ask": "Did the new king know Joseph?",
+              "answer": false,
+              "because": "No. A new king came to power who did not know Joseph."
+            },
+            {
+              "source": "God hears our cry because He loves us.",
+              "ask": "Does God hear us because He loves us?",
+              "answer": true,
+              "because": "Yes. God hears our cry because He loves us."
+            },
+            {
+              "source": "The Israelites stayed in Egypt and reached Canaan much later on their own.",
+              "ask": "Did the Israelites reach Canaan on their own?",
+              "answer": false,
+              "because": "No. God brought them there, through Moses."
+            }
+          ]
+        }
+      ],
+      "note": "The fifth game, answering no question of its own — the Primary band wants four to five and the book’s four questions filled four.\n\nWhat it carries is the lesson’s close, which no question asks about: that God hears our cry because He loves us. Statements 2 and 4 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    }
+  ],
+  "verse": {
+    "text": "The Lord said, “I have indeed seen the misery of my people in Egypt. I have heard them crying out because of their slave drivers”.",
+    "reference": "Exodus 3: 7a",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "God says He has seen, and then that He has heard.",
+        "words": [
+          "The Lord said,",
+          "“I have indeed seen the misery of my people in Egypt.",
+          "I have heard them crying out",
+          "because of their slave drivers”."
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand at the sentence and speech boundaries rather than on the agent’s word counts. The build checks the pieces spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "I have indeed seen the ______ of my people.",
+        "hint": "One word for everything they were going through.",
+        "options": [
+          {
+            "label": "misery",
+            "correct": true
+          },
+          {
+            "label": "sorrow"
+          },
+          {
+            "label": "trouble"
+          },
+          {
+            "label": "suffering"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. All three near misses are true of the Israelites in Egypt, which is why only the verse’s own word will do."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "crying out because of their slave ______.",
+        "hint": "The verse’s word for the men set over them.",
+        "options": [
+          {
+            "label": "drivers",
+            "correct": true
+          },
+          {
+            "label": "masters"
+          },
+          {
+            "label": "keepers"
+          },
+          {
+            "label": "owners"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. “Masters” is the near miss worth having: it is the word a child is most likely to supply, and it is not the one the verse uses."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Six pieces: seen first, heard second.",
+        "words": [
+          "The Lord said,",
+          "“I have indeed seen",
+          "the misery of my people",
+          "in Egypt.",
+          "I have heard them crying out",
+          "because of their slave drivers”."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "Exodus 3: 7a",
+            "correct": true
+          },
+          {
+            "label": "Exodus 3: 8"
+          },
+          {
+            "label": "Exodus 3: 10"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, Exodus 3: 7 - 10 — 8 is the good and spacious land and 10 is the sending of Moses."
+      }
+    ],
+    "note": "Read from p.44 through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs and the memory-verse page, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Primary Chapters 2 to 7 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nThe reference is printed “Exodus 3: 7a”, with the “a”, and is kept exactly so: the verse stops partway through verse 7.\n\nThe closing mark is the book’s. p.44 prints … slave drivers”. — the full stop outside the quotation rather than inside it — and that is carried over unchanged, because it is a house style and not a broken mark.\n\nTranslation is unresolved: p.44 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will cry out to God when I face troubles in life.",
+    "note": "The curriculum’s own My Decision from p.44, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Uyirthillennu Satruganam",
+      "Vadaikkumbol",
+      "Takarkillennu Bheethiyum",
+      "Muzhakkeedumpol"
+    ],
+    "note": "The four lines of the Song on p.44, in the Latin script the book prints them in. The page credits it “(Maramon Convention)”. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Lord when my heart is full of sorrow, help me to cry out to You. You are the God who hears our cry and answers our prayers. Amen.",
+    "note": "The closing Prayer from p.44, word for word — including “Lord when”, which the book prints without a comma."
+  },
+  "celebration": {
+    "message": "God heard their cry and brought them to a land of milk and honey.",
+    "note": "The lesson’s own close, from p.42."
+  }
+}
