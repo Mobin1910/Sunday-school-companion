@@ -1,0 +1,352 @@
+{
+  "class": "primary",
+  "chapter": 4,
+  "title": "Jesus the Healer",
+  "reference": "St. Luke 5: 12 - 16",
+  "note": "Built from the three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 04 and the memory-verse page in “06 - Memory Verse”: the opener (p.21), the lesson (p.22), the exercises (p.23) and the close (p.24).\n\n**The verse page is in “06 - Memory Verse”, not with the lesson.** That is how this class stores it and it is why Primary Chapter 2 first shipped with no verse at all — the agent had been pointed at the wrong folder. Both folders are read for every Primary chapter now.\n\n**No artwork yet.** “04 - Story Artwork” for this chapter is empty, so the story is sixteen text cards, the cover is not drawn, and no game carries a picture. Expect the text cards to go when the panels arrive.\n\np.22 carries the teacher’s own pen marks — three bracketed sections numbered 1, 2, 3 — which line up with the three questions on p.23. They are a reading aid rather than an answer key, and nothing here is taken from them: every answer below is quoted from the printed lesson.\n\nThe book’s “Colour the picture” on p.23 sets a pencil activity, which has no game here.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Jesus was in a town by Lake Gennesaret."
+    },
+    {
+      "picture": "panel-02",
+      "text": "A man covered with leprosy came to Him."
+    },
+    {
+      "picture": "panel-03",
+      "text": "In those days there was no treatment for leprosy."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Lepers were sent out of the town. They lived as outcasts."
+    },
+    {
+      "picture": "panel-05",
+      "text": "People were frightened of them. No one would go near them."
+    },
+    {
+      "picture": "panel-06",
+      "text": "Not even their own families came close."
+    },
+    {
+      "picture": "panel-07",
+      "text": "But when this man saw Jesus, he fell with his face to the ground."
+    },
+    {
+      "picture": "panel-08",
+      "text": "He said, “Lord, if you are willing, you can make me clean.”"
+    },
+    {
+      "picture": "panel-09",
+      "text": "Jesus reached out and touched him."
+    },
+    {
+      "picture": "panel-10",
+      "text": "He said, “I am willing. Be clean.”"
+    },
+    {
+      "picture": "panel-11",
+      "text": "Immediately the leprosy left him."
+    },
+    {
+      "picture": "panel-12",
+      "text": "Jesus told him to show himself to the priest,"
+    },
+    {
+      "picture": "panel-13",
+      "text": "and to offer the sacrifices that Moses had commanded."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Jesus holds on to us even when all others turn away."
+    },
+    {
+      "picture": "panel-15",
+      "text": "When trouble comes, we can ask God with strong faith."
+    },
+    {
+      "picture": "panel-16",
+      "text": "And when we ask for healing, let us remember others who need it too."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 04 “JESUS THE HEALER”, p.23 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the curriculum photographs, read at full size. Three questions and no “Mark it as Right or Wrong” — this chapter has only the one exercise set, as Primary Chapters 1 to 3 do.\n\nEvery answer is quoted from the printed lesson on p.22.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "How were lepers treated in olden days?",
+        "objective": "Know that lepers were sent out of the town and lived as outcasts, shunned even by family.",
+        "answer": "They were sent away. “Lepers were sent out of the town and had to live as outcasts, away from other people… No one would go near them, not even their own family members.” (p.22)"
+      },
+      {
+        "n": 2,
+        "question": "How did Jesus heal the leper?",
+        "objective": "Know that Jesus reached out and touched him.",
+        "answer": "He touched him. “Jesus reached out and touched him and said, ‘I am willing. Be clean.’ Immediately the leprosy left him.” (p.22)"
+      },
+      {
+        "n": 3,
+        "question": "What did Jesus say to the leper?",
+        "objective": "Know Jesus’s words as He healed him.",
+        "answer": "“I am willing. Be clean.” (p.22) He also told him to show himself to the priest and offer the sacrifices Moses had commanded; the words the question is after are the healing ones, which are also this chapter’s memory verse."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "how-lepers-lived",
+      "title": "Shut Out",
+      "objective": "Know how lepers were treated before Jesus came: no cure, sent out, shunned even by family.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over how lepers were treated.",
+          "items": [
+            {
+              "label": "There was no treatment then"
+            },
+            {
+              "label": "They were sent out of town"
+            },
+            {
+              "label": "They lived as outcasts, alone"
+            },
+            {
+              "label": "Even their own families kept away"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the planner was unsure what it was asking — correctly, because it is not asking for one fact. The lesson gives four, and they build on each other: no cure, so out of the town, so an outcast, so even family stayed away. A `reveal` is the shape for a chain, which is what Primary Chapter 1 used for its own “why” question."
+    },
+    {
+      "id": "how-jesus-healed-him",
+      "title": "The Healing",
+      "objective": "Put the healing in the order the lesson gives it, so the touch is the step a child remembers.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the healing in order.",
+          "hint": "He asked before anything happened.",
+          "items": [
+            {
+              "label": "A man covered with leprosy came",
+              "position": 1
+            },
+            {
+              "label": "He fell with his face down",
+              "position": 2
+            },
+            {
+              "label": "Jesus reached out and touched him",
+              "position": 3
+            },
+            {
+              "label": "The leprosy left him at once",
+              "position": 4
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The lesson's answer is one word — He touched him — and that word only lands if a child knows what it cost. So the sequence puts the touch third, after the man has come and fallen on his face, and the leprosy leaves in the step after it."
+    },
+    {
+      "id": "what-jesus-said",
+      "title": "What He Said",
+      "objective": "Hold Jesus's own words — “I am willing. Be clean.” — which are also this chapter's memory verse.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did Jesus say as He touched him?",
+          "hint": "Two short sentences. He answers the man's own word back.",
+          "options": [
+            {
+              "label": "“I am willing. Be clean.”",
+              "correct": true
+            },
+            {
+              "label": "“Your faith has healed you.”"
+            },
+            {
+              "label": "“Rise up and walk.”"
+            },
+            {
+              "label": "“Go and sin no more.”"
+            }
+          ]
+        }
+      ],
+      "note": "Question 3, and the one choosing game this band allows in four.\n\nThe prompt says “as He touched him” on purpose. Jesus speaks twice in this lesson — the healing words, and the instruction to show himself to the priest — so an unqualified “what did Jesus say” has two true answers on the page. The three wrong options are things Jesus says elsewhere in the gospels and nowhere in this lesson, so a child who has read it can tell."
+    },
+    {
+      "id": "jesus-the-healer",
+      "title": "True or Not?",
+      "objective": "Hold the lesson's closing paragraph — the part about the child rather than about the leper.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Jesus embraces us even when all others hate us.",
+              "ask": "Does Jesus hold on to us when others turn away?",
+              "answer": true,
+              "because": "Yes. Jesus embraces us even when all others hate us."
+            },
+            {
+              "source": "He will help us overcome all difficulties if we have strong faith in him.",
+              "ask": "Does strong faith in Him help us overcome difficulties?",
+              "answer": true,
+              "because": "Yes. He will help us overcome all difficulties if we have strong faith in him."
+            },
+            {
+              "source": "When we ask for healing, we should think only of ourselves.",
+              "ask": "Should we think only of ourselves when we ask for healing?",
+              "answer": false,
+              "because": "No. When we ask for healing, let us not forget others who need healing too."
+            },
+            {
+              "source": "Let us help the sick and suffering.",
+              "ask": "Does the lesson ask us to help the sick?",
+              "answer": true,
+              "because": "Yes. Let us tell them about Jesus, and let us help the sick and suffering."
+            }
+          ]
+        }
+      ],
+      "note": "The fourth game, written by hand because the book asks three questions and the Primary band wants four to five. Primary Chapter 1 did the same thing for the same reason.\n\nWhat it covers is the paragraph the questions skip — “Dear children…” — which is the only part of the page about the child rather than about the leper. Statement 3 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”."
+    }
+  ],
+  "verse": {
+    "text": "Jesus reached out his hand and touched the man. “I am willing,” he said. “Be clean!” And immediately the leprosy left him.",
+    "reference": "St. Luke 5: 13",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It starts with what Jesus did, not with what He said.",
+        "words": [
+          "Jesus reached out his hand and touched the man.",
+          "“I am willing,” he said.",
+          "“Be clean!”",
+          "And immediately the leprosy left him."
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand rather than by the agent. Its Primary rung cuts on word counts and produced “and touched the man. ‘I am” — a piece ending in the middle of a quotation, with the quotation marks split across the join. A verse with speech in it needs cutting at the speech, so these four pieces break where the sentences and the quotation marks do. The build checks they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Jesus reached out his hand and ______ the man.",
+        "hint": "It is the thing nobody else in the town would do.",
+        "options": [
+          {
+            "label": "touched",
+            "correct": true
+          },
+          {
+            "label": "willing"
+          },
+          {
+            "label": "clean"
+          },
+          {
+            "label": "leprosy"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. All four options are real words of this verse."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "“I am willing,” he said. “Be ______",
+        "hint": "One word, and it is the word the man himself asked for.",
+        "options": [
+          {
+            "label": "clean!",
+            "correct": true
+          },
+          {
+            "label": "willing"
+          },
+          {
+            "label": "healed"
+          },
+          {
+            "label": "well"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. The word is the one the man used when he asked — “you can make me clean” — and Jesus gives it back to him, which is why it is the one worth supplying from memory."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Two things He said, and what happened straight after.",
+        "words": [
+          "Jesus reached out his hand",
+          "and touched the man.",
+          "“I am willing,”",
+          "he said.",
+          "“Be clean!”",
+          "And immediately",
+          "the leprosy left him."
+        ],
+        "note": "Stage 4, full reconstruction — seven pieces where stage 1 had four. Each quotation mark still travels with the words it belongs to."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Luke 5: 13",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 5: 12"
+          },
+          {
+            "label": "St. Luke 5: 16"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Luke 5: 12 - 16 — 12 is where it begins and 16 is where it ends — so a child who has read the chapter has met all three."
+      }
+    ],
+    "note": "Read from p.24 through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs and the memory-verse page, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Primary Chapters 2 and 3 use: phrase ordering, a gap with the sentence whole on both sides, the same gap with the right-hand side taken away, a finer reconstruction, and the reference chosen against near misses.\n\n**Stage 1 was cut by hand.** See its own note: a verse with speech in it needs cutting at the speech, and the agent's rung split a quotation across two pieces.\n\nThe verse is also game 3's answer, which is the chapter rather than an oversight: “I am willing. Be clean.” is both what Jesus said and what the book chose to have a child keep.\n\nTranslation is unresolved: p.24 does not name one, which is where every chapter in this library stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run, so the verse has one origin rather than two."
+  },
+  "decision": {
+    "statement": "I will pray with faith for deliverance from sickness and suffering. I will also pray for others who are sick and suffering and do everything I can to help them.",
+    "note": "The curriculum’s own My Decision from p.24, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Rogam okke maarum",
+      "Yesu onnu thottal",
+      "Thottiduvanayi nam",
+      "Thottaduthu venam"
+    ],
+    "note": "The four lines of the Song on p.24, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Father, help me believe in You. Help me to comfort the sick and the needy. Amen.",
+    "note": "The closing Prayer from p.24, word for word. The chapter also opens with a prayer on p.21 — “Jesus, great Physician, deliver us from sickness and suffering. Amen.” — and the schema carries one, so the closing one is here."
+  },
+  "celebration": {
+    "message": "Jesus reached out and touched him. He reaches out to you too.",
+    "note": "The lesson’s own moment turned towards the child who has just read it: p.22’s “Jesus reached out and touched him”, and its closing “Jesus embraces us even when all others hate us.”"
+  }
+}
