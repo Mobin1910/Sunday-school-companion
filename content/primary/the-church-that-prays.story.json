@@ -1,0 +1,467 @@
+{
+  "class": "primary",
+  "chapter": 19,
+  "title": "The Church That Prays",
+  "reference": "Acts of the Apostles 12: 1 - 17",
+  "note": "Built from the three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 19 — the opener (p.89), the lesson (p.90) and its close with the four questions (p.91) — and the memory-verse page (p.92) in “06 - Memory Verse”.\n\n**The three curriculum pages were not read by eye.** Each photograph is about 6–8 MB, past what the Drive connector can hand over to this session, so their text came from Drive’s own extraction of the images instead. It came back clean for this chapter. The memory-verse page is smaller and *was* read by eye, so the verse does not rest on extraction.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is thirty-one text cards and nothing carries a picture.\n\nThe chapter has two prayers. The opener on p.89 is “Teach us, O God, to pray for others and to help those in need. Amen.”; the close on p.92 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Jesus had twelve disciples, and they were always with Him."
+    },
+    {
+      "picture": "panel-02",
+      "text": "After Jesus was crucified, the disciples were hiding in fear."
+    },
+    {
+      "picture": "panel-03",
+      "text": "The Jews persecuted them."
+    },
+    {
+      "picture": "panel-04",
+      "text": "The evil King Herod killed James, the brother of John."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He was planning to kill more of the disciples."
+    },
+    {
+      "picture": "panel-06",
+      "text": "So they seized Peter also."
+    },
+    {
+      "picture": "panel-07",
+      "text": "It was the time of the Passover."
+    },
+    {
+      "picture": "panel-08",
+      "text": "They put him in prison until the Passover was over."
+    },
+    {
+      "picture": "panel-09",
+      "text": "Four groups of four soldiers each were guarding the prison."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Peter was tied with two chains, and slept between two soldiers."
+    },
+    {
+      "picture": "panel-11",
+      "text": "The rest stood guard outside."
+    },
+    {
+      "picture": "panel-12",
+      "text": "Peter’s friends were constantly praying for him."
+    },
+    {
+      "picture": "panel-13",
+      "text": "They had faith that prayer would save him."
+    },
+    {
+      "picture": "panel-14",
+      "text": "They prayed without ceasing."
+    },
+    {
+      "picture": "panel-15",
+      "text": "Suddenly an angel of the Lord appeared."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He struck Peter on the side and woke him up."
+    },
+    {
+      "picture": "panel-17",
+      "text": "“Quick, get up!” he said."
+    },
+    {
+      "picture": "panel-18",
+      "text": "The chains fell off Peter’s wrists."
+    },
+    {
+      "picture": "panel-19",
+      "text": "Peter put on his clothes and sandals and followed the angel."
+    },
+    {
+      "picture": "panel-20",
+      "text": "They got out of the jail."
+    },
+    {
+      "picture": "panel-21",
+      "text": "They passed through the first gate and the second gate."
+    },
+    {
+      "picture": "panel-22",
+      "text": "Then they came to the iron gate leading to the town."
+    },
+    {
+      "picture": "panel-23",
+      "text": "None of the guards saw them."
+    },
+    {
+      "picture": "panel-24",
+      "text": "That door also opened by itself."
+    },
+    {
+      "picture": "panel-25",
+      "text": "Peter walked out into the street."
+    },
+    {
+      "picture": "panel-26",
+      "text": "When he had crossed the street, the angel was gone."
+    },
+    {
+      "picture": "panel-27",
+      "text": "Then Peter knew it was not a dream but real."
+    },
+    {
+      "picture": "panel-28",
+      "text": "God had heard the people praying for Peter without ceasing."
+    },
+    {
+      "picture": "panel-29",
+      "text": "He delivered Peter unharmed."
+    },
+    {
+      "picture": "panel-30",
+      "text": "As a church we have a duty to pray for others."
+    },
+    {
+      "picture": "panel-31",
+      "text": "Pray without ceasing for those in sorrow and suffering."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 19 “THE CHURCH THAT PRAYS”, p.91 — “ANSWER THE QUESTIONS”",
+    "note": "Four questions and no “Mark it as Right or Wrong”. Every answer is from the printed lesson on pp.90–91.\n\n**The curriculum pages were read by Drive’s own text extraction rather than by eye** — see the chapter note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "How many disciples did Jesus have?",
+        "objective": "Know that Jesus had twelve disciples.",
+        "answer": "Twelve. “Jesus had twelve disciples. They were always with Jesus.” (p.90)"
+      },
+      {
+        "n": 2,
+        "question": "When was Peter imprisoned?",
+        "objective": "Know that it was at the time of the Passover, and that he was held until the Passover was over.",
+        "answer": "At the Passover. “As it was the time of the Passover, they put him in prison until the Passover was over.” (p.90)"
+      },
+      {
+        "n": 3,
+        "question": "What did the church do for Peter?",
+        "objective": "Know that Peter’s friends prayed for him constantly and without ceasing.",
+        "answer": "It prayed. “Peter’s friends were constantly praying for him. They had faith that prayer would save him. They prayed without ceasing.” (p.90)"
+      },
+      {
+        "n": 4,
+        "question": "How did Peter escape from the prison?",
+        "objective": "Know that an angel woke him, the chains fell off, and they walked out past the guards and through the iron gate, which opened by itself.",
+        "answer": "An angel led him out. “Suddenly an angel of the Lord appeared … the chains fell off Peter’s wrists … Passing through the first gate and the second gate, he came to the iron gate leading to the town. None of the guards saw them. That door also opened by itself.” (pp.90–91)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "how-many-disciples",
+      "title": "The Twelve",
+      "objective": "Know that Jesus had twelve disciples.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "How many disciples did Jesus have?",
+          "hint": "They were always with Him.",
+          "options": [
+            {
+              "label": "Twelve",
+              "correct": true
+            },
+            {
+              "label": "Three"
+            },
+            {
+              "label": "Ten"
+            },
+            {
+              "label": "Seventy"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in five. A small fact, and the chapter opens on it because the twelve are who this is happening to."
+    },
+    {
+      "id": "when-peter-was-taken",
+      "title": "At Passover",
+      "objective": "Know that Peter was seized at the time of the Passover and held until it was over.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Peter was seized at the time of the Passover.",
+              "ask": "Was Peter seized at Passover time?",
+              "answer": true,
+              "because": "Yes. As it was the time of the Passover, they put him in prison."
+            },
+            {
+              "source": "Herod let Peter go free before the Passover began.",
+              "ask": "Did Herod let Peter go before the Passover?",
+              "answer": false,
+              "because": "No. They kept him in prison until the Passover was over."
+            },
+            {
+              "source": "The evil King Herod killed James, the brother of John.",
+              "ask": "Did Herod kill James, the brother of John?",
+              "answer": true,
+              "because": "Yes. The evil King Herod killed John’s brother James."
+            },
+            {
+              "source": "One soldier was left to guard Peter in the prison.",
+              "ask": "Was one soldier guarding Peter?",
+              "answer": false,
+              "because": "No. Four groups of four soldiers each were guarding the prison."
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. “When” on its own is a thin thing to ask, so this game asks it inside what the prison was like: the feast, the four squads, and the man Herod had already killed. Statements 2 and 4 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    },
+    {
+      "id": "what-the-church-did",
+      "title": "Without Ceasing",
+      "objective": "Know that Peter's friends prayed for him constantly, believing prayer would save him.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what his friends did.",
+          "items": [
+            {
+              "label": "They prayed for Peter"
+            },
+            {
+              "label": "They prayed constantly"
+            },
+            {
+              "label": "They prayed without ceasing"
+            },
+            {
+              "label": "They believed prayer would save him"
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A `reveal`, because the printed answer is one thing said four ways — constantly, without ceasing, in faith — and the repetition *is* the answer. A quiz would make a child choose between four true things."
+    },
+    {
+      "id": "how-peter-escaped",
+      "title": "Out of the Prison",
+      "objective": "Follow Peter's way out: the angel, the chains, the gates, and the street.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Peter’s way out in order.",
+          "hint": "The iron gate was the last one.",
+          "items": [
+            {
+              "label": "An angel of the Lord appeared",
+              "position": 1
+            },
+            {
+              "label": "The chains fell off his wrists",
+              "position": 2
+            },
+            {
+              "label": "They passed the first two gates",
+              "position": 3
+            },
+            {
+              "label": "The iron gate opened by itself",
+              "position": 4
+            },
+            {
+              "label": "Peter walked out into the street",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. A sequence, because the escape is a route and each door matters: the chains first, then two gates, then the iron one that opened by itself. Out of order it is just a list of locked things."
+    },
+    {
+      "id": "the-church-that-prays",
+      "title": "Who Did What",
+      "objective": "Tell the four of this lesson apart — the king, the prisoner, the angel and the church.",
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what they did.",
+          "hint": "One of them never came near the prison.",
+          "pairs": [
+            {
+              "from": {
+                "label": "King Herod"
+              },
+              "to": {
+                "label": "Killed James and seized Peter"
+              }
+            },
+            {
+              "from": {
+                "label": "Peter"
+              },
+              "to": {
+                "label": "Slept between two soldiers"
+              }
+            },
+            {
+              "from": {
+                "label": "The angel"
+              },
+              "to": {
+                "label": "Woke him and led him out"
+              }
+            },
+            {
+              "from": {
+                "label": "The church"
+              },
+              "to": {
+                "label": "Prayed for him without ceasing"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "The fifth game, answering no question of its own — the Primary band wants four to five and the book’s four questions filled four.\n\nWhat it carries is the shape of the chapter: the church is in it, and the church never went anywhere near the prison. It prayed, and that is what the title is about."
+    }
+  ],
+  "verse": {
+    "text": "So Peter was kept in prison, but the church was earnestly praying to God for him.",
+    "reference": "Acts of the Apostles 12: 5",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "Where Peter was, and what the church was doing about it.",
+        "words": [
+          "So Peter was kept in prison,",
+          "but the church was earnestly praying",
+          "to God for him."
+        ],
+        "note": "Stage 1, phrase ordering. The verse is one sentence of two halves, so stage 1 is three pieces. The build checks they spell it exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "So Peter was kept in ______,",
+        "hint": "Herod had him seized at the Passover.",
+        "options": [
+          {
+            "label": "prison",
+            "correct": true
+          },
+          {
+            "label": "chains"
+          },
+          {
+            "label": "Jerusalem"
+          },
+          {
+            "label": "hiding"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Chains” is the near miss worth having: Peter really was in two of them, and it is not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "but the church was ______ praying to God for him.",
+        "hint": "One word for how hard they prayed.",
+        "options": [
+          {
+            "label": "earnestly",
+            "correct": true
+          },
+          {
+            "label": "quietly"
+          },
+          {
+            "label": "always"
+          },
+          {
+            "label": "together"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. All three near misses are true of that church; only one of them is the verse’s word, and it is the one that carries the effort."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces, and the church comes after the prison.",
+        "words": [
+          "So Peter",
+          "was kept in prison,",
+          "but the church",
+          "was earnestly praying to God",
+          "for him."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 1 had three."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "Acts of the Apostles 12: 5",
+            "correct": true
+          },
+          {
+            "label": "Acts of the Apostles 12: 1"
+          },
+          {
+            "label": "Acts of the Apostles 12: 17"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, Acts 12: 1 - 17 — 1 is where it begins and 17 is where it ends. The book’s own long form, “Acts of the Apostles”, is kept."
+      }
+    ],
+    "note": "Read from p.92 through the Memory Verse agent: `--fetch --source-dir` over the memory-verse page, the supervised read, then `--from-extraction`. That page is small enough to read by eye, and was.\n\nFive stages in the shape Primary Chapters 2 to 18 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nThe book writes the reference out in full — “Acts of the Apostles 12: 5” — and that is kept rather than shortened to “Acts”.\n\nTranslation is unresolved: p.92 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will join the intercessory prayers of the church for those who are in need and are suffering.",
+    "note": "The curriculum’s own My Decision from p.92, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Appostholar raathrikaale aaradhichappol",
+      "Changala potty bandhitharellam mocahitharayallo."
+    ],
+    "note": "The Song on p.92, in the Latin script the book prints it in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "God, we know that you are the one who delivers us from evil and suffering. Teach us to pray as a congregation for those who are in various trials and troubles. Amen.",
+    "note": "The closing Prayer from p.92, word for word."
+  },
+  "celebration": {
+    "message": "The church prayed without ceasing, and God brought Peter out unharmed.",
+    "note": "The lesson’s own close, from p.91."
+  }
+}
