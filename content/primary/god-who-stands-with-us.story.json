@@ -1,0 +1,475 @@
+{
+  "class": "primary",
+  "chapter": 15,
+  "title": "God Who Stands With Us",
+  "reference": "Daniel 3: 1 - 30",
+  "note": "Built from three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 15 — the opener (p.69), the first half of the lesson (p.70) and its second half with the five questions (p.71) — and the memory-verse page (p.74) in “06 - Memory Verse”.\n\n**The three curriculum pages were not read by eye.** Each photograph is about 7 MB, past what the Drive connector can hand over to this session, so their text came from Drive’s own extraction of the images instead. It came back clean for this chapter — no word needed reconstructing. The memory-verse page is smaller and *was* read by eye, so the verse does not rest on extraction.\n\nTwo further photographs sit in the same folder and return nothing at all from extraction, so what is on them is unknown. By the shape of the other chapters they are the activity pages, which set pencil tasks and have no game here, but that is a guess and is recorded as one.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-nine text cards and nothing carries a picture.\n\nThe book’s own line about the royal order — “If not obeyed, one may lose one’s head” — is not carried into the story. What is carried is what it did: “everyone was afraid to disobey”, which is the book’s next sentence. The threat the three men are actually given, the burning fire, is on the cards in the king’s own words, because that is what they answer.\n\nThe chapter has two prayers. The opener on p.69 is “Lord God who is with us always, help us to understand today’s lessons. Amen.”; the close on p.74 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "There was a mighty king in a land called Babylon."
+    },
+    {
+      "picture": "panel-02",
+      "text": "His name was Nebuchadnezzar."
+    },
+    {
+      "picture": "panel-03",
+      "text": "He invaded the Jewish kingdom and took its treasure."
+    },
+    {
+      "picture": "panel-04",
+      "text": "The Jews were captured and taken away as slaves."
+    },
+    {
+      "picture": "panel-05",
+      "text": "The king made an image of gold."
+    },
+    {
+      "picture": "panel-06",
+      "text": "He placed it where everyone could see it."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He ordered everyone in the country to worship it."
+    },
+    {
+      "picture": "panel-08",
+      "text": "It was a royal order, and everyone was afraid to disobey."
+    },
+    {
+      "picture": "panel-09",
+      "text": "So they all began worshipping the image."
+    },
+    {
+      "picture": "panel-10",
+      "text": "But three Jews did not obey the king."
+    },
+    {
+      "picture": "panel-11",
+      "text": "Their names were Shadrach, Meshach and Abednego."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They lived according to the will of Jehovah."
+    },
+    {
+      "picture": "panel-13",
+      "text": "They believed God’s commandment was greater than the king’s command."
+    },
+    {
+      "picture": "panel-14",
+      "text": "“You shall have no other gods before me.”"
+    },
+    {
+      "picture": "panel-15",
+      "text": "When Nebuchadnezzar heard of this, he was furious."
+    },
+    {
+      "picture": "panel-16",
+      "text": "The soldiers seized the three men and brought them to the king."
+    },
+    {
+      "picture": "panel-17",
+      "text": "The king threatened them."
+    },
+    {
+      "picture": "panel-18",
+      "text": "“If you don’t worship the golden image, you will be thrown into the fire.”"
+    },
+    {
+      "picture": "panel-19",
+      "text": "Do you know what they boldly said?"
+    },
+    {
+      "picture": "panel-20",
+      "text": "“The God we serve is able to deliver us, and he will deliver us.”"
+    },
+    {
+      "picture": "panel-21",
+      "text": "The king had them tied up and thrown into the blazing furnace."
+    },
+    {
+      "picture": "panel-22",
+      "text": "Then Nebuchadnezzar looked into the fire."
+    },
+    {
+      "picture": "panel-23",
+      "text": "He saw four men walking there, not three."
+    },
+    {
+      "picture": "panel-24",
+      "text": "Shocked, he had the three men released at once."
+    },
+    {
+      "picture": "panel-25",
+      "text": "They had not been burnt at all."
+    },
+    {
+      "picture": "panel-26",
+      "text": "An angel of God had walked with them in the fire."
+    },
+    {
+      "picture": "panel-27",
+      "text": "The king ordered that no one speak against their God."
+    },
+    {
+      "picture": "panel-28",
+      "text": "“For no other god can save in this way.”"
+    },
+    {
+      "picture": "panel-29",
+      "text": "If we trust God, He will deliver us from all danger."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 15 “GOD WHO STANDS WITH US”, p.71 — “ANSWER THE QUESTIONS”",
+    "note": "Five questions and no “Mark it as Right or Wrong”. Every answer is from the printed lesson on pp.70–71.\n\n**The curriculum pages were read by Drive’s own text extraction rather than by eye** — see the chapter note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What was King Nebuchadnezzar’s command?",
+        "objective": "Know that he ordered everyone in the country to worship the image of gold he had set up.",
+        "answer": "To worship the golden image. “He made an image of gold and placed it where everyone could see it. He ordered everyone in that country to worship that image.” (p.70)"
+      },
+      {
+        "n": 2,
+        "question": "Why did King Nebuchadnezzar throw the three young men into the furnace?",
+        "objective": "Know that they disregarded his order and would not worship the golden image, because God’s commandment was greater than the king’s.",
+        "answer": "They would not worship it. “They believed that the commandment of God ‘You shall have no other gods before me’ was greater than the command of the king. So they disregarded the king’s order.” (p.70)"
+      },
+      {
+        "n": 3,
+        "question": "What did King Nebuchadnezzar see in the fire?",
+        "objective": "Know that he saw four men walking in the fire instead of the three he had thrown in.",
+        "answer": "Four men. “Instead of the three men he had thrown into the furnace, he saw four men walking there.” (p.71)"
+      },
+      {
+        "n": 4,
+        "question": "What order did the king give to the people when he saw that the youth were not burnt by the fire?",
+        "objective": "Know that he ordered that anyone who said anything against their God be punished.",
+        "answer": "That none speak against their God. “the king ordered that anyone who said anything against the God of Shadrach, Meshach and Abednego be punished ‘for no other god can save in this way.’” (p.71)"
+      },
+      {
+        "n": 5,
+        "question": "Who were the three young men who survived the fire?",
+        "objective": "Know that they were Shadrach, Meshach and Abednego.",
+        "answer": "Shadrach, Meshach and Abednego. “But three Jews who were there — Shadrach, Meshach, and Abednego — did not obey the king.” (p.70)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "the-kings-command",
+      "title": "The Royal Order",
+      "objective": "Know that Nebuchadnezzar ordered everyone to worship the image of gold he had set up.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did the king order everyone to do?",
+          "hint": "He had put it where all could see it.",
+          "options": [
+            {
+              "label": "Worship the image of gold",
+              "correct": true
+            },
+            {
+              "label": "Build an image of gold"
+            },
+            {
+              "label": "Bow down to the king himself"
+            },
+            {
+              "label": "Leave the land of Babylon"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in five. “Build an image of gold” is the near miss worth having: the king really did make one, and that is not what he ordered the country to do."
+    },
+    {
+      "id": "why-they-were-thrown-in",
+      "title": "Three Who Would Not",
+      "objective": "Know that the three men disregarded the king's order because God's commandment was greater than the king's.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "The three Jews worshipped the golden image along with everyone else.",
+              "ask": "Did the three men worship the golden image?",
+              "answer": false,
+              "because": "No. They disregarded the king’s order and served God alone."
+            },
+            {
+              "source": "They believed the commandment of God was greater than the command of the king.",
+              "ask": "Did they put God’s commandment above the king’s?",
+              "answer": true,
+              "because": "Yes. They believed God’s commandment was greater than the king’s."
+            },
+            {
+              "source": "When Nebuchadnezzar heard of this, he was furious.",
+              "ask": "Was the king furious when he heard?",
+              "answer": true,
+              "because": "Yes. When Nebuchadnezzar heard of this, he was furious."
+            },
+            {
+              "source": "The king let the three men go free when he heard their answer.",
+              "ask": "Did the king let the three men go?",
+              "answer": false,
+              "because": "No. He had them tied up and thrown into the blazing furnace."
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The printed answer is a refusal and a reason held together, and a true-or-not can carry both. Statements 1 and 4 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    },
+    {
+      "id": "what-the-king-saw",
+      "title": "Four in the Fire",
+      "objective": "Know that the king looked into the fire and saw four men walking, not the three he had thrown in.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put what happened at the furnace in order.",
+          "hint": "He looked in before he let them out.",
+          "items": [
+            {
+              "label": "The three men were thrown in",
+              "position": 1
+            },
+            {
+              "label": "The king looked into the fire",
+              "position": 2
+            },
+            {
+              "label": "He saw four men walking",
+              "position": 3
+            },
+            {
+              "label": "He had them released at once",
+              "position": 4
+            },
+            {
+              "label": "They were not burnt at all",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A sequence, because the answer only lands in its place: the king looked in *expecting three*, and the fourth man is what he found. Put out of order it is just a list of events."
+    },
+    {
+      "id": "after-the-fire",
+      "title": "After the Fire",
+      "objective": "Know the order the king gave once he saw the three men were not burnt.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what happened after.",
+          "hint": "One of these gave an order.",
+          "pairs": [
+            {
+              "from": {
+                "label": "The three men"
+              },
+              "to": {
+                "label": "Came out without a burn"
+              }
+            },
+            {
+              "from": {
+                "label": "The king"
+              },
+              "to": {
+                "label": "Ordered that none speak against God"
+              }
+            },
+            {
+              "from": {
+                "label": "The angel"
+              },
+              "to": {
+                "label": "Had walked with them inside"
+              }
+            },
+            {
+              "from": {
+                "label": "The furnace"
+              },
+              "to": {
+                "label": "Could not harm them at all"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. The king’s new order sits here beside the three other things that came out of that furnace, so a child has to tell who did what rather than recite one line."
+    },
+    {
+      "id": "who-they-were",
+      "title": "Three Names",
+      "objective": "Know the names of the three young men who came out of the fire.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over who walked out of the fire.",
+          "items": [
+            {
+              "label": "Shadrach"
+            },
+            {
+              "label": "Meshach"
+            },
+            {
+              "label": "Abednego"
+            },
+            {
+              "label": "Three Jews in Babylon"
+            },
+            {
+              "label": "They served God alone"
+            }
+          ]
+        }
+      ],
+      "note": "Question 5. A `reveal`, because three names are three right answers and a quiz would make a child pick one of them and call the other two wrong."
+    }
+  ],
+  "verse": {
+    "text": "“If we are thrown into the blazing furnace, the God we serve is able to deliver us from it, and he will deliver us from Your Majesty’s hand.”",
+    "reference": "Daniel 3: 17",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "The furnace first, then what God can do, then what God will do.",
+        "words": [
+          "“If we are thrown into the blazing furnace,",
+          "the God we serve is able",
+          "to deliver us from it,",
+          "and he will deliver us from Your Majesty’s hand.”"
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand at the clause boundaries. The build checks the pieces spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "If we are thrown into the blazing ______,",
+        "hint": "The king’s own threat.",
+        "options": [
+          {
+            "label": "furnace",
+            "correct": true
+          },
+          {
+            "label": "fire"
+          },
+          {
+            "label": "flames"
+          },
+          {
+            "label": "oven"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Fire” is the near miss worth having: the lesson says “burning fire” two lines earlier, and it is not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "he will deliver us from Your ______ hand.”",
+        "hint": "How they spoke to the king, even then.",
+        "options": [
+          {
+            "label": "Majesty’s",
+            "correct": true
+          },
+          {
+            "label": "Highness’s"
+          },
+          {
+            "label": "Lordship’s"
+          },
+          {
+            "label": "Master’s"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. The word is worth holding for its manners: they were refusing the king to his face and still addressing him properly."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Six pieces, and the hand comes last.",
+        "words": [
+          "“If we are thrown",
+          "into the blazing furnace,",
+          "the God we serve",
+          "is able to deliver us from it,",
+          "and he will deliver us",
+          "from Your Majesty’s hand.”"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "Daniel 3: 17",
+            "correct": true
+          },
+          {
+            "label": "Daniel 3: 1"
+          },
+          {
+            "label": "Daniel 3: 30"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, Daniel 3: 1 - 30 — 1 is the making of the image and 30 is the end of the story."
+      }
+    ],
+    "note": "Read from p.74 through the Memory Verse agent: `--fetch --source-dir` over the memory-verse page, the supervised read, then `--from-extraction`. That page is small enough to read by eye, and was.\n\nFive stages in the shape Primary Chapters 2 to 13 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nThe verse page prints the sentence with an opening clause the lesson on p.70 leaves out — “If we are thrown into the blazing furnace” — and the page is what is kept, because the page is the memory verse.\n\nTranslation is unresolved: p.74 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will believe in no god, but the living God. He is my place of refuge.",
+    "note": "The curriculum’s own My Decision from p.74, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Eriyum theecchoola ethiraay erinjaal",
+      "Shradakkinepole veezhthappettaal",
+      "Ennodu koodeyum agniyilirangi",
+      "Venthidaathe priyan viduvikkum."
+    ],
+    "note": "The Song on p.74, in the Latin script the book prints it in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Almighty God, You alone are God. Never let me forget You. Help me to trust only You in all my problems. Be with me always. Amen.",
+    "note": "The closing Prayer from p.74, word for word."
+  },
+  "celebration": {
+    "message": "Four men walked in the fire, and not one of them was burnt.",
+    "note": "What the king saw when he looked in, from p.71."
+  }
+}
