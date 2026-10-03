@@ -1,0 +1,374 @@
+{
+  "class": "primary",
+  "chapter": 13,
+  "title": "Faith of Four Friends",
+  "reference": "St. Mark 2: 1 - 12",
+  "note": "Built from the three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 13 — the opener (p.61), the lesson (p.62) and the four questions (p.63) — and the memory-verse page (p.64) in “06 - Memory Verse”.\n\n**The three curriculum pages were not read by eye.** Each photograph is about 7 MB, past what the Drive connector can hand over to this session, so their text came from Drive’s own extraction of the images instead. It came back clean for this chapter — no word needed reconstructing. The memory-verse page is smaller and *was* read by eye, so the verse does not rest on extraction. Smaller re-exports of pp.61–63 would let the lesson be checked too.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is nineteen text cards and nothing carries a picture.\n\n“paralyzed” is the book’s spelling on p.62 and is kept in the story; the games say “paralysed”, which is the spelling the rest of this app uses.\n\nThe chapter has two prayers. The opener on p.61 is “Lord of miracles, help us to come to You in faith, bless us. Amen.”; the close on p.64 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "There lived four friends who were helpful to others."
+    },
+    {
+      "picture": "panel-02",
+      "text": "One of their friends was paralyzed."
+    },
+    {
+      "picture": "panel-03",
+      "text": "He could not get up from his bed or walk."
+    },
+    {
+      "picture": "panel-04",
+      "text": "They heard that Jesus was coming to the nearby town, Capernaum."
+    },
+    {
+      "picture": "panel-05",
+      "text": "They had heard about the healing miracles done by Jesus."
+    },
+    {
+      "picture": "panel-06",
+      "text": "So they decided to take their friend to Jesus."
+    },
+    {
+      "picture": "panel-07",
+      "text": "Jesus was at a house at Capernaum."
+    },
+    {
+      "picture": "panel-08",
+      "text": "A big crowd surrounded Him."
+    },
+    {
+      "picture": "panel-09",
+      "text": "There was no way to get their friend in front of Jesus."
+    },
+    {
+      "picture": "panel-10",
+      "text": "But they did not give up."
+    },
+    {
+      "picture": "panel-11",
+      "text": "They went up on the roof above Jesus."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They dug through it and made an opening."
+    },
+    {
+      "picture": "panel-13",
+      "text": "Then they lowered the mat the man was lying on."
+    },
+    {
+      "picture": "panel-14",
+      "text": "They had complete faith that Jesus would heal their friend."
+    },
+    {
+      "picture": "panel-15",
+      "text": "Jesus saw their faith."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He said, “I tell you, get up, take your mat and go home.”"
+    },
+    {
+      "picture": "panel-17",
+      "text": "Everyone gathered there was surprised."
+    },
+    {
+      "picture": "panel-18",
+      "text": "God honours all the services you do for others."
+    },
+    {
+      "picture": "panel-19",
+      "text": "Let us also come to Jesus, and bring others to Jesus."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 13 “FAITH OF FOUR FRIENDS”, p.63 — “ANSWER THE QUESTIONS”",
+    "note": "Four questions and no “Mark it as Right or Wrong”. Every answer is from the printed lesson on p.62. The page also sets “Colour the picture”, which is a pencil activity and has no game here.\n\n**The curriculum pages were read by Drive’s own text extraction rather than by eye** — see the chapter note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Who brought the paralytic man to Jesus?",
+        "objective": "Know that his four friends brought him.",
+        "answer": "Four friends. “There lived four friends who were helpful to others. One of their friends was paralyzed … So they decided to take their friend to Jesus.” (p.62)"
+      },
+      {
+        "n": 2,
+        "question": "In which city was Jesus then?",
+        "objective": "Know that Jesus was at a house in Capernaum.",
+        "answer": "Capernaum. “Jesus was at a house at Capernaum.” (p.62)"
+      },
+      {
+        "n": 3,
+        "question": "How was the paralytic being taken to Jesus at Capernaum?",
+        "objective": "Know that the friends dug an opening in the roof above Jesus and lowered the mat the man was lying on.",
+        "answer": "Through the roof. “They made an opening in the roof above Jesus by digging through it and then lowered the mat the man was lying on.” (p.62)"
+      },
+      {
+        "n": 4,
+        "question": "What did Jesus tell the paralytic?",
+        "objective": "Know that Jesus said, “I tell you, get up, take your mat and go home.”",
+        "answer": "“I tell you, get up, take your mat and go home.” — “Seeing their faith Jesus said to the paralytic, ‘I tell you, get up, take your mat and go home.’” (p.62) The same words are the chapter’s memory verse."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "who-brought-him",
+      "title": "Four Friends",
+      "objective": "Know that four friends brought the paralysed man to Jesus.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who brought the paralysed man to Jesus?",
+          "hint": "They were helpful to others.",
+          "options": [
+            {
+              "label": "His four friends",
+              "correct": true
+            },
+            {
+              "label": "His mother and father"
+            },
+            {
+              "label": "The crowd at the house"
+            },
+            {
+              "label": "The owner of the house"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in four. The answer is four people and not one, which is the whole point of the chapter — the man could not come, so the faith that reached Jesus was somebody else’s."
+    },
+    {
+      "id": "in-the-town-of-capernaum",
+      "title": "At the House",
+      "objective": "Know that Jesus was at a house in Capernaum, with a crowd all round Him.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Jesus was in Jerusalem on the day the friends came.",
+              "ask": "Was Jesus in Jerusalem that day?",
+              "answer": false,
+              "because": "No. He was at a house at Capernaum."
+            },
+            {
+              "source": "A big crowd surrounded Him at the house.",
+              "ask": "Was there a big crowd at the house?",
+              "answer": true,
+              "because": "Yes. A big crowd surrounded Him."
+            },
+            {
+              "source": "The crowd made a way through for the paralysed man.",
+              "ask": "Did the crowd make a way for them?",
+              "answer": false,
+              "because": "No. The crowd made it impossible to reach Jesus."
+            },
+            {
+              "source": "They had heard about the healing miracles done by Jesus.",
+              "ask": "Had the friends heard about Jesus’ miracles?",
+              "answer": true,
+              "because": "Yes. They had heard about the healing miracles done by Jesus."
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The city on its own is a thin thing to ask about, so this game asks it inside what the city was like that day: a house, a crowd, and no way through. Statements 1 and 3 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    },
+    {
+      "id": "through-the-roof",
+      "title": "Through the Roof",
+      "objective": "Know how the friends got him to Jesus: up to the roof, through it, and down on his mat.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put their way to Jesus in order.",
+          "hint": "They went up before they went down.",
+          "items": [
+            {
+              "label": "The crowd blocked the way",
+              "position": 1
+            },
+            {
+              "label": "They went up on the roof",
+              "position": 2
+            },
+            {
+              "label": "They dug an opening",
+              "position": 3
+            },
+            {
+              "label": "They lowered the mat down",
+              "position": 4
+            },
+            {
+              "label": "Jesus saw their faith",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A sequence, because the printed answer is a route and the order is the surprise in it — they went *up* in order to get *down*, and the digging comes between."
+    },
+    {
+      "id": "what-jesus-said",
+      "title": "Get Up",
+      "objective": "Know what Jesus told the paralysed man, word for word.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what Jesus told him.",
+          "items": [
+            {
+              "label": "I tell you"
+            },
+            {
+              "label": "Get up"
+            },
+            {
+              "label": "Take your mat"
+            },
+            {
+              "label": "And go home"
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. A `reveal` rather than a quiz, because the answer is one sentence in four parts and every part is right. The same words are the chapter’s memory verse, so a child meets them twice in different shapes."
+    }
+  ],
+  "verse": {
+    "text": "“I tell you, get up, take your mat and go home.”",
+    "reference": "St. Mark 2: 11",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "Three things to do, in the order he did them.",
+        "words": [
+          "“I tell you,",
+          "get up, take your mat",
+          "and go home.”"
+        ],
+        "note": "Stage 1, phrase ordering. The verse is short, so stage 1 is three pieces rather than four. The build checks they spell it exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "I tell you, get up, take your ______",
+        "hint": "It is what he had been lying on.",
+        "options": [
+          {
+            "label": "mat",
+            "correct": true
+          },
+          {
+            "label": "bed"
+          },
+          {
+            "label": "coat"
+          },
+          {
+            "label": "staff"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Bed” is the near miss worth having: the lesson says he could not get up from his bed, and it is not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "take your mat and go ______.”",
+        "hint": "Where Jesus sends him.",
+        "options": [
+          {
+            "label": "home",
+            "correct": true
+          },
+          {
+            "label": "away"
+          },
+          {
+            "label": "out"
+          },
+          {
+            "label": "up"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. Jesus does not send him off — He sends him *home*, which is the difference the word carries."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "“I tell you,",
+          "get up,",
+          "take",
+          "your mat",
+          "and go home.”"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 1 had three."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Mark 2: 11",
+            "correct": true
+          },
+          {
+            "label": "St. Mark 2: 1"
+          },
+          {
+            "label": "St. Mark 2: 12"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Mark 2: 1 - 12 — 1 is where it begins and 12 is where the man gets up and walks out."
+      }
+    ],
+    "note": "Read from p.64 through the Memory Verse agent: `--fetch --source-dir` over the memory-verse page, the supervised read, then `--from-extraction`. That page is small enough to read by eye, and was.\n\nFive stages in the shape Primary Chapters 2 to 10 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nTranslation is unresolved: p.64 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will help others as far as possible.",
+    "note": "The curriculum’s own My Decision from p.64, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Roga sayyayilenikku sahayakanum",
+      "Rakkala geethavumavan",
+      "Nalla vaidiyanum Divya Oushathamen",
+      "Alma Sakhiyumavan thanne"
+    ],
+    "note": "The Song on p.64, in the Latin script the book prints it in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Almighty God, help us to serve others. Healing God, heal our dear and near ones. Amen.",
+    "note": "The closing Prayer from p.64, word for word."
+  },
+  "celebration": {
+    "message": "He got up, took his mat, and walked home.",
+    "note": "What the four friends’ faith reached, from p.62."
+  }
+}
