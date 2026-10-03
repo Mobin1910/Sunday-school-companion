@@ -1,0 +1,429 @@
+{
+  "class": "primary",
+  "chapter": 7,
+  "title": "Good Soil",
+  "reference": "St. Matthew 13: 1 - 9",
+  "note": "Built from the three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 07 — the opener (p.35), the lesson (p.36) and the five questions (p.37) — and the memory-verse page (p.40) in “06 - Memory Verse”.\n\npp.38–39 are not in Drive. By the shape of the other chapters they are the activity pages, which set pencil tasks and have no game here, so nothing in this chapter depends on them.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is nineteen text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change.\n\np.36 carries the teacher’s pen marks — four bracketed sections numbered 1 to 4 — lining up with the first four questions. A reading aid, not an answer key. p.37 carries something different: a handwritten *answer* to question 5, which the book does not print. It is used, and it is labelled as the teacher’s in `curriculum` and in the game it feeds.\n\nThe last four story cards step past the printed lesson into what the parable is about — the seed as God’s Word and the heart as the ground. That reading is the chapter’s own, from its My Decision on p.40 and the teacher’s answer to question 5; it is not invented here.\n\nThe chapter has two prayers. The opener on p.35 is “Loving Lord, help us to understand the parable of the different types of soil. Amen.”; the close on p.40 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "One day Jesus told a story about a farmer and his seed."
+    },
+    {
+      "picture": "panel-02",
+      "text": "A farmer went out to sow his seed."
+    },
+    {
+      "picture": "panel-03",
+      "text": "As he was scattering it, some fell along the path."
+    },
+    {
+      "picture": "panel-04",
+      "text": "The birds came and ate it up."
+    },
+    {
+      "picture": "panel-05",
+      "text": "Some fell on rocky ground, where there was not much soil."
+    },
+    {
+      "picture": "panel-06",
+      "text": "It sprang up quickly."
+    },
+    {
+      "picture": "panel-07",
+      "text": "But when the sun came up, the plants withered."
+    },
+    {
+      "picture": "panel-08",
+      "text": "They had no root."
+    },
+    {
+      "picture": "panel-09",
+      "text": "Other seed fell among thorns."
+    },
+    {
+      "picture": "panel-10",
+      "text": "The thorns grew up and choked the plants."
+    },
+    {
+      "picture": "panel-11",
+      "text": "Still other seed fell on good soil."
+    },
+    {
+      "picture": "panel-12",
+      "text": "There it produced a crop."
+    },
+    {
+      "picture": "panel-13",
+      "text": "A hundred, sixty or thirty times what was sown."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Jesus ended the story this way."
+    },
+    {
+      "picture": "panel-15",
+      "text": "“He who has ears, let them hear.”"
+    },
+    {
+      "picture": "panel-16",
+      "text": "The seed is God’s Word, and our heart is the ground."
+    },
+    {
+      "picture": "panel-17",
+      "text": "A heart made ready lets the Word take root."
+    },
+    {
+      "picture": "panel-18",
+      "text": "So let us prepare our hearts prayerfully."
+    },
+    {
+      "picture": "panel-19",
+      "text": "Then the Word can grow in us and bear much fruit."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 07 “GOOD SOIL”, p.37 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the curriculum photographs, read at full size. Five questions and no “Mark it as Right or Wrong”. Questions 1–4 are answered from the printed lesson on p.36. Question 5 is not answered in print — the answer recorded below is the teacher’s own handwriting on p.37, and is marked as such.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What happened to the grains which fell on the road?",
+        "objective": "Know that the birds came and ate it up.",
+        "answer": "The birds ate it. “As he was scattering the seed, some fell along the path, and the birds came and ate it up.” (p.36)"
+      },
+      {
+        "n": 2,
+        "question": "Why didn’t the seeds that fell on the rock grow?",
+        "objective": "Know that they sprang up quickly but withered when the sun came up, because they had no root.",
+        "answer": "They had no root. “Some fell on rocky ground, where it did not have much soil. It sprang up quickly but when the sun came up, the plants withered because they had no root.” (p.36)"
+      },
+      {
+        "n": 3,
+        "question": "What happened to the grains which fell among thorns?",
+        "objective": "Know that the thorns grew up and choked the plants.",
+        "answer": "The thorns choked them. “Other seed fell among thorns, which grew up and choked the plants.” (p.36)"
+      },
+      {
+        "n": 4,
+        "question": "Where did the farmer get income from?",
+        "objective": "Know that the crop came from the seed that fell on good soil — a hundred, sixty or thirty times what was sown.",
+        "answer": "From the good soil. “Still other seed fell on good soil, where it produced a crop—a hundred, sixty or thirty times what was sown.” (p.36)"
+      },
+      {
+        "n": 5,
+        "question": "How should we prepare our heart to receive God’s Word?",
+        "objective": "Know that we prepare prayerfully: we read God’s Word, understand it, and make it part of our life.",
+        "answer": "Prayerfully. “We should read God’s Word, understand it and make it part of our life.” — **the teacher’s handwriting on p.37, not printed text.** The word “prayerfully” is written in above the question. The chapter’s own My Decision on p.40 says the same thing in the first person."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "the-four-soils",
+      "title": "Four Kinds of Ground",
+      "objective": "Know what became of the seed on the path and the seed among the thorns, and tell the four grounds apart.",
+      "answers": [
+        1,
+        3
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each ground to what happened there.",
+          "hint": "Only one of the four grew anything.",
+          "pairs": [
+            {
+              "from": {
+                "label": "On the path"
+              },
+              "to": {
+                "label": "The birds ate it up"
+              }
+            },
+            {
+              "from": {
+                "label": "On rocky ground"
+              },
+              "to": {
+                "label": "It withered with no root"
+              }
+            },
+            {
+              "from": {
+                "label": "Among thorns"
+              },
+              "to": {
+                "label": "The thorns choked the plants"
+              }
+            },
+            {
+              "from": {
+                "label": "On good soil"
+              },
+              "to": {
+                "label": "It produced a great crop"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Questions 1 and 3, together in one game because the parable is a comparison and a child who can only answer one of the four has not met it. A `match` puts the four grounds beside the four endings and asks which belongs to which, which is the question Jesus is actually asking."
+    },
+    {
+      "id": "why-the-rock-seed-died",
+      "title": "On the Rock",
+      "objective": "Know that the seed on the rock sprang up quickly and then withered in the sun, because it had no root.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the rocky ground in order.",
+          "hint": "It grew before it died.",
+          "items": [
+            {
+              "label": "The seed fell on rocky ground",
+              "position": 1
+            },
+            {
+              "label": "It sprang up quickly",
+              "position": 2
+            },
+            {
+              "label": "The sun came up",
+              "position": 3
+            },
+            {
+              "label": "The plants withered away",
+              "position": 4
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The printed answer has a shape to it — it sprang up *quickly*, and only then withered — so a sequence is the honest form. The thing worth holding is that the rocky seed did grow for a while; it is not a seed that never started."
+    },
+    {
+      "id": "where-the-crop-came-from",
+      "title": "The Farmer's Crop",
+      "objective": "Know that the crop came from the seed on the good soil — a hundred, sixty or thirty times what was sown.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where did the farmer's crop come from?",
+          "hint": "A hundred, sixty or thirty times what was sown.",
+          "options": [
+            {
+              "label": "The seed on the good soil",
+              "correct": true
+            },
+            {
+              "label": "The seed on the path"
+            },
+            {
+              "label": "The seed on the rock"
+            },
+            {
+              "label": "The seed among the thorns"
+            }
+          ]
+        }
+      ],
+      "note": "Question 4, and the one choosing game in five. All four options are grounds from this very parable, so the question is answered by remembering which ground kept its seed rather than by spotting an invented option."
+    },
+    {
+      "id": "preparing-our-heart",
+      "title": "Good Soil in Us",
+      "objective": "Know how a heart is made ready for God's Word: prayerfully, by reading it, understanding it and making it part of our life.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over how a heart is made ready.",
+          "items": [
+            {
+              "label": "Prepare it prayerfully"
+            },
+            {
+              "label": "Read God's Word"
+            },
+            {
+              "label": "Understand it"
+            },
+            {
+              "label": "Make it part of our life"
+            },
+            {
+              "label": "Let it bear much fruit"
+            }
+          ]
+        }
+      ],
+      "note": "Question 5. The lesson does not print an answer to it — it is a question the class is meant to answer for itself — so this game is built from the teacher’s own handwritten answer on p.37 (“prayerfully … we should read God’s Word, understand it and make it part of our life”) and from the chapter’s My Decision on p.40. A `reveal` rather than a quiz, because none of these five is the right one and the other four wrong."
+    },
+    {
+      "id": "good-soil",
+      "title": "True or Not?",
+      "objective": "Hold the sower's own words and the shape of the parable — that the seed went everywhere, and only one ground kept it.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "The farmer sowed his seed only on the good soil.",
+              "ask": "Did the farmer sow only on the good soil?",
+              "answer": false,
+              "because": "No. He scattered it, and it fell on four kinds of ground."
+            },
+            {
+              "source": "Still other seed fell on good soil, where it produced a crop—a hundred, sixty or thirty times what was sown.",
+              "ask": "Did the good soil give back more than was sown?",
+              "answer": true,
+              "because": "Yes. A hundred, sixty or thirty times what was sown."
+            },
+            {
+              "source": "The seed among the thorns grew up and gave a crop.",
+              "ask": "Did the seed among the thorns give a crop?",
+              "answer": false,
+              "because": "No. The thorns grew up and choked the plants."
+            },
+            {
+              "source": "Jesus ended the story by saying, “He who has ears, let them hear.”",
+              "ask": "Did Jesus end the story with a word about ears?",
+              "answer": true,
+              "because": "Yes. He said, “He who has ears, let them hear.”"
+            }
+          ]
+        }
+      ],
+      "note": "The fifth game, answering no question of its own — the Primary band wants four to five and the book’s five questions filled four.\n\nWhat it carries is the shape of the parable: the seed went everywhere and only one ground kept it, and Jesus closed it with a word about ears. Statements 1 and 3 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    }
+  ],
+  "verse": {
+    "text": "Still other seed fell on good soil, where it produced a crop—a hundred, sixty or thirty times what was sown. Whoever has ears, let them hear.",
+    "reference": "St. Matthew 13: 8, 9",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "The ground first, then the crop, then the ears.",
+        "words": [
+          "Still other seed fell on good soil,",
+          "where it produced a crop—a hundred,",
+          "sixty or thirty times what was sown.",
+          "Whoever has ears, let them hear."
+        ],
+        "note": "Stage 1, phrase ordering. Cut by hand rather than on the agent’s word counts, and cut around the em dash: “crop—a hundred” has no space in it, so a join there would not spell the verse. The build checks the pieces spell it exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Still other seed fell on good ______,",
+        "hint": "The chapter is named for it.",
+        "options": [
+          {
+            "label": "soil",
+            "correct": true
+          },
+          {
+            "label": "ground"
+          },
+          {
+            "label": "earth"
+          },
+          {
+            "label": "land"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Ground” is the near miss worth having: the lesson uses it two lines earlier, for the rocky ground, and it is not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "a hundred, sixty or ______ times what was sown.",
+        "hint": "The smallest of the three numbers.",
+        "options": [
+          {
+            "label": "thirty",
+            "correct": true
+          },
+          {
+            "label": "twenty"
+          },
+          {
+            "label": "forty"
+          },
+          {
+            "label": "fifty"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. The three numbers are the hardest part of this verse to hold, and the third is the one that goes first."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Six pieces, and the ears come last.",
+        "words": [
+          "Still other seed",
+          "fell on good soil,",
+          "where it produced",
+          "a crop—a hundred,",
+          "sixty or thirty times what was sown.",
+          "Whoever has ears, let them hear."
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Matthew 13: 8, 9",
+            "correct": true
+          },
+          {
+            "label": "St. Matthew 13: 1"
+          },
+          {
+            "label": "St. Matthew 13: 5"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Matthew 13: 1 - 9 — 1 is where it begins and 5 is the rocky ground."
+      }
+    ],
+    "note": "Read from p.40 through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs and the memory-verse page, the supervised read, then `--from-extraction`. That page lives in “06 - Memory Verse” rather than with the lesson, which is this class’s arrangement.\n\nFive stages in the shape Primary Chapters 2 to 6 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\n**One mark is not carried over.** p.40 prints the verse ending “let them hear.” with a closing quotation mark and no opening one — the book has kept the close of the quotation from the lesson’s rendering (“He who has ears, let them hear.”) without its start. The words are exactly as printed; the orphan mark is dropped, because carrying half a quotation into a verse card would show a child a mark that opens nothing.\n\nTranslation is unresolved: p.40 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will prepare my heart prayerfully to become the good soil on which the seed of God’s Word can fall and bear much fruit.",
+    "note": "The curriculum’s own My Decision from p.40, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Vithukal veezhuvan",
+      "Hrithukkall orukkanam",
+      "Veena nalla vithukal",
+      "Pookkalayi maranam"
+    ],
+    "note": "The first of the two songs on p.40, in the Latin script the book prints it in. Not translated and not completed.\n\nThe page offers a second under “Or”, which this card has no room for and which is recorded here instead: “Vachanathin vithukal / Kathirayennil / Nirayuvan daivame / Idayakaname”. A teacher choosing the second will find it on p.40."
+  },
+  "prayer": {
+    "text": "Lord, prepare my heart to receive Your Word and grow fruitful. Amen.",
+    "note": "The closing Prayer from p.40, word for word."
+  },
+  "celebration": {
+    "message": "Good soil gives a crop — a hundred, sixty or thirty times what was sown.",
+    "note": "The parable’s own ending, from p.36."
+  }
+}
