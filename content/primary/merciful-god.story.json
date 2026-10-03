@@ -1,0 +1,433 @@
+{
+  "class": "primary",
+  "chapter": 10,
+  "title": "Merciful God",
+  "reference": "St. Luke 13: 6 - 9",
+  "note": "Built from the two curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 10 — the opener (p.49) and the lesson with its five questions (p.50) — and the memory-verse page (p.52) in “06 - Memory Verse”.\n\n**Neither curriculum page was read by eye.** Both photographs are about 7.5 MB, past what the Drive connector can hand over to this session, so their text came from Drive’s own extraction of the images instead. The memory-verse page is smaller and *was* read by eye, so the verse itself does not rest on extraction. Smaller re-exports of pp.49–50 would let the lesson be checked too.\n\n**The teacher and the book disagree, and it is worth settling.** p.50 carries a handwritten gloss at the top — read as “Owner represents God. Caretaker represents Jesus” — while the printed lesson on the same page says “God is like the caretaker of the vineyard”. Both readings are old and honourable; they are not the same reading. **The games here follow the printed lesson**, because that is what the book puts in front of the class. A teacher who teaches the other way will find the chapter saying something they did not say. Flagged rather than quietly resolved.\n\np.51 is not in Drive. By the shape of the other chapters it is the activity page, which sets a pencil task and has no game here.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is nineteen text cards and nothing carries a picture.\n\nThe chapter has two prayers. The opener on p.49 is “Thank You Lord for patiently working on me to make me what You want me to be. Help me to live a fruitful life with you. Amen.”; the close on p.52 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "A man had a fig tree growing in his vineyard."
+    },
+    {
+      "picture": "panel-02",
+      "text": "It was big and beautiful, with lots of branches and leaves."
+    },
+    {
+      "picture": "panel-03",
+      "text": "But it had no fruit."
+    },
+    {
+      "picture": "panel-04",
+      "text": "For three years the owner came looking for fruit on it."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He did not find any."
+    },
+    {
+      "picture": "panel-06",
+      "text": "He was disappointed and angry."
+    },
+    {
+      "picture": "panel-07",
+      "text": "He told the caretaker to cut the tree down."
+    },
+    {
+      "picture": "panel-08",
+      "text": "It was only wasting the space and the soil."
+    },
+    {
+      "picture": "panel-09",
+      "text": "The caretaker was sad."
+    },
+    {
+      "picture": "panel-10",
+      "text": "He asked the master to keep the tree for one more year."
+    },
+    {
+      "picture": "panel-11",
+      "text": "He would dig around it."
+    },
+    {
+      "picture": "panel-12",
+      "text": "He would add fertilizers and water it regularly."
+    },
+    {
+      "picture": "panel-13",
+      "text": "Perhaps it would bear fruit in the coming year."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Or else it could be cut down."
+    },
+    {
+      "picture": "panel-15",
+      "text": "God is like the caretaker of the vineyard."
+    },
+    {
+      "picture": "panel-16",
+      "text": "God has plans for each one of us."
+    },
+    {
+      "picture": "panel-17",
+      "text": "If we cannot fulfil them, He will be disappointed."
+    },
+    {
+      "picture": "panel-18",
+      "text": "He is willing to work on us and wait for our fruit."
+    },
+    {
+      "picture": "panel-19",
+      "text": "It is because of God’s mercy that we are not destroyed."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 10 “MERCIFUL GOD”, p.50 — “ANSWER THE QUESTIONS”",
+    "note": "Five questions and no “Mark it as Right or Wrong”. Every answer is from the printed lesson on p.50. Questions 1 and 4 also carry the teacher’s handwritten answers, which agree with the print.\n\n**p.50 was read by Drive’s own text extraction rather than by eye** — see the chapter note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where was the fig tree?",
+        "objective": "Know that the fig tree was growing in the man’s vineyard.",
+        "answer": "In the vineyard. “A man had a fig tree growing in his vineyard.” (p.50) The teacher’s hand writes “in the man’s vineyard” beside the question."
+      },
+      {
+        "n": 2,
+        "question": "Why did the owner of the vineyard become angry?",
+        "objective": "Know that for three years he came looking for fruit and did not find any.",
+        "answer": "There was no fruit. “For three years the owner of the vineyard had come looking for fruit on the fig tree but did not find any. Disappointed and angry, he told the caretaker of the vineyard to cut down the tree instead of wasting the space and soil.” (p.50)"
+      },
+      {
+        "n": 3,
+        "question": "How did the fig tree get one more year?",
+        "objective": "Know that the caretaker was sad and asked the master to keep the tree one more year.",
+        "answer": "The caretaker asked for it. “The caretaker was sad and requested the master to keep the tree for one more year.” (p.50)"
+      },
+      {
+        "n": 4,
+        "question": "Who is extending our life to live fruitfully?",
+        "objective": "Know that it is God, who works on us and waits for us to bear fruit.",
+        "answer": "God. “God is like the caretaker of the vineyard … He is willing to work on us and wait for us to bear fruit for Him. It is because of God’s mercy that we are not destroyed.” (p.50) The teacher’s hand writes “God” beside the question."
+      },
+      {
+        "n": 5,
+        "question": "What all could the caretaker do for the fig tree to bear fruit by the next year?",
+        "objective": "Know that he would dig around it, add fertilizers, and water it regularly.",
+        "answer": "Three things. “He would dig around it, add fertilizers and water it regularly.” (p.50)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "where-the-fig-tree-was",
+      "title": "In the Vineyard",
+      "objective": "Know that the fig tree was growing in the man's vineyard.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Where was the fig tree growing?",
+          "hint": "It was the man's own land.",
+          "options": [
+            {
+              "label": "In the man's vineyard",
+              "correct": true
+            },
+            {
+              "label": "In a field by the road"
+            },
+            {
+              "label": "Beside the master's house"
+            },
+            {
+              "label": "In the caretaker's garden"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in five. The answer is small but it is the one the parable turns on: the tree was not wild and it was not forgotten — it stood on the man’s own land, where he had every right to look for fruit."
+    },
+    {
+      "id": "why-the-owner-was-angry",
+      "title": "Three Years of Looking",
+      "objective": "Know that the owner came looking for fruit for three years and did not find any.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "For three years the owner had come looking for fruit on the fig tree.",
+              "ask": "Did the owner come looking for three years?",
+              "answer": true,
+              "because": "Yes. For three years he came looking for fruit."
+            },
+            {
+              "source": "The owner found a little fruit on the tree each year.",
+              "ask": "Did the owner find fruit on the tree?",
+              "answer": false,
+              "because": "No. He did not find any."
+            },
+            {
+              "source": "The tree was small and plain, with very few leaves.",
+              "ask": "Was the tree small and plain?",
+              "answer": false,
+              "because": "No. It was big and beautiful, with lots of branches and leaves."
+            },
+            {
+              "source": "The owner said the tree was wasting the space and the soil.",
+              "ask": "Did the owner say the tree was wasting space?",
+              "answer": true,
+              "because": "Yes. He said it was wasting the space and soil."
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The printed answer is not one fact but two held together — three years of looking, and nothing found — and a true-or-not can carry both without making a child pick between them. Statements 2 and 3 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”."
+    },
+    {
+      "id": "how-it-got-one-more-year",
+      "title": "One More Year",
+      "objective": "Know that the caretaker was sad and asked the master to keep the tree for one more year.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the caretaker's asking in order.",
+          "hint": "He was sad before he spoke.",
+          "items": [
+            {
+              "label": "The caretaker was sad",
+              "position": 1
+            },
+            {
+              "label": "He asked for one more year",
+              "position": 2
+            },
+            {
+              "label": "He would dig around it",
+              "position": 3
+            },
+            {
+              "label": "He would add fertilizer and water",
+              "position": 4
+            },
+            {
+              "label": "Then it might bear fruit",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A sequence, because the caretaker’s asking has an order to it and the order is what makes it kind: he was sad first, and what he offered to do came after the asking rather than instead of it."
+    },
+    {
+      "id": "who-gives-us-more-time",
+      "title": "Who Waits for Us",
+      "objective": "Know that it is God who extends our life and waits for us to bear fruit.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what they did.",
+          "hint": "One of these is about us, not the parable.",
+          "pairs": [
+            {
+              "from": {
+                "label": "God"
+              },
+              "to": {
+                "label": "Waits for us to bear fruit"
+              }
+            },
+            {
+              "from": {
+                "label": "The caretaker"
+              },
+              "to": {
+                "label": "Asked for one more year"
+              }
+            },
+            {
+              "from": {
+                "label": "The owner"
+              },
+              "to": {
+                "label": "Wanted the tree cut down"
+              }
+            },
+            {
+              "from": {
+                "label": "The fig tree"
+              },
+              "to": {
+                "label": "Had leaves but no fruit"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. The printed lesson answers it — “God is like the caretaker of the vineyard … He is willing to work on us and wait for us to bear fruit” — and the teacher’s hand answers it in one word, “God”. The other three pairs are the parable’s own figures, so a child has to tell the picture apart from what it is a picture of."
+    },
+    {
+      "id": "what-the-caretaker-would-do",
+      "title": "Tending the Tree",
+      "objective": "Know what the caretaker promised to do: dig around it, add fertilizers, and water it regularly.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the caretaker would do.",
+          "items": [
+            {
+              "label": "Dig around it"
+            },
+            {
+              "label": "Add fertilizers"
+            },
+            {
+              "label": "Water it regularly"
+            },
+            {
+              "label": "Give it one more year"
+            },
+            {
+              "label": "Wait for it to bear fruit"
+            }
+          ]
+        }
+      ],
+      "note": "Question 5. A `reveal`, because the caretaker named three things and the question asks for all of them. Making a child pick one and calling the other two wrong would be the opposite of the answer."
+    }
+  ],
+  "verse": {
+    "text": "‘Sir,’ the man replied, ‘leave it alone for one more year, and I’ll dig around it and fertilize it. If it bears fruit next year, fine! If not, then cut it down.’",
+    "reference": "St. Luke 13: 8,9",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "The asking first, then the work, then what happens next year.",
+        "words": [
+          "‘Sir,’ the man replied,",
+          "‘leave it alone for one more year,",
+          "and I’ll dig around it and fertilize it.",
+          "If it bears fruit next year, fine! If not, then cut it down.’"
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand at the speech and sentence boundaries. The build checks the pieces spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "leave it alone for one more ______,",
+        "hint": "It is how long the caretaker asked for.",
+        "options": [
+          {
+            "label": "year",
+            "correct": true
+          },
+          {
+            "label": "month"
+          },
+          {
+            "label": "season"
+          },
+          {
+            "label": "day"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. The length of the reprieve is the whole of what the caretaker is asking, so it is the word worth supplying from memory."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "and I’ll dig around it and ______ it.",
+        "hint": "The verse’s own word for what he would add.",
+        "options": [
+          {
+            "label": "fertilize",
+            "correct": true
+          },
+          {
+            "label": "water"
+          },
+          {
+            "label": "feed"
+          },
+          {
+            "label": "cover"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. “Water” is the near miss worth having: the lesson on p.50 really does say he would water it, and it is not the word the verse uses."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Six pieces, and the “if not” comes last.",
+        "words": [
+          "‘Sir,’ the man replied,",
+          "‘leave it alone",
+          "for one more year,",
+          "and I’ll dig around it and fertilize it.",
+          "If it bears fruit next year, fine!",
+          "If not, then cut it down.’"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Luke 13: 8,9",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 13: 6"
+          },
+          {
+            "label": "St. Luke 13: 7"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Luke 13: 6 - 9 — 6 is the tree in the vineyard and 7 is the owner asking for it to be cut down."
+      }
+    ],
+    "note": "Read from p.52 through the Memory Verse agent: `--fetch --source-dir` over the memory-verse page, the supervised read, then `--from-extraction`. That page is small enough to read by eye, and was.\n\nFive stages in the shape Primary Chapters 2 to 8 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\nThe single curly quotation marks are the book’s and are kept — the verse is a quotation inside a quotation, and the inner one opens at “leave it alone” and closes after “cut it down”.\n\nTranslation is unresolved: p.52 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I submit myself to live according to God’s plan and purpose.",
+    "note": "The curriculum’s own My Decision from p.52, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Ninnishtam pole aakename",
+      "Njano manpaathram nin karathil"
+    ],
+    "note": "The two lines of the Song on p.52, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Thank You Lord for the beautiful life given to me. Help me to live a fruitful life that is pleasing to You.",
+    "note": "The closing Prayer from p.52, word for word. The book prints it without an “Amen”, unlike every other chapter in this class, and none is added here."
+  },
+  "celebration": {
+    "message": "The caretaker asked for one more year, and the tree was given time.",
+    "note": "The turn of the parable, from p.50."
+  }
+}
