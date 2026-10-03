@@ -1,0 +1,471 @@
+{
+  "class": "primary",
+  "chapter": 16,
+  "title": "Jairus’ Daughter",
+  "reference": "St. Mark 5: 21 - 43",
+  "note": "Built from the three curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 16 — the opener (p.75), the lesson (p.76) and its close with the five questions (p.77) — and the memory-verse page (p.78) in “06 - Memory Verse”.\n\n**The three curriculum pages were not read by eye.** Each photograph is about 7 MB, past what the Drive connector can hand over to this session, so their text came from Drive’s own extraction of the images instead. It came back clean for this chapter. The memory-verse page is smaller and *was* read by eye, so the verse does not rest on extraction.\n\n**Question 5 is not a question with an answer.** “Do you believe that Jesus is a miracle-working God?” is asked of the child, and nothing here marks it right or wrong. Its game is a `reveal` of what the lesson says, with nothing to get wrong — including the two lines a child who has prayed and is still waiting needs most: “Sometimes the answer is not immediate. Be patient and wait.”\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-eight text cards and nothing carries a picture.\n\nThe chapter has two prayers. The opener on p.75 is “Praise God, who touches us and heals us and raises us from the dead. Help us to learn about the miracles of Your Son Jesus. Amen.”; the close on p.78 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Jairus was a ruler of the synagogue."
+    },
+    {
+      "picture": "panel-02",
+      "text": "He had a little daughter who was very dear to him."
+    },
+    {
+      "picture": "panel-03",
+      "text": "One day she got sick, so sick that she almost died."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Greatly dismayed, Jairus ran to Jesus and fell at His feet."
+    },
+    {
+      "picture": "panel-05",
+      "text": "“My little daughter is about to die.”"
+    },
+    {
+      "picture": "panel-06",
+      "text": "“You must lay your hands on her.”"
+    },
+    {
+      "picture": "panel-07",
+      "text": "Immediately Jesus went out with him."
+    },
+    {
+      "picture": "panel-08",
+      "text": "But on the way, people came to Jesus with their sorrows."
+    },
+    {
+      "picture": "panel-09",
+      "text": "Jesus was very busy healing many people."
+    },
+    {
+      "picture": "panel-10",
+      "text": "By that time someone came from the house of Jairus."
+    },
+    {
+      "picture": "panel-11",
+      "text": "His daughter had died."
+    },
+    {
+      "picture": "panel-12",
+      "text": "“Don’t trouble the teacher anymore.”"
+    },
+    {
+      "picture": "panel-13",
+      "text": "They thought it would not matter now, even if Jesus came."
+    },
+    {
+      "picture": "panel-14",
+      "text": "But Jesus said, “Don’t be afraid, just believe.”"
+    },
+    {
+      "picture": "panel-15",
+      "text": "Then Jesus went to the house of Jairus."
+    },
+    {
+      "picture": "panel-16",
+      "text": "A great crowd followed Him."
+    },
+    {
+      "picture": "panel-17",
+      "text": "Jesus said, “The child is not dead but sleeping.”"
+    },
+    {
+      "picture": "panel-18",
+      "text": "The crowd around them laughed at Jesus."
+    },
+    {
+      "picture": "panel-19",
+      "text": "He put everyone out of the room."
+    },
+    {
+      "picture": "panel-20",
+      "text": "Only her father and mother and His disciples stayed."
+    },
+    {
+      "picture": "panel-21",
+      "text": "He took her by the hand."
+    },
+    {
+      "picture": "panel-22",
+      "text": "He said to her, “Talitha koum!”"
+    },
+    {
+      "picture": "panel-23",
+      "text": "That means, “Little girl, I say to you, get up!”"
+    },
+    {
+      "picture": "panel-24",
+      "text": "The girl came back to life, and got up and walked."
+    },
+    {
+      "picture": "panel-25",
+      "text": "Nothing is impossible for Jesus."
+    },
+    {
+      "picture": "panel-26",
+      "text": "He never forsakes those who fall at His feet and plead."
+    },
+    {
+      "picture": "panel-27",
+      "text": "Sometimes the answer is not immediate."
+    },
+    {
+      "picture": "panel-28",
+      "text": "Be patient and wait."
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 16 “JAIRUS’ DAUGHTER”, p.77 — “ANSWER THE QUESTIONS”",
+    "note": "Five questions and no “Mark it as Right or Wrong”. Questions 1–4 are answered from the printed lesson on pp.76–77. Question 5 asks a child what they believe and has no printed answer; what is recorded for it is what the lesson says about Jesus, not an answer the child is expected to give.\n\n**The curriculum pages were read by Drive’s own text extraction rather than by eye** — see the chapter note.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Who was Jairus?",
+        "objective": "Know that Jairus was a ruler of the synagogue, and that he had a little daughter.",
+        "answer": "A ruler of the synagogue. “Jairus was a ruler of the synagogue. He had a little daughter. She was very dear to him.” (p.76)"
+      },
+      {
+        "n": 2,
+        "question": "What did Jairus say to Jesus?",
+        "objective": "Know that he fell at Jesus’ feet and asked Him to lay His hands on his dying daughter.",
+        "answer": "“My little daughter is about to die. You must lay your hands on her.” — “Greatly dismayed, he ran to Jesus, fell at His feet, and said …” (p.76)"
+      },
+      {
+        "n": 3,
+        "question": "Why did the crowd mock Jesus?",
+        "objective": "Know that they laughed because Jesus said the child was not dead but sleeping.",
+        "answer": "Because of what He said. “Jesus said, ‘The child is not dead but sleeping.’ The crowd around them laughed at Jesus.” (p.76)"
+      },
+      {
+        "n": 4,
+        "question": "How did Jesus raise the girl?",
+        "objective": "Know that He took her by the hand and said, “Talitha koum!”",
+        "answer": "By the hand, and a word. “He took her by the hand and said to her, ‘Talitha koum!’ (which means ‘Little girl, I say to you, get up!’).” (p.76) The same words are the chapter’s memory verse."
+      },
+      {
+        "n": 5,
+        "question": "Do you believe that Jesus is a miracle-working God?",
+        "objective": "Meet what the lesson says about Jesus: nothing is impossible for Him, He never forsakes those who plead, and sometimes the answer is not immediate.",
+        "answer": "**This question has no right answer and the app does not give it one.** What the lesson says is: “Nothing is impossible for Jesus. Jesus never forsakes those who fall at His feet and plead. Jesus is a God who works wonders … there is nothing that is not done by faith. Sometimes the answer is not immediate. Be patient and wait.” (p.77)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "who-jairus-was",
+      "title": "A Ruler of the Synagogue",
+      "objective": "Know that Jairus was a ruler of the synagogue with a little daughter.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who was Jairus?",
+          "hint": "He had a little daughter.",
+          "options": [
+            {
+              "label": "A ruler of the synagogue",
+              "correct": true
+            },
+            {
+              "label": "One of Jesus’ disciples"
+            },
+            {
+              "label": "A soldier of the king"
+            },
+            {
+              "label": "A doctor in the town"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game in five. What his office was matters to the story: the man on his face in front of Jesus was a man other people knelt to."
+    },
+    {
+      "id": "what-jairus-said",
+      "title": "At Jesus’ Feet",
+      "objective": "Know what Jairus did and said when he reached Jesus.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what happened.",
+          "hint": "He asked before Jesus moved.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Jairus"
+              },
+              "to": {
+                "label": "Fell at the feet of Jesus"
+              }
+            },
+            {
+              "from": {
+                "label": "His little daughter"
+              },
+              "to": {
+                "label": "Was about to die"
+              }
+            },
+            {
+              "from": {
+                "label": "What he asked"
+              },
+              "to": {
+                "label": "Lay your hands on her"
+              }
+            },
+            {
+              "from": {
+                "label": "Jesus"
+              },
+              "to": {
+                "label": "Went out with him at once"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. His asking is four things at once — who he was, what was wrong, what he wanted, and what Jesus did about it — so a `match` can hold the whole of it where a quiz would take one quarter."
+    },
+    {
+      "id": "why-they-laughed",
+      "title": "Not Dead but Sleeping",
+      "objective": "Know that the crowd laughed because Jesus said the child was not dead but sleeping.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "Jesus said, “The child is not dead but sleeping.”",
+              "ask": "Did Jesus say the child was not dead?",
+              "answer": true,
+              "because": "Yes. He said, “The child is not dead but sleeping.”"
+            },
+            {
+              "source": "The crowd believed Jesus at once and made way for Him.",
+              "ask": "Did the crowd believe Jesus at once?",
+              "answer": false,
+              "because": "No. The crowd around them laughed at Jesus."
+            },
+            {
+              "source": "Jairus’ daughter got better while Jesus was still on the way.",
+              "ask": "Did the girl get better on the way?",
+              "answer": false,
+              "because": "No. Someone came from the house to say she had died."
+            },
+            {
+              "source": "Jesus put everyone out of the room except her parents and His disciples.",
+              "ask": "Did Jesus send the crowd out of the room?",
+              "answer": true,
+              "because": "Yes. Only her father, her mother and His disciples stayed."
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. Statements 2 and 3 are written from false sentences, so each `ask` keeps that polarity and the honest answer stays “no”. Statement 1 keeps the sentence’s own negative in the question too, so the two read the same way round."
+    },
+    {
+      "id": "how-jesus-raised-her",
+      "title": "Talitha Koum",
+      "objective": "Know how Jesus raised the girl: He took her by the hand and told her to get up.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the raising of the girl in order.",
+          "hint": "He cleared the room before He spoke.",
+          "items": [
+            {
+              "label": "Jesus came to the house",
+              "position": 1
+            },
+            {
+              "label": "He put everyone else out",
+              "position": 2
+            },
+            {
+              "label": "He took her by the hand",
+              "position": 3
+            },
+            {
+              "label": "He said “Talitha koum!”",
+              "position": 4
+            },
+            {
+              "label": "She got up and walked",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 4. A sequence, because the printed answer has an order and the order is part of the gentleness: He emptied the room of the people who had laughed before He said anything to her."
+    },
+    {
+      "id": "nothing-is-impossible",
+      "title": "Nothing Is Impossible",
+      "objective": "Meet what the lesson says about Jesus, including that the answer is not always immediate.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the lesson says about Jesus.",
+          "items": [
+            {
+              "label": "Nothing is impossible for Jesus"
+            },
+            {
+              "label": "He never forsakes those who plead"
+            },
+            {
+              "label": "Jesus works wonders"
+            },
+            {
+              "label": "Sometimes the answer is not immediate"
+            },
+            {
+              "label": "Be patient and wait"
+            }
+          ]
+        }
+      ],
+      "note": "Question 5. The book asks a child what they believe, and this app will never mark that right or wrong. So the game is a `reveal` of what the lesson itself says about Jesus — nothing to get wrong, nothing to score.\n\nThe last two items are the ones worth having: “Sometimes the answer is not immediate. Be patient and wait.” A chapter about a miracle that says so is being honest with a child who has prayed and is still waiting."
+    }
+  ],
+  "verse": {
+    "text": "He took her by the hand and said to her, “Talitha koum!” (which means “Little girl, I say to you, get up!”)",
+    "reference": "St. Mark 5: 41",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "The hand, then the words, then what the words mean.",
+        "words": [
+          "He took her by the hand",
+          "and said to her, “Talitha koum!”",
+          "(which means “Little girl,",
+          "I say to you, get up!”)"
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand so no join falls inside the Aramaic or inside its translation. The build checks the pieces spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "He took her by the ______ and said to her,",
+        "hint": "Jesus touched her before He spoke.",
+        "options": [
+          {
+            "label": "hand",
+            "correct": true
+          },
+          {
+            "label": "arm"
+          },
+          {
+            "label": "shoulder"
+          },
+          {
+            "label": "feet"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. The touch is half the verse — He did not raise her from across the room."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "“Little girl, I say to you, ______!”",
+        "hint": "Two words, and they are the whole miracle.",
+        "options": [
+          {
+            "label": "get up",
+            "correct": true
+          },
+          {
+            "label": "wake up"
+          },
+          {
+            "label": "stand up"
+          },
+          {
+            "label": "come out"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. “Wake up” is the near miss worth having: Jesus had just said the child was sleeping, and it is still not the word the verse uses."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Six pieces, and the Aramaic sits in the middle.",
+        "words": [
+          "He took her by the hand",
+          "and said to her,",
+          "“Talitha koum!”",
+          "(which means",
+          "“Little girl, I say to you,",
+          "get up!”)"
+        ],
+        "note": "Stage 4, full reconstruction — six pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Mark 5: 41",
+            "correct": true
+          },
+          {
+            "label": "St. Mark 5: 21"
+          },
+          {
+            "label": "St. Mark 5: 43"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Mark 5: 21 - 43 — 21 is where it begins and 43 is where it ends."
+      }
+    ],
+    "note": "Read from p.78 through the Memory Verse agent: `--fetch --source-dir` over the memory-verse page, the supervised read, then `--from-extraction`. That page is small enough to read by eye, and was.\n\nFive stages in the shape Primary Chapters 2 to 15 use. The agent’s own draft is a single `arrange-words` rung; the other four stages are built by hand on top of it.\n\n“Talitha koum” is Aramaic — the words Jesus actually said — and the bracket after it is the Gospel’s own translation, not a gloss added here. Both are kept, because the verse is the pair.\n\nTranslation is unresolved: p.78 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I believe that Jesus is enough to resolve my sorrows.",
+    "note": "The curriculum’s own My Decision from p.78, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Aaradhikumpol viduthal",
+      "Aaradhikumpol saukhyam",
+      "Deham dehi athmavil samadhana santhosham",
+      "Daanamai naathan nalkidum"
+    ],
+    "note": "The Song on p.78, in the Latin script the book prints it in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Thank you, Jesus, who raised the daughter of Jairus. Please teach us to kneel before You in our difficulties and worship You. Amen.",
+    "note": "The closing Prayer from p.78, word for word."
+  },
+  "celebration": {
+    "message": "“Talitha koum!” — and the little girl got up and walked.",
+    "note": "The end of the lesson on p.76, in the words of the chapter’s own memory verse."
+  }
+}
