@@ -1,0 +1,383 @@
+{
+  "class": "primary",
+  "chapter": 5,
+  "title": "The House of God",
+  "reference": "St. Luke 15: 11 - 24",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Primary / Chapter 05 and the memory-verse page in “06 - Memory Verse”: the opener (p.25), the lesson (pp.26–27), the questions (p.27), the colouring page (p.29) and the close (p.30).\n\n**This chapter has the same printed title as Primary Chapter 2.** The book calls both of them “THE HOUSE OF GOD” — Chapter 2 on p.13 over St. Luke 2: 41 - 52, and this one on p.25 over St. Luke 15: 11 - 24, which is the prodigal son. The title here is the book’s and is kept, because inventing a different one is not this importer’s job. The *slug* is `the-lost-son`, from the father’s own closing words, because a slug is a route and two chapters cannot share one.\n\n**That leaves two cards on the Primary shelf reading “The House of God”, which is a real problem for a child and needs an editorial decision.** The options are to leave it as the book has it, to disambiguate on the shelf, or to ask the Samajam which title was intended. Flagged rather than silently resolved.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-two text cards and nothing carries a picture.\n\np.26 carries the teacher’s pen marks — three bracketed sections numbered 1, 2, 3 — lining up with the three questions. A reading aid, not an answer key; every answer below is quoted from the printed lesson.\n\nThe book’s “Colour the picture” on p.29 sets a pencil activity, which has no game here.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "There was a man who had two sons."
+    },
+    {
+      "picture": "panel-02",
+      "text": "The younger one asked his father for his share."
+    },
+    {
+      "picture": "panel-03",
+      "text": "His father was sad, but divided his property between them."
+    },
+    {
+      "picture": "panel-04",
+      "text": "A few days later the younger son sold his share."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He left home with the money and went to a far country."
+    },
+    {
+      "picture": "panel-06",
+      "text": "There he wasted it all with his friends in wild living."
+    },
+    {
+      "picture": "panel-07",
+      "text": "Then a great famine came, and he had nothing left."
+    },
+    {
+      "picture": "panel-08",
+      "text": "His friends left him."
+    },
+    {
+      "picture": "panel-09",
+      "text": "He went to work for a farmer, who sent him to look after pigs."
+    },
+    {
+      "picture": "panel-10",
+      "text": "He was so hungry he could have eaten the pigs’ food."
+    },
+    {
+      "picture": "panel-11",
+      "text": "But no one gave him anything."
+    },
+    {
+      "picture": "panel-12",
+      "text": "Then he started thinking."
+    },
+    {
+      "picture": "panel-13",
+      "text": "At his father’s house even the workers had more than enough to eat."
+    },
+    {
+      "picture": "panel-14",
+      "text": "He decided to go home and say he had sinned."
+    },
+    {
+      "picture": "panel-15",
+      "text": "So he set out for his father."
+    },
+    {
+      "picture": "panel-16",
+      "text": "While he was still far from home, his father saw him."
+    },
+    {
+      "picture": "panel-17",
+      "text": "He felt sorry for him. He ran, put his arms round him, and kissed him."
+    },
+    {
+      "picture": "panel-18",
+      "text": "The son said he was no longer worthy to be called his son."
+    },
+    {
+      "picture": "panel-19",
+      "text": "But his father called for the best robe, a ring and shoes."
+    },
+    {
+      "picture": "panel-20",
+      "text": "He arranged a grand feast."
+    },
+    {
+      "picture": "panel-21",
+      "text": "He said, “This son of mine was dead and is alive again.”"
+    },
+    {
+      "picture": "panel-22",
+      "text": "“He was lost and is found.”"
+    }
+  ],
+  "curriculum": {
+    "source": "Primary Mar Thoma Vol-1, Chapter 05 “THE HOUSE OF GOD”, p.27 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the curriculum photographs, read at full size. Three questions and no “Mark it as Right or Wrong”. Every answer is quoted from the printed lesson on pp.26–27.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What did the younger son demand from his father?",
+        "objective": "Know that he asked for his share of the property.",
+        "answer": "His share. “The younger one asked his father for his share. His father was sad but divided his property between his two sons.” (p.26)"
+      },
+      {
+        "n": 2,
+        "question": "How did the younger son lose everything?",
+        "objective": "Know the chain: he sold up, went far away, wasted it in wild living, and then famine came.",
+        "answer": "He spent it. “the younger son sold his property and left home with the money. He went to a far off country and wasted all his money with his friends in wild living.” Then “there was a great famine in that country, and he had nothing with him.” (p.26)"
+      },
+      {
+        "n": 3,
+        "question": "How did the father receive the son when he came back?",
+        "objective": "Know that the father ran to him and held a feast rather than punishing him.",
+        "answer": "He ran to him. “his father saw him and felt sorry for him. He ran, put his arms around his son, and kissed him.” Then the best robe, a ring, shoes and a grand feast. (pp.26–27)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "what-he-asked-for",
+      "title": "The Asking",
+      "objective": "Know that the younger son asked for his share of the property.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did the younger son ask for?",
+          "hint": "His father divided the property in two.",
+          "options": [
+            {
+              "label": "His share of the property",
+              "correct": true
+            },
+            {
+              "label": "A ring and the best robe"
+            },
+            {
+              "label": "A grand feast with friends"
+            },
+            {
+              "label": "Work looking after the pigs"
+            }
+          ]
+        }
+      ],
+      "note": "Question 1, and the one choosing game this band allows in four. All four options are things that really happen in this lesson — the robe and ring, the feast, the pigs — so the question is answered by remembering which one he *asked* for, rather than by spotting the invented option."
+    },
+    {
+      "id": "how-he-lost-it-all",
+      "title": "How It Went",
+      "objective": "Put the losing in order, so the famine arrives after the money is already gone.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put his journey in order.",
+          "hint": "The famine came after the money was gone.",
+          "items": [
+            {
+              "label": "He sold his property",
+              "position": 1
+            },
+            {
+              "label": "He left for a far country",
+              "position": 2
+            },
+            {
+              "label": "He wasted it all",
+              "position": 3
+            },
+            {
+              "label": "A famine left him nothing",
+              "position": 4
+            },
+            {
+              "label": "He fed pigs and went hungry",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "Question 2. The lesson's answer is not one fact but a slide with an order to it, and the order is the point: the famine arrives *after* the money is gone, so it is what exposed him rather than what ruined him. The planner grouped this with question 1 into a single sequence; they are separated here because asking for the money and losing it are two different things a child should be able to tell apart."
+    },
+    {
+      "id": "how-his-father-met-him",
+      "title": "Coming Home",
+      "objective": "Follow what the father did — saw, pitied, ran, embraced, and feasted — rather than what he might have done.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over how his father met him.",
+          "items": [
+            {
+              "label": "His father saw him far off"
+            },
+            {
+              "label": "He felt sorry for him"
+            },
+            {
+              "label": "He ran and embraced him"
+            },
+            {
+              "label": "He called for the best robe"
+            },
+            {
+              "label": "He arranged a grand feast"
+            }
+          ]
+        }
+      ],
+      "note": "Question 3. A `reveal`, because the answer is a run of five things the father did and the force of it is cumulative — he saw, he pitied, he ran, he embraced, he feasted. A quiz would make a child pick one of them and call the rest wrong."
+    },
+    {
+      "id": "lost-and-found",
+      "title": "True or Not?",
+      "objective": "Hold what the son said and what the father said — the two speeches the questions do not ask about.",
+      "interactions": [
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we will look.",
+          "statements": [
+            {
+              "source": "The father was angry and sent his son away again.",
+              "ask": "Did the father send his son away again?",
+              "answer": false,
+              "because": "No. He ran, put his arms around his son, and kissed him."
+            },
+            {
+              "source": "I am no longer worthy to be called your son.",
+              "ask": "Did the son say he was no longer worthy?",
+              "answer": true,
+              "because": "Yes. He said, “I am no longer worthy to be called your son.”"
+            },
+            {
+              "source": "He arranged for a grand feast.",
+              "ask": "Was there a feast when he came home?",
+              "answer": true,
+              "because": "Yes. His father arranged for a grand feast."
+            },
+            {
+              "source": "For this son of mine was dead and is alive again; he was lost and is found.",
+              "ask": "Did the father call him lost and then found?",
+              "answer": true,
+              "because": "Yes. He said, “he was lost and is found.”"
+            }
+          ]
+        }
+      ],
+      "note": "The fourth game, written by hand because the book asks three questions and the Primary band wants four to five. Primary Chapters 1 and 4 did the same.\n\nWhat it covers is the two speeches the questions skip: what the son had decided to say, and what the father said over him. Statement 1 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”."
+    }
+  ],
+  "verse": {
+    "text": "I will set out and go back to my father and say to him: Father, I have sinned against heaven and against you. I am no longer worthy to be called your son.",
+    "reference": "St. Luke 15: 18,19a",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It is what he decided to say before he set out.",
+        "words": [
+          "I will set out and go back to my father",
+          "and say to him:",
+          "Father, I have sinned against heaven and against you.",
+          "I am no longer worthy to be called your son."
+        ],
+        "note": "Stage 1, phrase ordering, cut by hand rather than by the agent. Its Primary rung cuts on word counts and produced “Father, I have sinned against heaven and” / “against you.” — a join in the middle of a phrase. These four pieces break where the sentences do. The build checks they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "I will set out and go back to my ______",
+        "hint": "He is going to the one person he wronged.",
+        "options": [
+          {
+            "label": "father",
+            "correct": true
+          },
+          {
+            "label": "son"
+          },
+          {
+            "label": "heaven"
+          },
+          {
+            "label": "home"
+          }
+        ],
+        "note": "Stage 2, the missing word with the sentence whole around it. “Home” is the near miss worth having — true of the story, and not the word the verse uses."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "I am no longer ______ to be called your son.",
+        "hint": "One word, and it is what he believes he has lost.",
+        "options": [
+          {
+            "label": "worthy",
+            "correct": true
+          },
+          {
+            "label": "willing"
+          },
+          {
+            "label": "ready"
+          },
+          {
+            "label": "able"
+          }
+        ],
+        "note": "Stage 3, the right-hand side taken away. The word carries the whole of what he has understood about himself, which is why it is the one worth supplying from memory."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "A journey, a greeting, and two things he admits.",
+        "words": [
+          "I will set out",
+          "and go back to my father",
+          "and say to him:",
+          "Father, I have sinned",
+          "against heaven and against you.",
+          "I am no longer worthy",
+          "to be called your son."
+        ],
+        "note": "Stage 4, full reconstruction — seven pieces where stage 1 had four."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is inside this chapter’s own Bible portion.",
+        "options": [
+          {
+            "label": "St. Luke 15: 18,19a",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 15: 11"
+          },
+          {
+            "label": "St. Luke 15: 24"
+          }
+        ],
+        "note": "Stage 5, the reference chosen against near misses. All three are inside this chapter’s own portion, St. Luke 15: 11 - 24 — 11 is where it begins and 24 is where it ends."
+      }
+    ],
+    "note": "Read from p.30 through the Memory Verse agent: `--fetch --source-dir` over the curriculum photographs and the memory-verse page, the supervised read, then `--from-extraction`. That page lives in “06 - Memory Verse” rather than with the lesson, which is this class’s arrangement.\n\nFive stages in the shape Primary Chapters 2, 3 and 4 use. **Stage 1 was cut by hand** — see its own note.\n\nThe reference is printed “St. Luke 15: 18,19a”, with the comma and the “a”, and is kept exactly so: the verse stops partway through verse 19.\n\nTranslation is unresolved: p.30 does not name one.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will repent and ask God for forgiveness of my sins. He will forgive.",
+    "note": "The curriculum’s own My Decision from p.30, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Doore ninne kandu",
+      "Oodiyangu chennu",
+      "Muthamonnu nalki",
+      "Hrithilangu cherthu"
+    ],
+    "note": "The four lines of the Song on p.30, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Father, forgive me whenever I drift away from You. Hold me close to You Amen.",
+    "note": "The closing Prayer from p.30, word for word — including “Hold me close to You Amen.”, which the book prints without a stop before the Amen. The chapter also opens with a prayer on p.25: “Forgiving Lord, we come to You. Cleanse and bless us. Amen.”"
+  },
+  "celebration": {
+    "message": "He was lost and is found. His father ran to meet him.",
+    "note": "The father’s own words from p.27, which are the point of the whole parable."
+  }
+}
