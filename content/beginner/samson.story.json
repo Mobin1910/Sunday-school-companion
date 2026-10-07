@@ -1,0 +1,473 @@
+{
+  "class": "beginner",
+  "chapter": 11,
+  "title": "Samson",
+  "reference": "Judges 13: 2 - 24",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 11 — the opener (p.51), the lesson (p.52), the nine questions with the colouring page (p.53) and the close (p.54). All four are around 2 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Psalm 6:9 was read from p.54.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-two text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change.\n\n**Nine questions and four games.** This class is allowed three to four games, and nine questions will not go into four one at a time, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the angel’s visit, the angel’s words, Samson’s strength, and the losing of it.\n\n**The chapter ends badly, and it is not softened.** The book says plainly that Samson disobeyed, that the Spirit of God left him, and that he was defeated. That is on the cards and in the fourth game. What is not carried over is the book’s “one may lose one’s head” register — there is none here to carry — and the celebration line turns to the part a six-year-old is being asked to hold: that he was a prayed-for child, given to his parents by God, which is this chapter’s own My Decision.\n\nThe chapter has two prayers. The opener on p.51 is “Dear God, we praise you for the grace that has brought us together today to experience your word. Amen.”; the Concluding Prayer on p.54 is the one carried in `prayer` below.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Manoah was a man who lived in Israel. He and his wife had no children."
+    },
+    {
+      "picture": "panel-02",
+      "text": "They were very sad. They cried and prayed to God."
+    },
+    {
+      "picture": "panel-03",
+      "text": "God heard their prayers."
+    },
+    {
+      "picture": "panel-04",
+      "text": "One day an angel came to Manoah’s wife."
+    },
+    {
+      "picture": "panel-05",
+      "text": "“You will give birth to a son.”"
+    },
+    {
+      "picture": "panel-06",
+      "text": "“From his birth he will belong to God.”"
+    },
+    {
+      "picture": "panel-07",
+      "text": "“Be sure not to drink any wine.”"
+    },
+    {
+      "picture": "panel-08",
+      "text": "“You must never cut his hair.”"
+    },
+    {
+      "picture": "panel-09",
+      "text": "“He will rescue Israel from the Philistines.”"
+    },
+    {
+      "picture": "panel-10",
+      "text": "In those days the Philistines came to fight Israel."
+    },
+    {
+      "picture": "panel-11",
+      "text": "She told Manoah what the angel said. They were very happy."
+    },
+    {
+      "picture": "panel-12",
+      "text": "After some time she gave birth to a son."
+    },
+    {
+      "picture": "panel-13",
+      "text": "He was a lovely baby. They named him Samson."
+    },
+    {
+      "picture": "panel-14",
+      "text": "They raised him just as the angel had said."
+    },
+    {
+      "picture": "panel-15",
+      "text": "God blessed Samson. He grew up handsome and strong."
+    },
+    {
+      "picture": "panel-16",
+      "text": "There were no strong people like him anywhere."
+    },
+    {
+      "picture": "panel-17",
+      "text": "The Spirit of God was with him."
+    },
+    {
+      "picture": "panel-18",
+      "text": "A lion came roaring at him. Samson tore it apart."
+    },
+    {
+      "picture": "panel-19",
+      "text": "He defeated the Philistine giants too. What a strength!"
+    },
+    {
+      "picture": "panel-20",
+      "text": "But when he grew up, he changed. He disobeyed his parents and God."
+    },
+    {
+      "picture": "panel-21",
+      "text": "He fell into bad company. The Spirit of God left him."
+    },
+    {
+      "picture": "panel-22",
+      "text": "His strength was lost. So later Samson was defeated."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 11 “SAMSON”, p.53 — “ANSWER THE QUESTIONS”",
+    "note": "Transcribed from the curriculum photographs, read at full size. Nine questions — the longest list this class has had — and no “MARK IT AS RIGHT OR WRONG”. Every answer is quoted from the printed lesson on p.52. There is no answer key in these pages and there are no teacher’s pen marks anywhere in this chapter.\n\nQuestions 6 and 9 are put to the class rather than answered in print (“Can you give examples …”, “What are the things that should be followed …”). What is recorded for them is what the lesson gives, not a mark a child has to reach.\n\np.53 also sets “Colour the picture” — Samson and the lion — which is a pencil activity and has no game here.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What was the name of Manoah’s son?",
+        "objective": "Know that Manoah’s son was named Samson.",
+        "answer": "Samson. “After some time, Manoah’s wife gave birth to a son. He was a lovely baby. They named him Samson.” (p.52)"
+      },
+      {
+        "n": 2,
+        "question": "To whom did the angel appear?",
+        "objective": "Know that the angel appeared to Manoah’s wife.",
+        "answer": "To Manoah’s wife. “One day, an angel appeared to Manoah’s wife.” (p.52) She then “told Manoah what the angel had said”."
+      },
+      {
+        "n": 3,
+        "question": "What did the angel say to Manoah’s wife?",
+        "objective": "Know the angel’s words — a son, dedicated to God from birth, no wine, never cut his hair, and he would rescue Israel from the Philistines.",
+        "answer": "“You will give birth to a son. From the day of his birth, he will be dedicated to God. Be sure not to drink any wine. You must never cut his hair. He will rescue Israel from the Philistines.” (p.52)"
+      },
+      {
+        "n": 4,
+        "question": "Who came to fight against the children of Israel?",
+        "objective": "Know that the Philistines came for war against Israel and caused great damage.",
+        "answer": "The Philistines. “In those days, it was common for the Philistines to come for war against Israel and cause great damage on them.” (p.52)"
+      },
+      {
+        "n": 5,
+        "question": "What was special about Samson?",
+        "objective": "Know that he was dedicated to God from birth, drank no wine, never cut his hair, and would rescue Israel.",
+        "answer": "He was dedicated to God. The angel’s terms on p.52 are the whole of it — given to God from the day of his birth, no wine, hair never cut — and “they raised Samson just as angel of God had told them”."
+      },
+      {
+        "n": 6,
+        "question": "Can you give examples that demonstrate the strength of Samson?",
+        "objective": "Know that he tore apart the lion that came roaring at him and defeated the Philistine giants.",
+        "answer": "Two are printed. “He was so strong that, he tore apart the lion that came roaring at him. He defeated the Philistine giants.” (p.52) The page adds “There were no strong people like him anywhere.”"
+      },
+      {
+        "n": 7,
+        "question": "What made Samson strong?",
+        "objective": "Know that the Spirit of God was with him.",
+        "answer": "The Spirit of God. “The Spirit of God was with him.” (p.52) The same sentence read backwards is the end of the chapter: “The Spirit of God left him. His strength was then lost.”"
+      },
+      {
+        "n": 8,
+        "question": "Why did Samson have to mourn later?",
+        "objective": "Know that he disobeyed his parents and God, fell into bad company, the Spirit of God left him, and his strength was lost.",
+        "answer": "He disobeyed. “But when he grew up, he disobeyed his parents and God. He fell into bad company. The Spirit of God left him. His strength was then lost. So later Samson was weak enough to be defeated.” (p.52)"
+      },
+      {
+        "n": 9,
+        "question": "What are the things that should be followed by those who are set apart for God?",
+        "objective": "Know what the angel asked of Samson, and what Samson later let go of.",
+        "answer": "**This question is put to the class and has no printed answer.** What the chapter gives is the angel’s asks on p.52 — belong to God, drink no wine, never cut his hair — and, read against the ending, the two Samson let go of: obedience to his parents and to God, and keeping clear of bad company."
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "the-angel-came",
+      "title": "The Angel's Visit",
+      "objective": "Know that the angel came to Manoah's wife, and that the baby was named Samson.",
+      "answers": [
+        1,
+        2
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who did the angel come to?",
+          "hint": "She ran and told her husband after.",
+          "options": [
+            {
+              "label": "Manoah’s wife",
+              "correct": true
+            },
+            {
+              "label": "Manoah"
+            },
+            {
+              "label": "The Philistines"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What did they name the baby?",
+          "hint": "The chapter is named after him.",
+          "options": [
+            {
+              "label": "Samson",
+              "correct": true
+            },
+            {
+              "label": "Manoah"
+            },
+            {
+              "label": "Israel"
+            }
+          ]
+        }
+      ],
+      "note": "Questions 2 and 1, in the order the lesson tells them — the angel comes before the baby has a name. Two short choosing rounds rather than one, because at this age a question with one fact in it is the right size, and the wrong options in both are people this chapter has actually named."
+    },
+    {
+      "id": "what-the-angel-said",
+      "title": "What the Angel Said",
+      "objective": "Know the angel's words to Manoah's wife, and who it was that Samson would rescue Israel from.",
+      "answers": [
+        3,
+        4
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the angel said.",
+          "items": [
+            {
+              "label": "You will have a son"
+            },
+            {
+              "label": "He will belong to God"
+            },
+            {
+              "label": "Drink no wine"
+            },
+            {
+              "label": "Never cut his hair"
+            },
+            {
+              "label": "He will rescue Israel"
+            }
+          ]
+        },
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we look.",
+          "statements": [
+            {
+              "source": "The Philistines came to fight against Israel.",
+              "ask": "Did the Philistines fight Israel?",
+              "answer": true,
+              "because": "Yes. They came for war against Israel."
+            },
+            {
+              "source": "The Philistines were kind to Israel.",
+              "ask": "Were the Philistines kind to Israel?",
+              "answer": false,
+              "because": "No. They did great damage to Israel."
+            }
+          ]
+        }
+      ],
+      "note": "Questions 3 and 4.\n\nThe angel’s words are a `reveal` and not a quiz: there are five of them, every one is right, and asking a six-year-old to pick “the” one would teach the opposite of what the page says. The Philistines then arrive in a `true-or-not`, because question 4 is really asking a child to notice who the trouble was — and a wrong guess here costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”."
+    },
+    {
+      "id": "samson-the-strong",
+      "title": "Samson the Strong",
+      "objective": "Know what was special about Samson, what his strength looked like, and where it came from.",
+      "answers": [
+        5,
+        6,
+        7
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what Samson was like.",
+          "items": [
+            {
+              "label": "Given to God from birth"
+            },
+            {
+              "label": "He drank no wine"
+            },
+            {
+              "label": "His hair was never cut"
+            },
+            {
+              "label": "He tore apart a lion"
+            },
+            {
+              "label": "He beat the Philistine giants"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What made Samson strong?",
+          "hint": "It was not something he ate.",
+          "options": [
+            {
+              "label": "The Spirit of God",
+              "correct": true
+            },
+            {
+              "label": "His big dinner"
+            },
+            {
+              "label": "His new sandals"
+            }
+          ]
+        }
+      ],
+      "note": "Questions 5, 6 and 7. The `reveal` holds both halves of what the book asks — what was set apart about him, and what that strength actually looked like — and every item on it is true, so nothing is wrong to turn over.\n\nThe choosing round that follows is question 7, which is the one in this chapter with a single answer. Both wrong options are ordinary and a little funny; the lesson’s answer is not something Samson had or did, it is Who was with him."
+    },
+    {
+      "id": "when-he-disobeyed",
+      "title": "When He Forgot",
+      "objective": "Follow how Samson lost his strength, and hold what those given to God are asked to keep.",
+      "answers": [
+        8,
+        9
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Samson’s sad days in order.",
+          "hint": "He disobeyed before he grew weak.",
+          "items": [
+            {
+              "label": "Samson disobeyed his parents",
+              "position": 1
+            },
+            {
+              "label": "He fell into bad company",
+              "position": 2
+            },
+            {
+              "label": "The Spirit of God left",
+              "position": 3
+            },
+            {
+              "label": "His strength was lost",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Turn over what God’s own keep.",
+          "items": [
+            {
+              "label": "Stay given to God"
+            },
+            {
+              "label": "Obey your parents"
+            },
+            {
+              "label": "Keep away from wine"
+            },
+            {
+              "label": "Keep away from bad company"
+            }
+          ]
+        }
+      ],
+      "note": "Questions 8 and 9.\n\nThe sequence is the saddest part of the chapter and it has an order, which is the point: he disobeyed *first*, and the strength went *after*. A child who holds that order has the lesson.\n\nThe `reveal` that follows is question 9, which the book asks of the class rather than answers. Its four items are the angel’s own asks on p.52 and the two things Samson let go of, so nothing here is invented and nothing is marked right or wrong."
+    }
+  ],
+  "verse": {
+    "text": "The Lord has heard my cry for mercy, the Lord accepts my prayer.",
+    "reference": "Psalm 6:9",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with the name of God.",
+        "options": [
+          {
+            "label": "The Lord has heard",
+            "correct": true
+          },
+          {
+            "label": "The night has gone"
+          },
+          {
+            "label": "The door is open"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them, and only one of them is real."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with who did the hearing.",
+        "words": [
+          "The Lord has heard",
+          "my cry for mercy,",
+          "the Lord accepts my prayer."
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "The ______ has heard",
+        "hint": "The missing word starts with “l”.",
+        "options": [
+          {
+            "label": "Lord",
+            "correct": true
+          },
+          {
+            "label": "heard"
+          },
+          {
+            "label": "prayer"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used exactly as it came out — prompt, hint and all three options unedited."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "The Lord does two things here.",
+        "words": [
+          "The Lord",
+          "has heard",
+          "my cry for mercy,",
+          "the Lord accepts",
+          "my prayer."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. Phrase chunks rather than single words, as every chapter in this class ships. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "It is one of the Psalms.",
+        "options": [
+          {
+            "label": "Psalm 6",
+            "correct": true
+          },
+          {
+            "label": "Judges 13"
+          },
+          {
+            "label": "Psalm 105"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. `write-reference` asks for a keyboard, and a six-year-old spelling “Psalm 6:9” is a typing test wearing a memory verse. The distractors are real references this child has met: Judges 13 is this chapter’s own Bible portion, and Psalm 105 was Chapter 10’s verse, so telling them apart is the thing being learned rather than a trick."
+      }
+    ],
+    "note": "Read from p.54 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 of this class use — recognise, order, fill, rebuild, place. **Stage 3 is the agent’s own Beginner rung, unedited**; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nPrinted with its comma after “mercy,” and its full stop after “prayer.”, both kept.\n\nThis is a prayer verse in a chapter that opens on a prayer: Manoah and his wife cried to God, and “God heard their prayers”. The verse is the lesson’s first sentence said back.\n\nTranslation is unresolved: p.54 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run, so the verse has one origin rather than two."
+  },
+  "decision": {
+    "statement": "I understand that I am a blessing given to my parents by God.",
+    "note": "The curriculum’s own My Decision line from p.54, first person. The book prints it without a full stop; one is added here because every other decision card in this class ends with one."
+  },
+  "song": {
+    "lines": [
+      "Geevitha yathrakkara",
+      "Kaladikal engottu",
+      "Nasathin pathayoo",
+      "Jeevante margamo",
+      "Lakhsyam nin mumbilethu"
+    ],
+    "note": "The five lines of the “Learn to sing” song on p.54, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Loving God, thank you for the understanding that we are your gift. Help us to grow obedient to you. Amen.",
+    "note": "The Concluding Prayer from p.54, word for word."
+  },
+  "celebration": {
+    "message": "They prayed for a child, and God gave them Samson.",
+    "note": "The chapter’s beginning rather than its end. Samson’s story closes badly and the cards say so, but the thing a six-year-old is asked to take from it is on p.54: “I am a blessing given to my parents by God.”"
+  }
+}
