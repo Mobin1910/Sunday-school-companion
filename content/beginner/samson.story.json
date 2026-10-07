@@ -3,100 +3,86 @@
   "chapter": 11,
   "title": "Samson",
   "reference": "Judges 13: 2 - 24",
-  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 11 — the opener (p.51), the lesson (p.52), the nine questions with the colouring page (p.53) and the close (p.54). All four are around 2 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Psalm 6:9 was read from p.54.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-two text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change.\n\n**Nine questions and four games.** This class is allowed three to four games, and nine questions will not go into four one at a time, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the angel’s visit, the angel’s words, Samson’s strength, and the losing of it.\n\n**The chapter ends badly, and it is not softened.** The book says plainly that Samson disobeyed, that the Spirit of God left him, and that he was defeated. That is on the cards and in the fourth game. What is not carried over is the book’s “one may lose one’s head” register — there is none here to carry — and the celebration line turns to the part a six-year-old is being asked to hold: that he was a prayed-for child, given to his parents by God, which is this chapter’s own My Decision.\n\nThe chapter has two prayers. The opener on p.51 is “Dear God, we praise you for the grace that has brought us together today to experience your word. Amen.”; the Concluding Prayer on p.54 is the one carried in `prayer` below.",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 11 — the opener (p.51), the lesson (p.52), the nine questions with the colouring page (p.53) and the close (p.54). All four are around 2 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Psalm 6:9 was read from p.54.\n\n**The artwork is in.** Twenty files from “04 - Story Artwork” — a cover, a landscape cover and panels 1 to 18 — imported at native size, all twenty distinct (no duplicate upload of the kind Chapters 6 and 10 had).\n\n**The twenty-two text cards are gone.** Every panel is lettered — captions and speech bubbles both — so the app writing the same sentence underneath would say it twice, and the reader’s caption layout crops the art to make room for the repeat. The story is now eighteen picture-only cards, one per panel, each with alt text that describes the scene and quotes what is written in it. That is what Beginner Chapters 5 to 10 and Primary 1 to 3 all did when their artwork arrived.\n\n**The artwork has its own framing.** Panels 1–3 and 16–18 are a boy and a glowing companion in a bedroom, asking about prayer at the front and about gifts at the back, with the Samson story held between them in panels 4–15. The story cards follow that structure rather than starting cold at Manoah.\n\n**Three things for the artist.**\n\n1. *Panels 16, 17 and 18 are 1024×1536, where every other panel is 941×1672.* They were converted without distortion and they are the three closing framing panels, so it looks like that set was made at a different size rather than one slipping through. They will not crop the same way as the rest.\n2. *Panels 4 and 7 carry nearly the same caption.* Panel 4 puts all five sentences in one box; panel 7 splits the last one, “God heard their prayers.”, into a second box at the foot. Both are used here and the repetition is made to work — panel 4 is the praying and panel 7 is the answer, after the angel has come — but the repeated top box reads as a leftover and is worth a look.\n3. *Every panel is lettered*, captions and speech bubbles both. That is lovely in the reader and it is the one real constraint on using the art inside games.\n\n**Which panels the games may use.** A shelf card is read before the game is played, so it may letter a question or a trouble but never an answer a child will be marked on. By that rule most of this chapter is out: panels 5, 8, 9, 10, 12, 13, 14 and 15 each spell an answer in words, and panel 10 and panel 12 both say “the Spirit of God”, which is the answer to the choosing round inside game 3. What is left is the questions in panels 1, 2, 3, 16, 17 and 18 and the troubles in panels 4, 7 and 11.\n\nOf those, the shelf card is a square centre crop, so a panel whose bubble sits just above the crop line gets cut mid-word — panels 3, 16 and 17 all do. The four the games carry are the ones that are both safe and whole: 4 and 11 have no lettering inside the crop at all, and 1 and 18 keep their bubbles entire. Unlettered variants of panels 5, 6, 14 and 15 would let the games show the moments they are actually about.\n\nThe art’s closing panels are about gifts and talents, while the book’s My Decision on p.54 is about being a blessing to one’s parents. They sit well enough together and the decision card is unchanged, but they are not quite the same ending.\n\n**Nine questions and four games.** This class is allowed three to four games, and nine questions will not go into four one at a time, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the angel’s visit, the angel’s words, Samson’s strength, and the losing of it.\n\n**The chapter ends badly, and it is not softened.** The book says plainly that Samson disobeyed, that the Spirit of God left him, and that he was defeated. That is on the cards and in the fourth game. What is not carried over is the book’s “one may lose one’s head” register — there is none here to carry — and the celebration line turns to the part a six-year-old is being asked to hold: that he was a prayed-for child, given to his parents by God, which is this chapter’s own My Decision.\n\nThe chapter has two prayers. The opener on p.51 is “Dear God, we praise you for the grace that has brought us together today to experience your word. Amen.”; the Concluding Prayer on p.54 is the one carried in `prayer` below.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported. The portrait cover carries the book’s own title card — “THE STORY OF SAMSON 11” — and the landscape is the same lion at the same moment with the lettering off it, which is why the shelf and the reader can each take the one that fits."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Manoah was a man who lived in Israel. He and his wife had no children."
+      "alt": "A boy sitting cross-legged on a rug in a warm lamplit bedroom, chin on his hand, looking up at Halo glowing blue and violet beside him. A football and picture books on the floor. A sign above reads “God hears our prayers!”, and Halo asks, “Have you ever prayed for something you really wanted?”"
     },
     {
       "picture": "panel-02",
-      "text": "They were very sad. They cried and prayed to God."
+      "alt": "The same room. Halo asks, “What do you do while you wait?” and the boy, hands clasped together and smiling up, answers, “I keep praying and wait for God.”"
     },
     {
       "picture": "panel-03",
-      "text": "God heard their prayers."
+      "alt": "A cloud opens above them showing an old town at sunset, palms and flat roofs in golden light. Halo says, “A family in the Bible waited and prayed too,” and the boy asks, “Who were they?”"
     },
     {
       "picture": "panel-04",
-      "text": "One day an angel came to Manoah’s wife."
+      "alt": "Manoah and his wife kneeling side by side on a patterned rug, heads bowed and hands pressed together, water jars around them and an archway behind opening onto hills and a village. The caption reads: “Manoah was a man who lived in Israel. Manoah and his wife had no children. They were very sad about it. They cried and prayed to God. God heard their prayers.”"
     },
     {
       "picture": "panel-05",
-      "text": "“You will give birth to a son.”"
+      "alt": "Manoah’s wife kneeling in a sunlit courtyard, looking up at an angel in white robes standing in the light with one hand open towards her. The caption reads: “One day, an angel of the Lord appeared to Manoah’s wife.” The angel says, “You will have a son.”"
     },
     {
       "picture": "panel-06",
-      "text": "“From his birth he will belong to God.”"
+      "alt": "The angel speaking on, one finger raised; Manoah’s wife with her hands clasped at her chest, looking up. The caption reads: “The angel said that the boy would be dedicated to God from the day he was born.” The angel says, “Do not drink wine, and never cut his hair,” and “He will rescue Israel from the Philistines.”"
     },
     {
       "picture": "panel-07",
-      "text": "“Be sure not to drink any wine.”"
+      "alt": "Manoah and his wife kneeling in prayer again, seen wider, a lamp lit behind them and the hills going gold at evening. The caption above repeats how they cried and prayed, and a second box at the foot reads: “God heard their prayers.”",
+      "note": "**Panel 4 says almost the same thing.** Its top box repeats panel 4’s caption word for word and only the foot box, “God heard their prayers.”, is new. Read in the artist’s own order the two work — panel 4 is the praying and this is the answer, after the angel has come — but the repeated box reads as a leftover and is worth the artist’s eye."
     },
     {
       "picture": "panel-08",
-      "text": "“You must never cut his hair.”"
+      "alt": "The two of them sitting close together, the mother holding a newborn wrapped in cream cloth and the father’s hand resting on the baby. Both are smiling down at him. The caption reads: “After some time, Manoah’s wife gave birth to a son. He was a lovely baby. They named him Samson.”"
     },
     {
       "picture": "panel-09",
-      "text": "“He will rescue Israel from the Philistines.”"
+      "alt": "Samson grown up, tall and broad in a sleeveless tunic with a wide belt, his mother and father standing either side looking up at him proudly. The caption reads: “They raised Samson just as the angel had told them. God blessed Samson. He grew up to be a handsome and strong young man. There were no strong people like him anywhere.”"
     },
     {
       "picture": "panel-10",
-      "text": "In those days the Philistines came to fight Israel."
+      "alt": "Samson standing alone on a hillside above a river valley, light falling across him. The caption reads: “The Spirit of God was with him. He was so strong that he could tear apart a lion that came roaring at him.”"
     },
     {
       "picture": "panel-11",
-      "text": "She told Manoah what the angel said. They were very happy."
+      "alt": "A lion leaping down over the rocks with its mouth wide open and claws out; Samson turning to meet it, braced on the stones. The caption reads: “One day, a fierce lion came roaring at Samson.”"
     },
     {
       "picture": "panel-12",
-      "text": "After some time she gave birth to a son."
+      "alt": "Samson gripping the lion’s jaws with both hands and forcing them apart, teeth bared with the effort, dust kicking up around them. The caption reads: “The Spirit of God gave Samson great strength. Samson tore the lion apart with his bare hands.”"
     },
     {
       "picture": "panel-13",
-      "text": "He was a lovely baby. They named him Samson."
+      "alt": "Samson lifting an armoured Philistine giant clean over his head while other soldiers fall back below a hilltop fort, shields and helmets scattered on the ground. The caption reads: “Samson defeated the Philistine giants. What a strength!”"
     },
     {
       "picture": "panel-14",
-      "text": "They raised him just as the angel had said."
+      "alt": "Samson reclining at a torchlit feast with a cup in his hand, laughing men leaning in around a table of food and jugs. The caption reads: “But when Samson grew up, he disobeyed his parents and God. He fell into bad company.”"
     },
     {
       "picture": "panel-15",
-      "text": "God blessed Samson. He grew up handsome and strong."
+      "alt": "Samson on his knees in a courtyard, heavy chains on both wrists, armed guards standing over him with spears, his head bowed and his hair cut short. The caption reads: “The Spirit of God left him. His strength was then lost. So later Samson was weak enough to be defeated.”"
     },
     {
       "picture": "panel-16",
-      "text": "There were no strong people like him anywhere."
+      "alt": "Back in the bedroom at night. The boy sits with an open picture book, hands turned up, asking “What gifts has God given me?” Halo answers, “God has given you many talents too!”",
+      "note": "**Panels 16, 17 and 18 are 1024×1536**, where every other panel in this chapter is 941×1672. They were converted without distortion and they are exactly the three closing framing panels, so it looks like that set was made at a different size rather than one slipping through. They will not crop the same way as the rest."
     },
     {
       "picture": "panel-17",
-      "text": "The Spirit of God was with him."
+      "alt": "The boy holding up a crayon drawing of a church on a green hill under a yellow sun, crayons and bricks around him. Halo asks, “How can you use your talents?” and the boy answers, “I can use my gifts to help others and obey God!”"
     },
     {
       "picture": "panel-18",
-      "text": "A lion came roaring at him. Samson tore it apart."
-    },
-    {
-      "picture": "panel-19",
-      "text": "He defeated the Philistine giants too. What a strength!"
-    },
-    {
-      "picture": "panel-20",
-      "text": "But when he grew up, he changed. He disobeyed his parents and God."
-    },
-    {
-      "picture": "panel-21",
-      "text": "He fell into bad company. The Spirit of God left him."
-    },
-    {
-      "picture": "panel-22",
-      "text": "His strength was lost. So later Samson was defeated."
+      "alt": "The boy drying a plate at the kitchen table beside his mother, his father leaning in behind them and Halo glowing at the end of the table. The caption reads: “God gives us gifts and blessings. We can use them to love, help, and obey Him.” His father says, “God has given you gifts. You can use them to love and help your family,” and the boy says, “I want to use my gifts for good!”"
     }
   ],
   "curriculum": {
@@ -204,7 +190,8 @@
           ]
         }
       ],
-      "note": "Questions 2 and 1, in the order the lesson tells them — the angel comes before the baby has a name. Two short choosing rounds rather than one, because at this age a question with one fact in it is the right size, and the wrong options in both are people this chapter has actually named."
+      "note": "Questions 2 and 1, in the order the lesson tells them — the angel comes before the baby has a name. Two short choosing rounds rather than one, because at this age a question with one fact in it is the right size, and the wrong options in both are people this chapter has actually named.\n\n**Shelf picture: panel 4**, Manoah and his wife on their knees. It is the trouble this game sits on top of and it letters neither answer — both of them are praying, so it does not say which one the angel came to, and the baby has no name yet. The caption crops away, so the card is just the two of them.",
+      "picture": "panel-04"
     },
     {
       "id": "what-the-angel-said",
@@ -255,7 +242,8 @@
           ]
         }
       ],
-      "note": "Questions 3 and 4.\n\nThe angel’s words are a `reveal` and not a quiz: there are five of them, every one is right, and asking a six-year-old to pick “the” one would teach the opposite of what the page says. The Philistines then arrive in a `true-or-not`, because question 4 is really asking a child to notice who the trouble was — and a wrong guess here costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”."
+      "note": "Questions 3 and 4.\n\nThe angel’s words are a `reveal` and not a quiz: there are five of them, every one is right, and asking a six-year-old to pick “the” one would teach the opposite of what the page says. The Philistines then arrive in a `true-or-not`, because question 4 is really asking a child to notice who the trouble was — and a wrong guess here costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”.\n\n**Shelf picture: panel 1**, the chapter’s opening question — “Have you ever prayed for something you really wanted?” — which is the question the angel’s words are the answer to. The angel himself is drawn in panels 5 and 6 and neither can be used: panel 5 letters “an angel of the Lord appeared to Manoah’s wife”, which is the answer to the game above it, and panel 6 letters “He will rescue Israel from the Philistines”, which hands a child both statements of the true-or-not below.",
+      "picture": "panel-01"
     },
     {
       "id": "samson-the-strong",
@@ -306,7 +294,8 @@
           ]
         }
       ],
-      "note": "Questions 5, 6 and 7. The `reveal` holds both halves of what the book asks — what was set apart about him, and what that strength actually looked like — and every item on it is true, so nothing is wrong to turn over.\n\nThe choosing round that follows is question 7, which is the one in this chapter with a single answer. Both wrong options are ordinary and a little funny; the lesson’s answer is not something Samson had or did, it is Who was with him."
+      "note": "Questions 5, 6 and 7. The `reveal` holds both halves of what the book asks — what was set apart about him, and what that strength actually looked like — and every item on it is true, so nothing is wrong to turn over.\n\nThe choosing round that follows is question 7, which is the one in this chapter with a single answer. Both wrong options are ordinary and a little funny; the lesson’s answer is not something Samson had or did, it is Who was with him.\n\n**Shelf picture: panel 11**, the lion mid-roar. Panels 10 and 12 are the obvious pictures for a game about Samson’s strength and both are disqualified: each letters “the Spirit of God” in its caption, which is the answer to the choosing round at the bottom of this very game. Panel 11 letters only the danger, and its caption crops away.",
+      "picture": "panel-11"
     },
     {
       "id": "when-he-disobeyed",
@@ -359,7 +348,8 @@
           ]
         }
       ],
-      "note": "Questions 8 and 9.\n\nThe sequence is the saddest part of the chapter and it has an order, which is the point: he disobeyed *first*, and the strength went *after*. A child who holds that order has the lesson.\n\nThe `reveal` that follows is question 9, which the book asks of the class rather than answers. Its four items are the angel’s own asks on p.52 and the two things Samson let go of, so nothing here is invented and nothing is marked right or wrong."
+      "note": "Questions 8 and 9.\n\nThe sequence is the saddest part of the chapter and it has an order, which is the point: he disobeyed *first*, and the strength went *after*. A child who holds that order has the lesson.\n\nThe `reveal` that follows is question 9, which the book asks of the class rather than answers. Its four items are the angel’s own asks on p.52 and the two things Samson let go of, so nothing here is invented and nothing is marked right or wrong.\n\n**Shelf picture: panel 18**, the chapter’s last panel — a boy using what he was given, which is where this game ends rather than where it starts. Panels 14 and 15 are the pictures this game is really about and both are disqualified: panel 14 letters the first two steps of the sequence and panel 15 letters the other two, so either one hands a child the ordering before they start.",
+      "picture": "panel-18"
     }
   ],
   "verse": {
