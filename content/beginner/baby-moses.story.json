@@ -1,0 +1,458 @@
+{
+  "class": "beginner",
+  "chapter": 12,
+  "title": "Baby Moses",
+  "reference": "Exodus 2: 1 - 10",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 12 — the opener (p.55), the lesson (p.56), the eight questions with the river drawing (p.57) and the close (p.58). All four are around 2 to 3 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Exodus 2:10 (b) was read from p.58.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-three text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change — and when they do, the text cards come out, as they did for Chapters 5 to 11.\n\n**There is no prayer in this chapter, so none is written here.** Both prayer slots are stage directions rather than prayers: p.55 says “(Either teacher or one of the children should pray)” and p.58 says “(One of the children should pray)”. Every other chapter in this class prints words. Writing some would be putting them in the Samajam’s mouth, so the `prayer` block is left out altogether and this note is the record of why.\n\n**Eight questions and four games.** Four is this band’s ceiling, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the hiding and the basket, the people at the river, the naming, and — last, because it is the point — everyone who had a hand in it.\n\n**The king’s order is named, not described.** The book opens “The Pharoah (King) issued an order to destroy the male children of the Hebrews”. The story card says the king gave a cruel order against their baby boys, which keeps the danger the whole chapter depends on without putting the killing of babies in front of a six-year-old. Everything after it is the book’s own wording.\n\n“Pharoah” is the book’s spelling throughout and is kept.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "The Hebrew people had come to live in Egypt."
+    },
+    {
+      "picture": "panel-02",
+      "text": "The king gave a cruel order against their baby boys."
+    },
+    {
+      "picture": "panel-03",
+      "text": "A woman of the tribe of Levi had a son."
+    },
+    {
+      "picture": "panel-04",
+      "text": "He was a fine baby. She hid him for three months."
+    },
+    {
+      "picture": "panel-05",
+      "text": "But she could not hide him any longer."
+    },
+    {
+      "picture": "panel-06",
+      "text": "She took a basket made of reeds. She covered it with tar."
+    },
+    {
+      "picture": "panel-07",
+      "text": "She put the baby in it."
+    },
+    {
+      "picture": "panel-08",
+      "text": "She placed it in the tall grass by the river."
+    },
+    {
+      "picture": "panel-09",
+      "text": "The baby’s sister stood a little way off. She watched."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Then the Pharoah’s daughter came down to the river."
+    },
+    {
+      "picture": "panel-11",
+      "text": "Her servants walked along the riverbank."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They noticed the basket in the tall grass."
+    },
+    {
+      "picture": "panel-13",
+      "text": "The princess sent a servant woman to get it."
+    },
+    {
+      "picture": "panel-14",
+      "text": "She opened it and saw a baby boy. She felt sorry."
+    },
+    {
+      "picture": "panel-15",
+      "text": "“This is one of the Hebrew babies,” she said."
+    },
+    {
+      "picture": "panel-16",
+      "text": "Then his sister came forward and spoke."
+    },
+    {
+      "picture": "panel-17",
+      "text": "“Shall I call a Hebrew woman to nurse him?”"
+    },
+    {
+      "picture": "panel-18",
+      "text": "The princess said yes. The girl brought the baby’s own mother."
+    },
+    {
+      "picture": "panel-19",
+      "text": "“Take this baby and nurse him for me. I will pay you.”"
+    },
+    {
+      "picture": "panel-20",
+      "text": "So she took the baby and nursed him."
+    },
+    {
+      "picture": "panel-21",
+      "text": "Later the child was old enough. She took him to the princess."
+    },
+    {
+      "picture": "panel-22",
+      "text": "The princess named him Moses."
+    },
+    {
+      "picture": "panel-23",
+      "text": "“I pulled him out of the water,” she said."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 12 “BABY MOSES”, p.57 — “TELL THE ANSWERS”",
+    "note": "Transcribed from the curriculum photographs, read at full size. Eight items, numbered straight through as the book numbers them: 1 to 3 are printed as blanks to fill in and 4 to 8 as questions, and both shapes go into this one list so that the one rule — every question covered by a game — covers both. There is no “MARK IT AS RIGHT OR WRONG” in this chapter.\n\nEvery answer below is quoted from the printed lesson on p.56. There is no answer key in these pages and there are no teacher’s pen marks anywhere in this chapter.\n\np.57 also carries a full-page drawing of the mother at the river with the basket, and the baby’s sister watching from the reeds. It is printed to look at rather than to colour in.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Moses belongs to ______ tribe (family).",
+        "objective": "Know that his mother was a woman from the tribe of Levi.",
+        "answer": "Levi. “During this time, a woman from the tribe of Levi gave birth to a son.” (p.56)"
+      },
+      {
+        "n": 2,
+        "question": "Moses was hidden for ______ months.",
+        "objective": "Know that his mother hid him for three months.",
+        "answer": "Three. “When she saw what a fine baby he was, she hid him for three months.” (p.56)"
+      },
+      {
+        "n": 3,
+        "question": "Moses was laid in a basket made of ______",
+        "objective": "Know that the basket was made of reeds and covered with tar.",
+        "answer": "Reeds. “she took a basket made of reeds and covered it with tar to make it watertight.” (p.56)"
+      },
+      {
+        "n": 4,
+        "question": "Who watched from afar to see what would happen to Moses?",
+        "objective": "Know that the baby’s sister stood some distance away and watched.",
+        "answer": "His sister. “The baby’s sister stood some distance away to see what would happen to him.” (p.56)"
+      },
+      {
+        "n": 5,
+        "question": "Who came to bath in the river?",
+        "objective": "Know that the Pharoah’s daughter came down to the river to bath.",
+        "answer": "The Pharoah’s daughter. “Then, the Pharoah’s daughter came down to the river to bath. And, her servants walked along the riverbank.” (p.56)"
+      },
+      {
+        "n": 6,
+        "question": "Who named Moses?",
+        "objective": "Know that the Pharoah’s daughter named him.",
+        "answer": "The Pharoah’s daughter. “Later, when the child was old enough, she took him to the Pharoah’s daughter. She said, ‘I pulled him out of the water’ and named him Moses.” (p.56) The chapter’s memory verse on p.58 settles it: “She named him Moses, saying, ‘I drew him out of the water’.”"
+      },
+      {
+        "n": 7,
+        "question": "What is the reason for naming him Moses?",
+        "objective": "Know that she said, “I pulled him out of the water”.",
+        "answer": "The water. “She said, ‘I pulled him out of the water’ and named him Moses.” (p.56) The memory verse has it as “I drew him out of the water”."
+      },
+      {
+        "n": 8,
+        "question": "Who all helped to save baby Moses?",
+        "objective": "Know that his mother, his sister, the princess and her servant woman each had a part.",
+        "answer": "Four of them, and the book asks for all four. His mother hid him and made the basket; his sister watched and spoke up; the servant woman fetched the basket out of the reeds; and the Pharoah’s daughter felt sorry for him, paid his own mother to nurse him, and took him as her own. (p.56)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "the-baby-in-the-basket",
+      "title": "The Baby in the Basket",
+      "objective": "Know the three things the book asks a child to fill in: the tribe of Levi, three months, and a basket of reeds.",
+      "answers": [
+        1,
+        2,
+        3
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Which tribe was Moses from?",
+          "hint": "It was his mother’s family.",
+          "options": [
+            {
+              "label": "Levi",
+              "correct": true
+            },
+            {
+              "label": "Hebrew"
+            },
+            {
+              "label": "Egypt"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "How long did his mother hide him?",
+          "hint": "Longer than weeks, shorter than years.",
+          "options": [
+            {
+              "label": "Three months",
+              "correct": true
+            },
+            {
+              "label": "Three days"
+            },
+            {
+              "label": "Three years"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "What was the basket made of?",
+          "hint": "They grow tall by the river.",
+          "options": [
+            {
+              "label": "Reeds",
+              "correct": true
+            },
+            {
+              "label": "Wood"
+            },
+            {
+              "label": "Stone"
+            }
+          ]
+        }
+      ],
+      "note": "Questions 1, 2 and 3 — the three the book prints as blanks to fill in. They are three separate facts with one word each, so they are three short choosing rounds rather than one crowded question.\n\n“Hebrew” is the near miss worth having in the first: the babies in this chapter really are Hebrew, and Hebrew is a people rather than a tribe, which is exactly the confusion the blank is testing."
+    },
+    {
+      "id": "who-was-at-the-river",
+      "title": "Who Was at the River",
+      "objective": "Know that the baby's sister watched from the grass and that the Pharoah's daughter came to bath.",
+      "answers": [
+        4,
+        5
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to what they did.",
+          "hint": "Only one of them was hiding.",
+          "pairs": [
+            {
+              "from": {
+                "label": "His sister"
+              },
+              "to": {
+                "label": "Watched from the tall grass"
+              }
+            },
+            {
+              "from": {
+                "label": "The princess"
+              },
+              "to": {
+                "label": "Came to bath there"
+              }
+            },
+            {
+              "from": {
+                "label": "A servant woman"
+              },
+              "to": {
+                "label": "Fetched the basket"
+              }
+            },
+            {
+              "from": {
+                "label": "His mother"
+              },
+              "to": {
+                "label": "Nursed him at home"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Questions 4 and 5. A `match` rather than two quizzes, because the riverbank has four people on it and telling them apart is the whole of what these two questions ask. It also lays the ground for the last game, where all four turn out to have helped."
+    },
+    {
+      "id": "who-named-him",
+      "title": "Drawn Out of the Water",
+      "objective": "Know that the Pharoah's daughter named him, and why she chose that name.",
+      "answers": [
+        6,
+        7
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who gave Moses his name?",
+          "hint": "She was the one who took him in.",
+          "options": [
+            {
+              "label": "The princess",
+              "correct": true
+            },
+            {
+              "label": "His mother"
+            },
+            {
+              "label": "His sister"
+            }
+          ]
+        },
+        {
+          "type": "true-or-not",
+          "prompt": "Say what you think. Then we look.",
+          "statements": [
+            {
+              "source": "She named him Moses because she drew him out of the water.",
+              "ask": "Was he named for the water?",
+              "answer": true,
+              "because": "Yes. She said, “I pulled him out of the water.”"
+            },
+            {
+              "source": "She named him Moses after her own father.",
+              "ask": "Was he named after her father?",
+              "answer": false,
+              "because": "No. She named him for the water she drew him from."
+            }
+          ]
+        }
+      ],
+      "note": "Questions 6 and 7 — who named him, and why. The choosing round is the who; the true-or-not is the why, and a wrong guess there costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”. The chapter’s memory verse is the same sentence the first statement rests on."
+    },
+    {
+      "id": "everyone-who-helped",
+      "title": "Everyone Who Helped",
+      "objective": "Know that four people had a part in saving baby Moses.",
+      "answers": [
+        8
+      ],
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over who helped save Moses.",
+          "items": [
+            {
+              "label": "His mother hid him"
+            },
+            {
+              "label": "She made him a basket"
+            },
+            {
+              "label": "His sister watched from afar"
+            },
+            {
+              "label": "A servant fetched the basket"
+            },
+            {
+              "label": "The princess took him in"
+            }
+          ]
+        }
+      ],
+      "note": "Question 8, and the question this chapter is really about. A `reveal`: there are five right answers and no wrong ones, and making a child pick “the” person who saved Moses would teach the opposite of what the page asks. The princess and the servant are on the list beside his mother and sister, because the book’s “who all” means all of them."
+    }
+  ],
+  "verse": {
+    "text": "She named him Moses, saying, “I drew him out of the water”",
+    "reference": "Exodus 2:10 (b)",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with what she did.",
+        "options": [
+          {
+            "label": "She named him Moses",
+            "correct": true
+          },
+          {
+            "label": "She found him there"
+          },
+          {
+            "label": "She came to the river"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them, and only one of them is real."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "The name first, then what she said.",
+        "words": [
+          "She named him Moses, saying,",
+          "“I drew him out",
+          "of the water”"
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "She ______ him Moses,",
+        "hint": "The missing word starts with “n”.",
+        "options": [
+          {
+            "label": "named",
+            "correct": true
+          },
+          {
+            "label": "Moses"
+          },
+          {
+            "label": "water"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder — prompt, hint and all three options are its own, with one change: it offered the third as “water””, carrying the verse’s closing quotation mark into the button. That mark is punctuation that happened to land on the last token, not part of the word, and a button reading “water”” is a defect a six-year-old would meet before anyone else did."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "She named",
+          "him Moses, saying,",
+          "“I drew",
+          "him out of",
+          "the water”"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. Phrase chunks rather than single words, as every chapter in this class ships. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "Baby Moses is in this book.",
+        "options": [
+          {
+            "label": "Exodus 2",
+            "correct": true
+          },
+          {
+            "label": "Judges 13"
+          },
+          {
+            "label": "Psalm 6"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. `write-reference` asks for a keyboard, and a six-year-old spelling “Exodus 2:10 (b)” is a typing test wearing a memory verse. The distractors are real references this child has just met: Judges 13 was Chapter 11’s Bible portion and Psalm 6 was Chapter 11’s verse, so telling them apart is the thing being learned rather than a trick."
+      }
+    ],
+    "note": "Read from p.58 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung with one option’s stray quotation mark removed; see its note. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\n**The book prints no full stop at the end.** p.58 closes the quotation with “… out of the water” and nothing after it, where the lesson on p.56 ends the same sentence with a stop. The verse page is what a memory verse is read from, so the page is what is kept.\n\nThe reference is printed “Exodus 2:10 (b)”, with the bracketed b, and is kept exactly so: the verse is the second half of verse 10.\n\nThe lesson says “I pulled him out of the water” and the verse says “I drew him out”. Both are on the page, a column apart, and neither is corrected into the other — the games quote the lesson and the verse card quotes the verse.\n\nTranslation is unresolved: p.58 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will strive to protect others.",
+    "note": "The curriculum’s own My Decision line from p.58, first person and unchanged."
+  },
+  "song": {
+    "lines": [
+      "Geetham geetham Jaya Jaya geetham",
+      "Paduvin sodarare nammil",
+      "Yesunadhan geevikkunnathinal"
+    ],
+    "note": "The three lines of the “Learn to sing” song on p.58, in the Latin script the book prints them in. Not translated and not completed."
+  },
+  "celebration": {
+    "message": "His mother, his sister and a princess all helped to save him.",
+    "note": "The answer to the chapter’s last question, turned towards the child. The book asks “Who all helped to save baby Moses?” and the answer is that it took several people, which is what the My Decision on p.58 then asks of the child."
+  }
+}
