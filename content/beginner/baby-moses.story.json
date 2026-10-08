@@ -3,104 +3,66 @@
   "chapter": 12,
   "title": "Baby Moses",
   "reference": "Exodus 2: 1 - 10",
-  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 12 — the opener (p.55), the lesson (p.56), the eight questions with the river drawing (p.57) and the close (p.58). All four are around 2 to 3 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Exodus 2:10 (b) was read from p.58.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-three text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change — and when they do, the text cards come out, as they did for Chapters 5 to 11.\n\n**There is no prayer in this chapter, so none is written here.** Both prayer slots are stage directions rather than prayers: p.55 says “(Either teacher or one of the children should pray)” and p.58 says “(One of the children should pray)”. Every other chapter in this class prints words. Writing some would be putting them in the Samajam’s mouth, so the `prayer` block is left out altogether and this note is the record of why.\n\n**Eight questions and four games.** Four is this band’s ceiling, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the hiding and the basket, the people at the river, the naming, and — last, because it is the point — everyone who had a hand in it.\n\n**The king’s order is named, not described.** The book opens “The Pharoah (King) issued an order to destroy the male children of the Hebrews”. The story card says the king gave a cruel order against their baby boys, which keeps the danger the whole chapter depends on without putting the killing of babies in front of a six-year-old. Everything after it is the book’s own wording.\n\n“Pharoah” is the book’s spelling throughout and is kept.",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 12 — the opener (p.55), the lesson (p.56), the eight questions with the river drawing (p.57) and the close (p.58). All four are around 2 to 3 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Exodus 2:10 (b) was read from p.58.\n\n**The artwork is in.** Fifteen files from “04 - Story Artwork” — a cover, a landscape cover and panels 1 to 13 — PNG to WebP at native size, no resize and no crop. Every one is 941×1672 or its transpose, and all fifteen are distinct.\n\n**The twenty-three text cards are gone.** Every panel is lettered, captions and speech bubbles both, so the app writing the same sentence underneath would say it twice and the caption layout would crop the art to make room. The story is thirteen picture-only cards, one per panel, each with alt text that describes the scene and quotes what is written in it — the same thing Chapters 5 to 11 did when their artwork arrived.\n\n**The artwork brought a present-day frame with it.** Panels 1, 2, 12 and 13 are a boy, a younger girl and Halo in a classroom and a school yard; the Egypt story runs from panel 3 to panel 11 between them. The book has no such frame on its pages, but this class’s artwork has had one since Chapter 5.\n\n**Two things for the artist**, both recorded on the panels themselves: panel 3 puts “Destroy the Hebrew baby boys!” in Pharaoh’s mouth, which is stronger than the book’s own prose and stronger than the text card it replaces; and panel 12 names the sister Miriam, which neither the lesson nor Exodus 2 does.\n\n**All four games now carry a shelf picture.** A shelf card is read before the game is played, so it may letter a question or a trouble but never an answer a child will be marked on. That rules out most of this chapter: panels 4, 5 and 6 letter the three blanks, panel 7 letters who came to bathe, panel 11 letters both the naming and the reason, and panels 9 and 10 letter the nursing. What is left — the framing panels and panels 3 and 8 — is what the games carry; see each game’s own note.\n\n**There is no prayer in this chapter, so none is written here.** Both prayer slots are stage directions rather than prayers: p.55 says “(Either teacher or one of the children should pray)” and p.58 says “(One of the children should pray)”. Every other chapter in this class prints words. Writing some would be putting them in the Samajam’s mouth, so the `prayer` block is left out altogether and this note is the record of why.\n\n**Eight questions and four games.** Four is this band’s ceiling, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the hiding and the basket, the people at the river, the naming, and — last, because it is the point — everyone who had a hand in it.\n\n**The king’s order is named, not described.** The book opens “The Pharoah (King) issued an order to destroy the male children of the Hebrews”. The story card says the king gave a cruel order against their baby boys, which keeps the danger the whole chapter depends on without putting the killing of babies in front of a six-year-old. Everything after it is the book’s own wording.\n\n“Pharoah” is the book’s spelling throughout and is kept.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, at the canonical 941×1672 and its transpose."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "The Hebrew people had come to live in Egypt."
+      "alt": "A boy with a backpack kneeling to pick up a dropped book for a smaller girl sitting on a classroom floor, shelves and toys around them and Halo glowing above. Halo asks, “Have you ever seen someone who needed help?” and “Have you ever helped someone who needed you?” The girl answers, “Yes!”"
     },
     {
       "picture": "panel-02",
-      "text": "The king gave a cruel order against their baby boys."
+      "alt": "The same girl at a window, looking out at ancient Egypt — the Nile with sailing boats, palms, an obelisk and temple pylons in the sun. The caption reads: “Long ago, in a land called Egypt, there was a baby who needed protection.” Halo says, “Let’s find out,” and she asks, “What happened to him?”"
     },
     {
       "picture": "panel-03",
-      "text": "A woman of the tribe of Levi had a son."
+      "alt": "Pharaoh on a golden throne in a pillared hall, leaning forward and pointing, guards behind him and bowed figures on the steps below. The caption reads: “But Pharaoh, the king of Egypt, was afraid of the Hebrew people. He gave a terrible order against their baby boys.” Pharaoh says, “Destroy the Hebrew baby boys!”",
+      "note": "**This panel is more explicit than the lesson, and than the text cards it replaces.** The book’s prose says the Pharoah “issued an order to destroy the male children of the Hebrews”; the artwork puts “Destroy the Hebrew baby boys!” in his mouth as a speech bubble. When this chapter shipped without artwork its story card read “The king gave a cruel order against their baby boys”, deliberately softer. The story is picture-only now, so the lettering is the text and the stronger line is what a six-year-old reads. It is the Samajam’s own commissioned art for this age group and it is carried as drawn — but the change is recorded here rather than absorbed quietly."
     },
     {
       "picture": "panel-04",
-      "text": "He was a fine baby. She hid him for three months."
+      "alt": "A young mother sitting indoors in lamplight, cradling her newborn and smiling down at him, water jars and woven cloth behind her. The caption reads: “During this time, a woman from the tribe of Levi gave birth to a son. She saw what a fine baby he was.”"
     },
     {
       "picture": "panel-05",
-      "text": "But she could not hide him any longer."
+      "alt": "The same mother holding the baby close with an anxious face, her daughter watching from a doorway and an Egyptian figure passing in the street outside. The caption reads: “She hid him for three months. But she could not hide him any longer.”"
     },
     {
       "picture": "panel-06",
-      "text": "She took a basket made of reeds. She covered it with tar."
+      "alt": "The mother brushing tar onto a reed basket with the baby already lying inside, cut reeds and a pot of tar on the ground and her daughter beside her. The caption reads: “She took a basket made of reeds and covered it with tar to make it watertight. She put the baby in it.”"
     },
     {
       "picture": "panel-07",
-      "text": "She put the baby in it."
+      "alt": "Pharaoh’s daughter and her servants at the water’s edge among tall reeds, the basket in the shallows and the baby’s sister watching from the grass at the left. The caption reads: “Then Pharaoh’s daughter came down to the river to bathe. Her servants noticed the basket in the tall grass.” A servant says, “Look! There is a basket in the reeds,” and the princess says, “Bring it to me.”"
     },
     {
       "picture": "panel-08",
-      "text": "She placed it in the tall grass by the river."
+      "alt": "The princess kneeling over the opened basket with one hand reaching to the baby, who looks up at her; her servants gathered behind and the sister still in the reeds. The caption reads: “The princess opened the basket and saw a baby boy. She felt sorry for him.” The princess says, “This is one of the Hebrew babies.”"
     },
     {
       "picture": "panel-09",
-      "text": "The baby’s sister stood a little way off. She watched."
+      "alt": "The baby’s sister stepping forward with her hand open, speaking to the princess across the basket. The caption reads: “Then his sister came forward and asked her…” The girl says, “Shall I go and call a Hebrew woman to nurse the baby for you?” and the princess answers, “Yes.”"
     },
     {
       "picture": "panel-10",
-      "text": "Then the Pharoah’s daughter came down to the river."
+      "alt": "The baby’s own mother kneeling by the basket with her hands at her chest, the princess beside her and the sister behind them. The caption reads: “So the girl went and brought the baby’s own mother.” The princess says, “Take this baby and nurse him for me, and I will pay you.”"
     },
     {
       "picture": "panel-11",
-      "text": "Her servants walked along the riverbank."
+      "alt": "The mother handing a grown toddler to the princess in a palace room, the boy reaching between the two of them. The caption reads: “Later, when the child was old enough, she took him to Pharaoh’s daughter.” The princess says, “I named him Moses. I pulled him out of the water”"
     },
     {
       "picture": "panel-12",
-      "text": "They noticed the basket in the tall grass."
+      "alt": "Back in the present. A boy with a backpack stops in a school yard, hand to his chin, looking at a girl crouched over her spilled books, with Halo floating beside him. The bubbles read: “Miriam saw someone who needed help.” and “What could you do?” The boy answers, “I could help!”",
+      "note": "**The sister is named Miriam here, and the lesson never names her.** p.56 calls her “the baby’s sister” throughout, and Exodus 2 does not give her a name either — Miriam is named later, at Exodus 15 and Numbers 26. The name is almost certainly right and it is not in this chapter’s portion, so a child meets a name the lesson and the questions never use. Worth the artist’s eye."
     },
     {
       "picture": "panel-13",
-      "text": "The princess sent a servant woman to get it."
-    },
-    {
-      "picture": "panel-14",
-      "text": "She opened it and saw a baby boy. She felt sorry."
-    },
-    {
-      "picture": "panel-15",
-      "text": "“This is one of the Hebrew babies,” she said."
-    },
-    {
-      "picture": "panel-16",
-      "text": "Then his sister came forward and spoke."
-    },
-    {
-      "picture": "panel-17",
-      "text": "“Shall I call a Hebrew woman to nurse him?”"
-    },
-    {
-      "picture": "panel-18",
-      "text": "The princess said yes. The girl brought the baby’s own mother."
-    },
-    {
-      "picture": "panel-19",
-      "text": "“Take this baby and nurse him for me. I will pay you.”"
-    },
-    {
-      "picture": "panel-20",
-      "text": "So she took the baby and nursed him."
-    },
-    {
-      "picture": "panel-21",
-      "text": "Later the child was old enough. She took him to the princess."
-    },
-    {
-      "picture": "panel-22",
-      "text": "The princess named him Moses."
-    },
-    {
-      "picture": "panel-23",
-      "text": "“I pulled him out of the water,” she said."
+      "alt": "The boy crouching down to gather the books with her, both of them smiling, the playground behind. Halo says, “Yes! We can care for people who need us,” and the boy says, “I will strive to protect others!”"
     }
   ],
   "curriculum": {
@@ -220,7 +182,8 @@
           ]
         }
       ],
-      "note": "Questions 1, 2 and 3 — the three the book prints as blanks to fill in. They are three separate facts with one word each, so they are three short choosing rounds rather than one crowded question.\n\n“Hebrew” is the near miss worth having in the first: the babies in this chapter really are Hebrew, and Hebrew is a people rather than a tribe, which is exactly the confusion the blank is testing."
+      "note": "Questions 1, 2 and 3 — the three the book prints as blanks to fill in. They are three separate facts with one word each, so they are three short choosing rounds rather than one crowded question.\n\n“Hebrew” is the near miss worth having in the first: the babies in this chapter really are Hebrew, and Hebrew is a people rather than a tribe, which is exactly the confusion the blank is testing.\n\n**Shelf picture: panel 3**, Pharaoh giving the order. It is the trouble these three blanks exist because of — the tribe, the three months and the basket are all consequences of it — and it letters none of the three answers. Panels 4, 5 and 6 are the pictures this game is literally about and each one spells an answer out: “the tribe of Levi”, “three months”, “a basket made of reeds”.\n\nIt is also the hardest image in the chapter; see the panel’s own note in the story, and swap it for panel 12 if the shelf is the wrong place for it.",
+      "picture": "panel-03"
     },
     {
       "id": "who-was-at-the-river",
@@ -271,7 +234,8 @@
           ]
         }
       ],
-      "note": "Questions 4 and 5. A `match` rather than two quizzes, because the riverbank has four people on it and telling them apart is the whole of what these two questions ask. It also lays the ground for the last game, where all four turn out to have helped."
+      "note": "Questions 4 and 5. A `match` rather than two quizzes, because the riverbank has four people on it and telling them apart is the whole of what these two questions ask. It also lays the ground for the last game, where all four turn out to have helped.\n\n**Shelf picture: panel 8**, the princess over the opened basket. It letters none of the four pairings this game asks for — its caption is about her feeling sorry, and the sister in the reeds is drawn rather than named. Panel 7 is the other riverbank picture and it is out: it letters “Pharaoh’s daughter came down to the river to bathe”, which is the answer to question 5.",
+      "picture": "panel-08"
     },
     {
       "id": "who-named-him",
@@ -318,7 +282,8 @@
           ]
         }
       ],
-      "note": "Questions 6 and 7 — who named him, and why. The choosing round is the who; the true-or-not is the why, and a wrong guess there costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”. The chapter’s memory verse is the same sentence the first statement rests on."
+      "note": "Questions 6 and 7 — who named him, and why. The choosing round is the who; the true-or-not is the why, and a wrong guess there costs nothing.\n\nStatement 2 is written from a false sentence, so its `ask` keeps that polarity and the honest answer stays “no”. The chapter’s memory verse is the same sentence the first statement rests on.\n\n**Shelf picture: panel 12**, the boy stopping when he sees someone who needs him. Panel 11 is the picture this game is about and it is disqualified twice over: “I named him Moses. I pulled him out of the water” letters the answer to the choosing round *and* the answer to the true-or-not underneath it. Panel 2, the Nile from the window, was the better match and had to go too — its lower bubble lands exactly where the card prints the game’s title, and the two collide. This one is a weaker fit and a clean card; the fit is what was given up.",
+      "picture": "panel-12"
     },
     {
       "id": "everyone-who-helped",
@@ -350,7 +315,8 @@
           ]
         }
       ],
-      "note": "Question 8, and the question this chapter is really about. A `reveal`: there are five right answers and no wrong ones, and making a child pick “the” person who saved Moses would teach the opposite of what the page asks. The princess and the servant are on the list beside his mother and sister, because the book’s “who all” means all of them."
+      "note": "Question 8, and the question this chapter is really about. A `reveal`: there are five right answers and no wrong ones, and making a child pick “the” person who saved Moses would teach the opposite of what the page asks. The princess and the servant are on the list beside his mother and sister, because the book’s “who all” means all of them.\n\n**Shelf picture: panel 13**, a boy kneeling to gather up someone else’s books. The chapter’s last panel and its My Decision in one, and the right face for a game whose answer is that it took four people. It letters nothing this game marks.",
+      "picture": "panel-13"
     }
   ],
   "verse": {
