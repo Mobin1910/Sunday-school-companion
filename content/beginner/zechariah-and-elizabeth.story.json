@@ -3,96 +3,61 @@
   "chapter": 13,
   "title": "Zechariah and Elizabeth",
   "reference": "St. Luke 1: 5 - 24",
-  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 13 — the opener (p.59), the lesson with the first two questions (p.60), the rest of the questions with “CAN YOU SAY?” and the colouring page (p.61), and the close (p.62). All four are around 2 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Psalm 127:3 was read from p.62.\n\n**No artwork yet.** “04 - Story Artwork” is empty, so the story is twenty-one text cards and nothing carries a picture. Every panel name is here so the drawings drop in without a content change — and when they do, the text cards come out, as they did for Chapters 5 to 12.\n\n**Twelve questions and four games.** Four is this band’s ceiling and twelve is the longest list this class has had, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the family and its one sorrow, the angel and everything he said, the months Zechariah could not speak, and who was who.\n\nQuestions 11 and 12 come from “CAN YOU SAY?” rather than “TELL THE ANSWERS”. Question 11 asks a child what their own family should be like and has no printed answer, so its game shows the lesson’s list and marks nothing.\n\nThe chapter has two prayers and both are printed in full, unlike Chapter 12 where both were stage directions. The opener on p.59 is “Dear God who hears our prayers, teach us to pray properly. Amen” — the book prints no full stop after that Amen — and the close on p.62 is the one carried in `prayer` below.",
+  "note": "Built from the four curriculum photographs in Drive’s “01 - Curriculum Source” for Beginner / Chapter 13 — the opener (p.59), the lesson with the first two questions (p.60), the rest of the questions with “CAN YOU SAY?” and the colouring page (p.61), and the close (p.62). All four are around 2 MB and were read by eye at full size.\n\nThe chapter’s “06 - Memory Verse” folder is empty, which is right for this class: Beginner prints its memory verse on the chapter’s own closing page, and Psalm 127:3 was read from p.62.\n\n**The artwork is in.** Fourteen files from “04 - Story Artwork” — a cover, a landscape cover and panels 1 to 12 — PNG to WebP at native size, no resize and no crop, and all fourteen distinct. Panel 11 is uploaded as “Panel 11.png” with a capital P; the importer reads the number rather than the case, so it landed correctly.\n\n**The twenty-one text cards are gone.** Every panel is lettered, captions and speech bubbles both, so the app writing the same sentence underneath would say it twice and the caption layout would crop the art to make room. The story is twelve picture-only cards, one per panel, each with alt text that describes the scene and quotes what is written in it — the same thing Chapters 5 to 12 did when their artwork arrived.\n\n**The artwork brought a present-day frame with it.** Panels 1, 2 and 12 are a boy, his Bible and Halo in a bedroom; Zechariah’s story runs from panel 3 to panel 11 between them. The frame is this chapter’s own question — why answers take so long — and panel 12 answers it.\n\n**One thing for the artist:** the portrait cover is 982×1602 where every panel is 941×1672. Recorded on the cover block.\n\n**All four games carry a shelf picture.** A shelf card is read before the game is played, so it may letter a question or a trouble but never an answer a child will be marked on. That rules out most of this chapter: panel 3 letters both of game 1’s choosing answers, panels 5 and 6 letter “Gabriel”, and panels 6, 7, 9, 10 and 11 each letter a step of game 3’s sequence. What is left — panels 1, 2, 4, 8 and 12 — is what the games carry, and panel 1 was dropped because the shelf’s square crop cuts both its bubbles mid-sentence.\n\n**Twelve questions and four games.** Four is this band’s ceiling and twelve is the longest list this class has had, so the games carry two or three interactions each and name every question they answer. The grouping follows the lesson’s own joints: the family and its one sorrow, the angel and everything he said, the months Zechariah could not speak, and who was who.\n\nQuestions 11 and 12 come from “CAN YOU SAY?” rather than “TELL THE ANSWERS”. Question 11 asks a child what their own family should be like and has no printed answer, so its game shows the lesson’s list and marks nothing.\n\nThe chapter has two prayers and both are printed in full, unlike Chapter 12 where both were stage directions. The opener on p.59 is “Dear God who hears our prayers, teach us to pray properly. Amen” — the book prints no full stop after that Amen — and the close on p.62 is the one carried in `prayer` below.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported. **The portrait cover is 982×1602, where every panel in this chapter is 941×1672.** It was converted without distortion, but it is a slightly different shape from the rest and from every other cover in this class, so it will not crop the same way on the shelf. The landscape cover is the canonical 1672×941."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Zechariah was a priest in the Jerusalem temple. His wife was Elizabeth."
+      "alt": "A boy lying on his bed with a big illustrated Bible open in front of him, looking up at Halo, who glows blue and violet beside him. The boy says, “Halo! does God listen to my prayer?” and Halo answers, “Of course he does… Why do you ask?”",
+      "note": "The lettering names Halo aloud — the boy opens the chapter with “Halo! does God listen to my prayer?” Elsewhere in this library Halo is drawn and spoken to but not addressed by name in the art itself. Worth knowing it is now in print."
     },
     {
       "picture": "panel-02",
-      "text": "Both were elderly. Theirs was a family that lived with God."
+      "alt": "The same boy, chin on his hands and worried. A golden vision opens above him showing an elderly man and woman kneeling in prayer by candlelight. The boy says, “But it takes so long to get answers to my prayers,” and Halo says, “I know a family in the Bible who had to wait too.. Let’s see!”"
     },
     {
       "picture": "panel-03",
-      "text": "They prayed to God every day. They only did good to others."
+      "alt": "Zechariah and Elizabeth kneeling together in their lamplit home, hands pressed in prayer, an empty wooden cradle beside them. The caption reads: “Long ago, Zechariah was a priest in the Temple of God. His wife was Elizabeth. They were both elderly. They loved God, obeyed His commandments, and prayed every day. But they had no children.” He says, “Yes. We will continue to trust Him,” and she says, “Let us keep praying to God.”"
     },
     {
       "picture": "panel-04",
-      "text": "They did not fail to obey God’s commandments."
+      "alt": "Zechariah at the golden altar of incense inside the Temple, hands raised in alarm, as an angel appears in a blaze of light. The caption reads: “One day, Zechariah was serving as a priest in the Temple. While he was offering incense to God, something amazing happened!” Zechariah says, “What is happening?” and the angel says, “Do not be afraid, Zechariah!”"
     },
     {
       "picture": "panel-05",
-      "text": "No one had anything bad to say about them."
+      "alt": "The angel speaking with one hand open towards Zechariah, who clutches his chest. The caption reads: “The angel Gabriel brought Zechariah wonderful news. God had heard his prayer!” Zechariah says, “A son? But how can this happen? We are both old!” and the angel says, “Your wife Elizabeth will have a son. You must name him John!”"
     },
     {
       "picture": "panel-06",
-      "text": "But they had a problem. They had no children."
+      "alt": "The angel raising one finger, Zechariah’s hand going to his throat. The caption reads: “Zechariah found it hard to believe the angel’s words. Gabriel told him that he would not be able to speak until the promise came true.” Zechariah begins, “But…” and the angel says, “Because you did not believe my words, you will not be able to speak until this happens.”"
     },
     {
       "picture": "panel-07",
-      "text": "They cried and prayed to God for a baby."
+      "alt": "Zechariah on the Temple steps with a crowd pressing round him, one hand at his throat and the other raised, unable to answer. The caption reads: “When Zechariah came out of the Temple, he could not speak. The people were surprised, so he used signs to tell them what had happened.” Someone asks, “Zechariah, what happened inside?”"
     },
     {
       "picture": "panel-08",
-      "text": "One day Zechariah was offering incense in the temple."
+      "alt": "Elizabeth sitting up in bed holding a newborn wrapped in cream cloth, Zechariah leaning over them and neighbours smiling behind. The caption reads: “After some time, Elizabeth gave birth to a baby boy, just as the angel had promised!”"
     },
     {
       "picture": "panel-09",
-      "text": "People were praying outside."
+      "alt": "The room full of relatives, Elizabeth holding the baby and looking up. The caption reads: “When it was time to name the baby, everyone expected him to be named after his father.” A neighbour says, “Let us name him Zechariah, after his father!” and Elizabeth answers, “No! He shall be called John.”"
     },
     {
       "picture": "panel-10",
-      "text": "Suddenly God’s angel Gabriel appeared before Zechariah."
+      "alt": "Zechariah seated with a writing tablet on his knee and a stylus in his hand, the baby in Elizabeth’s arms beside him and the neighbours leaning in. The caption reads: “The people asked Zechariah what the baby should be called. Since he could not speak, he asked for a writing tablet.” Someone asks, “Zechariah, what name should we give the baby?”"
     },
     {
       "picture": "panel-11",
-      "text": "“Don’t be afraid, Zechariah! God has heard your prayer.”"
+      "alt": "Zechariah standing with both arms raised and his mouth open, the tablet set down, the crowd around him amazed. The caption reads: “As soon as Zechariah wrote, ‘His name is John,’ he could speak again! He began praising God, and everyone was amazed.” He says, “Praise be to God!” and a neighbour says, “What wonderful things God has done!”"
     },
     {
       "picture": "panel-12",
-      "text": "“Your wife Elizabeth will give birth to a son. Name him John.”"
-    },
-    {
-      "picture": "panel-13",
-      "text": "Zechariah was surprised. He wondered how this could happen."
-    },
-    {
-      "picture": "panel-14",
-      "text": "“You did not believe my words. You will not speak until it happens.”"
-    },
-    {
-      "picture": "panel-15",
-      "text": "After the service Zechariah came out. He could not speak."
-    },
-    {
-      "picture": "panel-16",
-      "text": "People were surprised. Zechariah used signs to tell them."
-    },
-    {
-      "picture": "panel-17",
-      "text": "After a few months, Elizabeth gave birth to a baby."
-    },
-    {
-      "picture": "panel-18",
-      "text": "As the angel had said, they named the child John."
-    },
-    {
-      "picture": "panel-19",
-      "text": "At that moment Zechariah opened his mouth and spoke again."
-    },
-    {
-      "picture": "panel-20",
-      "text": "That baby grew up to be John the Baptist. He baptized Jesus."
-    },
-    {
-      "picture": "panel-21",
-      "text": "People call him the one who came before Jesus."
+      "alt": "Back in the boy’s bedroom at night with the Bible open in front of him, the rejoicing family still glowing above. The caption reads: “Zechariah and Elizabeth waited a long time, but God heard their prayers. Their story reminds us to keep trusting God.” The boy says, “Now I understand! I can keep praying even when I have to wait,” and Halo answers, “That’s right! God hears your prayers. Keep trusting Him.”"
     }
   ],
   "curriculum": {
@@ -241,7 +206,8 @@
           ]
         }
       ],
-      "note": "Questions 1, 2 and 3, and question 11 with them.\n\nThe `reveal` is question 1 — five things the lesson says about that family, all true, nothing to get wrong. It is also the whole of question 11, “What are the features that our family should have?”, which the book puts to the class rather than answers: the answer it offers is this same list, so the list is shown rather than marked.\n\nThe two choosing rounds are the turn in the chapter: everything about them was good, and still they had one sorrow, and what they did about it was the thing they already did every day."
+      "note": "Questions 1, 2 and 3, and question 11 with them.\n\nThe `reveal` is question 1 — five things the lesson says about that family, all true, nothing to get wrong. It is also the whole of question 11, “What are the features that our family should have?”, which the book puts to the class rather than answers: the answer it offers is this same list, so the list is shown rather than marked.\n\nThe two choosing rounds are the turn in the chapter: everything about them was good, and still they had one sorrow, and what they did about it was the thing they already did every day.\n\n**Shelf picture: panel 2**, the boy saying it takes so long to get answers, with the praying couple opening in a vision above him. It is the trouble this game sits on, and it letters neither choosing answer. One caveat worth recording: the vision *shows* the couple praying, and one of the two rounds asks what they did about their sorrow — a picture rather than a word, but a child who studies the card has seen it. Panel 3 is the real picture for this game and is out: its caption spells “But they had no children” and “prayed every day”, which is both answers in print.",
+      "picture": "panel-02"
     },
     {
       "id": "the-angel-in-the-temple",
@@ -289,7 +255,8 @@
           ]
         }
       ],
-      "note": "Questions 4, 5 and 8. The angel’s name is one fact and a choosing round; what he said is four things at once, so it is a `reveal` where every item is right.\n\nQuestion 8 — what the angel said about naming the baby — is the last item on that list rather than a game of its own. Pulling “Name him John” out into its own question would have asked a six-year-old to hold the same sentence twice."
+      "note": "Questions 4, 5 and 8. The angel’s name is one fact and a choosing round; what he said is four things at once, so it is a `reveal` where every item is right.\n\nQuestion 8 — what the angel said about naming the baby — is the last item on that list rather than a game of its own. Pulling “Name him John” out into its own question would have asked a six-year-old to hold the same sentence twice.\n\n**Shelf picture: panel 4**, the angel appearing over the altar of incense. This is the one picture of the angel that never names him — panels 5 and 6 both print “Gabriel” in their captions, which is the answer to the choosing round at the top of this game. Panel 4 letters only “Do not be afraid, Zechariah!”, which is an item in the `reveal` below, and a reveal has nothing to get wrong.",
+      "picture": "panel-04"
     },
     {
       "id": "when-he-doubted",
@@ -328,7 +295,8 @@
           ]
         }
       ],
-      "note": "Questions 9 and 10 in one sequence, because they are one thing with a beginning and an end: the silence starts when he doubts and it stops at the exact moment the baby is named. Asked separately a child can know both answers and still miss that they are the same event."
+      "note": "Questions 9 and 10 in one sequence, because they are one thing with a beginning and an end: the silence starts when he doubts and it stops at the exact moment the baby is named. Asked separately a child can know both answers and still miss that they are the same event.\n\n**Shelf picture: panel 8**, Elizabeth holding the newborn. The whole of this game is an ordering exercise, and panels 6, 7, 9, 10 and 11 each letter one of its steps — panel 11 worst of all, since “As soon as Zechariah wrote … he could speak again” is the answer to question 10 outright. Panel 8 is the birth, which is not a step in the sequence, and nothing of its caption survives the crop.",
+      "picture": "panel-08"
     },
     {
       "id": "john-the-baptist",
@@ -380,7 +348,8 @@
           ]
         }
       ],
-      "note": "Questions 6, 7 and 12. Three small who-questions, which is what a `match` is for.\n\nThe fourth pair is question 12, “Who gives children to the parents?” — the one the book asks under “CAN YOU SAY?”. Its answer is the chapter’s own memory verse: children are a reward from the Lord. It sits beside the three human answers on purpose."
+      "note": "Questions 6, 7 and 12. Three small who-questions, which is what a `match` is for.\n\nThe fourth pair is question 12, “Who gives children to the parents?” — the one the book asks under “CAN YOU SAY?”. Its answer is the chapter’s own memory verse: children are a reward from the Lord. It sits beside the three human answers on purpose.\n\n**Shelf picture: panel 12**, the family rejoicing and the boy understanding. Panel 8 shows Zechariah, Elizabeth and the baby in one frame, which is three of this match’s four pairs drawn together, so it went to the game above instead. Panel 12’s caption says God heard their prayers, which sits near the fourth pair without being it.",
+      "picture": "panel-12"
     }
   ],
   "verse": {
