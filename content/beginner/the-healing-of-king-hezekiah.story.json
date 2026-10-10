@@ -3,88 +3,64 @@
   "chapter": 14,
   "title": "The Healing of King Hezekiah",
   "reference": "Isaiah 38 : 1-6",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 14 → “01 - Curriculum Source”: three pages, p.63 (title, prayer, Bible portion), p.64 (the lesson and “Tell the Answers”) and p.66 (My Decision, the song, the Memory Verse and the Concluding Prayer).\n\n**p.65 is not in Drive.** The folder was paginated to the end and holds exactly three photographs where Chapters 11, 12 and 13 each held four. By the shape of the other chapters in this book the missing page is the activity page, which carries no text this app renders — but that is inference, not a reading, and it is recorded here so the gap is visible rather than assumed away. Nothing in this chapter depends on it: all four printed questions are on p.64 and every answer is in the lesson above them.\n\nThe opening prayer on p.63 is a stage direction, “(Either teacher or one of the Children should pray)”, not a prayer — the same as Chapter 12 — so `prayer` carries the Concluding Prayer from p.66 instead, which is printed in full.\n\nNo artwork yet. Nineteen text cards, which is where Beginner Chapters 5 to 9 began before their panels arrived; when the artwork lands these will be replaced by picture-only cards with `alt`, as happened to Chapters 10 to 13.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 14 → “01 - Curriculum Source”: three pages, p.63 (title, prayer, Bible portion), p.64 (the lesson and “Tell the Answers”) and p.66 (My Decision, the song, the Memory Verse and the Concluding Prayer).\n\n**p.65 is not in Drive.** The folder was paginated to the end and holds exactly three photographs where Chapters 11, 12 and 13 each held four. By the shape of the other chapters in this book the missing page is the activity page, which carries no text this app renders — but that is inference, not a reading, and it is recorded here so the gap is visible rather than assumed away. Nothing in this chapter depends on it: all four printed questions are on p.64 and every answer is in the lesson above them.\n\nThe opening prayer on p.63 is a stage direction, “(Either teacher or one of the Children should pray)”, not a prayer — the same as Chapter 12 — so `prayer` carries the Concluding Prayer from p.66 instead, which is printed in full.\n\n**Artwork.** Thirteen panels and both covers came from Drive’s “04 - Story Artwork”, all fifteen distinct by SHA-256. The nineteen text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 13 and to Primary 1 to 3: the panels letter their own captions and speech, so a card that repeated them underneath would print the same sentence twice. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanels 1, 9 and 11 are 941×1671, one pixel short of the canonical 941×1672. They were converted without distortion and nothing resized them; it is recorded here rather than fixed, since a one-pixel difference is invisible and the artwork is the teacher’s.\n\nPanel 13 prints the Memory Verse as “Psalm 34:18” — singular — where p.66 prints “Psalms 34:18.”. The `reference` field keeps the book’s form, and the verse ladder’s stage 5 uses the artwork’s, for the reason set out there.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, both at the canonical sizes — 941×1672 portrait and 1672×941 landscape. The portrait cover letters “CHAPTER 14 — The Healing of King Hezekiah” over the king standing on his balcony with his arms open."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "King Hezekiah ruled the kingdom of Judah."
+      "alt": "A boy in pyjamas sits on the edge of his bed with his chin on his hand and a toy dog in his arms, Halo glowing beside him. Through the open door his mother lies ill in bed while someone sits with her and strokes her hair. The boy says, “I hope they get better soon.”"
     },
     {
       "picture": "panel-02",
-      "text": "He feared God. He lived a good life."
+      "alt": "The boy sits with his hands clasped between his knees, looking up at Halo. He says, “Halo, I wish I could do something to help Mum.” Halo answers, “You can pray to God and ask Him to help her.”"
     },
     {
       "picture": "panel-03",
-      "text": "One day the king became very sick."
+      "alt": "A glowing vision opens above the boy’s bedroom: a bearded king lies in a carved bed with his crown set on the table beside him. The boy asks, “Will praying actually help?” Halo answers, “Yes! Let’s check out a king in the Bible who did the same.”"
     },
     {
       "picture": "panel-04",
-      "text": "He was at the point of death."
+      "alt": "King Hezekiah stands on a palace balcony in red and purple robes and a gold crown, looking up at the sky, with a lion banner beside him and the walled city of Judah on the hills behind. The caption reads, “Long ago, in the land of Judah, there lived a king named Hezekiah. He loved God and tried to do what was right.”"
     },
     {
       "picture": "panel-05",
-      "text": "The prophet Isaiah came to see him."
+      "alt": "The king lies back on his pillows under a heavy quilt, pale and looking up, his crown set aside on the table. The caption reads, “One day, King Hezekiah became very sick. He was so ill that he was near death.”"
     },
     {
       "picture": "panel-06",
-      "text": "Isaiah was the son of Amos."
+      "alt": "An old prophet in a green cloak stands at the foot of the bed with one hand raised, speaking to the king. The caption reads, “The prophet Isaiah came to visit the sick king with a message from the Lord.” Isaiah says, “This is what the Lord says: Put your house in order, because you are going to die; you will not recover.”"
     },
     {
       "picture": "panel-07",
-      "text": "He said, “This is what the Lord says.”"
+      "alt": "The king has rolled over to face the stone wall, hands pressed together and tears on his cheek. The caption reads, “Hezekiah was deeply troubled. He turned his face toward the wall, wept, and prayed to the Lord.” The king prays, “Please remember how I have walked before You faithfully, Lord.”"
     },
     {
       "picture": "panel-08",
-      "text": "“Put your house in order.”"
+      "alt": "Isaiah is caught mid-step in the palace corridor, leaning on his staff and turning back with one hand raised, as though someone has just called him. The caption reads, “Before Isaiah had gone far, the Lord sent him another message.”"
     },
     {
       "picture": "panel-09",
-      "text": "“You are going to die. You will not recover.”"
+      "alt": "Isaiah is back at the bedside with both hands open, and the king has lifted himself up on one arm, smiling. The caption reads, “God had heard Hezekiah’s prayer. Isaiah hurried back to the king with God’s answer.” Isaiah says, “The Lord has heard your prayer and seen your tears. He will add fifteen years to your life!”"
     },
     {
       "picture": "panel-10",
-      "text": "Hezekiah heard it. He turned his face to the wall."
+      "alt": "The king stands on the balcony again, well and crowned, both arms open to the sky. The caption reads, “God heard Hezekiah’s prayer and promised him fifteen more years of life.”"
     },
     {
       "picture": "panel-11",
-      "text": "He prayed to the Lord."
+      "alt": "Back in the bedroom, the boy sits cross-legged on his bed with a Bible stories book open beside him, one hand out as he talks to Halo. The caption reads, “The boy thought about King Hezekiah and wondered if he could pray to God too.” The boy asks, “Halo, can I pray to God when I’m worried too?”"
     },
     {
       "picture": "panel-12",
-      "text": "“Remember, Lord, how I have walked before you.”"
+      "alt": "The boy presses his hands to his chest, beaming up at Halo. The caption reads, “Halo reminded the boy that he could always come to God in prayer.” Halo says, “Yes! You can talk to God whenever you’re worried, sad, or afraid. He wants you to come to Him in prayer.” The boy answers, “Then I’ll pray for Mum!”"
     },
     {
       "picture": "panel-13",
-      "text": "“I have done what is good in your eyes.”"
-    },
-    {
-      "picture": "panel-14",
-      "text": "Then the word of the Lord came to Isaiah."
-    },
-    {
-      "picture": "panel-15",
-      "text": "“Go and tell Hezekiah. I have heard your prayer.”"
-    },
-    {
-      "picture": "panel-16",
-      "text": "“I have seen your tears. I will add fifteen years.”"
-    },
-    {
-      "picture": "panel-17",
-      "text": "God promised to keep Judah safe from Assyria."
-    },
-    {
-      "picture": "panel-18",
-      "text": "King Hezekiah was a righteous man."
-    },
-    {
-      "picture": "panel-19",
-      "text": "God listened to him and healed his sickness."
+      "alt": "The boy kneels on the rug beside his bed with his eyes closed and his hands folded, Halo glowing beside him. The caption reads, “The boy decided to follow King Hezekiah’s example and come to God in prayer.” He prays, “Dear Lord, please help Mum get better. Forgive me when I do wrong, and help me trust You. Amen.” Below, a My Decision panel reads “Like King Hezekiah, I shall come before the Lord with repentance and pray.” and a Memory Verse panel reads “The Lord is close to the brokenhearted and saves those who are crushed in spirit.” Psalm 34:18."
     }
   ],
   "curriculum": {
@@ -166,7 +142,8 @@
           ]
         }
       ],
-      "note": "Two of the four printed questions in one board, because they ask the same kind of thing — who is who. Isaiah’s side reads “The prophet who came” rather than “Brought the Lord’s word” on purpose: the second game asks who brought the hard word, and a child who had just dragged the answer into place would not be remembering it."
+      "note": "Two of the four printed questions in one board, because they ask the same kind of thing — who is who. Isaiah’s side reads “The prophet who came” rather than “Brought the Lord’s word” on purpose: the second game asks who brought the hard word, and a child who had just dragged the answer into place would not be remembering it.\n\nShelf picture panel-03. The doorway into the Bible story: the vision of the king in his bed opening above the boy’s bedroom, with Halo saying “Let’s check out a king in the Bible who did the same.” Both bubbles survive the square crop whole, and neither letters anything this board is marked on — the king is not yet named, Isaiah is not yet in the frame, and Amos and Judah are not mentioned.",
+      "picture": "panel-03"
     },
     {
       "id": "the-hard-word",
@@ -194,7 +171,8 @@
           ]
         }
       ],
-      "note": "The lesson gives the sentence to Isaiah, so the question has an answer on the page. Both wrong options are people from this chapter — the king of Assyria is the enemy God promises to deliver Judah from, and David is named as Hezekiah’s father in the Lord’s own message — rather than other prophets, which would be a guess between three plausible names."
+      "note": "The lesson gives the sentence to Isaiah, so the question has an answer on the page. Both wrong options are people from this chapter — the king of Assyria is the enemy God promises to deliver Judah from, and David is named as Hezekiah’s father in the Lord’s own message — rather than other prophets, which would be a guess between three plausible names.\n\nShelf picture panel-05. The sick king alone in his bed. The crop carries no lettering at all, which is exactly what this game needs: the question is who came with the Lord’s word, and this card sets the scene without putting anyone in the doorway. Panel 6 is the literal scene and is the one card that cannot be used here — it letters the answer twice over, in the caption and in Isaiah’s own bubble.",
+      "picture": "panel-05"
     },
     {
       "id": "turned-to-the-wall",
@@ -229,7 +207,8 @@
           ]
         }
       ],
-      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and this chapter has a clean five-step shape for it. It deliberately stops at “God healed the king” and never says fifteen: the next game asks for that number, and a step reading “fifteen years” sitting on the board before it would hand the answer over."
+      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and this chapter has a clean five-step shape for it. It deliberately stops at “God healed the king” and never says fifteen: the next game asks for that number, and a step reading “fifteen years” sitting on the board before it would hand the answer over.\n\nShelf picture panel-04. The king on his balcony before any of it begins. No lettering survives the crop, so no step of the sequence is given away. Panel 7 is the scene this game is named after and had to be passed over: it letters steps two and three, and its one bubble sits in the lower third where the card prints its title.",
+      "picture": "panel-04"
     },
     {
       "id": "fifteen-more-years",
@@ -275,7 +254,8 @@
           ]
         }
       ],
-      "note": "The number first, then what came with it. Five and Fifty are near-misses on the same word rather than other numbers from the story, which is the mistake a six-year-old actually makes here. The reveal holds the three things God promised through Isaiah and pointedly leaves out the fifteen years — a reveal card cannot be wrong, so one reading “fifteen years” would simply answer the question above it."
+      "note": "The number first, then what came with it. Five and Fifty are near-misses on the same word rather than other numbers from the story, which is the mistake a six-year-old actually makes here. The reveal holds the three things God promised through Isaiah and pointedly leaves out the fifteen years — a reveal card cannot be wrong, so one reading “fifteen years” would simply answer the question above it.\n\nShelf picture panel-08. Isaiah caught mid-step in the corridor, turning back. The caption — “Before Isaiah had gone far, the Lord sent him another message” — is cropped away, so the card carries no lettering and, more to the point, no number. Panels 9 and 10 both print “fifteen” and are the two cards this game could not have.",
+      "picture": "panel-08"
     }
   ],
   "verse": {
