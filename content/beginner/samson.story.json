@@ -438,6 +438,12 @@
     ],
     "note": "Read from p.54 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 of this class use — recognise, order, fill, rebuild, place. **Stage 3 is the agent’s own Beginner rung, unedited**; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nPrinted with its comma after “mercy,” and its full stop after “prayer.”, both kept.\n\nThis is a prayer verse in a chapter that opens on a prayer: Manoah and his wife cried to God, and “God heard their prayers”. The verse is the lesson’s first sentence said back.\n\nTranslation is unresolved: p.54 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run, so the verse has one origin rather than two."
   },
+  "video": {
+    "youtubeId": "Co4k3gWoODE",
+    "title": "Samson",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "decision": {
     "statement": "I understand that I am a blessing given to my parents by God.",
     "note": "The curriculum’s own My Decision line from p.54, first person. The book prints it without a full stop; one is added here because every other decision card in this class ends with one."
