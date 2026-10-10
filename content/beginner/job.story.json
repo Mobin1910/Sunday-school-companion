@@ -1,0 +1,306 @@
+{
+  "class": "beginner",
+  "chapter": 15,
+  "title": "Job",
+  "reference": "Job 1:1-5",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 15 → “01 - Curriculum Source”: three pages, p.67 (title, prayer, Bible portion), p.68 (the lesson) and p.69 (“Tell the Answers”, “Find the Correct Answer” and a picture activity).\n\n**p.70 is not in Drive, and it is the page with the Memory Verse on it.** The folder was paginated to the end and holds exactly three photographs, p.67 to p.69, and the chapter’s “06 - Memory Verse” folder is empty. A Drive-wide search for images taken in that minute found the same three and nothing else. By the shape of every other chapter in this book, p.70 carries My Decision, the “Learn to sing” song, the Memory Verse and the Concluding Prayer. So this chapter ships with no `verse`, no `decision` and no `song`: the verse is never guessed, and the other two are printed on the same missing page. They go in when p.70 arrives.\n\n`prayer` therefore carries the **opening** prayer from p.67, which is printed in full here — unlike Chapters 12 and 14, where the opening prayer was a stage direction and `prayer` carried the Concluding Prayer instead. This is the only chapter so far where it is the other way round, and it is only that way because the closing page is missing.\n\n**Two things on p.69 that the lesson does not support, flagged rather than filled in.** “Find the Correct Answer” 3 asks whether the brothers invited their sisters when they gathered; the lesson on p.68 never says, and Job 1:4 is outside the printed Bible portion of 1:1-5 as far as this page goes. “Find the Correct Answer” 4 offers “Offer sacrifices/feast”, but the lesson says Job “would gather his children together, and pray to forgive them” — it says pray, not sacrifice. No game is built on either, and the games use the lesson’s own words throughout. Both are editorial questions for the teacher.\n\nNo artwork yet. Twenty-two text cards, which is where Beginner Chapters 5 to 14 began before their panels arrived; when the artwork lands these will be replaced by picture-only cards with `alt`.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "This is a very old story."
+    },
+    {
+      "picture": "panel-02",
+      "text": "There was a good man named Job."
+    },
+    {
+      "picture": "panel-03",
+      "text": "He loved God and did what was right."
+    },
+    {
+      "picture": "panel-04",
+      "text": "Job had seven sons and three daughters."
+    },
+    {
+      "picture": "panel-05",
+      "text": "He had a wife and many servants too."
+    },
+    {
+      "picture": "panel-06",
+      "text": "They lived in the land of Uz."
+    },
+    {
+      "picture": "panel-07",
+      "text": "Job owned many cattle and livestock."
+    },
+    {
+      "picture": "panel-08",
+      "text": "Job obeyed the Lord. So the Lord blessed him."
+    },
+    {
+      "picture": "panel-09",
+      "text": "Job’s sons lived in their own homes."
+    },
+    {
+      "picture": "panel-10",
+      "text": "On special days they gathered in one house."
+    },
+    {
+      "picture": "panel-11",
+      "text": "There would be feasting in that house."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They ate and drank and shared their joy."
+    },
+    {
+      "picture": "panel-13",
+      "text": "But Job was worried about his children."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Had any of them done something wrong?"
+    },
+    {
+      "picture": "panel-15",
+      "text": "When the feasting was over, Job gathered them."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He prayed and asked God to forgive them."
+    },
+    {
+      "picture": "panel-17",
+      "text": "Some sins they knew. Some they did not."
+    },
+    {
+      "picture": "panel-18",
+      "text": "Job had hard times later in his life."
+    },
+    {
+      "picture": "panel-19",
+      "text": "But the Lord saved him from them."
+    },
+    {
+      "picture": "panel-20",
+      "text": "Dear children, gather together in your homes."
+    },
+    {
+      "picture": "panel-21",
+      "text": "Sing praises. Read the Bible together."
+    },
+    {
+      "picture": "panel-22",
+      "text": "Pray together. That will bring blessings."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 15 “Job”, p.69 — “Tell the Answers”",
+    "note": "All five questions transcribed from the printed page, punctuation and spacing included — the spaced question marks and the stray full stop in “What did Job do for his children.?” are the book’s, not a typo here. Every answer is in the lesson on p.68. The four “Find the Correct Answer” fill-ins on the same page are not recorded as questions: two of them are the same as questions 1 and 2 above, and the other two ask things the lesson does not answer, which the chapter note sets out.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where did Job live ?",
+        "objective": "Remember that Job lived in the land of Uz.",
+        "answer": "In the land of Uz. “They lived in the land of Uz.” (p.68)"
+      },
+      {
+        "n": 2,
+        "question": "How many sons did Job have ?",
+        "objective": "Remember that Job had seven sons.",
+        "answer": "Seven. “He had a very large family consisting of three daughters, seven sons, his wife and many servants.” (p.68)"
+      },
+      {
+        "n": 3,
+        "question": "Why did they gather together in one of their houses?",
+        "objective": "Remember that Job’s children gathered to feast together on special occasions.",
+        "answer": "To feast together on special occasions. “That day there would be feasting in that house. They would spend their time eating, drinking, cracking jokes with each other and sharing joy.” (p.68)"
+      },
+      {
+        "n": 4,
+        "question": "Why would Job gather his children around ?",
+        "objective": "Remember that Job was worried his children might have sinned.",
+        "answer": "Because he was worried that one of them might have done wrong. “Job, who is God fearing, is worried whether any of his children would do any wrong.” (p.68)"
+      },
+      {
+        "n": 5,
+        "question": "What did Job do for his children.?",
+        "objective": "Remember that Job prayed and asked God to forgive his children.",
+        "answer": "He prayed for them. “He would gather his children together, and pray to forgive them of any sins that they might have done knowingly or unknowingly.” (p.68)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "jobs-big-family",
+      "title": "Job's Big Family",
+      "objective": "Remember that Job lived in the land of Uz and had seven sons.",
+      "answers": [
+        1,
+        2
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "What belongs with what?",
+          "pairs": [
+            {
+              "from": {
+                "label": "Job"
+              },
+              "to": {
+                "label": "A man who loved God"
+              }
+            },
+            {
+              "from": {
+                "label": "Uz"
+              },
+              "to": {
+                "label": "The land they lived in"
+              }
+            },
+            {
+              "from": {
+                "label": "Seven"
+              },
+              "to": {
+                "label": "How many sons"
+              }
+            },
+            {
+              "from": {
+                "label": "Three"
+              },
+              "to": {
+                "label": "How many daughters"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its own opening sentences. The two extra pairs are not padding: “Three → How many daughters” sits beside “Seven → How many sons” so the number is remembered rather than guessed from being the only number on the board, and “Job → A man who loved God” is the lesson’s first description of him."
+    },
+    {
+      "id": "feasting-together",
+      "title": "Feasting Together",
+      "objective": "Remember that Job's children gathered in one house to feast together.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did they gather in one house?",
+          "hint": "They ate, drank and shared joy.",
+          "options": [
+            {
+              "label": "To feast together",
+              "correct": true
+            },
+            {
+              "label": "To count the cattle"
+            },
+            {
+              "label": "To feed the servants"
+            }
+          ]
+        }
+      ],
+      "note": "Both wrong options are made of things the lesson actually names — the cattle and livestock Job owned, and the many servants in his house — rather than other plausible reasons to gather. A child who remembers the feast picks it; a child who is guessing is guessing between three things that are all really in the story."
+    },
+    {
+      "id": "after-the-feast",
+      "title": "After the Feast",
+      "objective": "Remember what Job did for his children once the feasting was over.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Job's habit in order.",
+          "hint": "The feast comes first.",
+          "items": [
+            {
+              "label": "The children feasted together",
+              "position": 1
+            },
+            {
+              "label": "The feasting was over",
+              "position": 2
+            },
+            {
+              "label": "Job gathered his children",
+              "position": 3
+            },
+            {
+              "label": "He prayed for them",
+              "position": 4
+            }
+          ]
+        }
+      ],
+      "note": "The sequence stops at “He prayed for them” and never says what he prayed for. The fourth game asks why he gathered them, and a step reading “he asked God to forgive their sins” would answer it before it is asked."
+    },
+    {
+      "id": "why-job-prayed",
+      "title": "Why Job Prayed",
+      "objective": "Remember that Job gathered his children because he worried they had sinned, and what the lesson asks every home to do.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did Job gather his children?",
+          "hint": "He was worried about something.",
+          "options": [
+            {
+              "label": "He worried they had sinned",
+              "correct": true
+            },
+            {
+              "label": "He wanted more cattle"
+            },
+            {
+              "label": "He wanted another feast"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Turn over what we should do.",
+          "items": [
+            {
+              "label": "Gather together"
+            },
+            {
+              "label": "Sing praises"
+            },
+            {
+              "label": "Read the Bible"
+            },
+            {
+              "label": "Pray together"
+            }
+          ]
+        }
+      ],
+      "note": "The reason first, then what the lesson asks of the child. Both wrong options are the two things the chapter’s other games are about — cattle and feasting — so a child who is pattern-matching on “what was in this chapter” gets no help from it. The reveal is the lesson’s own closing paragraph, the four things it asks every home to do, and it answers nothing the game above it is marked on."
+    }
+  ],
+  "prayer": {
+    "text": "O our Creator God, we praise you for loving us. We thank you for our loved ones, our dear ones. Help us to pray and be happy with them. Amen",
+    "note": "The opening prayer from p.67, word for word, printed in full rather than as a stage direction. It is the opening prayer and not the Concluding Prayer because p.70, which carries the closing of the lesson, is not in Drive."
+  },
+  "celebration": {
+    "message": "Job prayed for his children, and the Lord blessed him.",
+    "note": "The turn of the chapter, from p.68. The lesson is not about Job’s suffering — it names it in one sentence and moves on — but about the habit he kept: after every feast, he gathered his children and prayed."
+  }
+}
