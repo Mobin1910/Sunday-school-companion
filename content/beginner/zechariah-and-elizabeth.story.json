@@ -438,6 +438,12 @@
     ],
     "note": "Read from p.62 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 12 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung, unedited; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nThe verse is the answer to the chapter’s last question. “Who gives children to the parents?” is asked on p.61 and answered on p.62, a page apart, and the fourth game puts them back together.\n\nTranslation is unresolved: p.62 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
   },
+  "video": {
+    "youtubeId": "m04zbDP9tT8",
+    "title": "Zechariah and Elizabeth",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "decision": {
     "statement": "I will obey your commandments.",
     "note": "The curriculum’s own My Decision line from p.62, first person and unchanged."

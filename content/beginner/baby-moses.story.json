@@ -405,6 +405,12 @@
     ],
     "note": "Read from p.58 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung with one option’s stray quotation mark removed; see its note. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\n**The book prints no full stop at the end.** p.58 closes the quotation with “… out of the water” and nothing after it, where the lesson on p.56 ends the same sentence with a stop. The verse page is what a memory verse is read from, so the page is what is kept.\n\nThe reference is printed “Exodus 2:10 (b)”, with the bracketed b, and is kept exactly so: the verse is the second half of verse 10.\n\nThe lesson says “I pulled him out of the water” and the verse says “I drew him out”. Both are on the page, a column apart, and neither is corrected into the other — the games quote the lesson and the verse card quotes the verse.\n\nTranslation is unresolved: p.58 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
   },
+  "video": {
+    "youtubeId": "fIbOJZWlPy8",
+    "title": "Baby Moses",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "decision": {
     "statement": "I will strive to protect others.",
     "note": "The curriculum’s own My Decision line from p.58, first person and unchanged."

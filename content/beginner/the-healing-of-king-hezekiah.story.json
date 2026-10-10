@@ -344,6 +344,12 @@
     ],
     "note": "Read from p.66 through the Memory Verse agent: `--fetch --source-dir` over the three curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 13 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung, unedited; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nThe reference is printed “Psalms 34:18.” on p.66, with the plural and the full stop, and is carried here exactly as printed.\n\nTranslation is unresolved: p.66 does not name one, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
   },
+  "video": {
+    "youtubeId": "4psaEnJ8_is",
+    "title": "The Healing of King Hezekiah",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "decision": {
     "statement": "Like King Hezekiah, I shall come before the Lord with repentance and pray.",
     "note": "The curriculum’s own My Decision line from p.66, first person and unchanged."
