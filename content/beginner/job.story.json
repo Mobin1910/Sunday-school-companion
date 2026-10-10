@@ -3,100 +3,64 @@
   "chapter": 15,
   "title": "Job",
   "reference": "Job 1:1-5",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 15 → “01 - Curriculum Source”: three pages, p.67 (title, prayer, Bible portion), p.68 (the lesson) and p.69 (“Tell the Answers”, “Find the Correct Answer” and a picture activity).\n\n**p.70 is not in Drive, and it is the page with the Memory Verse on it.** The folder was paginated to the end and holds exactly three photographs, p.67 to p.69, and the chapter’s “06 - Memory Verse” folder is empty. A Drive-wide search for images taken in that minute found the same three and nothing else. By the shape of every other chapter in this book, p.70 carries My Decision, the “Learn to sing” song, the Memory Verse and the Concluding Prayer. So this chapter ships with no `verse`, no `decision` and no `song`: the verse is never guessed, and the other two are printed on the same missing page. They go in when p.70 arrives.\n\n`prayer` therefore carries the **opening** prayer from p.67, which is printed in full here — unlike Chapters 12 and 14, where the opening prayer was a stage direction and `prayer` carried the Concluding Prayer instead. This is the only chapter so far where it is the other way round, and it is only that way because the closing page is missing.\n\n**Two things on p.69 that the lesson does not support, flagged rather than filled in.** “Find the Correct Answer” 3 asks whether the brothers invited their sisters when they gathered; the lesson on p.68 never says, and Job 1:4 is outside the printed Bible portion of 1:1-5 as far as this page goes. “Find the Correct Answer” 4 offers “Offer sacrifices/feast”, but the lesson says Job “would gather his children together, and pray to forgive them” — it says pray, not sacrifice. No game is built on either, and the games use the lesson’s own words throughout. Both are editorial questions for the teacher.\n\nNo artwork yet. Twenty-two text cards, which is where Beginner Chapters 5 to 14 began before their panels arrived; when the artwork lands these will be replaced by picture-only cards with `alt`.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 15 → “01 - Curriculum Source”: three pages, p.67 (title, prayer, Bible portion), p.68 (the lesson) and p.69 (“Tell the Answers”, “Find the Correct Answer” and a picture activity).\n\n**p.70 is still not in Drive, and it is the page with the Memory Verse on it.** The curriculum folder holds exactly three photographs, p.67 to p.69; the chapter’s “06 - Memory Verse” folder is empty; and the thirteen artwork panels carry no memory-verse card, where Chapter 14’s last panel printed its verse in full. So this chapter still has no `verse`, no `decision` and no `song`, all of which are printed on p.70. The verse is never guessed. One photograph of p.70 is all it needs.\n\n`prayer` carries the **opening** prayer from p.67, which is printed in full here. Chapters 12 and 14 went the other way — their opening prayer was a stage direction and `prayer` carried the Concluding Prayer instead. This is the first chapter where it is reversed, and only because the closing page is missing.\n\n**Artwork.** Thirteen panels and both covers came from Drive’s “04 - Story Artwork”, all fifteen distinct by SHA-256. The folder was enumerated by exact filename rather than by paging, because the listing caps at five and its cursor repeats rows; querying each name confirmed panels 1 to 13 and the two covers, and no panel 14 or above. The twenty-two text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 14 and to Primary 1 to 3: the panels letter their own captions and speech, so a card that repeated them underneath would print the same sentence twice. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanel 1 is 940×1672, one pixel narrow of the canonical 941×1672. Converted without distortion and nothing resized it; recorded rather than fixed, since a one-pixel difference is invisible and the artwork is the teacher’s.\n\n**The artwork answers both of the questions flagged against p.69 when the games shipped.** “Find the Correct Answer” 4 offers “Offer sacrifices/feast” where the lesson said Job would “gather his children together, and pray to forgive them”; panel 11 letters “After the feast, Job gathered his children and offered sacrifices to God for them”, and panel 8 letters “After the meal, Job prayed for each of his children” — so the artwork has him do both, and the printed answer is “Offer sacrifices”. “Find the Correct Answer” 3 asks whether the brothers invited their sisters; the lesson still never says, but panels 5 to 7 draw the daughters at the table with everyone else, which supports “invited”. The games were left on the lesson’s own words and did not need changing. Both remain the teacher’s call to confirm, now with the artwork as evidence.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, both at the canonical sizes — 941×1672 portrait and 1672×941 landscape."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "This is a very old story."
+      "alt": "A boy lies on a cushion on the living-room rug with his chin in his hands, grinning up at Halo. Behind him his father reads from a Bible on the sofa while his mother and little sister listen. The boy says, “My family loves being together!” and Halo asks, “Do you pray together, too?”"
     },
     {
       "picture": "panel-02",
-      "text": "There was a good man named Job."
+      "alt": "The same room, a big open Bible on the floor in front of the boy now. He says, “Hmm… We don’t always remember to pray together.” Halo answers, “That’s something we can learn about!”"
     },
     {
       "picture": "panel-03",
-      "text": "He loved God and did what was right."
+      "alt": "A glowing vision unfurls out of the open Bible: a bearded man in a blue robe standing with a staff among his family, with sheep and cattle on the green hills behind. Halo says, “I know a story about a man named Job!” and the boy asks, “Wow! What was he like?”"
     },
     {
       "picture": "panel-04",
-      "text": "Job had seven sons and three daughters."
+      "alt": "Job stands outside his stone house with all ten of his children crowded around him, every one of them looking up at him, the flocks grazing on the hillside behind. The caption reads, “Job had seven sons and three daughters. He had a very large family!”"
     },
     {
       "picture": "panel-05",
-      "text": "He had a wife and many servants too."
+      "alt": "A long table laid with dishes under lanterns at dusk, Job in the middle of his grown sons and daughters. The caption reads, “Job’s children often came together at each other’s homes for special meals and to be with their father.”"
     },
     {
       "picture": "panel-06",
-      "text": "They lived in the land of Uz."
+      "alt": "Job stands at the head of the table holding up a cup, his children raising theirs back, the table loaded with food and the courtyard lit by lanterns. The caption reads, “Job made a big meal for them. They would eat, celebrate, and be happy together as a family.”"
     },
     {
       "picture": "panel-07",
-      "text": "Job owned many cattle and livestock."
+      "alt": "The meal is over and the family is making music — one son plays a stringed instrument, a daughter holds a tambourine, the rest clap. The caption reads, “They enjoyed the meal and spent time together. Job was so happy to see his children united and loving one another.”"
     },
     {
       "picture": "panel-08",
-      "text": "Job obeyed the Lord. So the Lord blessed him."
+      "alt": "Job kneels with his hands pressed together and his eyes closed, and all around him his children kneel and bow their heads the same way, lanterns burning low beside them. The caption reads, “After the meal, Job prayed for each of his children.”"
     },
     {
       "picture": "panel-09",
-      "text": "Job’s sons lived in their own homes."
+      "alt": "Job stands in a wide green pasture with his shepherd’s crook, one hand resting on the head of an ox, sheep crowding round his feet and camels and a donkey behind him. The caption reads, “Job also took care of many animals. He had sheep, camels, cattle, and donkeys.”"
     },
     {
       "picture": "panel-10",
-      "text": "On special days they gathered in one house."
+      "alt": "Job sits on a low stone wall at sunset with his hand at his chin, watching his grown children talking together across the courtyard. The caption reads, “Job loved his children. He wanted them to do what was right and stay close to God.”"
     },
     {
       "picture": "panel-11",
-      "text": "There would be feasting in that house."
+      "alt": "Job stands with both arms raised beside a stone altar with a fire burning on it, his children behind him with their hands folded and their eyes closed. The caption reads, “After the feast, Job gathered his children and offered sacrifices to God for them.”"
     },
     {
       "picture": "panel-12",
-      "text": "They ate and drank and shared their joy."
+      "alt": "Back in the living room, the boy sits cross-legged on the rug looking up at Halo, his family on the sofa behind. The caption reads, “Job loved his children and prayed for them. We can pray for our families, too!” Halo asks, “Who can you pray for in your family?” and the boy answers, “I can pray for Mummy, Daddy, and everyone at home!”"
     },
     {
       "picture": "panel-13",
-      "text": "But Job was worried about his children."
-    },
-    {
-      "picture": "panel-14",
-      "text": "Had any of them done something wrong?"
-    },
-    {
-      "picture": "panel-15",
-      "text": "When the feasting was over, Job gathered them."
-    },
-    {
-      "picture": "panel-16",
-      "text": "He prayed and asked God to forgive them."
-    },
-    {
-      "picture": "panel-17",
-      "text": "Some sins they knew. Some they did not."
-    },
-    {
-      "picture": "panel-18",
-      "text": "Job had hard times later in his life."
-    },
-    {
-      "picture": "panel-19",
-      "text": "But the Lord saved him from them."
-    },
-    {
-      "picture": "panel-20",
-      "text": "Dear children, gather together in your homes."
-    },
-    {
-      "picture": "panel-21",
-      "text": "Sing praises. Read the Bible together."
-    },
-    {
-      "picture": "panel-22",
-      "text": "Pray together. That will bring blessings."
+      "alt": "The whole family kneels together at the coffee table with their hands folded and their eyes closed, an open Bible in front of them and Halo glowing quietly at the end of the table. The caption reads, “Let us praise God, read the Bible, and pray together as a family!”"
     }
   ],
   "curriculum": {
@@ -184,11 +148,12 @@
           ]
         }
       ],
-      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its own opening sentences. The two extra pairs are not padding: “Three → How many daughters” sits beside “Seven → How many sons” so the number is remembered rather than guessed from being the only number on the board, and “Job → A man who loved God” is the lesson’s first description of him."
+      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its own opening sentences. The two extra pairs are not padding: “Three → How many daughters” sits beside “Seven → How many sons” so the number is remembered rather than guessed from being the only number on the board, and “Job → A man who loved God” is the lesson’s first description of him.\n\nShelf picture panel-03. The doorway into the Bible story — the vision unfurling out of the boy’s open Bible, with Halo saying “I know a story about a man named Job!”. Both bubbles survive the square crop whole. It names Job, which this board is not marked on, and shows neither a number nor the land. Panel 4 is the obvious picture for this game and is the one card it cannot have: its caption reads “Job had seven sons and three daughters”, which is two of the four pairs.",
+      "picture": "panel-03"
     },
     {
-      "id": "feasting-together",
-      "title": "Feasting Together",
+      "id": "all-in-one-house",
+      "title": "All in One House",
       "objective": "Remember that Job's children gathered in one house to feast together.",
       "answers": [
         3
@@ -212,7 +177,8 @@
           ]
         }
       ],
-      "note": "Both wrong options are made of things the lesson actually names — the cattle and livestock Job owned, and the many servants in his house — rather than other plausible reasons to gather. A child who remembers the feast picks it; a child who is guessing is guessing between three things that are all really in the story."
+      "note": "Both wrong options are made of things the lesson actually names — the cattle and livestock Job owned, and the many servants in his house — rather than other plausible reasons to gather. A child who remembers the feast picks it; a child who is guessing is guessing between three things that are all really in the story.\n\nRenamed from “Feasting Together” when the artwork went in. The shelf prints a game’s title above its card and a child reads it before playing, so a game whose answer is “To feast together” cannot be called Feasting Together — the title was the answer. The new one restates the question instead.\n\nShelf picture panel-04. Job with all ten of his children outside his house. The caption is cropped away, so the card carries no lettering. The feast panels — 5, 6 and 7 — were all passed over even though their captions crop away too: a laden table above “Why did they gather in one house?” hands the answer over in the picture. Panel 9 was passed over for the opposite reason, that a card full of cattle sits right beside the wrong option “To count the cattle”.",
+      "picture": "panel-04"
     },
     {
       "id": "after-the-feast",
@@ -246,7 +212,8 @@
           ]
         }
       ],
-      "note": "The sequence stops at “He prayed for them” and never says what he prayed for. The fourth game asks why he gathered them, and a step reading “he asked God to forgive their sins” would answer it before it is asked."
+      "note": "The sequence stops at “He prayed for them” and never says what he prayed for. The fourth game asks why he gathered them, and a step reading “he asked God to forgive their sins” would answer it before it is asked.\n\nShelf picture panel-10. Job alone on a low wall at sunset, watching his children. No lettering survives the crop and no step of the sequence is shown. Panels 5 to 8, 11 and 12 are all steps of this game — the feast, the praying, the gathering — and none of them could be used.",
+      "picture": "panel-10"
     },
     {
       "id": "why-job-prayed",
@@ -292,9 +259,16 @@
           ]
         }
       ],
-      "note": "The reason first, then what the lesson asks of the child. Both wrong options are the two things the chapter’s other games are about — cattle and feasting — so a child who is pattern-matching on “what was in this chapter” gets no help from it. The reveal is the lesson’s own closing paragraph, the four things it asks every home to do, and it answers nothing the game above it is marked on."
+      "note": "The reason first, then what the lesson asks of the child. Both wrong options are the two things the chapter’s other games are about — cattle and feasting — so a child who is pattern-matching on “what was in this chapter” gets no help from it. The reveal is the lesson’s own closing paragraph, the four things it asks every home to do, and it answers nothing the game above it is marked on.\n\nShelf picture panel-13. The boy’s own family kneeling together at the coffee table, which is where this game lands. No lettering survives the crop. It shows the four things the reveal holds, but a reveal card cannot be wrong, so there is nothing here to give away — and the multiple choice above it, about what Job was worried about, gets no help from it at all.",
+      "picture": "panel-13"
     }
   ],
+  "video": {
+    "youtubeId": "4_0Rg0gAIzQ",
+    "title": "Job",
+    "description": "Watch the story told.",
+    "note": "Supplied for the Watch screen as an embed; only the eleven-character id is kept. The `si=` parameter on the pasted URL is a YouTube share token that identifies where the link came from, and it has no business travelling into a children's app — the schema accepts the id alone, which is why it cannot. Served through youtube-nocookie.com, and nothing is embedded until a child asks to watch."
+  },
   "prayer": {
     "text": "O our Creator God, we praise you for loving us. We thank you for our loved ones, our dear ones. Help us to pray and be happy with them. Amen",
     "note": "The opening prayer from p.67, word for word, printed in full rather than as a stage direction. It is the opening prayer and not the Concluding Prayer because p.70, which carries the closing of the lesson, is not in Drive."
