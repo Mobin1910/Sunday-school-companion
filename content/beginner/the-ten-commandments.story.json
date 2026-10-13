@@ -1,0 +1,398 @@
+{
+  "class": "beginner",
+  "chapter": 17,
+  "title": "The Ten Commandments",
+  "reference": "Exodus 19 :1-7, 20: 1-21; St. Mark 12 :29—31",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 17 → “01 - Curriculum Source”: four pages, p.77 (title, prayer, Bible portion), p.78 (the lesson), p.79 (“Tell the Answers” and “Fill in the Blanks”) and p.82 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.80 and p.81 are not in Drive.** The folder was paginated to the end and holds exactly four photographs, and the page numbers jump from 79 to 82. Nothing in this chapter depends on them — all four printed questions are on p.79 and every answer is in the lesson on p.78 — but by the shape of this book two pages is more than an activity page, and they may well carry the ten commandments listed out in full, which this chapter summarises rather than lists. Worth a photograph if they do.\n\n**The workbook’s answer and the lesson’s answer disagree on question 2, and the games follow the lesson.** “Why did Moses climb up to the mountain.?” is answered on p.78 by “On the mountain God gave Moses instructions and directions which the Israelites were to practice in their life and in their journey.” But p.79’s “Fill in the Blanks” 2 offers only “to take rest” or “to pray”, and the lesson says neither. The second game uses the lesson’s reason as its correct answer and keeps “To rest from the journey” as a wrong option, so a child working from that page finds it here and finds it wrong. This is an editorial question for the teacher.\n\n**There is no `song`.** p.82’s “Learn to sing” says only “(Sing a suitable English song)” — a stage direction to the teacher rather than a song, in the same way Chapters 12 and 14 printed a stage direction where a prayer goes. There is nothing to carry, so the field is absent rather than filled with the instruction.\n\n`prayer` carries the Concluding Prayer from p.82. The opening prayer on p.77 is printed in full as well, but the schema holds one and the closing one is what the rest of this class carries.\n\nNo artwork yet. Twenty-four text cards, which is where Beginner Chapters 5 to 16 began before their panels arrived.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "You have heard this story before."
+    },
+    {
+      "picture": "panel-02",
+      "text": "God’s people were slaves in Egypt."
+    },
+    {
+      "picture": "panel-03",
+      "text": "Moses led them out to freedom."
+    },
+    {
+      "picture": "panel-04",
+      "text": "God gave them manna and quail."
+    },
+    {
+      "picture": "panel-05",
+      "text": "A cloud went before them by day."
+    },
+    {
+      "picture": "panel-06",
+      "text": "A fire went before them by night."
+    },
+    {
+      "picture": "panel-07",
+      "text": "They walked for three long months."
+    },
+    {
+      "picture": "panel-08",
+      "text": "They came to the desert near Mount Sinai."
+    },
+    {
+      "picture": "panel-09",
+      "text": "There they pitched their tents."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Moses often climbed up the mountain."
+    },
+    {
+      "picture": "panel-11",
+      "text": "On the mountain God spoke to him."
+    },
+    {
+      "picture": "panel-12",
+      "text": "God gave him instructions for the people."
+    },
+    {
+      "picture": "panel-13",
+      "text": "There were ten important things to keep."
+    },
+    {
+      "picture": "panel-14",
+      "text": "Some were about God and his people."
+    },
+    {
+      "picture": "panel-15",
+      "text": "Some were about the people themselves."
+    },
+    {
+      "picture": "panel-16",
+      "text": "We call them the Ten Commandments."
+    },
+    {
+      "picture": "panel-17",
+      "text": "God wrote them on two stone tablets."
+    },
+    {
+      "picture": "panel-18",
+      "text": "He gave the tablets to Moses."
+    },
+    {
+      "picture": "panel-19",
+      "text": "Our Lord Jesus taught them to us."
+    },
+    {
+      "picture": "panel-20",
+      "text": "He put them into two commandments."
+    },
+    {
+      "picture": "panel-21",
+      "text": "“Love the Lord your God with all your heart.”"
+    },
+    {
+      "picture": "panel-22",
+      "text": "“With all your soul, mind and strength.”"
+    },
+    {
+      "picture": "panel-23",
+      "text": "“Love your neighbour as you love yourself.”"
+    },
+    {
+      "picture": "panel-24",
+      "text": "God wants us to follow his commandments."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 17 “The Ten Commandments”, p.79 — “Tell the Answers”",
+    "note": "All four questions transcribed from the printed page, punctuation included — the stray full stops before the question marks (“journey.?”, “mountain.?”, “given.?”, “Commandments.?”) are the book’s, not typos here. The four “Fill in the Blanks” on the same page are not recorded as questions: three of them restate questions 1, 3 and 4, and the fourth offers two answers the lesson does not give, which the chapter note sets out.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where did Israel reach after completing three months journey.?",
+        "objective": "Remember that Israel reached the desert near Mount Sinai.",
+        "answer": "The desert near Mount Sinai. “After three months of that long journey, they reached the desert near Mount Sinai.” (p.78)"
+      },
+      {
+        "n": 2,
+        "question": "Why did Moses climb up to the mountain.?",
+        "objective": "Remember that God gave Moses instructions and directions on the mountain.",
+        "answer": "Because God gave him instructions there. “On the mountain God gave Moses instructions and directions which the Israelites were to practice in their life and in their journey.” (p.78)"
+      },
+      {
+        "n": 3,
+        "question": "How many Commandments has God given.?",
+        "objective": "Remember that God gave ten commandments.",
+        "answer": "Ten. “There were ten important points… They are known as the ten Commandments.” (p.78)"
+      },
+      {
+        "n": 4,
+        "question": "What did Jesus teach about the summary of ten Commandments.?",
+        "objective": "Remember that Jesus summed them up as loving God and loving your neighbour.",
+        "answer": "Two commandments — love God, and love your neighbour. “1. Love the Lord your God with all your heart, with all your soul, with all your mind and with all your strength. 2. Love your neighbor as you love yourself.” (p.78)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "to-mount-sinai",
+      "title": "To Mount Sinai",
+      "objective": "Remember that after three months the people of Israel reached the desert near Mount Sinai.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the journey in order.",
+          "hint": "Egypt comes first.",
+          "items": [
+            {
+              "label": "They were slaves in Egypt",
+              "position": 1
+            },
+            {
+              "label": "Moses led them out",
+              "position": 2
+            },
+            {
+              "label": "God fed them manna",
+              "position": 3
+            },
+            {
+              "label": "They walked for three months",
+              "position": 4
+            },
+            {
+              "label": "They reached Mount Sinai",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "The lesson opens by recapping chapters this class has already had — Egypt, Moses, the manna, the pillar of cloud and fire — before it reaches Sinai, so the first game is that recap put back in order. Every step is from p.78’s own first sentences. It answers question 1 by arriving at Sinai rather than by naming it from a list."
+    },
+    {
+      "id": "up-the-mountain",
+      "title": "Up the Mountain",
+      "objective": "Remember that Moses climbed the mountain because God gave him instructions there.",
+      "answers": [
+        2
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did Moses climb the mountain?",
+          "hint": "God had something to give him.",
+          "options": [
+            {
+              "label": "God gave him instructions",
+              "correct": true
+            },
+            {
+              "label": "To rest from the journey"
+            },
+            {
+              "label": "To look for water"
+            }
+          ]
+        }
+      ],
+      "note": "**This game uses the lesson’s answer, not the workbook’s.** p.78 says “On the mountain God gave Moses instructions and directions”, so that is the correct option. p.79’s “Fill in the Blanks” 2 offers “to take rest / to pray”, neither of which the lesson says — see the chapter note. “To rest from the journey” is kept as a wrong option precisely because it is the workbook’s other choice, and a child who has been given that page should find it here and find it wrong."
+    },
+    {
+      "id": "ten-on-two-tablets",
+      "title": "Ten on Two Tablets",
+      "objective": "Remember that God gave ten commandments, written on two stone tablets.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match the numbers to the story.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Ten"
+              },
+              "to": {
+                "label": "How many commandments"
+              }
+            },
+            {
+              "from": {
+                "label": "Two"
+              },
+              "to": {
+                "label": "How many stone tablets"
+              }
+            },
+            {
+              "from": {
+                "label": "Three"
+              },
+              "to": {
+                "label": "Months of the journey"
+              }
+            },
+            {
+              "from": {
+                "label": "Moses"
+              },
+              "to": {
+                "label": "Who climbed the mountain"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Three numbers and a name, all from p.78. “Three → Months of the journey” is there so that ten and two are not the only numbers on the board — a child who can see there are exactly two numbers can pair them without remembering either. “Moses → Who climbed the mountain” does the same job for the other side."
+    },
+    {
+      "id": "what-jesus-taught",
+      "title": "What Jesus Taught",
+      "objective": "Remember that Jesus summed up the ten commandments as loving God and loving your neighbour.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did Jesus say to love?",
+          "hint": "He named two things to love.",
+          "options": [
+            {
+              "label": "God, and your neighbour",
+              "correct": true
+            },
+            {
+              "label": "God, and the mountain"
+            },
+            {
+              "label": "Moses, and the tablets"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Turn over the two commandments.",
+          "items": [
+            {
+              "label": "Love the Lord your God"
+            },
+            {
+              "label": "With all your heart"
+            },
+            {
+              "label": "With all your soul"
+            },
+            {
+              "label": "Love your neighbour as yourself"
+            }
+          ]
+        }
+      ],
+      "note": "The lesson gives Jesus’ two commandments in full, so the question has an answer on the page. Both wrong options pair something real from this chapter with something else real from it — the mountain, Moses, the tablets — rather than inventing a plausible-sounding pair. The reveal then opens the two commandments themselves, four cards from p.78’s own wording, and answers nothing the game above it is marked on."
+    }
+  ],
+  "verse": {
+    "text": "Your law is my delight",
+    "reference": "Psalms 119:174(b)",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with something God gave.",
+        "options": [
+          {
+            "label": "Your law",
+            "correct": true
+          },
+          {
+            "label": "Your land"
+          },
+          {
+            "label": "Your light"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture, and they are deliberately near-misses on the shape of the word — law, land, light — because with a verse this short there is nothing else to tell apart."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with what belongs to God.",
+        "words": [
+          "Your law",
+          "is my",
+          "delight"
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Your ______ is my delight",
+        "hint": "The missing word starts with “l”.",
+        "options": [
+          {
+            "label": "law",
+            "correct": true
+          },
+          {
+            "label": "delight"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used exactly as it came out.\n\nIt is the only stage 3 in this class with **two** options rather than three, and that is the verse’s doing rather than the agent’s. The agent builds its distractors from the verse’s own words, which is the rule that keeps a child from being asked to reject invented scripture. “Your law is my delight” is five words, and three of them are “your”, “is” and “my” — so once “law” is the answer there is exactly one other word in the whole verse that could stand beside it. Three options were not available without inventing one, and a fabricated option is worse than a short list. The band’s maxOptions is a ceiling, not a floor."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "Your",
+          "law",
+          "is",
+          "my",
+          "delight"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages.\n\nThis is the one chapter in the class where the five pieces are **single words** rather than phrase chunks, and again it is the verse: it is five words long, so five chunks and five words are the same thing. Every other chapter breaks phrases because its verse is long enough to have phrases. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "The longest Psalm in the Bible.",
+        "options": [
+          {
+            "label": "Psalm 119",
+            "correct": true
+          },
+          {
+            "label": "Psalm 133"
+          },
+          {
+            "label": "Genesis 15"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. `write-reference` asks for a keyboard, and a six-year-old spelling “Psalms 119:174(b)” is a typing test wearing a memory verse. Both distractors are references this child has just met: Psalm 133 was Chapter 15’s verse and Genesis 15 was Chapter 16’s.\n\nThe label reads “Psalm 119” where the book prints “Psalms 119:174(b)” — the same singular-for-plural edit as Chapters 14 and 15, so that the correct label is not the only plural among three singulars."
+      }
+    ],
+    "note": "Read from p.82 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 16 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung, unedited; the other four are built by hand on top of it.\n\n**This is the shortest memory verse in the class — five words — and it bends two things that have held for every other chapter.** Stage 3 has two options rather than three, and stage 4 is single words rather than phrase chunks. Both notes below say why, and in both cases the alternative was to invent something the verse does not contain.\n\nThe reference is printed “Psalms 119:174(b)” on p.82, with the plural and the part letter, and is carried here exactly as printed. The “(b)” means the second half of the verse, which is why the text is a clause rather than a sentence.\n\nTranslation is unresolved, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I will love God. I will love my Friends.",
+    "note": "The curriculum’s own My Decision from p.82, which is printed as two lines — “I will love God” and “I will love my Friends” — joined into one statement because the field holds one. The capital F on “Friends” is the book’s. It is the chapter’s two commandments in a child’s own words."
+  },
+  "prayer": {
+    "text": "Thank you Lord for helping us to learn about your Commandments. Help us to live according to your laws. Amen.",
+    "note": "The Concluding Prayer from p.82, word for word."
+  },
+  "celebration": {
+    "message": "Jesus put all ten into two: love God, love your neighbour.",
+    "note": "The turn of the chapter, from p.78. Ten commandments on two stone tablets is where the lesson starts; what it ends on is Jesus gathering all ten into two a six-year-old can hold."
+  }
+}
