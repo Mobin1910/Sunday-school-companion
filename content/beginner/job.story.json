@@ -3,7 +3,7 @@
   "chapter": 15,
   "title": "Job",
   "reference": "Job 1:1-5",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 15 → “01 - Curriculum Source”: three pages, p.67 (title, prayer, Bible portion), p.68 (the lesson) and p.69 (“Tell the Answers”, “Find the Correct Answer” and a picture activity).\n\n**p.70 is still not in Drive, and it is the page with the Memory Verse on it.** The curriculum folder holds exactly three photographs, p.67 to p.69; the chapter’s “06 - Memory Verse” folder is empty; and the thirteen artwork panels carry no memory-verse card, where Chapter 14’s last panel printed its verse in full. So this chapter still has no `verse`, no `decision` and no `song`, all of which are printed on p.70. The verse is never guessed. One photograph of p.70 is all it needs.\n\n`prayer` carries the **opening** prayer from p.67, which is printed in full here. Chapters 12 and 14 went the other way — their opening prayer was a stage direction and `prayer` carried the Concluding Prayer instead. This is the first chapter where it is reversed, and only because the closing page is missing.\n\n**Artwork.** Thirteen panels and both covers came from Drive’s “04 - Story Artwork”, all fifteen distinct by SHA-256. The folder was enumerated by exact filename rather than by paging, because the listing caps at five and its cursor repeats rows; querying each name confirmed panels 1 to 13 and the two covers, and no panel 14 or above. The twenty-two text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 14 and to Primary 1 to 3: the panels letter their own captions and speech, so a card that repeated them underneath would print the same sentence twice. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanel 1 is 940×1672, one pixel narrow of the canonical 941×1672. Converted without distortion and nothing resized it; recorded rather than fixed, since a one-pixel difference is invisible and the artwork is the teacher’s.\n\n**The artwork answers both of the questions flagged against p.69 when the games shipped.** “Find the Correct Answer” 4 offers “Offer sacrifices/feast” where the lesson said Job would “gather his children together, and pray to forgive them”; panel 11 letters “After the feast, Job gathered his children and offered sacrifices to God for them”, and panel 8 letters “After the meal, Job prayed for each of his children” — so the artwork has him do both, and the printed answer is “Offer sacrifices”. “Find the Correct Answer” 3 asks whether the brothers invited their sisters; the lesson still never says, but panels 5 to 7 draw the daughters at the table with everyone else, which supports “invited”. The games were left on the lesson’s own words and did not need changing. Both remain the teacher’s call to confirm, now with the artwork as evidence.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 15 → “01 - Curriculum Source”: three pages, p.67 (title, prayer, Bible portion), p.68 (the lesson) and p.69 (“Tell the Answers”, “Find the Correct Answer” and a picture activity).\n\n**p.70 is still not in Drive.** The curriculum folder holds exactly three photographs, p.67 to p.69; the chapter’s “06 - Memory Verse” folder is empty; and the thirteen artwork panels carry no memory-verse card, where Chapter 14’s last panel printed its verse in full. The Memory Verse came in a different way: the teacher supplied it in chat and confirmed the wording when asked, which the verse note records in full. **`decision` and `song` are still absent**, both being printed on that same missing page. One photograph of p.70 completes the chapter.\n\n`prayer` carries the **opening** prayer from p.67, which is printed in full here. Chapters 12 and 14 went the other way — their opening prayer was a stage direction and `prayer` carried the Concluding Prayer instead. This is the first chapter where it is reversed, and only because the closing page is missing.\n\n**Artwork.** Thirteen panels and both covers came from Drive’s “04 - Story Artwork”, all fifteen distinct by SHA-256. The folder was enumerated by exact filename rather than by paging, because the listing caps at five and its cursor repeats rows; querying each name confirmed panels 1 to 13 and the two covers, and no panel 14 or above. The twenty-two text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 14 and to Primary 1 to 3: the panels letter their own captions and speech, so a card that repeated them underneath would print the same sentence twice. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanel 1 is 940×1672, one pixel narrow of the canonical 941×1672. Converted without distortion and nothing resized it; recorded rather than fixed, since a one-pixel difference is invisible and the artwork is the teacher’s.\n\n**The artwork answers both of the questions flagged against p.69 when the games shipped.** “Find the Correct Answer” 4 offers “Offer sacrifices/feast” where the lesson said Job would “gather his children together, and pray to forgive them”; panel 11 letters “After the feast, Job gathered his children and offered sacrifices to God for them”, and panel 8 letters “After the meal, Job prayed for each of his children” — so the artwork has him do both, and the printed answer is “Offer sacrifices”. “Find the Correct Answer” 3 asks whether the brothers invited their sisters; the lesson still never says, but panels 5 to 7 draw the daughters at the table with everyone else, which supports “invited”. The games were left on the lesson’s own words and did not need changing. Both remain the teacher’s call to confirm, now with the artwork as evidence.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
@@ -263,6 +263,92 @@
       "picture": "panel-13"
     }
   ],
+  "verse": {
+    "text": "How good and pleasant it is when brothers live together in unity!",
+    "reference": "Psalms 133:1",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with two good words.",
+        "options": [
+          {
+            "label": "How good and pleasant",
+            "correct": true
+          },
+          {
+            "label": "How big and busy"
+          },
+          {
+            "label": "How long and quiet"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them, and only one of them is real."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with how good it is.",
+        "words": [
+          "How good and pleasant",
+          "it is when brothers",
+          "live together in unity!"
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How ______ and pleasant it is",
+        "hint": "The missing word starts with “g”.",
+        "options": [
+          {
+            "label": "good",
+            "correct": true
+          },
+          {
+            "label": "How"
+          },
+          {
+            "label": "unity"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used as it came out, with one edit: the agent’s third option was “unity!”, the verse’s closing exclamation mark riding on the last token. A button that reads “unity!” is a visible defect, so the mark was dropped. Beginner Chapter 12 had the same thing happen with a closing quote mark on “water” and was fixed the same way. Prompt, hint and the other two options are untouched."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "How good",
+          "and pleasant",
+          "it is when",
+          "brothers live together",
+          "in unity!"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. Phrase chunks rather than single words, as every chapter in this class ships. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "A Psalm, not the book about Job.",
+        "options": [
+          {
+            "label": "Psalm 133",
+            "correct": true
+          },
+          {
+            "label": "Psalm 34"
+          },
+          {
+            "label": "Job 1"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. `write-reference` asks for a keyboard, and a six-year-old spelling “Psalms 133:1” is a typing test wearing a memory verse. Both distractors are real references this child has met: Psalm 34 was Chapter 14’s verse and Job 1 is this chapter’s own Bible portion, so telling them apart is the thing being learned rather than a trick.\n\nThe correct label reads “Psalm 133” where the reference is “Psalms 133:1”. Left plural it would have been the one plural among three singulars, which is a child spotting the odd label rather than remembering the Psalm — the same edit, for the same reason, as Chapter 14’s stage 5."
+      }
+    ],
+    "note": "**The verse did not come from the curriculum photographs.** p.70 is not in Drive, so the teacher supplied the verse in chat and then confirmed the exact wording when asked. That round trip is the whole provenance and it is recorded here rather than implied.\n\nThe first transcription read “How Good and pleaseant it is when brother live together in unity”. Two of those read as keyboard slips rather than the book — “pleaseant” is not a word, and “brother live” is a singular noun with a plural verb — and correcting them silently would have been guessing at scripture, which this project does not do. The Memory Verse agent agreed: run at “medium” confidence it halted with REVIEW-REQUIRED and generated no practice at all. The teacher was asked and chose this wording, exclamation mark included; the agent was then re-run at “high” and produced the stage 3 rung below.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 14 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung with one option mark removed, explained there; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nThe verse is the chapter’s own point. Panel 7 letters “Job was so happy to see his children united and loving one another”, and the verse is about brothers living together in unity.\n\nTranslation is unresolved, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
   "video": {
     "youtubeId": "4_0Rg0gAIzQ",
     "title": "Job",
