@@ -3,104 +3,72 @@
   "chapter": 16,
   "title": "The Journey of Abraham",
   "reference": "Genesis 12:1-7",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 16 → “01 - Curriculum Source”: four pages, p.73 (title, prayer, Bible portion), p.74 (the lesson and the first six of “Tell the Answers”), p.75 (questions 7 and 8, and the maze) and p.76 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — the first since Chapter 13 with nothing missing from Drive.\n\n**The maze is now a game in the app.** p.75 prints “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” under it. It is the chapter’s own activity and there was no interaction model that could hold it, so one was built: `show-the-way`, the twelfth model, a bespoke scene alongside `pouring`, `find-the-coin`, `journey` and `provision`. The third game is that maze. See its note, and `interactions/way/ShowTheWay.tsx` for why it is tapped square by square rather than traced with a fingertip.\n\n**Questions 6, 7 and 8 are not recorded in `curriculum`, and no game is built on them.** They are “Where do we gather together for worship?”, “Do we gather regularly for worship?” and “What aspects should be kept in mind when we participate for worship?” — questions about the child’s own life and habits rather than about the lesson, and the last two have no single answer at all. They belong to the teacher in the room. Recording them here would have obliged a game to answer them, and a game that marks a six-year-old on whether their family goes to church regularly is not a game this app should contain. Questions 1 to 5 are all answerable from p.74 and all five are covered.\n\n`prayer` carries the Concluding Prayer from p.76. The opening prayer on p.73 is printed in full too — “O Lord we thank you for giving us this day to study your Word…” — but the schema holds one prayer and the closing one is what the other chapters in this class carry.\n\nNo artwork yet. Twenty-three text cards, which is where Beginner Chapters 5 to 15 began before their panels arrived; when the artwork lands these will be replaced by picture-only cards with `alt`.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 16 → “01 - Curriculum Source”: four pages, p.73 (title, prayer, Bible portion), p.74 (the lesson and the first six of “Tell the Answers”), p.75 (questions 7 and 8, and the maze) and p.76 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — the first since Chapter 13 with nothing missing from Drive.\n\n**The maze is now a game in the app.** p.75 prints “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” under it. It is the chapter’s own activity and there was no interaction model that could hold it, so one was built: `show-the-way`, the twelfth model, a bespoke scene alongside `pouring`, `find-the-coin`, `journey` and `provision`. The third game is that maze. See its note, and `interactions/way/ShowTheWay.tsx` for why it is tapped square by square rather than traced with a fingertip.\n\n**Questions 6, 7 and 8 are not recorded in `curriculum`, and no game is built on them.** They are “Where do we gather together for worship?”, “Do we gather regularly for worship?” and “What aspects should be kept in mind when we participate for worship?” — questions about the child’s own life and habits rather than about the lesson, and the last two have no single answer at all. They belong to the teacher in the room. Recording them here would have obliged a game to answer them, and a game that marks a six-year-old on whether their family goes to church regularly is not a game this app should contain. Questions 1 to 5 are all answerable from p.74 and all five are covered.\n\n`prayer` carries the Concluding Prayer from p.76. The opening prayer on p.73 is printed in full too — “O Lord we thank you for giving us this day to study your Word…” — but the schema holds one prayer and the closing one is what the other chapters in this class carry.\n\n**Artwork.** Fifteen panels and both covers came from Drive’s “04 - Story Artwork”, all seventeen distinct by SHA-256, the folder enumerated by exact filename rather than by paging. The twenty-three text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 15 and to Primary 1 to 3: the panels letter their own captions and speech, so a card repeating them underneath would print the same sentence twice. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanel 13 is 941×1671, one pixel short of the canonical 941×1672. Converted without distortion and nothing resized it; recorded rather than fixed.\n\n**Two places where the artwork and the printed lesson disagree. Both are the teacher’s to settle; neither is patched here.**\n\n1. **The spelling of the place.** Panel 4 letters “while Abram was in Haran” with one r. p.74 prints “Harran” with two, twice. The lesson is the source for this app, so the first game’s board and the story’s own reference keep “Harran”, and a child who reads the panel will see the other spelling. Nothing is wrong on either side — both are used in English Bibles — but they do not match.\n\n2. **The name, which is the chapter’s point.** The lesson ends “Since he obeyed the Lord, later the Lord changed his name from ‘Abram’ to ‘Abraham’”, and that turn is this chapter’s `celebration`. The artwork does not have it. Panels 4, 9, 10 and 11 say Abram; panels 5, 6, 7, 8, 12, 13, 14 and 15 say Abraham — so he is already called Abraham while he is still walking, four panels before God appears to him in Canaan, and the moment the name changes is never drawn. The chapter still ends on it because the lesson does, but the pictures no longer show it happening.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, both at the canonical sizes — 941×1672 portrait and 1672×941 landscape."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Abram lived in the land of Harran."
+      "alt": "A boy sits at a desk by an open window with his chin on his hand and a pencil in his fingers, an exercise book open in front of him and a dusty path winding away through the fields outside. Halo floats beside him. The caption reads, “One day, the boy was thinking about an important decision. He looked out of the window at a path and wondered which way to go.” The boy asks, “Halo, how do I know which way I should go when I don’t know what lies ahead?”"
     },
     {
       "picture": "panel-02",
-      "text": "He was seventy-five years old."
+      "alt": "The same desk, Halo drifted closer and brighter. The caption reads, “Halo gently floated closer, ready to help the boy understand how God guides us.” Halo says, “Sometimes we can’t see the whole journey. But we can trust God to guide us.”"
     },
     {
       "picture": "panel-03",
-      "text": "One day God called Abram."
+      "alt": "A glowing vision opens above the desk: an old man in a striped cloak stands with a staff raised among tents, camels and sheep in a sunlit town. The boy asks, “Can you tell me a story of someone who trusted God?” and Halo answers, “Yes! Let’s look at a story of a man who trusted God!”"
     },
     {
       "picture": "panel-04",
-      "text": "“Go to the land that I will show you.”"
+      "alt": "Abram sits on a rug on his rooftop at dusk, looking up into a shaft of light over the flat-roofed town. The caption reads, “One day, while Abram was in Haran, God spoke to him. God told him to leave his home, his family, and his people, and go to a new land that He would show him.” The light says, “Leave your home, your family, and your people. Go to a land that I will show you.”"
     },
     {
       "picture": "panel-05",
-      "text": "“I will bless you.”"
+      "alt": "Abram walks out through the gate of the town with his staff, his household following — a woman, a young man, a boy — and the flocks pressing round their feet. The caption reads, “Abraham obeyed God. He left his home, his family, and his people, and began his journey to a new land.”"
     },
     {
       "picture": "panel-06",
-      "text": "“I will make you into a great nation.”"
+      "alt": "The party is out on a stony hillside now, the town small behind them, a wide valley opening ahead with mountains beyond. The caption reads, “Abraham did not know exactly where he was going, but he trusted God. So he continued his journey with his family and his people.”"
     },
     {
       "picture": "panel-07",
-      "text": "Abram went, as the Lord told him."
+      "alt": "Abram stands on a ridge at sunset with one hand shading his eyes, a boy beside him looking up, and a long green river valley spread out below. The caption reads, “Finally, they arrived at the land that God had promised.”"
     },
     {
       "picture": "panel-08",
-      "text": "He took his wife Sarah with him."
+      "alt": "Abram holds out his arm over the valley, showing it to the boy and the people behind him. The caption reads, “Abraham looked at the beautiful land. He knew it was the land God had promised. He trusted God, even though it had been a long and difficult journey.”"
     },
     {
       "picture": "panel-09",
-      "text": "He took his nephew Lot too."
+      "alt": "Light breaks over the valley and Abram raises both hands into it, his family around him. The caption reads, “When Abram reached Canaan, God appeared to him and promised to give this land to his offspring.” The light says, “To your offspring I will give this land.”"
     },
     {
       "picture": "panel-10",
-      "text": "They took everything they had in Harran."
+      "alt": "Abram kneels and sets a last stone onto a low pile of rocks on the hillside, his household watching behind him. The caption reads, “Abram built an altar there to worship the Lord who had promised to give the land to his offspring.”"
     },
     {
       "picture": "panel-11",
-      "text": "They had to travel a long way."
+      "alt": "Abram kneels at the finished altar with both hands lifted and his face turned up to the setting sun. The caption reads, “Abram worshipped the Lord and trusted the God who had led him to this land.”"
     },
     {
       "picture": "panel-12",
-      "text": "At last they reached the land of Canaan."
+      "alt": "Back in the boy’s bedroom, a globe and a wooden cross on the shelf behind him, a big illustrated Bible open on the desk. The caption reads, “Back in his room, the boy thought about Abraham’s journey and the God who guided him.” The boy asks, “Halo, what can I learn from Abraham’s story?”"
     },
     {
       "picture": "panel-13",
-      "text": "God appeared to Abram there."
+      "alt": "The boy rests his chin on both hands, listening. Halo says, “Abraham trusted God and obeyed Him, even though he didn’t know where the journey would lead. He followed God’s guidance, and God was with him every step of the way.”"
     },
     {
       "picture": "panel-14",
-      "text": "“To your offspring I will give this land.”"
+      "alt": "The boy sits up, pencil in hand. Halo says, “We can also learn to trust God, even when we don’t know what will happen next. He knows the way, and He is with us just like He was with Abraham.” The boy answers, “That’s amazing! So I can trust God too, even when things are uncertain?”"
     },
     {
       "picture": "panel-15",
-      "text": "Abram built an altar in that place."
-    },
-    {
-      "picture": "panel-16",
-      "text": "He worshipped the Lord there."
-    },
-    {
-      "picture": "panel-17",
-      "text": "Then Abram travelled on further."
-    },
-    {
-      "picture": "panel-18",
-      "text": "Wherever he stopped, he set up his tent."
-    },
-    {
-      "picture": "panel-19",
-      "text": "And there he built an altar too."
-    },
-    {
-      "picture": "panel-20",
-      "text": "He worshipped the Lord at every one."
-    },
-    {
-      "picture": "panel-21",
-      "text": "Abram obeyed the Lord in everything."
-    },
-    {
-      "picture": "panel-22",
-      "text": "So God gave him a new name."
-    },
-    {
-      "picture": "panel-23",
-      "text": "He was not Abram now. He was Abraham."
+      "alt": "The boy opens a hand towards Halo, smiling. He asks, “Can I worship God like Abraham did?” and Halo answers, “Of course! We can worship God through prayer, praise, and gathering with others to learn His Word.”"
     }
   ],
   "curriculum": {
@@ -188,7 +156,8 @@
           ]
         }
       ],
-      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its opening lines. The two extra pairs are not padding: “Lot → Abram’s nephew” sits beside “Sarah → Abram’s wife” so a child who remembers one name is not handed the other by elimination, and “Seventy-five → Abram’s age” is the detail the lesson opens with."
+      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its opening lines. The two extra pairs are not padding: “Lot → Abram’s nephew” sits beside “Sarah → Abram’s wife” so a child who remembers one name is not handed the other by elimination, and “Seventy-five → Abram’s age” is the detail the lesson opens with.\n\nShelf picture panel-05. Abram walking out of the town gate with his whole household behind him — a woman, a young man, a boy, and the flocks. No lettering survives the crop. It is the picture of “his people” without naming any of them, which is what this board is marked on. Panel 4 is the one card it cannot have: its caption names Haran in the first line.",
+      "picture": "panel-05"
     },
     {
       "id": "the-call",
@@ -216,7 +185,8 @@
           ]
         }
       ],
-      "note": "The printed question is “Who said to whom?”, so every option is a pair rather than a name — answering with “God” alone would only be half of it. Both wrong options are made of people who are actually in this story and actually speak or are spoken to, rather than other plausible names."
+      "note": "The printed question is “Who said to whom?”, so every option is a pair rather than a name — answering with “God” alone would only be half of it. Both wrong options are made of people who are actually in this story and actually speak or are spoken to, rather than other plausible names.\n\nShelf picture panel-03. The vision opening above the boy’s desk, with Halo saying “Yes! Let’s look at a story of a man who trusted God!”. Both bubbles survive the crop whole and neither says who called whom. Panel 4 is the scene this game is about and is the one card it cannot have — it letters the call twice, in the caption and in the light’s own words.",
+      "picture": "panel-03"
     },
     {
       "id": "show-the-way",
@@ -244,7 +214,8 @@
           "then": "They came to the land of Canaan."
         }
       ],
-      "note": "**This is the curriculum’s own activity.** p.75 prints a maze under the heading “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” beneath it, a picture of the caravan at one end and Abram with his staff at the other. It is the one page of this chapter a child does with a pencil instead of by answering, and the app had nowhere to put it until now.\n\nIt answers question 4 — which land God promised — the way the other built scenes answer their questions: by doing it rather than reciting it. The prompt does not name Canaan, so nothing is given away before the child starts; the line that appears on arrival does. A child who walks the whole maze and comes out at the tent has been told where Abram was going by getting there.\n\nThe maze is a perfect maze: exactly one route, twenty steps, with three dead ends to try. It is tapped a square at a time rather than traced with a fingertip, and stepping back the way you came is always allowed — see `interactions/way/ShowTheWay.tsx` for why both of those are deliberate. A wall does nothing but say so: no restart, no undo of the twenty right turns before it."
+      "note": "**This is the curriculum’s own activity.** p.75 prints a maze under the heading “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” beneath it, a picture of the caravan at one end and Abram with his staff at the other. It is the one page of this chapter a child does with a pencil instead of by answering, and the app had nowhere to put it until now.\n\nIt answers question 4 — which land God promised — the way the other built scenes answer their questions: by doing it rather than reciting it. The prompt does not name Canaan, so nothing is given away before the child starts; the line that appears on arrival does. A child who walks the whole maze and comes out at the tent has been told where Abram was going by getting there.\n\nThe maze is a perfect maze: exactly one route, twenty steps, with three dead ends to try. It is tapped a square at a time rather than traced with a fingertip, and stepping back the way you came is always allowed — see `interactions/way/ShowTheWay.tsx` for why both of those are deliberate. A wall does nothing but say so: no restart, no undo of the twenty right turns before it.\n\nShelf picture panel-06. The party out on the open hillside with the town behind and the valley ahead — the journey itself, which is what the maze is. The caption, cropped away, reads “Abraham did not know exactly where he was going, but he trusted God”, which is the sentence this game is built on. Panel 9 was passed over because it names Canaan in its first line, and arriving at Canaan is what this game is for.",
+      "picture": "panel-06"
     },
     {
       "id": "the-altar",
@@ -290,7 +261,8 @@
           ]
         }
       ],
-      "note": "The reason first, then what came with it. “To rest on the way” is the most tempting wrong answer in the chapter, because the lesson really does say Abram stopped to rest and set up his tent — and then says he built the altar to worship. A child has to hold the two apart, which is the thing this question is for. The reveal is the four things God promised, gathered from across the lesson, and it answers nothing the game above it is marked on."
+      "note": "The reason first, then what came with it. “To rest on the way” is the most tempting wrong answer in the chapter, because the lesson really does say Abram stopped to rest and set up his tent — and then says he built the altar to worship. A child has to hold the two apart, which is the thing this question is for. The reveal is the four things God promised, gathered from across the lesson, and it answers nothing the game above it is marked on.\n\nShelf picture panel-08. Abram showing the valley to the boy and the people behind him. No lettering survives the crop. Panels 10 and 11 are the altar itself and were both passed over: 10 draws him building it and 11 draws him kneeling at it with his hands raised, which is this game’s answer — “To worship the Lord” — drawn rather than written. A card that shows the answer is no better than one that letters it.",
+      "picture": "panel-08"
     }
   ],
   "verse": {
