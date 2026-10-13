@@ -4453,3 +4453,114 @@ html[data-motion="reduce"] *::after {
     overflow-y: auto;
   }
 }
+
+/*
+  Showing the way to Canaan.
+
+  The curriculum prints this as a maze and asks for a pencil line. On a phone
+  the line is the problem — tracing a corridor with a fingertip is precision
+  work this age band is explicitly spared — so the maze is a grid of squares
+  and the child taps the next one along.
+
+  The contrast here is the whole design and it took two attempts. The first
+  drew the walls as `--color-edge` on cells barely lighter than the ground,
+  which is how every other surface in this app is separated — and at this
+  size the corridors vanished. A maze whose walls you cannot see is not a
+  hard maze, it is a broken one. So the walls are the ground itself and the
+  open way is lit: the child reads the path, not the obstacle, which is also
+  the right way round for what the chapter is about.
+*/
+.way-maze {
+  display: grid;
+  /*
+    Explicit, because the grid has no intrinsic width of its own: every cell
+    is `aspect-ratio: 1` with no set size, so inside a centring flex column
+    the whole maze collapsed to 22px across. It did that silently — the maze
+    was still there, still playable by a script, and simply too small to see.
+  */
+  width: 100%;
+  gap: 0;
+  padding: 0.35rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-edge);
+  background: var(--color-ground);
+  overflow: hidden;
+}
+
+/* A square of the way. Lit, because the way is the thing to be seen. */
+.way-cell {
+  aspect-ratio: 1;
+  position: relative;
+  border: 0;
+  padding: 0;
+  border-radius: 2px;
+  background: var(--color-ground-lit);
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Wall. It is the ground showing through — not a thing, just absence. */
+.way-cell.is-wall {
+  background: transparent;
+}
+
+/* Where he has already walked — the line the pencil would have drawn. */
+.way-cell.is-walked {
+  background: rgb(from var(--color-joy) r g b / 0.28);
+}
+
+/*
+  The squares he could step to, outlined once the child has asked for help.
+  Below that rung the maze looks exactly as it does in the book.
+*/
+.way-cell.is-open {
+  box-shadow: inset 0 0 0 2px rgb(from var(--color-touchable) r g b / 0.75);
+}
+
+.way-cell.is-here {
+  background: rgb(from var(--color-joy) r g b / 0.5);
+}
+
+.way-cell.is-goal {
+  background: rgb(from var(--color-right) r g b / 0.3);
+}
+
+/*
+  Abraham. A robe and a head at the size a person is inside one square of a
+  maze on a phone — the same shapes the journey road uses, so the two scenes
+  are visibly the same man walking.
+*/
+.way-abraham {
+  position: absolute;
+  inset: 22% 28%;
+  border-radius: 38% 38% 16% 16%;
+  background: linear-gradient(180deg, #efe3cd, #c9b492);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
+}
+
+.way-abraham::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 86%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #6f5a41;
+}
+
+/* Canaan: a tent on the far side of the maze. */
+.way-canaan {
+  position: absolute;
+  inset: 28% 18% 24%;
+  background: linear-gradient(180deg, #9fd08a, #4f7f46);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .way-cell {
+    transition: none;
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "class": "beginner",
+  "chapter": 16,
+  "title": "The Journey of Abraham",
+  "reference": "Genesis 12:1-7",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 16 → “01 - Curriculum Source”: four pages, p.73 (title, prayer, Bible portion), p.74 (the lesson and the first six of “Tell the Answers”), p.75 (questions 7 and 8, and the maze) and p.76 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — the first since Chapter 13 with nothing missing from Drive.\n\n**The maze is now a game in the app.** p.75 prints “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” under it. It is the chapter’s own activity and there was no interaction model that could hold it, so one was built: `show-the-way`, the twelfth model, a bespoke scene alongside `pouring`, `find-the-coin`, `journey` and `provision`. The third game is that maze. See its note, and `interactions/way/ShowTheWay.tsx` for why it is tapped square by square rather than traced with a fingertip.\n\n**Questions 6, 7 and 8 are not recorded in `curriculum`, and no game is built on them.** They are “Where do we gather together for worship?”, “Do we gather regularly for worship?” and “What aspects should be kept in mind when we participate for worship?” — questions about the child’s own life and habits rather than about the lesson, and the last two have no single answer at all. They belong to the teacher in the room. Recording them here would have obliged a game to answer them, and a game that marks a six-year-old on whether their family goes to church regularly is not a game this app should contain. Questions 1 to 5 are all answerable from p.74 and all five are covered.\n\n`prayer` carries the Concluding Prayer from p.76. The opening prayer on p.73 is printed in full too — “O Lord we thank you for giving us this day to study your Word…” — but the schema holds one prayer and the closing one is what the other chapters in this class carry.\n\nNo artwork yet. Twenty-three text cards, which is where Beginner Chapters 5 to 15 began before their panels arrived; when the artwork lands these will be replaced by picture-only cards with `alt`.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Abram lived in the land of Harran."
+    },
+    {
+      "picture": "panel-02",
+      "text": "He was seventy-five years old."
+    },
+    {
+      "picture": "panel-03",
+      "text": "One day God called Abram."
+    },
+    {
+      "picture": "panel-04",
+      "text": "“Go to the land that I will show you.”"
+    },
+    {
+      "picture": "panel-05",
+      "text": "“I will bless you.”"
+    },
+    {
+      "picture": "panel-06",
+      "text": "“I will make you into a great nation.”"
+    },
+    {
+      "picture": "panel-07",
+      "text": "Abram went, as the Lord told him."
+    },
+    {
+      "picture": "panel-08",
+      "text": "He took his wife Sarah with him."
+    },
+    {
+      "picture": "panel-09",
+      "text": "He took his nephew Lot too."
+    },
+    {
+      "picture": "panel-10",
+      "text": "They took everything they had in Harran."
+    },
+    {
+      "picture": "panel-11",
+      "text": "They had to travel a long way."
+    },
+    {
+      "picture": "panel-12",
+      "text": "At last they reached the land of Canaan."
+    },
+    {
+      "picture": "panel-13",
+      "text": "God appeared to Abram there."
+    },
+    {
+      "picture": "panel-14",
+      "text": "“To your offspring I will give this land.”"
+    },
+    {
+      "picture": "panel-15",
+      "text": "Abram built an altar in that place."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He worshipped the Lord there."
+    },
+    {
+      "picture": "panel-17",
+      "text": "Then Abram travelled on further."
+    },
+    {
+      "picture": "panel-18",
+      "text": "Wherever he stopped, he set up his tent."
+    },
+    {
+      "picture": "panel-19",
+      "text": "And there he built an altar too."
+    },
+    {
+      "picture": "panel-20",
+      "text": "He worshipped the Lord at every one."
+    },
+    {
+      "picture": "panel-21",
+      "text": "Abram obeyed the Lord in everything."
+    },
+    {
+      "picture": "panel-22",
+      "text": "So God gave him a new name."
+    },
+    {
+      "picture": "panel-23",
+      "text": "He was not Abram now. He was Abraham."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 16 “The Journey of Abraham”, p.74 — “Tell the Answers”, questions 1 to 5",
+    "note": "Transcribed from the printed page, punctuation included — the comma inside question 1’s quotation and the past tense in “Why did Abram built an Altar?” are the book’s, not typos here. Questions 6, 7 and 8, which continue onto p.75, are deliberately not recorded; the chapter note says why.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "“Go to the land that I will show you”, Who said to whom?",
+        "objective": "Remember that God said it to Abram.",
+        "answer": "God said it to Abram. “One day God called Abram and told him ‘Go to the land that I will show you.’” (p.74)"
+      },
+      {
+        "n": 2,
+        "question": "Where did Abram live?",
+        "objective": "Remember that Abram lived in the land of Harran.",
+        "answer": "In the land of Harran. “Abram was living in the land of Harran.” (p.74)"
+      },
+      {
+        "n": 3,
+        "question": "Name Abram’s wife?",
+        "objective": "Remember that Abram’s wife was Sarah.",
+        "answer": "Sarah. “He took his wife Sarah, his nephew Lot and all the possessions they had accumulated in the land of Harran.” (p.74)"
+      },
+      {
+        "n": 4,
+        "question": "Which land did God promise to give to the Offspring of Abram?",
+        "objective": "Remember that God promised the land of Canaan.",
+        "answer": "Canaan. “When they reached the land of Canaan, God appeared to Abram and said, ‘To your offspring I will give this land.’” (p.74)"
+      },
+      {
+        "n": 5,
+        "question": "Why did Abram built an Altar?",
+        "objective": "Remember that Abram built altars to worship the Lord.",
+        "answer": "To worship the Lord. “Abram built an altar there and worshipped the Lord… wherever he used to stop and set up his tent for rest, there he ensured to build an altar to the Lord and worship him.” (p.74)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "abrams-people",
+      "title": "Abram's People",
+      "objective": "Remember where Abram lived and who went with him — his wife Sarah and his nephew Lot.",
+      "answers": [
+        2,
+        3
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to Abram.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Harran"
+              },
+              "to": {
+                "label": "Where Abram lived"
+              }
+            },
+            {
+              "from": {
+                "label": "Sarah"
+              },
+              "to": {
+                "label": "Abram's wife"
+              }
+            },
+            {
+              "from": {
+                "label": "Lot"
+              },
+              "to": {
+                "label": "Abram's nephew"
+              }
+            },
+            {
+              "from": {
+                "label": "Seventy-five"
+              },
+              "to": {
+                "label": "Abram's age"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Two of the five printed questions in one board, because they are the two the lesson answers in its opening lines. The two extra pairs are not padding: “Lot → Abram’s nephew” sits beside “Sarah → Abram’s wife” so a child who remembers one name is not handed the other by elimination, and “Seventy-five → Abram’s age” is the detail the lesson opens with."
+    },
+    {
+      "id": "the-call",
+      "title": "The Call",
+      "objective": "Remember that it was God who told Abram to go to the land he would be shown.",
+      "answers": [
+        1
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who said “Go to the land”?",
+          "hint": "The one who called Abram.",
+          "options": [
+            {
+              "label": "God, to Abram",
+              "correct": true
+            },
+            {
+              "label": "Abram, to Lot"
+            },
+            {
+              "label": "Sarah, to Abram"
+            }
+          ]
+        }
+      ],
+      "note": "The printed question is “Who said to whom?”, so every option is a pair rather than a name — answering with “God” alone would only be half of it. Both wrong options are made of people who are actually in this story and actually speak or are spoken to, rather than other plausible names."
+    },
+    {
+      "id": "show-the-way",
+      "title": "Show the Way",
+      "objective": "Walk Abram's journey and arrive where God sent him — the land of Canaan.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "show-the-way",
+          "prompt": "Show Abram the way.",
+          "hint": "You can always step back a square.",
+          "rows": [
+            "#########",
+            "#A..#...#",
+            "###.#.#.#",
+            "#.#...#.#",
+            "#.#####.#",
+            "#...#...#",
+            "#.#.#.###",
+            "#.#....C#",
+            "#########"
+          ],
+          "then": "They came to the land of Canaan."
+        }
+      ],
+      "note": "**This is the curriculum’s own activity.** p.75 prints a maze under the heading “CAN YOU SHOW THE WAY?” with “(Abraham wanted to go to Canaan)” beneath it, a picture of the caravan at one end and Abram with his staff at the other. It is the one page of this chapter a child does with a pencil instead of by answering, and the app had nowhere to put it until now.\n\nIt answers question 4 — which land God promised — the way the other built scenes answer their questions: by doing it rather than reciting it. The prompt does not name Canaan, so nothing is given away before the child starts; the line that appears on arrival does. A child who walks the whole maze and comes out at the tent has been told where Abram was going by getting there.\n\nThe maze is a perfect maze: exactly one route, twenty steps, with three dead ends to try. It is tapped a square at a time rather than traced with a fingertip, and stepping back the way you came is always allowed — see `interactions/way/ShowTheWay.tsx` for why both of those are deliberate. A wall does nothing but say so: no restart, no undo of the twenty right turns before it."
+    },
+    {
+      "id": "the-altar",
+      "title": "The Altar",
+      "objective": "Remember that Abram built an altar to worship the Lord, and what God promised him.",
+      "answers": [
+        5
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did Abram build an altar?",
+          "hint": "He built it for the Lord.",
+          "options": [
+            {
+              "label": "To worship the Lord",
+              "correct": true
+            },
+            {
+              "label": "To rest on the way"
+            },
+            {
+              "label": "To keep his sheep safe"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Turn over what God promised.",
+          "items": [
+            {
+              "label": "I will bless you"
+            },
+            {
+              "label": "A great nation"
+            },
+            {
+              "label": "Land for your offspring"
+            },
+            {
+              "label": "A new name"
+            }
+          ]
+        }
+      ],
+      "note": "The reason first, then what came with it. “To rest on the way” is the most tempting wrong answer in the chapter, because the lesson really does say Abram stopped to rest and set up his tent — and then says he built the altar to worship. A child has to hold the two apart, which is the thing this question is for. The reveal is the four things God promised, gathered from across the lesson, and it answers nothing the game above it is marked on."
+    }
+  ],
+  "verse": {
+    "text": "Abram believed the Lord, and he credited it to him as righteousness.",
+    "reference": "Gen 15:6.",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with what Abram did.",
+        "options": [
+          {
+            "label": "Abram believed the Lord",
+            "correct": true
+          },
+          {
+            "label": "Abram followed the road"
+          },
+          {
+            "label": "Abram counted the stars"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them, and only one of them is real."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with what Abram did.",
+        "words": [
+          "Abram believed the Lord,",
+          "and he credited it",
+          "to him as righteousness."
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Abram ______ the Lord,",
+        "hint": "The missing word starts with “b”.",
+        "options": [
+          {
+            "label": "believed",
+            "correct": true
+          },
+          {
+            "label": "Abram"
+          },
+          {
+            "label": "righteousness"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used exactly as it came out — prompt, hint and all three options unedited."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "Abram believed",
+          "the Lord,",
+          "and he",
+          "credited it to him",
+          "as righteousness."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. Phrase chunks rather than single words, as every chapter in this class ships. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "The same book the lesson comes from.",
+        "options": [
+          {
+            "label": "Genesis 15",
+            "correct": true
+          },
+          {
+            "label": "Genesis 12"
+          },
+          {
+            "label": "Psalm 133"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. `write-reference` asks for a keyboard, and a six-year-old spelling “Gen 15:6” is a typing test wearing a memory verse.\n\nThis is the first chapter in the class whose memory verse comes from **outside its own Bible portion**: the lesson is Genesis 12:1-7 and the verse is Genesis 15:6, three chapters on. That makes Genesis 12 the sharpest possible distractor — it is this chapter’s own reading — and telling the two apart is exactly what stage 5 is for. Psalm 133 was Chapter 15’s verse, so all three are references this child has met.\n\nThe label reads “Genesis 15” where the book prints the short form “Gen 15:6.”. Spelling the book out is kinder to a new reader than an abbreviation, and the `reference` field above keeps the printed form."
+      }
+    ],
+    "note": "Read from p.76 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 15 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung, unedited; the other four are built by hand on top of it. Chapter 10 shipped with the single agent rung alone and is the odd one out.\n\nThe reference is printed “Gen 15:6.” on p.76, abbreviated and with a trailing stop, and is carried here exactly as printed. **It is outside this chapter’s Bible portion**, which is Genesis 12:1-7 — the first time that has happened in this class, and the reason stage 5 uses Genesis 12 as a distractor.\n\nTranslation is unresolved, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I shall walk in the way that the Lord shows me.",
+    "note": "The curriculum’s own My Decision line from p.76, first person and unchanged. It is also the chapter’s maze in one sentence."
+  },
+  "song": {
+    "lines": [
+      "Abrahamin Daivam",
+      "Isahakkin Daivam",
+      "Yakkobin Daivam",
+      "Koodeyullathal...."
+    ],
+    "note": "The four lines of the “Learn to sing” song on p.76, in the Latin script the book prints them in, including its trailing ellipsis. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "O Lord help us to maintain relationship with you through our prayers and worship. Amen",
+    "note": "The Concluding Prayer from p.76, word for word."
+  },
+  "celebration": {
+    "message": "Abram obeyed, and God gave him a new name.",
+    "note": "The turn of the chapter, from the last line of p.74. The lesson does not end on the land or the altar but on the name: because he obeyed, Abram became Abraham."
+  }
+}

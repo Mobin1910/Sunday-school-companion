@@ -8,6 +8,7 @@ import Pouring from "./pouring/Pouring";
 import Selection from "./selection/Selection";
 import Reveal from "./reveal/Reveal";
 import Sequence from "./sequence/Sequence";
+import ShowTheWay from "./way/ShowTheWay";
 import TrueOrNot from "./truth/TrueOrNot";
 import WriteReference from "./reference/WriteReference";
 import Words from "./words/Words";
@@ -33,7 +34,8 @@ export function canPlay(interaction: PlayInteraction): boolean {
     interaction.type === "write-reference" ||
     interaction.type === "journey" ||
     interaction.type === "provision" ||
-    interaction.type === "true-or-not"
+    interaction.type === "true-or-not" ||
+    interaction.type === "show-the-way"
   );
 }
 
@@ -86,5 +88,8 @@ export function renderModel(props: ModelProps) {
 
     case "true-or-not":
       return <TrueOrNot {...props} interaction={interaction} />;
+
+    case "show-the-way":
+      return <ShowTheWay {...props} interaction={interaction} />;
   }
 }

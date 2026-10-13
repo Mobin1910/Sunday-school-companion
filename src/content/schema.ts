@@ -467,6 +467,102 @@ const trueOrNot = z.strictObject({
   note,
 });
 
+/**
+ * Showing the way.
+ *
+ * Chapter 16 prints a maze. "CAN YOU SHOW THE WAY? (Abraham wanted to go to
+ * Canaan)" is the activity on p.75, and it is the one page of that chapter a
+ * six-year-old does with a pencil rather than by answering. The app had
+ * nowhere to put it, so this is that page.
+ *
+ * It is a tap and not a drag, for the reason `journey` is: tracing a printed
+ * maze with a fingertip is precision work on a phone, and the brief rules
+ * that out for this age. The child taps the next square along instead, and
+ * Abraham walks one step. Stepping back the way you came is always allowed,
+ * because a maze a child cannot reverse out of is a maze that traps them.
+ *
+ * `rows` is the maze drawn as text, which is the only authoring form that a
+ * person can read in a diff and see what it is:
+ *
+ *     "#######"
+ *     "#A..#.#"
+ *     "#.#.#.#"
+ *     "#.#...#"
+ *     "#...#C#"
+ *     "#######"
+ *
+ * `#` is wall, `.` is open, `A` is where he starts and `C` is where he is
+ * going. Every row must be the same length, and there must be exactly one of
+ * each marker.
+ *
+ * And then the part that matters: **the refine below walks the maze.** A
+ * breadth-first search from `A` has to reach `C`, or the file does not load.
+ * Loading is validation in this codebase, and a maze with no way through is
+ * the exact failure a child would discover for us — alone, stuck, with no way
+ * of knowing the fault was ours. It cannot ship.
+ */
+const showTheWay = z
+  .strictObject({
+    type: z.literal("show-the-way"),
+    prompt: z.string(),
+    hint: z.string().optional(),
+    /** The maze as text. `#` wall · `.` open · `A` start · `C` goal. */
+    rows: z.array(z.string().regex(/^[#.AC]+$/, "a row is made of #, ., A and C")).min(3),
+    /** Said once he arrives — the story's own line, never a congratulation. */
+    then: z.string().min(1),
+    note,
+  })
+  .refine((i) => new Set(i.rows.map((r) => r.length)).size === 1, {
+    message: "every row must be the same length",
+  })
+  .refine((i) => i.rows.join("").split("A").length === 2, {
+    message: "the maze needs exactly one A, where he starts",
+  })
+  .refine((i) => i.rows.join("").split("C").length === 2, {
+    message: "the maze needs exactly one C, where he is going",
+  })
+  .refine(
+    (i) => {
+      /* Walk it. A maze with no way through must not load. */
+      const grid = i.rows.map((r) => [...r]);
+      const open = (x: number, y: number) =>
+        grid[y]?.[x] !== undefined && grid[y][x] !== "#";
+      let start: [number, number] | null = null;
+      let goal: [number, number] | null = null;
+      grid.forEach((row, y) =>
+        row.forEach((cell, x) => {
+          if (cell === "A") start = [x, y];
+          if (cell === "C") goal = [x, y];
+        }),
+      );
+      if (!start || !goal) return false;
+      const [gx, gy] = goal as [number, number];
+      const seen = new Set<string>();
+      const queue: [number, number][] = [start];
+      seen.add((start as [number, number]).join(","));
+      while (queue.length) {
+        const [x, y] = queue.shift() as [number, number];
+        if (x === gx && y === gy) return true;
+        for (const [dx, dy] of [
+          [0, -1],
+          [0, 1],
+          [-1, 0],
+          [1, 0],
+        ] as const) {
+          const nx = x + dx;
+          const ny = y + dy;
+          const key = `${nx},${ny}`;
+          if (open(nx, ny) && !seen.has(key)) {
+            seen.add(key);
+            queue.push([nx, ny]);
+          }
+        }
+      }
+      return false;
+    },
+    { message: "there is no way through this maze — a child would be stuck in it" },
+  );
+
 export const interactionSchema = z.discriminatedUnion("type", [
   multipleChoice,
   match,
@@ -479,6 +575,7 @@ export const interactionSchema = z.discriminatedUnion("type", [
   journey,
   provision,
   trueOrNot,
+  showTheWay,
 ]);
 
 export type Interaction = z.infer<typeof interactionSchema>;

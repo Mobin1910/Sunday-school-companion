@@ -160,6 +160,7 @@ function itemsOf(interaction: PlayInteraction): PlayItem[] {
     case "write-reference":
     case "provision":
     case "true-or-not":
+    case "show-the-way":
       return [];
   }
 }

@@ -58,3 +58,5 @@ export type Journey = Extract<PlayInteraction, { type: "journey" }>;
 export type Provision = Extract<PlayInteraction, { type: "provision" }>;
 
 export type TrueOrNot = Extract<PlayInteraction, { type: "true-or-not" }>;
+
+export type ShowTheWay = Extract<PlayInteraction, { type: "show-the-way" }>;

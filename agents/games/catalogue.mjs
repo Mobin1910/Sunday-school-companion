@@ -163,6 +163,15 @@ export const CATALOGUE = [
     bespoke: "The Lost Coin",
   },
   {
+    mechanic: "show-the-way",
+    name: "Show the way",
+    skills: ["understanding"],
+    reading: "low",
+    shape: "prompt + hint + rows (the maze as text) + the line said on arrival",
+    art: "built in CSS",
+    bespoke: "The Journey of Abraham",
+  },
+  {
     mechanic: "provision",
     name: "Morning and evening",
     skills: ["understanding"],

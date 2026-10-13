@@ -61,6 +61,14 @@ export type PlayInteraction =
   | { type: "reveal"; prompt?: string; items: PlayItem[] }
   | { type: "pouring"; prompt: string; then: string; during?: string }
   | { type: "find-the-coin"; prompt: string; rounds?: 1 | 2 }
+  /** Chapter 16: the maze the curriculum prints, walked a square at a time. */
+  | {
+      type: "show-the-way";
+      prompt: string;
+      hint?: string;
+      rows: string[];
+      then: string;
+    }
   /**
    * The one answered with a keyboard. `answer` is the reference as the
    * curriculum wrote it — the display form as well as the thing compared —
@@ -280,6 +288,15 @@ export function toInteraction(
         ...(interaction.picture !== undefined && {
           art: toArt(interaction.picture, resolve),
         }),
+      };
+
+    case "show-the-way":
+      return {
+        type: "show-the-way",
+        prompt: interaction.prompt,
+        rows: interaction.rows,
+        then: interaction.then,
+        ...(interaction.hint !== undefined && { hint: interaction.hint }),
       };
 
     case "write-reference":
