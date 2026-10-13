@@ -53,6 +53,46 @@ const NEIGHBOURS = [
   { x: 1, y: 0 },
 ] as const;
 
+/**
+ * Halo's own five colours, in the order they run around its body, as rgb
+ * triples so they can be mixed here and handed to CSS as one custom property.
+ *
+ * They are also declared on `:root` in `globals.css`, which is where every
+ * other use reads them. The duplication is deliberate and narrow: these are
+ * needed as *numbers* to interpolate between, and CSS cannot hand a stylesheet
+ * value back to JavaScript. If Halo's palette ever changes, both move.
+ */
+const HALO_LIGHT = [
+  [79, 214, 255], // cyan
+  [61, 123, 255], // blue
+  [155, 107, 255], // violet
+  [255, 142, 203], // pink
+  [255, 181, 131], // peach
+] as const;
+
+/**
+ * The colour of the trail a given fraction of the way along it.
+ *
+ * The whole path is one run through Halo's five, however long the path turns
+ * out to be — so a child who wanders every dead end gets the same ribbon,
+ * stretched, rather than a repeating pattern that would read as stripes.
+ */
+function haloLightAt(fraction: number): string {
+  const span = HALO_LIGHT.length - 1;
+  const t = Math.min(Math.max(fraction, 0), 1) * span;
+  const index = Math.min(Math.floor(t), span - 1);
+  const into = t - index;
+  const from: readonly number[] = HALO_LIGHT[index] ?? HALO_LIGHT[0];
+  const to: readonly number[] = HALO_LIGHT[index + 1] ?? from;
+  return [0, 1, 2]
+    .map((c) => {
+      const a = from[c] ?? 0;
+      const b = to[c] ?? a;
+      return Math.round(a + (b - a) * into);
+    })
+    .join(" ");
+}
+
 const same = (a: Point, b: Point) => a.x === b.x && a.y === b.y;
 const apart = (a: Point, b: Point) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 
@@ -131,8 +171,19 @@ export default function ShowTheWay({
     [grid],
   );
 
-  const onTrail = (x: number, y: number) =>
-    trail.some((p) => p.x === x && p.y === y);
+  /*
+    Where each walked square sits along the path, so it can be given its own
+    colour. A square walked twice keeps the first time it was reached, which
+    is what a pencil line does too.
+  */
+  const walkedAt = useMemo(() => {
+    const seen = new Map<string, number>();
+    trail.forEach((p, index) => {
+      const key = `${p.x},${p.y}`;
+      if (!seen.has(key)) seen.set(key, index);
+    });
+    return seen;
+  }, [trail]);
 
   const pointingAt =
     rung >= 3 && !arrived && !locked ? nextStepToward(grid, at, goal) : null;
@@ -270,6 +321,7 @@ export default function ShowTheWay({
             const reachable =
               !wall && apart(at, { x, y }) === 1 && !arrived && !locked;
             const lit = pointingAt ? same(pointingAt, { x, y }) : false;
+            const walked = walkedAt.get(`${x},${y}`);
 
             if (wall) {
               return (
@@ -291,9 +343,18 @@ export default function ShowTheWay({
                 data-way-cell=""
                 data-x={x}
                 data-y={y}
+                style={
+                  walked === undefined
+                    ? undefined
+                    : ({
+                        "--trail": haloLightAt(
+                          walked / Math.max(trail.length - 1, 1),
+                        ),
+                      } as React.CSSProperties)
+                }
                 className={[
                   "way-cell",
-                  onTrail(x, y) && "is-walked",
+                  walked !== undefined && "is-walked",
                   here && "is-here",
                   isGoal && "is-goal",
                   rung >= 2 && reachable && "is-open",

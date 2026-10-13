@@ -62,6 +62,20 @@
   --color-joy: #ffc65a;
 
   /*
+    Halo's own five, in the order they run around its body. They lived on
+    `.halo` until the maze wanted to draw with them: the trail a child leaves
+    in "Show the Way" is Halo's light laid down on the floor, so it has to be
+    literally the same colours and not a second set that drifts. Nothing else
+    changed — every existing use is inside `.halo`, which still resolves them
+    from here.
+  */
+  --halo-cyan: #4fd6ff;
+  --halo-blue: #3d7bff;
+  --halo-violet: #9b6bff;
+  --halo-pink: #ff8ecb;
+  --halo-peach: #ffb583;
+
+  /*
     Answering, in two colours.
 
     These are the only two in the product that say anything about what a
@@ -1967,11 +1981,6 @@ html[data-motion="reduce"] .pour-fall.is-running {
 }
 
 .halo {
-  --halo-cyan: #4fd6ff;
-  --halo-blue: #3d7bff;
-  --halo-violet: #9b6bff;
-  --halo-pink: #ff8ecb;
-  --halo-peach: #ffb583;
 
   /*
     A surface may give Halo more room than its placement's natural size by
@@ -4515,9 +4524,26 @@ html[data-motion="reduce"] *::after {
   background: transparent;
 }
 
-/* Where he has already walked — the line the pencil would have drawn. */
+/*
+  Where he has already walked.
+
+  The book wants a pencil line. What this leaves instead is a ribbon of
+  Halo's own light: `--trail` is set per square by the model, interpolated
+  along the whole path through Halo's five colours, so the way out runs cyan
+  at the start to peach at his feet. The squares sit flush against each other
+  — the grid has no gap — so the glows merge and it reads as one continuous
+  thing rather than forty-eight lit tiles.
+
+  It is the companion's light and not a new colour precisely because nothing
+  here is being scored. A gold tick on every square would be forty-eight
+  small congratulations; a trail of Halo's light is just the trail of someone
+  who came with you.
+*/
 .way-cell.is-walked {
-  background: rgb(from var(--color-joy) r g b / 0.28);
+  background: rgb(var(--trail, 255 198 90) / 0.4);
+  box-shadow:
+    0 0 10px -1px rgb(var(--trail, 255 198 90) / 0.5),
+    inset 0 0 9px -3px rgb(var(--trail, 255 198 90) / 0.75);
 }
 
 /*
@@ -4530,7 +4556,30 @@ html[data-motion="reduce"] *::after {
 
 .way-cell.is-here {
   background: rgb(from var(--color-joy) r g b / 0.5);
+  box-shadow:
+    0 0 16px -2px rgb(from var(--color-joy) r g b / 0.7),
+    inset 0 0 10px -3px rgb(from var(--color-joy) r g b / 0.85);
   cursor: grab;
+  animation: way-breathing 2600ms ease-in-out infinite;
+}
+
+/*
+  Gold is Halo's ring and is spent carefully, so it is here and nowhere else
+  in the maze: one square, the one he is standing on. The trail behind him is
+  Halo's body colours; the square under him is the ring.
+*/
+@keyframes way-breathing {
+  0%,
+  100% {
+    box-shadow:
+      0 0 16px -2px rgb(from var(--color-joy) r g b / 0.7),
+      inset 0 0 10px -3px rgb(from var(--color-joy) r g b / 0.85);
+  }
+  50% {
+    box-shadow:
+      0 0 22px -2px rgb(from var(--color-joy) r g b / 0.9),
+      inset 0 0 12px -3px rgb(from var(--color-joy) r g b / 1);
+  }
 }
 
 .way-maze[data-dragging] .way-cell.is-here {
@@ -4577,5 +4626,9 @@ html[data-motion="reduce"] *::after {
 @media (prefers-reduced-motion: reduce) {
   .way-cell {
     transition: none;
+  }
+
+  .way-cell.is-here {
+    animation: none;
   }
 }
