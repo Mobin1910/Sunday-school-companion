@@ -168,6 +168,7 @@ export const CATALOGUE = [
     skills: ["understanding"],
     reading: "low",
     shape: "prompt + hint + rows (the maze as text) + the line said on arrival",
+    note: "Dragged through with a finger; tapping the next square also works.",
     art: "built in CSS",
     bespoke: "The Journey of Abraham",
   },

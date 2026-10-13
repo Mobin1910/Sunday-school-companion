@@ -4485,6 +4485,16 @@ html[data-motion="reduce"] *::after {
   border: 1px solid var(--color-edge);
   background: var(--color-ground);
   overflow: hidden;
+  /*
+    The maze is dragged through, so the browser must not read a finger
+    travelling down a corridor as a scroll. Without this the page moves
+    instead of Abraham and the activity is simply impossible on a phone.
+  */
+  touch-action: none;
+}
+
+.way-maze[data-dragging] {
+  cursor: grabbing;
 }
 
 /* A square of the way. Lit, because the way is the thing to be seen. */
@@ -4520,6 +4530,11 @@ html[data-motion="reduce"] *::after {
 
 .way-cell.is-here {
   background: rgb(from var(--color-joy) r g b / 0.5);
+  cursor: grab;
+}
+
+.way-maze[data-dragging] .way-cell.is-here {
+  cursor: grabbing;
 }
 
 .way-cell.is-goal {

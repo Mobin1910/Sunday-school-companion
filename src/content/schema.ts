@@ -475,11 +475,12 @@ const trueOrNot = z.strictObject({
  * six-year-old does with a pencil rather than by answering. The app had
  * nowhere to put it, so this is that page.
  *
- * It is a tap and not a drag, for the reason `journey` is: tracing a printed
- * maze with a fingertip is precision work on a phone, and the brief rules
- * that out for this age. The child taps the next square along instead, and
- * Abraham walks one step. Stepping back the way you came is always allowed,
- * because a maze a child cannot reverse out of is a maze that traps them.
+ * The child drags Abraham through it with a finger, and the trail he leaves
+ * is the pencil line. It shipped as a tap first, on the reasoning that
+ * dragging is precision work this age band is spared; that was wrong here,
+ * and `interactions/way/ShowTheWay.tsx` records why. Tapping the next square
+ * still works. Stepping back the way you came is always allowed, because a
+ * maze a child cannot reverse out of is a maze that traps them.
  *
  * `rows` is the maze drawn as text, which is the only authoring form that a
  * person can read in a diff and see what it is:

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ModelProps, ShowTheWay as Model } from "../types";
 
@@ -8,28 +8,40 @@ import type { ModelProps, ShowTheWay as Model } from "../types";
  * Showing the way to Canaan.
  *
  * The curriculum prints this as a maze on p.75 and asks the child to draw the
- * line. Here they tap the next square instead of dragging a fingertip along a
- * corridor, for the reason `journey` is a tap: precision dragging is ruled out
- * for six-year-olds, and a maze is nothing but precision dragging.
+ * line. So that is what this does: put a finger on Abraham and drag him
+ * through. The trail he leaves is the pencil line.
  *
- * So the task is one decision at a time. Abraham is on a square; the squares
- * he could step to are the four beside him; tapping an open one moves him.
- * Tapping a wall is the only way to be wrong, and being wrong does nothing at
- * all except say so quietly — he does not go back to the start, because a
- * maze that punishes a wrong turn by undoing twenty right ones is a maze a
- * child stops playing.
+ * The first version of this made the child tap one square at a time, on the
+ * reasoning that dragging is precision work and this age band is spared it.
+ * That reasoning was wrong here, and it is worth writing down why, because it
+ * is the sort of rule that looks right in the abstract and fails against the
+ * actual thing. Dragging is precision work when the target is small and a
+ * miss costs you something. Neither is true in a maze: the finger is never
+ * aiming at anything, it is *following a corridor*, and a finger that strays
+ * into a wall does not fail — it simply does not move him, and the corridor
+ * is still there when it comes back. The constraint does the aiming. What the
+ * tapping version actually cost was the whole feeling of the activity: a
+ * child drawing a line through a maze is doing one continuous thing, and
+ * forty separate taps is not that thing.
  *
- * Stepping back the way you came is always allowed. That is the whole of how
- * a person solves a maze, and a maze you cannot reverse out of is a trap.
+ * So dragging is how it works, and tapping the next square still works too —
+ * for a mouse, for a keyboard, and for anyone who would rather. Neither is
+ * the "real" way.
  *
- * The help ladder makes the task smaller and never makes the move:
- *   rung 2 — the squares he could step to are outlined
- *   rung 3 — the next square on the way through is lit, and still tapped
- *            by the child
+ * What is kept from the first version, because all of it was right:
  *
- * Nothing is counted. There is no timer, no best path, no score for the
- * number of steps. A child who wanders the whole maze and arrives has shown
- * the way exactly as well as one who walked it straight.
+ *   · Stepping back the way you came is always allowed. Drag backwards along
+ *     your own trail and it rubs out behind you. A maze you cannot reverse
+ *     out of is a trap.
+ *   · A wall costs nothing. He does not move; nothing already walked is
+ *     undone. A maze that answers one wrong turn by erasing twenty right ones
+ *     is a maze a child stops playing.
+ *   · Nothing is counted. No timer, no shortest path, no step score. A child
+ *     who wanders the whole maze and arrives has shown the way exactly as
+ *     well as one who walked it straight.
+ *   · The help ladder makes the task smaller and never makes the move:
+ *     rung 2 outlines the squares he could step to, rung 3 lights the next
+ *     one on the way through, and the child still has to go there.
  */
 
 type Point = { x: number; y: number };
@@ -40,6 +52,9 @@ const NEIGHBOURS = [
   { x: -1, y: 0 },
   { x: 1, y: 0 },
 ] as const;
+
+const same = (a: Point, b: Point) => a.x === b.x && a.y === b.y;
+const apart = (a: Point, b: Point) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 
 /** The shortest way on, from here, so rung 3 can light one square. */
 function nextStepToward(
@@ -59,13 +74,12 @@ function nextStepToward(
 
   while (queue.length) {
     const here = queue.shift() as Point;
-    if (here.x === goal.x && here.y === goal.y) {
-      /* Walk the trail back to the square right after `from`. */
+    if (same(here, goal)) {
       let step = here;
-      while (true) {
+      for (;;) {
         const previous = cameFrom.get(key(step));
         if (!previous) return null;
-        if (previous.x === from.x && previous.y === from.y) return step;
+        if (same(previous, from)) return step;
         step = previous;
       }
     }
@@ -103,46 +117,132 @@ export default function ShowTheWay({
   /** Every square walked so far, start first. The last one is where he is. */
   const [trail, setTrail] = useState<Point[]>([start]);
   const [arrived, setArrived] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const board = useRef<HTMLDivElement | null>(null);
 
-  /* The trail always holds at least the start, so there is always a square. */
   const at = trail[trail.length - 1] ?? start;
   const width = grid[0]?.length ?? 0;
 
-  const isOpen = (x: number, y: number) => {
-    const cell = grid[y]?.[x];
-    return cell !== undefined && cell !== "#";
-  };
-  const beside = (x: number, y: number) =>
-    Math.abs(x - at.x) + Math.abs(y - at.y) === 1;
+  const isOpen = useCallback(
+    (x: number, y: number) => {
+      const cell = grid[y]?.[x];
+      return cell !== undefined && cell !== "#";
+    },
+    [grid],
+  );
+
   const onTrail = (x: number, y: number) =>
     trail.some((p) => p.x === x && p.y === y);
 
   const pointingAt =
     rung >= 3 && !arrived && !locked ? nextStepToward(grid, at, goal) : null;
 
-  function step(x: number, y: number) {
-    if (locked || arrived || !beside(x, y)) return;
+  /**
+   * Walk to a square, if walking there is a thing that can be done.
+   *
+   * Returns whether anything moved, so the caller can decide what a refusal
+   * means — a tap on a wall is worth saying something about, the same finger
+   * grazing the same wall mid-drag is not.
+   */
+  const walkTo = useCallback(
+    (to: Point): boolean => {
+      if (locked || arrived) return false;
 
-    if (!isOpen(x, y)) {
-      /* A wall. Nothing moves, nothing is undone, and it is said once. */
-      onMiss();
-      return;
-    }
+      let moved = false;
 
-    /* Back the way he came: shorten the trail rather than doubling it. */
-    const back = trail.length >= 2 && trail[trail.length - 2];
-    if (back && back.x === x && back.y === y) {
-      setTrail((was) => was.slice(0, -1));
-      return;
-    }
+      setTrail((was) => {
+        const head = was[was.length - 1];
+        if (!head || same(head, to)) return was;
 
-    setTrail((was) => [...was, { x, y }]);
+        /* Back the way he came: rub the trail out behind him. */
+        const back = was.length >= 2 ? was[was.length - 2] : undefined;
+        if (back && same(back, to)) {
+          moved = true;
+          return was.slice(0, -1);
+        }
 
-    if (x === goal.x && y === goal.y) {
-      setArrived(true);
-      onArrive();
-    }
+        if (!isOpen(to.x, to.y)) return was;
+
+        const gap = apart(head, to);
+        if (gap === 1) {
+          moved = true;
+          return [...was, to];
+        }
+
+        /*
+          A fast finger can cross a whole square between two pointer events,
+          so one skipped square is bridged if there is exactly one open way
+          through it. Only one: bridging further would start solving the maze
+          on the child's behalf, which is the one thing this must not do.
+        */
+        if (gap === 2) {
+          const between = NEIGHBOURS.map((d) => ({
+            x: head.x + d.x,
+            y: head.y + d.y,
+          })).filter((p) => isOpen(p.x, p.y) && apart(p, to) === 1);
+
+          if (between.length === 1 && between[0]) {
+            moved = true;
+            return [...was, between[0], to];
+          }
+        }
+
+        return was;
+      });
+
+      return moved;
+    },
+    [arrived, isOpen, locked],
+  );
+
+  /* Arriving is a fact about the trail, so it is noticed where the trail is. */
+  useEffect(() => {
+    if (arrived || locked) return;
+    if (!same(at, goal)) return;
+    setArrived(true);
+    setDragging(false);
+    onArrive();
+  }, [arrived, at, goal, locked, onArrive]);
+
+  /** Which square is under a pointer, wall squares included. */
+  function squareUnder(clientX: number, clientY: number): Point | null {
+    const element = document
+      .elementFromPoint(clientX, clientY)
+      ?.closest<HTMLElement>("[data-way-cell]");
+    if (!element || !board.current?.contains(element)) return null;
+    const x = Number(element.dataset.x);
+    const y = Number(element.dataset.y);
+    return Number.isFinite(x) && Number.isFinite(y) ? { x, y } : null;
   }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
+    if (locked || arrived) return;
+    const square = squareUnder(event.clientX, event.clientY);
+    if (!square) return;
+
+    /* Picking him up. From here the finger drags rather than taps. */
+    if (same(square, at)) {
+      setDragging(true);
+      event.currentTarget.setPointerCapture(event.pointerId);
+      return;
+    }
+
+    /*
+      Not him, and not a drag. One tap on a square he cannot reach — a wall,
+      or somewhere across the maze — and the model says so once. This is the
+      only way a miss is reported: a finger grazing a wall while dragging
+      reports nothing, because it has not done anything wrong.
+    */
+    if (!walkTo(square)) onMiss();
+  }
+
+  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
+    if (!dragging || locked || arrived) return;
+    const square = squareUnder(event.clientX, event.clientY);
+    if (square) walkTo(square);
+  }
+
+  const stopDragging = () => setDragging(false);
 
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-4 px-2">
@@ -151,23 +251,33 @@ export default function ShowTheWay({
       </h2>
 
       <div
+        ref={board}
         className="way-maze"
+        data-dragging={dragging ? "" : undefined}
         style={{ gridTemplateColumns: `repeat(${width}, minmax(0, 1fr))` }}
         role="group"
         aria-label={interaction.prompt}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={stopDragging}
+        onPointerCancel={stopDragging}
       >
         {grid.flatMap((row, y) =>
           row.map((cell, x) => {
             const wall = cell === "#";
-            const here = at.x === x && at.y === y;
-            const isGoal = goal.x === x && goal.y === y;
-            const reachable = !wall && beside(x, y) && !arrived && !locked;
-            const lit = pointingAt?.x === x && pointingAt?.y === y;
+            const here = same(at, { x, y });
+            const isGoal = same(goal, { x, y });
+            const reachable =
+              !wall && apart(at, { x, y }) === 1 && !arrived && !locked;
+            const lit = pointingAt ? same(pointingAt, { x, y }) : false;
 
             if (wall) {
               return (
                 <span
                   key={`${x},${y}`}
+                  data-way-cell=""
+                  data-x={x}
+                  data-y={y}
                   className="way-cell is-wall"
                   aria-hidden
                 />
@@ -178,6 +288,9 @@ export default function ShowTheWay({
               <button
                 key={`${x},${y}`}
                 type="button"
+                data-way-cell=""
+                data-x={x}
+                data-y={y}
                 className={[
                   "way-cell",
                   onTrail(x, y) && "is-walked",
@@ -188,11 +301,11 @@ export default function ShowTheWay({
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                onClick={() => step(x, y)}
-                disabled={locked || arrived || !beside(x, y)}
+                onClick={() => walkTo({ x, y })}
+                disabled={locked || arrived || (!reachable && !here)}
                 aria-label={
                   here
-                    ? "Abraham is here"
+                    ? "Abraham is here. Drag him, or tap the next square."
                     : isGoal
                       ? "Canaan"
                       : reachable
