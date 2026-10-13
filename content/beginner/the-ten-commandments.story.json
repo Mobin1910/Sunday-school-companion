@@ -3,108 +3,52 @@
   "chapter": 17,
   "title": "The Ten Commandments",
   "reference": "Exodus 19 :1-7, 20: 1-21; St. Mark 12 :29—31",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 17 → “01 - Curriculum Source”: four pages, p.77 (title, prayer, Bible portion), p.78 (the lesson), p.79 (“Tell the Answers” and “Fill in the Blanks”) and p.82 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.80 and p.81 are not in Drive.** The folder was paginated to the end and holds exactly four photographs, and the page numbers jump from 79 to 82. Nothing in this chapter depends on them — all four printed questions are on p.79 and every answer is in the lesson on p.78 — but by the shape of this book two pages is more than an activity page, and they may well carry the ten commandments listed out in full, which this chapter summarises rather than lists. Worth a photograph if they do.\n\n**The workbook’s answer and the lesson’s answer disagree on question 2, and the games follow the lesson.** “Why did Moses climb up to the mountain.?” is answered on p.78 by “On the mountain God gave Moses instructions and directions which the Israelites were to practice in their life and in their journey.” But p.79’s “Fill in the Blanks” 2 offers only “to take rest” or “to pray”, and the lesson says neither. The second game uses the lesson’s reason as its correct answer and keeps “To rest from the journey” as a wrong option, so a child working from that page finds it here and finds it wrong. This is an editorial question for the teacher.\n\n**There is no `song`.** p.82’s “Learn to sing” says only “(Sing a suitable English song)” — a stage direction to the teacher rather than a song, in the same way Chapters 12 and 14 printed a stage direction where a prayer goes. There is nothing to carry, so the field is absent rather than filled with the instruction.\n\n`prayer` carries the Concluding Prayer from p.82. The opening prayer on p.77 is printed in full as well, but the schema holds one and the closing one is what the rest of this class carries.\n\nNo artwork yet. Twenty-four text cards, which is where Beginner Chapters 5 to 16 began before their panels arrived.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 17 → “01 - Curriculum Source”: four pages, p.77 (title, prayer, Bible portion), p.78 (the lesson), p.79 (“Tell the Answers” and “Fill in the Blanks”) and p.82 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.80 and p.81 are not in Drive.** The folder was paginated to the end and holds exactly four photographs, and the page numbers jump from 79 to 82. Nothing in this chapter depends on them — all four printed questions are on p.79 and every answer is in the lesson on p.78 — but by the shape of this book two pages is more than an activity page, and they may well carry the ten commandments listed out in full, which this chapter summarises rather than lists. Worth a photograph if they do.\n\n**The workbook’s answer and the lesson’s answer disagree on question 2, and the games follow the lesson.** “Why did Moses climb up to the mountain.?” is answered on p.78 by “On the mountain God gave Moses instructions and directions which the Israelites were to practice in their life and in their journey.” But p.79’s “Fill in the Blanks” 2 offers only “to take rest” or “to pray”, and the lesson says neither. The second game uses the lesson’s reason as its correct answer and keeps “To rest from the journey” as a wrong option, so a child working from that page finds it here and finds it wrong. This is an editorial question for the teacher.\n\n**There is no `song`.** p.82’s “Learn to sing” says only “(Sing a suitable English song)” — a stage direction to the teacher rather than a song, in the same way Chapters 12 and 14 printed a stage direction where a prayer goes. There is nothing to carry, so the field is absent rather than filled with the instruction.\n\n`prayer` carries the Concluding Prayer from p.82. The opening prayer on p.77 is printed in full as well, but the schema holds one and the closing one is what the rest of this class carries.\n\n**Artwork.** Ten panels and both covers came from Drive’s “04 - Story Artwork”, all twelve distinct by SHA-256, the folder enumerated by exact filename rather than by paging. The twenty-four text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 16 and to Primary 1 to 3. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nPanel 8 is 941×1671, one pixel short of the canonical 941×1672. Converted without distortion and nothing resized it.\n\n**Only three of the ten panels can be shelf cards, so one game has none.** Panels 1, 5, 6, 7, 8 and 10 all have a speech bubble cut mid-sentence by the square centre crop — at the size a card actually prints, about 165px, a cut bubble reads as broken text rather than as a picture. Panel 9 crops cleanly but letters “Jesus taught us to love God and our neighbors”, which is the fourth game’s answer, and the shelf is read whole before any game is played, so it is barred from every card and not just that one. The third game goes without, for the reason given in its note.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, both at the canonical sizes — 941×1672 portrait and 1672×941 landscape."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "You have heard this story before."
+      "alt": "A boy sits cross-legged on his bedroom rug with a toy truck and building blocks around him, Halo glowing beside him. The boy asks, “Halo, why do we have rules?” and Halo answers, “That’s a good question! Let’s discover why God gave His people commandments.”"
     },
     {
       "picture": "panel-02",
-      "text": "God’s people were slaves in Egypt."
+      "alt": "The boy and his little sister kneel on the floor building a tower out of coloured blocks together, Halo floating above them. Halo says, “Rules can help us do what is good and loving.” and the boy says, “I want to learn God’s rules!”"
     },
     {
       "picture": "panel-03",
-      "text": "Moses led them out to freedom."
+      "alt": "Moses stands at the front of a crowd of his people with his staff, tents pitched behind them and the bare rock of Mount Sinai rising into the sky. The caption reads, “After three months of their journey, the Israelites reached the wilderness near Mount Sinai.”"
     },
     {
       "picture": "panel-04",
-      "text": "God gave them manna and quail."
+      "alt": "Moses climbs the mountain path alone, his staff raised, looking up, with the whole camp and its tents spread out small on the plain below him. The caption reads, “Moses climbed Mount Sinai to receive God’s instructions.”"
     },
     {
       "picture": "panel-05",
-      "text": "A cloud went before them by day."
+      "alt": "Near the summit, lightning in dark cloud on one side and a burst of golden light on the other, Moses kneels with his hands open. The caption reads, “God gave Moses instructions for the Israelites to follow in their lives.” The light says, “These are My commandments for My people.” and Moses answers, “Yes, Lord! I will listen and obey.”"
     },
     {
       "picture": "panel-06",
-      "text": "A fire went before them by night."
+      "alt": "Moses stands in the light holding two stone tablets, one numbered I to V and the other VI to X in Hebrew lettering. The caption reads, “God gave Moses ten important commandments and wrote them on two stone tablets.” The light says, “These are My commandments for My people. Follow them and live the way I have shown you.”"
     },
     {
       "picture": "panel-07",
-      "text": "They walked for three long months."
+      "alt": "Moses holds both tablets up at the foot of the mountain, the heads of the people in front of him. The caption reads, “Moses came down the mountain and showed the people God’s commandments.” Moses says, “These are God’s commandments. Let us obey Him and live the way He wants us to.”"
     },
     {
       "picture": "panel-08",
-      "text": "They came to the desert near Mount Sinai."
+      "alt": "Moses holds one tablet against his chest and opens his other hand to the crowd. The caption reads, “Moses read God’s commandments to the people.” He says, “You shall love God with all your heart. You shall be kind, honest, and treat others with love. Do not steal, do not lie, and always do what is right.”"
     },
     {
       "picture": "panel-09",
-      "text": "There they pitched their tents."
+      "alt": "Back in the bedroom, the boy rests his chin on his hand beside a globe and a shelf of books, Halo glowing by him. The caption reads, “God wants us to understand and follow His commandments every day.” The boy asks, “So I should love God and the people around me?” and Halo answers, “Yes! Jesus taught us to love God and our neighbors.”"
     },
     {
       "picture": "panel-10",
-      "text": "Moses often climbed up the mountain."
-    },
-    {
-      "picture": "panel-11",
-      "text": "On the mountain God spoke to him."
-    },
-    {
-      "picture": "panel-12",
-      "text": "God gave him instructions for the people."
-    },
-    {
-      "picture": "panel-13",
-      "text": "There were ten important things to keep."
-    },
-    {
-      "picture": "panel-14",
-      "text": "Some were about God and his people."
-    },
-    {
-      "picture": "panel-15",
-      "text": "Some were about the people themselves."
-    },
-    {
-      "picture": "panel-16",
-      "text": "We call them the Ten Commandments."
-    },
-    {
-      "picture": "panel-17",
-      "text": "God wrote them on two stone tablets."
-    },
-    {
-      "picture": "panel-18",
-      "text": "He gave the tablets to Moses."
-    },
-    {
-      "picture": "panel-19",
-      "text": "Our Lord Jesus taught them to us."
-    },
-    {
-      "picture": "panel-20",
-      "text": "He put them into two commandments."
-    },
-    {
-      "picture": "panel-21",
-      "text": "“Love the Lord your God with all your heart.”"
-    },
-    {
-      "picture": "panel-22",
-      "text": "“With all your soul, mind and strength.”"
-    },
-    {
-      "picture": "panel-23",
-      "text": "“Love your neighbour as you love yourself.”"
-    },
-    {
-      "picture": "panel-24",
-      "text": "God wants us to follow his commandments."
+      "alt": "The boy sits at his desk with his eyes closed and his hands folded over an open book, Halo beside him. The caption reads, “God wants us to follow His commandments with devotion. We can show our love for God and our friends every day.” He says, “I will love God!” and “I will love my friends!” Halo answers, “That’s a wonderful decision! When we love God and others, we are following His commandments.”"
     }
   ],
   "curriculum": {
@@ -174,7 +118,8 @@
           ]
         }
       ],
-      "note": "The lesson opens by recapping chapters this class has already had — Egypt, Moses, the manna, the pillar of cloud and fire — before it reaches Sinai, so the first game is that recap put back in order. Every step is from p.78’s own first sentences. It answers question 1 by arriving at Sinai rather than by naming it from a list."
+      "note": "The lesson opens by recapping chapters this class has already had — Egypt, Moses, the manna, the pillar of cloud and fire — before it reaches Sinai, so the first game is that recap put back in order. Every step is from p.78’s own first sentences. It answers question 1 by arriving at Sinai rather than by naming it from a list.\n\nShelf picture panel-03. Moses at the head of his people with the tents pitched and Mount Sinai behind. The caption — “After three months of their journey, the Israelites reached the wilderness near Mount Sinai” — is cropped away, so the card carries no lettering. It shows the arrival, which is where this sequence ends, but a picture cannot give away an *order*: all five steps are already on the board and the task is putting them in line.",
+      "picture": "panel-03"
     },
     {
       "id": "up-the-mountain",
@@ -202,7 +147,8 @@
           ]
         }
       ],
-      "note": "**This game uses the lesson’s answer, not the workbook’s.** p.78 says “On the mountain God gave Moses instructions and directions”, so that is the correct option. p.79’s “Fill in the Blanks” 2 offers “to take rest / to pray”, neither of which the lesson says — see the chapter note. “To rest from the journey” is kept as a wrong option precisely because it is the workbook’s other choice, and a child who has been given that page should find it here and find it wrong."
+      "note": "**This game uses the lesson’s answer, not the workbook’s.** p.78 says “On the mountain God gave Moses instructions and directions”, so that is the correct option. p.79’s “Fill in the Blanks” 2 offers “to take rest / to pray”, neither of which the lesson says — see the chapter note. “To rest from the journey” is kept as a wrong option precisely because it is the workbook’s other choice, and a child who has been given that page should find it here and find it wrong.\n\nShelf picture panel-04. Moses climbing the path alone with the camp small below him. No lettering survives the crop, and what the picture shows is the question rather than the answer: he is climbing, which is what is being asked about, and nothing here says why.",
+      "picture": "panel-04"
     },
     {
       "id": "ten-on-two-tablets",
@@ -251,7 +197,7 @@
           ]
         }
       ],
-      "note": "Three numbers and a name, all from p.78. “Three → Months of the journey” is there so that ten and two are not the only numbers on the board — a child who can see there are exactly two numbers can pair them without remembering either. “Moses → Who climbed the mountain” does the same job for the other side."
+      "note": "Three numbers and a name, all from p.78. “Three → Months of the journey” is there so that ten and two are not the only numbers on the board — a child who can see there are exactly two numbers can pair them without remembering either. “Moses → Who climbed the mountain” does the same job for the other side.\n\n**No shelf picture, deliberately.** Every panel that draws the commandments draws two tablets with ten numerals on them — 6, 7 and 8 all do — and this game’s two answers are “Ten → how many commandments” and “Two → how many stone tablets”. A card that shows the answer is no better than one that letters it, which is the rule Chapter 16 applied to its altar panels. Of the ten panels only 2, 3 and 4 survive the square crop with their lettering whole; 9 crops clean but letters the fourth game’s answer, so it is barred from the shelf entirely. That leaves three cards for four games, and this is the game whose picture could not have been honest anyway. It renders as it did before the artwork arrived."
     },
     {
       "id": "what-jesus-taught",
@@ -297,7 +243,8 @@
           ]
         }
       ],
-      "note": "The lesson gives Jesus’ two commandments in full, so the question has an answer on the page. Both wrong options pair something real from this chapter with something else real from it — the mountain, Moses, the tablets — rather than inventing a plausible-sounding pair. The reveal then opens the two commandments themselves, four cards from p.78’s own wording, and answers nothing the game above it is marked on."
+      "note": "The lesson gives Jesus’ two commandments in full, so the question has an answer on the page. Both wrong options pair something real from this chapter with something else real from it — the mountain, Moses, the tablets — rather than inventing a plausible-sounding pair. The reveal then opens the two commandments themselves, four cards from p.78’s own wording, and answers nothing the game above it is marked on.\n\nShelf picture panel-02. The boy and his sister building together while Halo says rules help us do what is good and loving — the whole bubble survives the crop, and “I want to learn God’s rules!” is the chapter’s question rather than this game’s answer. Panel 9 is the obvious card for this game and is barred: it letters “Jesus taught us to love God and our neighbors”, which is the answer, and barred from the whole shelf rather than just from here — all four cards are read before any game is played.",
+      "picture": "panel-02"
     }
   ],
   "verse": {
