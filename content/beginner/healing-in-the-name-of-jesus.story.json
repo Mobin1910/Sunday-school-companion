@@ -3,124 +3,56 @@
   "chapter": 19,
   "title": "Healing — In the Name of Jesus",
   "reference": "Acts 3: 1-10",
-  "note": "Built from the curriculum photographs the teacher added for Chapter 19: four pages, p.87 (title, prayer, Bible portion), p.88 (the lesson), p.89 (“Tell the Answers” and a “Colour the picture” activity) and p.90 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — nothing missing, as in Chapter 16.\n\n**The four photographs are sitting directly in the Chapter 19 folder rather than inside its “01 - Curriculum Source” subfolder, which is empty.** They were read where they are and nothing in Drive was moved or renamed. Worth knowing only because the folder that usually holds them looks empty from the outside.\n\nFour games, four of four questions covered, two of four choose-one-of-N. The third answers no printed question and the gates note it; its own note says why it earns its place.\n\n`prayer` carries the Concluding Prayer from p.90. The opening prayer on p.87 is printed in full as well, but the schema holds one and the closing one is what most of this class carries.\n\n**The Memory Verse is printed twice in this chapter and the two copies differ by one word** — see the verse note. It is an editorial question for the teacher and nothing here guesses at it.\n\nThe stray full stops before the question marks — “there.?” in the lesson, “man.?” and “pray.?” in the questions — are the book’s and are carried verbatim.\n\nNo artwork yet. Twenty-eight text cards, which is where Beginner Chapters 5 to 18 began before their panels arrived.",
+  "note": "Built from the curriculum photographs the teacher added for Chapter 19: four pages, p.87 (title, prayer, Bible portion), p.88 (the lesson), p.89 (“Tell the Answers” and a “Colour the picture” activity) and p.90 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — nothing missing, as in Chapter 16.\n\n**The four photographs are sitting directly in the Chapter 19 folder rather than inside its “01 - Curriculum Source” subfolder, which is empty.** They were read where they are and nothing in Drive was moved or renamed. Worth knowing only because the folder that usually holds them looks empty from the outside.\n\nFour games, four of four questions covered, two of four choose-one-of-N. The third answers no printed question and the gates note it; its own note says why it earns its place.\n\n`prayer` carries the Concluding Prayer from p.90. The opening prayer on p.87 is printed in full as well, but the schema holds one and the closing one is what most of this class carries.\n\n**The Memory Verse is printed twice in this chapter and the two copies differ by one word** — see the verse note. It is an editorial question for the teacher and nothing here guesses at it.\n\nThe stray full stops before the question marks — “there.?” in the lesson, “man.?” and “pray.?” in the questions — are the book’s and are carried verbatim.\n\n**Artwork.** Eleven panels and both covers came from Drive’s “04 - Story Artwork”, all thirteen distinct by SHA-256, the folder enumerated by exact filename rather than by paging. The twenty-eight text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 18 and to Primary 1 to 3. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nThe frame story is a new one for this class and worth noting: it is set in a school playground, with a boy whose ankle is hurt and a friend who wants to help. The chapter ends not with a healing but with the friend praying for him — “I can’t heal your ankle, but I can pray for you!” — which is a more careful landing than this story could have had.\n\n**The artwork gives Peter a different line from the one the book prints, and it is the memory verse.** p.88 and p.90 both have “In the name of Jesus Christ of Nazareth, walk.” Panel 5 letters “But I have something much better. In the name of Jesus Christ, stand up and walk!” and panel 6 letters “In the name of Jesus Christ, stand up!” — both drop “of Nazareth” and both add “stand up”. The verse and the story cards follow the book; the panels are carried as drawn. A child who learns the verse and then reads the panel will see two wordings, so this is worth the teacher’s decision rather than a silent patch. It is the third chapter running where a panel and the lesson differ — Chapter 16 on Abraham’s name, Chapter 18 on the last line — and the first where the difference touches the Memory Verse itself.\n\n**Shelf cards were tight here.** Of the eleven panels only 3, 4, 7, 8 and 9 survive the square centre crop with their lettering whole; the other six have a bubble cut mid-sentence. Panel 7 then had to be barred on content — it letters “All glory to Jesus Christ!”, and naming Jesus is the fourth game’s answer — which left exactly four cards for four games. Every game has one.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported. **The portrait cover is 982×1602, where every panel in this chapter is 941×1672.** It was converted without distortion, but it is a slightly different shape from the rest and from most other covers in this class, so it will not crop the same way on the shelf. Beginner Chapter 13’s cover has the same quirk. The landscape cover is the canonical 1672×941."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Have you seen people begging for money?"
+      "alt": "A boy in a red shirt sits on a low wall at the edge of a school playground with his leg bandaged, another boy crouching beside him and Halo glowing behind them, children playing football in the background. The hurt boy says, “My ankle hurts. I can’t play today.” and his friend asks, “Are you okay? Why aren’t you playing?”"
     },
     {
       "picture": "panel-02",
-      "text": "They hope for food and money from us."
+      "alt": "The friend sits alone on the wall with his chin on his hand, thinking, Halo floating beside him. He says, “I wish I could do something to help him!” and Halo answers, “Let’s discover a story about two friends who helped someone in need.”"
     },
     {
       "picture": "panel-03",
-      "text": "One day Peter and John went to the temple."
+      "alt": "A man in a torn brown cloak sits on the ground against the temple wall with his hand held out, his crutch beside him, pilgrims passing by. The caption reads, “Every day, a man who could not walk was carried to the Beautiful Gate of the temple to beg.” He says, “Please give me some money.”"
     },
     {
       "picture": "panel-04",
-      "text": "It was three in the afternoon, the time of prayer."
+      "alt": "Two men stop in front of him — one in a blue cloak reaching out a hand, the other behind in green. The caption reads, “As Peter and John were going to the temple to pray, the man looked at them, expecting to receive something.” Peter says, “Look at us!” and the beggar says, “Please give me some money.”"
     },
     {
       "picture": "panel-05",
-      "text": "A man sat at the temple gate."
+      "alt": "Peter leans down with an open hand while the man reaches up from the ground. The caption reads, “But Peter and John did not give him money. Instead, Peter said something unexpected.” Peter says, “I don’t have any silver or gold for you.” and “But I have something much better. In the name of Jesus Christ, stand up and walk!”"
     },
     {
       "picture": "panel-06",
-      "text": "He had been lame from birth."
+      "alt": "Peter has taken the man by the hand and is pulling him up off the ground. The caption reads, “Peter reached out, took the man by the hand, and helped him to stand up.” Peter says, “In the name of Jesus Christ, stand up!” and the man asks, “What really?”"
     },
     {
       "picture": "panel-07",
-      "text": "The gate was called Beautiful."
+      "alt": "The man is on his feet with both arms thrown up, mid-leap, Peter watching beside him. The caption reads, “Right away, the man’s feet and ankles became strong. He stood up, walked and even jumped!” The man shouts, “I can walk! I can walk!” and Peter answers, “All glory to Jesus Christ!”"
     },
     {
       "picture": "panel-08",
-      "text": "Every day they carried him there to beg."
+      "alt": "The man walks forward with both hands lifted, Peter beside him and a crowd gathering behind. The caption reads, “The man who had never walked began to walk! He jumped, praised God and went into the temple with Peter and John.” He says, “Thank you, God! I can walk!”"
     },
     {
       "picture": "panel-09",
-      "text": "He begged from the people going in."
+      "alt": "The man is jumping with one fist in the air, Peter and John each side of him and the crowd pressing in. The caption reads, “The man who had been lame his whole life was now walking, jumping and praising God!” He says, “Thank you, God! Thank you!”"
     },
     {
       "picture": "panel-10",
-      "text": "He saw Peter and John coming."
+      "alt": "Back at the playground, the friend turns to the hurt boy on the bench with an open hand, Halo between them. He says, “I can’t heal your ankle, but I can pray for you!” and Halo answers, “That’s kind! We can pray for people and care for them, too.”"
     },
     {
       "picture": "panel-11",
-      "text": "He asked them for some money."
-    },
-    {
-      "picture": "panel-12",
-      "text": "Peter looked straight at him. So did John."
-    },
-    {
-      "picture": "panel-13",
-      "text": "Peter said, “Look at us!”"
-    },
-    {
-      "picture": "panel-14",
-      "text": "The man looked, hoping for something."
-    },
-    {
-      "picture": "panel-15",
-      "text": "“Silver or gold I do not have.”"
-    },
-    {
-      "picture": "panel-16",
-      "text": "“But what I do have I give you.”"
-    },
-    {
-      "picture": "panel-17",
-      "text": "“In the name of Jesus Christ of Nazareth, walk.”"
-    },
-    {
-      "picture": "panel-18",
-      "text": "Peter took him by the right hand."
-    },
-    {
-      "picture": "panel-19",
-      "text": "He helped the man up."
-    },
-    {
-      "picture": "panel-20",
-      "text": "At once his feet and ankles became strong."
-    },
-    {
-      "picture": "panel-21",
-      "text": "The man had never walked before."
-    },
-    {
-      "picture": "panel-22",
-      "text": "Now he stood up and walked."
-    },
-    {
-      "picture": "panel-23",
-      "text": "He walked and praised God aloud."
-    },
-    {
-      "picture": "panel-24",
-      "text": "All the people saw him walking."
-    },
-    {
-      "picture": "panel-25",
-      "text": "They were filled with wonder and amazement."
-    },
-    {
-      "picture": "panel-26",
-      "text": "How could the disciples heal him?"
-    },
-    {
-      "picture": "panel-27",
-      "text": "They believed in Jesus of Nazareth."
-    },
-    {
-      "picture": "panel-28",
-      "text": "In the name of Jesus they healed him."
+      "alt": "Both boys sit on the bench with their eyes closed and their hands folded, Halo glowing above them. The caption reads, “So, the boy prayed for his friend, asking Jesus to help him heal. He also decided to be a good friend and care for him.” Halo says, “Jesus hears our prayers! Let’s also keep showing love and care for our friends.”"
     }
   ],
   "curriculum": {
@@ -202,7 +134,8 @@
           ]
         }
       ],
-      "note": "Two of the four printed questions in one board. The two extra pairs are not padding: “Three in the afternoon → The time of prayer” and “Lame from birth → The man at the gate” are both from the lesson’s own second paragraph, and without them the board has two answers and two slots, so the second pair falls out by elimination rather than by being remembered."
+      "note": "Two of the four printed questions in one board. The two extra pairs are not padding: “Three in the afternoon → The time of prayer” and “Lame from birth → The man at the gate” are both from the lesson’s own second paragraph, and without them the board has two answers and two slots, so the second pair falls out by elimination rather than by being remembered.\n\nShelf picture panel-03. The beggar against the temple wall with his hand out. The caption names the Beautiful Gate in its first line — one of this board’s two answers — and the crop takes it away, leaving one bubble, “Please give me some money.”, which is the question this chapter opens on rather than anything the board is marked on.",
+      "picture": "panel-03"
     },
     {
       "id": "silver-or-gold",
@@ -230,7 +163,8 @@
           ]
         }
       ],
-      "note": "The printed question is “What did Peter say to the lame man?” and the lesson’s answer is three sentences long, so the option carries the part that matters — the name he said it in. Both wrong options are the two things the man was actually expecting, money now or money later; the lesson says twice that he was hoping to get something from them."
+      "note": "The printed question is “What did Peter say to the lame man?” and the lesson’s answer is three sentences long, so the option carries the part that matters — the name he said it in. Both wrong options are the two things the man was actually expecting, money now or money later; the lesson says twice that he was hoping to get something from them.\n\nShelf picture panel-04. The moment before the answer: Peter stopping in front of him, the beggar still asking for money. Both bubbles survive the crop whole and neither is what Peter actually said — “Look at us!” comes first, and the silver-and-gold line that this game asks for is on panels 5 and 6, which are barred. The caption, which names Peter and John, is cropped away.",
+      "picture": "panel-04"
     },
     {
       "id": "the-man-who-walked",
@@ -265,7 +199,8 @@
           ]
         }
       ],
-      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because this story is a clean five-step shape: he begs, Peter calls to him, Peter takes his hand, his feet hold, he walks. It deliberately does not contain the words Peter said — the game before it asks for those."
+      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because this story is a clean five-step shape: he begs, Peter calls to him, Peter takes his hand, his feet hold, he walks. It deliberately does not contain the words Peter said — the game before it asks for those.\n\nShelf picture panel-09. The man mid-jump with Peter and John either side. The caption is cropped away and the one bubble, “Thank you, God! Thank you!”, is the praising rather than any step’s wording. It shows where this sequence ends, which a sequence can afford: all five steps are already on the board and the task is the order, which no picture can give.",
+      "picture": "panel-09"
     },
     {
       "id": "in-whose-name",
@@ -311,7 +246,8 @@
           ]
         }
       ],
-      "note": "The chapter’s point in one question, and the lesson ends on it: “In the name of Jesus they healed him.” Both wrong options are the two disciples who were actually standing there, which is the mistake worth making — a child who thinks the power was Peter’s has missed the lesson’s last line. The reveal is what the crowd saw, four cards from p.88’s own wording, and it answers nothing the game above it is marked on."
+      "note": "The chapter’s point in one question, and the lesson ends on it: “In the name of Jesus they healed him.” Both wrong options are the two disciples who were actually standing there, which is the mistake worth making — a child who thinks the power was Peter’s has missed the lesson’s last line. The reveal is what the crowd saw, four cards from p.88’s own wording, and it answers nothing the game above it is marked on.\n\nShelf picture panel-08. The healed man walking with his hands lifted. The crop letters “Thank you, God! I can walk!” — which thanks God and does not name Jesus, and naming Jesus is exactly this game’s answer. Panel 7 crops just as cleanly and is barred for the opposite reason: Peter’s bubble there reads “All glory to Jesus Christ!”",
+      "picture": "panel-08"
     }
   ],
   "verse": {
