@@ -1,0 +1,422 @@
+{
+  "class": "beginner",
+  "chapter": 19,
+  "title": "Healing — In the Name of Jesus",
+  "reference": "Acts 3: 1-10",
+  "note": "Built from the curriculum photographs the teacher added for Chapter 19: four pages, p.87 (title, prayer, Bible portion), p.88 (the lesson), p.89 (“Tell the Answers” and a “Colour the picture” activity) and p.90 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — nothing missing, as in Chapter 16.\n\n**The four photographs are sitting directly in the Chapter 19 folder rather than inside its “01 - Curriculum Source” subfolder, which is empty.** They were read where they are and nothing in Drive was moved or renamed. Worth knowing only because the folder that usually holds them looks empty from the outside.\n\nFour games, four of four questions covered, two of four choose-one-of-N. The third answers no printed question and the gates note it; its own note says why it earns its place.\n\n`prayer` carries the Concluding Prayer from p.90. The opening prayer on p.87 is printed in full as well, but the schema holds one and the closing one is what most of this class carries.\n\n**The Memory Verse is printed twice in this chapter and the two copies differ by one word** — see the verse note. It is an editorial question for the teacher and nothing here guesses at it.\n\nThe stray full stops before the question marks — “there.?” in the lesson, “man.?” and “pray.?” in the questions — are the book’s and are carried verbatim.\n\nNo artwork yet. Twenty-eight text cards, which is where Beginner Chapters 5 to 18 began before their panels arrived.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Have you seen people begging for money?"
+    },
+    {
+      "picture": "panel-02",
+      "text": "They hope for food and money from us."
+    },
+    {
+      "picture": "panel-03",
+      "text": "One day Peter and John went to the temple."
+    },
+    {
+      "picture": "panel-04",
+      "text": "It was three in the afternoon, the time of prayer."
+    },
+    {
+      "picture": "panel-05",
+      "text": "A man sat at the temple gate."
+    },
+    {
+      "picture": "panel-06",
+      "text": "He had been lame from birth."
+    },
+    {
+      "picture": "panel-07",
+      "text": "The gate was called Beautiful."
+    },
+    {
+      "picture": "panel-08",
+      "text": "Every day they carried him there to beg."
+    },
+    {
+      "picture": "panel-09",
+      "text": "He begged from the people going in."
+    },
+    {
+      "picture": "panel-10",
+      "text": "He saw Peter and John coming."
+    },
+    {
+      "picture": "panel-11",
+      "text": "He asked them for some money."
+    },
+    {
+      "picture": "panel-12",
+      "text": "Peter looked straight at him. So did John."
+    },
+    {
+      "picture": "panel-13",
+      "text": "Peter said, “Look at us!”"
+    },
+    {
+      "picture": "panel-14",
+      "text": "The man looked, hoping for something."
+    },
+    {
+      "picture": "panel-15",
+      "text": "“Silver or gold I do not have.”"
+    },
+    {
+      "picture": "panel-16",
+      "text": "“But what I do have I give you.”"
+    },
+    {
+      "picture": "panel-17",
+      "text": "“In the name of Jesus Christ of Nazareth, walk.”"
+    },
+    {
+      "picture": "panel-18",
+      "text": "Peter took him by the right hand."
+    },
+    {
+      "picture": "panel-19",
+      "text": "He helped the man up."
+    },
+    {
+      "picture": "panel-20",
+      "text": "At once his feet and ankles became strong."
+    },
+    {
+      "picture": "panel-21",
+      "text": "The man had never walked before."
+    },
+    {
+      "picture": "panel-22",
+      "text": "Now he stood up and walked."
+    },
+    {
+      "picture": "panel-23",
+      "text": "He walked and praised God aloud."
+    },
+    {
+      "picture": "panel-24",
+      "text": "All the people saw him walking."
+    },
+    {
+      "picture": "panel-25",
+      "text": "They were filled with wonder and amazement."
+    },
+    {
+      "picture": "panel-26",
+      "text": "How could the disciples heal him?"
+    },
+    {
+      "picture": "panel-27",
+      "text": "They believed in Jesus of Nazareth."
+    },
+    {
+      "picture": "panel-28",
+      "text": "In the name of Jesus they healed him."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 19 “Healing - In the Name of Jesus”, p.89 — “Tell the Answers”",
+    "note": "All four questions transcribed from the printed page, punctuation included — the stray full stops before the question marks in 3 and 4 are the book’s, not typos here. The “Colour the picture” activity on the same page is not recorded: it is a drawing task with no answer.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "At which temple gate was the crippled man begging?",
+        "objective": "Remember that the man begged at the temple gate called Beautiful.",
+        "answer": "The gate called Beautiful. “…a man who was lame from birth was being carried to the temple gate called Beautiful, where he was put every day to beg…” (p.88)"
+      },
+      {
+        "n": 2,
+        "question": "Which of Jesus’ disciples came to the temple?",
+        "objective": "Remember that Peter and John came to the temple.",
+        "answer": "Peter and John. “One day Peter and John were going up to the temple at the time of prayer—at three in the afternoon.” (p.88)"
+      },
+      {
+        "n": 3,
+        "question": "What did Peter say to the lame man.?",
+        "objective": "Remember that Peter had no silver or gold and told him to walk in the name of Jesus.",
+        "answer": "“Silver or gold I do not have, but what I do have I give you. In the name of Jesus Christ of Nazareth, walk.” (p.88)"
+      },
+      {
+        "n": 4,
+        "question": "In whose name do we pray.?",
+        "objective": "Remember that we pray in the name of Jesus.",
+        "answer": "In the name of Jesus. “In the name of Jesus they healed him.” (p.88)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "at-the-beautiful-gate",
+      "title": "At the Beautiful Gate",
+      "objective": "Remember that the man begged at the gate called Beautiful, and that Peter and John were the two who came.",
+      "answers": [
+        1,
+        2
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Who and where in this story?",
+          "pairs": [
+            {
+              "from": {
+                "label": "Beautiful"
+              },
+              "to": {
+                "label": "The name of the gate"
+              }
+            },
+            {
+              "from": {
+                "label": "Peter and John"
+              },
+              "to": {
+                "label": "The two who came"
+              }
+            },
+            {
+              "from": {
+                "label": "Three in the afternoon"
+              },
+              "to": {
+                "label": "The time of prayer"
+              }
+            },
+            {
+              "from": {
+                "label": "Lame from birth"
+              },
+              "to": {
+                "label": "The man at the gate"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Two of the four printed questions in one board. The two extra pairs are not padding: “Three in the afternoon → The time of prayer” and “Lame from birth → The man at the gate” are both from the lesson’s own second paragraph, and without them the board has two answers and two slots, so the second pair falls out by elimination rather than by being remembered."
+    },
+    {
+      "id": "silver-or-gold",
+      "title": "Silver or Gold",
+      "objective": "Remember what Peter said to the lame man when he asked for money.",
+      "answers": [
+        3
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did Peter say to the man?",
+          "hint": "He had no money to give.",
+          "options": [
+            {
+              "label": "“In Jesus’ name, walk”",
+              "correct": true
+            },
+            {
+              "label": "“Here is some silver”"
+            },
+            {
+              "label": "“Come back tomorrow”"
+            }
+          ]
+        }
+      ],
+      "note": "The printed question is “What did Peter say to the lame man?” and the lesson’s answer is three sentences long, so the option carries the part that matters — the name he said it in. Both wrong options are the two things the man was actually expecting, money now or money later; the lesson says twice that he was hoping to get something from them."
+    },
+    {
+      "id": "the-man-who-walked",
+      "title": "The Man Who Walked",
+      "objective": "Follow what happened at the gate, from the begging to the walking.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the healing in order.",
+          "hint": "He is begging first.",
+          "items": [
+            {
+              "label": "He begged at the gate",
+              "position": 1
+            },
+            {
+              "label": "Peter said “Look at us!”",
+              "position": 2
+            },
+            {
+              "label": "Peter took his right hand",
+              "position": 3
+            },
+            {
+              "label": "His feet became strong",
+              "position": 4
+            },
+            {
+              "label": "He walked and praised God",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because this story is a clean five-step shape: he begs, Peter calls to him, Peter takes his hand, his feet hold, he walks. It deliberately does not contain the words Peter said — the game before it asks for those."
+    },
+    {
+      "id": "in-whose-name",
+      "title": "In Whose Name",
+      "objective": "Remember that we pray in the name of Jesus, and what the people saw when the man walked.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "In whose name do we pray?",
+          "hint": "The same name Peter used.",
+          "options": [
+            {
+              "label": "Jesus",
+              "correct": true
+            },
+            {
+              "label": "Peter"
+            },
+            {
+              "label": "John"
+            }
+          ]
+        },
+        {
+          "type": "reveal",
+          "prompt": "Turn over what the people saw.",
+          "items": [
+            {
+              "label": "A man walking"
+            },
+            {
+              "label": "A man praising God"
+            },
+            {
+              "label": "He had never walked"
+            },
+            {
+              "label": "Wonder and amazement"
+            }
+          ]
+        }
+      ],
+      "note": "The chapter’s point in one question, and the lesson ends on it: “In the name of Jesus they healed him.” Both wrong options are the two disciples who were actually standing there, which is the mistake worth making — a child who thinks the power was Peter’s has missed the lesson’s last line. The reveal is what the crowd saw, four cards from p.88’s own wording, and it answers nothing the game above it is marked on."
+    }
+  ],
+  "verse": {
+    "text": "Silver or gold I do not have, but what I have I give you. In the name of Jesus Christ of Nazareth, walk.",
+    "reference": "Acts 3:6",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins with what Peter did not have.",
+        "options": [
+          {
+            "label": "Silver or gold",
+            "correct": true
+          },
+          {
+            "label": "Bread or water"
+          },
+          {
+            "label": "Hope or help"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary pairs rather than invented scripture — a drill that teaches a child to reject a plausible-sounding verse has put two plausible-sounding verses in front of them, and only one of them is real."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with what he did not have.",
+        "words": [
+          "Silver or gold I do not have,",
+          "but what I have I give you.",
+          "In the name of Jesus Christ of Nazareth, walk."
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes — which here is also where the verse turns, from what he has not to what he has. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Silver or ______ I do not have,",
+        "hint": "The missing word starts with “g”.",
+        "options": [
+          {
+            "label": "gold",
+            "correct": true
+          },
+          {
+            "label": "Silver"
+          },
+          {
+            "label": "walk"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used exactly as it came out — prompt, hint and all three options unedited. No trailing punctuation came through on any option this time."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "Silver or gold",
+          "I do not have,",
+          "but what I have I give you.",
+          "In the name of",
+          "Jesus Christ of Nazareth, walk."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three. This is the longest verse in the class at twenty-three words, so the five pieces are longer than usual rather than more numerous: five is the shape every chapter uses and a six-year-old counting out nine tiles would be doing a different task. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "Not a Gospel — the book after them.",
+        "options": [
+          {
+            "label": "Acts 3",
+            "correct": true
+          },
+          {
+            "label": "St. Luke 2"
+          },
+          {
+            "label": "Psalm 119"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. **This is the first verse this class has learned from Acts**; every one before it came from a Gospel, a Psalm, or the books of Moses. Both distractors are verses this child has just met: St. Luke 2 was Chapter 18’s and Psalm 119 was Chapter 17’s."
+      }
+    ],
+    "note": "Read from p.90 through the Memory Verse agent: `--fetch --source-dir` over the four curriculum photographs, the supervised read, then `--from-extraction`.\n\n**The book prints this verse twice, and the two are not identical.** p.88, inside the lesson, has Peter say “Silver or gold I do not have, but what I **do** have I give you.” The Memory Verse block on p.90 drops that “do”: “but what I have I give you”. p.88’s form is the one the NIV carries. What is here is **p.90’s**, because p.90 is the Memory Verse page and the Memory Verse is what a child is asked to keep — but the difference is one word of scripture and it is the teacher’s to settle, not this app’s. The story cards, which follow the lesson, carry p.88’s fuller form, so both are in the chapter and neither was invented.\n\nTwo smaller things about p.90: “Then Peter said,” sits outside the quotation marks, so it is the book’s narrative lead-in and not part of the verse, as in Chapter 18; and the quotation runs “give you .In the name” with the space on the wrong side of the stop, carried here as an ordinary “. In”.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 18 of this class use. Stage 3 is the agent’s own Beginner rung, unedited.\n\nTranslation is unresolved, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I believe that Jesus can heal.",
+    "note": "The curriculum’s own My Decision from p.90, word for word."
+  },
+  "song": {
+    "lines": [
+      "Shree yeshu naamum aathishaya-naamum",
+      "Yeazhaenikkimpanaamum………"
+    ],
+    "note": "The two lines of the “Learn to sing” song on p.90, in the Latin script the book prints them in, including its trailing ellipsis. Not translated and not completed."
+  },
+  "prayer": {
+    "text": "Thank you God for the love that heals our sicknesses. Teach us to treat the sick and afflicted with compassion. Amen.",
+    "note": "The Concluding Prayer from p.90, word for word."
+  },
+  "celebration": {
+    "message": "In the name of Jesus, the man stood up and walked.",
+    "note": "The turn of the chapter, from p.88. The lesson answers its own closing question — how were the disciples able to heal him — and the answer is not that they were strong but whose name they used."
+  }
+}
