@@ -3,120 +3,64 @@
   "chapter": 18,
   "title": "The Boy Jesus at the Temple",
   "reference": "St. Luke 2: 41-50",
-  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 18 → “01 - Curriculum Source”: three pages, p.83 (title, prayer, Bible portion), p.84 (the lesson and “Tell the Answers”) and p.86 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.85 is not in Drive.** The folder was paginated to the end and holds exactly three photographs, and the page numbers jump from 84 to 86 — the same shape as Chapter 14, which skipped p.65. By the shape of this book the missing page is the activity page. Nothing here depends on it: all six printed questions are on p.84 and every answer is in the lesson above them. Worth a photograph if it carries something.\n\n**Both of this chapter’s prayers are not where you would expect.** p.83’s opening prayer is printed in full; p.86’s Concluding Prayer is the stage direction “(Let one child pray. )”. So `prayer` carries the **opening** prayer, as in Chapter 15 and unlike Chapters 12, 14 and 17 where it was the other way round. And there is no `song`: p.86’s “Learn to sing” says only “(Sing a suitable English song.)”, which is an instruction to the teacher, exactly as in Chapter 17.\n\n**A small mismatch between a question and the lesson, flagged rather than patched.** Printed question 4 asks “How long did Jesus sit in the Temple among the teachers.?”. p.84 says only “After three days they found him in the temple courts” — which is how long the *searching* took, not how long he sat. The answer the book is looking for is three days and that is what the second game teaches, but it asks the question the lesson can actually answer: how long until they found him. An editorial question for the teacher.\n\nThe stray full stops before the question marks — “year.?”, “journey.?”, “festival.?”, “teachers.?”, “this.?” — are the book’s and are carried verbatim in `curriculum`. The same stop appears inside the Memory Verse on p.86.\n\nNo artwork yet. Twenty-seven text cards, which is where Beginner Chapters 5 to 17 began before their panels arrived.",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 18 → “01 - Curriculum Source”: three pages, p.83 (title, prayer, Bible portion), p.84 (the lesson and “Tell the Answers”) and p.86 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.85 is not in Drive.** The folder was paginated to the end and holds exactly three photographs, and the page numbers jump from 84 to 86 — the same shape as Chapter 14, which skipped p.65. By the shape of this book the missing page is the activity page. Nothing here depends on it: all six printed questions are on p.84 and every answer is in the lesson above them. Worth a photograph if it carries something.\n\n**Both of this chapter’s prayers are not where you would expect.** p.83’s opening prayer is printed in full; p.86’s Concluding Prayer is the stage direction “(Let one child pray. )”. So `prayer` carries the **opening** prayer, as in Chapter 15 and unlike Chapters 12, 14 and 17 where it was the other way round. And there is no `song`: p.86’s “Learn to sing” says only “(Sing a suitable English song.)”, which is an instruction to the teacher, exactly as in Chapter 17.\n\n**A small mismatch between a question and the lesson, flagged rather than patched.** Printed question 4 asks “How long did Jesus sit in the Temple among the teachers.?”. p.84 says only “After three days they found him in the temple courts” — which is how long the *searching* took, not how long he sat. The answer the book is looking for is three days and that is what the second game teaches, but it asks the question the lesson can actually answer: how long until they found him. An editorial question for the teacher.\n\nThe stray full stops before the question marks — “year.?”, “journey.?”, “festival.?”, “teachers.?”, “this.?” — are the book’s and are carried verbatim in `curriculum`. The same stop appears inside the Memory Verse on p.86.\n\n**Artwork.** Thirteen panels and both covers came from Drive’s “04 - Story Artwork”, all fifteen distinct by SHA-256, the folder enumerated by exact filename rather than by paging. The twenty-seven text cards this chapter first shipped with are gone rather than reconciled, which is what happened to Beginner Chapters 5 to 17 and to Primary 1 to 3. Each card is now a picture with `alt` describing the scene and quoting what is lettered on it.\n\nThis is the kindest set of panels the class has had for shelf cards: twelve of the thirteen survive the square centre crop with their lettering whole, where Chapter 17 managed three of ten. Only panel 2 is cut. Two panels are barred on content instead — 10 and 11 letter the answers to printed questions 5 and 6 — and all four games still have a picture.\n\nPanels 4 and 5 are 941×1671, one pixel short of the canonical 941×1672. Converted without distortion and nothing resized them.\n\n**Three things in the artwork worth the teacher’s eye.**\n\n1. **Panels 6 and 7 carry the same caption, word for word** — “After travelling for a day, Mary and Joseph realized that Jesus was not with them. They began looking for Him among their relatives and friends.” The scenes differ, the road and then the camp, and both are good; the repetition reads as a duplicated caption rather than a deliberate beat. Carried as drawn and recorded here.\n\n2. **Panel 12 softens the lesson’s last line.** p.84 ends “But they did not understand what he was saying to them”; the panel reads “When they heard this, they did not say anything.” Not understanding and not speaking are different things, and the lesson’s is the harder and more interesting one. The `celebration` and the story still follow the lesson.\n\n3. **Panel 11 letters the Memory Verse exactly** — “Didn’t you know I had to be in my Father’s house?”, with “my Father’s house” picked out in colour. It is the only confirmation of the wording outside p.86, and it agrees with what the verse carries, including the plain question mark where p.86 prints “.?”.",
   "cover": {
     "picture": "cover",
     "landscape": "cover-landscape",
-    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+    "note": "Both drawn and imported, both at the canonical sizes — 941×1672 portrait and 1672×941 landscape."
   },
   "story": [
     {
       "picture": "panel-01",
-      "text": "Every year Jesus’ parents went to Jerusalem."
+      "alt": "A boy with a backpack stands at the open door of a church, pointing up at the cross on the gable, families going in ahead of him and Halo glowing beside him. The caption reads, “Have you ever wondered why we go to church? It is a special place where we come together to worship God, learn about Him, and grow together.” Halo asks, “Where do we go to worship God?” and the boy answers, “To church!”"
     },
     {
       "picture": "panel-02",
-      "text": "They went for the Festival of the Passover."
+      "alt": "Inside the church, stained glass and a wooden cross, a band playing and a woman reading from a Bible at the front, children in the pews with their hands folded. The caption reads, “At church, we come together to worship God, learn His Word, and grow together.” Halo says, “That’s right! Look at all the ways we can be part of God’s house!”, a girl says, “We can pray, sing, listen and learn!”, and Halo asks, “Exactly! And do you know who loved being in God’s house too?”"
     },
     {
       "picture": "panel-03",
-      "text": "One year Jesus was twelve years old."
+      "alt": "A golden ribbon of light opens out of the church and a sunlit city appears behind it, with a man, a woman and a boy walking in it. The caption reads, “Jesus loved going to God’s house too. When Jesus was twelve years old, something special happened in Jerusalem.” The boy asks, “Jesus?”, Halo answers, “Yes! Jesus.” and then, “Let’s go back in time and see what happened.”"
     },
     {
       "picture": "panel-04",
-      "text": "He went up to the festival with them."
+      "alt": "Mary, Joseph and the boy Jesus walk together through a crowd toward the great gold-fronted temple, banners flying and pilgrims all around them. The caption reads, “Jesus and His family arrived in Jerusalem for the Festival of the Passover. They travelled together with their relatives and friends and spent the festival in Jerusalem.”"
     },
     {
       "picture": "panel-05",
-      "text": "When the festival was over, they started home."
+      "alt": "A long column of travellers winds away down a hillside road with the city on the ridge behind them, Mary and Joseph among them. The caption reads, “After the festival was over, Mary and Joseph began the journey home with their relatives and friends. They thought Jesus was travelling with the group.”"
     },
     {
       "picture": "panel-06",
-      "text": "But the boy Jesus stayed behind in Jerusalem."
+      "alt": "Mary has stopped on the road with a hand on Joseph’s arm, both of them looking back. The caption reads, “After travelling for a day, Mary and Joseph realized that Jesus was not with them. They began looking for Him among their relatives and friends.” Mary asks, “Where is Jesus?” and Joseph answers, “Let’s look for Him among our relatives and friends.”"
     },
     {
       "picture": "panel-07",
-      "text": "His parents did not know it."
+      "alt": "The camp at the roadside, tents and loaded donkeys and barrels, Mary turning among the crowd with her hand at her chest while Joseph shades his eyes and searches. The caption is the same as the panel before it, word for word: “After travelling for a day, Mary and Joseph realized that Jesus was not with them. They began looking for Him among their relatives and friends.”"
     },
     {
       "picture": "panel-08",
-      "text": "They thought he was with their company."
+      "alt": "Mary and Joseph walking back up the road toward Jerusalem, the walled city ahead of them, other travellers passing the other way. The caption reads, “They could not find Jesus among their relatives and friends. So they went back to Jerusalem to look for Him.” Mary says, “We must go back to Jerusalem.” and Joseph answers, “Yes. We will find Him.”"
     },
     {
       "picture": "panel-09",
-      "text": "They travelled on for a whole day."
+      "alt": "The boy Jesus sits on the temple steps among bearded teachers, one hand raised as he speaks, the men leaning in to listen, and Mary and Joseph coming up the steps behind them. The caption reads, “After three days, they found Him in the Temple courts, sitting among the teachers, listening to them and asking questions.”"
     },
     {
       "picture": "panel-10",
-      "text": "Then they began to look for him."
+      "alt": "Mary kneels down to Jesus on the steps with a hand on his shoulder, Joseph behind her. The caption reads, “When His parents saw Him, they were amazed. Mary spoke to Jesus.” Mary says, “Son, why have you treated us like this?” and “Your father and I have been anxiously searching for you.”"
     },
     {
       "picture": "panel-11",
-      "text": "They looked among their relatives and friends."
+      "alt": "Jesus sits facing his mother with both hands open as he answers her, the teachers still around them. The caption reads, “Jesus answered His mother.” Jesus asks, “Why were you searching for me?” and “Didn’t you know I had to be in my Father’s house?”"
     },
     {
       "picture": "panel-12",
-      "text": "They did not find him anywhere."
+      "alt": "Mary and Jesus sit together on the step, looking at each other, Joseph standing quietly behind with his hand to his chin. The caption reads, “When they heard this, they did not say anything.”"
     },
     {
       "picture": "panel-13",
-      "text": "So they went back to Jerusalem."
-    },
-    {
-      "picture": "panel-14",
-      "text": "After three days they found him."
-    },
-    {
-      "picture": "panel-15",
-      "text": "He was sitting in the temple courts."
-    },
-    {
-      "picture": "panel-16",
-      "text": "He sat among the teachers there."
-    },
-    {
-      "picture": "panel-17",
-      "text": "He listened to them and asked them questions."
-    },
-    {
-      "picture": "panel-18",
-      "text": "Everyone who heard him was amazed."
-    },
-    {
-      "picture": "panel-19",
-      "text": "They wondered at his understanding and his answers."
-    },
-    {
-      "picture": "panel-20",
-      "text": "His parents were astonished to see him."
-    },
-    {
-      "picture": "panel-21",
-      "text": "His mother spoke to him."
-    },
-    {
-      "picture": "panel-22",
-      "text": "“Son, why have you treated us like this?”"
-    },
-    {
-      "picture": "panel-23",
-      "text": "“Your father and I have been searching for you.”"
-    },
-    {
-      "picture": "panel-24",
-      "text": "“Why were you searching for me?” he asked."
-    },
-    {
-      "picture": "panel-25",
-      "text": "“Didn’t you know?” he asked them."
-    },
-    {
-      "picture": "panel-26",
-      "text": "“I had to be in my Father’s house.”"
-    },
-    {
-      "picture": "panel-27",
-      "text": "But they did not understand him."
+      "alt": "Back in the present, the boy sits in a church pew with a Bible on his lap looking up at Halo, a priest preaching at the lectern and other children in the pews around him. The caption reads, “Jesus loved being in His Father’s house and learning about God. We can also take part in God’s house.” Halo says, “Just like Jesus, we can learn, worship, and take part in church.” and the boy answers, “I can be part of God’s house too!”"
     }
   ],
   "curriculum": {
@@ -211,7 +155,8 @@
           ]
         }
       ],
-      "note": "Three of the six printed questions in one board, because they are the three the lesson answers in its opening two sentences. “Every year → How often they went” is the fourth pair and is not padding: without it the board has three answers and three slots, so the last pair falls out by elimination rather than by being remembered."
+      "note": "Three of the six printed questions in one board, because they are the three the lesson answers in its opening two sentences. “Every year → How often they went” is the fourth pair and is not padding: without it the board has three answers and three slots, so the last pair falls out by elimination rather than by being remembered.\n\nShelf picture panel-04. The family walking through the crowd toward the temple. The caption — which names Jerusalem and the Passover in its first line, two of this board’s three answers — is cropped away, so the card carries no lettering. What is left is the arrival itself, which a six-year-old cannot read a place-name or a festival off.",
+      "picture": "panel-04"
     },
     {
       "id": "three-days-looking",
@@ -239,7 +184,8 @@
           ]
         }
       ],
-      "note": "Both wrong options are numbers the lesson actually uses — the one day they travelled before missing him, and the twelve years he was old — rather than other plausible numbers of days. A child who is guessing is choosing between three numbers that are all really in this story.\n\nThe printed question asks how long Jesus *sat* in the temple; p.84 says only that “after three days they found him in the temple courts”, which is how long the searching took. The game asks the question the lesson can actually answer — how long until they found him — and its answer is the book’s answer. The chapter note records the difference."
+      "note": "Both wrong options are numbers the lesson actually uses — the one day they travelled before missing him, and the twelve years he was old — rather than other plausible numbers of days. A child who is guessing is choosing between three numbers that are all really in this story.\n\nThe printed question asks how long Jesus *sat* in the temple; p.84 says only that “after three days they found him in the temple courts”, which is how long the searching took. The game asks the question the lesson can actually answer — how long until they found him — and its answer is the book’s answer. The chapter note records the difference.\n\nShelf picture panel-08. Mary and Joseph walking back up the road to Jerusalem, still looking. Both bubbles survive the crop whole — “We must go back to Jerusalem.” and “Yes. We will find Him.” — and neither carries a number. It is the right card for a game about how long the search took because it is the search still going on. Panel 9 is the finding and panel 10 is the moment after it; both were left for later games or left out.",
+      "picture": "panel-08"
     },
     {
       "id": "looking-for-him",
@@ -274,7 +220,8 @@
           ]
         }
       ],
-      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because the middle of this story is a sequence: the festival ends, he stays, they travel a day, they search their relatives, they turn back. It stops at “They went back to Jerusalem” and never reaches the finding, so the three days the game before it asks for are not on the board."
+      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because the middle of this story is a sequence: the festival ends, he stays, they travel a day, they search their relatives, they turn back. It stops at “They went back to Jerusalem” and never reaches the finding, so the three days the game before it asks for are not on the board.\n\nShelf picture panel-07. The roadside camp with Mary turning among the crowd and Joseph searching. No lettering survives the crop. It is one of the five steps this game asks a child to put in order, which is safe in a way a multiple choice would not be: a picture cannot encode a sequence, and all five steps are already on the board. Panel 6 was passed over because its bubble letters step four word for word.",
+      "picture": "panel-07"
     },
     {
       "id": "who-said-it",
@@ -320,7 +267,8 @@
           ]
         }
       ],
-      "note": "The two printed “who said to whom” questions, one after the other, with deliberately mirrored options: the right answer to the first is the first wrong answer to the second. A child cannot pattern-match their way through — they have to hold on to which of the two spoke which question, which is the whole of what questions 5 and 6 are asking."
+      "note": "The two printed “who said to whom” questions, one after the other, with deliberately mirrored options: the right answer to the first is the first wrong answer to the second. A child cannot pattern-match their way through — they have to hold on to which of the two spoke which question, which is the whole of what questions 5 and 6 are asking.\n\nShelf picture panel-12. Mary and Jesus on the step afterwards, looking at each other, with Joseph behind. No lettering survives the crop, and that is the point: this game asks which of the two spoke which line, and the card shows both of them and says nothing. Panels 10 and 11 are the exchange itself and are barred from the whole shelf — 10 letters question 5’s answer and 11 letters question 6’s, and all four cards are read before any game is played.",
+      "picture": "panel-12"
     }
   ],
   "verse": {
