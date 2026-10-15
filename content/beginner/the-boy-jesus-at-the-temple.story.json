@@ -1,0 +1,424 @@
+{
+  "class": "beginner",
+  "chapter": 18,
+  "title": "The Boy Jesus at the Temple",
+  "reference": "St. Luke 2: 41-50",
+  "note": "Built from the curriculum photographs in Drive’s Beginner → Chapter 18 → “01 - Curriculum Source”: three pages, p.83 (title, prayer, Bible portion), p.84 (the lesson and “Tell the Answers”) and p.86 (My Decision, the song line, the Memory Verse and the Concluding Prayer).\n\n**p.85 is not in Drive.** The folder was paginated to the end and holds exactly three photographs, and the page numbers jump from 84 to 86 — the same shape as Chapter 14, which skipped p.65. By the shape of this book the missing page is the activity page. Nothing here depends on it: all six printed questions are on p.84 and every answer is in the lesson above them. Worth a photograph if it carries something.\n\n**Both of this chapter’s prayers are not where you would expect.** p.83’s opening prayer is printed in full; p.86’s Concluding Prayer is the stage direction “(Let one child pray. )”. So `prayer` carries the **opening** prayer, as in Chapter 15 and unlike Chapters 12, 14 and 17 where it was the other way round. And there is no `song`: p.86’s “Learn to sing” says only “(Sing a suitable English song.)”, which is an instruction to the teacher, exactly as in Chapter 17.\n\n**A small mismatch between a question and the lesson, flagged rather than patched.** Printed question 4 asks “How long did Jesus sit in the Temple among the teachers.?”. p.84 says only “After three days they found him in the temple courts” — which is how long the *searching* took, not how long he sat. The answer the book is looking for is three days and that is what the second game teaches, but it asks the question the lesson can actually answer: how long until they found him. An editorial question for the teacher.\n\nThe stray full stops before the question marks — “year.?”, “journey.?”, “festival.?”, “teachers.?”, “this.?” — are the book’s and are carried verbatim in `curriculum`. The same stop appears inside the Memory Verse on p.86.\n\nNo artwork yet. Twenty-seven text cards, which is where Beginner Chapters 5 to 17 began before their panels arrived.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Not drawn yet. Both names are here so the artwork drops in without a content change."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "text": "Every year Jesus’ parents went to Jerusalem."
+    },
+    {
+      "picture": "panel-02",
+      "text": "They went for the Festival of the Passover."
+    },
+    {
+      "picture": "panel-03",
+      "text": "One year Jesus was twelve years old."
+    },
+    {
+      "picture": "panel-04",
+      "text": "He went up to the festival with them."
+    },
+    {
+      "picture": "panel-05",
+      "text": "When the festival was over, they started home."
+    },
+    {
+      "picture": "panel-06",
+      "text": "But the boy Jesus stayed behind in Jerusalem."
+    },
+    {
+      "picture": "panel-07",
+      "text": "His parents did not know it."
+    },
+    {
+      "picture": "panel-08",
+      "text": "They thought he was with their company."
+    },
+    {
+      "picture": "panel-09",
+      "text": "They travelled on for a whole day."
+    },
+    {
+      "picture": "panel-10",
+      "text": "Then they began to look for him."
+    },
+    {
+      "picture": "panel-11",
+      "text": "They looked among their relatives and friends."
+    },
+    {
+      "picture": "panel-12",
+      "text": "They did not find him anywhere."
+    },
+    {
+      "picture": "panel-13",
+      "text": "So they went back to Jerusalem."
+    },
+    {
+      "picture": "panel-14",
+      "text": "After three days they found him."
+    },
+    {
+      "picture": "panel-15",
+      "text": "He was sitting in the temple courts."
+    },
+    {
+      "picture": "panel-16",
+      "text": "He sat among the teachers there."
+    },
+    {
+      "picture": "panel-17",
+      "text": "He listened to them and asked them questions."
+    },
+    {
+      "picture": "panel-18",
+      "text": "Everyone who heard him was amazed."
+    },
+    {
+      "picture": "panel-19",
+      "text": "They wondered at his understanding and his answers."
+    },
+    {
+      "picture": "panel-20",
+      "text": "His parents were astonished to see him."
+    },
+    {
+      "picture": "panel-21",
+      "text": "His mother spoke to him."
+    },
+    {
+      "picture": "panel-22",
+      "text": "“Son, why have you treated us like this?”"
+    },
+    {
+      "picture": "panel-23",
+      "text": "“Your father and I have been searching for you.”"
+    },
+    {
+      "picture": "panel-24",
+      "text": "“Why were you searching for me?” he asked."
+    },
+    {
+      "picture": "panel-25",
+      "text": "“Didn’t you know?” he asked them."
+    },
+    {
+      "picture": "panel-26",
+      "text": "“I had to be in my Father’s house.”"
+    },
+    {
+      "picture": "panel-27",
+      "text": "But they did not understand him."
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 18 “The Boy Jesus at the Temple”, p.84 — “Tell the Answers”",
+    "note": "All six questions transcribed from the printed page, punctuation included — the stray full stops before the question marks are the book’s, not typos here. Questions 5 and 6 are a matched pair and the fourth game answers them together.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Where did Jesus’ parents go every year.?",
+        "objective": "Remember that Jesus’ parents went to Jerusalem every year.",
+        "answer": "To Jerusalem. “Every year Jesus’ parents went to Jerusalem for the Festival of the Passover.” (p.84)"
+      },
+      {
+        "n": 2,
+        "question": "What was the purpose of their journey.?",
+        "objective": "Remember that they went for the Festival of the Passover.",
+        "answer": "For the Festival of the Passover. Same sentence, p.84."
+      },
+      {
+        "n": 3,
+        "question": "At what age was Jesus taken to the festival.?",
+        "objective": "Remember that Jesus was twelve years old.",
+        "answer": "Twelve. “When he was twelve years old, they went up to the festival, according to the custom.” (p.84)"
+      },
+      {
+        "n": 4,
+        "question": "How long did Jesus sit in the Temple among the teachers.?",
+        "objective": "Remember that it was three days before they found him.",
+        "answer": "Three days. “After three days they found him in the temple courts, sitting among the teachers…” (p.84) — the lesson gives the three days as the length of the search; see the chapter note."
+      },
+      {
+        "n": 5,
+        "question": "“Why have you treated us like this.?” Who said to whom?",
+        "objective": "Remember that his mother said it to Jesus.",
+        "answer": "His mother said it to Jesus. “His mother said to him, ‘Son, why have you treated us like this?’” (p.84)"
+      },
+      {
+        "n": 6,
+        "question": "“Why were you searching for me?”. Who said to whom?",
+        "objective": "Remember that Jesus said it to his mother.",
+        "answer": "Jesus said it to his mother. “‘Why were you searching for me?’ he asked.” (p.84)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "every-year-to-jerusalem",
+      "title": "Every Year to Jerusalem",
+      "objective": "Remember where Jesus' parents went each year, why they went, and how old Jesus was that year.",
+      "answers": [
+        1,
+        2,
+        3
+      ],
+      "interactions": [
+        {
+          "type": "match",
+          "prompt": "Match each one to the story.",
+          "pairs": [
+            {
+              "from": {
+                "label": "Jerusalem"
+              },
+              "to": {
+                "label": "Where they went"
+              }
+            },
+            {
+              "from": {
+                "label": "The Passover"
+              },
+              "to": {
+                "label": "Why they went"
+              }
+            },
+            {
+              "from": {
+                "label": "Twelve"
+              },
+              "to": {
+                "label": "How old Jesus was"
+              }
+            },
+            {
+              "from": {
+                "label": "Every year"
+              },
+              "to": {
+                "label": "How often they went"
+              }
+            }
+          ]
+        }
+      ],
+      "note": "Three of the six printed questions in one board, because they are the three the lesson answers in its opening two sentences. “Every year → How often they went” is the fourth pair and is not padding: without it the board has three answers and three slots, so the last pair falls out by elimination rather than by being remembered."
+    },
+    {
+      "id": "three-days-looking",
+      "title": "Three Days Looking",
+      "objective": "Remember that it was three days before his parents found Jesus in the temple.",
+      "answers": [
+        4
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "How long until they found him?",
+          "hint": "More than two days.",
+          "options": [
+            {
+              "label": "Three days",
+              "correct": true
+            },
+            {
+              "label": "One day"
+            },
+            {
+              "label": "Twelve days"
+            }
+          ]
+        }
+      ],
+      "note": "Both wrong options are numbers the lesson actually uses — the one day they travelled before missing him, and the twelve years he was old — rather than other plausible numbers of days. A child who is guessing is choosing between three numbers that are all really in this story.\n\nThe printed question asks how long Jesus *sat* in the temple; p.84 says only that “after three days they found him in the temple courts”, which is how long the searching took. The game asks the question the lesson can actually answer — how long until they found him — and its answer is the book’s answer. The chapter note records the difference."
+    },
+    {
+      "id": "looking-for-him",
+      "title": "Looking for Him",
+      "objective": "Follow what his parents did when they found Jesus was not with them.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put the search in order.",
+          "hint": "The festival ends first.",
+          "items": [
+            {
+              "label": "The festival was over",
+              "position": 1
+            },
+            {
+              "label": "Jesus stayed behind in Jerusalem",
+              "position": 2
+            },
+            {
+              "label": "They travelled on a day",
+              "position": 3
+            },
+            {
+              "label": "They looked among their friends",
+              "position": 4
+            },
+            {
+              "label": "They went back to Jerusalem",
+              "position": 5
+            }
+          ]
+        }
+      ],
+      "note": "The one game that answers no printed question, kept because sequencing is the third skill the Beginner band asks for and because the middle of this story is a sequence: the festival ends, he stays, they travel a day, they search their relatives, they turn back. It stops at “They went back to Jerusalem” and never reaches the finding, so the three days the game before it asks for are not on the board."
+    },
+    {
+      "id": "who-said-it",
+      "title": "Who Said It?",
+      "objective": "Remember who spoke each of the two questions in the temple, and to whom.",
+      "answers": [
+        5,
+        6
+      ],
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Who said “Why have you treated us like this?”",
+          "hint": "She had been searching for him.",
+          "options": [
+            {
+              "label": "His mother, to Jesus",
+              "correct": true
+            },
+            {
+              "label": "Jesus, to his mother"
+            },
+            {
+              "label": "A teacher, to Jesus"
+            }
+          ]
+        },
+        {
+          "type": "multiple-choice",
+          "prompt": "Who said “Why were you searching for me?”",
+          "hint": "He was the one they found.",
+          "options": [
+            {
+              "label": "Jesus, to his mother",
+              "correct": true
+            },
+            {
+              "label": "His mother, to Jesus"
+            },
+            {
+              "label": "A teacher, to Jesus"
+            }
+          ]
+        }
+      ],
+      "note": "The two printed “who said to whom” questions, one after the other, with deliberately mirrored options: the right answer to the first is the first wrong answer to the second. A child cannot pattern-match their way through — they have to hold on to which of the two spoke which question, which is the whole of what questions 5 and 6 are asking."
+    }
+  ],
+  "verse": {
+    "text": "Didn’t you know I had to be in my Father’s house?",
+    "reference": "St. Luke 2:49(b)",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "It begins by asking a question.",
+        "options": [
+          {
+            "label": "Didn’t you know",
+            "correct": true
+          },
+          {
+            "label": "Didn’t you hear"
+          },
+          {
+            "label": "Didn’t you come"
+          }
+        ],
+        "note": "Stage 1, recognition. The wrong options are ordinary phrases rather than invented scripture, and they are near-misses on the verb so that the child has to hear the actual word rather than the shape of the line."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "It begins with a question.",
+        "words": [
+          "Didn’t you know",
+          "I had to be",
+          "in my Father’s house?"
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Didn’t you ______ I had",
+        "hint": "The missing word starts with “k”.",
+        "options": [
+          {
+            "label": "know",
+            "correct": true
+          },
+          {
+            "label": "Didn’t"
+          },
+          {
+            "label": "house"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used as it came out, with one edit: the agent’s third option was “house?”, the verse’s closing question mark riding on the last token. A button that reads “house?” is a visible defect, so the mark was dropped. Beginner Chapter 12 had the same thing happen with a closing quote mark on “water” and Chapter 15 with an exclamation mark on “unity”; all three were fixed the same way. Prompt, hint and the other two options are untouched."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "Didn’t you know",
+          "I had",
+          "to be in",
+          "my Father’s",
+          "house?"
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three, which is the whole of the difference between the two stages. Phrase chunks rather than single words, as every chapter in this class ships except Chapter 17, whose verse was five words long. The build checks that these five spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "The same book the lesson comes from.",
+        "options": [
+          {
+            "label": "St. Luke 2",
+            "correct": true
+          },
+          {
+            "label": "Psalm 119"
+          },
+          {
+            "label": "Genesis 15"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. Both distractors are verses this child has just learned: Psalm 119 was Chapter 17’s and Genesis 15 was Chapter 16’s.\n\nSt. Luke 2 is the **second** time this class has memorised from this chapter — Chapter 1’s verse was St Luke 2:30,31, Simeon in the same temple. A child who has kept that one already knows where this one lives, which is the kind of thing stage 5 is for."
+      }
+    ],
+    "note": "Read from p.86 through the Memory Verse agent: `--fetch --source-dir` over the three curriculum photographs, the supervised read, then `--from-extraction`.\n\n**Two things about how p.86 prints this verse.** It reads, in full: `He asked “Didn’t you know I had to be in my Father’s house.?”` The words “He asked” sit *outside* the quotation marks — they are the book’s narrative lead-in, not part of the verse — so the verse carried here is what is inside them. And the quotation closes with `.?`, a full stop and a question mark together, which is the same stray stop the book puts before the question mark in all six of this chapter’s printed questions; it is carried as a single `?`. Neither is a judgement about the wording, which is unchanged.\n\nFive stages in the shape Chapters 1 to 9 and 11 to 17 of this class use — recognise, order, fill, rebuild, place. Stage 3 is the agent’s own Beginner rung with one option mark removed, explained there.\n\nTranslation is unresolved, which is where every other chapter in this class stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I shall regularly go to Church and study the scriptures.",
+    "note": "The curriculum’s own My Decision from p.86, word for word."
+  },
+  "prayer": {
+    "text": "Thank you Lord for the Church you have given us for worshipping you. Help us to utilize it for scripture studies, worship and community prayers. Amen.",
+    "note": "The **opening** prayer from p.83, word for word. It is the opening one because p.86’s Concluding Prayer is the stage direction “(Let one child pray. )” rather than a prayer — the reverse of Chapters 12, 14 and 17, and the same as Chapter 15."
+  },
+  "celebration": {
+    "message": "They found him in the temple, in his Father’s house.",
+    "note": "The turn of the chapter, from p.84. Three days of searching end not in a telling-off that lands but in a boy saying, reasonably, that of course he was here."
+  }
+}
