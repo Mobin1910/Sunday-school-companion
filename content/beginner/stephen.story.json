@@ -1,0 +1,363 @@
+{
+  "class": "beginner",
+  "chapter": 20,
+  "title": "Stephen",
+  "reference": "Acts 6:7-8, 7:55-60",
+  "note": "Built from the curriculum photographs the teacher added for Chapter 20: three pages, p.91 (title, prayer, Bible portion), p.92 (the lesson and “Tell the Answers”) and p.93 (My Decision, the song, the Memory Verse and the Concluding Prayer). **The chapter is complete** — nothing missing, as in Chapters 16 and 19. The three photographs are inside “01 - Curriculum Source” where they belong, unlike Chapter 19’s, which were loose in the chapter folder.\n\nFour games, five of five questions covered, two of four choose-one-of-N — the most the Beginner band allows.\n\n**The lesson spells the name three ways in two sentences.** p.92’s second paragraph opens “Stephan looked up to heaven…”, then “Stephen writhed in pain and died”, then “Thus Stephan became the first martyr of the Church.” The title, the first paragraph and the questions all print **Stephen**, which is what this chapter uses throughout and what the artwork letters. The two “Stephan”s look like a typesetting slip rather than a second name, but they are the teacher’s page and nothing here was changed on her behalf — it is recorded so she can decide.\n\n**The Memory Verse reference is printed “St. Mathew 5:44”, with one t.** See the verse note: the app prints St. Matthew, as every other chapter in this app already does.\n\n**Artwork.** Ten panels and both covers came from Drive’s “04 - Story Artwork”, all twelve distinct by SHA-256, the folder enumerated by exact filename rather than by paging — a listing pages five at a time here and repeats rows across page boundaries, which is how a landscape cover nearly went missing from this chapter. Every story card is a picture with `alt` describing the scene and quoting what is lettered on it, which is where Beginner Chapters 5 to 19 and Primary 1 to 3 now stand.\n\nThe frame story is a classroom: a boy is told “You’re no good at this!” by a classmate, Halo asks him how that felt, and Stephen’s story is what Halo brings him. It lands on the Memory Verse rather than on the lesson — the boy’s own answer in panel 10 is “That I should pray for people, even when they are unkind.”\n\n**Two things in the artwork are worth the teacher’s eye.** First, the order: panel 6 has Stephen pray “Lord Jesus, receive my spirit”, panel 7 then has him see heaven open, and panel 8’s caption gives the same prayer again before he dies. In Acts 7 the vision comes first and the prayer once. The panels are carried in the order they are numbered, because that order is the artist’s and it reads gently — the light before the end — but the prayer does appear twice. Second, panel 2’s caption reads “The boy begins to recognise the impact of his words”, and the boy in the picture is the one who was spoken to, not the one who spoke; his line is “Sad… I didn’t like it.” The caption appears to belong to the other boy.\n\nNo video for this chapter yet.",
+  "cover": {
+    "picture": "cover",
+    "landscape": "cover-landscape",
+    "note": "Both drawn and imported: Stephen kneeling among the stones, looking up, with the city wall behind him. **The portrait cover is 981×1603, where every panel in this chapter is 941×1672.** It was converted without distortion, but it is a slightly different shape from the rest, so it will not crop the same way on the shelf — Chapters 13 and 19 have the same quirk. The landscape cover is the canonical 1672×941 and is the same scene with no title lettered into it."
+  },
+  "story": [
+    {
+      "picture": "panel-01",
+      "alt": "A classroom. A boy in a yellow shirt stands with his head lowered while a boy in a teal shirt points at him and shouts, “You’re no good at this! I don’t want you on my team!” Other children look up from their desks. The caption reads, “A classmate spoke unkindly to the boy. His words hurt.”"
+    },
+    {
+      "picture": "panel-02",
+      "alt": "The boy in yellow sits at his desk with his chin on his hand, Halo glowing beside him under a “Be Kind” poster. Halo asks, “That sounded hurtful. How did it make you feel?” and the boy answers, “Sad… I didn’t like it.” The caption reads, “The boy begins to recognise the impact of his words.”"
+    },
+    {
+      "picture": "panel-03",
+      "alt": "The boy looks up and asks, “Why are some people unkind to others?” Halo answers, “That’s a thoughtful question. Let’s meet someone who stayed faithful to Jesus when people were unkind to him.” A glowing cloud opens above them with a man speaking to a crowd inside it. The caption reads, “Halo suggests learning from Stephen’s story.”"
+    },
+    {
+      "picture": "panel-04",
+      "alt": "The vision fills the room: a man in a white robe and green cloak speaks with both hands open to a crowd outside a city wall. Halo says, “This is Stephen. He loved Jesus and shared about Him, but some people were very unkind to him.” and the boy asks, “Oh… What happened to him?” The caption reads, “Halo shows the boy Stephen, who stayed faithful to Jesus even when people were unkind.”"
+    },
+    {
+      "picture": "panel-05",
+      "alt": "Stephen kneels on the stony ground with his hands folded, men all around him with stones raised. He prays, “Lord Jesus, forgive them, because they don’t know what they are doing.” The caption reads, “Even when people threw stones at him, Stephen prayed for them.”"
+    },
+    {
+      "picture": "panel-06",
+      "alt": "Stephen has fallen onto his hands among the stones, one arm stretched out, the men still throwing. He prays, “Lord Jesus, receive my spirit.” The caption reads, “As the people kept throwing stones, Stephen prayed to the Lord.”"
+    },
+    {
+      "picture": "panel-07",
+      "alt": "Stephen lifts one hand to a bright opening in the sky where Jesus stands in the light, his own face turned up and shining. He says, “Look, I see the heavens open and the Son of Man standing at the right hand of God.” The caption reads, “As Stephen prayed, he saw Jesus standing in heaven.”"
+    },
+    {
+      "picture": "panel-08",
+      "alt": "Stephen kneels with his head bowed and his hands folded, still and quiet, the men behind him blurred. The caption reads, “Stephen prayed, ‘Lord Jesus, receive my spirit.’ Then he died. He was the first martyr of the Church.”"
+    },
+    {
+      "picture": "panel-09",
+      "alt": "Back in the classroom, the boy rests his chin on his hand with a thought cloud above him holding the whole scene — Stephen among the stones and Jesus in the light. The caption reads, “The boy thought about Stephen. Even when people were mean to him, he chose to pray and forgive.”"
+    },
+    {
+      "picture": "panel-10",
+      "alt": "The boy is smiling up at Halo, who asks, “What do you think Stephen teaches us?” The boy answers, “That I should pray for people, even when they are unkind.” A green banner at the foot of the picture reads, “I will pray for those who are unkind to me.”"
+    }
+  ],
+  "curriculum": {
+    "source": "Beginners Mar Thoma Vol-1, Chapter 20 “Stephen”, p.92 — “Tell the Answers”",
+    "note": "All five questions transcribed from the printed page. The lesson they are asked about is the paragraph above them on the same page; question 4 is answered there in two steps — his opponents complained that he was preaching against them, and then “There also he preached about Jesus. When they heard that, their anger increased.”",
+    "questions": [
+      {
+        "n": 1,
+        "question": "What did the disciples do after the crucifixion of Jesus?",
+        "objective": "Remember that the disciples went to many places and preached about Jesus.",
+        "answer": "They went to many places and preached about Jesus. “After the crucifixion of Jesus, the disciples went to many places. Everywhere they preached about Jesus.” (p.92)"
+      },
+      {
+        "n": 2,
+        "question": "What are the qualities that we see in Stephen?",
+        "objective": "Remember that Stephen had good faith, knowledge and testimony.",
+        "answer": "Good faith, knowledge and testimony — and he did miracles by the power of the Holy Spirit. “He had good faith, knowledge and testimony. He performed many miracles among the people by the power of the Holy Spirit.” (p.92)"
+      },
+      {
+        "n": 3,
+        "question": "How did Stephen die?",
+        "objective": "Remember that the people stoned Stephen to death.",
+        "answer": "He was stoned to death. “They told the people to stone him to death.” (p.92)"
+      },
+      {
+        "n": 4,
+        "question": "What was the main reason for stoning Stephen?",
+        "objective": "Remember that Stephen preached about Jesus, and that this is what angered them.",
+        "answer": "He preached about Jesus. “…complained to the high priest that Stephen was preaching against them… There also he preached about Jesus. When they heard that, their anger increased.” (p.92)"
+      },
+      {
+        "n": 5,
+        "question": "Who was the first martyr of the church?",
+        "objective": "Remember that Stephen was the first martyr of the Church.",
+        "answer": "Stephen. “Thus Stephan became the first martyr of the Church.” (p.92, which spells the name “Stephan” in this sentence)"
+      }
+    ]
+  },
+  "games": [
+    {
+      "id": "after-the-cross",
+      "title": "After the Cross",
+      "objective": "Remember that the disciples went to many places after the crucifixion and preached about Jesus everywhere they went.",
+      "answers": [
+        1
+      ],
+      "picture": "panel-08",
+      "note": "Question 1. The two wrong options are the two things the people who opposed Stephen did later in the same lesson — went to the high priest, and threw stones — so a child who picks one has picked a real event out of this story and put the wrong people in it. Neither is a plausible-sounding invention.\n\nShelf picture panel-08, Stephen kneeling with his head bowed at the end. It is one of only five panels in this chapter whose lettering survives the square crop, and the only one of those with no lettering in the crop at all — the caption that names him the first martyr is cropped away below it. Panel 2, which suits this game’s place at the start of the shelf better, was tried first and rejected: its one bubble lands exactly where the card prints “Game 1”, and the title covers a word of it. The two panels that would actually illustrate this question — 3 and 4, where Halo opens Stephen’s story — each lose a speech bubble mid-sentence to the crop.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "What did the disciples do everywhere they went?",
+          "hint": "They would not keep it quiet.",
+          "options": [
+            {
+              "label": "Preached about Jesus",
+              "correct": true
+            },
+            {
+              "label": "Went to the high priest"
+            },
+            {
+              "label": "Threw stones at Stephen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-stephen-had",
+      "title": "What Stephen Had",
+      "objective": "Meet the four things the lesson says about Stephen before any of the trouble starts — his faith, his knowledge, his testimony, and the power he did miracles by.",
+      "answers": [
+        2
+      ],
+      "picture": "panel-09",
+      "note": "Question 2, and a reveal rather than a choice because the printed answer is a list: “He had good faith, knowledge and testimony. He performed many miracles among the people by the power of the Holy Spirit.” A list of four with one marked correct would be a question with three wrong answers that are not wrong.\n\nShelf picture panel-09, the boy thinking, with the whole of Stephen’s story inside his thought cloud. Nothing is lettered in the crop and nothing on this shelf is given away by it.",
+      "interactions": [
+        {
+          "type": "reveal",
+          "prompt": "Turn over what Stephen had.",
+          "items": [
+            {
+              "label": "Good faith"
+            },
+            {
+              "label": "Knowledge"
+            },
+            {
+              "label": "Testimony"
+            },
+            {
+              "label": "Power of the Holy Spirit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-they-were-angry",
+      "title": "Why They Were Angry",
+      "objective": "Remember that it was preaching about Jesus — in front of the high priest, after they had already complained about him — that made them angry enough to stone him.",
+      "answers": [
+        4
+      ],
+      "picture": "panel-01",
+      "note": "Question 4. Both wrong options are true things the lesson says about Stephen — he performed many miracles, and the people who debated with him could not win — which is what makes this a question worth asking: all three happened, and only one of them is why the stones were thrown. The lesson is explicit about which: “There also he preached about Jesus. When they heard that, their anger increased.”\n\nShelf picture panel-01, the classmate pointing and shouting in the classroom. It is the chapter’s own picture of anger and it letters nothing in the square crop — the speech bubble sits above the crop line and the caption below it.",
+      "interactions": [
+        {
+          "type": "multiple-choice",
+          "prompt": "Why did they want to stone Stephen?",
+          "hint": "He would not stop talking about Jesus.",
+          "options": [
+            {
+              "label": "He preached about Jesus",
+              "correct": true
+            },
+            {
+              "label": "He won every debate"
+            },
+            {
+              "label": "He did many miracles"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-happened-to-stephen",
+      "title": "What Happened to Stephen",
+      "objective": "Follow Stephen’s last day in the order the artwork gives it, and hold who was who in it — the first martyr, the high priest, the Holy Spirit, and the people who argued with him.",
+      "answers": [
+        3,
+        5
+      ],
+      "picture": "panel-10",
+      "note": "Questions 3 and 5.\n\n**The sequence is played on the artwork.** Four panels, four steps: Stephen preaching inside Halo’s vision, the stones, the heavens open, and the end. Panel 6 is left out of it on purpose — it is Stephen praying “Lord Jesus, receive my spirit”, and panel 8’s caption gives that same prayer again, so a child ordering both would be asked to tell two almost identical pictures apart for no gain.\n\nThe match that follows is the chapter’s cast. “Stephen → The first martyr” is question 5 and the rest are from the lesson’s own first paragraph: the high priest who had him brought in, the Holy Spirit whose power the miracles were done by, and the many who debated with him and could not win. None of them is another game’s answer.\n\nShelf picture panel-10, the boy answering Halo. The crop letters “That I should pray for people, even when they are unkind.” — which is this chapter’s decision and its Memory Verse, and is not an answer any game on this shelf is marked on.",
+      "interactions": [
+        {
+          "type": "sequence",
+          "prompt": "Put Stephen’s story in order.",
+          "hint": "He is preaching first.",
+          "items": [
+            {
+              "picture": "panel-04",
+              "label": "Stephen told about Jesus",
+              "position": 1
+            },
+            {
+              "picture": "panel-05",
+              "label": "People threw stones at him",
+              "position": 2
+            },
+            {
+              "picture": "panel-07",
+              "label": "He saw Jesus in heaven",
+              "position": 3
+            },
+            {
+              "picture": "panel-08",
+              "label": "Then he died",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "type": "match",
+          "prompt": "Who is who in this story?",
+          "pairs": [
+            {
+              "from": {
+                "label": "Stephen"
+              },
+              "to": {
+                "label": "The first martyr"
+              }
+            },
+            {
+              "from": {
+                "label": "The high priest"
+              },
+              "to": {
+                "label": "He called Stephen to him"
+              }
+            },
+            {
+              "from": {
+                "label": "The Holy Spirit"
+              },
+              "to": {
+                "label": "Stephen’s power for miracles"
+              }
+            },
+            {
+              "from": {
+                "label": "Many people"
+              },
+              "to": {
+                "label": "They debated with Stephen"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verse": {
+    "text": "But I tell you, love your enemies and pray for those who persecute you.",
+    "reference": "St. Matthew 5:44",
+    "translation": "PLACEHOLDER",
+    "practice": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How does our verse begin?",
+        "hint": "Jesus is telling us something.",
+        "options": [
+          {
+            "label": "But I tell you",
+            "correct": true
+          },
+          {
+            "label": "But I ask you"
+          },
+          {
+            "label": "But I send you"
+          }
+        ],
+        "note": "Stage 1, recognition. The two wrong options change one word of the real opening rather than offering a different sentence, which is the distinction this stage is for — a child who can tell “tell” from “ask” here has read the verse rather than recognised its shape."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Put the verse in order",
+        "hint": "Jesus speaks first.",
+        "words": [
+          "But I tell you,",
+          "love your enemies",
+          "and pray for those who persecute you."
+        ],
+        "note": "Stage 2, phrase ordering. Three chunks, broken where the sense breathes: who is speaking, what to do, and who to do it for. The build checks that they spell the verse exactly."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "But I ______ you,",
+        "hint": "The missing word starts with “t”.",
+        "options": [
+          {
+            "label": "tell",
+            "correct": true
+          },
+          {
+            "label": "But"
+          },
+          {
+            "label": "persecute"
+          }
+        ],
+        "note": "Stage 3, the missing word. Generated by the Memory Verse agent’s Beginner ladder and used exactly as it came out — prompt, hint and all three options unedited. No trailing punctuation rode in on an option this time, unlike Chapters 12, 15 and 18."
+      },
+      {
+        "type": "arrange-words",
+        "prompt": "Now build the whole verse",
+        "hint": "Five pieces this time.",
+        "words": [
+          "But I tell you,",
+          "love your enemies",
+          "and pray",
+          "for those",
+          "who persecute you."
+        ],
+        "note": "Stage 4, full reconstruction — five pieces where stage 2 had three. The break after “and pray” is the one that matters: it separates the praying from who it is for, which is the half of this verse a six-year-old is most likely to drop."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Where does our verse come from?",
+        "hint": "The first Gospel.",
+        "options": [
+          {
+            "label": "St. Matthew 5",
+            "correct": true
+          },
+          {
+            "label": "Acts 3"
+          },
+          {
+            "label": "St. Luke 2"
+          }
+        ],
+        "note": "Stage 5, the reference — recognised, not typed. Both distractors are verses this child has just learned: Acts 3 was Chapter 19’s and St. Luke 2 was Chapter 18’s."
+      }
+    ],
+    "note": "Read from p.93 through the Memory Verse agent: `--fetch --source-dir` over the three curriculum photographs, the supervised read, then `--from-extraction`. Stage 3 is the agent’s own Beginner rung, unedited.\n\n**Two things about the printed verse.**\n\nFirst, **the book prints the reference “St. Mathew 5:44”, with one t**. It is spelled that way nowhere else in this app — Primary Chapters 1 and 6 both carry “St. Matthew” — so what is here is **St. Matthew**, and this note is the record of the change. It is the book’s typesetting rather than the verse, and no word of scripture was touched; if the teacher would rather the app print what her page prints, it is a one-line change.\n\nSecond, **the printed verse ends “persecute you.’ ” with a closing single quote that has no opening one** — the last of a quotation the Memory Verse box does not begin. The stray mark is dropped here. The wording itself is carried character for character: “But I tell you, love your enemies and pray for those who persecute you.”\n\nFive stages in the shape every chapter of this class uses.\n\nTranslation is unresolved, which is where every other chapter in this app stands.\n\nNo second opinion — the teacher’s editorial Sheet was not available for this run."
+  },
+  "decision": {
+    "statement": "I completely believe in Jesus.",
+    "note": "The curriculum’s own My Decision from p.93, word for word. The book prints it without a full stop."
+  },
+  "song": {
+    "lines": [
+      "I have decided to follow Jesus (3)",
+      "No turning Back (2)"
+    ],
+    "note": "The two lines of the “Learn to sing” song on p.93, exactly as printed — the numbers in brackets are the book’s own repeat counts, and the capital B in “Back” is the book’s too."
+  },
+  "prayer": {
+    "text": "Dear Jesus, help me to stand firm as your witness, no matter whoever is against me. Amen.",
+    "note": "The Concluding Prayer from p.93, word for word. The book breaks “whoever” across two lines as “whoev-er”; it is one word here. The opening prayer on p.91 — “O God, help us to grow daily as your faithful witnesses. Amen.” — is printed in full as well, but the schema holds one prayer and the closing one is what most of this class carries."
+  },
+  "celebration": {
+    "message": "Stephen prayed for the people who threw stones at him.",
+    "note": "The turn of the chapter, from p.92 and from panel 5. The lesson’s last paragraph is not that Stephen was brave but that he knelt and prayed for the people who were killing him, which is also what the Memory Verse asks of a child."
+  }
+}
