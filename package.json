@@ -25,6 +25,7 @@
     "brand:derive": "node tools/brand/derive.mjs",
     "build": "next build",
     "content:check": "node tools/content/check-brief.mjs",
+    "content:md": "node tools/content/chapter-md.mjs",
     "dev": "next dev",
     "site:check": "node tools/brand/check-site.mjs",
     "start": "npx serve out",
